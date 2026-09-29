@@ -13,7 +13,7 @@ const { Content, headings } = await render(entry);
 const toc = headings.filter((h) => h.depth === 2);
 ---
 
-<Base title={`${title} — yakar.me`} description={description}>
+<Base title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: topic }}>
   <article class="px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="flex max-w-240 flex-col gap-7">
       <span class="label text-accent">{topic}</span>
