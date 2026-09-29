@@ -98,6 +98,31 @@
     font-family: inherit;
   }
 
+  /* Tablo. Hizalama CSS'te: Markdown hizalaması satır içi style="" üretir (CSP). */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .prose th,
+  .prose td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--yk-line);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .prose th {
+    font-weight: 500;
+    color: var(--yk-text);
+    border-bottom-color: var(--yk-line-strong);
+  }
+  .prose :is(th, td):not(:first-child) {
+    text-align: center;
+  }
+
   /* Görsel + altyazı */
   .prose figure {
     display: flex;
@@ -107,6 +132,8 @@
   .prose img {
     max-width: 100%;
     height: auto;
+    /* Saydam şemalar koyu temada okunmaz: açık zemin (opak GIF'lerde görünmez) */
+    background: #fff;
     border-radius: 6px;
     border: 1px solid var(--yk-line);
   }
