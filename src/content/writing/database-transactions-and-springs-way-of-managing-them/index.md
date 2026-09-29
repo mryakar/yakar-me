@@ -5,6 +5,7 @@ pubDate: 2023-12-26
 topic: Databases
 short: "Transactions and Spring"
 mediumUrl: https://medium.com/havelsan/database-transactions-and-springs-way-of-managing-them-1ae30b8e6c5c
+lang: en
 ---
 
 ## Introduction

@@ -1,0 +1,19 @@
+---
+import { ui } from '../i18n/ui';
+import { other, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  href: string;
+}
+const { lang, href } = Astro.props;
+const target = other(lang);
+---
+<a
+  href={href}
+  hreflang={target}
+  lang={target}
+  class="label inline-flex h-11 items-center self-start rounded-full border border-line-strong px-4 text-muted transition-colors duration-200 hover:border-muted hover:text-text"
+>
+  {target}<span class="sr-only"> {ui[target].languageName}</span>
+</a>

@@ -1,4 +1,10 @@
 ---
 import { PHOTOGRAPHER } from '../lib/photo';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
 ---
-<p class="border-t border-line pt-5 text-xs text-faint">All photographs © {PHOTOGRAPHER}. All rights reserved.</p>
+<p class="border-t border-line pt-5 text-xs text-faint">{ui[Astro.props.lang].photos.rights(PHOTOGRAPHER)}</p>

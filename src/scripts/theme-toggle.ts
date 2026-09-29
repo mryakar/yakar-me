@@ -5,8 +5,8 @@ function current(): 'light' | 'dark' {
 }
 
 function label(button: HTMLElement) {
-  const next = current() === 'dark' ? 'light' : 'dark';
-  button.setAttribute('aria-label', `Switch to ${next} theme`);
+  const next = current() === 'dark' ? button.dataset.toLight : button.dataset.toDark;
+  if (next) button.setAttribute('aria-label', next);
 }
 
 function apply(theme: 'light' | 'dark') {

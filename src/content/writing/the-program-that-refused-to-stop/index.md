@@ -5,6 +5,7 @@ pubDate: 2026-08-03
 topic: Java
 short: "The Program That Refused To Stop"
 mediumUrl: https://medium.com/@mr-yakar/the-program-that-refused-to-stop-d517a8fd10ab
+lang: en
 ---
 
 ## TL;DR

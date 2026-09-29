@@ -5,6 +5,7 @@ pubDate: 2022-04-15
 topic: Java
 short: "Testing Private Methods!"
 mediumUrl: https://medium.com/havelsan/testing-private-methods-afbda842d44a
+lang: en
 ---
 
 ![Illustration of a scientist in a lab coat testing code on a laptop, with glassware and checklists around him.](./bugfender-illustration.jpeg)

@@ -5,6 +5,7 @@ pubDate: 2026-09-16
 topic: Databases
 short: "Explicit Locking"
 mediumUrl: https://medium.com/@mr-yakar/explicit-locking-in-postgresql-6ed90ddc7e16
+lang: en
 ---
 
 ## TL;DR

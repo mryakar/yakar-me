@@ -1,0 +1,27 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Tagline from '../../components/Tagline.astro';
+import { ui } from '../../i18n/ui';
+import { langPaths, type Lang } from '../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang].about;
+const entry = await getEntry('pages', `about/${lang}`);
+if (!entry) throw new Error(`src/content/pages/about/${lang}.md is missing`);
+const { Content } = await render(entry);
+---
+<Base lang={lang} title={t.title} description={t.description}>
+  <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
+    <header class="flex flex-col gap-7 border-b border-line pb-8">
+      <Tagline lang={lang} />
+      <h1 class="font-display text-d2 desk:text-d1">{t.heading}</h1>
+    </header>
+
+    <div class="prose max-w-170">
+      <Content />
+    </div>
+  </article>
+</Base>

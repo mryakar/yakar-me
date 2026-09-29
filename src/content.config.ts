@@ -1,6 +1,11 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { locales } from './lib/i18n';
+
+const lang = z.enum(locales);
+const translations = (base: string) => glob({ pattern: `*/{${locales.join(',')}}.md`, base });
+const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 
 const writing = defineCollection({
   loader: glob({ pattern: '*/index.md', base: './src/content/writing' }),
@@ -11,7 +16,20 @@ const writing = defineCollection({
     topic: z.enum(['Java', 'Databases']),
     mediumUrl: z.url(),
     short: z.string().optional(),
+    lang,
   }),
+});
+
+const writingTranslations = defineCollection({
+  loader: translations('./src/content/writing'),
+  schema: z
+    .object({
+      title: z.string(),
+      description: z.string(),
+      mediumUrl: z.url(),
+      short: z.string().optional(),
+    })
+    .strict(),
 });
 
 const series = defineCollection({
@@ -20,8 +38,25 @@ const series = defineCollection({
     title: z.string(),
     description: z.string(),
     order: z.number().int(),
-    cover: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
+    cover: slug.optional(),
+    lang,
   }),
+});
+
+const seriesTranslations = defineCollection({
+  loader: translations('./src/content/photos'),
+  schema: z
+    .object({
+      title: z.string(),
+      description: z.string(),
+      alt: z.record(slug, z.string().min(1).max(250)),
+    })
+    .strict(),
+});
+
+const pages = defineCollection({
+  loader: translations('./src/content/pages'),
+  schema: z.object({}).strict(),
 });
 
 const text = z.string().regex(/^[\x20-\x7e]{1,60}$/);
@@ -79,4 +114,4 @@ const photos = defineCollection({
     }),
 });
 
-export const collections = { writing, series, photos };
+export const collections = { writing, writingTranslations, series, seriesTranslations, photos, pages };

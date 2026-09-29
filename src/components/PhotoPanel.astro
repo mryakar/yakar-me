@@ -2,29 +2,34 @@
 import PhotoPicture from './PhotoPicture.astro';
 import { aperture, focalLength, placeName, recipeRows, shutter, takenYear, PHOTOGRAPHER } from '../lib/photo';
 import { photoSlug, type Photo } from '../lib/photos';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
 
 interface Props {
+  lang: Lang;
   photo: Photo;
   index: number;
   total: number;
   series: string;
 }
-const { photo, index, total, series } = Astro.props;
+const { lang, photo, index, total, series } = Astro.props;
+const t = ui[lang].photos;
 const p = photo.data;
-const numbers = [
-  [aperture(p.aperture), 'Aperture'],
-  [shutter(p.shutter), 'Shutter'],
-  [String(p.iso), 'ISO'],
-  [focalLength(p), 'Focal length'],
+const numbers: { value: string; label: string; wide?: string }[] = [
+  { value: aperture(p.aperture), label: t.aperture },
+  { value: shutter(p.shutter), label: t.shutter },
+  { value: String(p.iso), label: t.iso },
+  { value: focalLength(p, t.equivalent), label: t.focal, wide: t.focalRest },
 ];
+const recipe = p.recipe ? recipeRows(p.recipe, t.recipeValue) : [];
 const control = 'size-11 flex-none items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-accent';
 ---
-<article data-photo={photoSlug(photo)} hidden class="lightbox-panel" aria-label={`${series}, photo ${index + 1} of ${total}`}>
+<article data-photo={photoSlug(photo)} hidden class="lightbox-panel" aria-label={t.position(series, index + 1, total)}>
   <div class="flex items-center justify-between gap-4 text-[13px] text-muted">
     <span>{series} · {index + 1} / {total}</span>
     <span class="flex items-center gap-5">
       <span class="label hidden text-faint desk:inline">Esc</span>
-      <button type="button" data-close aria-label="Close" class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text">
+      <button type="button" data-close aria-label={t.close} class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"></path></svg>
       </button>
     </span>
@@ -32,9 +37,9 @@ const control = 'size-11 flex-none items-center justify-center rounded-full text
 
   <div class="lightbox-body">
     <div class="lightbox-stage">
-      <button type="button" data-prev aria-label="Previous photo" class:list={[control, 'hidden desk:inline-flex']}>←</button>
+      <button type="button" data-prev aria-label={t.previous} class:list={[control, 'hidden desk:inline-flex']}>←</button>
       <PhotoPicture photo={photo} sizes="(min-width: 64rem) 62vw, 100vw" class="lightbox-image" />
-      <button type="button" data-next aria-label="Next photo" class:list={[control, 'hidden desk:inline-flex']}>→</button>
+      <button type="button" data-next aria-label={t.next} class:list={[control, 'hidden desk:inline-flex']}>→</button>
     </div>
 
     <aside class="flex flex-col gap-7 desk:justify-center desk:border-l desk:border-line desk:pl-10">
@@ -44,21 +49,21 @@ const control = 'size-11 flex-none items-center justify-center rounded-full text
       </div>
 
       <dl class="grid grid-cols-4 gap-x-2 gap-y-5 desk:grid-cols-2 desk:gap-x-4">
-        {numbers.map(([value, label]) => (
+        {numbers.map(({ value, label, wide }) => (
           <div class="flex flex-col-reverse gap-1">
-            <dt class="label text-faint">{label === 'Focal length' ? <>Focal<span class="hidden desk:inline"> length</span></> : label}</dt>
+            <dt class="label text-faint">{label}{wide && <span class="hidden desk:inline">{wide}</span>}</dt>
             <dd class="font-display text-d4 leading-none text-text">{value}</dd>
           </div>
         ))}
       </dl>
 
-      {p.recipe && recipeRows(p.recipe).length > 0 && (
+      {recipe.length > 0 && (
         <div class="flex flex-col gap-2">
-          <span class="label text-accent">Recipe</span>
+          <span class="label text-accent">{t.recipe}</span>
           <dl class="flex flex-col">
-            {recipeRows(p.recipe).map(([label, value]) => (
+            {recipe.map(([key, value]) => (
               <div class="flex justify-between gap-3 border-b border-line py-1.5 text-xs">
-                <dt class="text-faint">{label}</dt>
+                <dt class="text-faint">{t.recipeLabels[key]}</dt>
                 <dd class="text-right font-mono text-text">{value}</dd>
               </div>
             ))}
@@ -66,13 +71,13 @@ const control = 'size-11 flex-none items-center justify-center rounded-full text
         </div>
       )}
 
-      <span class="text-[13px] text-accent">{placeName(p.place)}</span>
+      <span class="text-[13px] text-accent">{placeName(p.place, t.country)}</span>
       <span class="text-xs text-faint">© {takenYear(p.taken)} {PHOTOGRAPHER}</span>
     </aside>
   </div>
 
   <div class="flex justify-between desk:hidden">
-    <button type="button" data-prev aria-label="Previous photo" class:list={[control, 'inline-flex']}>←</button>
-    <button type="button" data-next aria-label="Next photo" class:list={[control, 'inline-flex']}>→</button>
+    <button type="button" data-prev aria-label={t.previous} class:list={[control, 'inline-flex']}>←</button>
+    <button type="button" data-next aria-label={t.next} class:list={[control, 'inline-flex']}>→</button>
   </div>
 </article>

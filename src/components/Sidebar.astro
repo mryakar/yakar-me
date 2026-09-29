@@ -1,21 +1,31 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import { site, nav, links } from '../site';
-import { isCurrent } from '../lib/nav';
+import LanguageSwitch from './LanguageSwitch.astro';
+import { site, links } from '../site';
+import { ui } from '../i18n/ui';
+import { navLinks } from '../lib/nav';
+import { localize, type Lang } from '../lib/i18n';
 
-const path = Astro.url.pathname;
+interface Props {
+  lang: Lang;
+  switchTo?: string;
+}
+const { lang, switchTo } = Astro.props;
+const t = ui[lang];
+const home = localize('/', lang);
+const items = navLinks(Astro.url.pathname, lang);
 ---
 <aside class="hidden w-62 flex-none border-r border-line bg-side desk:block">
   <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
     <div class="flex flex-col gap-1.5">
-      <a href="/" class="font-display text-d4">{site.name}</a>
+      <a href={home} class="font-display text-d4">{site.name}</a>
       <span class="label text-faint">{site.domain}</span>
     </div>
-    <nav aria-label="Main" class="flex flex-col gap-0.5">
-      {nav.map((item) => (
+    <nav aria-label={t.mainNav} class="flex flex-col gap-0.5">
+      {items.map((item) => (
         <a
           href={item.href}
-          aria-current={isCurrent(path, item.href) ? 'page' : undefined}
+          aria-current={item.current ? 'page' : undefined}
           class="group flex min-h-10 items-center gap-3 text-base text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text"
         >
           <span class="size-[5px] rounded-full transition-colors duration-200 group-hover:bg-line-strong group-aria-[current=page]:bg-accent" />
@@ -29,7 +39,10 @@ const path = Astro.url.pathname;
           <li><a href={link.href} rel="me" class="text-sm text-muted transition-colors duration-200 hover:text-accent">{link.label}</a></li>
         ))}
       </ul>
-      <ThemeToggle />
+      <div class="flex flex-wrap gap-2.5">
+        <ThemeToggle lang={lang} />
+        {switchTo && <LanguageSwitch lang={lang} href={switchTo} />}
+      </div>
     </div>
   </div>
 </aside>

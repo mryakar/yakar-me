@@ -5,6 +5,7 @@ pubDate: 2026-08-21
 topic: Java
 short: "synchronized or ReentrantLock?"
 mediumUrl: https://medium.com/@mr-yakar/synchronized-or-reentrantlock-neither-prevents-deadlock-ae3a3b269fd9
+lang: en
 ---
 
 ## TL;DR

@@ -1,3 +1,5 @@
+import { localize, type Lang } from './i18n.ts';
+
 export const PHOTOGRAPHER = 'Ahmet Yakar';
 
 export interface Recipe {
@@ -36,7 +38,7 @@ export interface Shot {
   recipe?: Recipe;
 }
 
-export const seriesPath = (series: string) => `/photos/${series}/`;
+export const seriesPath = (series: string, lang: Lang = 'en') => localize(`/photos/${series}/`, lang);
 export const variantPath = (file: string) => `/img/${file}`;
 
 export const signed = (n: number, zero = '0') => (n > 0 ? `+${n}` : n < 0 ? `−${-n}` : zero);
@@ -48,36 +50,48 @@ export function shutter(seconds: number) {
   return `${Number(seconds.toFixed(1))}s`;
 }
 
-export const focalLength = (shot: Pick<Shot, 'kind' | 'focalLength'>) =>
-  shot.kind === 'phone' ? `${shot.focalLength}mm eq.` : `${shot.focalLength}mm`;
+export const focalLength = (shot: Pick<Shot, 'kind' | 'focalLength'>, equivalent = 'eq.') =>
+  shot.kind === 'phone' ? `${shot.focalLength}mm ${equivalent}` : `${shot.focalLength}mm`;
 
 export const takenYear = (taken: string) => Number(taken.slice(0, 4));
 
-export const placeName = ({ district, city, country }: Place) =>
-  [district, city, country].filter((part, i, parts) => part !== parts[i + 1]).join(', ');
+const same = (s: string) => s;
 
-export function recipeRows(r: Recipe) {
-  const rows: [string, string][] = [];
-  if (r.dynamicRange) rows.push(['Dynamic range', r.dynamicRange]);
-  if (r.highlight !== undefined) rows.push(['Highlight', signed(r.highlight)]);
-  if (r.shadow !== undefined) rows.push(['Shadow', signed(r.shadow)]);
-  if (r.color !== undefined) rows.push(['Color', signed(r.color)]);
-  if (r.monochromaticColor) rows.push(['Monochromatic color', `WC${signed(r.monochromaticColor[0], '+0')} MG${signed(r.monochromaticColor[1], '+0')}`]);
+export const placeName = ({ district, city, country }: Place, countryName = same) =>
+  [district, city, countryName(country)].filter((part, i, parts) => part !== parts[i + 1]).join(', ');
+
+export type RecipeRow = [keyof Omit<Recipe, 'filmSimulation' | 'whiteBalanceShift'>, string];
+
+export function recipeRows(r: Recipe, value = same) {
+  const rows: RecipeRow[] = [];
+  if (r.dynamicRange) rows.push(['dynamicRange', value(r.dynamicRange)]);
+  if (r.highlight !== undefined) rows.push(['highlight', signed(r.highlight)]);
+  if (r.shadow !== undefined) rows.push(['shadow', signed(r.shadow)]);
+  if (r.color !== undefined) rows.push(['color', signed(r.color)]);
+  if (r.monochromaticColor) rows.push(['monochromaticColor', `WC${signed(r.monochromaticColor[0], '+0')} MG${signed(r.monochromaticColor[1], '+0')}`]);
   if (r.whiteBalance) {
     const [red, blue] = r.whiteBalanceShift ?? [0, 0];
-    rows.push(['White balance', `${r.whiteBalance} · R${signed(red, '+0')} B${signed(blue, '+0')}`]);
+    rows.push(['whiteBalance', `${value(r.whiteBalance)} · R${signed(red, '+0')} B${signed(blue, '+0')}`]);
   }
-  if (r.noiseReduction !== undefined) rows.push(['Noise reduction', signed(r.noiseReduction)]);
-  if (r.clarity !== undefined) rows.push(['Clarity', signed(r.clarity)]);
-  if (r.grain) rows.push(['Grain', r.grain]);
-  if (r.colorChrome) rows.push(['Color chrome', r.colorChrome]);
-  if (r.colorChromeBlue) rows.push(['Color chrome FX blue', r.colorChromeBlue]);
+  if (r.noiseReduction !== undefined) rows.push(['noiseReduction', signed(r.noiseReduction)]);
+  if (r.clarity !== undefined) rows.push(['clarity', signed(r.clarity)]);
+  if (r.grain) rows.push(['grain', r.grain.split(', ').map(value).join(', ')]);
+  if (r.colorChrome) rows.push(['colorChrome', value(r.colorChrome)]);
+  if (r.colorChromeBlue) rows.push(['colorChromeBlue', value(r.colorChromeBlue)]);
   return rows;
 }
 
 export const copyrightNotice = (year: number) => `© ${year} ${PHOTOGRAPHER}. All rights reserved.`;
 
-export function imageObject(o: { url: string; page: string; caption: string; taken: string; width: number; height: number }) {
+export function imageObject(o: {
+  url: string;
+  page: string;
+  caption: string;
+  taken: string;
+  width: number;
+  height: number;
+  notice?: (year: number) => string;
+}) {
   return {
     '@type': 'ImageObject',
     contentUrl: o.url,
@@ -90,7 +104,7 @@ export function imageObject(o: { url: string; page: string; caption: string; tak
     creditText: PHOTOGRAPHER,
     copyrightHolder: { '@type': 'Person', name: PHOTOGRAPHER },
     copyrightYear: takenYear(o.taken),
-    copyrightNotice: copyrightNotice(takenYear(o.taken)),
+    copyrightNotice: (o.notice ?? copyrightNotice)(takenYear(o.taken)),
   };
 }
 

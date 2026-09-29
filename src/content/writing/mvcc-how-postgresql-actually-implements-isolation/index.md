@@ -5,6 +5,7 @@ pubDate: 2026-08-16
 topic: Databases
 short: "MVCC"
 mediumUrl: https://medium.com/@mr-yakar/mvcc-how-postgresql-actually-implements-isolation-6faddc9291ae
+lang: en
 ---
 
 ## TL;DR

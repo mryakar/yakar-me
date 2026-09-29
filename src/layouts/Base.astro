@@ -3,26 +3,35 @@ import '../styles/global.css';
 import Head from '../components/Head.astro';
 import Sidebar from '../components/Sidebar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
-import { site } from '../site';
+import LangHint from '../components/LangHint.astro';
+import { ui } from '../i18n/ui';
+import { defaultLang, localize, locales, other, splitPath, type Lang } from '../lib/i18n';
 
 interface Props {
+  lang: Lang;
   title: string;
   description?: string;
   article?: { published: Date; section: string };
+  counterpart?: boolean;
+  notFound?: boolean;
 }
-const { title, description = site.description, article } = Astro.props;
+const { lang, title, description = ui[lang].description, article, counterpart = true, notFound = false } = Astro.props;
+const { path } = splitPath(Astro.url.pathname);
+const alternates = counterpart && !notFound ? locales.map((l) => ({ lang: l, href: localize(path, l) })) : [];
+const switchTo = notFound ? localize('/', other(lang)) : counterpart ? localize(path, other(lang)) : undefined;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
-    <Head title={title} description={description} article={article} />
+    <Head lang={lang} title={title} description={description} article={article} alternates={alternates} notFound={notFound} />
   </head>
   <body class="bg-bg text-text">
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{ui[lang].skip}</a>
     <div class="min-h-dvh desk:flex">
-      <Sidebar />
-      <MobileMenu />
+      <Sidebar lang={lang} switchTo={switchTo} />
+      <MobileMenu lang={lang} switchTo={switchTo} />
       <main id="main" class="min-w-0 flex-1">
+        {lang === defaultLang && switchTo && !notFound && <LangHint href={switchTo} target={other(lang)} />}
         <slot />
       </main>
     </div>

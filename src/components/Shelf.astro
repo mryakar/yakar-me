@@ -2,13 +2,17 @@
 import { topics, type Article } from '../lib/writing';
 import { articlePath, formatDate, formatMonth } from '../lib/format';
 import ArrowRight from './ArrowRight.astro';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
 
 interface Props {
   articles: Article[];
+  lang: Lang;
 }
-const { articles } = Astro.props;
+const { articles, lang } = Astro.props;
+const t = ui[lang];
 const byTopic = topics
-  .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) }))
+  .map((topic) => ({ topic, items: articles.filter((a) => a.topic === topic) }))
   .filter((s) => s.items.length > 0);
 
 export const MAX_SLEEVES = 12;
@@ -23,26 +27,26 @@ for (const { topic, items } of byTopic) {
     <div class="flex flex-col" data-shelf>
       <div class="shelf">
         {items.map((a, i) => (
-          <a href={articlePath(a.id)} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
-            <span class="label text-accent">{formatMonth(a.data.pubDate)}</span>
-            <span class="line-clamp-4 font-body text-base leading-[1.15] hyphens-auto text-text desk:text-[1.25rem]">{a.data.short ?? a.data.title}</span>
-            <span class="label text-muted">{a.data.topic}</span>
+          <a href={articlePath(a.id, lang)} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
+            <span class="label text-accent">{formatMonth(a.pubDate, lang)}</span>
+            <span class="line-clamp-4 font-body text-base leading-[1.15] hyphens-auto text-text desk:text-[1.25rem]">{a.short ?? a.title}</span>
+            <span class="label text-muted">{t.writing.topics[a.topic]}</span>
           </a>
         ))}
       </div>
       <div class="h-px bg-accent/40" />
       <div class="grid gap-5 pt-4 desk:grid-cols-[10rem_minmax(0,1fr)] desk:gap-10">
-        <span class="label pt-1 text-faint">{topic} · {items.length}</span>
+        <span class="label pt-1 text-faint">{t.writing.topics[topic]} · {items.length}</span>
         {items.map((a, i) => (
           <article class="flex max-w-180 flex-col gap-2" data-panel={a.id} hidden={i !== 0}>
             <h3 class="font-body text-xl leading-snug text-text">
-              <a href={articlePath(a.id)} class="transition-colors duration-200 hover:text-accent">{a.data.title}</a>
+              <a href={articlePath(a.id, lang)} class="transition-colors duration-200 hover:text-accent">{a.title}</a>
             </h3>
-            <p class="font-body text-base leading-relaxed text-muted">{a.data.description}</p>
+            <p class="font-body text-base leading-relaxed text-muted">{a.description}</p>
             <div class="flex items-center gap-5 pt-1">
-              <span class="label text-faint">{formatDate(a.data.pubDate, 'short')}</span>
-              <a href={articlePath(a.id)} class="group inline-flex items-center gap-2 text-sm text-accent">
-                Read
+              <span class="label text-faint">{formatDate(a.pubDate, 'short', lang)}</span>
+              <a href={articlePath(a.id, lang)} class="group inline-flex items-center gap-2 text-sm text-accent">
+                {t.home.read}
                 <ArrowRight size={13} />
               </a>
             </div>

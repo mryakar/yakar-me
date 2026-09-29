@@ -5,6 +5,7 @@ pubDate: 2023-02-22
 topic: Java
 short: "How to Write equals()"
 mediumUrl: https://medium.com/havelsan/how-to-write-equals-in-java-5e9a908045a1
+lang: en
 ---
 
 By the end of this article, all required information is going to be covered to be able to write the best equals() method in Java programming language. The details of equality are going to be dealt with in terms of mathematical definition and in the manner of Java programming language in order to cover the fundamental information that is needed to use the best practice of ***equals()*** method.
