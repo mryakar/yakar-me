@@ -1,7 +1,8 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { articles, formatDate, readingMinutes, type Article } from '../../lib/writing';
+import { articles, type Article } from '../../lib/writing';
+import { formatDate, isoDate, readingMinutes } from '../../lib/format';
 
 export async function getStaticPaths() {
   return (await articles()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
@@ -27,7 +28,7 @@ for (const h of headings) {
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
       <p class="max-w-180 font-body text-2xl leading-snug text-muted italic">{description}</p>
       <div class="flex flex-wrap items-center gap-x-7 gap-y-2 border-t border-line pt-5 text-sm text-muted">
-        <time datetime={pubDate.toISOString().slice(0, 10)}>{formatDate(pubDate)}</time>
+        <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
         <span>{readingMinutes(entry.body)} min read</span>
         <a href={mediumUrl} class="transition-colors duration-200 hover:text-accent">Also on Medium ↗</a>
       </div>

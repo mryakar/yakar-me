@@ -6,20 +6,21 @@ export const site = {
   description: 'Software engineer, writer and traveller. Java, distributed systems, and the mechanisms underneath.',
 };
 
-type NavItem = { href: string; label: string; tag?: string };
-
-export const nav: NavItem[] = [
+export const nav = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing' },
   { href: '/about/', label: 'About' },
 ];
 
+// short: telefon menüsündeki dar satırda görünen ad.
 export const links = [
-  { href: 'https://github.com/mryakar', label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/ahmetyakar', label: 'LinkedIn' },
-  { href: 'https://medium.com/@mr-yakar', label: 'Medium' },
-  { href: 'mailto:ahmet@yakar.me', label: 'ahmet@yakar.me' },
+  { href: 'https://github.com/mryakar', label: 'GitHub', short: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/ahmetyakar', label: 'LinkedIn', short: 'LinkedIn' },
+  { href: 'https://medium.com/@mr-yakar', label: 'Medium', short: 'Medium' },
+  { href: 'mailto:ahmet@yakar.me', label: 'ahmet@yakar.me', short: 'Email' },
 ];
+
+export const tagline = 'engineer · writer · traveller';
 
 // Ana sayfadaki "Now" bölümü. Her yeni yazıda gözden geçirilir.
 export const now = {

@@ -1,0 +1,37 @@
+---
+// Masaüstü: solda sabit menü.
+import ThemeToggle from './ThemeToggle.astro';
+import { site, nav, links } from '../site';
+import { isCurrent } from '../lib/nav';
+
+const path = Astro.url.pathname;
+---
+
+<aside class="hidden w-62 flex-none border-r border-line bg-side desk:block">
+  <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
+    <div class="flex flex-col gap-1.5">
+      <a href="/" class="font-display text-d4">{site.name}</a>
+      <span class="label text-faint">{site.domain}</span>
+    </div>
+    <nav aria-label="Main" class="flex flex-col gap-0.5">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isCurrent(path, item.href) ? 'page' : undefined}
+          class="group flex min-h-10 items-center gap-3 text-[15px] text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text"
+        >
+          <span class="size-[5px] rounded-full transition-colors duration-200 group-hover:bg-line-strong group-aria-[current=page]:bg-accent" />
+          <span>{item.label}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="mt-auto flex flex-col gap-7">
+      <ul class="flex flex-col gap-3">
+        {links.map((link) => (
+          <li><a href={link.href} rel="me" class="text-[13px] text-muted transition-colors duration-200 hover:text-accent">{link.label}</a></li>
+        ))}
+      </ul>
+      <ThemeToggle />
+    </div>
+  </div>
+</aside>

@@ -1,7 +1,9 @@
 ---
 // Plak rafı: konu başına bir raf, yazılar yeniden eskiye (soldan sağa). Her rafın altında seçili yazı:
 // başta en yenisi, imleç ya da odak bir kılıfa gelince o (shelf.ts yalnızca `hidden` değiştirir).
-import { topics, formatDate, formatMonth, type Article } from '../lib/writing';
+import { topics, type Article } from '../lib/writing';
+import { articlePath, formatDate, formatMonth } from '../lib/format';
+import ArrowRight from './ArrowRight.astro';
 
 interface Props {
   articles: Article[]; // en yeni önce
@@ -10,6 +12,14 @@ const { articles } = Astro.props;
 const byTopic = topics
   .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) }))
   .filter((s) => s.items.length > 0);
+
+// Kılıfların katman sırası global.css'te 12 kılıfa kadar tanımlı (satır içi stil yok). Sessizce bozulmasın.
+export const MAX_SLEEVES = 12;
+for (const { topic, items } of byTopic) {
+  if (items.length > MAX_SLEEVES) {
+    throw new Error(`Shelf "${topic}" has ${items.length} records; stacking is defined for ${MAX_SLEEVES}. Extend .sleeve:nth-child rules in global.css.`);
+  }
+}
 ---
 
 <div class="flex flex-col gap-16">
@@ -17,7 +27,7 @@ const byTopic = topics
     <div class="flex flex-col" data-shelf>
       <div class="shelf">
         {items.map((a, i) => (
-          <a href={`/writing/${a.id}/`} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
+          <a href={articlePath(a.id)} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
             <span class="label text-accent">{formatMonth(a.data.pubDate)}</span>
             <span class="line-clamp-4 font-body text-base leading-[1.15] hyphens-auto text-text desk:text-[1.25rem]">{a.data.short ?? a.data.title}</span>
             <span class="label text-muted">{a.data.topic}</span>
@@ -30,14 +40,14 @@ const byTopic = topics
         {items.map((a, i) => (
           <article class="flex max-w-180 flex-col gap-2" data-panel={a.id} hidden={i !== 0}>
             <h3 class="font-body text-xl leading-snug text-text">
-              <a href={`/writing/${a.id}/`} class="transition-colors duration-200 hover:text-accent">{a.data.title}</a>
+              <a href={articlePath(a.id)} class="transition-colors duration-200 hover:text-accent">{a.data.title}</a>
             </h3>
             <p class="font-body text-base leading-relaxed text-muted">{a.data.description}</p>
             <div class="flex items-center gap-5 pt-1">
               <span class="label text-faint">{formatDate(a.data.pubDate, 'short')}</span>
-              <a href={`/writing/${a.id}/`} class="group inline-flex items-center gap-2 text-sm text-accent">
+              <a href={articlePath(a.id)} class="group inline-flex items-center gap-2 text-sm text-accent">
                 Read
-                <svg class="transition-transform duration-200 group-hover:translate-x-1" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                <ArrowRight size={13} />
               </a>
             </div>
           </article>

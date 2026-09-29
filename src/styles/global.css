@@ -6,59 +6,31 @@
 @custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 
 /*
- * Renk token'ları. Koyu tema varsayılan; açık tema <html data-theme="light"> ile.
- * data-theme'i head'deki /theme.js sayfa çizilmeden yazar. JS kapalıysa sistem teması geçerli olur.
+ * Renk token'ları: her biri light-dark(açık, koyu) — tek tanım. Hangisinin geçerli olduğunu color-scheme seçer:
+ * koyu varsayılan; <html data-theme="light"> (head'deki /theme.js yazar) ya da JS kapalıyken sistem teması açık.
  */
 :root {
   color-scheme: dark;
-  --yk-bg: #08090a;
-  --yk-side: #0b0c0e;
-  --yk-card: #101114;
-  --yk-code: #0e0f11;
-  --yk-sleeve: #15161a;
-  --yk-line: rgb(255 255 255 / 0.07);
-  --yk-line-strong: rgb(255 255 255 / 0.15);
-  --yk-text: #ededef;
-  --yk-text-body: #d9d9dc;
-  --yk-muted: #9a9ea6;
-  --yk-faint: #7e828a;
-  --yk-accent: #c8a465;
-  --yk-shadow: rgb(0 0 0 / 0.6);
+  --yk-bg: light-dark(#f7f6f3, #08090a);
+  --yk-side: light-dark(#f1f0ec, #0b0c0e);
+  --yk-card: light-dark(#ffffff, #101114);
+  --yk-code: light-dark(#efede8, #0e0f11);
+  --yk-sleeve: light-dark(#eceae4, #15161a);
+  --yk-line: light-dark(rgb(20 20 22 / 0.08), rgb(255 255 255 / 0.07));
+  --yk-line-strong: light-dark(rgb(20 20 22 / 0.18), rgb(255 255 255 / 0.15));
+  --yk-text: light-dark(#141416, #ededef);
+  --yk-text-body: light-dark(#26262a, #d9d9dc);
+  --yk-muted: light-dark(#55585f, #9a9ea6);
+  --yk-faint: light-dark(#676a71, #7e828a);
+  --yk-accent: light-dark(#85642a, #c8a465);
+  --yk-shadow: light-dark(rgb(20 20 22 / 0.14), rgb(0 0 0 / 0.6));
 }
-
 :root[data-theme='light'] {
   color-scheme: light;
-  --yk-bg: #f7f6f3;
-  --yk-side: #f1f0ec;
-  --yk-card: #ffffff;
-  --yk-code: #efede8;
-  --yk-sleeve: #eceae4;
-  --yk-line: rgb(20 20 22 / 0.08);
-  --yk-line-strong: rgb(20 20 22 / 0.18);
-  --yk-text: #141416;
-  --yk-text-body: #26262a;
-  --yk-muted: #55585f;
-  --yk-faint: #676a71;
-  --yk-accent: #85642a;
-  --yk-shadow: rgb(20 20 22 / 0.14);
 }
-
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
     color-scheme: light;
-    --yk-bg: #f7f6f3;
-    --yk-side: #f1f0ec;
-    --yk-card: #ffffff;
-    --yk-code: #efede8;
-    --yk-sleeve: #eceae4;
-    --yk-line: rgb(20 20 22 / 0.08);
-    --yk-line-strong: rgb(20 20 22 / 0.18);
-    --yk-text: #141416;
-    --yk-text-body: #26262a;
-    --yk-muted: #55585f;
-    --yk-faint: #676a71;
-    --yk-accent: #85642a;
-    --yk-shadow: rgb(20 20 22 / 0.14);
   }
 }
 
@@ -248,7 +220,8 @@
   .sleeve:first-child {
     margin-left: 0;
   }
-  /* En yeni (soldaki) en üstte: her kılıf sağındakinin üstüne biner. Katman sırası CSS'te (satır içi stil yok). */
+  /* En yeni (soldaki) en üstte: her kılıf sağındakinin üstüne biner. Katman sırası CSS'te (satır içi stil yok).
+     12 kılıfa kadar; fazlasında Shelf.astro build'i kırar (MAX_SLEEVES). */
   .sleeve:nth-child(1) { z-index: 16; }
   .sleeve:nth-child(2) { z-index: 15; }
   .sleeve:nth-child(3) { z-index: 14; }

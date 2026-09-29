@@ -1,14 +1,14 @@
 import type { APIRoute } from 'astro';
 import { site } from '../site';
 import { articles } from '../lib/writing';
-import { esc } from '../lib/xml';
+import { articlePath, escapeXml as esc } from '../lib/format';
 
 // RSS 2.0, bağımlılıksız. Yazının tamamı sitede: akışta başlık, özet ve bağlantı.
 export const GET: APIRoute = async ({ site: origin }) => {
   const base = origin!.toString().replace(/\/$/, '');
   const items = (await articles())
     .map((a) => {
-      const url = `${base}/writing/${a.id}/`;
+      const url = base + articlePath(a.id);
       return `    <item>
       <title>${esc(a.data.title)}</title>
       <link>${url}</link>
