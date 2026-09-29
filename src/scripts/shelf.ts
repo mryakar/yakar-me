@@ -1,7 +1,7 @@
-// Plak rafı: imleç ya da odak bir kılıfa gelince paneldeki yazı değişir. Yalnızca hidden/aria-current.
-for (const root of document.querySelectorAll<HTMLElement>('[data-shelves]')) {
-  const sleeves = root.querySelectorAll<HTMLElement>('[data-article]');
-  const panels = root.querySelectorAll<HTMLElement>('[data-panel]');
+// Plak rafı: imleç ya da odak bir kılıfa gelince o rafın altındaki yazı değişir. Yalnızca hidden/aria-current.
+for (const shelf of document.querySelectorAll<HTMLElement>('[data-shelf]')) {
+  const sleeves = shelf.querySelectorAll<HTMLElement>('[data-article]');
+  const panels = shelf.querySelectorAll<HTMLElement>('[data-panel]');
   const show = (id: string) => {
     for (const p of panels) p.hidden = p.dataset.panel !== id;
     for (const s of sleeves) s.toggleAttribute('aria-current', s.dataset.article === id);

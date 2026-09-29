@@ -1,53 +1,50 @@
 ---
-// Plak rafı: konu başına bir raf, yazılar yeniden eskiye (soldan sağa). Masaüstünde üzerine gelinen kılıf yükselir ve
-// yandaki panel o yazıyı gösterir (shelf.ts yalnızca `hidden` değiştirir). Script yoksa panel en yeniyi gösterir.
+// Plak rafı: konu başına bir raf, yazılar yeniden eskiye (soldan sağa). Her rafın altında seçili yazı:
+// başta en yenisi, imleç ya da odak bir kılıfa gelince o (shelf.ts yalnızca `hidden` değiştirir).
 import { topics, formatDate, formatMonth, type Article } from '../lib/writing';
 
 interface Props {
   articles: Article[]; // en yeni önce
 }
 const { articles } = Astro.props;
-const latest = articles[0];
 const byTopic = topics
-  .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) })) // en yeni solda
+  .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) }))
   .filter((s) => s.items.length > 0);
 ---
 
-<div class="grid gap-16 desk:grid-cols-[minmax(0,1fr)_23.75rem] desk:items-start desk:gap-18" data-shelves>
-  <div class="flex flex-col gap-12">
-    {byTopic.map(({ topic, items }) => (
-      <div class="flex flex-col">
-        <div class="shelf">
-          {items.map((a) => (
-            <a href={`/writing/${a.id}/`} class="sleeve" data-article={a.id} aria-current={a.id === latest.id ? 'true' : undefined}>
-              <span class="label text-accent">{formatMonth(a.data.pubDate)}</span>
-              <span class="line-clamp-4 font-body text-[1.0625rem] leading-[1.15] text-text desk:text-[1.375rem]">{a.data.short ?? a.data.title}</span>
-              <span class="label text-muted">{a.data.topic}</span>
-            </a>
-          ))}
-        </div>
-        <div class="h-px bg-accent/40" />
-        <span class="label pt-3.5 text-faint">{topic} · {items.length}</span>
-      </div>
-    ))}
-  </div>
-
-  <div class="sticky top-10 hidden pt-9 desk:block">
-    {articles.map((a) => (
-      <article class="flex flex-col gap-5" data-panel={a.id} hidden={a.id !== latest.id}>
-        <span class="label text-accent">{a.data.topic}</span>
-        <h3 class="font-display text-d4">{a.data.title}</h3>
-        <p class="font-body text-lg leading-relaxed text-muted">{a.data.description}</p>
-        <div class="flex items-center justify-between border-t border-line pt-4.5">
-          <span class="label text-faint">{formatDate(a.data.pubDate, 'short')}</span>
-          <a href={`/writing/${a.id}/`} class="group inline-flex items-center gap-2 text-[15px] text-accent">
-            Read the article
-            <svg class="transition-transform duration-200 group-hover:translate-x-1" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+<div class="flex flex-col gap-16">
+  {byTopic.map(({ topic, items }) => (
+    <div class="flex flex-col" data-shelf>
+      <div class="shelf">
+        {items.map((a, i) => (
+          <a href={`/writing/${a.id}/`} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
+            <span class="label text-accent">{formatMonth(a.data.pubDate)}</span>
+            <span class="line-clamp-4 font-body text-base leading-[1.15] hyphens-auto text-text desk:text-[1.25rem]">{a.data.short ?? a.data.title}</span>
+            <span class="label text-muted">{a.data.topic}</span>
           </a>
-        </div>
-      </article>
-    ))}
-  </div>
+        ))}
+      </div>
+      <div class="h-px bg-accent/40" />
+      <div class="grid gap-5 pt-4 desk:grid-cols-[10rem_minmax(0,1fr)] desk:gap-10">
+        <span class="label pt-1 text-faint">{topic} · {items.length}</span>
+        {items.map((a, i) => (
+          <article class="flex max-w-180 flex-col gap-2" data-panel={a.id} hidden={i !== 0}>
+            <h3 class="font-body text-xl leading-snug text-text">
+              <a href={`/writing/${a.id}/`} class="transition-colors duration-200 hover:text-accent">{a.data.title}</a>
+            </h3>
+            <p class="font-body text-base leading-relaxed text-muted">{a.data.description}</p>
+            <div class="flex items-center gap-5 pt-1">
+              <span class="label text-faint">{formatDate(a.data.pubDate, 'short')}</span>
+              <a href={`/writing/${a.id}/`} class="group inline-flex items-center gap-2 text-sm text-accent">
+                Read
+                <svg class="transition-transform duration-200 group-hover:translate-x-1" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  ))}
 </div>
 
 <script>

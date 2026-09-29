@@ -231,7 +231,7 @@
     flex: none;
     width: 9.5rem;
     height: 9.5rem;
-    margin-left: -2.1rem;
+    margin-left: -1.75rem;
     padding: 0.875rem;
     display: flex;
     flex-direction: column;
@@ -263,7 +263,7 @@
   .sleeve:nth-child(12) { z-index: 5; }
   /* Soldaki kılıf bunun sol kenarını örter: metin görünen sağ şeritte */
   .sleeve:not(:first-child) {
-    padding-left: calc(2.1rem + 0.875rem);
+    padding-left: calc(1.75rem + 0.875rem);
   }
   .shelf:hover .sleeve {
     opacity: 0.5;
@@ -283,11 +283,11 @@
     .sleeve {
       width: 13rem;
       height: 13rem;
-      margin-left: -3.5rem;
+      margin-left: -3rem;
       padding: 1.125rem;
     }
     .sleeve:not(:first-child) {
-      padding-left: calc(3.5rem + 1.125rem);
+      padding-left: calc(3rem + 1.125rem);
     }
   }
   @media (prefers-reduced-motion: reduce) {
