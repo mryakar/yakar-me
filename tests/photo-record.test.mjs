@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { PhotoError, cameraFrame, hasRecipe, location, photoId, readRecipe, readShot, takenAt } from '../scripts/lib/photo-record.mjs';
+import { PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot, takenAt } from '../scripts/lib/photo-record.mjs';
 
 const fuji = {
   Make: 'FUJIFILM', Model: 'X-E5', LensModel: 'XF23mmF2.8 R WR', FNumber: 5.6, ExposureTime: 0.002941176471, ISO: 250,
@@ -75,6 +75,13 @@ test('location: beş basamak; yoksa undefined', () => {
   assert.deepEqual(location(fuji), { lat: 22.30728, lon: 114.16831 });
   assert.equal(location(iphone), undefined);
   assert.throws(() => location({ GPSLatitude: 91, GPSLongitude: 0 }), PhotoError);
+});
+
+test('parsePlace: üç parça, kısa ASCII', () => {
+  assert.deepEqual(parsePlace(' Mong Kok , Hong Kong,Hong Kong '), { district: 'Mong Kok', city: 'Hong Kong', country: 'Hong Kong' });
+  assert.throws(() => parsePlace('Hong Kong'), PhotoError);
+  assert.throws(() => parsePlace('Mong Kok, , Hong Kong'), PhotoError);
+  assert.throws(() => parsePlace('Mong Kok, 香港, Hong Kong'), PhotoError);
 });
 
 test('takenAt: bozuk tarih reddedilir', () => {

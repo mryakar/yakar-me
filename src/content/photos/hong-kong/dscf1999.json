@@ -1,0 +1,82 @@
+{
+  "alt": "Through the Peak Tram window, a man in an apron waits on the steps of a quiet alley while the carriage films the view.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T14:52:12+08:00",
+  "aperture": 3.2,
+  "shutter": 0.009090909091,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Mid-Levels",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1999-640-378440ef.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 29380,
+        "sha256": "378440ef796cc4dfc07a7ae954fb7dcf7e6d9a983b737c8fe41a7bbe36be01c4"
+      },
+      {
+        "file": "dscf1999-1280-57e953fb.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 80263,
+        "sha256": "57e953fbbf8ad3287f3b1f791911639ac2a4e5fd8bf581219365ea744816b3c3"
+      },
+      {
+        "file": "dscf1999-1706-253022ca.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 121304,
+        "sha256": "253022ca2f7f5f7dc2db3ea0242a78a25db51d6d1c7194592bb67f35084837d7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1999-640-33e98fe1.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 36504,
+        "sha256": "33e98fe13c0a18fbade5a51bd6e08f9681a5cc013c7fd9ee11be1a22a36098bb"
+      },
+      {
+        "file": "dscf1999-1280-a22cc849.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 87190,
+        "sha256": "a22cc849339d2411566d3c2c02638f3e5ef5b25c0071788863c312bf24118751"
+      },
+      {
+        "file": "dscf1999-1706-d3655576.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 127776,
+        "sha256": "d3655576f70b08b3ecbccb0cc806ddd66c3089dff8ab568b3e5adcb22ecf69d6"
+      }
+    ]
+  }
+}

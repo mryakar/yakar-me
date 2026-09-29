@@ -1,0 +1,19 @@
+---
+import ArrowRight from './ArrowRight.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  title: string;
+  action: string;
+}
+const { href, label, title, action } = Astro.props;
+---
+<a href={href} class="group flex flex-col gap-3.5 border-t border-line-strong pt-5.5">
+  <span class="label text-faint">{label}</span>
+  <span class="font-body text-2xl leading-tight text-text transition-colors duration-200 group-hover:text-accent">{title}</span>
+  <span class="inline-flex items-center gap-2 text-[15px] text-accent">
+    {action}
+    <ArrowRight />
+  </span>
+</a>

@@ -1,0 +1,82 @@
+{
+  "alt": "From the shade of a lobby, a red truck fills the doorway like a painting left out in the light.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T11:38:12+08:00",
+  "aperture": 4,
+  "shutter": 0.00625,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Causeway Bay",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1933-640-1e13c548.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 23141,
+        "sha256": "1e13c5486a81ad380f7c367ef575636a415bbb8d4e3a879169d84288b5a459bb"
+      },
+      {
+        "file": "dscf1933-1280-88cc9af6.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 65499,
+        "sha256": "88cc9af6a7d9e098d257f0de0e25b7580981baf51adcd62e81da80f76fff861f"
+      },
+      {
+        "file": "dscf1933-1706-c5fde280.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 102508,
+        "sha256": "c5fde28078ebfabdbd2e5f749ac13bfdc791d9a5b9be53654a0ddfd104345027"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1933-640-c69fa4b8.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 31418,
+        "sha256": "c69fa4b8b3fae98d2bf913840ee76abf1506e5fd215fc9f484b9f2bddf375393"
+      },
+      {
+        "file": "dscf1933-1280-51c3c718.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 84496,
+        "sha256": "51c3c718f657ef4bb6c0edf74d27a7ed042d63e5c6648c3c54ca9d504826c261"
+      },
+      {
+        "file": "dscf1933-1706-b17ee48c.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 127990,
+        "sha256": "b17ee48c3ffff520fc3250789d7906adc6414a31a63197effb84e18ce08ab82c"
+      }
+    ]
+  }
+}

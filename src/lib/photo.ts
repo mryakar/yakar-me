@@ -16,6 +16,12 @@ export interface Recipe {
   colorChromeBlue?: string;
 }
 
+export interface Place {
+  district: string;
+  city: string;
+  country: string;
+}
+
 export interface Shot {
   kind: 'fujifilm' | 'phone';
   make: string;
@@ -26,7 +32,7 @@ export interface Shot {
   shutter: number;
   iso: number;
   focalLength: number;
-  location: { lat: number; lon: number };
+  place: Place;
   recipe?: Recipe;
 }
 
@@ -47,17 +53,8 @@ export const focalLength = (shot: Pick<Shot, 'kind' | 'focalLength'>) =>
 
 export const takenYear = (taken: string) => Number(taken.slice(0, 4));
 
-export function coordinates({ lat, lon }: { lat: number; lon: number }) {
-  const dms = (v: number, pos: string, neg: string) => {
-    const total = Math.round(Math.abs(v) * 3600);
-    const d = Math.floor(total / 3600);
-    const m = Math.floor((total % 3600) / 60);
-    const s = total % 60;
-    const pad = (n: number) => String(n).padStart(2, '0');
-    return `${d}°${pad(m)}′${pad(s)}″${v < 0 ? neg : pos}`;
-  };
-  return `${dms(lat, 'N', 'S')} ${dms(lon, 'E', 'W')}`;
-}
+export const placeName = ({ district, city, country }: Place) =>
+  [district, city, country].filter((part, i, parts) => part !== parts[i + 1]).join(', ');
 
 export function recipeRows(r: Recipe) {
   const rows: [string, string][] = [];

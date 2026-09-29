@@ -1,0 +1,82 @@
+{
+  "alt": "A weathered granite boulder rests on its ledge as if it had only paused, pale sky all around.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-22T17:17:09+07:00",
+  "aperture": 2.8,
+  "shutter": 0.00125,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Lamai",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2494-640-20c07398.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 54544,
+        "sha256": "20c0739865411cafa2c4cf106a02310f08a10d1c1a00cf85470688c4f663a9e8"
+      },
+      {
+        "file": "dscf2494-1280-424d5ebc.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 240018,
+        "sha256": "424d5ebce9a37eb7e4159f7b417d8d09a150e91d15b4ae9412ce2b13bd3ec8e8"
+      },
+      {
+        "file": "dscf2494-1706-4736ef7e.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 443002,
+        "sha256": "4736ef7e5e1f896c72dd6e78bdb443d60de9d4f93b1eeca114af3c68c343c603"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2494-640-c860c8e4.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 90152,
+        "sha256": "c860c8e4728bfe098658b6589a1708448405144914e23146befcd9af46e775f5"
+      },
+      {
+        "file": "dscf2494-1280-6872f411.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 413618,
+        "sha256": "6872f41106c594c3d764aded1a600e494f99bd446a4a185cc26c65394d394855"
+      },
+      {
+        "file": "dscf2494-1706-1c8df95f.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 776084,
+        "sha256": "1c8df95f70c5f1257a0003f3a65debddf90f94af0e817e1894596b5f0d396db0"
+      }
+    ]
+  }
+}

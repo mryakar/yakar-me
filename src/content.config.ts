@@ -20,6 +20,7 @@ const series = defineCollection({
     title: z.string(),
     description: z.string(),
     order: z.number().int(),
+    cover: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/).optional(),
   }),
 });
 
@@ -48,7 +49,7 @@ const photos = defineCollection({
       shutter: z.number().positive().max(3600),
       iso: z.number().int().min(25).max(409600),
       focalLength: z.number().int().positive().max(2000),
-      location: z.object({ lat: z.number().min(-90).max(90), lon: z.number().min(-180).max(180) }),
+      place: z.object({ district: text, city: text, country: text }).strict(),
       recipe: z
         .object({
           filmSimulation: text,

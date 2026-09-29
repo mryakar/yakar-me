@@ -9,12 +9,12 @@ import { decode, encode, targetWidths, FORMATS } from './lib/variants.mjs';
 import { credentials, put } from './lib/r2.mjs';
 import { CONTENT_DIR, PUBLIC_DIR, records, sha256 } from './lib/photo-store.mjs';
 import {
-  EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, photoId, readRecipe, readShot,
+  EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
 } from './lib/photo-record.mjs';
-import { aperture, coordinates, focalLength, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
+import { aperture, focalLength, placeName, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
 
 const TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
-const USAGE = `Usage: npm run photo:add -- --series <slug> <photo> [--camera-dir <dir>]... [--alt "<text>"] [--no-upload]`;
+const USAGE = `Usage: npm run photo:add -- --series <slug> <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
 
 const { values: opts, positionals } = parseArgs({
   allowPositionals: true,
@@ -22,6 +22,7 @@ const { values: opts, positionals } = parseArgs({
     series: { type: 'string' },
     'camera-dir': { type: 'string', multiple: true, default: [] },
     alt: { type: 'string' },
+    place: { type: 'string' },
     'no-upload': { type: 'boolean', default: false },
   },
 });
@@ -92,14 +93,13 @@ try {
   throw e;
 }
 
-let where = 'from the file';
-shot.location = location(tags);
-if (!shot.location) {
-  const answer = await ask('No coordinates in the file. Latitude, longitude (e.g. 22.30728, 114.16831): ');
-  const [lat, lon] = answer.split(/[,\s]+/).map(Number);
-  if (!(Math.abs(lat) <= 90 && Math.abs(lon) <= 180)) fail(`not a coordinate: ${answer}`);
-  shot.location = { lat: Number(lat.toFixed(5)), lon: Number(lon.toFixed(5)) };
-  where = 'entered';
+const gps = location(tags);
+console.log(`Coordinates in the file (not published): ${gps ? `${gps.lat}, ${gps.lon}` : 'none'}`);
+try {
+  shot.place = parsePlace(opts.place ?? (await ask('Place — district, city, country (e.g. Mong Kok, Hong Kong, Hong Kong): ')));
+} catch (e) {
+  if (e instanceof PhotoError) fail(e.message);
+  throw e;
 }
 
 let recipeSource;
@@ -174,7 +174,7 @@ if (shot.recipe) {
   for (const [label, value] of recipeRows(shot.recipe)) line('', `${label}: ${value}`);
 }
 line('Taken', shot.taken);
-line('Location', `${coordinates(shot.location)}  (${shot.location.lat}, ${shot.location.lon}) ${where} — published on the page`);
+line('Place', `${placeName(shot.place)} — published on the page; coordinates are not`);
 line('Alt', alt);
 line('Rights', `© ${year} Ahmet Yakar — the only metadata in the served files (Artist, Copyright)`);
 line('Dropped', `${sourceTags.length} metadata entries of the source (GPS, serial numbers, maker notes, XMP, thumbnails …)`);
@@ -236,8 +236,8 @@ if (!opts['no-upload']) {
 
 mkdirSync(PUBLIC_DIR, { recursive: true });
 for (const f of files) writeFileSync(join(PUBLIC_DIR, f.file), f.buffer);
-const { kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, location: loc, recipe } = shot;
-const record = { alt, kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, location: loc, recipe, variants };
+const { kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe } = shot;
+const record = { alt, kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe, variants };
 writeFileSync(join(CONTENT_DIR, series, `${id}.json`), `${JSON.stringify(record, null, 2)}\n`);
 console.log(`✓ ${CONTENT_DIR}/${series}/${id}.json${opts['no-upload'] ? '  (not uploaded: CI will fail until the variants are in R2)' : ''}`);
 rl.close();

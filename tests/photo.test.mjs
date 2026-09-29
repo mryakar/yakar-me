@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aperture, coordinates, focalLength, jsonLd, recipeRows, shutter, signed, takenYear } from '../src/lib/photo.ts';
+import { aperture, focalLength, placeName, jsonLd, recipeRows, shutter, signed, takenYear } from '../src/lib/photo.ts';
 
 test('shutter: kesir ve saniye', () => {
   assert.equal(shutter(0.002941176471), '1/340');
@@ -23,10 +23,9 @@ test('signed: eksi işareti U+2212, sıfır', () => {
   assert.equal(signed(0, '+0'), '+0');
 });
 
-test('coordinates: derece-dakika-saniye, yarım küreler', () => {
-  assert.equal(coordinates({ lat: 41.02556, lon: 28.97417 }), '41°01′32″N 28°58′27″E');
-  assert.equal(coordinates({ lat: -8.48774, lon: 115.25925 }), '8°29′16″S 115°15′33″E');
-  assert.equal(coordinates({ lat: 40.7128, lon: -74.006 }), '40°42′46″N 74°00′22″W');
+test('placeName: semt, şehir, ülke; ardışık tekrar düşer', () => {
+  assert.equal(placeName({ district: 'Bophut', city: 'Ko Samui', country: 'Thailand' }), 'Bophut, Ko Samui, Thailand');
+  assert.equal(placeName({ district: 'Mong Kok', city: 'Hong Kong', country: 'Hong Kong' }), 'Mong Kok, Hong Kong');
 });
 
 test('takenYear: çekim yerindeki yıl', () => {

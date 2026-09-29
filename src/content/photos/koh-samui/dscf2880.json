@@ -1,0 +1,82 @@
+{
+  "alt": "Blue hour: a palm bends in the wind above a tiled roof, a frond drifting soft and out of focus in front.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-25T18:52:36+07:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 2000,
+  "focalLength": 23,
+  "place": {
+    "district": "Bophut",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2880-640-76253be4.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 22953,
+        "sha256": "76253be4a0892f7d5857923e9f7b3039bd43704e25e02c0d303e0196b902cbc1"
+      },
+      {
+        "file": "dscf2880-1280-9348924b.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 70039,
+        "sha256": "9348924b9995e7d7b3be1ad011765529376e34890cb4203bf24e722da6162216"
+      },
+      {
+        "file": "dscf2880-1706-f3b024cf.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 133178,
+        "sha256": "f3b024cf3809744eb42bb8b9c0e32a83c8754bacb33d79903d1c36c5e70dcc3d"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2880-640-cd40e27f.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 29404,
+        "sha256": "cd40e27f7decdeead7c525929558beb1b8dd99265ccca109a194b413c79d1911"
+      },
+      {
+        "file": "dscf2880-1280-b3ce38a9.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 76444,
+        "sha256": "b3ce38a9bbed17bfe51c33e2636d46409180a2c42b2a0a638843087f9f887eee"
+      },
+      {
+        "file": "dscf2880-1706-15d84300.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 131224,
+        "sha256": "15d84300d8a643b17a32096d9df0e24a9d9683b1aa87ae627816e491aa460e85"
+      }
+    ]
+  }
+}

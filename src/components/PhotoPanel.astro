@@ -1,6 +1,6 @@
 ---
 import PhotoPicture from './PhotoPicture.astro';
-import { aperture, coordinates, focalLength, recipeRows, shutter, takenYear, PHOTOGRAPHER } from '../lib/photo';
+import { aperture, focalLength, placeName, recipeRows, shutter, takenYear, PHOTOGRAPHER } from '../lib/photo';
 import { photoSlug, type Photo } from '../lib/photos';
 
 interface Props {
@@ -66,7 +66,7 @@ const control = 'size-11 flex-none items-center justify-center rounded-full text
         </div>
       )}
 
-      <span class="font-mono text-[13px] text-accent">{coordinates(p.location)}</span>
+      <span class="text-[13px] text-accent">{placeName(p.place)}</span>
       <span class="text-xs text-faint">© {takenYear(p.taken)} {PHOTOGRAPHER}</span>
     </aside>
   </div>

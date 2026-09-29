@@ -20,7 +20,7 @@ for (const h of headings) {
 }
 ---
 <Base title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: topic }}>
-  <article class="px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
+  <article class="mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="flex max-w-240 flex-col gap-7">
       <span class="label text-accent">{topic}</span>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
@@ -32,7 +32,7 @@ for (const h of headings) {
       </div>
     </header>
 
-    <div class="mt-16 desk:grid desk:grid-cols-[minmax(0,42.5rem)_15rem] desk:items-start desk:gap-22">
+    <div class="mt-16 desk:grid desk:grid-cols-[minmax(0,46rem)_15rem] desk:items-start desk:gap-22 wide:grid-cols-[minmax(0,52rem)_17rem]">
       <div class="prose">
         <Content />
       </div>
@@ -42,7 +42,7 @@ for (const h of headings) {
           <ul class="flex flex-col">
             {toc.map((h) => (
               <li>
-                <a href={`#${h.slug}`} class="group flex items-baseline gap-3 py-1.5 text-[13px] leading-snug text-muted transition-colors duration-200 hover:text-text">
+                <a href={`#${h.slug}`} class="group flex items-baseline gap-3 py-1.5 text-sm leading-snug text-muted transition-colors duration-200 hover:text-text">
                   <span class="h-px w-3 flex-none -translate-y-1 bg-line-strong transition-all duration-200 group-hover:w-5 group-hover:bg-accent" />
                   <span>{h.text}</span>
                 </a>
@@ -50,7 +50,7 @@ for (const h of headings) {
                   <ul class="mb-1 ml-6 flex flex-col border-l border-line pl-3">
                     {h.children.map((c) => (
                       <li>
-                        <a href={`#${c.slug}`} class="block py-1 text-xs leading-snug text-faint transition-colors duration-200 hover:text-text">{c.text}</a>
+                        <a href={`#${c.slug}`} class="block py-1 text-[13px] leading-snug text-faint transition-colors duration-200 hover:text-text">{c.text}</a>
                       </li>
                     ))}
                   </ul>

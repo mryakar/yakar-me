@@ -1,0 +1,82 @@
+{
+  "alt": "Mong Kok from above at night: crowds gather at the lights while a red taxi turns across the yellow lines.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-19T20:35:41+08:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 500,
+  "focalLength": 23,
+  "place": {
+    "district": "Mong Kok",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2233-640-cfbb4074.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 59355,
+        "sha256": "cfbb4074502d8a2fd5a72dde6a4d8b3ab1a9111fbd733a55cbe2bfa4349551ab"
+      },
+      {
+        "file": "dscf2233-1280-3647e7c2.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 188710,
+        "sha256": "3647e7c2d388e21d2987647024f51e8830abda4063ff0b0c6826876cd0a1bc33"
+      },
+      {
+        "file": "dscf2233-1706-5ac79012.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 301658,
+        "sha256": "5ac790128534d7510235d610650d4b93fff5569538905824ec23fecd883c1ec8"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2233-640-20acb879.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 96774,
+        "sha256": "20acb879312985eec2ae537a5698c22cb433573d15e214ad8f857971d0df21fb"
+      },
+      {
+        "file": "dscf2233-1280-5451bd7f.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 283508,
+        "sha256": "5451bd7f96cbea15b9f702b422943719f0638b5be36eb6a528627e0a978c99fd"
+      },
+      {
+        "file": "dscf2233-1706-0c5c9c7d.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 429800,
+        "sha256": "0c5c9c7d0d7f3e3fd34918a0e8a651f7ea488cfc50db09e3e4052f10500b31e9"
+      }
+    ]
+  }
+}

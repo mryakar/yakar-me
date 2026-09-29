@@ -1,0 +1,96 @@
+{
+  "alt": "A single palm caught gold in the lamplight, alone against a night sky scattered with faint stars.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-22T19:53:53+07:00",
+  "aperture": 2.8,
+  "shutter": 3,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Chaweng Noi",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Provia",
+    "dynamicRange": "DR100",
+    "highlight": 0,
+    "shadow": 0,
+    "color": 0,
+    "whiteBalance": "Auto (white priority)",
+    "whiteBalanceShift": [
+      0,
+      0
+    ],
+    "noiseReduction": 0,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2596-640-cf839451.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 10180,
+        "sha256": "cf839451668c68c08d57fe20e50fcb2a28609b4ac568cdc3a01568eb30cfe036"
+      },
+      {
+        "file": "dscf2596-1280-801e1683.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 33237,
+        "sha256": "801e16831d16da63824d629244f8c44f43cd46f8b6d5ebb13938dd80bf767489"
+      },
+      {
+        "file": "dscf2596-1920-7462b1e5.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 64355,
+        "sha256": "7462b1e5ce3fe4d04c5685994066e7e7db116dd41d47f7fd4d2106680cdfcf4c"
+      },
+      {
+        "file": "dscf2596-2560-3b605779.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 103981,
+        "sha256": "3b60577990abf3a58d1aa9e78d96f9ef56903ea0ea96d3f2c7ba964e7f82bc1c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2596-640-a5e7cf18.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 16104,
+        "sha256": "a5e7cf18de521596153c528f5b120f614e837da9fb17103454c2cea675a3edbf"
+      },
+      {
+        "file": "dscf2596-1280-134b3eeb.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 56934,
+        "sha256": "134b3eebc42f8fd4f81a1bac60c0669993b2bddb258725f77b1bb2a6c0c263cb"
+      },
+      {
+        "file": "dscf2596-1920-1697d8c9.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 111922,
+        "sha256": "1697d8c91760e8260904e0a2f1fa6d96684a64b0d43bf166b65a7c4f9b96e274"
+      },
+      {
+        "file": "dscf2596-2560-2a538b82.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 177760,
+        "sha256": "2a538b82c356486c366d3e3ec1f92bcd51c2c39208221eea14866d1c3b5dbdd3"
+      }
+    ]
+  }
+}

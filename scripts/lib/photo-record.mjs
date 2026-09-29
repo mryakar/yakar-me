@@ -97,6 +97,13 @@ export function location(exif) {
   };
 }
 
+export function parsePlace(answer) {
+  const parts = String(answer ?? '').split(',').map((s) => s.trim());
+  if (parts.length !== 3) throw new PhotoError(`place: expected "District, City, Country", got ${JSON.stringify(answer)}`);
+  const [district, city, country] = parts.map((p, i) => text(p, ['district', 'city', 'country'][i]));
+  return { district, city, country };
+}
+
 export function readShot(exif) {
   const kind = kindOf(exif);
   const shot = {

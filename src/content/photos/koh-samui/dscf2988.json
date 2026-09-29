@@ -1,0 +1,96 @@
+{
+  "alt": "From the green hillside, the coast dissolves into a calm silver sea beneath a slow, heavy sky.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-28T17:29:39+07:00",
+  "aperture": 5.6,
+  "shutter": 0.002380952381,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Chaweng Noi",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2988-640-82078f5b.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 15984,
+        "sha256": "82078f5b8667daa4c08c3ade6f81f78268a7b32b8134ec7bb1a16b222a3c3ed7"
+      },
+      {
+        "file": "dscf2988-1280-964c428f.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 47349,
+        "sha256": "964c428f1e32edfc7671f1f7bd4e99a5d40b2750f54801c552508a2e2ea03d6f"
+      },
+      {
+        "file": "dscf2988-1920-35217438.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 89734,
+        "sha256": "3521743828fb53cf0bf88bd6f3ec08adc0a9062be8713bebea72a4fce9d22f37"
+      },
+      {
+        "file": "dscf2988-2560-f72dbb5e.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 145224,
+        "sha256": "f72dbb5e0973e62de404a9f0f8570f54d562d422c8bb0e09085bd6b58e742177"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2988-640-784a1006.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 17542,
+        "sha256": "784a1006173a40bbfee4357e76460689a052ce0a1fea5754bd4a2fd56f698168"
+      },
+      {
+        "file": "dscf2988-1280-fd24c9d4.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 50404,
+        "sha256": "fd24c9d47d6f27761c31cdc9dcd0a5e720258b75a4e0bd1ce8c97c37d2aabd4a"
+      },
+      {
+        "file": "dscf2988-1920-c2475f91.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 93310,
+        "sha256": "c2475f91581c1831f632f1700a456b1e6029cdfef491466489d25f6a2986a63a"
+      },
+      {
+        "file": "dscf2988-2560-5834ff63.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 148652,
+        "sha256": "5834ff63223b72eda50533436ea602a75a86183f509092b56b14d5631dcd8709"
+      }
+    ]
+  }
+}
