@@ -32,7 +32,10 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   // Tarayıcının kendiliğinden yüklediği kaynaklar
   const loads = [
     ...html.matchAll(/<(?:script|img|source|iframe|audio|video|embed)\b[^>]*\ssrc="([^"]*)"/gi),
-    ...html.matchAll(/<link\b[^>]*\shref="([^"]*)"/gi),
+    // <link> yalnızca tarayıcının indirdiği türlerde (canonical, alternate birer adres, kaynak değil)
+    ...[...html.matchAll(/<link\b([^>]*)>/gi)]
+      .filter(([, attrs]) => /\srel="(stylesheet|preload|modulepreload|icon|apple-touch-icon|manifest)"/i.test(attrs))
+      .map(([, attrs]) => /\shref="([^"]*)"/i.exec(attrs) ?? [, '']),
     ...html.matchAll(/\ssrcset="([^"]*)"/gi),
   ].map((m) => m[1]);
   for (const url of loads) {

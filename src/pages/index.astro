@@ -1,12 +1,59 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../site';
+import Shelf from '../components/Shelf.astro';
+import { site, now } from '../site';
+import { articles, formatDate, formatMonth } from '../lib/writing';
+
+const all = await articles();
+const latest = all[0];
+const updated = formatMonth(now.updated);
 ---
 
 <Base title={site.domain}>
-  <section class="flex flex-col gap-8 px-6 pt-9 pb-16 desk:px-24 desk:pt-26">
-    <span class="label text-accent">{site.domain}</span>
-    <h1 class="font-display text-d2 desk:text-d1">{site.name}</h1>
-    <p class="max-w-140 text-lede text-muted">{site.description}</p>
-  </section>
+  <div class="flex flex-col gap-28 px-6 pt-9 pb-16 desk:gap-34 desk:px-24 desk:pt-26">
+    <section class="grid gap-14 desk:grid-cols-[minmax(0,1fr)_20rem] desk:items-end desk:gap-20">
+      <div class="flex flex-col gap-8">
+        <span class="font-mono text-[0.8125rem] tracking-[0.04em] text-accent">engineer · writer · traveller</span>
+        <h1 class="font-display text-d2 desk:text-d1">Code, a saxophone, and a habit of taking the long way <em class="text-accent">round</em>.</h1>
+        <p class="max-w-140 text-lede text-muted">{site.description}</p>
+      </div>
+      <a href={`/writing/${latest.id}/`} class="group flex flex-col gap-3.5 border-t border-line-strong pt-5.5">
+        <span class="label text-faint">Latest · {formatDate(latest.data.pubDate, 'short')}</span>
+        <span class="font-body text-2xl leading-tight text-text">{latest.data.title}</span>
+        <span class="inline-flex items-center gap-2 text-[15px] text-accent">
+          Read
+          <svg class="transition-transform duration-200 group-hover:translate-x-1" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </span>
+      </a>
+    </section>
+
+    <section class="reveal flex flex-col gap-10" aria-labelledby="writing">
+      <div class="flex items-baseline justify-between border-b border-line pb-5">
+        <h2 id="writing" class="font-display text-d3">Writing</h2>
+        <a href="/writing/" class="label text-faint transition-colors duration-200 hover:text-accent">{all.length} published · all</a>
+      </div>
+      <Shelf articles={all} />
+    </section>
+
+    <section class="reveal flex flex-col gap-8" aria-labelledby="now">
+      <div class="flex items-baseline justify-between">
+        <h2 id="now" class="font-display text-d3">Now</h2>
+        <span class="label text-faint">Updated {updated}</span>
+      </div>
+      <div class="grid gap-10 desk:grid-cols-3">
+        {now.items.map((item) => (
+          <div class="flex flex-col gap-2.5 border-t border-line pt-5">
+            <span class="label text-faint">{item.label}</span>
+            <p class="font-body text-[1.375rem] leading-snug text-text">
+              {item.title && <em>{item.title}</em>}{item.rest}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <footer class="flex items-center justify-between border-t border-line pt-6">
+      <span class="label text-faint">© {new Date().getUTCFullYear()} {site.name}</span>
+    </footer>
+  </div>
 </Base>

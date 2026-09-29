@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { satteri } from '@astrojs/markdown-satteri';
+import { noRawHtml, articleBlocks } from './src/lib/markdown.ts';
 
 export default defineConfig({
   site: 'https://yakar.me',
@@ -12,6 +14,11 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover',
+  },
+  markdown: {
+    // Prism sınıf üretir; Shiki renkleri satır içi style="" olarak basar (CSP style-src 'self').
+    syntaxHighlight: 'prism',
+    processor: satteri({ mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] }),
   },
   build: {
     // Stiller her zaman ayrı dosya: CSP `style-src 'self'` satır içi stile izin vermez.
