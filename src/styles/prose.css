@@ -39,6 +39,7 @@
     text-decoration: underline;
     text-decoration-color: color-mix(in srgb, var(--yk-accent) 60%, transparent);
     text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
     transition: text-decoration-color 0.2s ease;
   }
   .prose a:hover {
@@ -79,6 +80,7 @@
     font-family: var(--font-mono);
     font-size: 0.8em;
     color: var(--yk-text);
+    overflow-wrap: anywhere;
   }
   .prose pre {
     overflow-x: auto;
