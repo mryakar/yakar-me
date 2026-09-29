@@ -1,0 +1,82 @@
+{
+  "alt": "Jade Street burns red and green beside a doorway strung with small lights; beyond it, the street has already gone dark.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-16T20:08:01+08:00",
+  "aperture": 3.2,
+  "shutter": 0.008,
+  "iso": 500,
+  "focalLength": 23,
+  "place": {
+    "district": "Jordan",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Eterna",
+    "dynamicRange": "DR400",
+    "highlight": -1.5,
+    "shadow": -1,
+    "color": 3,
+    "whiteBalance": "Auto (white priority)",
+    "whiteBalanceShift": [
+      2,
+      -4
+    ],
+    "noiseReduction": -4,
+    "clarity": -2,
+    "grain": "Weak, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1686-640-cd173246.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 15683,
+        "sha256": "cd1732468ffedeb2be8d04059faca98cc6cdfc9d25dc28d99d4dee0de7dc221f"
+      },
+      {
+        "file": "dscf1686-1280-7f510e94.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 56064,
+        "sha256": "7f510e94aa238b7c06a0b5b47ca1afaf1df326d527037ff23b0dfc0bec3cda27"
+      },
+      {
+        "file": "dscf1686-1706-34531f30.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 123835,
+        "sha256": "34531f305050647fd8d0974186fdcf4eea48ea1345bb7390ade7b5ffad1c3881"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1686-640-c7b2eb75.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 16734,
+        "sha256": "c7b2eb75a9b84a865ed40a5725fdd280ba6d4526a03ead9b0509105a0bac8ad3"
+      },
+      {
+        "file": "dscf1686-1280-a3f3179b.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 56488,
+        "sha256": "a3f3179b0ba8c12508ac2e0ae40f5b254e0ad56c9da3bc7a049cdb8ac31f86fc"
+      },
+      {
+        "file": "dscf1686-1706-1d29bfb2.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 131328,
+        "sha256": "1d29bfb25b461efbbd1c1cd3993f49cd6f0648ef8f1eba62d69890199145bc6b"
+      }
+    ]
+  }
+}

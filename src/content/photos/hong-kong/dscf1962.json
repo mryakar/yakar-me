@@ -1,0 +1,96 @@
+{
+  "alt": "Through the tram glass, two scenes overlap: a crowd waiting at a red light, and a passenger's reflection dissolving into it.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T12:50:40+08:00",
+  "aperture": 5,
+  "shutter": 0.004,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Causeway Bay",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1962-640-8ed2ae27.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 18633,
+        "sha256": "8ed2ae27fd3cef48b53aafed071ba7b62810b5234f8c09a621bbf07a3e822e65"
+      },
+      {
+        "file": "dscf1962-1280-9a088593.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 53197,
+        "sha256": "9a088593de7d072639fd446d08bdb3a97d6da4e714b8dfcf60305ce6e14139d1"
+      },
+      {
+        "file": "dscf1962-1920-02a87f5f.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 98416,
+        "sha256": "02a87f5f6f17096634501e5df00ff3fb176228711f3e724f22f4044e4dc25ee8"
+      },
+      {
+        "file": "dscf1962-2560-d17c48e7.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 154269,
+        "sha256": "d17c48e7d270a9958433260f8c6406f322c0e4eb1043c7ffba8306bdc94eddfe"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1962-640-a3094218.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 26680,
+        "sha256": "a3094218531f8ca68fdd13bbb8f3f7cd768945ba0d249ab0d3a7e13b8021ff75"
+      },
+      {
+        "file": "dscf1962-1280-a7cad283.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 70542,
+        "sha256": "a7cad2835f44792342d43f59d4c108f492861326e3f281c9beab188abebbf853"
+      },
+      {
+        "file": "dscf1962-1920-111b66da.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 122516,
+        "sha256": "111b66da7b49ca003796584ae369815c43d70961e24a430e386b2d96874e6b6c"
+      },
+      {
+        "file": "dscf1962-2560-b0410220.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 185400,
+        "sha256": "b04102208dcd813418bba995afae6aeb18887ba8be1308ae4963ae4461194239"
+      }
+    ]
+  }
+}

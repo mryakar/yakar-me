@@ -1,0 +1,82 @@
+{
+  "alt": "The Peak Tram line falls away through moss and damp green toward a city fading into haze.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T16:21:10+08:00",
+  "aperture": 3.6,
+  "shutter": 0.005882352941,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "The Peak",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2138-640-b867c072.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 68002,
+        "sha256": "b867c072b22f80da32b7567bdba9753dd7c2c1b9f43d54d880b54da2014a97be"
+      },
+      {
+        "file": "dscf2138-1280-d9deda10.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 256749,
+        "sha256": "d9deda10b04c9286cdf147b9f4d0d8c4b7a112dd94d8d23f4ed6248b209ac90d"
+      },
+      {
+        "file": "dscf2138-1706-7bd1731b.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 443156,
+        "sha256": "7bd1731bd5ab268bff69507d24da958761e0846111820014350fe87b7c770910"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2138-640-b95452f4.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 115036,
+        "sha256": "b95452f4cb3781ee1630cef25d8caa6869361f80dda32b25cde3273a6982801a"
+      },
+      {
+        "file": "dscf2138-1280-6a4105a5.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 424016,
+        "sha256": "6a4105a53f686eba0deceeb6698248e6de0ae71072503410d97bd3c86fb4a9f5"
+      },
+      {
+        "file": "dscf2138-1706-434151ab.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 730022,
+        "sha256": "434151ab82eef7e0be3a8cb90096d709c385efff750da6ac75a9c53431178714"
+      }
+    ]
+  }
+}

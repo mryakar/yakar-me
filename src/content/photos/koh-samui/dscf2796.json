@@ -1,0 +1,82 @@
+{
+  "alt": "A capybara leans in, whiskers first, to inspect the camera on a sunlit wooden deck.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-24T13:18:39+07:00",
+  "aperture": 4.5,
+  "shutter": 0.004761904762,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Chaweng",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2796-640-1ee5c3c2.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 26703,
+        "sha256": "1ee5c3c26ea1c82e254a3c4cf6a5cd0d6f5d3de702928a215f6af8957d67c7fd"
+      },
+      {
+        "file": "dscf2796-1280-5a35315d.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 78207,
+        "sha256": "5a35315d0685be461b24d2d2c6d8f379c90c02d3c25624eb81ff4007e0a6c5d0"
+      },
+      {
+        "file": "dscf2796-1706-9dbd7723.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 118097,
+        "sha256": "9dbd77237df13637310ef45a6f0dc6248259f6222b3aaa6716bbfbf76d0c201f"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2796-640-f9248adf.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 32396,
+        "sha256": "f9248adff372f8e457059761c6a7e0d9bdcbcab6757b103e4baebaac0b7b63bc"
+      },
+      {
+        "file": "dscf2796-1280-9c212b97.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 93864,
+        "sha256": "9c212b9735782dd733b4dc93645377669fc1f5d06b5eba6603fd72b7d48af370"
+      },
+      {
+        "file": "dscf2796-1706-f9c28726.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 144972,
+        "sha256": "f9c28726b6f599197b9968df958d34c44242f6286e095611ea9b85d1c070fbaf"
+      }
+    ]
+  }
+}

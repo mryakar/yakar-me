@@ -1,0 +1,96 @@
+{
+  "alt": "Rain on Hankow Road: umbrellas bloom in a patient queue outside a noodle shop while a red taxi slips past.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-17T09:22:15+08:00",
+  "aperture": 3.2,
+  "shutter": 0.007142857143,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Tsim Sha Tsui",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1806-640-1eb23dbb.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 27709,
+        "sha256": "1eb23dbb9734b2aec2a0b1ca5227442b2b6890893c2afd3e59c98c2fd209d685"
+      },
+      {
+        "file": "dscf1806-1280-c3f101d9.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 80407,
+        "sha256": "c3f101d95312befd49621b8f4499e31305e6eb4d4fd55321b4997c382bb73add"
+      },
+      {
+        "file": "dscf1806-1920-db38d14f.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 150020,
+        "sha256": "db38d14f66fad4d67a098bae07cac000bc83020aa27b22e6b43b04cb4981e5ad"
+      },
+      {
+        "file": "dscf1806-2560-250409f0.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 232877,
+        "sha256": "250409f09d5fc2a3f39fbf536675ba0fd8aad43e2c9257bd38df45be8f6b4acc"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1806-640-bfe8af9b.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 45092,
+        "sha256": "bfe8af9bfc52a3809aa3fd520925d260b49be4f5975c611dbbd4553c8f2acd6c"
+      },
+      {
+        "file": "dscf1806-1280-c62914b4.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 119172,
+        "sha256": "c62914b49d03a1b9ed0e3d4ee84db51a4226680161e9e6e01d0e62325697dfad"
+      },
+      {
+        "file": "dscf1806-1920-6c9e474a.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 208348,
+        "sha256": "6c9e474ac27f8912c699803a57eda6b26336adfda206d16e7918648cca99c56b"
+      },
+      {
+        "file": "dscf1806-2560-9f0cba12.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 310254,
+        "sha256": "9f0cba120b5b4bf55ba9839006e83f5e42f4cb75c73cb3394214d10faff1e1e5"
+      }
+    ]
+  }
+}

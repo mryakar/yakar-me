@@ -16,7 +16,7 @@ const path = Astro.url.pathname;
         <a
           href={item.href}
           aria-current={isCurrent(path, item.href) ? 'page' : undefined}
-          class="group flex min-h-10 items-center gap-3 text-[15px] text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text"
+          class="group flex min-h-10 items-center gap-3 text-base text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text"
         >
           <span class="size-[5px] rounded-full transition-colors duration-200 group-hover:bg-line-strong group-aria-[current=page]:bg-accent" />
           <span>{item.label}</span>
@@ -26,7 +26,7 @@ const path = Astro.url.pathname;
     <div class="mt-auto flex flex-col gap-7">
       <ul class="flex flex-col gap-3">
         {links.map((link) => (
-          <li><a href={link.href} rel="me" class="text-[13px] text-muted transition-colors duration-200 hover:text-accent">{link.label}</a></li>
+          <li><a href={link.href} rel="me" class="text-sm text-muted transition-colors duration-200 hover:text-accent">{link.label}</a></li>
         ))}
       </ul>
       <ThemeToggle />

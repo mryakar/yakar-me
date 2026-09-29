@@ -1,5 +1,4 @@
 const root = document.documentElement;
-let timer = 0;
 
 function current(): 'light' | 'dark' {
   return root.dataset.theme === 'light' ? 'light' : 'dark';
@@ -10,19 +9,22 @@ function label(button: HTMLElement) {
   button.setAttribute('aria-label', `Switch to ${next} theme`);
 }
 
+function apply(theme: 'light' | 'dark') {
+  root.dataset.theme = theme;
+  try {
+    localStorage.setItem('theme', theme);
+  } catch {}
+  for (const b of document.querySelectorAll<HTMLElement>('[data-theme-toggle]')) label(b);
+}
+
 for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
   label(button);
   button.addEventListener('click', () => {
     const next = current() === 'dark' ? 'light' : 'dark';
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      root.classList.add('theme-switching');
-      window.clearTimeout(timer);
-      timer = window.setTimeout(() => root.classList.remove('theme-switching'), 450);
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.startViewTransition(() => apply(next)).ready.catch(() => {});
+    } else {
+      apply(next);
     }
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem('theme', next);
-    } catch {}
-    for (const b of document.querySelectorAll<HTMLElement>('[data-theme-toggle]')) label(b);
   });
 }

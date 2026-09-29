@@ -1,0 +1,96 @@
+{
+  "alt": "A white water lily opens above the dark pond, the morning shade of the garden blurred behind it.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-23T09:19:39+07:00",
+  "aperture": 5.6,
+  "shutter": 0.0009090909091,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Bophut",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2601-640-ffec7e4e.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 24607,
+        "sha256": "ffec7e4ee6328c40970370c83876911c874e275154a4d6e50acfdf17470fb7a3"
+      },
+      {
+        "file": "dscf2601-1280-86a1bbd3.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 67360,
+        "sha256": "86a1bbd32cfc1c52f782de42a7f01d1a9fd20532ea0af6d241d5356385339aa3"
+      },
+      {
+        "file": "dscf2601-1920-045160bb.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 117661,
+        "sha256": "045160bbdda69ba073668ecb81b61fecff40c6f561493f7c64de03ed09bffe02"
+      },
+      {
+        "file": "dscf2601-2560-544c7755.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 176584,
+        "sha256": "544c7755edaa3b5877d8ea0b38466b6488cb74f04a7eca8003ede3e1539271e6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2601-640-9f229ff1.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 36804,
+        "sha256": "9f229ff1ebcbe976e6dbff3a86e6dccf77d6ac79eadbff57102016f37eebaf37"
+      },
+      {
+        "file": "dscf2601-1280-891c156c.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 88918,
+        "sha256": "891c156c74ab7498d7f378a0e28f6063328b86eb5549c87266802976a995a45e"
+      },
+      {
+        "file": "dscf2601-1920-2fd39a22.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 146146,
+        "sha256": "2fd39a22071f7fbc60cfce9c81122005281d21fe27166b1ea8f7cf737f4341a0"
+      },
+      {
+        "file": "dscf2601-2560-3487d457.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 207212,
+        "sha256": "3487d45782d962f17f6b19f076fac17fd34fe692e8aef04259371eeccf7ed0d5"
+      }
+    ]
+  }
+}

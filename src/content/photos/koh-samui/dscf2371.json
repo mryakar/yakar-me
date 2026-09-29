@@ -1,0 +1,82 @@
+{
+  "alt": "Orange parasols hold still before a pale turquoise sea, under the ragged fringe of a thatched roof.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-22T11:37:51+08:00",
+  "aperture": 7.1,
+  "shutter": 0.0005263157895,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Bophut",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2371-640-db606463.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 23480,
+        "sha256": "db606463c7f6ee7031b8543edbc8ea2b1fb1e4dc002f8551ae5d4845de7893e6"
+      },
+      {
+        "file": "dscf2371-1280-9b339ea9.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 63239,
+        "sha256": "9b339ea9e5b081d14f0720be0b6ba222ea99f0e2103f3268cf8e019b9e6a4a53"
+      },
+      {
+        "file": "dscf2371-1706-3ddd1b5a.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 99547,
+        "sha256": "3ddd1b5a11a1690daf26671e237a4336618f635c33e63eb06776ff6ddd992fd6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2371-640-4e6793ce.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 32078,
+        "sha256": "4e6793ce380dbdb50204be4de021e6e8abb2cbc5a90ea08c08b42330e7d0c148"
+      },
+      {
+        "file": "dscf2371-1280-e9683b7e.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 87914,
+        "sha256": "e9683b7e9d06063574499de3ef56ad88d5374ef6e393ca0e5f099fb91e46b736"
+      },
+      {
+        "file": "dscf2371-1706-4178bd8f.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 135146,
+        "sha256": "4178bd8f5e108efb692a1b13e44ced825b297f906567956b7f1fbc217a2719be"
+      }
+    ]
+  }
+}

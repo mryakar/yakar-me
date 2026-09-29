@@ -1,0 +1,82 @@
+{
+  "alt": "A bronze man in a hat runs forever above the House of Men, against a wall of glass that does not move.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T12:06:37+08:00",
+  "aperture": 5.6,
+  "shutter": 0.001470588235,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Causeway Bay",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1938-640-a1f17f50.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 40120,
+        "sha256": "a1f17f50ddebb1d015ecb3c36a5cfe9b7102631c9802c00ceb44bc8405d0f5cf"
+      },
+      {
+        "file": "dscf1938-1280-4d7a67b1.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 117619,
+        "sha256": "4d7a67b11ce2364fd3de2d5acdb4551e281845b630e798485f42d19212a00ba1"
+      },
+      {
+        "file": "dscf1938-1706-58e2068d.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 188437,
+        "sha256": "58e2068d2d06f33534fa142b4ae99a002889885309ed12ffc769af4adac3a702"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1938-640-9470ba97.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 75234,
+        "sha256": "9470ba9713cd0db342253b008896fac844100967120a3807448c3375c612dff9"
+      },
+      {
+        "file": "dscf1938-1280-501164d5.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 191516,
+        "sha256": "501164d5cba2194b85feb3210671e14ef1ce229dd5b2570584b1decd85f84a23"
+      },
+      {
+        "file": "dscf1938-1706-751bc9ff.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 283704,
+        "sha256": "751bc9ffce71928502e2931552bf43ada14038362405893b2e12c7a391195ba1"
+      }
+    ]
+  }
+}

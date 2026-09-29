@@ -1,0 +1,82 @@
+{
+  "alt": "A grey afternoon settles between glass towers; a 7-Eleven sign glows beneath a building still wrapped in scaffolding.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-17T12:39:34+08:00",
+  "aperture": 4,
+  "shutter": 0.00625,
+  "iso": 125,
+  "focalLength": 23,
+  "place": {
+    "district": "Tsim Sha Tsui",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Provia",
+    "dynamicRange": "DR100",
+    "highlight": 0,
+    "shadow": 1,
+    "color": -1,
+    "whiteBalance": "Auto (white priority)",
+    "whiteBalanceShift": [
+      0,
+      0
+    ],
+    "noiseReduction": 0,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1912-640-5a3d8087.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 39568,
+        "sha256": "5a3d8087d38d8bf1cb76ab83bbd64026f628b2aadd9f9073008cf52072f8c94d"
+      },
+      {
+        "file": "dscf1912-1280-9a770bfc.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 117419,
+        "sha256": "9a770bfc44c6ea80f11e0305a55e84a11cc27602875216d8fa014fab7e00daaf"
+      },
+      {
+        "file": "dscf1912-1706-9e1afbf0.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 183076,
+        "sha256": "9e1afbf056c22b13ee697da44500561497bd80855fd5ee908e81fafa0e707400"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1912-640-aea0abe2.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 60782,
+        "sha256": "aea0abe238fa1575114c48f2d9ccfba7203a0c7e126ba5b409f2f5933000b6c8"
+      },
+      {
+        "file": "dscf1912-1280-bb54caaf.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 173388,
+        "sha256": "bb54caaf07c6c6b69d23aa8cad5099e836a423a275627de4685cc26f9fb1840d"
+      },
+      {
+        "file": "dscf1912-1706-de9d6b24.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 265604,
+        "sha256": "de9d6b24d31f3065d7e6c40c4cb33093c2903bc536f78e5a061587cb3a194871"
+      }
+    ]
+  }
+}

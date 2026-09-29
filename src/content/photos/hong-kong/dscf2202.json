@@ -1,0 +1,82 @@
+{
+  "alt": "Neon hums in red, pink and blue above a street corner as a woman crosses into the night.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-18T20:14:13+08:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 320,
+  "focalLength": 23,
+  "place": {
+    "district": "Yau Ma Tei",
+    "city": "Hong Kong",
+    "country": "Hong Kong"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2202-640-f1009a3e.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 52889,
+        "sha256": "f1009a3ef425f59a778597594d985ed1bee8b80cc0b39c2d6e1920023243a105"
+      },
+      {
+        "file": "dscf2202-1280-89ee78a9.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 168344,
+        "sha256": "89ee78a94df5d90c1aa36ad82ee72540e5488869e80c82123d20396a6df43f2f"
+      },
+      {
+        "file": "dscf2202-1706-a02e2202.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 272379,
+        "sha256": "a02e2202604ee4810d845d85da95eba660b26c4ae17e5f7544a8ec202a4bb9eb"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2202-640-948138a8.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 81700,
+        "sha256": "948138a8a504befa90d3f6a3a6f1c639024d4febaa30090ea86a65c01c14d634"
+      },
+      {
+        "file": "dscf2202-1280-71730d4b.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 261880,
+        "sha256": "71730d4b9180928d15a329e3724f9dfe9aa547643d21ee255ec9b075fc1d8bc7"
+      },
+      {
+        "file": "dscf2202-1706-242da3ca.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 415368,
+        "sha256": "242da3cacb1614871c3378f9df6dbac29f2ff5f414510be20c39d058ce0b4ccc"
+      }
+    ]
+  }
+}

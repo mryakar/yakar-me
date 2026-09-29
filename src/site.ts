@@ -2,11 +2,13 @@ export const site = {
   name: 'Ahmet Yakar',
   domain: 'yakar.me',
   description: 'Software engineer, writer and traveller. Java, distributed systems, and the mechanisms underneath.',
+  lede: 'Software engineer, writer and traveller.',
 };
 
 export const nav = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing' },
+  { href: '/photos/', label: 'Photos' },
   { href: '/about/', label: 'About' },
 ];
 

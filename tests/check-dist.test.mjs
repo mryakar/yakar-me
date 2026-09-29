@@ -26,6 +26,11 @@ test('temiz çıktı geçer (canonical ve dış <a> serbest)', () => {
   assert.equal(r.code, 0, r.out);
 });
 
+test('kaçırılmış JSON-LD geçer', () => {
+  const r = run({ ...ok, 'x.html': page('', '<script type="application/ld+json">{"a":"\\u003c/script\\u003e"}</script>') });
+  assert.equal(r.code, 0, r.out);
+});
+
 const bad = {
   'satır içi script': [{ 'x.html': page('<script>alert(1)</script>') }, /inline script/],
   '<style>': [{ 'x.html': page('<style>a{}</style>') }, /inline <style>/],
@@ -36,6 +41,12 @@ const bad = {
   "CSS'te data: font": [{ '_astro/b.css': '@font-face{src:url(data:font/woff2;base64,AAA)}' }, /external or data: url\(\)/],
   'kırık bağlantı': [{ 'x.html': page('', '<a href="/nope/">x</a>') }, /broken link: \/nope\//],
   'eksik kaynak': [{ 'x.html': page('<script src="/_astro/missing.js"></script>') }, /missing resource/],
+  'srcset içinde eksik kaynak': [{ 'x.html': page('', '<img src="/about/" srcset="/img/nope-640.webp 640w, /img/nope-1280.webp 1280w" alt="">') }, /missing resource: \/img\/nope-640\.webp/],
+  'JSON-LD dışında tipli satır içi script': [{ 'x.html': page('<script type="module">alert(1)</script>') }, /inline script/],
+  'kaçırılmamış < içeren JSON-LD': [{ 'x.html': page('<script type="application/ld+json">{"a":"</b>"}</script>') }, /unescaped/],
+  'geçersiz JSON-LD': [{ 'x.html': page('<script type="application/ld+json">{a:1}</script>') }, /not valid JSON/],
+  'foto verisinde olmayan görsel': [{ 'img/stray.webp': 'x' }, /not listed in the photo data/],
+  'meta veri taraması': [{ 'img/stray.webp': 'x' }, /metadata check/],
 };
 for (const [name, [files, pattern]] of Object.entries(bad)) {
   test(`yakalanır: ${name}`, () => {

@@ -7,6 +7,9 @@
     font-size: var(--text-prose);
     line-height: var(--text-prose--line-height);
     color: var(--yk-text-body);
+    @variant wide {
+      font-size: 1.375rem;
+    }
   }
   .prose > * {
     margin: 0;

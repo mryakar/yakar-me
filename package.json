@@ -12,7 +12,9 @@
     "build": "astro check && astro build",
     "preview": "wrangler dev",
     "check:dist": "node scripts/check-dist.mjs",
-    "test": "node --test 'tests/*.test.mjs'"
+    "test": "node --test 'tests/*.test.mjs'",
+    "photo:add": "node scripts/photo-add.mjs",
+    "photos:fetch": "node scripts/photos-fetch.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.2",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3",
     "wrangler": "^4.143.0"
   },

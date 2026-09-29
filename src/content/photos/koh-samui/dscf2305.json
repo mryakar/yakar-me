@@ -1,0 +1,82 @@
+{
+  "alt": "A seafood cart waits on the dark sand under a string of bulbs, its chalkboard menus speaking to no one.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-05-21T22:04:02+08:00",
+  "aperture": 2.8,
+  "shutter": 0.25,
+  "iso": 125,
+  "focalLength": 23,
+  "place": {
+    "district": "Bophut",
+    "city": "Koh Samui",
+    "country": "Thailand"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR100",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf2305-640-c930ab43.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 25293,
+        "sha256": "c930ab439edc745a1238d22020789d7ad1ce6d24af6e3501f8b8b84466e5cb66"
+      },
+      {
+        "file": "dscf2305-1280-0698f9a4.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 98595,
+        "sha256": "0698f9a4c04969cd6a6de384bccd59676542da34dbb329b7d9a6caa1d4b7a7ea"
+      },
+      {
+        "file": "dscf2305-1706-7938d1bf.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 173904,
+        "sha256": "7938d1bfaa24df45dddf5fcbb2a692b436e9004cb14fb16a558c3a2713d7c1df"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf2305-640-46e5ed02.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 33168,
+        "sha256": "46e5ed029160a815a1f1c65dca8b44554cc3a54a23ffc79ed76608342df3da47"
+      },
+      {
+        "file": "dscf2305-1280-5ebc48dd.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 133660,
+        "sha256": "5ebc48dde7b3cb4e9ed2ab2c8d043310f060341038eab50d3afb0f9911a88a59"
+      },
+      {
+        "file": "dscf2305-1706-5a074649.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 233078,
+        "sha256": "5a0746498255f72e528dd548980e8320380fe0f910d1c89f523bbc597582dd5b"
+      }
+    ]
+  }
+}
