@@ -1,0 +1,49 @@
+{
+  "alt": "Synthetic noise image for a pipeline check",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone Test",
+  "taken": "2026-01-01T12:00:00",
+  "aperture": 1.8,
+  "shutter": 0.004,
+  "iso": 100,
+  "focalLength": 26,
+  "location": {
+    "lat": 0,
+    "lon": 0
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "synthetic-test-640-58977a6f.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 27371,
+        "sha256": "58977a6f807c8c8a01845175f54c6f1c88f632daa6e750b8a551b94d300ef5e2"
+      },
+      {
+        "file": "synthetic-test-1280-bb420491.avif",
+        "width": 1280,
+        "height": 854,
+        "bytes": 205337,
+        "sha256": "bb420491a82a7c07cd919b087d25d84311c2450bc932f66bb8b236797de079ae"
+      },
+      {
+        "file": "synthetic-test-1600-e78fb9aa.avif",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 354726,
+        "sha256": "e78fb9aa363d1ea895a9733af88b960254bbf8bafbf0daeb40de15aa0541f751"
+      }
+    ],
+    "webp": [
+      {
+        "file": "synthetic-meta-640-409af256.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 76556,
+        "sha256": "409af25603a5be61d62c4912b1cc92a8615a5ee22f8fe19274068d53087089b3"
+      }
+    ]
+  }
+}
