@@ -1,9 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { site } from '../site';
 ---
 
-<Base title="yakar.me">
-  <main>
-    <h1>yakar.me</h1>
-  </main>
+<Base title={site.domain}>
+  <section class="flex flex-col gap-8 px-6 pt-9 pb-16 desk:px-24 desk:pt-26">
+    <span class="label text-accent">{site.domain}</span>
+    <h1 class="font-display text-d2 desk:text-d1">{site.name}</h1>
+    <p class="max-w-140 text-lede text-muted">{site.description}</p>
+  </section>
 </Base>

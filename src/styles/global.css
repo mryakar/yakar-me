@@ -1,1 +1,216 @@
 @import "tailwindcss";
+@import "./fonts.css";
+
+/* light: açık tema etkinken (ör. light:hidden) */
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
+
+/*
+ * Renk token'ları. Koyu tema varsayılan; açık tema <html data-theme="light"> ile.
+ * data-theme'i head'deki /theme.js sayfa çizilmeden yazar. JS kapalıysa sistem teması geçerli olur.
+ */
+:root {
+  color-scheme: dark;
+  --yk-bg: #08090a;
+  --yk-side: #0b0c0e;
+  --yk-card: #101114;
+  --yk-code: #0e0f11;
+  --yk-sleeve: #15161a;
+  --yk-line: rgb(255 255 255 / 0.07);
+  --yk-line-strong: rgb(255 255 255 / 0.15);
+  --yk-text: #ededef;
+  --yk-text-body: #d9d9dc;
+  --yk-muted: #9a9ea6;
+  --yk-faint: #7e828a;
+  --yk-accent: #c8a465;
+  --yk-shadow: rgb(0 0 0 / 0.6);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --yk-bg: #f7f6f3;
+  --yk-side: #f1f0ec;
+  --yk-card: #ffffff;
+  --yk-code: #efede8;
+  --yk-sleeve: #eceae4;
+  --yk-line: rgb(20 20 22 / 0.08);
+  --yk-line-strong: rgb(20 20 22 / 0.18);
+  --yk-text: #141416;
+  --yk-text-body: #26262a;
+  --yk-muted: #55585f;
+  --yk-faint: #676a71;
+  --yk-accent: #85642a;
+  --yk-shadow: rgb(20 20 22 / 0.14);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --yk-bg: #f7f6f3;
+    --yk-side: #f1f0ec;
+    --yk-card: #ffffff;
+    --yk-code: #efede8;
+    --yk-sleeve: #eceae4;
+    --yk-line: rgb(20 20 22 / 0.08);
+    --yk-line-strong: rgb(20 20 22 / 0.18);
+    --yk-text: #141416;
+    --yk-text-body: #26262a;
+    --yk-muted: #55585f;
+    --yk-faint: #676a71;
+    --yk-accent: #85642a;
+    --yk-shadow: rgb(20 20 22 / 0.14);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--yk-bg);
+  --color-side: var(--yk-side);
+  --color-card: var(--yk-card);
+  --color-code: var(--yk-code);
+  --color-sleeve: var(--yk-sleeve);
+  --color-line: var(--yk-line);
+  --color-line-strong: var(--yk-line-strong);
+  --color-text: var(--yk-text);
+  --color-text-body: var(--yk-text-body);
+  --color-muted: var(--yk-muted);
+  --color-faint: var(--yk-faint);
+  --color-accent: var(--yk-accent);
+}
+
+@theme {
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, serif;
+  --font-ui: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* Display ölçeği — Instrument Serif 32px altına inmez */
+  --text-d1: 5rem;
+  --text-d1--line-height: 1.02;
+  --text-d1--letter-spacing: -0.02em;
+  --text-d2: 2.75rem;
+  --text-d2--line-height: 1.06;
+  --text-d2--letter-spacing: -0.02em;
+  --text-d3: 2.5rem;
+  --text-d3--line-height: 1.1;
+  --text-d3--letter-spacing: -0.015em;
+  --text-d4: 2rem;
+  --text-d4--line-height: 1.15;
+  --text-d4--letter-spacing: -0.01em;
+
+  --text-prose: 1.25rem;
+  --text-prose--line-height: 1.7;
+  --text-lede: 1.125rem;
+  --text-lede--line-height: 1.65;
+  --text-label: 0.6875rem;
+  --text-label--letter-spacing: 0.08em;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --breakpoint-desk: 64rem;
+}
+
+@layer base {
+  html {
+    background: var(--yk-bg);
+    color: var(--yk-text);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100dvh;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--yk-accent) 35%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--yk-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Küçük etiket: tarih, bölüm adı, sayaç */
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 50;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    background: var(--yk-card);
+    color: var(--yk-text);
+    border: 1px solid var(--yk-line-strong);
+  }
+  .skip-link:focus-visible {
+    top: 1rem;
+  }
+
+  /* Telefon menüsü: popover, tam ekran */
+  .menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    padding: 1.25rem 1.5rem 2rem;
+    background: var(--yk-bg);
+    color: var(--yk-text);
+  }
+  .menu:popover-open {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Hareket: yalnızca ziyaretçi azaltılmış hareket istemiyorsa */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  .menu:popover-open {
+    animation: menu-in 0.5s var(--ease-out-soft);
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.18s;
+  }
+
+  /* Scroll'la belirme. Desteklemeyen tarayıcıda içerik olduğu gibi görünür. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
