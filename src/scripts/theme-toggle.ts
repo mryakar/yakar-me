@@ -1,4 +1,3 @@
-// Tema düğmesi: koyu ↔ açık. Seçim localStorage'da saklanır; erişilemezse yalnızca bu sayfada geçerli.
 const root = document.documentElement;
 let timer = 0;
 

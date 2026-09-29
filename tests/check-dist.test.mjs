@@ -5,7 +5,6 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-// Her test kendi geçici dist/ klasörünü kurar ve denetimi o klasörde çalıştırır.
 function run(files) {
   const dir = mkdtempSync(join(tmpdir(), 'dist-'));
   for (const [path, body] of Object.entries(files)) {

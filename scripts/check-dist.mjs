@@ -1,7 +1,3 @@
-// Build çıktısı denetimi (CI'da build'den sonra). Başarısızsa yayın yok (OWASP A02, A05, A10).
-//  1. Satır içi script, <style> ve style="" yok: CSP 'self' bunları engeller.
-//  2. Sayfanın yüklediği her kaynak siteden: dış alan adı ve data: URI yok.
-//  3. Site içi her bağlantı dist/'te bir dosyaya çıkar: kırık bağlantı yok.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
@@ -29,10 +25,8 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   if (/<style\b/i.test(html)) fail(file, 'inline <style>');
   if (/<[^>]+\sstyle=/i.test(html)) fail(file, 'style="" attribute');
 
-  // Tarayıcının kendiliğinden yüklediği kaynaklar
   const loads = [
     ...html.matchAll(/<(?:script|img|source|iframe|audio|video|embed)\b[^>]*\ssrc="([^"]*)"/gi),
-    // <link> yalnızca tarayıcının indirdiği türlerde (canonical, alternate birer adres, kaynak değil)
     ...[...html.matchAll(/<link\b([^>]*)>/gi)]
       .filter(([, attrs]) => /\srel="(stylesheet|preload|modulepreload|icon|apple-touch-icon|manifest)"/i.test(attrs))
       .map(([, attrs]) => /\shref="([^"]*)"/i.exec(attrs) ?? [, '']),
@@ -43,7 +37,6 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
     else if (url.startsWith('/') && !resolves(url)) fail(file, `missing resource: ${url}`);
   }
 
-  // Site içi bağlantılar
   for (const [, href] of html.matchAll(/<a\b[^>]*\shref="([^"]*)"/gi)) {
     if (href.startsWith('/') && !href.startsWith('//') && !resolves(href)) fail(file, `broken link: ${href}`);
   }

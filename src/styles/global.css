@@ -2,13 +2,8 @@
 @import "./fonts.css";
 @import "./prose.css";
 
-/* light: açık tema etkinken (ör. light:hidden) */
 @custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 
-/*
- * Renk token'ları: her biri light-dark(açık, koyu) — tek tanım. Hangisinin geçerli olduğunu color-scheme seçer:
- * koyu varsayılan; <html data-theme="light"> (head'deki /theme.js yazar) ya da JS kapalıyken sistem teması açık.
- */
 :root {
   color-scheme: dark;
   --yk-bg: light-dark(#f7f6f3, #08090a);
@@ -55,7 +50,6 @@
   --font-ui: 'Geist', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 
-  /* Display ölçeği — Instrument Serif 32px altına inmez */
   --text-d1: 5rem;
   --text-d1--line-height: 1.02;
   --text-d1--letter-spacing: -0.02em;
@@ -102,7 +96,6 @@
 }
 
 @layer components {
-  /* Küçük etiket: tarih, bölüm adı, sayaç */
   .label {
     font-family: var(--font-mono);
     font-size: var(--text-label);
@@ -124,7 +117,6 @@
     top: 1rem;
   }
 
-  /* Telefon menüsü: popover, tam ekran */
   .menu {
     position: fixed;
     inset: 0;
@@ -144,7 +136,6 @@
   }
 }
 
-/* Hareket: yalnızca ziyaretçi azaltılmış hareket istemiyorsa */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
@@ -158,7 +149,6 @@
     animation-duration: 0.18s;
   }
 
-  /* Scroll'la belirme. Desteklemeyen tarayıcıda içerik olduğu gibi görünür. */
   @supports (animation-timeline: view()) {
     .reveal {
       animation: reveal linear both;
@@ -188,7 +178,6 @@
   }
 }
 
-/* Plak rafı: üst üste binen kılıflar, üzerine gelinen yükselir. Hareket ölçülü. */
 @layer components {
   .shelf {
     display: flex;
@@ -220,8 +209,6 @@
   .sleeve:first-child {
     margin-left: 0;
   }
-  /* En yeni (soldaki) en üstte: her kılıf sağındakinin üstüne biner. Katman sırası CSS'te (satır içi stil yok).
-     12 kılıfa kadar; fazlasında Shelf.astro build'i kırar (MAX_SLEEVES). */
   .sleeve:nth-child(1) { z-index: 16; }
   .sleeve:nth-child(2) { z-index: 15; }
   .sleeve:nth-child(3) { z-index: 14; }
@@ -234,7 +221,6 @@
   .sleeve:nth-child(10) { z-index: 7; }
   .sleeve:nth-child(11) { z-index: 6; }
   .sleeve:nth-child(12) { z-index: 5; }
-  /* Soldaki kılıf bunun sol kenarını örter: metin görünen sağ şeritte */
   .sleeve:not(:first-child) {
     padding-left: calc(1.75rem + 0.875rem);
   }
@@ -270,8 +256,6 @@
   }
 }
 
-/* Tema geçişi: yalnız düğmeye basılınca (theme-toggle.ts sınıfı ~450ms tutar). Katman dışında: Tailwind'in
-   transition-* sınıflarını geçer. Sayfa açılışında ve gezinmede geçiş yok; azaltılmış harekette sınıf eklenmez. */
 .theme-switching,
 .theme-switching *,
 .theme-switching *::before,

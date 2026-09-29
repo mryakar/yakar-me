@@ -1,5 +1,4 @@
 ---
-// Telefon: üst çubuk + tam ekran menü (HTML popover; JS gerekmez, Esc tarayıcıdan).
 import ThemeToggle from './ThemeToggle.astro';
 import { site, nav, links } from '../site';
 import { isCurrent } from '../lib/nav';
@@ -7,7 +6,6 @@ import { isCurrent } from '../lib/nav';
 const path = Astro.url.pathname;
 const roundButton = 'inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text';
 ---
-
 <header class="flex items-center justify-between px-6 py-5 desk:hidden">
   <a href="/" class="font-display text-d4">{site.name}</a>
   <button type="button" popovertarget="menu" aria-label="Open menu" class={roundButton}>

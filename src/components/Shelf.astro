@@ -1,19 +1,16 @@
 ---
-// Plak rafı: konu başına bir raf, yazılar yeniden eskiye (soldan sağa). Her rafın altında seçili yazı:
-// başta en yenisi, imleç ya da odak bir kılıfa gelince o (shelf.ts yalnızca `hidden` değiştirir).
 import { topics, type Article } from '../lib/writing';
 import { articlePath, formatDate, formatMonth } from '../lib/format';
 import ArrowRight from './ArrowRight.astro';
 
 interface Props {
-  articles: Article[]; // en yeni önce
+  articles: Article[];
 }
 const { articles } = Astro.props;
 const byTopic = topics
   .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) }))
   .filter((s) => s.items.length > 0);
 
-// Kılıfların katman sırası global.css'te 12 kılıfa kadar tanımlı (satır içi stil yok). Sessizce bozulmasın.
 export const MAX_SLEEVES = 12;
 for (const { topic, items } of byTopic) {
   if (items.length > MAX_SLEEVES) {
@@ -21,7 +18,6 @@ for (const { topic, items } of byTopic) {
   }
 }
 ---
-
 <div class="flex flex-col gap-16">
   {byTopic.map(({ topic, items }) => (
     <div class="flex flex-col" data-shelf>

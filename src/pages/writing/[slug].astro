@@ -11,7 +11,6 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: Article };
 const { title, description, pubDate, topic, mediumUrl } = entry.data;
 const { Content, headings } = await render(entry);
-// İçindekiler: ## bölümler, altında ### alt başlıklar. "In short" kutuları başlık değil, özet.
 type Entry = { slug: string; text: string; children: { slug: string; text: string }[] };
 const toc: Entry[] = [];
 for (const h of headings) {
@@ -20,7 +19,6 @@ for (const h of headings) {
   else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
 }
 ---
-
 <Base title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: topic }}>
   <article class="px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="flex max-w-240 flex-col gap-7">

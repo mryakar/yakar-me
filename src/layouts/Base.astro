@@ -8,12 +8,10 @@ import { site } from '../site';
 interface Props {
   title: string;
   description?: string;
-  /** Yazı sayfalarında 'article' ve yayın tarihi (Open Graph). */
   article?: { published: Date; section: string };
 }
 const { title, description = site.description, article } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="en">
   <head>

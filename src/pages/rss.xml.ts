@@ -3,7 +3,6 @@ import { site } from '../site';
 import { articles } from '../lib/writing';
 import { articlePath, escapeXml as esc } from '../lib/format';
 
-// RSS 2.0, bağımlılıksız. Yazının tamamı sitede: akışta başlık, özet ve bağlantı.
 export const GET: APIRoute = async ({ site: origin }) => {
   const base = origin!.toString().replace(/\/$/, '');
   const items = (await articles())

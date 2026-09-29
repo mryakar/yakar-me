@@ -1,5 +1,4 @@
 ---
-// <head>: meta ve paylaşım etiketleri, simgeler, tema (ilk boyamadan önce), font ön yüklemesi.
 import { site } from '../site';
 import displayFont from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
 import uiFont from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
@@ -13,7 +12,6 @@ const { title, description, article } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og.png', Astro.site);
 ---
-
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />

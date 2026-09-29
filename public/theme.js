@@ -1,5 +1,3 @@
-// Sayfa çizilmeden temayı <html data-theme>'ya yazar (titreme olmaz). Head'de bloklayan
-// harici dosya: CSP script-src 'self' satır içi script'e izin vermez.
 (function () {
   var t = null;
   try {

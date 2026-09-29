@@ -1,19 +1,16 @@
 ---
-// Tasarım dili örnekleri. Yalnızca `npm run dev`'de var: build'de hiç sayfa üretmez.
 import Base from '../layouts/Base.astro';
 
 export function getStaticPaths() {
   return import.meta.env.DEV ? [{ params: { design: 'design' } }] : [];
 }
 
-// Tailwind sınıfları derleme anında taranır: adlar tam yazılmalı, birleştirilemez.
 const colors = [
   ['bg', 'bg-bg'], ['side', 'bg-side'], ['card', 'bg-card'], ['code', 'bg-code'],
   ['sleeve', 'bg-sleeve'], ['line', 'bg-line'], ['line-strong', 'bg-line-strong'], ['text', 'bg-text'],
   ['text-body', 'bg-text-body'], ['muted', 'bg-muted'], ['faint', 'bg-faint'], ['accent', 'bg-accent'],
 ];
 ---
-
 <Base title="Design — yakar.me">
   <div class="flex flex-col gap-24 px-6 py-16 desk:px-24">
     <section class="flex flex-col gap-6">

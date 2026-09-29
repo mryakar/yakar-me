@@ -1,7 +1,5 @@
-// Sätteri (Astro 7'nin Markdown işleyicisi) için siteye özgü eklentiler.
 import { defineHastPlugin, defineMdastPlugin } from 'satteri';
 
-/** İçerikte ham HTML varsa build kırılır (OWASP A05). Metin olarak gerekiyorsa `\<` ile kaçırılır. */
 export const noRawHtml = defineMdastPlugin({
   name: 'no-raw-html',
   html(node, ctx) {
@@ -14,11 +12,6 @@ type Hast = { type: string; tagName?: string; value?: string; properties?: Recor
 const copy = <T>(node: T): T => JSON.parse(JSON.stringify(node));
 const blank = (n: Hast | undefined) => n?.type === 'text' && !n.value?.trim();
 
-/**
- * - Başlığı (title) olan tek başına görsel → <figure> + <figcaption>
- * - "TL;DR" başlığı + ardından gelen liste → <section class="tldr">
- * - "In short" başlığı + ardından gelen liste → <aside class="in-short">
- */
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
   element: {
@@ -48,7 +41,6 @@ export const articleBlocks = defineHastPlugin({
       while (blank(siblings[j])) j++;
       const list = siblings[j];
       if (list?.tagName !== 'ul' && list?.tagName !== 'ol') return;
-      // Düğümler taşınamıyor: kopyası sarmalayıcıya, özgün liste sonra silinir.
       ctx.replaceNode(node, {
         type: 'element',
         tagName: label === 'tl;dr' ? 'section' : 'aside',

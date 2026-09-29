@@ -1,12 +1,10 @@
 ---
-// Masaüstü: solda sabit menü.
 import ThemeToggle from './ThemeToggle.astro';
 import { site, nav, links } from '../site';
 import { isCurrent } from '../lib/nav';
 
 const path = Astro.url.pathname;
 ---
-
 <aside class="hidden w-62 flex-none border-r border-line bg-side desk:block">
   <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
     <div class="flex flex-col gap-1.5">

@@ -5,7 +5,6 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
-// Gerçek desen listesi yalnız CI secret'ında; burada zararsız bir test deseni kullanılır.
 const SCRIPT = resolve('scripts/content-policy.sh');
 const DENY = 'forbidden-word\n\\bZ[0-9]{1,2}\\b';
 
