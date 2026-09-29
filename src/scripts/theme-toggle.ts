@@ -1,5 +1,6 @@
 // Tema düğmesi: koyu ↔ açık. Seçim localStorage'da saklanır; erişilemezse yalnızca bu sayfada geçerli.
 const root = document.documentElement;
+let timer = 0;
 
 function current(): 'light' | 'dark' {
   return root.dataset.theme === 'light' ? 'light' : 'dark';
@@ -14,6 +15,11 @@ for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-t
   label(button);
   button.addEventListener('click', () => {
     const next = current() === 'dark' ? 'light' : 'dark';
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.classList.add('theme-switching');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => root.classList.remove('theme-switching'), 450);
+    }
     root.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);

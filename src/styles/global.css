@@ -296,3 +296,15 @@
     }
   }
 }
+
+/* Tema geçişi: yalnız düğmeye basılınca (theme-toggle.ts sınıfı ~450ms tutar). Katman dışında: Tailwind'in
+   transition-* sınıflarını geçer. Sayfa açılışında ve gezinmede geçiş yok; azaltılmış harekette sınıf eklenmez. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition-property: background-color, color, border-color, fill, stroke, text-decoration-color, box-shadow !important;
+  transition-duration: 0.4s !important;
+  transition-timing-function: ease !important;
+  transition-delay: 0s !important;
+}
