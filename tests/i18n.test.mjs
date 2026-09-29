@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { langPaths, localize, other, splitPath } from '../src/lib/i18n.ts';
-import { ui } from '../src/i18n/ui.ts';
+import { bilingual, ui } from '../src/i18n/ui.ts';
 
 test('localize: İngilizce kökte, Türkçe /tr/ önekiyle', () => {
   assert.equal(localize('/', 'en'), '/');
@@ -38,8 +38,34 @@ test('arayüz sözlüğü: iki dilde aynı anahtarlar, boş metin yok', () => {
   for (const item of now) assert.ok(item.label && item.rest);
 });
 
-test('çeviri etiketi: özgün dil kodu ve adı', () => {
-  assert.equal(ui.tr.translated.label('en'), 'Çeviri · EN');
-  assert.equal(ui.tr.translated.title('en'), 'İngilizceden çevrildi — özgün sürümü oku');
-  assert.equal(ui.en.translated.title('tr'), 'Translated from Turkish — read the original');
+test('çeviri etiketi ve öneri şeridi: her iki dilde İngilizce, iki yönde', () => {
+  assert.equal(bilingual.translated.label('en'), 'Translated · EN');
+  assert.equal(bilingual.translated.title('en'), 'Translated from English — read the original');
+  assert.equal(bilingual.translated.title('tr'), 'Translated from Turkish — read the original');
+  assert.equal(bilingual.hint.text('tr'), 'This page is also available in Turkish.');
+  assert.equal(bilingual.hint.link('tr'), 'Read in Turkish');
+  assert.equal(bilingual.hint.link('en'), 'Read in English');
+});
+
+test('langItemPaths: her dil için öğe yolları, dil öneki parametrede', async () => {
+  const { langItemPaths } = await import('../src/lib/i18n.ts');
+  const paths = await langItemPaths(async (lang) => (lang === 'en' ? ['a', 'b'] : ['a']), (id) => ({ slug: id }));
+  assert.deepEqual(paths, [
+    { params: { lang: undefined, slug: 'a' }, props: { lang: 'en', item: 'a' } },
+    { params: { lang: undefined, slug: 'b' }, props: { lang: 'en', item: 'b' } },
+    { params: { lang: 'tr', slug: 'a' }, props: { lang: 'tr', item: 'a' } },
+  ]);
+});
+
+test('navLinks: dile göre adres ve etiket; ana sayfa yalnız kendisinde güncel', async () => {
+  const { navLinks } = await import('../src/lib/nav.ts');
+  const tr = navLinks('/tr/writing/x/', 'tr');
+  assert.deepEqual(tr.map((l) => [l.href, l.label, l.current]), [
+    ['/tr/', 'Ana sayfa', false],
+    ['/tr/writing/', 'Yazılar', true],
+    ['/tr/photos/', 'Fotoğraflar', false],
+    ['/tr/about/', 'Hakkımda', false],
+  ]);
+  assert.equal(navLinks('/', 'en')[0].current, true);
+  assert.equal(navLinks('/about/', 'en')[0].current, false);
 });

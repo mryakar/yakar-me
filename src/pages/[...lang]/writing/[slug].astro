@@ -3,21 +3,14 @@ import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
-import { langPaths, type Lang } from '../../../lib/i18n';
+import { langItemPaths, type Lang } from '../../../lib/i18n';
 import { articles, type Article } from '../../../lib/writing';
 import { articlePath, formatDate, isoDate, readingMinutes } from '../../../lib/format';
 import { isSummaryHeading } from '../../../lib/markdown';
 
-export async function getStaticPaths() {
-  const paths = await Promise.all(
-    langPaths().map(async ({ params, props: { lang } }) =>
-      (await articles(lang)).map((article) => ({ params: { ...params, slug: article.id }, props: { lang, article } })),
-    ),
-  );
-  return paths.flat();
-}
+export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
 
-const { lang, article } = Astro.props as { lang: Lang; article: Article };
+const { lang, item: article } = Astro.props as { lang: Lang; item: Article };
 const t = ui[lang].writing;
 const { title, description, pubDate, topic, mediumUrl } = article;
 const { Content, headings } = await render(article.entry);
@@ -34,7 +27,7 @@ for (const h of headings) {
     <header class="flex max-w-240 flex-col gap-7">
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
         <span class="label text-accent">{t.topics[topic]}</span>
-        {article.original !== lang && <TranslatedBadge lang={lang} original={article.original} href={articlePath(article.id, article.original)} />}
+        {article.original !== lang && <TranslatedBadge original={article.original} href={articlePath(article.id, article.original)} />}
       </div>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
       <p class="max-w-180 font-body text-2xl leading-snug text-muted italic">{description}</p>

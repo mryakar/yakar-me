@@ -6,20 +6,13 @@ import PhotoPanel from '../../../components/PhotoPanel.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
-import { langPaths, localize, type Lang } from '../../../lib/i18n';
+import { langItemPaths, localize, type Lang } from '../../../lib/i18n';
 import { allSeries, largest, photoSlug, type Series } from '../../../lib/photos';
 import { imageObject, jsonLd, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
 
-export async function getStaticPaths() {
-  const paths = await Promise.all(
-    langPaths().map(async ({ params, props: { lang } }) =>
-      (await allSeries(lang)).map((series) => ({ params: { ...params, series: series.id }, props: { lang, series } })),
-    ),
-  );
-  return paths.flat();
-}
+export const getStaticPaths = () => langItemPaths(allSeries, (series) => ({ series: series.id }));
 
-const { lang, series } = Astro.props as { lang: Lang; series: Series };
+const { lang, item: series } = Astro.props as { lang: Lang; item: Series };
 const t = ui[lang].photos;
 const { title, description, photos } = series;
 const { Content } = await render(series.entry);
@@ -47,7 +40,7 @@ const structured = jsonLd({
         <nav aria-label={t.breadcrumb} class="label text-faint">
           <a href={localize('/photos/', lang)} class="transition-colors duration-200 hover:text-accent">{ui[lang].nav.photos}</a> / {title}
         </nav>
-        {series.original !== lang && <TranslatedBadge lang={lang} original={series.original} href={seriesPath(series.id, series.original)} />}
+        {series.original !== lang && <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />}
       </div>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
       <div class="prose max-w-155 text-muted">

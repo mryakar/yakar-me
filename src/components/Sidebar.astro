@@ -1,9 +1,9 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
-import { site, nav, links } from '../site';
+import { site, links } from '../site';
 import { ui } from '../i18n/ui';
-import { isCurrent } from '../lib/nav';
+import { navLinks } from '../lib/nav';
 import { localize, type Lang } from '../lib/i18n';
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
 }
 const { lang, switchTo } = Astro.props;
 const t = ui[lang];
-const path = Astro.url.pathname;
 const home = localize('/', lang);
+const items = navLinks(Astro.url.pathname, lang);
 ---
 <aside class="hidden w-62 flex-none border-r border-line bg-side desk:block">
   <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
@@ -22,14 +22,14 @@ const home = localize('/', lang);
       <span class="label text-faint">{site.domain}</span>
     </div>
     <nav aria-label={t.mainNav} class="flex flex-col gap-0.5">
-      {nav.map((item) => (
+      {items.map((item) => (
         <a
-          href={localize(item.href, lang)}
-          aria-current={isCurrent(path, localize(item.href, lang), home) ? 'page' : undefined}
+          href={item.href}
+          aria-current={item.current ? 'page' : undefined}
           class="group flex min-h-10 items-center gap-3 text-base text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text"
         >
           <span class="size-[5px] rounded-full transition-colors duration-200 group-hover:bg-line-strong group-aria-[current=page]:bg-accent" />
-          <span>{t.nav[item.key]}</span>
+          <span>{item.label}</span>
         </a>
       ))}
     </nav>

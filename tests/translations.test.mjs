@@ -37,3 +37,13 @@ test('listede var olmayan ya da biçimsiz yol kırar', () => {
 test('bekleme listesi: yinelenen yol yok', () => {
   assert.equal(new Set(pending).size, pending.length);
 });
+
+test('localized: bekleyen düşer, çeviri seçilir, öbür dilde karşılık bilgisi', async () => {
+  const { localized } = await import('../src/lib/translations.ts');
+  const originals = [{ id: 'a', lang: 'en' }, { id: 'b', lang: 'en' }];
+  const translations = [{ id: 'a/tr', text: 'A' }];
+  const tr = localized('writing', originals, (o) => o.lang, translations, 'tr', ['/writing/b/']);
+  assert.deepEqual(tr, [{ original: originals[0], translation: translations[0], alternate: true }]);
+  const en = localized('writing', originals, (o) => o.lang, translations, 'en', ['/writing/b/']);
+  assert.deepEqual(en.map((x) => [x.original.id, x.translation, x.alternate]), [['a', undefined, true], ['b', undefined, false]]);
+});

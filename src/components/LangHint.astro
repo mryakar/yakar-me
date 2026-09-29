@@ -1,15 +1,18 @@
 ---
-import { ui } from '../i18n/ui';
+import { bilingual } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
 
 interface Props {
   href: string;
+  target: Lang;
 }
-const t = ui.tr.hint;
+const { href, target } = Astro.props;
+const t = bilingual.hint;
 ---
-<div data-lang-hint hidden lang="tr" class="flex items-center justify-between gap-4 border-b border-line bg-side py-2 pr-3 pl-6 text-sm text-muted desk:pl-24">
+<div data-lang-hint={target} hidden lang="en" class="flex items-center justify-between gap-4 border-b border-line bg-side py-2 pr-3 pl-6 text-sm text-muted desk:pl-24">
   <p>
-    {t.text}{' '}
-    <a href={Astro.props.href} hreflang="tr" class="text-accent">{t.link} →</a>
+    {t.text(target)}{' '}
+    <a href={href} hreflang={target} class="text-accent">{t.link(target)} →</a>
   </p>
   <button type="button" data-lang-hint-close aria-label={t.close} class="inline-flex size-11 flex-none items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-text">
     <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"></path></svg>

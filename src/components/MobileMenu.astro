@@ -1,9 +1,9 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
-import { site, nav, links } from '../site';
+import { site, links } from '../site';
 import { ui } from '../i18n/ui';
-import { isCurrent } from '../lib/nav';
+import { navLinks } from '../lib/nav';
 import { localize, type Lang } from '../lib/i18n';
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
 }
 const { lang, switchTo } = Astro.props;
 const t = ui[lang];
-const path = Astro.url.pathname;
 const home = localize('/', lang);
+const items = navLinks(Astro.url.pathname, lang);
 const roundButton = 'inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text';
 ---
 <header class="flex items-center justify-between px-6 py-5 desk:hidden">
@@ -31,14 +31,14 @@ const roundButton = 'inline-flex size-11 items-center justify-center rounded-ful
     </button>
   </div>
   <nav aria-label={t.mainNav} class="mt-14 flex flex-col">
-    {nav.map((item, i) => (
+    {items.map((item, i) => (
       <a
-        href={localize(item.href, lang)}
-        aria-current={isCurrent(path, localize(item.href, lang), home) ? 'page' : undefined}
+        href={item.href}
+        aria-current={item.current ? 'page' : undefined}
         class="flex min-h-16 items-baseline gap-4 border-b border-line py-2 aria-[current=page]:text-accent"
       >
         <span class="label text-faint">{String(i + 1).padStart(2, '0')}</span>
-        <span class="font-display text-d3">{t.nav[item.key]}</span>
+        <span class="font-display text-d3">{item.label}</span>
       </a>
     ))}
   </nav>

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { markdownToHtml } from 'satteri';
 import { noRawHtml, articleBlocks, isSummaryHeading } from '../src/lib/markdown.ts';
 
-const render = async (md) => (await markdownToHtml(md, { mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] })).html;
+const render = async (md) => markdownToHtml(md, { mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] }).html;
 
 test('ham HTML build\'i kırar', async () => {
   await assert.rejects(render('Hello <script>alert(1)</script>'), /Raw HTML is not allowed/);

@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import LangHint from '../components/LangHint.astro';
 import { ui } from '../i18n/ui';
-import { localize, other, splitPath, type Lang } from '../lib/i18n';
+import { defaultLang, localize, locales, other, splitPath, type Lang } from '../lib/i18n';
 
 interface Props {
   lang: Lang;
@@ -17,7 +17,7 @@ interface Props {
 }
 const { lang, title, description = ui[lang].description, article, counterpart = true, notFound = false } = Astro.props;
 const { path } = splitPath(Astro.url.pathname);
-const alternates = counterpart && !notFound ? (['en', 'tr'] as const).map((l) => ({ lang: l, href: localize(path, l) })) : [];
+const alternates = counterpart && !notFound ? locales.map((l) => ({ lang: l, href: localize(path, l) })) : [];
 const switchTo = notFound ? localize('/', other(lang)) : counterpart ? localize(path, other(lang)) : undefined;
 ---
 <!doctype html>
@@ -31,7 +31,7 @@ const switchTo = notFound ? localize('/', other(lang)) : counterpart ? localize(
       <Sidebar lang={lang} switchTo={switchTo} />
       <MobileMenu lang={lang} switchTo={switchTo} />
       <main id="main" class="min-w-0 flex-1">
-        {lang === 'en' && switchTo && !notFound && <LangHint href={switchTo} />}
+        {lang === defaultLang && switchTo && !notFound && <LangHint href={switchTo} target={other(lang)} />}
         <slot />
       </main>
     </div>

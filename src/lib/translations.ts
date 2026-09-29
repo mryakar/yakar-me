@@ -1,4 +1,4 @@
-import { isLang, type Lang } from './i18n.ts';
+import { isLang, other, type Lang } from './i18n.ts';
 
 export type Section = 'writing' | 'photos';
 export type Status = 'original' | 'translated' | 'pending';
@@ -37,4 +37,25 @@ export function translationStatus(
     else throw new Error(`${contentPath(section, o.id)} has no ${lang} translation — add ${o.id}/${lang}.md or list it as pending`);
   }
   return status;
+}
+
+export function localized<O extends { id: string }, T extends { id: string }>(
+  section: Section,
+  originals: O[],
+  langOf: (original: O) => Lang,
+  translations: T[],
+  lang: Lang,
+  pending: readonly string[],
+) {
+  const keys = originals.map((o) => ({ id: o.id, lang: langOf(o) }));
+  const ids = translations.map((t) => t.id);
+  const here = translationStatus(section, keys, ids, lang, pending);
+  const there = translationStatus(section, keys, ids, other(lang), pending);
+  return originals
+    .filter((o) => here.get(o.id) !== 'pending')
+    .map((original) => ({
+      original,
+      translation: here.get(original.id) === 'translated' ? translations.find((t) => t.id === `${original.id}/${lang}`) : undefined,
+      alternate: there.get(original.id) !== 'pending',
+    }));
 }

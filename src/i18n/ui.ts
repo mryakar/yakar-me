@@ -19,11 +19,6 @@ const en = {
   email: 'Email',
   theme: { dark: 'Dark', light: 'Light', toggle: 'Switch colour theme', toDark: 'Switch to dark theme', toLight: 'Switch to light theme' },
   languageName: 'English',
-  hint: { text: 'This page is also available in English.', link: 'Read in English', close: 'Close' },
-  translated: {
-    label: (from: Lang) => `Translated · ${from.toUpperCase()}`,
-    title: (from: Lang) => `Translated from ${{ en: 'English', tr: 'Turkish' }[from]} — read the original`,
-  },
   home: {
     title: 'yakar.me',
     hero: ['Code, a saxophone, and a habit of taking the long way ', 'round', '.'],
@@ -108,11 +103,6 @@ const tr: Dict = {
   email: 'E-posta',
   theme: { dark: 'Koyu', light: 'Açık', toggle: 'Renk temasını değiştir', toDark: 'Koyu temaya geç', toLight: 'Açık temaya geç' },
   languageName: 'Türkçe',
-  hint: { text: 'Bu sayfanın Türkçesi var.', link: 'Türkçe oku', close: 'Kapat' },
-  translated: {
-    label: (from) => `Çeviri · ${from.toUpperCase()}`,
-    title: (from) => `${{ en: 'İngilizceden', tr: 'Türkçeden' }[from]} çevrildi — özgün sürümü oku`,
-  },
   home: {
     title: 'yakar.me',
     hero: ['Kod, bir saksafon ve hep uzun yoldan ', 'dolaşma', ' alışkanlığı.'],
@@ -205,10 +195,24 @@ const tr: Dict = {
       'recipe value',
       /^(DR\d+|\d+K)$/,
     ),
-    country: lookup({ 'Hong Kong': 'Hong Kong', Thailand: 'Tayland', China: 'Çin', Japan: 'Japonya' }, 'country name'),
+    country: lookup({ 'Hong Kong': 'Hong Kong', Thailand: 'Tayland' }, 'country name'),
   },
   about: { title: 'Hakkımda — yakar.me', description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
   notFound: { title: 'Bulunamadı — yakar.me', heading: 'Sayfa bulunamadı', back: 'Ana sayfaya dön' },
 };
 
 export const ui: Record<Lang, Dict> = { en, tr };
+
+const languageNames: Record<Lang, string> = { en: 'English', tr: 'Turkish' };
+
+export const bilingual = {
+  hint: {
+    text: (target: Lang) => `This page is also available in ${languageNames[target]}.`,
+    link: (target: Lang) => `Read in ${languageNames[target]}`,
+    close: 'Close',
+  },
+  translated: {
+    label: (from: Lang) => `Translated · ${from.toUpperCase()}`,
+    title: (from: Lang) => `Translated from ${languageNames[from]} — read the original`,
+  },
+};

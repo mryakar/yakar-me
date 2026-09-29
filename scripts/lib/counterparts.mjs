@@ -1,6 +1,7 @@
 import { defaultLang, localize, locales, splitPath } from '../../src/lib/i18n.ts';
+import { site } from '../../src/site.ts';
 
-export const ORIGIN = 'https://yakar.me';
+export const ORIGIN = site.url;
 
 export function pagePath(rel) {
   const p = rel.split('\\').join('/');

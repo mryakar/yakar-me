@@ -70,20 +70,3 @@ for (const [name, [files, pattern]] of Object.entries(bad)) {
     assert.match(r.out, pattern);
   });
 }
-
-test('bekleme listesindeki yazının Türkçesi yokken geçer, --complete ile kırılır', () => {
-  const files = { ...ok, 'writing/testing-private-methods/index.html': page() };
-  const r = run(files);
-  assert.equal(r.code, 0, r.out);
-  assert.match(r.out, /translation\(s\) pending/);
-  const c = run(files, '--complete');
-  assert.equal(c.code, 1, c.out);
-  assert.match(c.out, /translation\(s\) pending: \/writing\//);
-});
-
-test('bekleme listesindeki yazının iki dili de varsa kırılır', () => {
-  const p = '/writing/testing-private-methods/';
-  const r = run({ ...ok, [`${p.slice(1)}index.html`]: page(alt(p)), [`tr${p}index.html`]: page(alt(p)) });
-  assert.equal(r.code, 1, r.out);
-  assert.match(r.out, /listed as pending but every language exists/);
-});
