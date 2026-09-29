@@ -1,5 +1,5 @@
 ---
-// Plak rafı: konu başına bir raf, yazılar tarihe göre. Masaüstünde üzerine gelinen kılıf yükselir ve
+// Plak rafı: konu başına bir raf, yazılar yeniden eskiye (soldan sağa). Masaüstünde üzerine gelinen kılıf yükselir ve
 // yandaki panel o yazıyı gösterir (shelf.ts yalnızca `hidden` değiştirir). Script yoksa panel en yeniyi gösterir.
 import { topics, formatDate, formatMonth, type Article } from '../lib/writing';
 
@@ -9,7 +9,7 @@ interface Props {
 const { articles } = Astro.props;
 const latest = articles[0];
 const byTopic = topics
-  .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic).reverse() }))
+  .map((topic) => ({ topic, items: articles.filter((a) => a.data.topic === topic) })) // en yeni solda
   .filter((s) => s.items.length > 0);
 ---
 

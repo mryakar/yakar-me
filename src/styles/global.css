@@ -239,7 +239,7 @@
     border-radius: 3px;
     background: var(--yk-sleeve);
     border: 1px solid var(--yk-line);
-    box-shadow: -14px 0 28px -14px var(--yk-shadow);
+    box-shadow: 14px 0 28px -14px var(--yk-shadow);
     transition:
       transform 0.45s var(--ease-out-soft),
       opacity 0.35s ease,
@@ -248,14 +248,22 @@
   .sleeve:first-child {
     margin-left: 0;
   }
-  /* Sonraki kılıf 2.1/3.5rem üstüne biner: metin görünen şeritte kalır (en sağdaki ve yükselen hariç). */
-  .sleeve:not(:last-child) > * {
-    max-width: calc(100% - 1.6rem);
-  }
-  .sleeve:hover > *,
-  .sleeve:focus-visible > *,
-  .sleeve[aria-current] > * {
-    max-width: none;
+  /* En yeni (soldaki) en üstte: her kılıf sağındakinin üstüne biner. Katman sırası CSS'te (satır içi stil yok). */
+  .sleeve:nth-child(1) { z-index: 16; }
+  .sleeve:nth-child(2) { z-index: 15; }
+  .sleeve:nth-child(3) { z-index: 14; }
+  .sleeve:nth-child(4) { z-index: 13; }
+  .sleeve:nth-child(5) { z-index: 12; }
+  .sleeve:nth-child(6) { z-index: 11; }
+  .sleeve:nth-child(7) { z-index: 10; }
+  .sleeve:nth-child(8) { z-index: 9; }
+  .sleeve:nth-child(9) { z-index: 8; }
+  .sleeve:nth-child(10) { z-index: 7; }
+  .sleeve:nth-child(11) { z-index: 6; }
+  .sleeve:nth-child(12) { z-index: 5; }
+  /* Soldaki kılıf bunun sol kenarını örter: metin görünen sağ şeritte */
+  .sleeve:not(:first-child) {
+    padding-left: calc(2.1rem + 0.875rem);
   }
   .shelf:hover .sleeve {
     opacity: 0.5;
@@ -266,7 +274,7 @@
     opacity: 1;
     transform: translateY(-1.625rem);
     border-color: color-mix(in srgb, var(--yk-accent) 55%, transparent);
-    z-index: 5;
+    z-index: 30;
   }
   @media (width >= 64rem) {
     .shelf {
@@ -278,13 +286,8 @@
       margin-left: -3.5rem;
       padding: 1.125rem;
     }
-    .sleeve:not(:last-child) > * {
-      max-width: calc(100% - 3rem);
-    }
-    .sleeve:hover > *,
-    .sleeve:focus-visible > *,
-    .sleeve[aria-current] > * {
-      max-width: none;
+    .sleeve:not(:first-child) {
+      padding-left: calc(3.5rem + 1.125rem);
     }
   }
   @media (prefers-reduced-motion: reduce) {
