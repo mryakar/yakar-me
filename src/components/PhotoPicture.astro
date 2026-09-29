@@ -1,0 +1,29 @@
+---
+import { variantPath } from '../lib/photo';
+import { smallestAtLeast, type Photo } from '../lib/photos';
+
+interface Props {
+  photo: Photo;
+  sizes: string;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+const { photo, sizes, loading = 'lazy', class: className } = Astro.props;
+const { avif, webp } = photo.data.variants;
+const srcset = (variants: typeof webp) => variants.map((v) => `${variantPath(v.file)} ${v.width}w`).join(', ');
+const fallback = smallestAtLeast(webp, 1280);
+---
+<picture>
+  <source type="image/avif" srcset={srcset(avif)} sizes={sizes} />
+  <img
+    src={variantPath(fallback.file)}
+    srcset={srcset(webp)}
+    sizes={sizes}
+    width={fallback.width}
+    height={fallback.height}
+    alt={photo.data.alt}
+    loading={loading}
+    decoding="async"
+    class={className}
+  />
+</picture>

@@ -1,13 +1,17 @@
 import type { APIRoute } from 'astro';
 import { articles } from '../lib/writing';
 import { articlePath, isoDate } from '../lib/format';
+import { allSeries } from '../lib/photos';
+import { seriesPath } from '../lib/photo';
 
 export const GET: APIRoute = async ({ site: origin }) => {
   const base = origin!.toString().replace(/\/$/, '');
   const all = await articles();
+  const series = await allSeries();
   const urls = [
     { loc: '/', lastmod: all[0]?.data.pubDate },
     { loc: '/writing/', lastmod: all[0]?.data.pubDate },
+    ...(series.length ? [{ loc: '/photos/' }, ...series.map((s) => ({ loc: seriesPath(s.series.id) }))] : []),
     { loc: '/about/' },
     ...all.map((a) => ({ loc: articlePath(a.id), lastmod: a.data.pubDate })),
   ];
