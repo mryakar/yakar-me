@@ -2,8 +2,12 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { inspectImage } from './lib/image-meta.mjs';
 import { sha256, variantIndex } from './lib/photo-store.mjs';
+import { ORIGIN, counterpartErrors, pagePath } from './lib/counterparts.mjs';
+import { pending } from '../src/i18n/pending.ts';
 
-const dist = process.argv[2] ?? 'dist';
+const args = process.argv.slice(2);
+const dist = args.find((a) => !a.startsWith('--')) ?? 'dist';
+const complete = args.includes('--complete');
 const files = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)],
@@ -18,8 +22,11 @@ const resolves = (path) => {
   return [base, join(base, 'index.html'), `${base}.html`].some((f) => existsSync(f) && statSync(f).isFile());
 };
 
+const pages = new Map();
 for (const file of all.filter((f) => f.endsWith('.html'))) {
   const html = readFileSync(file, 'utf8');
+  const page = pagePath(relative(dist, file));
+  if (page) pages.set(page, html);
 
   for (const [tag, attrs, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
     if (/\ssrc=/i.test(attrs)) continue;
@@ -53,7 +60,13 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   for (const [, href] of html.matchAll(/<a\b[^>]*\shref="([^"]*)"/gi)) {
     if (href.startsWith('/') && !href.startsWith('//') && !resolves(href)) fail(file, `broken link: ${href}`);
   }
+
+  for (const [, image] of html.matchAll(/<meta\s+property="og:image"\s+content="([^"]*)"/gi)) {
+    if (!image.startsWith(`${ORIGIN}/`) || !resolves(new URL(image).pathname)) fail(file, `og:image not in the build: ${image}`);
+  }
 }
+
+for (const e of counterpartErrors(pages, pending, { complete })) errors.push(e);
 
 for (const file of all.filter((f) => f.endsWith('.css'))) {
   for (const [, url] of readFileSync(file, 'utf8').matchAll(/url\(\s*['"]?([^'")]+)/gi)) {
@@ -81,3 +94,4 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✓ ${dist}/: ${all.length} files, no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
+console.log(`✓ ${pages.size} pages, every language has its counterpart${pending.length ? ` (${pending.length} translation(s) pending)` : ''}`);

@@ -1,34 +1,47 @@
 ---
 import { render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import { articles, type Article } from '../../lib/writing';
-import { formatDate, isoDate, readingMinutes } from '../../lib/format';
+import Base from '../../../layouts/Base.astro';
+import TranslatedBadge from '../../../components/TranslatedBadge.astro';
+import { ui } from '../../../i18n/ui';
+import { langPaths, type Lang } from '../../../lib/i18n';
+import { articles, type Article } from '../../../lib/writing';
+import { articlePath, formatDate, isoDate, readingMinutes } from '../../../lib/format';
+import { isSummaryHeading } from '../../../lib/markdown';
 
 export async function getStaticPaths() {
-  return (await articles()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const paths = await Promise.all(
+    langPaths().map(async ({ params, props: { lang } }) =>
+      (await articles(lang)).map((article) => ({ params: { ...params, slug: article.id }, props: { lang, article } })),
+    ),
+  );
+  return paths.flat();
 }
 
-const { entry } = Astro.props as { entry: Article };
-const { title, description, pubDate, topic, mediumUrl } = entry.data;
-const { Content, headings } = await render(entry);
+const { lang, article } = Astro.props as { lang: Lang; article: Article };
+const t = ui[lang].writing;
+const { title, description, pubDate, topic, mediumUrl } = article;
+const { Content, headings } = await render(article.entry);
 type Entry = { slug: string; text: string; children: { slug: string; text: string }[] };
 const toc: Entry[] = [];
 for (const h of headings) {
-  if (h.text.trim().toLowerCase() === 'in short') continue;
+  if (isSummaryHeading(h.text)) continue;
   if (h.depth === 2) toc.push({ slug: h.slug, text: h.text, children: [] });
   else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
 }
 ---
-<Base title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: topic }}>
+<Base lang={lang} title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: t.topics[topic] }} counterpart={article.alternate}>
   <article class="mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="flex max-w-240 flex-col gap-7">
-      <span class="label text-accent">{topic}</span>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span class="label text-accent">{t.topics[topic]}</span>
+        {article.original !== lang && <TranslatedBadge lang={lang} original={article.original} href={articlePath(article.id, article.original)} />}
+      </div>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
       <p class="max-w-180 font-body text-2xl leading-snug text-muted italic">{description}</p>
       <div class="flex flex-wrap items-center gap-x-7 gap-y-2 border-t border-line pt-5 text-sm text-muted">
-        <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
-        <span>{readingMinutes(entry.body)} min read</span>
-        <a href={mediumUrl} class="transition-colors duration-200 hover:text-accent">Also on Medium ↗</a>
+        <time datetime={isoDate(pubDate)}>{formatDate(pubDate, 'long', lang)}</time>
+        <span>{t.minRead(readingMinutes(article.entry.body))}</span>
+        <a href={mediumUrl} class="transition-colors duration-200 hover:text-accent">{t.medium}</a>
       </div>
     </header>
 
@@ -37,8 +50,8 @@ for (const h of headings) {
         <Content />
       </div>
       {toc.length > 0 && (
-        <nav aria-label="Contents" class="sticky top-12 hidden max-h-[calc(100dvh-6rem)] flex-col gap-1 overflow-y-auto desk:flex">
-          <span class="label pb-2.5 text-faint">Contents</span>
+        <nav aria-label={t.contents} class="sticky top-12 hidden max-h-[calc(100dvh-6rem)] flex-col gap-1 overflow-y-auto desk:flex">
+          <span class="label pb-2.5 text-faint">{t.contents}</span>
           <ul class="flex flex-col">
             {toc.map((h) => (
               <li>

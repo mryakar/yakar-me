@@ -13,6 +13,17 @@ test('formatDate: uzun ve kısa; eylül "Sep" (en-GB "Sept" değil)', () => {
   assert.equal(formatDate(d, 'short'), '16 Sep 2026');
 });
 
+test('Türkçe tarih: uzun, kısa, ay', () => {
+  assert.equal(formatDate(d, 'long', 'tr'), '16 Eylül 2026');
+  assert.equal(formatDate(new Date('2022-04-15T00:00:00Z'), 'long', 'tr'), '15 Nisan 2022');
+  assert.equal(formatDate(new Date('2026-02-03T00:00:00Z'), 'short', 'tr'), '3 Şub 2026');
+  assert.equal(formatMonth(new Date('2026-08-01T00:00:00Z'), 'tr'), 'Ağu 2026');
+});
+
+test('articlePath: Türkçe önek', () => {
+  assert.equal(articlePath('explicit-locking', 'tr'), '/tr/writing/explicit-locking/');
+});
+
 test('formatMonth ve isoDate', () => {
   assert.equal(formatMonth(d), 'Sep 2026');
   assert.equal(isoDate(d), '2026-09-16');

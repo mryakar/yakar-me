@@ -35,7 +35,7 @@ jobs:
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
         run: npm run photos:fetch
       - run: npm run build
-      - run: npm run check:dist
+      - run: npm run check:dist -- --complete
       - name: Output policy
         env:
           DENYLIST: ${{ secrets.CONTENT_DENYLIST }}
@@ -65,7 +65,7 @@ jobs:
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
         run: npm run photos:fetch
       - run: npm run build
-      - run: npm run check:dist
+      - run: npm run check:dist -- --complete
       - name: Output policy
         env:
           DENYLIST: ${{ secrets.CONTENT_DENYLIST }}

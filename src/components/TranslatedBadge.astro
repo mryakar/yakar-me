@@ -1,0 +1,18 @@
+---
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  original: Lang;
+  href: string;
+}
+const { lang, original, href } = Astro.props;
+const t = ui[lang].translated;
+---
+<a
+  href={href}
+  hreflang={original}
+  title={t.title(original)}
+  class="label inline-flex items-center self-start rounded-full border border-line-strong px-2.5 py-1 text-faint transition-colors duration-200 hover:border-accent hover:text-accent"
+>{t.label(original)}<span class="sr-only"> — {t.title(original)}</span></a>

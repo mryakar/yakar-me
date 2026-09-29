@@ -12,6 +12,9 @@ type Hast = { type: string; tagName?: string; value?: string; properties?: Recor
 const copy = <T>(node: T): T => JSON.parse(JSON.stringify(node));
 const blank = (n: Hast | undefined) => n?.type === 'text' && !n.value?.trim();
 
+const SUMMARY = ['in short', 'kısaca'];
+export const isSummaryHeading = (text: string) => SUMMARY.includes(text.trim().toLowerCase());
+
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
   element: {
@@ -34,8 +37,9 @@ export const articleBlocks = defineHastPlugin({
         } as never);
         return;
       }
-      const label = ctx.textContent(node).trim().toLowerCase();
-      if (label !== 'tl;dr' && label !== 'in short') return;
+      const text = ctx.textContent(node);
+      const tldr = text.trim().toLowerCase() === 'tl;dr';
+      if (!tldr && !isSummaryHeading(text)) return;
       const siblings = (ctx.parent(node) as unknown as Hast | undefined)?.children ?? [];
       let j = (ctx.indexOf(node) ?? -1) + 1;
       while (blank(siblings[j])) j++;
@@ -43,8 +47,8 @@ export const articleBlocks = defineHastPlugin({
       if (list?.tagName !== 'ul' && list?.tagName !== 'ol') return;
       ctx.replaceNode(node, {
         type: 'element',
-        tagName: label === 'tl;dr' ? 'section' : 'aside',
-        properties: { className: [label === 'tl;dr' ? 'tldr' : 'in-short'] },
+        tagName: tldr ? 'section' : 'aside',
+        properties: { className: [tldr ? 'tldr' : 'in-short'] },
         children: [copy(el), copy(list)],
       } as never);
       ctx.removeNode(list as never);

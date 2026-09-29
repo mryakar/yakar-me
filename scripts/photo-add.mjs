@@ -12,6 +12,7 @@ import {
   EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
 } from './lib/photo-record.mjs';
 import { aperture, focalLength, placeName, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
+import { ui } from '../src/i18n/ui.ts';
 
 const TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
 const USAGE = `Usage: npm run photo:add -- --series <slug> <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
@@ -171,7 +172,7 @@ line('Camera', shot.kind === 'fujifilm' ? `${shot.make} ${shot.model} · ${shot.
 line('Exposure', `${aperture(shot.aperture)}  ${shutter(shot.shutter)}  ISO ${shot.iso}  ${focalLength(shot)}`);
 if (shot.recipe) {
   line('Recipe', recipeSource);
-  for (const [label, value] of recipeRows(shot.recipe)) line('', `${label}: ${value}`);
+  for (const [key, value] of recipeRows(shot.recipe)) line('', `${ui.en.photos.recipeLabels[key]}: ${value}`);
 }
 line('Taken', shot.taken);
 line('Place', `${placeName(shot.place)} — published on the page; coordinates are not`);

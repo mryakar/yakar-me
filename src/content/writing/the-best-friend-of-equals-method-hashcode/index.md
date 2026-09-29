@@ -5,6 +5,7 @@ pubDate: 2023-10-30
 topic: Java
 short: "The Best Friend of equals()"
 mediumUrl: https://medium.com/havelsan/the-best-friend-of-equals-method-hashcode-79a8a352da15
+lang: en
 ---
 
 The **hashCode()** and **equals()** methods in Java Programming have a mutual contract and they also can’t function independently of one another; they are **interdependent**. This symbiotic relationship defines the core necessity for their concurrent and harmonious implementation within class definitions, as they serve complementary roles in object comparisons and hash-based data structures.

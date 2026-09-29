@@ -1,4 +1,9 @@
 ---
-import { tagline } from '../site';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
 ---
-<span class="font-mono text-[0.8125rem] tracking-[0.04em] text-accent">{tagline}</span>
+<span class="font-mono text-[0.8125rem] tracking-[0.04em] text-accent">{ui[Astro.props.lang].tagline}</span>
