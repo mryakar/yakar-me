@@ -10,7 +10,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: Article };
 const { title, description, pubDate, topic, mediumUrl } = entry.data;
 const { Content, headings } = await render(entry);
-const toc = headings.filter((h) => h.depth === 2);
+// İçindekiler: ## bölümler, altında ### alt başlıklar. "In short" kutuları başlık değil, özet.
+type Entry = { slug: string; text: string; children: { slug: string; text: string }[] };
+const toc: Entry[] = [];
+for (const h of headings) {
+  if (h.text.trim().toLowerCase() === 'in short') continue;
+  if (h.depth === 2) toc.push({ slug: h.slug, text: h.text, children: [] });
+  else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
+}
 ---
 
 <Base title={`${title} — yakar.me`} description={description} article={{ published: pubDate, section: topic }}>
@@ -31,14 +38,27 @@ const toc = headings.filter((h) => h.depth === 2);
         <Content />
       </div>
       {toc.length > 0 && (
-        <nav aria-label="Contents" class="sticky top-12 hidden flex-col gap-1 desk:flex">
+        <nav aria-label="Contents" class="sticky top-12 hidden max-h-[calc(100dvh-6rem)] flex-col gap-1 overflow-y-auto desk:flex">
           <span class="label pb-2.5 text-faint">Contents</span>
-          {toc.map((h) => (
-            <a href={`#${h.slug}`} class="group flex items-baseline gap-3 py-1.5 text-[13px] leading-snug text-muted transition-colors duration-200 hover:text-text">
-              <span class="h-px w-3 flex-none -translate-y-1 bg-line-strong transition-all duration-200 group-hover:w-5 group-hover:bg-accent" />
-              <span>{h.text}</span>
-            </a>
-          ))}
+          <ul class="flex flex-col">
+            {toc.map((h) => (
+              <li>
+                <a href={`#${h.slug}`} class="group flex items-baseline gap-3 py-1.5 text-[13px] leading-snug text-muted transition-colors duration-200 hover:text-text">
+                  <span class="h-px w-3 flex-none -translate-y-1 bg-line-strong transition-all duration-200 group-hover:w-5 group-hover:bg-accent" />
+                  <span>{h.text}</span>
+                </a>
+                {h.children.length > 0 && (
+                  <ul class="mb-1 ml-6 flex flex-col border-l border-line pl-3">
+                    {h.children.map((c) => (
+                      <li>
+                        <a href={`#${c.slug}`} class="block py-1 text-xs leading-snug text-faint transition-colors duration-200 hover:text-text">{c.text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
       )}
     </div>
