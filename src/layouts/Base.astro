@@ -23,6 +23,9 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
     <meta name="color-scheme" content="dark light" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script is:inline src="/theme.js"></script>
     <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={uiFont} as="font" type="font/woff2" crossorigin />

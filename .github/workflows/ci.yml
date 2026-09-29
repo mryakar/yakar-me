@@ -32,8 +32,10 @@ jobs:
           hit() { local rc=0; grep -qIiEf "$deny" "$@" || rc=$?; [ $rc -le 1 ] || { echo "::error::grep error $rc"; exit 2; }; return $rc; }
           fail=0
           git ls-files | hit && { echo "::error::file name"; fail=1; }
+          # Binary files: only their readable strings (metadata) are checked.
           for f in $(git ls-files | grep -v '^package-lock.json$'); do
-            hit "$f" && { echo "::error::content: $f"; fail=1; }
+            if grep -qI . "$f"; then hit "$f" && { echo "::error::content: $f"; fail=1; }
+            else strings -n 4 "$f" | hit && { echo "::error::content: $f"; fail=1; }; fi
           done
           for c in $(git rev-list HEAD); do
             git show -s --format='%an%n%ae%n%cn%n%ce%n%B' "$c" | hit && { echo "::error::commit $c"; fail=1; }

@@ -6,11 +6,12 @@ export const site = {
   description: 'Software engineer, writer and traveller. Java, distributed systems, and the mechanisms underneath.',
 };
 
-export const nav = [
+type NavItem = { href: string; label: string; tag?: string };
+
+export const nav: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/writing/', label: 'Writing' },
   { href: '/about/', label: 'About' },
-  { href: '/cv/', label: 'CV', tag: 'PDF' },
 ];
 
 export const links = [
