@@ -1,0 +1,15 @@
+// Saf statik Worker: kod yok, yalnızca build çıktısı yayınlanır (OWASP A01).
+// Alan adı (yakar.me, www yönlendirmesi) Cloudflare panelinde bağlıdır, burada `routes` yok:
+// böylece CI token'ı zone yetkisi olmadan yalnızca bu Worker'ı yayınlayabilir (A08).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yakar-me",
+  "compatibility_date": "2026-09-26",
+  // Site yalnızca yakar.me'den sunulur; *.workers.dev ve sürüm önizleme adresleri kapalı (A01, A02).
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

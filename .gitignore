@@ -1,0 +1,19 @@
+# Bağımlılıklar ve build çıktısı
+node_modules/
+dist/
+.astro/
+.wrangler/
+
+# Sırlar — repoya asla girmez (OWASP A01, A04)
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+
+# Yerel
+npm-debug.log*
+.DS_Store
+.idea/
+.vscode/
