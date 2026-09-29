@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { design: 'design' } }] : [];
+}
+
+const colors = [
+  ['bg', 'bg-bg'], ['side', 'bg-side'], ['card', 'bg-card'], ['code', 'bg-code'],
+  ['sleeve', 'bg-sleeve'], ['line', 'bg-line'], ['line-strong', 'bg-line-strong'], ['text', 'bg-text'],
+  ['text-body', 'bg-text-body'], ['muted', 'bg-muted'], ['faint', 'bg-faint'], ['accent', 'bg-accent'],
+];
+---
+<Base title="Design — yakar.me">
+  <div class="flex flex-col gap-24 px-6 py-16 desk:px-24">
+    <section class="flex flex-col gap-6">
+      <span class="label text-accent">Colour</span>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 desk:grid-cols-6">
+        {colors.map(([name, cls]) => (
+          <div class="flex flex-col gap-2">
+            <div class:list={['h-16 rounded border border-line', cls]} />
+            <span class="label text-faint">{name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-6">
+      <span class="label text-accent">Display — Instrument Serif</span>
+      <p class="font-display text-d1">What happens <em class="text-accent">between</em> threads</p>
+      <p class="font-display text-d2">d2 · 44px heading</p>
+      <p class="font-display text-d3">d3 · 40px section</p>
+      <p class="font-display text-d4">d4 · 32px — the floor</p>
+    </section>
+
+    <section class="flex max-w-170 flex-col gap-6">
+      <span class="label text-accent">Prose — Newsreader</span>
+      <p class="font-body text-2xl text-muted italic">Two ordinary UPDATEs are enough. What row locks actually do, and who decides which transaction dies.</p>
+      <p class="font-body text-prose text-text-body">No <code class="rounded border border-line bg-code px-1.5 py-0.5 font-mono text-[0.8em] text-text">LOCK TABLE</code>, no explicit lock statement of any kind — four ordinary <code class="rounded border border-line bg-code px-1.5 py-0.5 font-mono text-[0.8em] text-text">UPDATE</code>s. T1’s second statement blocks. Then T2 runs its second, and the database answers.</p>
+      <blockquote class="font-display text-d3 italic">Nobody asked for a lock. Postgres took them anyway.</blockquote>
+    </section>
+
+    <section class="flex max-w-170 flex-col gap-4">
+      <span class="label text-accent">Code — Geist Mono</span>
+      <pre class="overflow-x-auto rounded-md border border-line bg-code p-5 font-mono text-sm leading-7"><span class="text-accent">BEGIN</span>;
+<span class="text-accent">UPDATE</span> accounts SET balance = balance - 100 <span class="text-accent">WHERE</span> id = 100;
+<span class="text-faint">-- waits</span></pre>
+    </section>
+
+    <section class="flex flex-col gap-4">
+      <span class="label text-accent">UI — Geist</span>
+      <p class="text-[15px]">Menu item 15px · <span class="text-muted">muted</span> · <span class="text-faint">faint</span></p>
+      <p class="label text-faint">Label · 16 Sep 2026 · 20 min read</p>
+    </section>
+
+    {Array.from({ length: 4 }, (_, i) => (
+      <section class="reveal flex h-60 items-end rounded-md border border-line bg-card p-8">
+        <span class="font-display text-d4">Scroll reveal {i + 1}</span>
+      </section>
+    ))}
+  </div>
+</Base>

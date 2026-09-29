@@ -1,23 +1,33 @@
 ---
 import '../styles/global.css';
+import Head from '../components/Head.astro';
+import Sidebar from '../components/Sidebar.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import { site } from '../site';
 
 interface Props {
   title: string;
   description?: string;
+  article?: { published: Date; section: string };
 }
-
-const { title, description } = Astro.props;
+const { title, description = site.description, article } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <Head title={title} description={description} article={article} />
   </head>
-  <body>
-    <slot />
+  <body class="bg-bg text-text">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="min-h-dvh desk:flex">
+      <Sidebar />
+      <MobileMenu />
+      <main id="main" class="min-w-0 flex-1">
+        <slot />
+      </main>
+    </div>
+    <script>
+      import '../scripts/theme-toggle.ts';
+    </script>
   </body>
 </html>

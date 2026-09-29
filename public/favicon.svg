@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs>
+<linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#EBD29C"/><stop offset=".45" stop-color="#C8A465"/><stop offset="1" stop-color="#8E6E34"/>
+</linearGradient>
+<radialGradient id="ground" cx=".3" cy=".25" r="1">
+<stop offset="0" stop-color="#1C1D22"/><stop offset="1" stop-color="#08090A"/>
+</radialGradient>
+</defs><rect width="32" height="32" rx="7" fill="url(#ground)"/><circle cx="16" cy="16" r="12.5" fill="#050506"/><circle cx="16" cy="16" r="11.3" fill="none" stroke="#2A2B31" stroke-width=".5"/><circle cx="16" cy="16" r="10" fill="none" stroke="#2A2B31" stroke-width=".5"/><circle cx="16" cy="16" r="8.7" fill="none" stroke="#2A2B31" stroke-width=".5"/><circle cx="16" cy="16" r="7.4" fill="none" stroke="#2A2B31" stroke-width=".5"/><path d="M7.6 9.2A11.2 11.2 0 0 1 13 5.2" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.1" stroke-linecap="round"/><circle cx="16" cy="16" r="5.2" fill="url(#brass)"/><circle cx="16" cy="16" r=".9" fill="#050506"/></svg>

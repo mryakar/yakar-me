@@ -10,11 +10,19 @@
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "wrangler dev"
+    "preview": "wrangler dev",
+    "check:dist": "node scripts/check-dist.mjs",
+    "test": "node --test 'tests/*.test.mjs'"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.2",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
+    "satteri": "^0.10.5",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
