@@ -25,7 +25,7 @@ const spines = [
   <div class="book-row">
     {spines.map(({ book, label, now }) => (
       <a href={`${page}#${book.id}`} class:list={['book-spine', categoryTint[book.category], widths[spineThickness(book.pages)], heights[spineHeight(book.id)]]} data-now={now ? '' : undefined}>
-        <span class="book-spine-name font-body text-xs leading-[1.1] tab:text-sm">{book.title}</span>
+        <span class="book-spine-name truncate font-body text-xs leading-[1.1] tab:text-sm">{book.title}</span>
         <span class="book-spine-label label">{label}</span>
       </a>
     ))}

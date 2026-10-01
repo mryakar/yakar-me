@@ -28,7 +28,7 @@ if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) thr
       {books.map((book) => (
         <details id={book.id} name="book" class="book group scroll-mt-24" data-shelf-item data-book data-category={book.category} data-genre={book.genre} data-original={book.originalLanguage} data-read={book.readIn} data-year={year}>
           <summary class:list={['spine tab:text-spine-text', tint[book.category], widths[spineThickness(book.pages)], heights[spineHeight(book.id)]]}>
-            <span class="spine-name">
+            <span class="spine-name tab:truncate tab:leading-[1.1]">
               <span class="font-body text-[19px] leading-tight tab:text-[15px] tab:leading-[1.1]">{book.title}</span>
               <span class="spine-author text-sm text-muted">{book.author}</span>
             </span>
