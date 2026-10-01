@@ -19,6 +19,8 @@ export const shortMonth = (date: Date, lang: Lang = 'en') => SHORT_MONTHS[lang][
 
 export const formatMonth = (date: Date, lang: Lang = 'en') => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
 
+export const formatNumber = (n: number, lang: Lang = 'en') => n.toLocaleString(dateLocale[lang]);
+
 export const monthYear = (date: Date, lang: Lang = 'en') =>
   date.toLocaleDateString(dateLocale[lang], { month: 'long', year: 'numeric', timeZone: 'UTC' });
 

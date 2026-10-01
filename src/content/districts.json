@@ -1,0 +1,110 @@
+[
+  {
+    "id": "Q6379026",
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey",
+    "lat": 39.91335,
+    "lon": 32.85785,
+    "timeZone": "Europe/Istanbul"
+  },
+  {
+    "id": "Q564732",
+    "district": "Causeway Bay",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.28066,
+    "lon": 114.18096,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q6276315",
+    "district": "Jordan",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.30528,
+    "lon": 114.17167,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q2918627",
+    "district": "Mid-Levels",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.28262,
+    "lon": 114.14261,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q1207691",
+    "district": "Mong Kok",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.3225,
+    "lon": 114.17056,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q17541",
+    "district": "The Peak",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.27547,
+    "lon": 114.14383,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q15022",
+    "district": "Tsim Sha Tsui",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.29398,
+    "lon": 114.17122,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q4542478",
+    "district": "Yau Ma Tei",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.31014,
+    "lon": 114.17091,
+    "timeZone": "Asia/Hong_Kong"
+  },
+  {
+    "id": "Q90023166",
+    "district": "Bophut",
+    "city": "Koh Samui",
+    "country": "Thailand",
+    "lat": 9.56211,
+    "lon": 100.0255,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q2094487",
+    "district": "Chaweng",
+    "city": "Koh Samui",
+    "country": "Thailand",
+    "lat": 9.52335,
+    "lon": 100.0598,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q49320360",
+    "district": "Chaweng Noi",
+    "city": "Koh Samui",
+    "country": "Thailand",
+    "lat": 9.50805,
+    "lon": 100.05656,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q20886967",
+    "district": "Lamai",
+    "city": "Koh Samui",
+    "country": "Thailand",
+    "lat": 9.46388,
+    "lon": 100.04166,
+    "timeZone": "Asia/Bangkok"
+  }
+]

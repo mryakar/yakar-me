@@ -115,6 +115,21 @@ const photos = defineCollection({
     }),
 });
 
+const districts = defineCollection({
+  loader: file('./src/content/districts.json'),
+  schema: z
+    .object({
+      id: z.string().regex(/^Q\d+$/),
+      district: text,
+      city: text,
+      country: text,
+      lat: z.number().min(-90).max(90),
+      lon: z.number().min(-180).max(180),
+      timeZone: z.string().refine((zone) => Intl.supportedValuesOf('timeZone').includes(zone), 'not an IANA time zone'),
+    })
+    .strict(),
+});
+
 const bookLanguage = z.enum(bookLanguages);
 const bookText = z.string().trim().min(1);
 
@@ -146,4 +161,4 @@ const books = defineCollection({
     .refine((b) => categoryOf(b.genre) === b.category, { message: 'genre does not belong to the category' }),
 });
 
-export const collections = { writing, writingTranslations, series, seriesTranslations, photos, pages, books };
+export const collections = { writing, writingTranslations, series, seriesTranslations, photos, districts, pages, books };
