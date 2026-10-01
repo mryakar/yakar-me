@@ -7,6 +7,7 @@ export const site = {
 export const nav = [
   { key: 'home', href: '/' },
   { key: 'writing', href: '/writing/' },
+  { key: 'reading', href: '/reading/' },
   { key: 'photos', href: '/photos/' },
   { key: 'about', href: '/about/' },
 ] as const;

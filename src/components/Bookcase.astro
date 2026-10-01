@@ -1,0 +1,46 @@
+---
+import BookCard from './BookCard.astro';
+import { byYear, spineHeight, spineThickness, SPINE_HEIGHTS, SPINE_THICKNESSES, type Category } from '../lib/book';
+import { shortMonth } from '../lib/format';
+import type { FinishedBook } from '../lib/books';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  books: FinishedBook[];
+  lang: Lang;
+}
+const { books, lang } = Astro.props;
+const tint: Record<Category, string> = {
+  literature: 'tab:bg-cat-literature',
+  philosophy: 'tab:bg-cat-philosophy',
+  science: 'tab:bg-cat-science',
+  'personal-development': 'tab:bg-cat-personal-development',
+  technical: 'tab:bg-cat-technical',
+};
+const widths = ['tab:w-5', 'tab:w-6', 'tab:w-7', 'tab:w-8', 'tab:w-9', 'tab:w-10', 'tab:w-11', 'tab:w-12', 'tab:w-13', 'tab:w-14', 'tab:w-15', 'tab:w-16', 'tab:w-17', 'tab:w-18', 'tab:w-19', 'tab:w-20'];
+const heights = ['tab:h-59', 'tab:h-62', 'tab:h-65', 'tab:h-68', 'tab:h-71'];
+if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) throw new Error('Bookcase: spine class lists do not match the spine scale in src/lib/book.ts');
+---
+<div class="bookcase" data-bookcase>
+  {byYear(books).map(({ year, books }) => (
+    <section class="shelf-year" aria-labelledby={`year-${year}`} data-shelf-year>
+      <h2 id={`year-${year}`} class="bookend font-display text-d4 tab:text-accent" data-shelf-item><span>{year}</span></h2>
+      {books.map((book) => (
+        <details name="book" class="book group" data-shelf-item data-book data-category={book.category} data-genre={book.genre} data-original={book.originalLanguage} data-read={book.readIn} data-year={year}>
+          <summary class:list={['spine tab:text-spine-text', tint[book.category], widths[spineThickness(book.pages)], heights[spineHeight(book.id)]]}>
+            <span class="spine-name">
+              <span class="font-body text-[19px] leading-tight tab:text-[15px] tab:leading-[1.1]">{book.title}</span>
+              <span class="spine-author text-sm text-muted">{book.author}</span>
+            </span>
+            <span class="spine-month label text-faint tab:text-inherit">{shortMonth(book.finished, lang)}</span>
+            <span class="spine-icon text-muted">
+              <svg class="group-open:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              <svg class="hidden group-open:block" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+            </span>
+          </summary>
+          <BookCard book={book} lang={lang} />
+        </details>
+      ))}
+    </section>
+  ))}
+</div>

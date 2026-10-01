@@ -20,6 +20,12 @@
   --yk-accent: light-dark(#85642a, #c8a465);
   --yk-shadow: light-dark(rgb(20 20 22 / 0.14), rgb(0 0 0 / 0.6));
   --yk-dim: light-dark(#f2f1ed, #050607);
+  --yk-spine-text: light-dark(#1c1c1f, #e4e2dc);
+  --yk-cat-literature: light-dark(#e8d9bf, #3b3125);
+  --yk-cat-philosophy: light-dark(#d3dbe7, #26303f);
+  --yk-cat-science: light-dark(#d0e2d7, #21362f);
+  --yk-cat-personal-development: light-dark(#e8d3dc, #3b2833);
+  --yk-cat-technical: light-dark(#dcdce0, #2e2f35);
 }
 :root[data-theme='light'] {
   color-scheme: light;
@@ -43,6 +49,12 @@
   --color-muted: var(--yk-muted);
   --color-faint: var(--yk-faint);
   --color-accent: var(--yk-accent);
+  --color-spine-text: var(--yk-spine-text);
+  --color-cat-literature: var(--yk-cat-literature);
+  --color-cat-philosophy: var(--yk-cat-philosophy);
+  --color-cat-science: var(--yk-cat-science);
+  --color-cat-personal-development: var(--yk-cat-personal-development);
+  --color-cat-technical: var(--yk-cat-technical);
 }
 
 @theme {
@@ -72,6 +84,7 @@
   --text-label--letter-spacing: 0.08em;
 
   --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --breakpoint-tab: 48rem;
   --breakpoint-desk: 64rem;
   --breakpoint-wide: 96rem;
 }
@@ -373,6 +386,153 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .sleeve {
+      transition: none;
+    }
+  }
+}
+
+@layer components {
+  .bookcase {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .shelf-year {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .spine {
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr) 1.5rem;
+    align-items: baseline;
+    gap: 0.75rem;
+    min-height: 4rem;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--yk-line);
+    cursor: pointer;
+    list-style: none;
+  }
+  .spine::-webkit-details-marker {
+    display: none;
+  }
+  .spine-month {
+    order: -1;
+  }
+  .spine-name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.125rem 0.875rem;
+  }
+  .spine-icon {
+    align-self: center;
+  }
+  .filter-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (width < 48rem) {
+    .filter-toggle[aria-expanded='false'] + .filter-panel {
+      display: none;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .bookcase {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 2.75rem 0;
+      padding-inline: 0.25rem;
+      overflow-x: clip;
+    }
+    .shelf-year {
+      display: contents;
+    }
+    .bookend,
+    .book {
+      position: relative;
+      padding: 0 3px 3px 0;
+    }
+    .bookend::after,
+    .book::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: -100vw;
+      bottom: 0;
+      height: 3px;
+      background: color-mix(in srgb, var(--yk-text) 15%, var(--yk-bg));
+    }
+    .bookend {
+      align-self: stretch;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 3rem;
+      padding-bottom: calc(3px + 0.5rem);
+    }
+    .bookend > span,
+    .spine-name,
+    .spine-month {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+    .spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+      min-height: 0;
+      padding: 0.625rem 0;
+      border: 1px solid var(--yk-line-strong);
+      overflow: hidden;
+      transition:
+        transform 0.35s var(--ease-out-soft),
+        box-shadow 0.35s ease;
+    }
+    .spine:hover {
+      transform: translateY(-0.375rem);
+    }
+    .spine:focus-visible {
+      outline-offset: 2px;
+    }
+    .book[open] > .spine {
+      transform: translateY(-0.875rem);
+      box-shadow: 0 0 0 2px var(--yk-accent);
+    }
+    .spine-name {
+      display: block;
+      max-width: 100%;
+      max-height: 78%;
+      overflow: hidden;
+    }
+    .spine-month {
+      order: 0;
+      max-height: 20%;
+      overflow: hidden;
+      font-size: 0.5625rem;
+      opacity: 0.75;
+    }
+    .spine-author,
+    .spine-icon {
+      display: none;
+    }
+    .bookcase:not([data-enhanced]) .book[open] {
+      flex-basis: 100%;
+    }
+    .bookcase[data-enhanced] .book > .book-card {
+      display: none;
+    }
+    .book-slot {
+      flex-basis: 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spine {
       transition: none;
     }
   }

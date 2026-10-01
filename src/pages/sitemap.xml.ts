@@ -20,6 +20,7 @@ export const GET: APIRoute = async ({ site: origin }) => {
   const pages: Page[] = [
     { path: '/', langs: locales, lastmod: english[0]?.pubDate },
     { path: '/writing/', langs: locales, lastmod: english[0]?.pubDate },
+    { path: '/reading/', langs: locales },
     ...(englishSeries.length
       ? [{ path: '/photos/', langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
       : []),

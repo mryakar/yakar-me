@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import Bookcase from '../../components/Bookcase.astro';
+import BookFilters from '../../components/BookFilters.astro';
+import CategoryTint from '../../components/CategoryTint.astro';
+import { ui } from '../../i18n/ui';
+import { langPaths, type Lang } from '../../lib/i18n';
+import { books } from '../../lib/books';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang].reading;
+const { reading, finished } = await books(lang);
+---
+<Base lang={lang} title={t.title} description={t.description}>
+  <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-reading>
+    <header class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line pb-5">
+      <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.reading}</h1>
+      <span class="label text-faint">{t.counts(reading.length, finished.length)}</span>
+    </header>
+
+    {reading.length > 0 && (
+      <section aria-labelledby="now" class="flex flex-col gap-4">
+        <h2 id="now" class="label text-accent">{t.now}</h2>
+        <ul class="grid gap-3 tab:grid-cols-2 tab:gap-6">
+          {reading.map((book) => (
+            <li class="flex gap-5 border border-line bg-card px-5 py-4.5 tab:px-7 tab:py-6">
+              <CategoryTint category={book.category} class="w-2" />
+              <span class="flex flex-col gap-2">
+                <span class="font-display text-d4">{book.title}</span>
+                <span class="font-body text-[17px] text-muted">{book.author}</span>
+                <span class="label flex flex-wrap gap-x-3.5 gap-y-1.5 text-faint">
+                  <span>{t.categories[book.category]} · {t.genres[book.genre]}</span>
+                  {book.edition && <span>{t.editionValue(book.edition)}</span>}
+                  <span>{t.pageCount(book.pages)}</span>
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <BookFilters books={finished} lang={lang} />
+    <Bookcase books={finished} lang={lang} />
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/reading.ts';
+</script>

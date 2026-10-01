@@ -14,7 +14,20 @@ export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: L
   return `${date.getUTCDate()} ${SHORT_MONTHS[lang][date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 }
 
-export const formatMonth = (date: Date, lang: Lang = 'en') => `${SHORT_MONTHS[lang][date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+export const shortMonth = (date: Date, lang: Lang = 'en') => SHORT_MONTHS[lang][date.getUTCMonth()];
+
+export const formatMonth = (date: Date, lang: Lang = 'en') => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
+
+export const monthYear = (date: Date, lang: Lang = 'en') =>
+  date.toLocaleDateString(dateLocale[lang], { month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+export function englishOrdinal(n: number) {
+  const teen = n % 100 >= 11 && n % 100 <= 13;
+  const suffix = teen ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th';
+  return `${n}${suffix}`;
+}
+
+export const plural = (forms: { one: string; other: string }, n: number) => (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
 
 export const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 

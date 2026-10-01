@@ -1,0 +1,75 @@
+---
+import CategoryTint from './CategoryTint.astro';
+import { ui } from '../i18n/ui';
+import { byYear, categories, genres } from '../lib/book';
+import { plural } from '../lib/format';
+import type { FinishedBook } from '../lib/books';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  books: FinishedBook[];
+  lang: Lang;
+}
+const { books, lang } = Astro.props;
+const t = ui[lang].reading;
+const tally = <K extends string>(values: K[]) => values.reduce((m, v) => m.set(v, (m.get(v) ?? 0) + 1), new Map<K, number>());
+const byCategory = tally(books.map((b) => b.category));
+const byGenre = tally(books.map((b) => b.genre));
+const shown = categories.filter((c) => byCategory.has(c));
+const languageOptions = (values: FinishedBook['readIn'][]) =>
+  [...tally(values)].map(([value, n]) => ({ value, label: `${t.languages[value]} (${n})` })).sort((a, b) => a.label.localeCompare(b.label, lang));
+const selects = [
+  { key: 'original', label: t.originalLanguage, options: languageOptions(books.map((b) => b.originalLanguage)) },
+  { key: 'read', label: t.readIn, options: languageOptions(books.map((b) => b.readIn)) },
+  { key: 'year', label: t.year, options: byYear(books).map(({ year, books }) => ({ value: String(year), label: `${year} (${books.length})` })) },
+];
+const chip = 'flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line-strong px-3.5 text-sm text-text-body transition-colors duration-200 hover:border-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg tab:min-h-10';
+const count = 'font-mono text-[11px] opacity-70';
+---
+<section aria-label={t.filters} class="flex flex-col gap-3 tab:gap-5" data-filters hidden>
+  <button type="button" aria-expanded="false" aria-controls="book-filters" class="filter-toggle group flex min-h-12 items-center justify-between border border-line-strong px-4 text-[15px] tab:hidden" data-filter-toggle data-label={t.filters}>
+    <span data-filter-label>{t.filters}</span>
+    <span class="text-muted">
+      <svg class="group-aria-expanded:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      <svg class="hidden group-aria-expanded:block" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+    </span>
+  </button>
+  <div id="book-filters" class="filter-panel">
+    <div role="group" aria-label={t.category} class="flex flex-wrap gap-2">
+      <button type="button" aria-pressed="true" class={chip} data-filter="category" data-value="">
+        {t.all} <span class={count}>{books.length}</span>
+      </button>
+      {shown.map((c) => (
+        <button type="button" aria-pressed="false" class={chip} data-filter="category" data-value={c}>
+          <CategoryTint category={c} class="size-2 rounded-full" />
+          {t.categories[c]} <span class={count}>{byCategory.get(c)}</span>
+        </button>
+      ))}
+    </div>
+    <div role="group" aria-label={t.genre} class="flex flex-wrap gap-2 pl-1" data-genres hidden>
+      {shown.flatMap((c) =>
+        genres[c].filter((g) => byGenre.has(g)).map((g) => (
+          <button type="button" aria-pressed="false" class="min-h-11 cursor-pointer border-b border-line px-3 text-[13px] text-muted transition-colors duration-200 hover:text-text aria-pressed:border-accent aria-pressed:text-text tab:min-h-9" data-filter="genre" data-value={g} data-category={c} hidden>
+            {t.genres[g]} <span class={count}>{byGenre.get(g)}</span>
+          </button>
+        )),
+      )}
+    </div>
+    <div class="grid gap-4 tab:grid-cols-[repeat(3,minmax(0,13.75rem))]">
+      {selects.map((s) => (
+        <label class="flex min-w-0 flex-col gap-1.5">
+          <span class="label text-faint">{s.label}</span>
+          <select data-filter={s.key} class="h-11 border border-line-strong bg-bg px-3 text-sm text-text">
+            <option value="">{t.any}</option>
+            {s.options.map((o) => <option value={o.value}>{o.label}</option>)}
+          </select>
+        </label>
+      ))}
+    </div>
+  </div>
+  <div class="flex min-h-11 items-center justify-between border-b border-line">
+    <span class="label text-muted" aria-live="polite" data-result data-one={t.result.one} data-other={t.result.other}>{plural(t.result, books.length)}</span>
+    <button type="button" class="min-h-11 cursor-pointer text-sm text-accent" data-clear hidden>{t.clear}</button>
+  </div>
+  <p class="font-body text-[19px] text-muted" data-empty hidden>{t.none}</p>
+</section>

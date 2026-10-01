@@ -1,7 +1,8 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { locales } from './lib/i18n';
+import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
 
 const lang = z.enum(locales);
 const translations = (base: string) => glob({ pattern: `*/{${locales.join(',')}}.md`, base });
@@ -114,4 +115,35 @@ const photos = defineCollection({
     }),
 });
 
-export const collections = { writing, writingTranslations, series, seriesTranslations, photos, pages };
+const bookLanguage = z.enum(bookLanguages);
+const bookText = z.string().trim().min(1);
+
+const book = z
+  .object({
+    id: z.string().refine(isIsbn13, 'not a valid ISBN-13'),
+    title: z.record(lang, bookText),
+    originalTitle: bookText,
+    author: bookText,
+    originalLanguage: bookLanguage,
+    readIn: bookLanguage,
+    category: z.enum(categories),
+    genre: z.enum(allGenres),
+    edition: z.number().int().min(2).optional(),
+    pages: z.number().int().positive(),
+    position: z.number().int().nonnegative(),
+  })
+  .strict();
+
+const books = defineCollection({
+  loader: file('./src/content/books.json', {
+    parser: (text) => (JSON.parse(text) as object[]).map((book, position) => ({ ...book, position })),
+  }),
+  schema: z
+    .discriminatedUnion('status', [
+      book.extend({ status: z.literal('reading') }),
+      book.extend({ status: z.literal('finished'), finished: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/) }),
+    ])
+    .refine((b) => categoryOf(b.genre) === b.category, { message: 'genre does not belong to the category' }),
+});
+
+export const collections = { writing, writingTranslations, series, seriesTranslations, photos, pages, books };
