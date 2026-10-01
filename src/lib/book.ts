@@ -13,6 +13,14 @@ export const categories = Object.keys(genres) as Category[];
 export const allGenres = categories.flatMap((c) => genres[c]) as Genre[];
 export const categoryOf = (genre: Genre) => categories.find((c) => (genres[c] as readonly Genre[]).includes(genre))!;
 
+export const categoryTint: Record<Category, string> = {
+  literature: 'bg-cat-literature',
+  philosophy: 'bg-cat-philosophy',
+  science: 'bg-cat-science',
+  'personal-development': 'bg-cat-personal-development',
+  technical: 'bg-cat-technical',
+};
+
 export const bookLanguages = ['en', 'fr', 'de', 'grc', 'pt', 'ru', 'tr', 'lzh', 'he', 'it'] as const;
 export type BookLanguage = (typeof bookLanguages)[number];
 

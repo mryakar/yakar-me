@@ -26,7 +26,7 @@ if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) thr
     <section class="shelf-year" aria-labelledby={`year-${year}`} data-shelf-year>
       <h2 id={`year-${year}`} class="bookend font-display text-d4 tab:text-accent" data-shelf-item><span>{year}</span></h2>
       {books.map((book) => (
-        <details name="book" class="book group" data-shelf-item data-book data-category={book.category} data-genre={book.genre} data-original={book.originalLanguage} data-read={book.readIn} data-year={year}>
+        <details id={book.id} name="book" class="book group scroll-mt-24" data-shelf-item data-book data-category={book.category} data-genre={book.genre} data-original={book.originalLanguage} data-read={book.readIn} data-year={year}>
           <summary class:list={['spine tab:text-spine-text', tint[book.category], widths[spineThickness(book.pages)], heights[spineHeight(book.id)]]}>
             <span class="spine-name">
               <span class="font-body text-[19px] leading-tight tab:text-[15px] tab:leading-[1.1]">{book.title}</span>

@@ -1,17 +1,10 @@
 ---
-import type { Category } from '../lib/book';
+import { categoryTint, type Category } from '../lib/book';
 
 interface Props {
   category: Category;
   class?: string;
 }
 const { category, class: className } = Astro.props;
-const tint: Record<Category, string> = {
-  literature: 'bg-cat-literature',
-  philosophy: 'bg-cat-philosophy',
-  science: 'bg-cat-science',
-  'personal-development': 'bg-cat-personal-development',
-  technical: 'bg-cat-technical',
-};
 ---
-<span aria-hidden="true" class:list={['block flex-none border border-line-strong', tint[category], className]} />
+<span aria-hidden="true" class:list={['block flex-none border border-line-strong', categoryTint[category], className]} />

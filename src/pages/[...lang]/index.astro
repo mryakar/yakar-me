@@ -5,12 +5,14 @@ import Tagline from '../../components/Tagline.astro';
 import ArrowRight from '../../components/ArrowRight.astro';
 import PhotoPicture from '../../components/PhotoPicture.astro';
 import LatestCard from '../../components/LatestCard.astro';
+import BookShelf from '../../components/BookShelf.astro';
 import { site, nowUpdated } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
 import { lastTaken, recentSeries, type Photo } from '../../lib/photos';
 import { seriesPath } from '../../lib/photo';
 import { articles } from '../../lib/writing';
+import { books } from '../../lib/books';
 import { articlePath, formatDate, formatMonth } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
@@ -24,6 +26,8 @@ const newest = recent[0];
 const columns = ['', 'desk:grid-cols-1', 'desk:grid-cols-2', 'desk:grid-cols-3'][recent.length];
 const seriesMonth = (photos: Photo[]) => formatMonth(new Date(lastTaken(photos).slice(0, 10)), lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
+const { reading, finished } = await books(lang);
+const now = [...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []), ...t.now];
 ---
 <Base lang={lang} title={t.home.title}>
   <div class="flex flex-col gap-28 px-6 pt-9 pb-16 desk:gap-34 desk:px-24 desk:pt-26">
@@ -77,17 +81,29 @@ const [heroStart, heroEm, heroEnd] = t.home.hero;
       <Shelf articles={all} lang={lang} />
     </section>
 
+    <section class="reveal flex flex-col gap-10" aria-labelledby="reading">
+      <div class="flex items-baseline justify-between border-b border-line pb-5">
+        <h2 id="reading" class="font-display text-d3">{t.nav.reading}</h2>
+        <a href={localize('/reading/', lang)} class="label text-faint transition-colors duration-200 hover:text-accent">{t.home.booksAll(finished.length)}</a>
+      </div>
+      <BookShelf reading={reading} finished={finished} lang={lang} />
+    </section>
+
     <section class="reveal flex flex-col gap-8" aria-labelledby="now">
       <div class="flex items-baseline justify-between">
         <h2 id="now" class="font-display text-d3">{t.home.now}</h2>
         <span class="label text-faint">{t.home.updated(formatMonth(nowUpdated, lang))}</span>
       </div>
       <div class="grid gap-10 desk:grid-cols-3">
-        {t.now.map((item) => (
+        {now.map((item) => (
           <div class="flex flex-col gap-2.5 border-t border-line pt-5">
             <span class="label text-faint">{item.label}</span>
             <p class="font-body text-[1.375rem] leading-snug text-text">
-              {item.title && <em>{item.title}</em>}{item.rest}
+              {'books' in item
+                ? item.books.map((book, i) => (
+                    <>{i > 0 && ` ${t.home.also} `}<em>{book.title}</em>{book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}</>
+                  ))
+                : item.text}
             </p>
           </div>
         ))}
