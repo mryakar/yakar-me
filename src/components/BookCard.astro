@@ -1,0 +1,48 @@
+---
+import CategoryTint from './CategoryTint.astro';
+import { ui } from '../i18n/ui';
+import { monthYear } from '../lib/format';
+import type { FinishedBook } from '../lib/books';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  book: FinishedBook;
+  lang: Lang;
+}
+const { book, lang } = Astro.props;
+const t = ui[lang].reading;
+const fields: { name: string; value: string; lang?: string }[] = [
+  ...(book.originalTitle !== book.title ? [{ name: t.originalTitle, value: book.originalTitle, lang: book.originalLanguage }] : []),
+  { name: t.originalLanguage, value: t.languages[book.originalLanguage] },
+  { name: t.readIn, value: t.languages[book.readIn] },
+  { name: t.pages, value: String(book.pages) },
+  ...(book.edition ? [{ name: t.edition, value: t.editionValue(book.edition) }] : []),
+  { name: t.finished, value: monthYear(book.finished, lang) },
+  { name: t.isbn, value: book.id },
+];
+---
+<div class="book-card mt-3 mb-5 tab:my-0" data-card>
+  <div class="flex flex-col gap-5 border border-line-strong bg-card py-5 pr-2 pl-5 shadow-[0_18px_40px_var(--yk-shadow)] tab:py-7 tab:pr-4 tab:pl-8">
+    <div class="flex items-start justify-between gap-3">
+      <div class="flex flex-col gap-2">
+        <span class="flex items-center gap-2.5">
+          <CategoryTint category={book.category} class="size-2.5" />
+          <span class="label text-faint">{t.categories[book.category]} · {t.genres[book.genre]}</span>
+        </span>
+        <h3 class="font-display text-d4 tab:text-d3">{book.title}</h3>
+        <p class="font-body text-[17px] text-muted tab:text-[19px]">{book.author}</p>
+      </div>
+      <button type="button" data-close hidden aria-label={t.close} class="inline-flex size-11 flex-none items-center justify-center text-muted transition-colors duration-200 hover:text-text">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <dl class="grid gap-3 pr-3 tab:grid-cols-3 tab:gap-x-8 tab:gap-y-4.5 tab:pr-4">
+      {fields.map((f) => (
+        <div class="flex justify-between gap-1.5 border-t border-line pt-2.5 tab:flex-col">
+          <dt class="label text-faint">{f.name}</dt>
+          <dd class="text-right text-[15px] text-text tab:text-left" lang={f.lang} dir={f.lang && 'auto'}>{f.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</div>

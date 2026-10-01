@@ -1,0 +1,497 @@
+[
+  {
+    "id": "9786254106866",
+    "title": {
+      "en": "Return to the Why Café",
+      "tr": "Dünyanın Kıyısındaki Kafe'ye Dönüş"
+    },
+    "originalTitle": "Return to the Why Café",
+    "author": "John Strelecky",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "narrative",
+    "pages": 264,
+    "status": "reading"
+  },
+  {
+    "id": "9781098119058",
+    "title": {
+      "en": "Designing Data-Intensive Applications",
+      "tr": "Designing Data-Intensive Applications"
+    },
+    "originalTitle": "Designing Data-Intensive Applications",
+    "author": "Martin Kleppmann, Chris Riccomini",
+    "originalLanguage": "en",
+    "readIn": "en",
+    "category": "technical",
+    "genre": "system-design",
+    "edition": 2,
+    "pages": 673,
+    "status": "reading"
+  },
+  {
+    "id": "9786052999523",
+    "title": {
+      "en": "The Why Café",
+      "tr": "Dünyanın Kıyısındaki Kafe"
+    },
+    "originalTitle": "The Why Café",
+    "author": "John Strelecky",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "narrative",
+    "pages": 128,
+    "status": "finished",
+    "finished": "2026-09"
+  },
+  {
+    "id": "9789750724435",
+    "title": {
+      "en": "The Little Prince",
+      "tr": "Küçük Prens"
+    },
+    "originalTitle": "Le Petit Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "originalLanguage": "fr",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "allegory",
+    "pages": 112,
+    "status": "finished",
+    "finished": "2025-09"
+  },
+  {
+    "id": "9786053609322",
+    "title": {
+      "en": "The Metamorphosis",
+      "tr": "Dönüşüm"
+    },
+    "originalTitle": "Die Verwandlung",
+    "author": "Franz Kafka",
+    "originalLanguage": "de",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novella",
+    "pages": 80,
+    "status": "finished",
+    "finished": "2025-08"
+  },
+  {
+    "id": "9786053609902",
+    "title": {
+      "en": "The Last Day of a Condemned Man",
+      "tr": "Bir İdam Mahkûmunun Son Günü"
+    },
+    "originalTitle": "Le Dernier Jour d'un condamné",
+    "author": "Victor Hugo",
+    "originalLanguage": "fr",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 120,
+    "status": "finished",
+    "finished": "2025-08"
+  },
+  {
+    "id": "9786054263783",
+    "title": {
+      "en": "The Monk Who Sold His Ferrari",
+      "tr": "Ferrari'sini Satan Bilge"
+    },
+    "originalTitle": "The Monk Who Sold His Ferrari",
+    "author": "Robin Sharma",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "narrative",
+    "pages": 230,
+    "status": "finished",
+    "finished": "2025-08"
+  },
+  {
+    "id": "9786052954027",
+    "title": {
+      "en": "Meditations",
+      "tr": "Kendime Düşünceler"
+    },
+    "originalTitle": "Τὰ εἰς ἑαυτόν (Ta eis heauton)",
+    "author": "Marcus Aurelius",
+    "originalLanguage": "grc",
+    "readIn": "tr",
+    "category": "philosophy",
+    "genre": "ancient-philosophy",
+    "pages": 144,
+    "status": "finished",
+    "finished": "2024-08"
+  },
+  {
+    "id": "9781847941107",
+    "title": {
+      "en": "Scrum: The Art of Doing Twice the Work in Half the Time",
+      "tr": "Scrum: İki Katı İşi Yarı Zamanda Yapma Sanatı"
+    },
+    "originalTitle": "Scrum: The Art of Doing Twice the Work in Half the Time",
+    "author": "Jeff Sutherland, J.J. Sutherland",
+    "originalLanguage": "en",
+    "readIn": "en",
+    "category": "technical",
+    "genre": "software-process",
+    "pages": 384,
+    "status": "finished",
+    "finished": "2024-07"
+  },
+  {
+    "id": "9786057906359",
+    "title": {
+      "en": "New Introductory Lectures on Psycho-Analysis",
+      "tr": "Psikanaliz Üzerine"
+    },
+    "originalTitle": "Neue Folge der Vorlesungen zur Einführung in die Psychoanalyse",
+    "author": "Sigmund Freud",
+    "originalLanguage": "de",
+    "readIn": "tr",
+    "category": "science",
+    "genre": "psychology",
+    "pages": 288,
+    "status": "finished",
+    "finished": "2024-07"
+  },
+  {
+    "id": "9789750738609",
+    "title": {
+      "en": "My Sweet Orange Tree",
+      "tr": "Şeker Portakalı"
+    },
+    "originalTitle": "O Meu Pé de Laranja Lima",
+    "author": "José Mauro de Vasconcelos",
+    "originalLanguage": "pt",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 200,
+    "status": "finished",
+    "finished": "2023-02"
+  },
+  {
+    "id": "9789750730153",
+    "title": {
+      "en": "Veronika Decides to Die",
+      "tr": "Veronika Ölmek İstiyor"
+    },
+    "originalTitle": "Veronika Decide Morrer",
+    "author": "Paulo Coelho",
+    "originalLanguage": "pt",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 216,
+    "status": "finished",
+    "finished": "2023-02"
+  },
+  {
+    "id": "9786056983221",
+    "title": {
+      "en": "Fantastic Night",
+      "tr": "Olağanüstü Bir Gece"
+    },
+    "originalTitle": "Phantastische Nacht",
+    "author": "Stefan Zweig",
+    "originalLanguage": "de",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novella",
+    "pages": 80,
+    "status": "finished",
+    "finished": "2022-12"
+  },
+  {
+    "id": "9786056983214",
+    "title": {
+      "en": "Apology",
+      "tr": "Sokrates'in Savunması"
+    },
+    "originalTitle": "Ἀπολογία Σωκράτους (Apologia Sokratous)",
+    "author": "Platon",
+    "originalLanguage": "grc",
+    "readIn": "tr",
+    "category": "philosophy",
+    "genre": "ancient-philosophy",
+    "pages": 96,
+    "status": "finished",
+    "finished": "2022-11"
+  },
+  {
+    "id": "9786059144902",
+    "title": {
+      "en": "What Men Live By",
+      "tr": "İnsan Neyle Yaşar?"
+    },
+    "originalTitle": "Чем люди живы",
+    "author": "Lev Tolstoy",
+    "originalLanguage": "ru",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novella",
+    "pages": 92,
+    "status": "finished",
+    "finished": "2022-11"
+  },
+  {
+    "id": "9786056983276",
+    "title": {
+      "en": "Moonbeam Alley",
+      "tr": "Ayışığı Sokağı"
+    },
+    "originalTitle": "Die Mondscheingasse",
+    "author": "Stefan Zweig",
+    "originalLanguage": "de",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novella",
+    "pages": 46,
+    "status": "finished",
+    "finished": "2022-11"
+  },
+  {
+    "id": "9786057635839",
+    "title": {
+      "en": "Var mısın?",
+      "tr": "Var mısın?"
+    },
+    "originalTitle": "Var mısın? Güçlü Bir Yaşam İçin Öneriler",
+    "author": "Doğan Cüceloğlu",
+    "originalLanguage": "tr",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "applied-psychology",
+    "pages": 320,
+    "status": "finished",
+    "finished": "2022-11"
+  },
+  {
+    "id": "9786053322696",
+    "title": {
+      "en": "The Art of War",
+      "tr": "Savaş Sanatı"
+    },
+    "originalTitle": "孫子兵法 (Sunzi Bingfa)",
+    "author": "Sun Tzu",
+    "originalLanguage": "lzh",
+    "readIn": "tr",
+    "category": "philosophy",
+    "genre": "strategy",
+    "pages": 80,
+    "status": "finished",
+    "finished": "2022-10"
+  },
+  {
+    "id": "9789751408259",
+    "title": {
+      "en": "Savaşçı",
+      "tr": "Savaşçı"
+    },
+    "originalTitle": "Savaşçı: Anlamlı ve Coşkulu Bir Yaşam İçin",
+    "author": "Doğan Cüceloğlu",
+    "originalLanguage": "tr",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "applied-psychology",
+    "pages": 400,
+    "status": "finished",
+    "finished": "2022-10"
+  },
+  {
+    "id": "9786055029357",
+    "title": {
+      "en": "Sapiens: A Brief History of Humankind",
+      "tr": "Hayvanlardan Tanrılara: Sapiens"
+    },
+    "originalTitle": "קיצור תולדות האנושות",
+    "author": "Yuval Noah Harari",
+    "originalLanguage": "he",
+    "readIn": "tr",
+    "category": "science",
+    "genre": "history",
+    "pages": 412,
+    "status": "finished",
+    "finished": "2022-10"
+  },
+  {
+    "id": "9786257781145",
+    "title": {
+      "en": "Animal Farm",
+      "tr": "Hayvan Çiftliği"
+    },
+    "originalTitle": "Animal Farm",
+    "author": "George Orwell",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "allegory",
+    "pages": 160,
+    "status": "finished",
+    "finished": "2022-09"
+  },
+  {
+    "id": "9786051981833",
+    "title": {
+      "en": "The Midnight Library",
+      "tr": "Gece Yarısı Kütüphanesi"
+    },
+    "originalTitle": "The Midnight Library",
+    "author": "Matt Haig",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 296,
+    "status": "finished",
+    "finished": "2022-09"
+  },
+  {
+    "id": "9789944315111",
+    "title": {
+      "en": "The God Delusion",
+      "tr": "Tanrı Yanılgısı"
+    },
+    "originalTitle": "The God Delusion",
+    "author": "Richard Dawkins",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "science",
+    "genre": "science-religion",
+    "pages": 400,
+    "status": "finished",
+    "finished": "2022-09"
+  },
+  {
+    "id": "9786053600138",
+    "title": {
+      "en": "White Fang",
+      "tr": "Beyaz Diş"
+    },
+    "originalTitle": "White Fang",
+    "author": "Jack London",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 264,
+    "status": "finished",
+    "finished": "2022-09"
+  },
+  {
+    "id": "9789752104556",
+    "title": {
+      "en": "Angels & Demons",
+      "tr": "Melekler ve Şeytanlar"
+    },
+    "originalTitle": "Angels & Demons",
+    "author": "Dan Brown",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "thriller",
+    "pages": 574,
+    "status": "finished",
+    "finished": "2019-04"
+  },
+  {
+    "id": "9786056105203",
+    "title": {
+      "en": "The School for Gods",
+      "tr": "Tanrılar Okulu"
+    },
+    "originalTitle": "La Scuola degli Dei",
+    "author": "Stefano Elio D'Anna",
+    "originalLanguage": "it",
+    "readIn": "tr",
+    "category": "philosophy",
+    "genre": "spirituality",
+    "pages": 444,
+    "status": "finished",
+    "finished": "2019-02"
+  },
+  {
+    "id": "9789944898331",
+    "title": {
+      "en": "Free Software, Free Society",
+      "tr": "Özgür Yazılım, Özgür Toplum"
+    },
+    "originalTitle": "Free Software, Free Society: Selected Essays of Richard M. Stallman",
+    "author": "Richard M. Stallman",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "technical",
+    "genre": "free-software",
+    "pages": 277,
+    "status": "finished",
+    "finished": "2018-07"
+  },
+  {
+    "id": "9789750726439",
+    "title": {
+      "en": "The Alchemist",
+      "tr": "Simyacı"
+    },
+    "originalTitle": "O Alquimista",
+    "author": "Paulo Coelho",
+    "originalLanguage": "pt",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "novel",
+    "pages": 192,
+    "status": "finished",
+    "finished": "2018-03"
+  },
+  {
+    "id": "9789752123267",
+    "title": {
+      "en": "Origin",
+      "tr": "Başlangıç"
+    },
+    "originalTitle": "Origin",
+    "author": "Dan Brown",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "thriller",
+    "pages": 536,
+    "status": "finished",
+    "finished": "2018-02"
+  },
+  {
+    "id": "9786051715308",
+    "title": {
+      "en": "On the Origin of Species",
+      "tr": "Türlerin Kökeni"
+    },
+    "originalTitle": "On the Origin of Species",
+    "author": "Charles Darwin",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "science",
+    "genre": "biology",
+    "pages": 472,
+    "status": "finished",
+    "finished": "2018-01"
+  },
+  {
+    "id": "9789752112438",
+    "title": {
+      "en": "Digital Fortress",
+      "tr": "Dijital Kale"
+    },
+    "originalTitle": "Digital Fortress",
+    "author": "Dan Brown",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "literature",
+    "genre": "thriller",
+    "pages": 399,
+    "status": "finished",
+    "finished": "2016-03"
+  }
+]

@@ -63,6 +63,7 @@ test('navLinks: dile göre adres ve etiket; ana sayfa yalnız kendisinde güncel
   assert.deepEqual(tr.map((l) => [l.href, l.label, l.current]), [
     ['/tr/', 'Ana sayfa', false],
     ['/tr/writing/', 'Yazılar', true],
+    ['/tr/reading/', 'Kitaplar', false],
     ['/tr/photos/', 'Fotoğraflar', false],
     ['/tr/about/', 'Hakkımda', false],
   ]);

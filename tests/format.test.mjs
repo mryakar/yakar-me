@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { articlePath, formatDate, formatMonth, isoDate, readingMinutes, escapeXml } from '../src/lib/format.ts';
+import { articlePath, formatDate, formatMonth, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -36,4 +36,22 @@ test('readingMinutes: dakikada 240 kelime, en az 1', () => {
 
 test('escapeXml: beş özel karakter', () => {
   assert.equal(escapeXml(`a & b < c > "d" 'e'`), 'a &amp; b &lt; c &gt; &quot;d&quot; &apos;e&apos;');
+});
+
+test('shortMonth ve monthYear: iki dilde', () => {
+  assert.equal(shortMonth(d), 'Sep');
+  assert.equal(shortMonth(new Date('2025-08-01T00:00:00Z'), 'tr'), 'Ağu');
+  assert.equal(monthYear(d), 'September 2026');
+  assert.equal(monthYear(new Date('2018-02-01T00:00:00Z'), 'tr'), 'Şubat 2018');
+});
+
+test('englishOrdinal', () => {
+  assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 102, 111].map(englishOrdinal), ['1st', '2nd', '3rd', '4th', '11th', '12th', '13th', '21st', '22nd', '102nd', '111th']);
+});
+
+test('plural: tekil ve çoğul', () => {
+  const forms = { one: '{n} book', other: '{n} books' };
+  assert.equal(plural(forms, 1), '1 book');
+  assert.equal(plural(forms, 0), '0 books');
+  assert.equal(plural(forms, 29), '29 books');
 });
