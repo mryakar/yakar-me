@@ -1,20 +1,5 @@
 [
   {
-    "id": "9786254106866",
-    "title": {
-      "en": "Return to the Why Café",
-      "tr": "Dünyanın Kıyısındaki Kafe'ye Dönüş"
-    },
-    "originalTitle": "Return to the Why Café",
-    "author": "John Strelecky",
-    "originalLanguage": "en",
-    "readIn": "tr",
-    "category": "personal-development",
-    "genre": "narrative",
-    "pages": 264,
-    "status": "reading"
-  },
-  {
     "id": "9781098119058",
     "title": {
       "en": "Designing Data-Intensive Applications",
@@ -28,6 +13,25 @@
     "genre": "system-design",
     "edition": 2,
     "pages": 673,
+    "status": "reading",
+    "nowNote": {
+      "en": "Slowly, with a pencil.",
+      "tr": "Yavaş yavaş, elimde kalemle."
+    }
+  },
+  {
+    "id": "9786254106866",
+    "title": {
+      "en": "Return to the Why Café",
+      "tr": "Dünyanın Kıyısındaki Kafe'ye Dönüş"
+    },
+    "originalTitle": "Return to the Why Café",
+    "author": "John Strelecky",
+    "originalLanguage": "en",
+    "readIn": "tr",
+    "category": "personal-development",
+    "genre": "narrative",
+    "pages": 264,
     "status": "reading"
   },
   {

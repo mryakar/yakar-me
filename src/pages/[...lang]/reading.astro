@@ -25,7 +25,7 @@ const { reading, finished } = await books(lang);
         <h2 id="now" class="label text-accent">{t.now}</h2>
         <ul class="grid gap-3 tab:grid-cols-2 tab:gap-6">
           {reading.map((book) => (
-            <li class="flex gap-5 border border-line bg-card px-5 py-4.5 tab:px-7 tab:py-6">
+            <li id={book.id} class="flex scroll-mt-24 gap-5 border border-line bg-card px-5 py-4.5 tab:px-7 tab:py-6">
               <CategoryTint category={book.category} class="w-2" />
               <span class="flex flex-col gap-2">
                 <span class="font-display text-d4">{book.title}</span>

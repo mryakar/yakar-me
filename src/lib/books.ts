@@ -15,6 +15,10 @@ export interface Book {
   pages: number;
 }
 
+export interface ReadingBook extends Book {
+  nowNote?: string;
+}
+
 export interface FinishedBook extends Book {
   finished: Date;
 }
@@ -36,7 +40,10 @@ export async function books(lang: Lang) {
   });
   const finished = newestFirst(entries.flatMap((b) => (b.status === 'finished' ? [b] : [])));
   return {
-    reading: entries.filter((b) => b.status === 'reading').toSorted((a, b) => a.position - b.position).map(book),
+    reading: entries
+      .flatMap((b) => (b.status === 'reading' ? [b] : []))
+      .toSorted((a, b) => a.position - b.position)
+      .map((b): ReadingBook => ({ ...book(b), nowNote: b.nowNote?.[lang] })),
     finished: finished.map((b): FinishedBook => ({ ...book(b), finished: finishedDate(b.finished) })),
   };
 }

@@ -124,4 +124,11 @@ if (root && filters && bookcase) {
   bookcase.dataset.enhanced = '';
   filters.hidden = false;
   apply();
+
+  const linked = books.find((b) => `#${b.id}` === location.hash && !b.hidden);
+  if (linked) {
+    linked.open = true;
+    place();
+    linked.scrollIntoView({ block: 'start' });
+  }
 }

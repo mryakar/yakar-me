@@ -85,3 +85,10 @@ test('kategori, tür ve dil adları iki dilde tam', () => {
     for (const b of books) assert.ok(t.languages[b.originalLanguage] && t.languages[b.readIn], `${lang} ${b.id}`);
   }
 });
+
+test('şimdi notu yalnız okunan kitapta ve iki dilde', () => {
+  for (const b of books.filter((b) => b.nowNote)) {
+    assert.equal(b.status, 'reading', b.id);
+    for (const lang of ['en', 'tr']) assert.ok(b.nowNote[lang]?.trim(), `${lang} ${b.id}`);
+  }
+});

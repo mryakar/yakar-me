@@ -32,10 +32,8 @@ const shape = (o) =>
 test('arayüz sözlüğü: iki dilde aynı anahtarlar, boş metin yok', () => {
   assert.deepEqual(shape(ui.tr), shape(ui.en));
   const strings = (o) => Object.values(o).flatMap((v) => (typeof v === 'string' ? [v] : v && typeof v === 'object' ? strings(v) : []));
-  const { now, ...rest } = ui.tr;
-  for (const s of strings(rest)) assert.ok(s.length > 0, JSON.stringify(s));
-  assert.equal(now.length, ui.en.now.length);
-  for (const item of now) assert.ok(item.label && item.rest);
+  for (const s of strings(ui.tr)) assert.ok(s.length > 0, JSON.stringify(s));
+  assert.equal(ui.tr.now.length, ui.en.now.length);
 });
 
 test('çeviri etiketi ve öneri şeridi: her iki dilde İngilizce, iki yönde', () => {

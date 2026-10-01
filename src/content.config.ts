@@ -140,7 +140,7 @@ const books = defineCollection({
   }),
   schema: z
     .discriminatedUnion('status', [
-      book.extend({ status: z.literal('reading') }),
+      book.extend({ status: z.literal('reading'), nowNote: z.record(lang, bookText).optional() }),
       book.extend({ status: z.literal('finished'), finished: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/) }),
     ])
     .refine((b) => categoryOf(b.genre) === b.category, { message: 'genre does not belong to the category' }),
