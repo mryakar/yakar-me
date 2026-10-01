@@ -1,0 +1,82 @@
+{
+  "alt": "Fat orange letters of graffiti crowd a utility box on a sunlit pavement.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T13:56:22+03:00",
+  "aperture": 6.4,
+  "shutter": 0.000625,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0791-640-aca4a6cd.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 61279,
+        "sha256": "aca4a6cdcf44982cf5b690627a142448cf3b42186d09261e7e987854112909e0"
+      },
+      {
+        "file": "dscf0791-1280-5e6a4a88.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 211145,
+        "sha256": "5e6a4a8817adb9360e167ee4a30e701c88ec0abe16b2d9c02b06321c9afcb017"
+      },
+      {
+        "file": "dscf0791-1706-ec54a734.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 360142,
+        "sha256": "ec54a7343ce7fb4583a2b3db636b7cd7d87b8fb0f4babce3e65ab801c8c89781"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0791-640-73a28073.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 104542,
+        "sha256": "73a280733e4250de361bc322ab5336392c17ed0b155229d2559e7e6af2e32829"
+      },
+      {
+        "file": "dscf0791-1280-28965137.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 342876,
+        "sha256": "28965137a8da3123d1fbe0035fd256ae10d9a47215264f38959a947e2356ce44"
+      },
+      {
+        "file": "dscf0791-1706-0db4e580.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 620338,
+        "sha256": "0db4e58010df2ee1eef50a62b48d7088c06ebcf360f33b3860b3c2279b6f78e8"
+      }
+    ]
+  }
+}

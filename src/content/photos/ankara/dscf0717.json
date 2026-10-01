@@ -1,0 +1,82 @@
+{
+  "alt": "A ginger cat narrows its eyes in warm light, entirely unbothered by the camera.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T12:17:16+03:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 500,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0717-640-f1cdbfae.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 35036,
+        "sha256": "f1cdbfae1058df309cf81f3e9b8f899dae79b6fc051f2522320127e79d2713fe"
+      },
+      {
+        "file": "dscf0717-1280-6013c3b1.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 153426,
+        "sha256": "6013c3b175fcc0e51a2d44428b5c9ed574cf90da8cad516acff2ba2c3d72f110"
+      },
+      {
+        "file": "dscf0717-1706-301e230d.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 327784,
+        "sha256": "301e230dc52dcaf4d9a54032bed82a0719af7030cc522c49861e52de94b31553"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0717-640-2feff52b.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 43150,
+        "sha256": "2feff52b5f958e575b74ab6c905ad812a2938e8a22dd4e5a3b546575516d1114"
+      },
+      {
+        "file": "dscf0717-1280-422b4010.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 270532,
+        "sha256": "422b4010c5d081528696870be987da36938cf06399feb2b7b39528b48e714cbe"
+      },
+      {
+        "file": "dscf0717-1706-a1f52f0c.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 611092,
+        "sha256": "a1f52f0c9fe4dfa313b31799ee060b086b94a8213756b8a9f9012198e38bfb1d"
+      }
+    ]
+  }
+}

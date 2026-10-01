@@ -1,0 +1,82 @@
+{
+  "alt": "A spaniel in a bright harness sits politely at a café, eyes fixed on an offered hand.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T12:31:20+03:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 400,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0745-640-5e969bf9.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 33267,
+        "sha256": "5e969bf908cb5468857af16d2d8c927b41b4b783688af3f87ce645634923c5aa"
+      },
+      {
+        "file": "dscf0745-1280-d8643b55.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 101799,
+        "sha256": "d8643b55f932c6caae8bcd03fa0fd47c7bdf965880ec3ac7f3e5d1799b19623b"
+      },
+      {
+        "file": "dscf0745-1706-5c3444a7.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 194241,
+        "sha256": "5c3444a773ae2072441133926d6a2b52515683b9ea51977bf50461010f9e8b56"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0745-640-e1af62a1.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 42688,
+        "sha256": "e1af62a14843c86398201be70d26235f92961c36f4d718d484813e174b4792d2"
+      },
+      {
+        "file": "dscf0745-1280-ed8f40cc.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 120832,
+        "sha256": "ed8f40cc7faf8d53fc21048a2f97df52d3bedc57dd2e3d0dd5fa2882ccf8b0e7"
+      },
+      {
+        "file": "dscf0745-1706-cb6c45bb.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 277122,
+        "sha256": "cb6c45bbad8654777ece61236ba06d7e15350b8bf32e95d8ad0b60607521d8d0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "alt": "A yellow pub sign hangs at an angle from a stern concrete facade under a hazy sky.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T14:15:30+03:00",
+  "aperture": 5.6,
+  "shutter": 0.0008,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0864-640-3499c256.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 42874,
+        "sha256": "3499c256385abe3d4fc22c3e3c036bf7f4d3d921ac5a2547d83de2acf8efa37e"
+      },
+      {
+        "file": "dscf0864-1280-fccdd287.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 146616,
+        "sha256": "fccdd287684e8f7d68fef40b71b285d54037b7272b0b7c258e0732841b4c601d"
+      },
+      {
+        "file": "dscf0864-1706-8062c047.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 260601,
+        "sha256": "8062c047d2405e9fd9125d9d10e54cdd42d52e5869a0decfa76dced33a8fe1a6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0864-640-287f849e.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 69184,
+        "sha256": "287f849e7b19b00aed2a7256565c858e49e279127b455f86446a87a8aeab39f6"
+      },
+      {
+        "file": "dscf0864-1280-69f46551.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 228786,
+        "sha256": "69f465513c7074219cd2736f85e979169276d69061bf91bd27e60b7efa0d90b9"
+      },
+      {
+        "file": "dscf0864-1706-575acb49.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 438454,
+        "sha256": "575acb491cdb80d61168d5b6b6917700ff1bebab48c0cf228f98fe98e12cf43e"
+      }
+    ]
+  }
+}

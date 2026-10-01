@@ -1,0 +1,82 @@
+{
+  "alt": "A red street sign stands at the edge of evening shade, parked cars dozing below.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-24T16:17:12+03:00",
+  "aperture": 16,
+  "shutter": 0.00025,
+  "iso": 3200,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1207-640-289b762e.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 20354,
+        "sha256": "289b762e565b6a1e32230c0212ef0bda88f10f0cae4c92d02ae2bc993cc4d0ab"
+      },
+      {
+        "file": "dscf1207-1280-e754d01b.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 87241,
+        "sha256": "e754d01b425d66263e0b1980d1e0626d0242d6c6da26f48a75d27c7dda9ef568"
+      },
+      {
+        "file": "dscf1207-1706-ee42bf8d.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 182925,
+        "sha256": "ee42bf8d37e3caefee83514d12573c69b7931a339b56d5ac5eb46ee2bf104e6f"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1207-640-9a8e851b.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 22820,
+        "sha256": "9a8e851b062d97c7e7d028738f86e8107d76b2147ab140cf0ba4d67d19a0d169"
+      },
+      {
+        "file": "dscf1207-1280-ebb53042.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 109294,
+        "sha256": "ebb530420f9cf12f6aee0d599a39552a2579f224fd1560c4afa43de26c22bd12"
+      },
+      {
+        "file": "dscf1207-1706-1035c8e6.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 248048,
+        "sha256": "1035c8e69bf522895e0869a24f8d585c9b3d2763f6cfa1ce26a9d180adce7a50"
+      }
+    ]
+  }
+}

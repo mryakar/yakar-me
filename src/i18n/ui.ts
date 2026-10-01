@@ -313,7 +313,7 @@ const tr: Dict = {
       'recipe value',
       /^(DR\d+|\d+K)$/,
     ),
-    country: lookup({ 'Hong Kong': 'Hong Kong', Thailand: 'Tayland' }, 'country name'),
+    country: lookup({ Azerbaijan: 'Azerbaycan', China: 'Çin', Czechia: 'Çekya', France: 'Fransa', Germany: 'Almanya', 'Hong Kong': 'Hong Kong', Indonesia: 'Endonezya', Serbia: 'Sırbistan', Singapore: 'Singapur', Thailand: 'Tayland', Turkey: 'Türkiye' }, 'country name'),
   },
   about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
   notFound: { title: 'Bulunamadı', heading: 'Sayfa bulunamadı', back: 'Ana sayfaya dön' },

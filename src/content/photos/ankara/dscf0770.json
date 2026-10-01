@@ -1,0 +1,82 @@
+{
+  "alt": "A long aisle of bookshelves glows amber, a single reader standing at the far end.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T13:30:20+03:00",
+  "aperture": 2.8,
+  "shutter": 0.01,
+  "iso": 320,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0770-640-ca5d367a.avif",
+        "width": 640,
+        "height": 947,
+        "bytes": 37252,
+        "sha256": "ca5d367adc1a8cce035199847d5b499c8df600cf7c259e9f2462f740ff08cd45"
+      },
+      {
+        "file": "dscf0770-1280-e95a943a.avif",
+        "width": 1280,
+        "height": 1895,
+        "bytes": 143619,
+        "sha256": "e95a943ab7e53105733ec11a6e68340f70f70e4fd71b0d215f641dac82d7f57a"
+      },
+      {
+        "file": "dscf0770-1729-b53af9bf.avif",
+        "width": 1729,
+        "height": 2559,
+        "bytes": 313600,
+        "sha256": "b53af9bf652cb7936c33aa6cd659f2b4c8c1c2f3c53e1782176beaceb12730cf"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0770-640-7ec6d1c9.webp",
+        "width": 640,
+        "height": 947,
+        "bytes": 54508,
+        "sha256": "7ec6d1c93b245ee6bbb11dda78aa94bf93de43c041f40b6f60a072d889da95a9"
+      },
+      {
+        "file": "dscf0770-1280-b708fdf3.webp",
+        "width": 1280,
+        "height": 1895,
+        "bytes": 238926,
+        "sha256": "b708fdf34e55d45d6fe225bc4d7dd602e58eabafcb830a825ad1825631b2df4c"
+      },
+      {
+        "file": "dscf0770-1729-9af088a6.webp",
+        "width": 1729,
+        "height": 2559,
+        "bytes": 536392,
+        "sha256": "9af088a6283c1a8dbe3c68d95b6ae0eccd0a492b0bf2d977e0228f7a7b8147e0"
+      }
+    ]
+  }
+}
