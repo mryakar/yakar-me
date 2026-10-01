@@ -1,6 +1,7 @@
 export const site = {
   name: 'Ahmet Yakar',
   domain: 'yakar.me',
+  title: 'Yakar',
   url: 'https://yakar.me',
 };
 

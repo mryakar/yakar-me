@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { ui } from '../i18n/ui';
 import { localize, type Lang } from '../lib/i18n';
+import { documentTitle } from '../lib/format';
 
 interface Props {
   lang: Lang;
@@ -9,7 +10,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang].notFound;
 ---
-<Base lang={lang} title={t.title} notFound>
+<Base lang={lang} title={documentTitle(t.title)} notFound>
   <section class="flex flex-col gap-8 px-6 pt-9 pb-16 desk:px-24 desk:pt-26">
     <span class="label text-accent">404</span>
     <h1 class="font-display text-d2 desk:text-d1">{t.heading}</h1>

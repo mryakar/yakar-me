@@ -6,6 +6,7 @@ import CategoryTint from '../../components/CategoryTint.astro';
 import { ui } from '../../i18n/ui';
 import { langPaths, type Lang } from '../../lib/i18n';
 import { books } from '../../lib/books';
+import { documentTitle } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -13,7 +14,7 @@ const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].reading;
 const { reading, finished } = await books(lang);
 ---
-<Base lang={lang} title={t.title} description={t.description}>
+<Base lang={lang} title={documentTitle(ui[lang].nav.reading)} description={t.description}>
   <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-reading>
     <header class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line pb-5">
       <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.reading}</h1>
