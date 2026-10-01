@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { documentTitle } from '../lib/format';
 
 export function getStaticPaths() {
   return import.meta.env.DEV ? [{ params: { design: 'design' } }] : [];
@@ -11,7 +12,7 @@ const colors = [
   ['text-body', 'bg-text-body'], ['muted', 'bg-muted'], ['faint', 'bg-faint'], ['accent', 'bg-accent'],
 ];
 ---
-<Base lang="en" title="Design — yakar.me" counterpart={false}>
+<Base lang="en" title={documentTitle('Design')} counterpart={false}>
   <div class="flex flex-col gap-24 px-6 py-16 desk:px-24">
     <section class="flex flex-col gap-6">
       <span class="label text-accent">Colour</span>

@@ -27,7 +27,7 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
 {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={absolute(a.href)} />)}
 {xDefault && <link rel="alternate" hreflang="x-default" href={absolute(xDefault.href)} />}
 <link rel="alternate" type="application/rss+xml" title={site.name} href={localize('/rss.xml', lang)} />
-<meta property="og:site_name" content={site.domain} />
+<meta property="og:site_name" content={site.title} />
 <meta property="og:locale" content={ogLocale[lang]} />
 {alternates.length > 0 && <meta property="og:locale:alternate" content={ogLocale[other(lang)]} />}
 <meta property="og:title" content={title} />

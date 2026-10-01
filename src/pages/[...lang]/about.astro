@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Tagline from '../../components/Tagline.astro';
 import { ui } from '../../i18n/ui';
 import { langPaths, type Lang } from '../../lib/i18n';
+import { documentTitle } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -13,7 +14,7 @@ const entry = await getEntry('pages', `about/${lang}`);
 if (!entry) throw new Error(`src/content/pages/about/${lang}.md is missing`);
 const { Content } = await render(entry);
 ---
-<Base lang={lang} title={t.title} description={t.description}>
+<Base lang={lang} title={documentTitle(t.heading)} description={t.description}>
   <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-7 border-b border-line pb-8">
       <Tagline lang={lang} />

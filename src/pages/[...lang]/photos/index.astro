@@ -7,6 +7,7 @@ import { ui } from '../../../i18n/ui';
 import { langPaths, type Lang } from '../../../lib/i18n';
 import { allSeries, type Photo } from '../../../lib/photos';
 import { seriesPath, takenYear } from '../../../lib/photo';
+import { documentTitle } from '../../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -18,7 +19,7 @@ const years = (photos: Photo[]) => {
   return ys.length > 1 ? `${ys[0]}–${ys.at(-1)}` : String(ys[0]);
 };
 ---
-<Base lang={lang} title={t.title} description={t.description}>
+<Base lang={lang} title={documentTitle(ui[lang].nav.photos)} description={t.description}>
   <div class="flex flex-col gap-16 px-6 pt-9 pb-24 desk:gap-20 desk:px-24 desk:pt-26">
     <header class="flex items-baseline justify-between border-b border-line pb-5">
       <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.photos}</h1>

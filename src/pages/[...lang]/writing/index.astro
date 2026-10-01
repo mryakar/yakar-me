@@ -1,10 +1,11 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Shelf from '../../../components/Shelf.astro';
+import Stack from '../../../components/Stack.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths, type Lang } from '../../../lib/i18n';
 import { articles } from '../../../lib/writing';
-import { articlePath, formatDate, isoDate } from '../../../lib/format';
+import { articlePath, documentTitle, formatDate, isoDate } from '../../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -12,16 +13,19 @@ const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].writing;
 const all = await articles(lang);
 ---
-<Base lang={lang} title={t.title} description={t.description}>
+<Base lang={lang} title={documentTitle(ui[lang].nav.writing)} description={t.description}>
   <div class="flex flex-col gap-24 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
     <header class="flex items-baseline justify-between border-b border-line pb-5">
       <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.writing}</h1>
       <span class="label text-faint">{t.published(all.length)}</span>
     </header>
 
-    <Shelf articles={all} lang={lang} />
+    <div class="tab:hidden">
+      <Shelf articles={all} lang={lang} />
+    </div>
+    <Stack articles={all} lang={lang} />
 
-    <section class="flex flex-col gap-6" aria-labelledby="all">
+    <section class="flex flex-col gap-6 tab:hidden" aria-labelledby="all">
       <h2 id="all" class="label text-faint">{t.all}</h2>
       <ol class="flex flex-col">
         {all.map((a) => (
