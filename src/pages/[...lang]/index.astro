@@ -13,7 +13,7 @@ import { lastTaken, recentSeries, type Photo } from '../../lib/photos';
 import { seriesPath } from '../../lib/photo';
 import { articles } from '../../lib/writing';
 import { books } from '../../lib/books';
-import { articlePath, formatDate, formatMonth } from '../../lib/format';
+import { articlePath, documentTitle, formatDate, formatMonth } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -29,7 +29,7 @@ const [heroStart, heroEm, heroEnd] = t.home.hero;
 const { reading, finished } = await books(lang);
 const now = [...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []), ...t.now];
 ---
-<Base lang={lang} title={t.home.title}>
+<Base lang={lang} title={documentTitle()}>
   <div class="flex flex-col gap-28 px-6 pt-9 pb-16 desk:gap-34 desk:px-24 desk:pt-26">
     <section class="grid gap-14 desk:grid-cols-[minmax(0,1fr)_20rem] desk:items-end desk:gap-20">
       <div class="flex flex-col gap-8">

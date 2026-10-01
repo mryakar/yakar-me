@@ -1,0 +1,47 @@
+---
+import { topics, type Article } from '../lib/writing';
+import { articlePath, formatDate, readingMinutes } from '../lib/format';
+import ArrowRight from './ArrowRight.astro';
+import { ui } from '../i18n/ui';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  articles: Article[];
+  lang: Lang;
+}
+const { articles, lang } = Astro.props;
+const t = ui[lang];
+const byTopic = topics
+  .map((topic) => ({ topic, items: articles.filter((a) => a.topic === topic) }))
+  .filter((s) => s.items.length > 0);
+const columns = '@4xl:grid-cols-[7.5rem_minmax(0,1fr)_6.5rem_1.5rem] @4xl:gap-x-6';
+---
+<div class="@container hidden flex-col gap-16 tab:flex">
+  {byTopic.map(({ topic, items }) => (
+    <div class="flex flex-col gap-5">
+      <p class="flex items-center gap-4">
+        <span class="label text-xs text-accent">{t.writing.topics[topic]}</span>
+        <span class="label text-xs text-faint">{items.length}</span>
+      </p>
+      <div class="flex flex-col gap-2 border-b-2 border-line-strong pb-3">
+        {items.map((a, i) => (
+          <details name={`writing-${topic}`} open={i === 0} class="group/item border border-line-strong bg-sleeve open:border-accent/45 open:bg-card open:shadow-[0_14px_32px_var(--yk-shadow)] @4xl:open:ml-8 @4xl:open:shadow-[-16px_18px_40px_var(--yk-shadow)]">
+            <summary class:list={['grid min-h-18 cursor-pointer list-none grid-cols-[auto_auto_minmax(0,1fr)_1.5rem] items-center gap-x-1.5 gap-y-1.5 px-5 py-4 text-text transition-colors duration-200 hover:text-accent group-open/item:p-6 group-open/item:pb-0 group-open/item:hover:text-text @4xl:min-h-16 @4xl:px-6 @4xl:group-open/item:px-8 @4xl:group-open/item:items-baseline @4xl:group-open/item:pt-7 [&::-webkit-details-marker]:hidden', columns]}>
+              <span class="label text-faint group-open/item:text-accent @4xl:text-xs">{formatDate(a.pubDate, 'short', lang)}</span>
+              <span class="label text-faint group-open/item:text-accent before:content-['·_'] @4xl:order-1 @4xl:col-start-3 @4xl:text-right @4xl:group-open/item:text-faint @4xl:text-xs @4xl:before:content-none">{t.writing.minRead(readingMinutes(a.entry.body))}</span>
+              <span class="col-span-3 row-start-2 pr-4 font-body text-[1.3125rem] leading-tight group-open/item:pt-2 group-open/item:text-[1.75rem] @4xl:col-span-1 @4xl:col-start-2 @4xl:row-start-1 @4xl:pr-0 @4xl:text-[1.375rem] @4xl:group-open/item:pt-0 @4xl:group-open/item:text-[2rem]">{a.title}</span>
+              <svg class="col-start-4 row-span-2 row-start-1 justify-self-end text-muted group-open/item:hidden @4xl:order-2 @4xl:row-span-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+            </summary>
+            <div class:list={['flex flex-col gap-3.5 px-6 pt-3.5 pb-6 @4xl:grid @4xl:px-8 @4xl:pt-3 @4xl:pb-7', columns]}>
+              <p class="max-w-150 text-base leading-[1.55] text-muted @4xl:col-start-2">{a.description}</p>
+              <a href={articlePath(a.id, lang)} class="group inline-flex items-center gap-2 self-end py-2.5 text-[15px] text-accent @4xl:col-span-2 @4xl:col-start-3 @4xl:justify-self-end @4xl:py-0">
+                {t.home.read}
+                <ArrowRight size={13} />
+              </a>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

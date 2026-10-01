@@ -22,7 +22,6 @@ const en = {
   theme: { dark: 'Dark', light: 'Light', toggle: 'Switch colour theme', toDark: 'Switch to dark theme', toLight: 'Switch to light theme' },
   languageName: 'English',
   home: {
-    title: 'yakar.me',
     hero: ['Code, a saxophone, and a habit of taking the long way ', 'round', '.'],
     latestWriting: 'Latest writing',
     latestSeries: 'Latest series',
@@ -42,7 +41,6 @@ const en = {
     { label: 'Playing', text: 'Alto saxophone. The neighbours have been very understanding.' },
   ],
   writing: {
-    title: 'Writing — yakar.me',
     description: 'Long-form writing on Java, databases, and the mechanisms underneath.',
     published: (n: number) => `${n} published`,
     all: 'All writing',
@@ -52,7 +50,6 @@ const en = {
     topics: { Java: 'Java', Databases: 'Databases' } as Record<string, string>,
   },
   reading: {
-    title: 'Reading — yakar.me',
     description: 'The books I am reading and the ones I have finished.',
     counts: (reading: number, finished: number) => `${reading} reading · ${finished} finished`,
     now: 'Reading now',
@@ -114,13 +111,11 @@ const en = {
     } satisfies Record<BookLanguage, string>,
   },
   photos: {
-    title: 'Photos — yakar.me',
     description: 'Photographs in series, from the road and mostly after dark.',
     series: (n: number) => `${n} series`,
     count: (n: number) => `${n} ${n === 1 ? 'photo' : 'photos'}`,
     rights: (name: string) => `All photographs © ${name}. All rights reserved.`,
     copyright: (year: number, name: string) => `© ${year} ${name}. All rights reserved.`,
-    seriesTitle: (title: string) => `${title} — Photos — yakar.me`,
     breadcrumb: 'Breadcrumb',
     details: 'Details ↗',
     dialog: (series: string) => `${series} — photo details`,
@@ -131,8 +126,7 @@ const en = {
     aperture: 'Aperture',
     shutter: 'Shutter',
     iso: 'ISO',
-    focal: 'Focal',
-    focalRest: ' length',
+    focal: 'Focal length',
     equivalent: 'eq.',
     recipe: 'Recipe',
     recipeLabels: {
@@ -151,8 +145,8 @@ const en = {
     recipeValue: (value: string) => value,
     country: (name: string) => name,
   },
-  about: { title: 'About — yakar.me', description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
-  notFound: { title: 'Not found — yakar.me', heading: 'Page not found', back: 'Back to the home page' },
+  about: { description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
+  notFound: { title: 'Not found', heading: 'Page not found', back: 'Back to the home page' },
 };
 
 type Dict = typeof en;
@@ -170,7 +164,6 @@ const tr: Dict = {
   theme: { dark: 'Koyu', light: 'Açık', toggle: 'Renk temasını değiştir', toDark: 'Koyu temaya geç', toLight: 'Açık temaya geç' },
   languageName: 'Türkçe',
   home: {
-    title: 'yakar.me',
     hero: ['Kod, bir saksafon ve hep uzun yoldan ', 'dolaşma', ' alışkanlığı.'],
     latestWriting: 'Son yazı',
     latestSeries: 'Son seri',
@@ -190,7 +183,6 @@ const tr: Dict = {
     { label: 'Çalıyorum', text: 'Alto saksafon. Komşular şimdiye kadar çok anlayışlı.' },
   ],
   writing: {
-    title: 'Yazılar — yakar.me',
     description: 'Java, veritabanları ve işin altındaki mekanizmalar üzerine uzun yazılar.',
     published: (n) => `${n} yazı`,
     all: 'Tüm yazılar',
@@ -200,7 +192,6 @@ const tr: Dict = {
     topics: { Java: 'Java', Databases: 'Veritabanları' },
   },
   reading: {
-    title: 'Kitaplar — yakar.me',
     description: 'Okumakta olduğum ve bitirdiğim kitaplar.',
     counts: (reading, finished) => `${reading} okunuyor · ${finished} bitti`,
     now: 'Şu an okuduklarım',
@@ -262,13 +253,11 @@ const tr: Dict = {
     },
   },
   photos: {
-    title: 'Fotoğraflar — yakar.me',
     description: 'Seriler halinde fotoğraflar; yoldan ve çoğu hava karardıktan sonra.',
     series: (n) => `${n} seri`,
     count: (n) => `${n} fotoğraf`,
     rights: (name) => `Tüm fotoğraflar © ${name}. Tüm hakları saklıdır.`,
     copyright: (year, name) => `© ${year} ${name}. Tüm hakları saklıdır.`,
-    seriesTitle: (title) => `${title} — Fotoğraflar — yakar.me`,
     breadcrumb: 'Sayfa yolu',
     details: 'Ayrıntılar ↗',
     dialog: (series) => `${series} — fotoğraf ayrıntıları`,
@@ -279,8 +268,7 @@ const tr: Dict = {
     aperture: 'Diyafram',
     shutter: 'Enstantane',
     iso: 'ISO',
-    focal: 'Odak',
-    focalRest: ' uzaklığı',
+    focal: 'Odak uzaklığı',
     equivalent: 'eşd.',
     recipe: 'Tarif',
     recipeLabels: {
@@ -327,8 +315,8 @@ const tr: Dict = {
     ),
     country: lookup({ 'Hong Kong': 'Hong Kong', Thailand: 'Tayland' }, 'country name'),
   },
-  about: { title: 'Hakkımda — yakar.me', description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
-  notFound: { title: 'Bulunamadı — yakar.me', heading: 'Sayfa bulunamadı', back: 'Ana sayfaya dön' },
+  about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
+  notFound: { title: 'Bulunamadı', heading: 'Sayfa bulunamadı', back: 'Ana sayfaya dön' },
 };
 
 export const ui: Record<Lang, Dict> = { en, tr };

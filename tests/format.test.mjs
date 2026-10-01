@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { articlePath, formatDate, formatMonth, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import { articlePath, documentTitle, formatDate, formatMonth, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -54,4 +54,10 @@ test('plural: tekil ve çoğul', () => {
   assert.equal(plural(forms, 1), '1 book');
   assert.equal(plural(forms, 0), '0 books');
   assert.equal(plural(forms, 29), '29 books');
+});
+
+test('documentTitle: ana sayfa site adı, öbürleri sayfa — site', () => {
+  assert.equal(documentTitle(), 'Yakar');
+  assert.equal(documentTitle('Writing'), 'Writing — Yakar');
+  assert.equal(documentTitle('Hong Kong', 'Fotoğraflar'), 'Hong Kong — Fotoğraflar — Yakar');
 });

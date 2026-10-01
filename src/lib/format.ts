@@ -1,3 +1,4 @@
+import { site } from '../site.ts';
 import { dateLocale, localize, type Lang } from './i18n.ts';
 
 const SHORT_MONTHS: Record<Lang, string[]> = {
@@ -28,6 +29,8 @@ export function englishOrdinal(n: number) {
 }
 
 export const plural = (forms: { one: string; other: string }, n: number) => (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
+
+export const documentTitle = (...parts: string[]) => [...parts, site.title].join(' — ');
 
 export const isoDate = (date: Date) => date.toISOString().slice(0, 10);
 
