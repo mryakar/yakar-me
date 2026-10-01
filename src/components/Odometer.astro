@@ -1,0 +1,17 @@
+---
+import { odometer } from '../lib/measure';
+
+interface Props {
+  value: number;
+  cells: number;
+  size?: 'big' | 'small';
+}
+const { value, cells, size } = Astro.props;
+const digitClass = ['d-0', 'd-1', 'd-2', 'd-3', 'd-4', 'd-5', 'd-6', 'd-7', 'd-8', 'd-9'];
+const sizeClass = { big: 'odo-big', small: 'odo-small' };
+---
+<span class:list={['odo-cells', size && sizeClass[size]]} aria-hidden="true">
+  {odometer(value, cells).map(({ digit, lead }) => (
+    <span class:list={['odo-cell', digitClass[digit]]} data-lead={lead ? '' : undefined}></span>
+  ))}
+</span>

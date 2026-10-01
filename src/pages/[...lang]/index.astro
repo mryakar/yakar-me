@@ -1,111 +1,166 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Shelf from '../../components/Shelf.astro';
 import Tagline from '../../components/Tagline.astro';
 import ArrowRight from '../../components/ArrowRight.astro';
 import PhotoPicture from '../../components/PhotoPicture.astro';
-import LatestCard from '../../components/LatestCard.astro';
-import BookShelf from '../../components/BookShelf.astro';
-import { site, nowUpdated } from '../../site';
+import Odometer from '../../components/Odometer.astro';
+import OdometerLink from '../../components/OdometerLink.astro';
+import { home, site, nowUpdated } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
-import { lastTaken, recentSeries, type Photo } from '../../lib/photos';
+import { lastTaken, recentSeries } from '../../lib/photos';
 import { seriesPath } from '../../lib/photo';
 import { articles } from '../../lib/writing';
 import { books } from '../../lib/books';
-import { articlePath, documentTitle, formatDate, formatMonth } from '../../lib/format';
+import { measures } from '../../lib/measures';
+import { articlePath, documentTitle, formatDate, formatMonth, formatNumber, plural } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
+const FRAME_GRID_MAX = 60;
+
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang];
-const all = await articles(lang);
-const latest = all[0];
-const recent = await recentSeries(lang, 3);
-const newest = recent[0];
-const columns = ['', 'desk:grid-cols-1', 'desk:grid-cols-2', 'desk:grid-cols-3'][recent.length];
-const seriesMonth = (photos: Photo[]) => formatMonth(new Date(lastTaken(photos).slice(0, 10)), lang);
+const n = (value: number) => formatNumber(value, lang);
+const countries = (count: number) => plural(t.home.countries, count);
+const cities = (count: number) => plural(t.home.cities, count);
+const [latest] = await articles(lang);
+const [series] = await recentSeries(lang, 1);
+const { reading } = await books(lang);
+const [current, ...also] = reading;
+const m = await measures();
+const daylight = m.frames.value - m.afterSunset;
+const readingPage = localize('/reading/', lang);
+const photosPage = localize('/photos/', lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
-const { reading, finished } = await books(lang);
 const now = [...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []), ...t.now];
+const preview = 'font-body text-[1.375rem] leading-tight text-text transition-colors duration-200 hover:text-accent tab:text-[1.625rem]';
+const more = 'group inline-flex items-center gap-2 text-[15px] text-accent';
+const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase';
 ---
 <Base lang={lang} title={documentTitle()}>
-  <div class="flex flex-col gap-28 px-6 pt-9 pb-16 desk:gap-34 desk:px-24 desk:pt-26">
-    <section class="grid gap-14 desk:grid-cols-[minmax(0,1fr)_20rem] desk:items-end desk:gap-20">
-      <div class="flex flex-col gap-8">
-        <Tagline lang={lang} />
-        <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
-        <p class="max-w-140 text-lede text-muted">{t.lede}</p>
-      </div>
-      <div class="flex flex-col gap-9">
-        {latest && (
-          <LatestCard href={articlePath(latest.id, lang)} label={`${t.home.latestWriting} · ${formatDate(latest.pubDate, 'short', lang)}`} title={latest.title} action={t.home.read} />
-        )}
-        {newest && (
-          <LatestCard href={seriesPath(newest.id, lang)} label={`${t.home.latestSeries} · ${seriesMonth(newest.photos)}`} title={newest.title} action={t.home.view} />
-        )}
-      </div>
+  <div class="flex flex-col gap-16 px-6 pt-9 pb-16 tab:gap-24 desk:gap-26 desk:px-24 desk:pt-26">
+    <section class="flex max-w-205 flex-col gap-6 tab:gap-7">
+      <Tagline lang={lang} />
+      <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
+      <p class="text-lede text-muted">{t.home.measured}</p>
     </section>
 
-    {recent.length > 0 && (
-      <section class="reveal grid gap-10 desk:grid-cols-[13rem_minmax(0,1fr)] desk:gap-16" aria-labelledby="photos">
-        <div class="flex flex-col gap-5 border-t border-line-strong pt-5.5">
-          <h2 id="photos" class="font-display text-d3">{t.nav.photos}</h2>
-          <p class="text-[15px] leading-relaxed text-muted">{t.home.photosIntro}</p>
-          <a href={localize('/photos/', lang)} class="inline-flex items-center gap-2 text-[15px] text-accent">
-            {t.home.allSeries}
-            <ArrowRight />
-          </a>
+    <section class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]" aria-labelledby="odometer">
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 border-b border-line px-4 py-4 tab:px-7">
+        <h2 id="odometer" class="font-mono text-[11px] tracking-[0.14em] text-text uppercase">{t.home.odometer}</h2>
+        <span class="label flex items-center gap-2.5 text-faint">
+          <span class="block size-1.5 rounded-full bg-accent"></span>
+          {t.home.lastRelease(formatDate(new Date(), 'short', lang))}
+        </span>
+      </div>
+      <div class="grid border-b border-line @4xl:grid-cols-[minmax(max-content,1fr)_minmax(0,1fr)]">
+        <div class="flex flex-col gap-6.5 border-b border-line px-4 py-7 tab:gap-8 tab:px-7 @4xl:gap-9 @4xl:border-r @4xl:border-b-0 @4xl:py-8">
+          <OdometerLink href={readingPage} label={t.home.pagesRead} meta={t.home.since(m.pages.since)} name={t.home.pagesReadCount(n(m.pages.value))} value={m.pages.value} shown={n(m.pages.value)} cells={7} size="big" />
+          <OdometerLink href={localize('/writing/', lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} name={t.home.wordsWrittenCount(n(m.words.value))} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
         </div>
-        <ul class:list={['grid grid-cols-2 gap-x-4 gap-y-10 desk:gap-x-6', columns]}>
-          {recent.map((series, i) => (
-            <li class:list={[i > 1 && 'hidden desk:block']}>
-              <a href={seriesPath(series.id, lang)} class="group flex flex-col gap-4">
-                <PhotoPicture photo={series.cover} sizes="(min-width: 64rem) 30vw, 45vw" class="aspect-4/5 h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
-                <span class="flex flex-col gap-1.5">
-                  <span class="label text-faint">{seriesMonth(series.photos)} · {t.photos.count(series.photos.length)}</span>
-                  <span class="font-body text-xl leading-tight text-text transition-colors duration-200 group-hover:text-accent">{series.title}</span>
+        <div class="flex flex-wrap content-start gap-x-10 gap-y-6.5 px-4 py-6.5 tab:px-7 @4xl:grid @4xl:grid-cols-[repeat(2,max-content)] @4xl:gap-x-12 @4xl:gap-y-9 @4xl:py-8">
+          <OdometerLink href={photosPage} label={countries(m.countries)} name={`${n(m.countries)} ${countries(m.countries)}`} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
+          <OdometerLink href={photosPage} label={cities(m.cities.value)} meta={m.cities.latest && t.home.latestCity(m.cities.latest)} name={`${n(m.cities.value)} ${cities(m.cities.value)}`} value={m.cities.value} shown={n(m.cities.value)} cells={3} size="small" />
+          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} name={t.home.framesCount(n(m.frames.value), n(m.afterSunset))} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small">
+            <span class="flex flex-col gap-2">
+              {m.frames.value <= FRAME_GRID_MAX ? (
+                <span class="flex w-33 flex-wrap gap-0.75" aria-hidden="true">
+                  {m.frames.night.map((night) => <span class:list={['block h-3 w-2.25 border', night ? 'border-accent bg-accent' : 'border-line-strong']}></span>)}
                 </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    <section class="reveal flex flex-col gap-10" aria-labelledby="writing">
-      <div class="flex items-baseline justify-between border-b border-line pb-5">
-        <h2 id="writing" class="font-display text-d3">{t.nav.writing}</h2>
-        <a href={localize('/writing/', lang)} class="label text-faint transition-colors duration-200 hover:text-accent">{t.home.publishedAll(all.length)}</a>
+              ) : (
+                <svg class="block h-3 w-33 border border-line-strong text-accent" width="132" height="12" viewBox={`0 0 ${m.frames.value} 1`} preserveAspectRatio="none" aria-hidden="true">
+                  <rect width={m.afterSunset} height="1" fill="currentColor"></rect>
+                </svg>
+              )}
+              <span class="flex flex-col gap-1 font-mono text-[10px] text-faint">
+                <span class="flex items-center gap-1.5"><span class="block size-2 bg-accent"></span>{t.home.afterSunset} · {n(m.afterSunset)}</span>
+                <span class="flex items-center gap-1.5"><span class="block size-2 border border-line-strong"></span>{t.home.daylight} · {n(daylight)}</span>
+              </span>
+            </span>
+          </OdometerLink>
+        </div>
       </div>
-      <Shelf articles={all} lang={lang} />
+      <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-3 @2xl:gap-10">
+        <div class="flex flex-col gap-3">
+          <span class={cellLabel}>{t.home.farthest}</span>
+          <span class="flex items-center gap-2.5">
+            <span class="sr-only">{n(m.farthest.km)}</span>
+            <Odometer value={m.farthest.km} cells={5} />
+            <span class="label text-faint">{t.home.km}</span>
+          </span>
+          <span class="text-[13px] leading-normal text-muted">{t.home.farthestRoute(home.city, m.farthest.city)}</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class={cellLabel}>{t.home.afterSunset}</span>
+          <span class="flex items-center gap-2.5">
+            <span class="sr-only">{n(m.afterSunset)}</span>
+            <Odometer value={m.afterSunset} cells={2} />
+            <span class="label text-faint">{t.home.outOf(n(m.frames.value))}</span>
+          </span>
+          <span class="text-[13px] leading-normal text-muted">{t.home.sunPosition}</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class={cellLabel}>{t.home.languages}</span>
+          <span class="font-display text-d2 leading-none">{n(m.languages)}</span>
+          <span class="text-[13px] leading-normal text-muted">{t.home.languagesRange}</span>
+        </div>
+      </div>
     </section>
 
-    <section class="reveal flex flex-col gap-10" aria-labelledby="reading">
-      <div class="flex items-baseline justify-between border-b border-line pb-5">
-        <h2 id="reading" class="font-display text-d3">{t.nav.reading}</h2>
-        <a href={localize('/reading/', lang)} class="label text-faint transition-colors duration-200 hover:text-accent">{t.home.booksAll(finished.length)}</a>
-      </div>
-      <BookShelf reading={reading} finished={finished} lang={lang} />
-    </section>
+    <div class="reveal @container">
+      <ul class="grid gap-x-8 gap-y-10 @xl:grid-cols-2 @3xl:grid-cols-3">
+        {latest && (
+          <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
+            <span class="label text-faint">{t.home.latestWriting} · {formatDate(latest.pubDate, 'short', lang)}</span>
+            <a href={articlePath(latest.id, lang)} class={preview}>{latest.title}</a>
+            <a href={localize('/writing/', lang)} class={more}>{t.writing.all}<ArrowRight /></a>
+          </li>
+        )}
+        {current && (
+          <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
+            <span class="label text-faint">{t.reading.now}</span>
+            <span class="flex flex-col gap-2">
+              <a href={`${readingPage}#${current.id}`} class={preview}>{current.title}</a>
+              {also.length > 0 && (
+                <span class="text-sm leading-normal text-muted">
+                  {t.home.also} {also.map((book, i) => (
+                    <>{i > 0 && ', '}<a href={`${readingPage}#${book.id}`} class="transition-colors duration-200 hover:text-accent">{book.title}</a></>
+                  ))}.
+                </span>
+              )}
+            </span>
+            <a href={readingPage} class={more}>{t.home.allBooks}<ArrowRight /></a>
+          </li>
+        )}
+        {series && (
+          <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
+            <span class="label text-faint">{t.home.latestSeries} · {formatMonth(new Date(lastTaken(series.photos).slice(0, 10)), lang)}</span>
+            <a href={seriesPath(series.id, lang)} class="group flex flex-col gap-3.5">
+              <PhotoPicture photo={series.cover} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class="aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
+              <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>
+            </a>
+            <a href={photosPage} class={more}>{t.home.allSeries}<ArrowRight /></a>
+          </li>
+        )}
+      </ul>
+    </div>
 
-    <section class="reveal flex flex-col gap-8" aria-labelledby="now">
-      <div class="flex items-baseline justify-between">
+    <section class="reveal grid gap-6 border-t border-line-strong pt-5.5 desk:grid-cols-[13rem_minmax(0,1fr)] desk:gap-16" aria-labelledby="now">
+      <div class="flex flex-col gap-2.5">
         <h2 id="now" class="font-display text-d3">{t.home.now}</h2>
         <span class="label text-faint">{t.home.updated(formatMonth(nowUpdated, lang))}</span>
       </div>
-      <div class="grid gap-10 desk:grid-cols-3">
+      <div class="flex max-w-160 flex-col gap-4.5 text-[17px] leading-relaxed text-text-body">
         {now.map((item) => (
-          <div class="flex flex-col gap-2.5 border-t border-line pt-5">
-            <span class="label text-faint">{item.label}</span>
-            <p class="font-body text-[1.375rem] leading-snug text-text">
-              {'books' in item
-                ? item.books.map((book, i) => (
-                    <>{i > 0 && ` ${t.home.also} `}<em>{book.title}</em>{book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}</>
-                  ))
-                : item.text}
-            </p>
-          </div>
+          <p>
+            <span class="label mr-3 text-faint">{item.label}</span>
+            {'books' in item
+              ? item.books.map((book, i) => (
+                  <>{i > 0 && ` ${t.home.also} `}<em>{book.title}</em>{book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}</>
+                ))
+              : item.text}
+          </p>
         ))}
       </div>
     </section>

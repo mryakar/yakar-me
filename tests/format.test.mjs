@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { articlePath, documentTitle, formatDate, formatMonth, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import { articlePath, documentTitle, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -60,4 +60,11 @@ test('documentTitle: ana sayfa site adı, öbürleri sayfa — site', () => {
   assert.equal(documentTitle(), 'Yakar');
   assert.equal(documentTitle('Writing'), 'Writing — Yakar');
   assert.equal(documentTitle('Hong Kong', 'Fotoğraflar'), 'Hong Kong — Fotoğraflar — Yakar');
+});
+
+test('formatNumber: binlik ayırıcı dile göre', () => {
+  assert.equal(formatNumber(7442), '7,442');
+  assert.equal(formatNumber(7442, 'tr'), '7.442');
+  assert.equal(formatNumber(26201, 'tr'), '26.201');
+  assert.equal(formatNumber(19, 'tr'), '19');
 });

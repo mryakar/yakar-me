@@ -1,0 +1,24 @@
+---
+import Odometer from './Odometer.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  meta?: string;
+  name: string;
+  value: number;
+  shown: string;
+  cells: number;
+  size: 'big' | 'small';
+}
+const { href, label, meta, name, value, shown, cells, size } = Astro.props;
+---
+<a href={href} aria-label={name} class="flex w-fit flex-col gap-3.5 rounded-[10px] text-text focus-visible:outline-offset-4">
+  <span class="flex items-baseline justify-between gap-3">
+    <span class="font-mono text-[11px] tracking-[0.12em] text-accent uppercase">{label}</span>
+    {meta && <span class="label text-faint">{meta}</span>}
+  </span>
+  <span class="sr-only">{shown}</span>
+  <Odometer value={value} cells={cells} size={size} />
+  <slot />
+</a>
