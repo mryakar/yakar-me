@@ -1,0 +1,64 @@
+{
+  "alt": "A bar glows deep red after dark, its tables and silhouettes washed in one colour.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-14T18:37:16+08:00",
+  "aperture": 1.8,
+  "shutter": 0.125,
+  "iso": 800,
+  "focalLength": 26,
+  "place": {
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4038-640-415172e3.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 35845,
+        "sha256": "415172e3116e1562a016bedba12d5460029d19685584d089070a028f765ceb48"
+      },
+      {
+        "file": "img-4038-1280-12e38ef8.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 102725,
+        "sha256": "12e38ef8b7c3ae55e5cca462f40558e2281d236cccd4f064d37164ae7c6658d7"
+      },
+      {
+        "file": "img-4038-1536-b77724b9.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 133348,
+        "sha256": "b77724b95af0a62a448187d7a88acb13b7783ec53b4fd39f5ec45dc893d09174"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4038-640-1d903c0d.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 50886,
+        "sha256": "1d903c0d0c5f148adc30ea3873e8f2e0c50740f8d0d16d4da9590b3deb5c5522"
+      },
+      {
+        "file": "img-4038-1280-4a8fa76e.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 127858,
+        "sha256": "4a8fa76e1d2ea384351b50a34eadda5166d598990646f3b04b1e8b72f0856c2f"
+      },
+      {
+        "file": "img-4038-1536-a8121032.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 159576,
+        "sha256": "a81210322e3477cb9fa585e15549d6d47b5d23ccbfc4abe30c00200b90f44fdb"
+      }
+    ]
+  }
+}

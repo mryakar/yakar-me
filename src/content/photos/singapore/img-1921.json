@@ -1,0 +1,64 @@
+{
+  "alt": "A colonial building's shutters glow in rainbow colours at night as a red car streaks past.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T21:54:13+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0303030303,
+  "iso": 640,
+  "focalLength": 24,
+  "place": {
+    "district": "Clarke Quay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1921-640-4f192c51.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 48022,
+        "sha256": "4f192c5147c967e5fab956d7302b2aa0c17c0b72c03a61703f5cbf2f0037ec58"
+      },
+      {
+        "file": "img-1921-1280-d19de5e5.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 159803,
+        "sha256": "d19de5e542f4eba749c662c1d7491b69ab45ea0fabad037f72648d11fb47a222"
+      },
+      {
+        "file": "img-1921-1536-1abbb74d.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 212083,
+        "sha256": "1abbb74dbd2d838430b46922cec6ec319e884938317c5a20e132c78cfedc19e0"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1921-640-396ad6e9.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 86240,
+        "sha256": "396ad6e9c0a84df6fced4346b28cc2522c4adf94a6199a5490c9c1cf1e43a53f"
+      },
+      {
+        "file": "img-1921-1280-626fd037.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 271712,
+        "sha256": "626fd037153246e587c7d5fd06610bcbab6db355427991d9ad5f7ff38013341f"
+      },
+      {
+        "file": "img-1921-1536-a00d6556.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 348590,
+        "sha256": "a00d6556cefc7b04a1899d54980a26383e937be864c0ef848cea8f1007253c61"
+      }
+    ]
+  }
+}

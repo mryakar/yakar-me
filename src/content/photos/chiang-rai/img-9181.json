@@ -1,0 +1,64 @@
+{
+  "alt": "The blue temple stretches long beneath heavy cloud, a white Buddha at its entrance.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T10:54:57+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0001649892757,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Rong Suea Ten",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9181-640-5b4b1a58.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 36245,
+        "sha256": "5b4b1a58da7df45f6dee52cfa5ec9b4e30c327840889dba8d948a96243c60af7"
+      },
+      {
+        "file": "img-9181-1280-441d4645.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 116523,
+        "sha256": "441d46458a4b3d8a568280d5b5c54c9939bbce8645e7c7cdf0a4703dc39cf629"
+      },
+      {
+        "file": "img-9181-1536-453d4d44.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 155598,
+        "sha256": "453d4d44b1aba3756a3767df474ac17e14c1a3aae31993ae5ae79dd2372eee2d"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9181-640-c6504c3b.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 54564,
+        "sha256": "c6504c3b1e0ffca4d723e46537c0dc41e02a5fe4ea1f83307cd181fdbd0f4e70"
+      },
+      {
+        "file": "img-9181-1280-d13e3b21.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 169240,
+        "sha256": "d13e3b218ded208c6f9dbc51f13b2e2e3dd94b619de110330f458fc45095a9a6"
+      },
+      {
+        "file": "img-9181-1536-b9d5ddc8.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 221062,
+        "sha256": "b9d5ddc8283b003477d09ebb23aebe9351582fe3565b7c70ca916aa28dba5c24"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A long canal runs straight toward a distant palace between rows of bare trees.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T17:39:31+02:00",
+  "aperture": 2.4,
+  "shutter": 0.004545454545,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Nymphenburg",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6379-640-92eb1343.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 24243,
+        "sha256": "92eb134344d50277129872c97046348d888f47a047f935a7768d7b603d020717"
+      },
+      {
+        "file": "img-6379-1280-b3237ef0.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 83155,
+        "sha256": "b3237ef08603e7390f2e7ed29c2cdeb786dcccb38ef24d6e7e09afc6f9ebb9f1"
+      },
+      {
+        "file": "img-6379-1536-16659191.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 115206,
+        "sha256": "1665919112a398dd12b0875428bf0d27fd974c2056b7d4769265fcd3c2d2bd14"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6379-640-d00c8383.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 36396,
+        "sha256": "d00c8383d283f7183ab84be39274d34e9347bd574cabe3a4474d247ea4a0603d"
+      },
+      {
+        "file": "img-6379-1280-025537f2.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 121408,
+        "sha256": "025537f2b517b0753c33fac2166f6f05ead56533dd431d705cfa7e8d89418792"
+      },
+      {
+        "file": "img-6379-1536-c549b2ef.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 158852,
+        "sha256": "c549b2ef38d1e1218e1f0c92e8b4b67f672a44000eeab8a0dc0ee65722567952"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A quiet road bends past a lit old building tucked among glass towers at night.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T21:27:08+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0303030303,
+  "iso": 500,
+  "focalLength": 48,
+  "place": {
+    "district": "Raffles Place",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2410-640-7e5b7320.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 51152,
+        "sha256": "7e5b73201dc003a1c4b0a9dba7613827f342d089cee04e26ca3d11cce3d33451"
+      },
+      {
+        "file": "img-2410-1280-121f01f4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 185560,
+        "sha256": "121f01f4140a763c75c433855900eb3544a788cf174c61d8893f8a9d029ea7ea"
+      },
+      {
+        "file": "img-2410-1536-558b3c7e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 248235,
+        "sha256": "558b3c7ed0a74c137027f1a8a8d86d0c10138f5d708f7fa2f6809a4447d400dc"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2410-640-ccd31f7d.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 88170,
+        "sha256": "ccd31f7d6a5e7685800e228bd80a538ab4c3bbed3bde7a3ee7e8b74399f91b05"
+      },
+      {
+        "file": "img-2410-1280-9dbdd518.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 288998,
+        "sha256": "9dbdd5182ca4b9f17003a2b8916315fcb303e121ecb36f2f90f2d3c2245af102"
+      },
+      {
+        "file": "img-2410-1536-3b147e8f.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 368262,
+        "sha256": "3b147e8ff6ce68b680438d0ac13303dfdd2598aaaa70ccff31164c304e86dd16"
+      }
+    ]
+  }
+}

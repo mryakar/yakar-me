@@ -1,0 +1,64 @@
+{
+  "alt": "Evening light breaks through dark clouds and glints off the wet sand.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-07T18:22:57+08:00",
+  "aperture": 1.8,
+  "shutter": 0.02222222222,
+  "iso": 800,
+  "focalLength": 24,
+  "place": {
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3432-640-817ca2bd.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 22002,
+        "sha256": "817ca2bd9fb1213191cc624c1e71e6d5e5650f68535ae8dafe9af1999af62199"
+      },
+      {
+        "file": "img-3432-1280-835a44eb.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 63558,
+        "sha256": "835a44eb60a61173eab4b2dbb9a1b0cc9dc2f86f19ec4cc2548ca8cf0a9868d9"
+      },
+      {
+        "file": "img-3432-1536-59214b1e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 83160,
+        "sha256": "59214b1e668a7253a434c1da3a8b5bd3f869c944aa9211bcb0125f7e2ef3cf00"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3432-640-923987e0.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 25166,
+        "sha256": "923987e0460c21784b590e1fb4689e2649fc61adf184eceeeb5c824363148b8f"
+      },
+      {
+        "file": "img-3432-1280-4118bb53.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 65548,
+        "sha256": "4118bb53d835859b3b00fb578e3beae14afad77c18c68184d9456c2f6b215f97"
+      },
+      {
+        "file": "img-3432-1536-b48a36ee.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 84386,
+        "sha256": "b48a36ee155f5f07cf7812e1a5b2629e71f5be622b19156098994b21838058da"
+      }
+    ]
+  }
+}

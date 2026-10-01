@@ -1,0 +1,64 @@
+{
+  "alt": "A penguin stands on a pale rock in a cool, dim enclosure.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T11:37:23+08:00",
+  "aperture": 2.8,
+  "shutter": 0.01724137931,
+  "iso": 400,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2505-640-ae0f9b47.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 43036,
+        "sha256": "ae0f9b47040e90523f9c2000e98c75038080adf2fe677131742fd8d8286b0153"
+      },
+      {
+        "file": "img-2505-1280-6ce6ff42.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 146814,
+        "sha256": "6ce6ff42d1b245c1112a2fc84eec591b76a5609500a8f981ce937239413650a8"
+      },
+      {
+        "file": "img-2505-1536-5b30b64c.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 202020,
+        "sha256": "5b30b64c22f09f3ea0936bed52309e618aeeff5ecb31e7b2c313e2171a0bf937"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2505-640-700a2541.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 59140,
+        "sha256": "700a25417a47c3ea3df97749b8c0051a59558357663daaccb72dfb6ec8875f79"
+      },
+      {
+        "file": "img-2505-1280-4a7fa206.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 180426,
+        "sha256": "4a7fa206a6d954714076036ba4d118cf8bca5fa8bb3e84edb524e382d61ae547"
+      },
+      {
+        "file": "img-2505-1536-d892440c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 243604,
+        "sha256": "d892440c2a6801a543a38867821ca77df42d3113f5b1a874d987d58f61d928ac"
+      }
+    ]
+  }
+}

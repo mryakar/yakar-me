@@ -1,0 +1,64 @@
+{
+  "alt": "A broad, empty promenade runs between tall trees under a bright sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T11:40:32+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0001880052641,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Gardens by the Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2157-640-a1af5019.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 69010,
+        "sha256": "a1af501937ef5cd93a0428ae01bd8b5ae0e20240b61b80d2570157cd10a368ad"
+      },
+      {
+        "file": "img-2157-1280-d629b2b4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 244730,
+        "sha256": "d629b2b42086c6db780f1bc57eac80303d94da86523ca8694fc8bef609db6f9e"
+      },
+      {
+        "file": "img-2157-1536-f610d33b.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 329836,
+        "sha256": "f610d33bca67b7e1afb6b0ce5e38f2f3004acd750d0d10aa4f09e6ec4903637e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2157-640-9e5c328a.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 125488,
+        "sha256": "9e5c328ae34c851c34daf149e3ff32b871c31077c24d47ae880dc0ecdc196e85"
+      },
+      {
+        "file": "img-2157-1280-2097295f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 430320,
+        "sha256": "2097295f2c97889db34f20518893f3f52148b7b0bdeddacc4505d56777347f64"
+      },
+      {
+        "file": "img-2157-1536-510d899c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 572282,
+        "sha256": "510d899c9e2aee4b797227f8bef1d7a0e59384c469218fe0614a54a49c3aeef4"
+      }
+    ]
+  }
+}

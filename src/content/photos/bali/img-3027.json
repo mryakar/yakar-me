@@ -1,0 +1,78 @@
+{
+  "alt": "A woman stirs coffee beans over a clay stove in an open-sided shed, bowls of beans all around.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-09T12:38:22+08:00",
+  "aperture": 1.8,
+  "shutter": 0.01666666667,
+  "iso": 200,
+  "focalLength": 26,
+  "place": {
+    "district": "Lodtunduh",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3027-640-f1c693b0.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 37359,
+        "sha256": "f1c693b0d4c76786e7ccd035a59be0d52e5f4fb152fe6c5ae416119d4b7a793b"
+      },
+      {
+        "file": "img-3027-1280-23d3322c.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 136960,
+        "sha256": "23d3322ccadff8dff28fecd77a5e753edbcfe8de8bb78a8b810dfbf2362f438b"
+      },
+      {
+        "file": "img-3027-1920-4c836310.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 270092,
+        "sha256": "4c836310e0c449cb85e8d45ffd71d2eb4f813a69a25f861e83d00609e355197a"
+      },
+      {
+        "file": "img-3027-2048-0fc00b5b.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 300200,
+        "sha256": "0fc00b5b426ad926926c0efe35b62b5dfdd0a91a30b0a185f3d64f820d88a012"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3027-640-a7a4bb19.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 68070,
+        "sha256": "a7a4bb19045597c5afcd1020d991802faae621cba4c49232cd20b91557d34799"
+      },
+      {
+        "file": "img-3027-1280-c2d626b6.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 239680,
+        "sha256": "c2d626b63097b64f6aaecf93d15235f88ece744924f909e778763c5fbcff03e8"
+      },
+      {
+        "file": "img-3027-1920-09ecc441.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 433362,
+        "sha256": "09ecc44121e8cf68feae91ef95f5da3801eaf2329ce8a3c1941cba4d06801713"
+      },
+      {
+        "file": "img-3027-2048-b2741935.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 470008,
+        "sha256": "b27419357783c94a23450dd156a2e0a8ba2ab03c4650a51c3ffd8ad8025a7608"
+      }
+    ]
+  }
+}

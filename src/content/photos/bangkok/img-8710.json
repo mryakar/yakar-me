@@ -1,0 +1,78 @@
+{
+  "alt": "A water lily buds above a carpet of duckweed in a stone bowl.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-30T15:43:02+07:00",
+  "aperture": 1.8,
+  "shutter": 0.006097560976,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Phra Nakhon",
+    "city": "Bangkok",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8710-640-f97b0e34.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 42296,
+        "sha256": "f97b0e340148fccf80cfe115a5c27a2017295c9c38252a65f1d8497915ff43c0"
+      },
+      {
+        "file": "img-8710-1280-eca58dcb.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 140392,
+        "sha256": "eca58dcb08d4895f9c6ad0f4f0ab81c276a38fe0a7191e28b6d2a653200fde34"
+      },
+      {
+        "file": "img-8710-1920-3bc0fbb8.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 261248,
+        "sha256": "3bc0fbb84087657b42f5d61a3be3e85bb10bee0e43e5669b33e92184b2d602b4"
+      },
+      {
+        "file": "img-8710-2048-7d29cdbc.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 287814,
+        "sha256": "7d29cdbc226b255fbc0382766992c3024c0c0d04c25131e5599ff1c7338a9844"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8710-640-2e99c5ba.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 80230,
+        "sha256": "2e99c5ba773e87df0ae2374c1519b8018a2b75a07b5a30fa16dc29e8c409bc00"
+      },
+      {
+        "file": "img-8710-1280-da993dbc.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 245360,
+        "sha256": "da993dbc31ebe7e4dcb359ff6ffdcc4fd03f41423be6f34591ba1422c5aac2bb"
+      },
+      {
+        "file": "img-8710-1920-cd630f2d.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 432034,
+        "sha256": "cd630f2d4b3c3b9b8dc099d02fbad476325f138c4ce38ce1b744618e4535f74f"
+      },
+      {
+        "file": "img-8710-2048-90bf7783.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 473152,
+        "sha256": "90bf7783ca1184289f3b30da2becd5538ec881c6d2e836d7624cd97d9626e16c"
+      }
+    ]
+  }
+}

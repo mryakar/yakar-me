@@ -1,0 +1,64 @@
+{
+  "alt": "A marble god stands over a fountain, framed by red facades and a cloudless sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-24T08:52:15+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0004750593824,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Place Massena",
+    "city": "Nice",
+    "country": "France"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7167-640-3700fac2.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 32021,
+        "sha256": "3700fac24a5b6cd4346f8e2ebdaaac386ddc6dde71960dda298d00c5a708a21e"
+      },
+      {
+        "file": "img-7167-1280-626f77d1.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 102571,
+        "sha256": "626f77d13207f1ec517fee470c2b6bc6fee96a092ef07305882b006191a4961c"
+      },
+      {
+        "file": "img-7167-1536-6f486772.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 136776,
+        "sha256": "6f486772d04aada24c118b837865f228a1aefa469d707bc67ebb4842cfb410d8"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7167-640-57eb20a7.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 56278,
+        "sha256": "57eb20a74e05d1a47f2ecb6f3bd4ac1c8a36d572799c9d1ebc1c22226c541a16"
+      },
+      {
+        "file": "img-7167-1280-f9ab14af.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 177412,
+        "sha256": "f9ab14af40f0d3b57b5d140b998911c9192687abad9df8c68450176242de27e7"
+      },
+      {
+        "file": "img-7167-1536-77f5e1c0.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 232284,
+        "sha256": "77f5e1c01190253ec140e61dd7a0bb245bcc676ff38004e28baaa6d08961e7a6"
+      }
+    ]
+  }
+}

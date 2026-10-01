@@ -1,0 +1,64 @@
+{
+  "alt": "A bare tree stands alone against a dark sky as the last light breaks low on the horizon.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-20T19:14:34+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0001479946722,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Doerfles-Esbach",
+    "city": "Coburg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6640-640-bf92f708.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 20655,
+        "sha256": "bf92f70878a55d1856deac0f20009b2c4b57b8b8fcedce8aa3cbd032b387e699"
+      },
+      {
+        "file": "img-6640-1280-1d9ea0c7.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 71442,
+        "sha256": "1d9ea0c72591b8fb01b524f07d8b8b62e33b4979b196583df885358c4b97f3f3"
+      },
+      {
+        "file": "img-6640-1536-6b54ed79.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 96890,
+        "sha256": "6b54ed791a905127f2da51be4b6ac1b5a9f95d6a73b020a0944718807c90aac9"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6640-640-c9361c51.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 26122,
+        "sha256": "c9361c51aad180ff660559416e79eb6abb576dd69555753fa8a17e99c6b695ae"
+      },
+      {
+        "file": "img-6640-1280-b5c577e8.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 87762,
+        "sha256": "b5c577e831092efb2fa30e7a8d9cdbc1cc3a39793b0961581ee474e19cee06df"
+      },
+      {
+        "file": "img-6640-1536-cb383339.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 116832,
+        "sha256": "cb3833398c0c1b5bfb914306f67cbff3b158ef23a65d24a90689c8c34bf773fa"
+      }
+    ]
+  }
+}

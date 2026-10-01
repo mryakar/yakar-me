@@ -1,0 +1,64 @@
+{
+  "alt": "An empty street of shophouses runs toward a cluster of glass towers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T15:04:19+08:00",
+  "aperture": 1.8,
+  "shutter": 0.000178986934,
+  "iso": 64,
+  "focalLength": 48,
+  "place": {
+    "district": "Chinatown",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1793-640-5b683da8.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 53497,
+        "sha256": "5b683da8ddad68c214d2b148f3d5608ff2ca0ddab57f45601723f5e95daf1401"
+      },
+      {
+        "file": "img-1793-1280-c38365fd.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 201133,
+        "sha256": "c38365fdce194815c2d1e65d10083eb5f4670359c20688f2190604b0877e0440"
+      },
+      {
+        "file": "img-1793-1536-823cbec7.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 271731,
+        "sha256": "823cbec78c437fb9d58d24ae6ebd40d936cb106c0e45a08bf7d1e8fdda17f47a"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1793-640-73e555d3.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 96090,
+        "sha256": "73e555d3c132221ba96662fab4f8a0d9dd7894953795c93aa9a1bf9844e0b4f1"
+      },
+      {
+        "file": "img-1793-1280-ec17be28.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 348110,
+        "sha256": "ec17be288c6e7653c29715f7fd065024ece155647970f0bee56ee0188642afa8"
+      },
+      {
+        "file": "img-1793-1536-4dab0fbf.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 452918,
+        "sha256": "4dab0fbfc7042afedf83b9f734a92caf40f01f5728564eba54580fac358fb1c9"
+      }
+    ]
+  }
+}

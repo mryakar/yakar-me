@@ -1,0 +1,64 @@
+{
+  "alt": "Two monks in saffron walk past a temple of white filigree under a heavy sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T12:24:29+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0001479946722,
+  "iso": 32,
+  "focalLength": 33,
+  "place": {
+    "district": "Pa O Don Chai",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9229-640-eb2dd0b3.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 42275,
+        "sha256": "eb2dd0b33e623eba6b91ab8fa1c0e994e3e2880abbea39f48540b6724b74bc21"
+      },
+      {
+        "file": "img-9229-1280-5c08bce6.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 146810,
+        "sha256": "5c08bce6759378d38332d6c256c608833311327bb232fe3637f4db7fcbb8b007"
+      },
+      {
+        "file": "img-9229-1536-90bbf66d.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 195117,
+        "sha256": "90bbf66d1ef8624a9ae6d2268dcff5412b72d7e2ea68399e2e0163af4322bc19"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9229-640-1b287e6d.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 72458,
+        "sha256": "1b287e6d200e936339e923553b2da02123f46048e4f8617af6b514203c36e15c"
+      },
+      {
+        "file": "img-9229-1280-032875b8.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 242620,
+        "sha256": "032875b8f196271daf0170ffaf3e7b55f7706a2c14ea464bd1c79b3395813474"
+      },
+      {
+        "file": "img-9229-1536-a1a6c73a.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 312986,
+        "sha256": "a1a6c73a7196d8e91d4fffcae617ecd9b7642e3e03ca1b62a21447bfeddcf6fb"
+      }
+    ]
+  }
+}

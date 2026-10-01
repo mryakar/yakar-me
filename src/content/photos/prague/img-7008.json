@@ -1,0 +1,64 @@
+{
+  "alt": "A lone figure in red crosses a long stone bridge toward a pillared hall.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-23T09:16:34+02:00",
+  "aperture": 2,
+  "shutter": 0.0002919708029,
+  "iso": 20,
+  "focalLength": 52,
+  "place": {
+    "district": "Mala Strana",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7008-640-4cbcda76.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 51143,
+        "sha256": "4cbcda76751ec36ea5048fcc7d090867eb0ef91f75b19a6b4b346d127c7f1626"
+      },
+      {
+        "file": "img-7008-1280-65734f6b.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 183064,
+        "sha256": "65734f6b9257a00f8bfc62385efe7feadf695291c60c2018708bb638243ef27f"
+      },
+      {
+        "file": "img-7008-1536-3bc53aed.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 247607,
+        "sha256": "3bc53aeddd8122245c43a99a4f1a73a4fba32320572991f74a80995947c155cb"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7008-640-14063e30.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 87852,
+        "sha256": "14063e306e3efa3b863a2513c0a7b1618182a44c5a21c518e4197b322a637bb0"
+      },
+      {
+        "file": "img-7008-1280-d8fee295.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 308552,
+        "sha256": "d8fee2954a1a613a9053ce221d13ffa85b3083f099b4630ea228797621856295"
+      },
+      {
+        "file": "img-7008-1536-8ebad087.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 406722,
+        "sha256": "8ebad087e88ac8da2adb58b0e10d099bb9536a73b1baa32d48eb33e5fa3b2a90"
+      }
+    ]
+  }
+}

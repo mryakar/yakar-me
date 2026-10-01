@@ -1,0 +1,64 @@
+{
+  "alt": "Red cloud hangs over a calm sea at first light, a dark headland at its edge.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-05T06:15:38+08:00",
+  "aperture": 2.8,
+  "shutter": 0.00625,
+  "iso": 50,
+  "focalLength": 120,
+  "place": {
+    "district": "Lovina",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2890-640-024c3013.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 32409,
+        "sha256": "024c30138ec7df24479bc48688bdf27243a86c16df0962e97f77310a6037f423"
+      },
+      {
+        "file": "img-2890-1280-ccad48d4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 102080,
+        "sha256": "ccad48d4f7e558772e74dd9551111c1946b4b38e99bdcc3736364b2d26175c6f"
+      },
+      {
+        "file": "img-2890-1536-b0ceb0ea.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 133795,
+        "sha256": "b0ceb0eab2767675081bd5f33cdfcce4e102f3c22f379053549ad5c2a066c553"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2890-640-1bcf1cda.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 51158,
+        "sha256": "1bcf1cda419f9124fc1024cbd5d75b9372d25a5db8b5189ff1a31073654f5040"
+      },
+      {
+        "file": "img-2890-1280-383f80c7.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 164226,
+        "sha256": "383f80c7fd00cd2e5657962a147430966e1a26aace94bf163d48b3ec7647daee"
+      },
+      {
+        "file": "img-2890-1536-585cd4b4.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 214480,
+        "sha256": "585cd4b49315c0391339c22116b1ad909c9e49981195d0d06d3ea9c40b63f331"
+      }
+    ]
+  }
+}

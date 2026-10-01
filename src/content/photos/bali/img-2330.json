@@ -1,0 +1,64 @@
+{
+  "alt": "Two long-tailed macaques sit on a mossy carving under the roots of a great tree.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-07T13:16:34+08:00",
+  "aperture": 2,
+  "shutter": 0.01086956522,
+  "iso": 160,
+  "focalLength": 157,
+  "place": {
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2330-640-5e62c973.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 57777,
+        "sha256": "5e62c973ad2da235c1febe960724eaec473f1b4999346d872dc808dc5769c756"
+      },
+      {
+        "file": "img-2330-1280-95949f2e.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 159043,
+        "sha256": "95949f2e2a6efdcd07956373d3e575eef9e0145d1c69007b4deefe507ae435a1"
+      },
+      {
+        "file": "img-2330-1536-1bde8614.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 202768,
+        "sha256": "1bde86140350b2027d7ef9ec98e04045be71391c3550c4ce9e4f95c085db55ff"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2330-640-b5753a41.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 97936,
+        "sha256": "b5753a414c0ebc3975efba3d4647ea011ed55149f740eb0ff4e2cd9c4d13efdc"
+      },
+      {
+        "file": "img-2330-1280-f60c3ef9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 222860,
+        "sha256": "f60c3ef9bcd28b6b20480163d2d697c28654561e9764549154e24ee77d0b18d6"
+      },
+      {
+        "file": "img-2330-1536-51d9e71e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 273652,
+        "sha256": "51d9e71e129b13ee46b3e566643502250e6aa88097c35be84714aa6dee4b2384"
+      }
+    ]
+  }
+}

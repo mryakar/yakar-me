@@ -1,0 +1,78 @@
+{
+  "alt": "A seated bronze figure on a tall plinth rises from a bed of yellow tulips before a yellow building.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T17:01:41+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0002339728591,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6880-640-1e5576ea.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 36551,
+        "sha256": "1e5576eab34063582fb7eac09dff670ec6054a4e4a4862038aff3f6c061adb00"
+      },
+      {
+        "file": "img-6880-1280-500a5aa9.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 133294,
+        "sha256": "500a5aa915d77699270410be51c6198217ee11d74573d818b70219509e9ea1b7"
+      },
+      {
+        "file": "img-6880-1920-93e8be7d.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 263161,
+        "sha256": "93e8be7dededf8c6c1368332656454ec1c228c5842902c6f18fff9cad12dda03"
+      },
+      {
+        "file": "img-6880-2048-e2503158.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 294958,
+        "sha256": "e250315801a6c08c21ad11eaf20f92e1974c8542d2c91cc69ee2ba7e95669211"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6880-640-20db9235.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 66540,
+        "sha256": "20db9235931b8f4fad77b9352ad8d89dfaef60506e55ef82f7dd0f9caa324b5a"
+      },
+      {
+        "file": "img-6880-1280-937e3317.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 236732,
+        "sha256": "937e331704a48d4bb11af5cb979f21b0a3fb1d1961162b3fad809bb74fb8ffcf"
+      },
+      {
+        "file": "img-6880-1920-e3f72bc4.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 456454,
+        "sha256": "e3f72bc460c3a2790b86e6269caaf3b0badfbb379f5e20a382e4d6b3a8c56f84"
+      },
+      {
+        "file": "img-6880-2048-d54e8c38.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 513684,
+        "sha256": "d54e8c3880b1c61c3f1bf59b9d8613f0ba8e785a8a8bb624aa2b9fea46ca1075"
+      }
+    ]
+  }
+}

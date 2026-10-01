@@ -1,0 +1,64 @@
+{
+  "alt": "Visitors crowd the rail before a spouting lion statue, the skyline massed behind.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T16:57:19+08:00",
+  "aperture": 1.8,
+  "shutter": 0.000343997248,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Marina Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1917-640-d1413cd0.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 37019,
+        "sha256": "d1413cd0f13cbc56b94df653c3f98d5edfd53f5d62860073eba2485517752857"
+      },
+      {
+        "file": "img-1917-1280-4c7e1e85.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 118065,
+        "sha256": "4c7e1e85494d770bf5b27cc837a6de83ee55184b2a60b60d032cf1076318b607"
+      },
+      {
+        "file": "img-1917-1536-780e494d.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 157243,
+        "sha256": "780e494d2a40f20c168683db2c0c1bda00311792d590d12ad7a19e1d921eaaed"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1917-640-6c159355.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 60744,
+        "sha256": "6c15935536df4a59a8f28e2855d1aab12e7b1d76d015aaf1fb10e24c7a4ce5ff"
+      },
+      {
+        "file": "img-1917-1280-2fb7426c.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 178496,
+        "sha256": "2fb7426cbcd95d3c5afbbff72f7de7523d792b2a943e98dde830622c2a30f90d"
+      },
+      {
+        "file": "img-1917-1536-d005e7b7.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 228438,
+        "sha256": "d005e7b7f2d08c9df22fff4d88192e887f3bffc76ea167aa28663ce47971a495"
+      }
+    ]
+  }
+}

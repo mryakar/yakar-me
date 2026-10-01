@@ -1,0 +1,64 @@
+{
+  "alt": "A temple of tiered golden spires glows against the night, every tip lit like a candle.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-30T19:33:08+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0303030303,
+  "iso": 400,
+  "focalLength": 26,
+  "place": {
+    "district": "Phra Nakhon",
+    "city": "Bangkok",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8771-640-7ad51505.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 43437,
+        "sha256": "7ad5150590376646ee31057ee425007fe69afca714d0b40d88ec4e0ffdaeb529"
+      },
+      {
+        "file": "img-8771-1280-8129dbcd.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 137752,
+        "sha256": "8129dbcd49954fa323eef9721e136cbef2a0bf57b48abf337626bd15510b3ce0"
+      },
+      {
+        "file": "img-8771-1536-9c046e71.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 184095,
+        "sha256": "9c046e71c47cdf94903a1e12a2a712563d3e087c3718099e1ba5fcd43aa6e779"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8771-640-d2330f6d.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 73558,
+        "sha256": "d2330f6da283542eaa2e66ca29b8cc6e54885921be2f2d4f09966cec187f10df"
+      },
+      {
+        "file": "img-8771-1280-9b7daf94.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 227038,
+        "sha256": "9b7daf94f6f15380d29e4e10bafb484dc8e8d7fe03a67e31dd475d2d7d45f2ad"
+      },
+      {
+        "file": "img-8771-1536-f1bf648d.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 297266,
+        "sha256": "f1bf648d96e0ec30816f09c797bae09d6f573b15a9e003b5f1b072fd5be46724"
+      }
+    ]
+  }
+}

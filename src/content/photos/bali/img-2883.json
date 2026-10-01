@@ -1,0 +1,64 @@
+{
+  "alt": "Boats wait on glassy water as sunrise lays a thin gold line along the horizon.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-05T06:04:34+08:00",
+  "aperture": 1.8,
+  "shutter": 0.01666666667,
+  "iso": 320,
+  "focalLength": 24,
+  "place": {
+    "district": "Lovina",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2883-640-7ed2cc5a.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 21509,
+        "sha256": "7ed2cc5a20d275fa6f418ca3c734afe0553b8141fbba1f782216ff9d2223c51c"
+      },
+      {
+        "file": "img-2883-1280-c910077b.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 66524,
+        "sha256": "c910077b08cb0499034ef9e22b24f8f2edc0bf2599db3eb83dc74e1d6f8b82bb"
+      },
+      {
+        "file": "img-2883-1536-6774dc75.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 89837,
+        "sha256": "6774dc75a3e86edfe5adc850e1aee321e47a88e12f2111ba2142a8e1a75dc352"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2883-640-3433fa45.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 32972,
+        "sha256": "3433fa455d85992388917d10d5777535c55e5d0a48682bb7bea998066d35d254"
+      },
+      {
+        "file": "img-2883-1280-35864a9d.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 100628,
+        "sha256": "35864a9d64be762d07a3954f0fcb289941189cc30d9bfb94fe956eb1d5259d2c"
+      },
+      {
+        "file": "img-2883-1536-3ae44e49.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 131582,
+        "sha256": "3ae44e49a03d43f581f5b2ef567f8c87adeb00d3f2afd4c0d9d60eb199ca7fa2"
+      }
+    ]
+  }
+}

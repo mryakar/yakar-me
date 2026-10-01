@@ -1,0 +1,64 @@
+{
+  "alt": "A straight lane runs into the distance under bare, rain-dark trees.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-16T10:53:59+02:00",
+  "aperture": 1.8,
+  "shutter": 0.005714285714,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Roedental",
+    "city": "Coburg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5536-640-0924db07.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 93469,
+        "sha256": "0924db0793a9f26c2eda23af3b550c5fea2adfd792902e8708aef65cdd52f607"
+      },
+      {
+        "file": "img-5536-1280-4f7f6287.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 365959,
+        "sha256": "4f7f6287d616cc5d4666b0e643d5b41e6f444655165d49d1c8c13a9c41f1ded5"
+      },
+      {
+        "file": "img-5536-1536-8af0b73b.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 497193,
+        "sha256": "8af0b73be3ec18eb0723f7043ee2e2d2a4e8241971d26482716d339c8e04eafe"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5536-640-4ca2be5b.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 176080,
+        "sha256": "4ca2be5bd3edd59655d3cb955466273b7ecc8c4c8cd1954247eb0c11503e0291"
+      },
+      {
+        "file": "img-5536-1280-1b876a3c.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 686902,
+        "sha256": "1b876a3c004006ef809907a5a7a53b981b07e3f2875e79a4fc9350beb4b81073"
+      },
+      {
+        "file": "img-5536-1536-40e5a055.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 925804,
+        "sha256": "40e5a0554ca5a78029db3504337a451feee90d9c462115e18ba1426ce46b6634"
+      }
+    ]
+  }
+}

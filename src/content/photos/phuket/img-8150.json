@@ -1,0 +1,64 @@
+{
+  "alt": "Two hands raise cans in a toast against a palm and a burst of sun.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-26T13:08:48+03:00",
+  "aperture": 2,
+  "shutter": 0.0001259921885,
+  "iso": 25,
+  "focalLength": 52,
+  "place": {
+    "district": "Nai Harn",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8150-640-d627254e.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 23098,
+        "sha256": "d627254eebf565a07ee8bb371ad6a9b7b43d68e90e983accaaedbe6d81084816"
+      },
+      {
+        "file": "img-8150-1280-44c32b03.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 74000,
+        "sha256": "44c32b030f90f43119b166123f6de95786ebb538628feeb3c1be44d4c4870e6f"
+      },
+      {
+        "file": "img-8150-1536-29b5c4a4.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 102920,
+        "sha256": "29b5c4a4aee87bd099b0e89f969b7255d7a6358bf7a5f08f00e19e728e87f775"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8150-640-61c64bab.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 28632,
+        "sha256": "61c64bab9647ef10de83cf647c20ddbcb92ddb1ae7c89ade3c9787012c75abf3"
+      },
+      {
+        "file": "img-8150-1280-2087631e.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 91928,
+        "sha256": "2087631e7c21c0ec7bce5d644c7d0e56c826fa209381bb7ea12f5f3d46ebc6b1"
+      },
+      {
+        "file": "img-8150-1536-08fbc3c2.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 125224,
+        "sha256": "08fbc3c2796979ef24cb9b26e503eac5ba012ec0bf1abe05b8cf083f687dc505"
+      }
+    ]
+  }
+}

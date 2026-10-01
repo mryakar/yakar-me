@@ -1,0 +1,64 @@
+{
+  "alt": "A whistling duck with a bright pink bill stands among tall reeds.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T12:44:33+08:00",
+  "aperture": 2.8,
+  "shutter": 0.002583979328,
+  "iso": 64,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2564-640-8576c7cb.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 45678,
+        "sha256": "8576c7cbe74dc2d64bef3a8c3f7602d2d8b485d3878cdd65aaf4a342a34fec61"
+      },
+      {
+        "file": "img-2564-1280-d4e24e06.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 138548,
+        "sha256": "d4e24e06ca5adc21c578804c33490eb2c83892a023e645f53c80e2cd0c93a295"
+      },
+      {
+        "file": "img-2564-1536-7e913c00.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 184553,
+        "sha256": "7e913c00ec536934ad9c03a9a2da16e9f3fb3e9442946f40077f4aea2e6058f6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2564-640-48515d67.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 71668,
+        "sha256": "48515d67274dba7e0183da1b87dadcd5cd5d5d55425f54a483d6ac1eb16363c8"
+      },
+      {
+        "file": "img-2564-1280-e1f61ace.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 185420,
+        "sha256": "e1f61acefe2e31d5242515c18a1dc3366814a1349ace2c430d67cc159896972e"
+      },
+      {
+        "file": "img-2564-1536-3c784a17.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 236378,
+        "sha256": "3c784a177fa8cfe65a404d230745f8f2f626dca85306458eef8c77b7344b5880"
+      }
+    ]
+  }
+}

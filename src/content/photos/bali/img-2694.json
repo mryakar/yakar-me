@@ -1,0 +1,78 @@
+{
+  "alt": "A pale streak of dawn spreads above a black fringe of palms.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-04T06:10:44+08:00",
+  "aperture": 1.8,
+  "shutter": 0.01149425287,
+  "iso": 100,
+  "focalLength": 64,
+  "place": {
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2694-640-c265dd7d.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 12178,
+        "sha256": "c265dd7d9fd069f99f3fecb22acdff11fdfa36f19167f93fd14794aa4e31729c"
+      },
+      {
+        "file": "img-2694-1280-5178e6af.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 35333,
+        "sha256": "5178e6afd3a75d552c889c8afbba03805d9adb8a4758bd71bc602bacefab2b3c"
+      },
+      {
+        "file": "img-2694-1920-2d3be5d2.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 63683,
+        "sha256": "2d3be5d29844f840a7840298dff7bc606de284fa51fff4c2a53969893d26d9db"
+      },
+      {
+        "file": "img-2694-2048-433bda80.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 69955,
+        "sha256": "433bda80d02e45451f3bd0a3d076b946a2f97f5f488ae8d4dec4a8aa27feaae6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2694-640-b9f5af6f.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 16992,
+        "sha256": "b9f5af6f7af769885b987c13425989f7c159ef690e1eadc9bc239a7e1c085a0c"
+      },
+      {
+        "file": "img-2694-1280-6ddcd734.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 49710,
+        "sha256": "6ddcd7347efe2608a48696e1458b4fb145f85f9f5065d7e527eab22ceb4aca7b"
+      },
+      {
+        "file": "img-2694-1920-249b070b.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 86298,
+        "sha256": "249b070ba83fb48f5e8a63011d357f80498933403408b1ca38537ab262fab447"
+      },
+      {
+        "file": "img-2694-2048-125c6ccd.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 92996,
+        "sha256": "125c6ccdfa286c288b59464d5c3ee8156c71ed820c915ec781520432fbb83a7b"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A green headland shaped like a dinosaur's back plunges into a deep blue sea, a pale beach at its foot.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-12T14:55:43+08:00",
+  "aperture": 2.4,
+  "shutter": 0.0007299270073,
+  "iso": 20,
+  "focalLength": 13,
+  "place": {
+    "district": "Nusa Penida",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3489-640-2cebadbb.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 43395,
+        "sha256": "2cebadbb85e2a0f4a32313a75c29d28764f7ca70b950ad84319d9b299bc2c4db"
+      },
+      {
+        "file": "img-3489-1280-edcb97cc.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 151469,
+        "sha256": "edcb97cc0585ef7190ed3ccaab052602a0b3e27dffb49db493d160a56e62b4cc"
+      },
+      {
+        "file": "img-3489-1536-95930353.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 206533,
+        "sha256": "959303533024446b7a52c998f912d02956ef5b045d090764c5d99a76eb9a6b24"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3489-640-c79d7ccd.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 71544,
+        "sha256": "c79d7ccd79b10185a6c50ac58aa4f9cf714e93021837507e953d788e93e278b6"
+      },
+      {
+        "file": "img-3489-1280-47e5ae4c.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 241604,
+        "sha256": "47e5ae4c00cd4f58a7d31c15642047a36cce48fe3e26f777151f8ef11bd4531b"
+      },
+      {
+        "file": "img-3489-1536-2c5710a7.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 323172,
+        "sha256": "2c5710a7ceffba93f15a0fcd5019da8e22331dcf0bd9de6df5793ece6358ddc5"
+      }
+    ]
+  }
+}

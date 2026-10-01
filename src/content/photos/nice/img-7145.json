@@ -1,0 +1,64 @@
+{
+  "alt": "A collared dove perches on a garden chair beside a breakfast table and a striped plate.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-24T08:12:10+02:00",
+  "aperture": 1.8,
+  "shutter": 0.008196721311,
+  "iso": 64,
+  "focalLength": 26,
+  "place": {
+    "district": "Place Massena",
+    "city": "Nice",
+    "country": "France"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7145-640-77d519a6.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 56186,
+        "sha256": "77d519a680a6ae8d6ca029333059a55924aa3b0133e84c4ba12d37be7bd13bad"
+      },
+      {
+        "file": "img-7145-1280-f95409fa.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 167735,
+        "sha256": "f95409fa02f4da828615906521e2a99cbb740aadf68fc53ab861b0a5814b73e9"
+      },
+      {
+        "file": "img-7145-1536-9acc756a.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 219693,
+        "sha256": "9acc756a45f211277df8e927c09af4dc8ca577c3cc152b85615bb2ef45400297"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7145-640-51bbd870.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 96024,
+        "sha256": "51bbd870c529e68d08bd61f48dddcee8d023817376828c7cb2d246f020ffabbc"
+      },
+      {
+        "file": "img-7145-1280-1a8100d7.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 256228,
+        "sha256": "1a8100d754eca2e9f3de1fe08531be6a7de6b14a0ae4131afac84c19c0eb225e"
+      },
+      {
+        "file": "img-7145-1536-987d7f27.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 320328,
+        "sha256": "987d7f270fac8f061646864365545328330cfdf33bf409d31872978c8f171e90"
+      }
+    ]
+  }
+}

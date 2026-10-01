@@ -1,0 +1,64 @@
+{
+  "alt": "Purple water lilies stand tall in front of a wall of office towers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T09:57:59+08:00",
+  "aperture": 2.8,
+  "shutter": 0.001776198934,
+  "iso": 64,
+  "focalLength": 128,
+  "place": {
+    "district": "Marina Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2099-640-86a1533f.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 50500,
+        "sha256": "86a1533f1e5090fb893ad884282c8d37f599a00f2fc2107d07d6f2730214a31e"
+      },
+      {
+        "file": "img-2099-1280-05244c21.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 137351,
+        "sha256": "05244c21ad1c78b107791006a427b3885e0e49af3a725bad0124be53dab8f4d8"
+      },
+      {
+        "file": "img-2099-1536-3dc834d0.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 179129,
+        "sha256": "3dc834d0812837562d5269632987af897dea593ac5c64ad8003df73114158d5b"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2099-640-763174ea.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 84164,
+        "sha256": "763174ea782390a345c8b90fea61bfaf76b1f6b476bcd9db502920dfd1feab45"
+      },
+      {
+        "file": "img-2099-1280-e353a67b.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 195332,
+        "sha256": "e353a67b8c37b53768b8b97879cf95eb9fb149772ecd4253cae489e237df1bfd"
+      },
+      {
+        "file": "img-2099-1536-58ca1724.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 242238,
+        "sha256": "58ca1724da65d31eeca956a5e34eb387c23f4d50bb4b037a659a4bb4d01a64ad"
+      }
+    ]
+  }
+}

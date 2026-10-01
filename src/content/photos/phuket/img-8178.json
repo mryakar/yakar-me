@@ -1,0 +1,78 @@
+{
+  "alt": "Orange light catches torn clouds over a dark headland and rocky shore.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-26T14:55:53+03:00",
+  "aperture": 1.8,
+  "shutter": 0.008196721311,
+  "iso": 64,
+  "focalLength": 26,
+  "place": {
+    "district": "Nai Harn",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8178-640-ceda2202.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 19827,
+        "sha256": "ceda2202d11a386f40c52b55f0730ba02b01a7bc500ded7983e38f7269496786"
+      },
+      {
+        "file": "img-8178-1280-dc7b26d7.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 63382,
+        "sha256": "dc7b26d7027016bcaa2f347d9d5335b94771e69cdc5875ef6a68bba667abbfbe"
+      },
+      {
+        "file": "img-8178-1920-e2a36897.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 119022,
+        "sha256": "e2a36897fb32f3dcc09a5cbc60da705c0666260d3ce1c66b0e0d48ec88f1d8ad"
+      },
+      {
+        "file": "img-8178-2048-cc141b22.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 132125,
+        "sha256": "cc141b22415fdb666321a7042cb77abc4c1f27497632059b3c3494f1a062e80c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8178-640-40e583aa.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 27250,
+        "sha256": "40e583aaaf8876ce76509ee5d676e61a0e3659ce29f164596033fef5ac045eba"
+      },
+      {
+        "file": "img-8178-1280-e7606405.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 87642,
+        "sha256": "e76064054da5b826aef490e022ac68861d417b8117f3dfca8b7aa3be1d73ecc3"
+      },
+      {
+        "file": "img-8178-1920-fbf3a536.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 160526,
+        "sha256": "fbf3a536498456cfee72db92071348d010965a74ac385e9480208cedc79e3f05"
+      },
+      {
+        "file": "img-8178-2048-fecdf569.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 177546,
+        "sha256": "fecdf569f07a56ad687043838f33644b314bee731aac613daa728eca5b4cc985"
+      }
+    ]
+  }
+}

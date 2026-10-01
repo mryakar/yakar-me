@@ -1,0 +1,64 @@
+{
+  "alt": "Close detail of a blue sculpture: a calm face surrounded by tusks and tiny skulls.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T10:53:36+07:00",
+  "aperture": 1.8,
+  "shutter": 0.002754820937,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Rong Suea Ten",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9178-640-1f80a2e0.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 75361,
+        "sha256": "1f80a2e02b7d1dc2261101da68805a8ffa4fe28ac1d017f874840d7e4fab4c46"
+      },
+      {
+        "file": "img-9178-1280-22b52873.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 265060,
+        "sha256": "22b52873ddd99436f086e867ce0d80c72d88e7df2fbd61c9b75e6a3c2e81a8ee"
+      },
+      {
+        "file": "img-9178-1536-e3141fe8.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 354603,
+        "sha256": "e3141fe824d857dc05956962d37cc05084f0d2f1400d8b9b2dc75ee8bfcac011"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9178-640-0771dbf8.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 140740,
+        "sha256": "0771dbf8f8b85ed8dd8cc0a1d34fee5bfdc088a18983b5cc9a8b8b72461eb4bc"
+      },
+      {
+        "file": "img-9178-1280-0fee1c35.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 462850,
+        "sha256": "0fee1c35abfdf7bdf28a908fcc876d864c505e67386ab38ca10949719f94e86e"
+      },
+      {
+        "file": "img-9178-1536-02f835c5.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 594140,
+        "sha256": "02f835c5803be2d7cc74b03b403d40109805e7fba4a1de63eacb7b0daaddfb07"
+      }
+    ]
+  }
+}

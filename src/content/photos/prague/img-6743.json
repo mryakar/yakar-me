@@ -1,0 +1,64 @@
+{
+  "alt": "A neoclassical building with tall columns stands at the corner of a busy, sunlit square.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T12:30:22+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0003120124805,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Stare Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6743-640-361b6350.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 40523,
+        "sha256": "361b63500ad92a7dfba970809d00e9d346abeef4e05671d224ea579e68f46102"
+      },
+      {
+        "file": "img-6743-1280-a80956d5.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 132990,
+        "sha256": "a80956d5c5750e6a3d159c60b3db1e5680f52ce49e522bab789a858d76f5b961"
+      },
+      {
+        "file": "img-6743-1536-4f5b9356.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 177156,
+        "sha256": "4f5b93567314685b92174fd0b1561ff9c0061bc1862211b12fcd21b897e797f6"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6743-640-49a22eab.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 67694,
+        "sha256": "49a22eab1bf0e9cf66394a68a48044c81646c775b65c32cb58fffa3b5d099f4c"
+      },
+      {
+        "file": "img-6743-1280-013a1935.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 222620,
+        "sha256": "013a193516d523fe65e0f4ea940b7d39bf2996fc47746f9d68d6a0e323fb7f08"
+      },
+      {
+        "file": "img-6743-1536-431d4a67.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 289560,
+        "sha256": "431d4a67781fd3359022e29d9bd168f39d0badec912fecc7ddefb96e2a3b956d"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "alt": "A flame tree in full red bloom spreads over a lawn, office towers beyond the park.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-01T15:51:52+07:00",
+  "aperture": 2.4,
+  "shutter": 0.002,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Lumphini",
+    "city": "Bangkok",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8828-640-20b57a3f.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 34561,
+        "sha256": "20b57a3fdb615d0298bd302118709fb5a1e55693e6b1220d919c5d5c463acbcd"
+      },
+      {
+        "file": "img-8828-1280-7148766a.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 123067,
+        "sha256": "7148766afdca33b2ee52a3b046f20d46952bd44819bc0deec72b5fa15e3e3a11"
+      },
+      {
+        "file": "img-8828-1920-0a6ae94f.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 243949,
+        "sha256": "0a6ae94fe574ad4d77cb93047b909f4ed21a6014c74bfb8cd905ad654ab5987e"
+      },
+      {
+        "file": "img-8828-2048-baa03909.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 274174,
+        "sha256": "baa039099a074de6dc019b294bd3e2b4d92bcece34dc849660ec5e4e09b7c01e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8828-640-e939bdaa.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 57284,
+        "sha256": "e939bdaad814cd7abad09b7195e59de06e16726547c357ff6492e0665e05f4b5"
+      },
+      {
+        "file": "img-8828-1280-1ef0613e.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 203546,
+        "sha256": "1ef0613eb89b499836e4b8b0df0ff0234ba4299e1cac2f0e4c09090d2e172a4f"
+      },
+      {
+        "file": "img-8828-1920-d8c5f84a.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 392390,
+        "sha256": "d8c5f84af635e47e4ca75949ad960052879cc63b78aac9548adee2f977a804e4"
+      },
+      {
+        "file": "img-8828-2048-d9de4ad5.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 440120,
+        "sha256": "d9de4ad5f14ffab95285488143a2c19a8717a935176a6e6e1dfad107d4f0151a"
+      }
+    ]
+  }
+}

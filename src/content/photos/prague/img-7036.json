@@ -1,0 +1,78 @@
+{
+  "alt": "A Gothic cathedral fills the end of a broad courtyard under a pale sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-23T09:39:30+02:00",
+  "aperture": 2.4,
+  "shutter": 0.001168224299,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Hradcany",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7036-640-d62f2e97.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 24161,
+        "sha256": "d62f2e970df5d4f549af95f032a21dac878282fc7f9e34de1b51eccc6f2b87c5"
+      },
+      {
+        "file": "img-7036-1280-a58641d6.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 77666,
+        "sha256": "a58641d68aaa6b453cbc3aafb4a0b47670c0dad6a793045bc7b1b3158b5b8290"
+      },
+      {
+        "file": "img-7036-1920-9efc95dc.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 150321,
+        "sha256": "9efc95dc8cc9c065d3f558bfdaa45eff52f1d7cd9ebab5d432b6400ce197938e"
+      },
+      {
+        "file": "img-7036-2048-9b0341a9.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 167552,
+        "sha256": "9b0341a983abacc268092de856b5e687fc493974e12b7f0802ffc7637f61b5a8"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7036-640-0040ae68.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 38934,
+        "sha256": "0040ae68e621319a1c386015163d8a6e143810c3915fb45661e78d9b64be1169"
+      },
+      {
+        "file": "img-7036-1280-49bf5a1c.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 127266,
+        "sha256": "49bf5a1c5b7f4aebe8ab5215230df6ea259d414b30b10d4b7df624d1b56744b4"
+      },
+      {
+        "file": "img-7036-1920-753e7994.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 236094,
+        "sha256": "753e79948fcbe5d667a5911eeea9c8719159e8fbd48a783151161b287ecd389e"
+      },
+      {
+        "file": "img-7036-2048-5a0e571a.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 262832,
+        "sha256": "5a0e571a66500d911505ec6ebb98be6a88f86633dcc5c50274775dab72ea1a89"
+      }
+    ]
+  }
+}

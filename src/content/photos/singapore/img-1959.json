@@ -1,0 +1,64 @@
+{
+  "alt": "Lights from the riverbank stretch across black water late at night.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T00:29:16+08:00",
+  "aperture": 1.8,
+  "shutter": 0.04,
+  "iso": 1250,
+  "focalLength": 24,
+  "place": {
+    "district": "Clarke Quay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1959-640-8613a27d.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 25469,
+        "sha256": "8613a27d433caa40785f1ff8a83ad969c4bfa12130d1dd64cda474d2c10035d4"
+      },
+      {
+        "file": "img-1959-1280-c1601e91.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 77936,
+        "sha256": "c1601e918636adec49adf1f232c10fda5d5d42fcffa14975385e389ba60246d9"
+      },
+      {
+        "file": "img-1959-1536-98ab1b7c.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 102307,
+        "sha256": "98ab1b7c9f0f170089d531fd52444b3bcff51127c35e3de815a4877bb5056299"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1959-640-d227b753.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 39262,
+        "sha256": "d227b75303ad68bece7bf1f1baaa94f486cc669a5d79708d888224cb126a07e9"
+      },
+      {
+        "file": "img-1959-1280-a4fd3cc3.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 116264,
+        "sha256": "a4fd3cc3a77ce4dd7b82bbf47b3e07788af88f73b0925bc2d8e8758c878e9b8c"
+      },
+      {
+        "file": "img-1959-1536-350b4687.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 148944,
+        "sha256": "350b468744d3a71f597a47e61b3a8d4529a8be43d4760947eb6a061ce2d44a4b"
+      }
+    ]
+  }
+}

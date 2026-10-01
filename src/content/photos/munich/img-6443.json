@@ -1,0 +1,64 @@
+{
+  "alt": "Through a train window, a fan of tracks spreads toward new office blocks.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T19:07:48+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0101010101,
+  "iso": 50,
+  "focalLength": 26,
+  "place": {
+    "district": "Maxvorstadt",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6443-640-264ed762.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 39139,
+        "sha256": "264ed7627fa2ffcc37bd60eea55c105fdce6d0ec1f84721398c19da98b3d0523"
+      },
+      {
+        "file": "img-6443-1280-5195ba2e.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 112721,
+        "sha256": "5195ba2ec8e7a4330c15dd314d69fe683a60e92e2115f6ab89587a13d7b96b44"
+      },
+      {
+        "file": "img-6443-1536-cd1a6df5.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 146704,
+        "sha256": "cd1a6df58088ca8b5c314471591a7ba1095dd88b1182530ea247edfea0ec3c82"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6443-640-d958237c.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 64378,
+        "sha256": "d958237c2dc88b8ca2ca816087103c2e683e8cdc7bfab8b25af47c9f06e6c602"
+      },
+      {
+        "file": "img-6443-1280-4c7d56a6.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 174562,
+        "sha256": "4c7d56a65d0c37da9259eef3503a59ed2f42d0db7dfcb2b2c8c999179c469893"
+      },
+      {
+        "file": "img-6443-1536-89763161.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 219998,
+        "sha256": "89763161ae9006e296029c56b44e4e8d8b564819d92d35b114f1dc1f3548fd03"
+      }
+    ]
+  }
+}

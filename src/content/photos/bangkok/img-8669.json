@@ -1,0 +1,64 @@
+{
+  "alt": "Tiled chedis rise over a courtyard still glossy with rain, a great tree leaning in.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-30T15:31:27+07:00",
+  "aperture": 2.4,
+  "shutter": 0.002127659574,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Phra Nakhon",
+    "city": "Bangkok",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8669-640-124825f5.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 70479,
+        "sha256": "124825f5449a0a650ef278500fef078c08bcc412f9b44f232c224eb9e4e4ecb1"
+      },
+      {
+        "file": "img-8669-1280-85bd4d83.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 231965,
+        "sha256": "85bd4d8308795899a60f302ef0e8e5c4d3725e044766da9bec943cd7eeb16f5c"
+      },
+      {
+        "file": "img-8669-1536-7d7aa63a.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 307232,
+        "sha256": "7d7aa63a5fa2bb9d856ef77e87c39cdf21b7d6f543949f4345e7b313ba1e9f57"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8669-640-e391fe8f.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 121224,
+        "sha256": "e391fe8f7e66821c3eaf44cf506a88bc8b6513e54864cf23316f24ab0ea9703a"
+      },
+      {
+        "file": "img-8669-1280-0ea099e3.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 389056,
+        "sha256": "0ea099e3a854afa691dd30e87a0e3152e839e867326a0ae694e1d189c2138db5"
+      },
+      {
+        "file": "img-8669-1536-a0f32618.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 509218,
+        "sha256": "a0f3261827daa8430a3fe13e4d1adc1489cb5fd6fcd3ecb304f07bd6473d5164"
+      }
+    ]
+  }
+}

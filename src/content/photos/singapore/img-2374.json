@@ -1,0 +1,64 @@
+{
+  "alt": "A highway curves through green hills toward a far line of towers and cranes.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T17:26:36+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0007518796992,
+  "iso": 64,
+  "focalLength": 48,
+  "place": {
+    "district": "Mount Faber",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2374-640-338b5501.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 43733,
+        "sha256": "338b55010847028920b1643fc0c11a0262ca9064ebf6f9ff9a3088b1d7ca7286"
+      },
+      {
+        "file": "img-2374-1280-d8b5e694.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 132581,
+        "sha256": "d8b5e6949db4afaecfe7391bc8913ed91cd932227b51517a980a9376fa92ec74"
+      },
+      {
+        "file": "img-2374-1536-46e18102.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 173400,
+        "sha256": "46e1810272ed89373f56654109cb60949ea6a4ed3bd4ef95ae90458fcdd974a4"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2374-640-83a30a32.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 66826,
+        "sha256": "83a30a32dee91fc82cd74ff9430912b7acb06b2024162854a302ce0449f47632"
+      },
+      {
+        "file": "img-2374-1280-95afac69.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 185592,
+        "sha256": "95afac695854f8d0c0023620757659a61fe6461ccb995c8fd4facdbb23cbfd08"
+      },
+      {
+        "file": "img-2374-1536-e545bd13.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 231376,
+        "sha256": "e545bd13dbc78537cccdc34338d82d99af115dfda25049d7f348a66ab9a04d5e"
+      }
+    ]
+  }
+}

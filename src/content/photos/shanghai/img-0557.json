@@ -1,0 +1,78 @@
+{
+  "alt": "Clipped trees frame a broad plaza leading to a round stone museum.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-11-06T12:30:23+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0004750593824,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "People's Square",
+    "city": "Shanghai",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0557-640-efaf6997.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 39660,
+        "sha256": "efaf69971e043fa222ff9264188b4a9625ee3f0c47c2f41bc024bcc433221a4a"
+      },
+      {
+        "file": "img-0557-1280-0cd85e8e.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 140458,
+        "sha256": "0cd85e8ea447a9f56a9f27e19c042bef694ba462bf13f5c95ad76252d79b7ccc"
+      },
+      {
+        "file": "img-0557-1920-e4b450ea.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 276261,
+        "sha256": "e4b450ea286496e7a12543ee9aa0c7078d641e5862d84c86822451ec488f3393"
+      },
+      {
+        "file": "img-0557-2048-032300e3.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 311975,
+        "sha256": "032300e3dfdb4e45ec39f0c95f3bdac8b4b8804a071ca586164acbabc5edd1b5"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0557-640-4b3dfd6c.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 70642,
+        "sha256": "4b3dfd6cc219dc7a22c199c35fe3309b07a58d86edd2d37311124cd2c1c5eab2"
+      },
+      {
+        "file": "img-0557-1280-1b6ae7e2.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 242724,
+        "sha256": "1b6ae7e2e71e951cfde8b5bb20d8ce216508fc0b614a351106028921a3d5e5e9"
+      },
+      {
+        "file": "img-0557-1920-5d78ba5b.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 461658,
+        "sha256": "5d78ba5b25aab228a0f50ae0761baed3dba6c9d601a3018c2e6d8f58f5ea8701"
+      },
+      {
+        "file": "img-0557-2048-6eb29968.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 525528,
+        "sha256": "6eb2996866c10f370cec27d91e38e8f4ddb67d9e4be8bc968578f678b2cfe950"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A monitor lizard slips down a grassy bank toward a green pond.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-01T14:06:00+07:00",
+  "aperture": 2,
+  "shutter": 0.003571428571,
+  "iso": 20,
+  "focalLength": 68,
+  "place": {
+    "district": "Lumphini",
+    "city": "Bangkok",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8821-640-16210f55.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 95636,
+        "sha256": "16210f551a519ec821aec72bd81424fef9d722ba18de88ce3cb6f7d04d8b7bbc"
+      },
+      {
+        "file": "img-8821-1280-177a96b6.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 375462,
+        "sha256": "177a96b61487c273b6f3ae5dba83bb52c98a1a50ce8f7a4d0b4224b0f027cef9"
+      },
+      {
+        "file": "img-8821-1536-1119d215.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 499877,
+        "sha256": "1119d215a05302571ca04d04bb22c64be65abd921088c8b31e921565ad02f8ae"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8821-640-ad06d4a6.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 176220,
+        "sha256": "ad06d4a68cbadb797274f925b5e03285ecff1027279d6c6bd694acab7673200f"
+      },
+      {
+        "file": "img-8821-1280-ef05456e.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 679468,
+        "sha256": "ef05456e0629c7222adc855aa79ac321e3d12970e3e9934a054f55c14dd02b8a"
+      },
+      {
+        "file": "img-8821-1536-527cbfaf.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 913088,
+        "sha256": "527cbfafbdaa02f14f220cef0cd99d571d2511d4782bf34de26ffa669238b94a"
+      }
+    ]
+  }
+}

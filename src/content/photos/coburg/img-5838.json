@@ -1,0 +1,64 @@
+{
+  "alt": "A single streetlamp blazes over a gabled house in the dead of night.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-16T21:32:01+02:00",
+  "aperture": 1.8,
+  "shutter": 0.125,
+  "iso": 4000,
+  "focalLength": 26,
+  "place": {
+    "district": "Sonneberg",
+    "city": "Sonneberg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5838-640-21bd93f2.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 10205,
+        "sha256": "21bd93f2c35957333182c542685c8d35c07309c2013760bbbde373e4c9491989"
+      },
+      {
+        "file": "img-5838-1280-28cb3085.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 25931,
+        "sha256": "28cb3085fe91346b61fe3dcd85f4ff1d848f0c253d904523b3360d79c5e5bd0b"
+      },
+      {
+        "file": "img-5838-1536-8fe4bdbe.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 34307,
+        "sha256": "8fe4bdbe7714aa23535941f79b5561f764531741c06d2235427f86b0f8246f45"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5838-640-bcde4c97.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 11016,
+        "sha256": "bcde4c9768a2db866ca945609a2ec0530a77563acd2184ac471ce10f2c0c5887"
+      },
+      {
+        "file": "img-5838-1280-798baa3d.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 27416,
+        "sha256": "798baa3d2067d553c147c4e39d0e062a8979452709b0e0b3cf1e8abe82993883"
+      },
+      {
+        "file": "img-5838-1536-13f9e2a3.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 34512,
+        "sha256": "13f9e2a3952c5011e43201edfd32b5bacbacb090c4d97d9b01917f614ba74888"
+      }
+    ]
+  }
+}

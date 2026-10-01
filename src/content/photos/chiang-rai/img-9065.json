@@ -1,0 +1,64 @@
+{
+  "alt": "A temple of deep blue and gold stands behind a sculpted lotus, nagas guarding its steps.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T10:34:16+07:00",
+  "aperture": 2.4,
+  "shutter": 0.001084598698,
+  "iso": 20,
+  "focalLength": 21,
+  "place": {
+    "district": "Rong Suea Ten",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9065-640-2ae44753.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 62524,
+        "sha256": "2ae44753835c1541a34aba8ddf0fa3bd7fc60a6dc36515d3e453941624b64b4b"
+      },
+      {
+        "file": "img-9065-1280-bbcf6231.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 200203,
+        "sha256": "bbcf6231accfcbdfe0a45a9b437b3df41568ae3cf6dbbc819906f3da0da44b2a"
+      },
+      {
+        "file": "img-9065-1536-1d33dc2d.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 262277,
+        "sha256": "1d33dc2d9aad8d2e6c97096c2303580142fa2e3744a1b140c37a47562f08ad39"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9065-640-7ee3d213.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 109492,
+        "sha256": "7ee3d213fc1abb418157aab32842b25225feda72cac8ccf14a9e8502b0bb830b"
+      },
+      {
+        "file": "img-9065-1280-c12735e9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 335902,
+        "sha256": "c12735e90d8ad23aaab05c0190f669513927277614f08ebeccda8be7aed04527"
+      },
+      {
+        "file": "img-9065-1536-4f6b16e8.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 423680,
+        "sha256": "4f6b16e8df6aa72e8e27a57b855efc8c95d0d02e5f73bfdd1f8860d6becc5e19"
+      }
+    ]
+  }
+}

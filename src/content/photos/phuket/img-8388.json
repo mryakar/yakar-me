@@ -1,0 +1,64 @@
+{
+  "alt": "Three macaques sit on a wooden railing above the treetops, the sea faint beyond.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-28T13:40:50+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0001990049751,
+  "iso": 32,
+  "focalLength": 38,
+  "place": {
+    "district": "Karon",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8388-640-5efbc709.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 36896,
+        "sha256": "5efbc709ed277c06ecb65d96e8d40dbf951953406d815fb636a7f61420ddb968"
+      },
+      {
+        "file": "img-8388-1280-5247ddf0.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 122550,
+        "sha256": "5247ddf034288255a7f13bba741e281eb5ffbec3e79e44525090f145becf66d4"
+      },
+      {
+        "file": "img-8388-1536-9539c056.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 159682,
+        "sha256": "9539c0563ca70ab964e42bafdeb0f896e24b6889583c7d7ba8c489209bc8b986"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8388-640-70a5a63b.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 59760,
+        "sha256": "70a5a63b2422d18cbd3b5f4c3a6eb39e5709ae50337437ddec002c5231419873"
+      },
+      {
+        "file": "img-8388-1280-bd9f900f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 183406,
+        "sha256": "bd9f900f8c8062d89db42a86881890266e8bc65578d65b07d7fd737a365795c0"
+      },
+      {
+        "file": "img-8388-1536-c6a2e984.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 232724,
+        "sha256": "c6a2e9849f39f767f38ed8a42596ed5ec568555b58d872cf70839c00d8b55f59"
+      }
+    ]
+  }
+}

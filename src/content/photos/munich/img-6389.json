@@ -1,0 +1,78 @@
+{
+  "alt": "A broad pond stretches toward a pale palace front under a low grey sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T17:45:50+02:00",
+  "aperture": 1.8,
+  "shutter": 0.001002004008,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Nymphenburg",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6389-640-5a44ad08.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 21263,
+        "sha256": "5a44ad08f0c5885c284f05ef334521401ced7811100eb2503bc2282727b725cd"
+      },
+      {
+        "file": "img-6389-1280-9f5e024e.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 71331,
+        "sha256": "9f5e024e25c306b491357f8226c2ca96958d90eab15bd4375c08f75ca257c6ea"
+      },
+      {
+        "file": "img-6389-1920-e6e5955b.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 136046,
+        "sha256": "e6e5955bf939f44ce03b74432b6a4c3a0f20f734c89bbf0ed479b11b361e94b5"
+      },
+      {
+        "file": "img-6389-2048-169835a2.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 151012,
+        "sha256": "169835a20d62f795779f1fe411ae2888b624d57934537c0fd3ed9aba9002ce18"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6389-640-fd7a5930.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 32436,
+        "sha256": "fd7a593035cb39a7d6bd7c9f34de51e39516977bb8e82822fca67c3418304bbf"
+      },
+      {
+        "file": "img-6389-1280-ff7cf30f.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 106482,
+        "sha256": "ff7cf30f2b81c5755a1c9f2f6bcc72957b85affa43c4389628616eb49820ba51"
+      },
+      {
+        "file": "img-6389-1920-df96d82c.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 187494,
+        "sha256": "df96d82cd65f714baff08fb42b73a75f2e3b84db9258ad59998ab09cc9514a1a"
+      },
+      {
+        "file": "img-6389-2048-78dc5133.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 208756,
+        "sha256": "78dc5133154733b11f6e70f66492b85f4b7ee4187f601ee7818cc0079f70995a"
+      }
+    ]
+  }
+}

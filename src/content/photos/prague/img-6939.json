@@ -1,0 +1,64 @@
+{
+  "alt": "Sunlit pavement fills with walkers between tall buildings and young trees.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T17:23:01+02:00",
+  "aperture": 2,
+  "shutter": 0.0005841121495,
+  "iso": 20,
+  "focalLength": 52,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6939-640-3e06a2d6.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 64277,
+        "sha256": "3e06a2d6117a3fd3810ae20482c2a38a862e0800b339f12bd37410315be072e9"
+      },
+      {
+        "file": "img-6939-1280-c003f87e.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 223750,
+        "sha256": "c003f87ec17399f34aeb42f20fb03ec6519b52e32beae85084a894ed65c96c04"
+      },
+      {
+        "file": "img-6939-1536-8fa11adb.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 298253,
+        "sha256": "8fa11adbff5e860bb65a33f65b10d027b202b6c00d168a9ab71186590b7de7cf"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6939-640-1ba0795e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 116174,
+        "sha256": "1ba0795e22211264765a1d265ae5c5dd401e149bb6009a5ad63a2d3ab2f4287f"
+      },
+      {
+        "file": "img-6939-1280-1ed3fdc3.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 399040,
+        "sha256": "1ed3fdc3673f66585832fbb322d790b2a58b8b7ff8e99b30951e3210fd3d6254"
+      },
+      {
+        "file": "img-6939-1536-9fa21066.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 530568,
+        "sha256": "9fa21066627b6df2c72a7984c4cf3f0d7e1cfa95a925d5efcb111d0fa23b13f7"
+      }
+    ]
+  }
+}

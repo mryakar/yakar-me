@@ -1,0 +1,78 @@
+{
+  "alt": "A man in a sarong leans over a pond as a swarm of orange koi rises to meet him.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-07T11:20:01+08:00",
+  "aperture": 1.8,
+  "shutter": 0.003236245955,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Tampaksiring",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2305-640-03e029e1.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 50967,
+        "sha256": "03e029e1638145ee1339a6fe2b4ca968b628ac97b47c549aa925c9b817dd2e52"
+      },
+      {
+        "file": "img-2305-1280-d7c9fdd0.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 183817,
+        "sha256": "d7c9fdd02cec983705b352a8e20e7f48c697f861e86501c6c62212bcfb41d761"
+      },
+      {
+        "file": "img-2305-1920-ef60cd91.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 349307,
+        "sha256": "ef60cd91b263e1bde288f61e6d7cfbe682b7a25630cf0f97c9cc13e905442106"
+      },
+      {
+        "file": "img-2305-2048-0d3e1a64.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 388148,
+        "sha256": "0d3e1a64359ed1cae5429f108f9374a33ed61fcdbdd5e43ad66a604e1a06c236"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2305-640-ade19d24.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 97218,
+        "sha256": "ade19d24b66b9e90e8d1107fcba763266667d206327fb2aea980dbcd7038cb45"
+      },
+      {
+        "file": "img-2305-1280-1a6ec91d.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 334676,
+        "sha256": "1a6ec91dccb7eea8839f85fecbb557855549015708ca67c97c256cd64c95a661"
+      },
+      {
+        "file": "img-2305-1920-558858e0.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 625978,
+        "sha256": "558858e0083208adb583d3f82935c9cde7e6c88f52cf0d27d0d6064ad15250d9"
+      },
+      {
+        "file": "img-2305-2048-ff0134cf.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 685490,
+        "sha256": "ff0134cf3b3603f08e2e13e81f6d6cd44336526e5e565fecce8e24e48475d33f"
+      }
+    ]
+  }
+}

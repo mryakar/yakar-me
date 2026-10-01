@@ -1,0 +1,78 @@
+{
+  "alt": "From an old stone wall, the view opens over green parkland and a wide river beneath tall clouds.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-25T15:23:58+02:00",
+  "aperture": 2.4,
+  "shutter": 0.0004800768123,
+  "iso": 20,
+  "focalLength": 13,
+  "place": {
+    "district": "Kalemegdan",
+    "city": "Belgrade",
+    "country": "Serbia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4179-640-b625d734.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 30296,
+        "sha256": "b625d73495e291c5a7aa145c30d92f0e905d42bbc669c8e6f530226fa5baa540"
+      },
+      {
+        "file": "img-4179-1280-f2a74d76.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 107100,
+        "sha256": "f2a74d7689a1472827679333eac1c07b8a2764b9d0265beb480d02b1ce25395e"
+      },
+      {
+        "file": "img-4179-1920-21d76ff6.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 211391,
+        "sha256": "21d76ff60c77e2d665734bde35ff12a6e12c626cd4d09300a1e13aa00e7eb30d"
+      },
+      {
+        "file": "img-4179-2048-3415a727.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 237152,
+        "sha256": "3415a7271fb658f43cb717a227d23be5c066b31e79884d545dfc22e6c94eebde"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4179-640-07b72aec.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 50526,
+        "sha256": "07b72aece50bbf37142c450f6ec3a354d59ad4fccff7e96739645512bc5dae7f"
+      },
+      {
+        "file": "img-4179-1280-27c967b8.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 179834,
+        "sha256": "27c967b8f04f674691459a4df11f7108ca0fc0bc69fd8ad7206336b1e70febd5"
+      },
+      {
+        "file": "img-4179-1920-b18196be.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 343318,
+        "sha256": "b18196be9bc153907ad25e7abe7aa9ac3fb87167f548b6dddb895a1e6183fb15"
+      },
+      {
+        "file": "img-4179-2048-2f6ba53b.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 386296,
+        "sha256": "2f6ba53b214e8ca78dea81098ac773961a0c9d2422bb4b23538c9f41ab894f8f"
+      }
+    ]
+  }
+}

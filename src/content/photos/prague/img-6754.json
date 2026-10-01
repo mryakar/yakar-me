@@ -1,0 +1,64 @@
+{
+  "alt": "Crowds gather beneath a Gothic tower and its painted astronomical clock.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T12:42:58+02:00",
+  "aperture": 2.4,
+  "shutter": 0.0008968609865,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Stare Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6754-640-4242217d.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 46428,
+        "sha256": "4242217dd95901635cb98eef102bf9487cc0b159f3aa40ca553b370d285fb523"
+      },
+      {
+        "file": "img-6754-1280-2b63de88.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 145342,
+        "sha256": "2b63de8864979be46a9d192e9a9f640231d0a7fb652c03a0263b4c221a597b58"
+      },
+      {
+        "file": "img-6754-1536-86d9be13.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 191610,
+        "sha256": "86d9be1384b742d304e2e19d9613c4e421421a9fb13ce5da0133aa346b5776c7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6754-640-efc5259b.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 79984,
+        "sha256": "efc5259b46cd2a22785e5db53f2e8d21e29a0bf75a397aa020368d4bcbe16504"
+      },
+      {
+        "file": "img-6754-1280-2d60dfce.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 246982,
+        "sha256": "2d60dfcec52cf61e1811e1e0ddf7bf29ace5c45bdbe006e2afb60f3e1c665bfd"
+      },
+      {
+        "file": "img-6754-1536-c314d196.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 313986,
+        "sha256": "c314d1965bd6b7b69a2aa95ed79cb2f50bf50b855813639428f223041cbceb96"
+      }
+    ]
+  }
+}

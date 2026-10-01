@@ -1,0 +1,78 @@
+{
+  "alt": "A long curve of pebble beach sweeps around a turquoise bay toward distant hills.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-24T09:50:47+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0001819836215,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Colline du Chateau",
+    "city": "Nice",
+    "country": "France"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7205-640-bc8fab90.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 30373,
+        "sha256": "bc8fab9000bc141c68a811eb9385634cd246e9f8e8347a2d3bee66a2773b683f"
+      },
+      {
+        "file": "img-7205-1280-8ba6f1ec.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 106247,
+        "sha256": "8ba6f1ec3984c3b9b6ea0030bbf5b0f64bc8ab58606fcf9039718622316f049e"
+      },
+      {
+        "file": "img-7205-1920-e6623b61.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 207664,
+        "sha256": "e6623b618fdcdf3d906a1047608a460083e2d50997e7e464bd4e43b11e917eca"
+      },
+      {
+        "file": "img-7205-2048-8fd7d558.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 234601,
+        "sha256": "8fd7d558ff025661fb571e3ede54d6738f8a567c837950901f1694717afd8e10"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7205-640-f1d7af75.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 47510,
+        "sha256": "f1d7af758957e5ba73b48c327b3c7ee2e433a1606730b156e41938029a7a729c"
+      },
+      {
+        "file": "img-7205-1280-97ada3b9.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 168664,
+        "sha256": "97ada3b95620710f29db4426b4ca991dcc83b4b55ab1a9fd846a184baeff16b8"
+      },
+      {
+        "file": "img-7205-1920-2b170b36.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 328350,
+        "sha256": "2b170b36bbbfcba0af21e1f17b096479909a125f054bdea8f7663d5b5f96ec22"
+      },
+      {
+        "file": "img-7205-2048-3f66adac.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 370666,
+        "sha256": "3f66adacb265e0ad26013085377e2710582dd9bded9ee6b11ba02b0f263c645a"
+      }
+    ]
+  }
+}

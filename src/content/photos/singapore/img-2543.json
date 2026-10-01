@@ -1,0 +1,64 @@
+{
+  "alt": "Two dark red and black lories perch on the rim of a feeder.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T12:25:03+08:00",
+  "aperture": 2.8,
+  "shutter": 0.00518134715,
+  "iso": 64,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2543-640-9b21f129.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 48569,
+        "sha256": "9b21f129433ae780c5a7caf835b6ca4d0422e00e8065a2053c3c3897345a0847"
+      },
+      {
+        "file": "img-2543-1280-6e7976f9.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 140855,
+        "sha256": "6e7976f9ac53de0e464174f6a49436c3136f74015b7ea6d78d87e50e9db3d9d4"
+      },
+      {
+        "file": "img-2543-1536-fae16377.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 186377,
+        "sha256": "fae163779f6dd25e416ec79fb463350ff716aabd67bc3d1bc9452e59188bb8d9"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2543-640-718f42dc.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 75380,
+        "sha256": "718f42dcd73e4d21f3e823f8cb8ea1a55b52d7d1d710ce8db55f2ab67b6b7c63"
+      },
+      {
+        "file": "img-2543-1280-e335318e.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 188918,
+        "sha256": "e335318e0c28aad0aec53a916b777a2adc107dbaeba4e4c8b6d35fe27ea7edc0"
+      },
+      {
+        "file": "img-2543-1536-65844f55.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 237796,
+        "sha256": "65844f55b081c7d232de07727dee7951e85a9b6ce9aefb8b4433f8ff1f62162f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "The sun sinks toward the sea, its reflection pooling on the wet sand among distant walkers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-13T17:54:49+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0001040041602,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3686-640-1b66a53b.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 21575,
+        "sha256": "1b66a53bc4998cc01ab35fc86be0ad0108cfd1ec3de82524eb8bb7e0f2561173"
+      },
+      {
+        "file": "img-3686-1280-2df69eb9.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 78537,
+        "sha256": "2df69eb91b63a38176f77f7481b715fb87fa6a084d9cd94e95432345384e0bad"
+      },
+      {
+        "file": "img-3686-1536-2b43f1f1.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 107912,
+        "sha256": "2b43f1f1e2dc04c925ebbbcaf0b1e3c49694bcb04b897c45ad2f271a90e07daf"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3686-640-833b29e6.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 24612,
+        "sha256": "833b29e6c33978fb5ac24e08b949700d25b1f038628da2cfad836efc569aa964"
+      },
+      {
+        "file": "img-3686-1280-394a1ce9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 86776,
+        "sha256": "394a1ce927a833ce5dc685b13d32ecba35c22c1427f1dd7f3766ace3e36fc1ef"
+      },
+      {
+        "file": "img-3686-1536-d1af6192.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 113526,
+        "sha256": "d1af61928ac4657ec159662f1ccaeba592ae5a8fb111ed4ff4bb0c33c0e771e2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A squirrel pauses head-down on a twisting tree trunk at the edge of a manicured lawn.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-13T10:44:10+08:00",
+  "aperture": 2.8,
+  "shutter": 0.0101010101,
+  "iso": 80,
+  "focalLength": 120,
+  "place": {
+    "district": "Legian",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4012-640-95f78c64.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 67829,
+        "sha256": "95f78c6443e01ac3035a73f5db996232d06a8f8c7e43e644a81e354a89a91d12"
+      },
+      {
+        "file": "img-4012-1280-7f26cf42.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 201982,
+        "sha256": "7f26cf42b1d3a791e6e32d93d6954ac5f63ba0c8ec4f22d6865e0e60abceda48"
+      },
+      {
+        "file": "img-4012-1536-97ab7b9e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 263073,
+        "sha256": "97ab7b9e6589b19e36d2e9216fe7e68806f92bcd3f0d762ea0405d56fee67495"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4012-640-258e9f6b.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 120864,
+        "sha256": "258e9f6bedf99538905697edfc8ee86fb14e62c5b453ba39835db7f0e95675b2"
+      },
+      {
+        "file": "img-4012-1280-c4d29c0f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 323926,
+        "sha256": "c4d29c0f6c2497aac5f302ec19583080236d32df467523c8a1c004c78b613f50"
+      },
+      {
+        "file": "img-4012-1536-b07bfb09.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 407818,
+        "sha256": "b07bfb09346818f04636ccfaa966e4e743ea5b3cdd56dc1db9d043a721b33042"
+      }
+    ]
+  }
+}

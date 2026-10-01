@@ -1,0 +1,78 @@
+{
+  "alt": "Shade pools beneath old trees by the beach, an orange truck parked among them.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-26T07:45:39+03:00",
+  "aperture": 1.8,
+  "shutter": 0.002364066194,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Nai Yang",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8128-640-81a81d2f.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 49350,
+        "sha256": "81a81d2f417b1d82c1492cd7fcb8e12038593d671fb9cb2c4b425ce0acc2cfc1"
+      },
+      {
+        "file": "img-8128-1280-e14f62e0.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 202248,
+        "sha256": "e14f62e0a8886ebea316893c1ce6a92239431653947e2d4b6823e5f74cca44f4"
+      },
+      {
+        "file": "img-8128-1920-6b9039dd.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 411549,
+        "sha256": "6b9039dd2a2249facfa139454d56b3c1901a108fe82fb9cf77384ce00c0dd6ba"
+      },
+      {
+        "file": "img-8128-2048-8ce6482e.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 461632,
+        "sha256": "8ce6482e79c4e5b59fab8778455488333ee45fe0046c7ffe35c2e59cfec9c4b0"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8128-640-e4451662.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 95324,
+        "sha256": "e4451662566b8d1588a43d42b640430bfe4d234e61e6bdb2a52d76b73f604e2b"
+      },
+      {
+        "file": "img-8128-1280-2c74a872.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 383996,
+        "sha256": "2c74a87232dfa60d5e66e76b347ad8444f269048f4f9d59448f88f642be23b7a"
+      },
+      {
+        "file": "img-8128-1920-8e5be27e.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 765692,
+        "sha256": "8e5be27ef526648f5139dc2a7907979cc5a12955d4efbc04095e48a81a061a9d"
+      },
+      {
+        "file": "img-8128-2048-52d22af1.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 857482,
+        "sha256": "52d22af14dcfe758291a59c8e01443558616542f9fc279c46cb8fec502549fc5"
+      }
+    ]
+  }
+}

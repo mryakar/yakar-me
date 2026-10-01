@@ -57,8 +57,10 @@ export const takenYear = (taken: string) => Number(taken.slice(0, 4));
 
 const same = (s: string) => s;
 
-export const placeName = ({ district, city, country }: Place, countryName = same) =>
-  [district, city, countryName(country)].filter((part, i, parts) => part !== parts[i + 1]).join(', ');
+export function placeName({ district, city, country }: Place, countryName = same) {
+  const parts = [district, city, country].filter((part, i, all) => part !== all[i + 1]);
+  return [...parts.slice(0, -1), countryName(country)].join(', ');
+}
 
 export type RecipeRow = [keyof Omit<Recipe, 'filmSimulation' | 'whiteBalanceShift'>, string];
 

@@ -1,0 +1,64 @@
+{
+  "alt": "A wet residential street shines under a blue evening, one streetlamp already lit.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-15T20:25:33+02:00",
+  "aperture": 1.8,
+  "shutter": 0.04,
+  "iso": 500,
+  "focalLength": 26,
+  "place": {
+    "district": "Doerfles-Esbach",
+    "city": "Coburg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5522-640-2d794b55.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 21584,
+        "sha256": "2d794b55ed56709ac4486d8e11e8745017566302b059d10f641ed1a2fddc3d4a"
+      },
+      {
+        "file": "img-5522-1280-b29fccf8.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 78101,
+        "sha256": "b29fccf8672ca40a58855badf12024116da94d024f618a860f8768e68bb968c5"
+      },
+      {
+        "file": "img-5522-1536-c5dd7e12.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 110028,
+        "sha256": "c5dd7e1224a40e0068c50acf314e8d1e5fffce759a715493df1b8b552eb913a8"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5522-640-65b3e973.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 27136,
+        "sha256": "65b3e9738a57185ef7781dd6c5fd43dcfab7b1d92a7b4cb4ed4a0f3184c57239"
+      },
+      {
+        "file": "img-5522-1280-fa159c16.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 89020,
+        "sha256": "fa159c1628ed4cbd71057f3f400ae5c2109abad57bd9bb28d47234b9b00fe5ba"
+      },
+      {
+        "file": "img-5522-1536-ee40c48f.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 120172,
+        "sha256": "ee40c48f17bb313d2d1a10f92901ff49a4451fb91af9ad8fe3ab2a59b2c9ce53"
+      }
+    ]
+  }
+}

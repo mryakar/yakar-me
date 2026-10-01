@@ -1,0 +1,64 @@
+{
+  "alt": "White plaster spires and serpents curl from the eaves of a temple roof.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T12:35:21+07:00",
+  "aperture": 1.8,
+  "shutter": 0.00008700191404,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Pa O Don Chai",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9285-640-e481466d.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 59839,
+        "sha256": "e481466d3998fc6ee7c5220126ab47fb3ea35a42bc327f437128f4c67a9f626d"
+      },
+      {
+        "file": "img-9285-1280-6cacf789.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 191909,
+        "sha256": "6cacf789b1dab0ab6c9a785d830b7a687d0d4310ed489dae878a9b5027549062"
+      },
+      {
+        "file": "img-9285-1536-8ec02d39.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 249952,
+        "sha256": "8ec02d39f0fa5690fd5316d2c469219e0d0ee226b3f458b0a09a9aedaf4814cc"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9285-640-149d7cbe.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 102936,
+        "sha256": "149d7cbe93e650aede4c11be06bde4527ad2e09c329247eec658ab4000bb26da"
+      },
+      {
+        "file": "img-9285-1280-05c185ef.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 316930,
+        "sha256": "05c185ef9960b6dc3c676644f2ad675b05b74c661518d53c82cb72bec66d82ff"
+      },
+      {
+        "file": "img-9285-1536-89ae5727.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 401318,
+        "sha256": "89ae5727aeed33282a98bfaa8b27db988f5e1c85b52ae122c10ed5a19771165d"
+      }
+    ]
+  }
+}

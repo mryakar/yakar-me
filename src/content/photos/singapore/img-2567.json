@@ -1,0 +1,64 @@
+{
+  "alt": "A scarlet ibis stands among reeds, its plumage almost glowing.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T12:44:47+08:00",
+  "aperture": 2.8,
+  "shutter": 0.00325732899,
+  "iso": 50,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2567-640-790e2100.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 79258,
+        "sha256": "790e2100197e4060ea8219813e501d44d3195a2ba8922797794213274301c7dd"
+      },
+      {
+        "file": "img-2567-1280-bf73a1f4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 235962,
+        "sha256": "bf73a1f4c9b9b6c7c53fa26b45ce5955add2ffb3a683d9fec78f7ffa1d79d6b7"
+      },
+      {
+        "file": "img-2567-1536-856329be.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 306176,
+        "sha256": "856329be929249f01cd541f08d6b78e06324ef921f13debb1982aed4a1525881"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2567-640-6d2b3f9f.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 156098,
+        "sha256": "6d2b3f9f0a28930be11b623e28a88dac655c74642fe8c0777300b52a63d8f372"
+      },
+      {
+        "file": "img-2567-1280-af46b8fc.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 449340,
+        "sha256": "af46b8fc106d3af47192599e7ba687abcbca49a51bc7162cbb9e51b4bb66102d"
+      },
+      {
+        "file": "img-2567-1536-9c2a2010.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 564854,
+        "sha256": "9c2a2010479a6f515464d9c2a06fb22762a1e3c69595f77f4aff6a22b025e56a"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A white car waits at a crossing as the street runs on between tall, pale apartment blocks.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-05T17:40:08+04:00",
+  "aperture": 1.8,
+  "shutter": 0.005,
+  "iso": 125,
+  "focalLength": 24,
+  "place": {
+    "district": "Nizami Street",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1219-640-b93a7f42.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 45143,
+        "sha256": "b93a7f427ca3b64e144f6779dca24c25f1d0a0e33d2b58986dff1f587f014229"
+      },
+      {
+        "file": "img-1219-1280-7b5715be.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 149341,
+        "sha256": "7b5715bed1bca04adbcda57a52787fa3f0096bb479a7fec1f614fbe5b746f0ae"
+      },
+      {
+        "file": "img-1219-1536-e76374b0.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 197557,
+        "sha256": "e76374b00927656949b9d7980b164eb86df324c26a83db97712e6bac98368537"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1219-640-4285d4a2.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 75400,
+        "sha256": "4285d4a2b056f613fd569d1555e428709c63bd449259cbed3b5406fabf58007f"
+      },
+      {
+        "file": "img-1219-1280-37c81d48.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 229082,
+        "sha256": "37c81d4889298457964e96f5e6fd47a68e6a9f8612a01ddb5bfe1929f7cc4c68"
+      },
+      {
+        "file": "img-1219-1536-a03ae9be.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 295142,
+        "sha256": "a03ae9becc65887372f1bbaddcb74bafce832bcf29729dce4702a949d57a033d"
+      }
+    ]
+  }
+}

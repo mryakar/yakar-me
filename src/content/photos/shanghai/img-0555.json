@@ -1,0 +1,64 @@
+{
+  "alt": "From a car window, a tree-lined avenue runs toward glass towers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-11-06T12:30:07+08:00",
+  "aperture": 1.8,
+  "shutter": 0.001872659176,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "People's Square",
+    "city": "Shanghai",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0555-640-163a6fcc.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 66001,
+        "sha256": "163a6fccdbb08efc4e7ab72ca22f540dac2c3adbef830c6ab8d0eeef6793f8f9"
+      },
+      {
+        "file": "img-0555-1280-b7863e56.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 225283,
+        "sha256": "b7863e569d3b8014babd2f96512bbf7f76216954fa858b91b3d5ef651e3a0683"
+      },
+      {
+        "file": "img-0555-1536-99e4f417.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 306774,
+        "sha256": "99e4f417f488daaa819611c8534a13af512e52b01de84af1988db839f660baba"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0555-640-07d8905a.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 114684,
+        "sha256": "07d8905ac0abb7c75d93f7dd437950f5ebb9b6699852cf5affd20b6150bd8408"
+      },
+      {
+        "file": "img-0555-1280-f42208a9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 376638,
+        "sha256": "f42208a932f3cc94e4b59380028d1e19d58be0f2bc18b911d3f13188711df123"
+      },
+      {
+        "file": "img-0555-1536-58f24ccf.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 509374,
+        "sha256": "58f24ccf4e2847a1fcb03886476eaa772e9398f9b19b927c4df5816e08a4b97d"
+      }
+    ]
+  }
+}
