@@ -1,0 +1,82 @@
+{
+  "alt": "A rider in a leather jacket glides past on a cream scooter, shutters and graffiti behind.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T14:21:30+03:00",
+  "aperture": 5.6,
+  "shutter": 0.001818181818,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0873-640-0ac5b27a.avif",
+        "width": 640,
+        "height": 966,
+        "bytes": 43943,
+        "sha256": "0ac5b27acde8ea9fd977d4194a2d978fda81dfb334633a9eb3d11d1d90d666f9"
+      },
+      {
+        "file": "dscf0873-1280-e5d1de20.avif",
+        "width": 1280,
+        "height": 1931,
+        "bytes": 171036,
+        "sha256": "e5d1de20663d429dbeb00af95fc571eda5a79e0da63f4d7c0e262cae64314348"
+      },
+      {
+        "file": "dscf0873-1696-e922b07b.avif",
+        "width": 1696,
+        "height": 2559,
+        "bytes": 330962,
+        "sha256": "e922b07b6bab035585e98cfc718f7c5b752b8f5cea3d3710fc8f9e749d1c8354"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0873-640-18207689.webp",
+        "width": 640,
+        "height": 966,
+        "bytes": 70638,
+        "sha256": "18207689c999bf2ba1f378cb21385d0ece227a221321cce7dd500985bde49ff0"
+      },
+      {
+        "file": "dscf0873-1280-eb8de5e0.webp",
+        "width": 1280,
+        "height": 1931,
+        "bytes": 313496,
+        "sha256": "eb8de5e062993c2f4bcc5b30f3147451bea64e944371744df4c53ae3b1f46119"
+      },
+      {
+        "file": "dscf0873-1696-0b110cea.webp",
+        "width": 1696,
+        "height": 2559,
+        "bytes": 626298,
+        "sha256": "0b110ceacd80792acfd1119f2dc6ec529c6db0c6ce8ee7ed5b3b238c5abc0fac"
+      }
+    ]
+  }
+}

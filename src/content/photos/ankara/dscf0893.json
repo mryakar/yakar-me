@@ -1,0 +1,82 @@
+{
+  "alt": "A red bonnet and an old green hatchback share the street outside a corner café.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T14:31:41+03:00",
+  "aperture": 5.6,
+  "shutter": 0.002,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0893-640-44cf5b53.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 39763,
+        "sha256": "44cf5b531eb1148d1747feaf088ef554cfba6c0adb615d776eb71d62ed24d1a7"
+      },
+      {
+        "file": "dscf0893-1280-75aa3718.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 133412,
+        "sha256": "75aa371828cd8b156487a76deddc4f0a15c2a91684364b906213418d210c59a0"
+      },
+      {
+        "file": "dscf0893-1706-f8603c00.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 252427,
+        "sha256": "f8603c007a0318a9e24f1cbc51913059aca7a88d094bbfc79ee02ee0f132bf63"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0893-640-afa43b2a.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 63984,
+        "sha256": "afa43b2aebd98d3144c39f7da9a9445980408a7252986ea23808a170af016679"
+      },
+      {
+        "file": "dscf0893-1280-b7f4008f.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 213912,
+        "sha256": "b7f4008f6743c72c4e8e4c1514f3de0085f18f730c1eb1c8c31f38e33ff1c7ad"
+      },
+      {
+        "file": "dscf0893-1706-6028ac03.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 451688,
+        "sha256": "6028ac03d6984c2744c53d1270a36584753078ace8abc360147311377a58e4fa"
+      }
+    ]
+  }
+}

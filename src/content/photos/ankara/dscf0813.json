@@ -1,0 +1,82 @@
+{
+  "alt": "Red fins of a building facade cut sharply into a pale spring sky.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T14:03:18+03:00",
+  "aperture": 6.4,
+  "shutter": 0.0007692307692,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0813-640-c2066d00.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 32525,
+        "sha256": "c2066d007c0d04dc27579444cd3c03b0434709578532dfc7bcde8ddfbc853740"
+      },
+      {
+        "file": "dscf0813-1280-49588459.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 104674,
+        "sha256": "49588459b88d15f82382379edb86b0e2b2acb3959fcf847862101ddb33fb8343"
+      },
+      {
+        "file": "dscf0813-1706-0ee33bdf.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 204282,
+        "sha256": "0ee33bdfda7b11ab7ccdbf83c6a3bfdec6893e85c7ed5998c9a21fb55f05660e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0813-640-7f23a29e.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 58940,
+        "sha256": "7f23a29eb2c4aeffc11dc2e81a8660d8801398aa2cb438bdb2d0b863c14e0abd"
+      },
+      {
+        "file": "dscf0813-1280-46d0fc48.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 189188,
+        "sha256": "46d0fc48e73c05fdefa9f61065ebd747bbda02faecb0f0edb9e894039dbed7e1"
+      },
+      {
+        "file": "dscf0813-1706-239336c2.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 392370,
+        "sha256": "239336c2e485566c59acb484735e0738c3b29c88d94af5d94b308dfb78e3d797"
+      }
+    ]
+  }
+}

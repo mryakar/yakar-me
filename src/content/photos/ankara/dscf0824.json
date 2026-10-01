@@ -1,0 +1,82 @@
+{
+  "alt": "A man waits at a pickup window beside a mural of leaves and birds.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-12T14:06:25+03:00",
+  "aperture": 5.6,
+  "shutter": 0.001818181818,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Classic Chrome",
+    "dynamicRange": "DR200",
+    "highlight": -2,
+    "shadow": -0.5,
+    "color": 4,
+    "whiteBalance": "6500K",
+    "whiteBalanceShift": [
+      2,
+      -6
+    ],
+    "noiseReduction": -4,
+    "clarity": 0,
+    "grain": "Strong, Small",
+    "colorChrome": "Strong",
+    "colorChromeBlue": "Weak"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0824-640-03bfdf4a.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 42399,
+        "sha256": "03bfdf4a3b6b181ba397eeb8e547f5f7084aaf5676e37fa9881a83ad8c26dd6b"
+      },
+      {
+        "file": "dscf0824-1280-0e6c8519.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 157716,
+        "sha256": "0e6c851923ec4432df3467f361823c56948a29128120e0dff1b323b4f72ae36b"
+      },
+      {
+        "file": "dscf0824-1706-36d9e0a9.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 298740,
+        "sha256": "36d9e0a95a1445f7d5fcc7ee49038e8b916d25210c1a784ca2f5fa37a7878210"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0824-640-2d0b1239.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 65388,
+        "sha256": "2d0b1239ab30536ad90dd5cc9131b0a6a945980e7141a345e8929a8cb9bea3f0"
+      },
+      {
+        "file": "dscf0824-1280-ee0fa2e0.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 245278,
+        "sha256": "ee0fa2e0b20e59adcf2af39eaa95b2f959f01a32127fcad1cfd87d1c13e5bc33"
+      },
+      {
+        "file": "dscf0824-1706-70908f1a.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 502434,
+        "sha256": "70908f1a0ab67f2b929eaf4e143e1f383f8a3c11c5f256f2f007aa9ecbb0f728"
+      }
+    ]
+  }
+}

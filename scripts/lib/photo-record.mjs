@@ -113,7 +113,7 @@ export function readShot(exif) {
     taken: takenAt(exif),
     aperture: round(number(exif.FNumber, 'FNumber', 0.7, 64), 1),
     shutter: number(exif.ExposureTime, 'ExposureTime', 1 / 64000, 3600),
-    iso: Math.round(number(exif.ISO, 'ISO', 25, 409600)),
+    iso: Math.round(number(exif.ISO, 'ISO', 1, 409600)),
   };
   if (kind === 'fujifilm') {
     shot.lens = text(exif.LensModel, 'LensModel');

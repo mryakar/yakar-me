@@ -1,0 +1,85 @@
+{
+  "alt": "Night swallows a cobbled path; under a far lamp, two figures share one umbrella.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-04T19:41:49+03:00",
+  "aperture": 2.8,
+  "shutter": 0.00025,
+  "iso": 12800,
+  "focalLength": 23,
+  "place": {
+    "district": "Kavaklidere",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Acros",
+    "dynamicRange": "DR100",
+    "highlight": 0,
+    "shadow": 0,
+    "monochromaticColor": [
+      0,
+      0
+    ],
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      0
+    ],
+    "noiseReduction": 0,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf0491-640-1b375186.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 21456,
+        "sha256": "1b37518686ccb9239962ff38843cea71ca696de4b53b934504303c26d3ef7bdc"
+      },
+      {
+        "file": "dscf0491-1280-fbb9068b.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 83542,
+        "sha256": "fbb9068b125344280d47d7e3e804c903b3738177e706c07427301d9acf13e9c4"
+      },
+      {
+        "file": "dscf0491-1706-3dcc65e3.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 165463,
+        "sha256": "3dcc65e39ab8ba58d6d2cf24f07e068669842ffc2ff7c898f731297824346aa9"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf0491-640-87e344d8.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 32494,
+        "sha256": "87e344d8277c7a221bd605b0c3250d18b687c02fbf6d94bd023b563bdf08e883"
+      },
+      {
+        "file": "dscf0491-1280-7e65afe5.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 140076,
+        "sha256": "7e65afe5d4f2530388968f76b532a5815ff1a1b8513c6c8d1b6739e43f8bd7a0"
+      },
+      {
+        "file": "dscf0491-1706-765660f0.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 281236,
+        "sha256": "765660f0a2c7ce73be357fcdcffacd2ba741aad497c6e9de737851cf8f59c756"
+      }
+    ]
+  }
+}

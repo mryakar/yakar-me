@@ -83,7 +83,7 @@ const photos = defineCollection({
       taken: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2})?$/),
       aperture: z.number().min(0.7).max(64),
       shutter: z.number().positive().max(3600),
-      iso: z.number().int().min(25).max(409600),
+      iso: z.number().int().min(1).max(409600),
       focalLength: z.number().int().positive().max(2000),
       place: z.object({ district: text, city: text, country: text }).strict(),
       recipe: z

@@ -30,6 +30,12 @@ test('readShot: telefonda 35 mm karşılığı, lens yok', () => {
   assert.equal(s.taken, '2024-04-07T06:36:31');
 });
 
+test('readShot: iPhone geniş açı ve telenin temel duyarlılığı ISO 20; sıfır ve negatif reddedilir', () => {
+  assert.equal(readShot({ ...iphone, ISO: 20 }).iso, 20);
+  assert.throws(() => readShot({ ...iphone, ISO: 0 }), PhotoError);
+  assert.throws(() => readShot({ ...iphone, ISO: -100 }), PhotoError);
+});
+
 test('readShot: başka üretici reddedilir', () => {
   assert.throws(() => readShot({ ...fuji, Make: 'Canon' }), PhotoError);
 });
