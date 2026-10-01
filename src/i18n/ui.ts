@@ -51,7 +51,7 @@ const en = {
   },
   reading: {
     title: 'Reading — yakar.me',
-    description: 'The books I am reading and the ones I have finished, the latest first.',
+    description: 'The books I am reading and the ones I have finished.',
     counts: (reading: number, finished: number) => `${reading} reading · ${finished} finished`,
     now: 'Reading now',
     filters: 'Filters',
@@ -197,7 +197,7 @@ const tr: Dict = {
   },
   reading: {
     title: 'Kitaplar — yakar.me',
-    description: 'Okumakta olduğum ve bitirdiğim kitaplar; en son biten en üstte.',
+    description: 'Okumakta olduğum ve bitirdiğim kitaplar.',
     counts: (reading, finished) => `${reading} okunuyor · ${finished} bitti`,
     now: 'Şu an okuduklarım',
     filters: 'Filtreler',
