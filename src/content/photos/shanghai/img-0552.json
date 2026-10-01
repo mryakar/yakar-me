@@ -1,0 +1,64 @@
+{
+  "alt": "A wide intersection lies open under scattered clouds, a needle-topped tower beyond the trees.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-11-06T12:26:54+08:00",
+  "aperture": 1.8,
+  "shutter": 0.000388048118,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "People's Square",
+    "city": "Shanghai",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0552-640-63d2539a.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 36783,
+        "sha256": "63d2539a32f2058bb8fa564f46840b15386fb14bf544eb939569a4d5926c0a3b"
+      },
+      {
+        "file": "img-0552-1280-a4080848.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 142968,
+        "sha256": "a4080848db97207350bf12265670e67b6bb2c4d17c59ade5ced013be2879a7f6"
+      },
+      {
+        "file": "img-0552-1536-3751130f.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 202214,
+        "sha256": "3751130f111ffe9d9173a5d4441d00be760963315d06e88b3020b3b1b6f24c34"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0552-640-b7a9e8ed.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 58650,
+        "sha256": "b7a9e8ed730eb22bc13309ec6a23a61354b72b69b1cd1ec8e75ed10c44ac6b4b"
+      },
+      {
+        "file": "img-0552-1280-5ae0171f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 223098,
+        "sha256": "5ae0171f646ef8858bf3e8c75980e9ae815c3972f165bd0492cef45fe40b763f"
+      },
+      {
+        "file": "img-0552-1536-3b11095c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 311782,
+        "sha256": "3b11095c075506d4998ef883eece210a13ce5ba955935e6390c57cfc1cfdf69d"
+      }
+    ]
+  }
+}

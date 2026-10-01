@@ -1,0 +1,78 @@
+{
+  "alt": "Evening blue settles over quiet houses as a streetlamp glows orange at the fence.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-19T21:13:27+02:00",
+  "aperture": 1.8,
+  "shutter": 0.5,
+  "iso": 640,
+  "focalLength": 26,
+  "place": {
+    "district": "Doerfles-Esbach",
+    "city": "Coburg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6555-640-d905a867.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 23364,
+        "sha256": "d905a8677b2603dab64588b2666c8ab70eabd07e7ad82d77a5d409fb9463045c"
+      },
+      {
+        "file": "img-6555-1280-72b5b149.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 71590,
+        "sha256": "72b5b1494d843825678af165d70893255893c33657108a9fa197a1986e1b8ee7"
+      },
+      {
+        "file": "img-6555-1920-5edc71b6.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 137770,
+        "sha256": "5edc71b6305bfcdbddefad9a5bb000627f27bf7324c83f1d15ed5cbf8a126d04"
+      },
+      {
+        "file": "img-6555-2048-a34a6bc1.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 155974,
+        "sha256": "a34a6bc1999d26f77128771d9bc9ca22a0cf4d1a43819afe1bbcf01b71b96593"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6555-640-98ddb657.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 36084,
+        "sha256": "98ddb6576199c9c96d51e7f2e004e15e63e377f88d47752b4e169c7832e632f7"
+      },
+      {
+        "file": "img-6555-1280-aa2cfbc3.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 106444,
+        "sha256": "aa2cfbc399183d38274e83970ffc9e51235658dc088037f1f0c0f17f1786d9b9"
+      },
+      {
+        "file": "img-6555-1920-4292f716.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 186596,
+        "sha256": "4292f7167e5fe204da0e8fc0504957c51f4a95e9b6486fb9724bd4979d32d29a"
+      },
+      {
+        "file": "img-6555-2048-e13ab3fb.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 208644,
+        "sha256": "e13ab3fba1f43d8754704ffa3f8ec95caf38085465b08a3268a43de160a77077"
+      }
+    ]
+  }
+}

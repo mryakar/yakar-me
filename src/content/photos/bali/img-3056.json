@@ -1,0 +1,64 @@
+{
+  "alt": "A dog stands chest-deep in the shallows, ears up, as the sun climbs out of a hazy sea.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-10T07:06:18+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0005099439062,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Sanur",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3056-640-e163b2ed.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 18189,
+        "sha256": "e163b2ed07edfe746895e1d7425b07adca4321bdb3e3d77cc45befcb407133a1"
+      },
+      {
+        "file": "img-3056-1280-a5464ca5.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 57010,
+        "sha256": "a5464ca5a59c5126d61e482bcfb7a6a14172b5691da716a2b5b25f2733915de3"
+      },
+      {
+        "file": "img-3056-1536-33666c50.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 77902,
+        "sha256": "33666c500bb6159f72a2ed7632f45af5b1e32e6f2e37104e149b7419e225006d"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3056-640-80190508.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 19594,
+        "sha256": "80190508bc7f91b4166f628bc66abd094490ec6b7f720bb0c70d4917d7bb15c7"
+      },
+      {
+        "file": "img-3056-1280-6e7e975a.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 58294,
+        "sha256": "6e7e975a85f5a933379857e562cabcdeac99e5fc63701256a0fc9b0cb160be2f"
+      },
+      {
+        "file": "img-3056-1536-ee4f5601.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 76608,
+        "sha256": "ee4f560145d83ffa7ac5c156814fce0c8c050d5a591122db23f094701c8a910c"
+      }
+    ]
+  }
+}

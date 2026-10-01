@@ -1,0 +1,64 @@
+{
+  "alt": "Tiled roofs and dormer windows tumble toward the street under a sky full of cloud.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-25T12:06:52+02:00",
+  "aperture": 2.4,
+  "shutter": 0.0006468305304,
+  "iso": 20,
+  "focalLength": 13,
+  "place": {
+    "district": "Stari Grad",
+    "city": "Belgrade",
+    "country": "Serbia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4100-640-ebb1ed27.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 44100,
+        "sha256": "ebb1ed27232912c5c7554ba20b6296769b60d6e0434e9022bdcb6bcff0d5258b"
+      },
+      {
+        "file": "img-4100-1280-b831141d.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 138065,
+        "sha256": "b831141de4f818b6193b9a158579422daebd633b7545d4a79869ea43b270ae24"
+      },
+      {
+        "file": "img-4100-1536-c9695270.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 183359,
+        "sha256": "c9695270bc3faad594048ba6d1a5d2631935eb15d2b225c75ac04920c0037399"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4100-640-690722ed.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 71154,
+        "sha256": "690722ed36ab1e72d2679abc6daf5c1a11760ca34cc9b76c6375b1f43364bcd4"
+      },
+      {
+        "file": "img-4100-1280-b1ac6d16.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 206994,
+        "sha256": "b1ac6d1626d79e5135dcf304400402b67eae104765cc8e60a22316fcefbd5852"
+      },
+      {
+        "file": "img-4100-1536-c4faa3a5.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 267336,
+        "sha256": "c4faa3a5a02e161e8ebd33a242a07b94262a8f9035882a275069cdd02f1d308d"
+      }
+    ]
+  }
+}

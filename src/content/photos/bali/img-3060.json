@@ -1,0 +1,64 @@
+{
+  "alt": "A hand holds a frangipani blossom and a red rambutan above a misty morning sea.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-10T07:40:25+08:00",
+  "aperture": 1.8,
+  "shutter": 0.002590673575,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Sanur",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3060-640-8c57d121.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 18594,
+        "sha256": "8c57d121db06b8db941185596f5fccb65bb77b81619a4269171e9972f00105e5"
+      },
+      {
+        "file": "img-3060-1280-e838951e.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 50900,
+        "sha256": "e838951e46766ce81e81b98c65ff124f269b91bf159c403a823df15372e55ec7"
+      },
+      {
+        "file": "img-3060-1536-ac5daf0e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 66112,
+        "sha256": "ac5daf0e8c6720d9cf08e72639f5c479271bbbf974dc53b3ade5c9c1aba694d7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3060-640-36d1fc47.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 22316,
+        "sha256": "36d1fc47a16de5052cc526063107eed846c066bce0a550f7f1b0adaa599dfb62"
+      },
+      {
+        "file": "img-3060-1280-20a64132.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 55174,
+        "sha256": "20a6413211791db66a563b0a1274d2c4f28edf29993b1d665247976c1c8f8ddd"
+      },
+      {
+        "file": "img-3060-1536-81ef6e16.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 70170,
+        "sha256": "81ef6e16051023db53e7a5d1561c2595938fdf9c25604aee47efe6287121f0c6"
+      }
+    ]
+  }
+}

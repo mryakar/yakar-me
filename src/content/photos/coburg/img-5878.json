@@ -1,0 +1,64 @@
+{
+  "alt": "A baroque church of honey-coloured stone climbs toward a grey sky, flags at its side.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-17T11:59:40+02:00",
+  "aperture": 1.8,
+  "shutter": 0.000699790063,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Vierzehnheiligen",
+    "city": "Bad Staffelstein",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5878-640-ad902e02.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 53542,
+        "sha256": "ad902e027155adc9f32ea9f3ef9ae01b9419efa30dd2da12f8c6b673c4913262"
+      },
+      {
+        "file": "img-5878-1280-d2ebcda2.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 174487,
+        "sha256": "d2ebcda27f003a3a39ab213e1e27ead6053c6c96caeb1328885336b6f6cd943b"
+      },
+      {
+        "file": "img-5878-1536-a3bc3fdb.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 229947,
+        "sha256": "a3bc3fdb53e40a9d058a9100fc4927ba44026cacbc66dd9186d0060ce78ff4c9"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5878-640-411ad797.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 95154,
+        "sha256": "411ad79780dc768777a46287bbeca89ba419f963b794c51cf4b44fd36a335cbc"
+      },
+      {
+        "file": "img-5878-1280-cf6f8f4f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 299910,
+        "sha256": "cf6f8f4f915c089f39e3ec81b0a6ce5a9e5001ef228354f0711974a726c0e4cb"
+      },
+      {
+        "file": "img-5878-1536-79ff44f1.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 383482,
+        "sha256": "79ff44f1c253267f5b4e41aa9ee4455c39f3e559fdee7738afa474f9cd58a304"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "Cliffs drop to a narrow beach as surf runs in white under a heavy sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-10T16:14:04+08:00",
+  "aperture": 2.4,
+  "shutter": 0.002481389578,
+  "iso": 20,
+  "focalLength": 13,
+  "place": {
+    "district": "Pecatu",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3133-640-052ee9c9.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 34402,
+        "sha256": "052ee9c9c4690c2432bfbb81d8e5d7e4d1b625c7258fa0cb10ac3902e68bb157"
+      },
+      {
+        "file": "img-3133-1280-d88bc369.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 113218,
+        "sha256": "d88bc3690cb9a178e6f498d75fe3ed50f22bab3180dcf998f8bdb6c009497069"
+      },
+      {
+        "file": "img-3133-1536-37eacd0c.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 150331,
+        "sha256": "37eacd0c215a9687847008b45a55f3e3d28f53cd986e96fb1cadbc3183cc7904"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3133-640-d3ac0e03.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 51208,
+        "sha256": "d3ac0e0399d09dbb33bbb9ed44f96da61c2166b4672e9b32e1a9c7a170bd37d3"
+      },
+      {
+        "file": "img-3133-1280-f63f058d.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 160110,
+        "sha256": "f63f058d41901150f2f2088fbc54c6af1a05eeb0996bd13aa780ddc7c05f219b"
+      },
+      {
+        "file": "img-3133-1536-7fa4fc14.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 203514,
+        "sha256": "7fa4fc14e41b44000d0ae488cab3cb0edfb654d97ad95af34662ba908b294dda"
+      }
+    ]
+  }
+}

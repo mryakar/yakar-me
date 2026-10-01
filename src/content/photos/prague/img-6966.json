@@ -1,0 +1,64 @@
+{
+  "alt": "Dusk settles in a street of tall apartment houses, parked cars lining the kerb.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T19:49:54+02:00",
+  "aperture": 1.8,
+  "shutter": 0.008196721311,
+  "iso": 50,
+  "focalLength": 26,
+  "place": {
+    "district": "Josefov",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6966-640-209f6d4d.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 36182,
+        "sha256": "209f6d4d748aee0d2b40a1b9dc604b3615ad56a0e82a33b56e24c87eb24a88b1"
+      },
+      {
+        "file": "img-6966-1280-b19672f7.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 112385,
+        "sha256": "b19672f71da9bdd377f08549c993b13bac3844c300175de7ca955ba3d1ab83d5"
+      },
+      {
+        "file": "img-6966-1536-6be13f2a.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 148084,
+        "sha256": "6be13f2a340ad76a3a861f806a2022ac83bdf74e0af1e378d4c1b34edeab8b71"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6966-640-75428ada.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 53636,
+        "sha256": "75428ada08f0308c0f1ba02e680903ed9067bd1c16cb200fecc0a500ef3d8e58"
+      },
+      {
+        "file": "img-6966-1280-86d06702.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 156700,
+        "sha256": "86d06702e64b1788df65f6aa8ac48999966dbd0152832d568d19284d70c5f407"
+      },
+      {
+        "file": "img-6966-1536-78cd1349.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 198914,
+        "sha256": "78cd1349a80bf1729e28ddfe827455a80bab0ef6810a4626a05f57c27f62c676"
+      }
+    ]
+  }
+}

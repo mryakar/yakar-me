@@ -1,0 +1,78 @@
+{
+  "alt": "Through a car window, white figures of running people line a flowerbed before glass towers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-10-30T14:25:42+08:00",
+  "aperture": 1.8,
+  "shutter": 0.000656167979,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Futian",
+    "city": "Shenzhen",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0233-640-19d448b7.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 19400,
+        "sha256": "19d448b78bd7c72c77c9a32186604729ff2db801c37457720ba78bafa614b24a"
+      },
+      {
+        "file": "img-0233-1280-58294e30.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 70346,
+        "sha256": "58294e306c5bc8744a97f7339e777d359992c91bed3683ea983797d52c73e9ac"
+      },
+      {
+        "file": "img-0233-1920-03bf5b3d.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 145485,
+        "sha256": "03bf5b3dfda5c50aa97de457d1ab22ba6ed66b0ba14ecaa4f2788ba33b125a33"
+      },
+      {
+        "file": "img-0233-2048-5cf9009a.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 165981,
+        "sha256": "5cf9009ac2e341428b164fcd8181a904d4ec03a8bcdf7748281168fd6d8a2d1a"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0233-640-151e90ed.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 32242,
+        "sha256": "151e90edfcd7c686a38b5005fcdc37c36c76a86c1050654b8626a581842cdf2e"
+      },
+      {
+        "file": "img-0233-1280-df847f89.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 114198,
+        "sha256": "df847f89f2a14ffe9cb187f120306471d5cbd598a1b4f92ecb148e2508c1336b"
+      },
+      {
+        "file": "img-0233-1920-c98a6dd1.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 226800,
+        "sha256": "c98a6dd1ad59efe618a2e6d0ec537ad8bef0646c59f84c63d75a5567d0c31e9e"
+      },
+      {
+        "file": "img-0233-2048-18ef9160.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 258198,
+        "sha256": "18ef91609b36c37beb7ac60a65985e2c9c57edf7a9ef8dd7aa696ba2ebf03dfb"
+      }
+    ]
+  }
+}

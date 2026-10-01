@@ -1,0 +1,78 @@
+{
+  "alt": "Yachts lie moored in clear turquoise water below pastel harbour houses.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-24T11:43:56+02:00",
+  "aperture": 2.4,
+  "shutter": 0.001063829787,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Le Port",
+    "city": "Nice",
+    "country": "France"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-7276-640-38ef9ade.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 25005,
+        "sha256": "38ef9ade3642063e9396ef16d95fbf131fdf8192b1e623ed2f8323ec26622928"
+      },
+      {
+        "file": "img-7276-1280-f34dbbf5.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 78514,
+        "sha256": "f34dbbf50d96ddd24e920ca259bd9eb8920fced0a498a8c47200d1edf45e7b37"
+      },
+      {
+        "file": "img-7276-1920-9f29da84.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 145033,
+        "sha256": "9f29da846888773fb9ef50de18e2937cc76d80b4f28bb79e377bb89f41c7b9f2"
+      },
+      {
+        "file": "img-7276-2048-56b99737.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 162025,
+        "sha256": "56b997379f005a4557f997e79503cc52ad6d34802174c6bbee1127475703ff74"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-7276-640-e9f057a5.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 36966,
+        "sha256": "e9f057a5d84380ae376b1dd7f0450ee430f9ea8a6e59692eb6d4683971c77c25"
+      },
+      {
+        "file": "img-7276-1280-792c797c.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 113730,
+        "sha256": "792c797cb22cea3dadd8db0ac879871d8c7e712838c164fcd263814c369371b7"
+      },
+      {
+        "file": "img-7276-1920-3b7a433c.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 201332,
+        "sha256": "3b7a433cf2fb95fc1857133375675f34b23d83f3d30f5e89c74c1df33c5c7db7"
+      },
+      {
+        "file": "img-7276-2048-2817ca7d.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 224190,
+        "sha256": "2817ca7d3a67d158d9e96290e19ac972d18135e5d78d5aa318fc79bc438a0f63"
+      }
+    ]
+  }
+}

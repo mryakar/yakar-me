@@ -1,0 +1,64 @@
+{
+  "alt": "Water lilies crowd a pond beneath a curving white canopy, towers on the far shore.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T09:50:07+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0002139952921,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Marina Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2004-640-d3742626.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 34291,
+        "sha256": "d37426262ef7fa24eb9b89512978b85e127d43a095907fdf04016df8be1475e8"
+      },
+      {
+        "file": "img-2004-1280-f6b05ef6.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 90405,
+        "sha256": "f6b05ef68d9b3b1afa9614bea6d2002532251de2fe761ae6cae57aef6fa3f09f"
+      },
+      {
+        "file": "img-2004-1536-59663dd5.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 115923,
+        "sha256": "59663dd55cf5a98150cff1e2351077d8dbd556a226407ff8b8832b1e7e110f81"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2004-640-168d3337.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 49256,
+        "sha256": "168d333731102a3fcc8605e4dfcb4a31184ebb18acccff6c34c397be1710f971"
+      },
+      {
+        "file": "img-2004-1280-37499545.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 111474,
+        "sha256": "374995450c61de4fc1f026b31caa8036dc7adcef569bb50394e9d6dc8bad78f8"
+      },
+      {
+        "file": "img-2004-1536-f1ab16ed.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 137908,
+        "sha256": "f1ab16edacec4c5aedd05fddbcfa622205abd614618e9d043250eb7403778e3e"
+      }
+    ]
+  }
+}

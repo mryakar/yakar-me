@@ -1,0 +1,64 @@
+{
+  "alt": "A long boulevard stretches toward a domed museum, crowded with strollers.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T17:17:18+02:00",
+  "aperture": 2,
+  "shutter": 0.000501002004,
+  "iso": 20,
+  "focalLength": 52,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6913-640-580f555e.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 37568,
+        "sha256": "580f555e0190743989470510c10bd8971a87bb94722e696ecb5502460ebf276d"
+      },
+      {
+        "file": "img-6913-1280-56873027.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 128097,
+        "sha256": "5687302744f09083895cb50ee94a6e74f3666cba44c082756d359a00a10a2f60"
+      },
+      {
+        "file": "img-6913-1536-3242ee21.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 172244,
+        "sha256": "3242ee217812c0871806480e9f8188e934a53a997a8993290f81f9f7f7cabf72"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6913-640-06e2ffca.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 60994,
+        "sha256": "06e2ffca01bcc1ddd99dfcd2646c6334962ec8b424e8072f4ef57b4c0a6a3b1a"
+      },
+      {
+        "file": "img-6913-1280-ac349048.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 202438,
+        "sha256": "ac3490486dbd29f8bbb788c93153e5bb8bd1f03ba62951158146fcecdd9b0be7"
+      },
+      {
+        "file": "img-6913-1536-830a8418.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 266874,
+        "sha256": "830a84185a81e6362d735fce6c8860e90116296ce8e5c04ac198ea3c1a20219f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A tall white nave leads to a hanging crucifix and a narrow window of coloured glass.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T14:01:37+02:00",
+  "aperture": 1.8,
+  "shutter": 0.02,
+  "iso": 320,
+  "focalLength": 26,
+  "place": {
+    "district": "Altstadt-Lehel",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6235-640-314c8051.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 38937,
+        "sha256": "314c805148ae18f3e6011a4feb1aef20a719be4108cac543509289a75363badf"
+      },
+      {
+        "file": "img-6235-1280-8d348535.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 120500,
+        "sha256": "8d3485356f3ddb45fd317e92acea1a2186b3bfd6786c12c4d10b6b76e0db8d43"
+      },
+      {
+        "file": "img-6235-1536-aabdde33.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 162567,
+        "sha256": "aabdde33b4334bdabb2897cc32a0e5eabf05c2e9e7a8bbc0aff0267f66ca35bd"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6235-640-94823cf7.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 62942,
+        "sha256": "94823cf7c2427b163815a8791145ce5f417614eab9fdb294dacd07a264e6c558"
+      },
+      {
+        "file": "img-6235-1280-8e2253a8.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 180648,
+        "sha256": "8e2253a8e944e9a68bfe57998ce16c3ec2501b06630713f261c759f4f8b11b9f"
+      },
+      {
+        "file": "img-6235-1536-555dc311.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 235584,
+        "sha256": "555dc311b156a7eedef0592124ed0246aca6ca7ab3a1c6b9192e636fff3f3dcb"
+      }
+    ]
+  }
+}

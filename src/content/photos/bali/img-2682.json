@@ -1,0 +1,78 @@
+{
+  "alt": "Night falls blue over the treetops, a few warm windows glowing among the palms.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-03T23:21:25+08:00",
+  "aperture": 1.8,
+  "shutter": 0.5,
+  "iso": 3200,
+  "focalLength": 48,
+  "place": {
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2682-640-3db0b52a.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 12941,
+        "sha256": "3db0b52ad30b04696c89f85ed9f9b5d520776a203bb73426a51106af87bc7b92"
+      },
+      {
+        "file": "img-2682-1280-32833825.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 31593,
+        "sha256": "328338256472e8729949a21b433a21198c77dc18e7a604bb0e84d27f0819213b"
+      },
+      {
+        "file": "img-2682-1920-31d9abdb.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 54505,
+        "sha256": "31d9abdbe9265dac8cde6b77d06f8649b26653bc40cd0a9700a0bce65d3efb8d"
+      },
+      {
+        "file": "img-2682-2048-178df37b.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 60339,
+        "sha256": "178df37b46e0f45554f4f4a3715ff2a1e9634a94c0292fe921038af0e8373ec1"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2682-640-312f3752.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 16106,
+        "sha256": "312f3752bc78a7b67446c3b56abbf90dbc067e7a486764d8fb106d5eb3a1bdb9"
+      },
+      {
+        "file": "img-2682-1280-1d409bb7.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 37194,
+        "sha256": "1d409bb70f1e03208ea66933414d0fc0951844bc48402dca0826cc44bfe9e1f6"
+      },
+      {
+        "file": "img-2682-1920-9bfef419.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 58532,
+        "sha256": "9bfef4199975bc7d2126e0b60ac1ccedacaa2ce1f4cfdc8c307847e43017b900"
+      },
+      {
+        "file": "img-2682-2048-d6e25f57.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 63148,
+        "sha256": "d6e25f5767b20ea489542ac52463c0c56c607ab11718ae26312c079d4dd20f2d"
+      }
+    ]
+  }
+}

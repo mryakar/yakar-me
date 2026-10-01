@@ -1,0 +1,64 @@
+{
+  "alt": "Three flame-shaped towers rise black against an orange evening sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-04T17:54:36+04:00",
+  "aperture": 2.8,
+  "shutter": 0.001721170396,
+  "iso": 64,
+  "focalLength": 120,
+  "place": {
+    "district": "Baku Boulevard",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1168-640-6c7fa328.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 12262,
+        "sha256": "6c7fa32853485704e1bd452b027ad3ff69dd62363c68d0670701f529d0a0a94e"
+      },
+      {
+        "file": "img-1168-1280-483deb53.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 36339,
+        "sha256": "483deb538a82e0ec41c7890573b323054b8dffcab7e60352424ffe98e0b1194d"
+      },
+      {
+        "file": "img-1168-1536-afe7cacd.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 48885,
+        "sha256": "afe7cacd7c5dac89d8815e6a50c93ce6ce904471beb93eb592777b3c5b4d5280"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1168-640-96ac6680.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 14404,
+        "sha256": "96ac66809ed684dd5e31f17f4451d8f0ece5633eea6b144e8fd19b2ec93a4410"
+      },
+      {
+        "file": "img-1168-1280-7514ba80.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 38992,
+        "sha256": "7514ba80d813ebc507c268675d0b6f158904ee9bb4f41c37c7fd3f50fb6810a2"
+      },
+      {
+        "file": "img-1168-1536-d8bb026e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 49794,
+        "sha256": "d8bb026e042a437a8790f065fb5240662004b24fee05a62a5c456b32dfb02f3d"
+      }
+    ]
+  }
+}

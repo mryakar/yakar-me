@@ -1,0 +1,78 @@
+{
+  "alt": "Clear spring water ripples over green weed in a stone-walled pool, clouds floating on its surface.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-07T11:07:33+08:00",
+  "aperture": 1.8,
+  "shutter": 0.001303780965,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Tampaksiring",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2291-640-e474f53f.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 47416,
+        "sha256": "e474f53f0cc9d2582939b758be249368afc072180154dae1a99a0e7857e2feb7"
+      },
+      {
+        "file": "img-2291-1280-22ecf614.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 187035,
+        "sha256": "22ecf614a3a442622b4dce5111a98fab42fe41a3da60b74c24242abddfe6ae1c"
+      },
+      {
+        "file": "img-2291-1920-b68802ae.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 372569,
+        "sha256": "b68802ae5d1f75d38274ac199e26ad05cca65062fade55820c211baf40802bf8"
+      },
+      {
+        "file": "img-2291-2048-f3513299.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 418002,
+        "sha256": "f351329923eb163857e99bccf8a73267682d28a52420db6ba3f8685db725999b"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2291-640-d2f8658c.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 91564,
+        "sha256": "d2f8658c5fc21115c8ed8f494bbfdfa126861a2181bb6b91c39dcae96f1526c8"
+      },
+      {
+        "file": "img-2291-1280-4407efb8.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 345496,
+        "sha256": "4407efb86ced2851a56deb00b2f2ff09404f1b90eb5ee6284316ffbdfea4c01b"
+      },
+      {
+        "file": "img-2291-1920-4fb4eb3b.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 672766,
+        "sha256": "4fb4eb3b0af675c28f03c9f6d4d81c8a04a202af67055c3aced839d491e1e22a"
+      },
+      {
+        "file": "img-2291-2048-abeb72a1.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 756970,
+        "sha256": "abeb72a147965b4e77f6c3c26f5b04c32327b504401e56087ca0e21f0889801a"
+      }
+    ]
+  }
+}

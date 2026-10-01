@@ -1,0 +1,64 @@
+{
+  "alt": "Office towers lean in overhead against a violet night sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T21:20:59+08:00",
+  "aperture": 2.2,
+  "shutter": 0.25,
+  "iso": 1250,
+  "focalLength": 14,
+  "place": {
+    "district": "Raffles Place",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2400-640-47e521ae.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 49281,
+        "sha256": "47e521aec6c0f0009ff3790c50997b579ecab1f65bf37d0a04b464a6aa47cb27"
+      },
+      {
+        "file": "img-2400-1280-3c55feb2.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 141260,
+        "sha256": "3c55feb2f37fcc8dabbe239774e79af36f19a7cec9ccd4fe46e58cad87f808f2"
+      },
+      {
+        "file": "img-2400-1536-d23260fd.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 181714,
+        "sha256": "d23260fd64db428c743bdcdac8832e3b6fea3ce7a911c48c80785ee5e4c8be35"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2400-640-a9728de9.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 85390,
+        "sha256": "a9728de9c13880338e19022cd88e7510bd0f907c5a9770af455158cbc1da0a61"
+      },
+      {
+        "file": "img-2400-1280-7a3ed750.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 224336,
+        "sha256": "7a3ed7502d3d0c76701fea0855fa88e260a32348d8821ae994935e75810786e0"
+      },
+      {
+        "file": "img-2400-1536-4c9e014c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 276934,
+        "sha256": "4c9e014c3a68ffc6f5a010ca4cc964dd17364f4ff1684db372dd3161b7bb5dd8"
+      }
+    ]
+  }
+}

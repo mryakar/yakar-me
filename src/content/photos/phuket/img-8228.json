@@ -1,0 +1,64 @@
+{
+  "alt": "A tsunami warning sign stands among the greenery on a wet, overcast day.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-27T14:13:39+07:00",
+  "aperture": 1.8,
+  "shutter": 0.00039793076,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Kata Noi",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8228-640-1f81602b.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 34129,
+        "sha256": "1f81602b9dcc5d412bb23b9b0c54691e032494359b15fc57aa8239410085faaa"
+      },
+      {
+        "file": "img-8228-1280-73eec5b3.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 98637,
+        "sha256": "73eec5b30c57aa26aed8687aa0cddc3dad5d38094e6faad9060ac22edd614a22"
+      },
+      {
+        "file": "img-8228-1536-ddd1716e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 131761,
+        "sha256": "ddd1716ee295bf3a66f16087f4b560a4abfedb07c31ec77bda78f162c0d43a5b"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8228-640-84c81c5e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 44394,
+        "sha256": "84c81c5e76238f9a16f74f6deba59ff9513de4502101ce323608f57901d85bec"
+      },
+      {
+        "file": "img-8228-1280-1b8af25a.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 106820,
+        "sha256": "1b8af25afbb6e22d8112ee90f7f20bd88de43eca1aaa50c79bac2e693d95e64a"
+      },
+      {
+        "file": "img-8228-1536-723b2e8a.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 137672,
+        "sha256": "723b2e8ad0da2e09e7debb151d5431082135a3bc94b3f0e063230f3059ed1e3a"
+      }
+    ]
+  }
+}

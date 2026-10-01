@@ -1,0 +1,64 @@
+{
+  "alt": "Rain-darkened tiles shine along a covered walkway beside the street.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T14:54:48+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0008389261745,
+  "iso": 100,
+  "focalLength": 24,
+  "place": {
+    "district": "Chinatown",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1788-640-0efee8b8.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 62859,
+        "sha256": "0efee8b8fde4bb634c01fe31323971ebb75358e0a5a27758c89f652352bf0798"
+      },
+      {
+        "file": "img-1788-1280-227244b8.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 200979,
+        "sha256": "227244b86c94349f564fb39785e343d6652cbd99ac6fc559db2a3a1fcda0a044"
+      },
+      {
+        "file": "img-1788-1536-2f9ba2a9.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 265723,
+        "sha256": "2f9ba2a96a569e024184b94d09741ea7179588bfe758083989a39954e91abee0"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1788-640-1b74f6a2.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 113262,
+        "sha256": "1b74f6a22fdfe4bad54fa73bc77260d6a6f459df468c56551cfa13151534609f"
+      },
+      {
+        "file": "img-1788-1280-7d75151b.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 337114,
+        "sha256": "7d75151b75ecb6c3d6d823fcb261a9ed0f05759c943f34820ff587f113267176"
+      },
+      {
+        "file": "img-1788-1536-1b6cfb62.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 434314,
+        "sha256": "1b6cfb6298db15aabc065cb09814da8eae170ffb7959f442b41e63caabb29414"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "A boardwalk lined with small lamps leads through a garden of palms at dusk.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-11T18:31:35+08:00",
+  "aperture": 1.8,
+  "shutter": 0.125,
+  "iso": 640,
+  "focalLength": 26,
+  "place": {
+    "district": "Canggu",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3443-640-a6b4eda2.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 72016,
+        "sha256": "a6b4eda238dfab59751feb0ec332a03b2297ef8301b9a814ae1d30f0e287ebfb"
+      },
+      {
+        "file": "img-3443-1280-26b740ca.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 226837,
+        "sha256": "26b740ca2d686de7dcac53cb19c4156cf2b66621fed17d223920e866a3af1dd6"
+      },
+      {
+        "file": "img-3443-1536-61b7b1e8.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 294369,
+        "sha256": "61b7b1e844a9b7060d7120242ef05b5de304f4917cb150c230983a91638dbd2c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3443-640-7553930c.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 123716,
+        "sha256": "7553930cc929ba6d7b066f046c5c28dd2cc307b3034fd93ee8b2c4ea2ddb9720"
+      },
+      {
+        "file": "img-3443-1280-356f2617.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 349986,
+        "sha256": "356f26177bc414d04a854fa4200441f70f93423787ca6c056c34daa4fba00300"
+      },
+      {
+        "file": "img-3443-1536-2709a560.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 429850,
+        "sha256": "2709a56011c8c66c10c0037490bf06fc2dc0ad87f32d959f6956bd6c8e92ea10"
+      }
+    ]
+  }
+}

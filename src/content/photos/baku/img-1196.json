@@ -1,0 +1,64 @@
+{
+  "alt": "A wire sculpture of open hands reaches into a grey sky above the waterfront.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-05T12:19:12+04:00",
+  "aperture": 1.8,
+  "shutter": 0.00006999860003,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Narimanov",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1196-640-dcd95cfd.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 19856,
+        "sha256": "dcd95cfd486c3bfdf4316472117ebd813502650da48e5ab9cbabc6206d840be8"
+      },
+      {
+        "file": "img-1196-1280-c7f2b002.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 71580,
+        "sha256": "c7f2b0020c44b80b772377cc9741e1353c2191f374eae1aa6f388defefc67b22"
+      },
+      {
+        "file": "img-1196-1536-97d0acc3.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 98064,
+        "sha256": "97d0acc37badb974785c2052b56b0a8fa4a4408bea9721388d380d203aa86ac9"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1196-640-b9030b4c.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 27660,
+        "sha256": "b9030b4c9fa29f32f13b5cf0f60dee119c530de2558e4d2558dc3feb31995484"
+      },
+      {
+        "file": "img-1196-1280-3f17dc74.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 101394,
+        "sha256": "3f17dc74c2b63f1f684481c83b52107d47c8afa35b5e0d1412e287349b2f5e1f"
+      },
+      {
+        "file": "img-1196-1536-fec5b7c5.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 136738,
+        "sha256": "fec5b7c53a31ca354fc064514bb3f115192deb4826b9284a2a362ba71f48d814"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "Figures scatter across a mirror of wet sand under a soft blue evening.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-13T18:02:05+08:00",
+  "aperture": 2.4,
+  "shutter": 0.001375515818,
+  "iso": 20,
+  "focalLength": 13,
+  "place": {
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3747-640-5efcd8b0.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 15287,
+        "sha256": "5efcd8b072be1948f82e8a50a60dcd1028eb4c93d9eb7fc74fbe9c4b2ec1d7c2"
+      },
+      {
+        "file": "img-3747-1280-1331333e.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 56229,
+        "sha256": "1331333e4e0d3c6c56f956bafc70964d70baf877fe91b4d14be4c69b59a09748"
+      },
+      {
+        "file": "img-3747-1536-748eca73.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 80265,
+        "sha256": "748eca73a495eeca1f08f3247ea1c57d115338250b38c121fefca92861312246"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3747-640-99daf5be.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 19172,
+        "sha256": "99daf5be8a75a64fa8b565cfe7248439dcb0897e6f0aa282d0a0a02b2a68dc4c"
+      },
+      {
+        "file": "img-3747-1280-fdd25223.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 65120,
+        "sha256": "fdd252234f146e8cd57e0ffcf52112e3ebdffdd39527b411ec4c306ffa68f4da"
+      },
+      {
+        "file": "img-3747-1536-93713b02.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 89044,
+        "sha256": "93713b02fd3a0688be5f5a76fac0059f55baa4b27807762c2cf356780aa97eec"
+      }
+    ]
+  }
+}

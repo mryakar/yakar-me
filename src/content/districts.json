@@ -9,6 +9,303 @@
     "timeZone": "Europe/Istanbul"
   },
   {
+    "id": "Q175500",
+    "district": "Banz",
+    "city": "Bad Staffelstein",
+    "country": "Germany",
+    "lat": 50.13247,
+    "lon": 11.00105,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q694252",
+    "district": "Vierzehnheiligen",
+    "city": "Bad Staffelstein",
+    "country": "Germany",
+    "lat": 50.11567,
+    "lon": 11.05407,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q2665945",
+    "district": "Baku Boulevard",
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "lat": 40.36,
+    "lon": 49.8371,
+    "timeZone": "Asia/Baku"
+  },
+  {
+    "id": "Q344569",
+    "district": "Icherisheher",
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "lat": 40.36503,
+    "lon": 49.836,
+    "timeZone": "Asia/Baku"
+  },
+  {
+    "id": "Q4313166",
+    "district": "Narimanov",
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "lat": 40.41667,
+    "lon": 49.88333,
+    "timeZone": "Asia/Baku"
+  },
+  {
+    "id": "Q4473340",
+    "district": "Nizami Street",
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "lat": 40.37294,
+    "lon": 49.8404,
+    "timeZone": "Asia/Baku"
+  },
+  {
+    "id": "Q2543000",
+    "district": "Canggu",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.64111,
+    "lon": 115.14278,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q985292",
+    "district": "Legian",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.705,
+    "lon": 115.16861,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q13546580",
+    "district": "Lodtunduh",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.554,
+    "lon": 115.2605,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q1872519",
+    "district": "Lovina",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.1625,
+    "lon": 115.02566,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q4201319",
+    "district": "Nusa Penida",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.73056,
+    "lon": 115.53444,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q12699777",
+    "district": "Pecatu",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.8225,
+    "lon": 115.11778,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q19739056",
+    "district": "Sanur",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.68439,
+    "lon": 115.25807,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q1026424",
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.69056,
+    "lon": 115.16583,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q11505",
+    "district": "Tabanan",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.55115,
+    "lon": 115.12161,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q12519068",
+    "district": "Tampaksiring",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.41667,
+    "lon": 115.3,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q210654",
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia",
+    "lat": -8.507,
+    "lon": 115.262,
+    "timeZone": "Asia/Makassar"
+  },
+  {
+    "id": "Q175236",
+    "district": "Bangkok Yai",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.72278,
+    "lon": 100.47639,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q3440364",
+    "district": "Lumphini",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.74355,
+    "lon": 100.54265,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q1525441",
+    "district": "Phra Nakhon",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.76444,
+    "lon": 100.49917,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q599868",
+    "district": "Kalemegdan",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "lat": 44.82442,
+    "lon": 20.45046,
+    "timeZone": "Europe/Belgrade"
+  },
+  {
+    "id": "Q971700",
+    "district": "Stari Grad",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "lat": 44.81838,
+    "lon": 20.46358,
+    "timeZone": "Europe/Belgrade"
+  },
+  {
+    "id": "Q948346",
+    "district": "Terazije",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "lat": 44.815,
+    "lon": 20.46,
+    "timeZone": "Europe/Belgrade"
+  },
+  {
+    "id": "Q1006522",
+    "district": "Vracar",
+    "city": "Belgrade",
+    "country": "Serbia",
+    "lat": 44.7953,
+    "lon": 20.4678,
+    "timeZone": "Europe/Belgrade"
+  },
+  {
+    "id": "Q669271",
+    "district": "Doi Suthep",
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "lat": 18.81639,
+    "lon": 98.89306,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q475979",
+    "district": "Mae Wang",
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "lat": 18.6125,
+    "lon": 98.775,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q476010",
+    "district": "Mueang Chiang Rai",
+    "city": "Chiang Rai",
+    "country": "Thailand",
+    "lat": 19.90861,
+    "lon": 99.8325,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q7121358",
+    "district": "Pa O Don Chai",
+    "city": "Chiang Rai",
+    "country": "Thailand",
+    "lat": 19.83046,
+    "lon": 99.77259,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q81648240",
+    "district": "Rong Suea Ten",
+    "city": "Chiang Rai",
+    "country": "Thailand",
+    "lat": 19.92337,
+    "lon": 99.84173,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q120307",
+    "district": "Doerfles-Esbach",
+    "city": "Coburg",
+    "country": "Germany",
+    "lat": 50.28056,
+    "lon": 10.99361,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q572701",
+    "district": "Roedental",
+    "city": "Coburg",
+    "country": "Germany",
+    "lat": 50.28831,
+    "lon": 11.02761,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q863888",
+    "district": "Binjiang",
+    "city": "Hangzhou",
+    "country": "China",
+    "lat": 30.21082,
+    "lon": 120.20747,
+    "timeZone": "Asia/Shanghai"
+  },
+  {
+    "id": "Q11102470",
+    "district": "Songcheng",
+    "city": "Hangzhou",
+    "country": "China",
+    "lat": 30.17214,
+    "lon": 120.09445,
+    "timeZone": "Asia/Shanghai"
+  },
+  {
     "id": "Q564732",
     "district": "Causeway Bay",
     "city": "Hong Kong",
@@ -106,5 +403,266 @@
     "lat": 9.46388,
     "lon": 100.04166,
     "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q971198",
+    "district": "Altstadt-Lehel",
+    "city": "Munich",
+    "country": "Germany",
+    "lat": 48.1361,
+    "lon": 11.5722,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q256012",
+    "district": "Maxvorstadt",
+    "city": "Munich",
+    "country": "Germany",
+    "lat": 48.15,
+    "lon": 11.56944,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q51925520",
+    "district": "Nymphenburg",
+    "city": "Munich",
+    "country": "Germany",
+    "lat": 48.15712,
+    "lon": 11.5097,
+    "timeZone": "Europe/Berlin"
+  },
+  {
+    "id": "Q2970127",
+    "district": "Colline du Chateau",
+    "city": "Nice",
+    "country": "France",
+    "lat": 43.696,
+    "lon": 7.27968,
+    "timeZone": "Europe/Paris"
+  },
+  {
+    "id": "Q3398372",
+    "district": "Le Port",
+    "city": "Nice",
+    "country": "France",
+    "lat": 43.6942,
+    "lon": 7.28492,
+    "timeZone": "Europe/Paris"
+  },
+  {
+    "id": "Q3389982",
+    "district": "Place Massena",
+    "city": "Nice",
+    "country": "France",
+    "lat": 43.6973,
+    "lon": 7.27014,
+    "timeZone": "Europe/Paris"
+  },
+  {
+    "id": "Q1849491",
+    "district": "Promenade des Anglais",
+    "city": "Nice",
+    "country": "France",
+    "lat": 43.69111,
+    "lon": 7.2475,
+    "timeZone": "Europe/Paris"
+  },
+  {
+    "id": "Q3558059",
+    "district": "Vieux Nice",
+    "city": "Nice",
+    "country": "France",
+    "lat": 43.69673,
+    "lon": 7.27589,
+    "timeZone": "Europe/Paris"
+  },
+  {
+    "id": "Q15507021",
+    "district": "Karon",
+    "city": "Phuket",
+    "country": "Thailand",
+    "lat": 7.8165,
+    "lon": 98.3001,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q13424403",
+    "district": "Kata Noi",
+    "city": "Phuket",
+    "country": "Thailand",
+    "lat": 7.80639,
+    "lon": 98.29889,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q14226240",
+    "district": "Nai Harn",
+    "city": "Phuket",
+    "country": "Thailand",
+    "lat": 7.77634,
+    "lon": 98.30568,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q13023452",
+    "district": "Nai Yang",
+    "city": "Phuket",
+    "country": "Thailand",
+    "lat": 8.11056,
+    "lon": 98.30194,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q844430",
+    "district": "Phuket Town",
+    "city": "Phuket",
+    "country": "Thailand",
+    "lat": 7.88806,
+    "lon": 98.3975,
+    "timeZone": "Asia/Bangkok"
+  },
+  {
+    "id": "Q744598",
+    "district": "Hradcany",
+    "city": "Prague",
+    "country": "Czechia",
+    "lat": 50.08944,
+    "lon": 14.39722,
+    "timeZone": "Europe/Prague"
+  },
+  {
+    "id": "Q753292",
+    "district": "Josefov",
+    "city": "Prague",
+    "country": "Czechia",
+    "lat": 50.09028,
+    "lon": 14.41944,
+    "timeZone": "Europe/Prague"
+  },
+  {
+    "id": "Q753289",
+    "district": "Mala Strana",
+    "city": "Prague",
+    "country": "Czechia",
+    "lat": 50.08806,
+    "lon": 14.40389,
+    "timeZone": "Europe/Prague"
+  },
+  {
+    "id": "Q753219",
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia",
+    "lat": 50.0767,
+    "lon": 14.4264,
+    "timeZone": "Europe/Prague"
+  },
+  {
+    "id": "Q748211",
+    "district": "Stare Mesto",
+    "city": "Prague",
+    "country": "Czechia",
+    "lat": 50.0847,
+    "lon": 14.4203,
+    "timeZone": "Europe/Prague"
+  },
+  {
+    "id": "Q1078123",
+    "district": "People's Square",
+    "city": "Shanghai",
+    "country": "China",
+    "lat": 31.2309,
+    "lon": 121.4703,
+    "timeZone": "Asia/Shanghai"
+  },
+  {
+    "id": "Q572153",
+    "district": "Futian",
+    "city": "Shenzhen",
+    "country": "China",
+    "lat": 22.52527,
+    "lon": 114.05059,
+    "timeZone": "Asia/Shanghai"
+  },
+  {
+    "id": "Q983005",
+    "district": "Huaqiangbei",
+    "city": "Shenzhen",
+    "country": "China",
+    "lat": 22.5457,
+    "lon": 114.087,
+    "timeZone": "Asia/Shanghai"
+  },
+  {
+    "id": "Q1318670",
+    "district": "Chinatown",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.28361,
+    "lon": 103.84417,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q1095828",
+    "district": "Clarke Quay",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.29002,
+    "lon": 103.846,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q630135",
+    "district": "Gardens by the Bay",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.28332,
+    "lon": 103.86527,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q6747714",
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.42657,
+    "lon": 103.81853,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q40129",
+    "district": "Marina Bay",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.28444,
+    "lon": 103.85583,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q6920714",
+    "district": "Mount Faber",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.27222,
+    "lon": 103.82083,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q3079780",
+    "district": "Raffles Place",
+    "city": "Singapore",
+    "country": "Singapore",
+    "lat": 1.28389,
+    "lon": 103.851,
+    "timeZone": "Asia/Singapore"
+  },
+  {
+    "id": "Q499278",
+    "district": "Sonneberg",
+    "city": "Sonneberg",
+    "country": "Germany",
+    "lat": 50.35,
+    "lon": 11.16667,
+    "timeZone": "Europe/Berlin"
   }
 ]

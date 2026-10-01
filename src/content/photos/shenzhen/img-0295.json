@@ -1,0 +1,64 @@
+{
+  "alt": "A tall glass tower rises over a busy street lined with parked scooters.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-10-31T15:41:43+08:00",
+  "aperture": 2.4,
+  "shutter": 0.001689189189,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Huaqiangbei",
+    "city": "Shenzhen",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0295-640-bc0e3d7b.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 41831,
+        "sha256": "bc0e3d7bb88587b4fa41accdcc607dfde5c5e13aa8278976bc66bcfc99a54b01"
+      },
+      {
+        "file": "img-0295-1280-f2386f6b.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 132820,
+        "sha256": "f2386f6bf30f653cd3f15168e52cdcfda06262082a760e2677adb1ec5ab27f95"
+      },
+      {
+        "file": "img-0295-1536-a4d8a3a1.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 181719,
+        "sha256": "a4d8a3a1c8c7f5d594da88b0851b60536f5f03577d669d40e2cd41749ecc6dd7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0295-640-97ea71ea.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 67074,
+        "sha256": "97ea71ea312bb2e956da5a06b31db8d99780b4e8c8b686bf7fa95123fc9ac40e"
+      },
+      {
+        "file": "img-0295-1280-2ccf199f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 206524,
+        "sha256": "2ccf199f74ffb94fbc6fb7a95e5d9ca010e3f112de838d925951be648a783d38"
+      },
+      {
+        "file": "img-0295-1536-fb0c687f.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 277586,
+        "sha256": "fb0c687f745fe571278cd3b0965a6c0ee2c13be560726f24e687c4316567953a"
+      }
+    ]
+  }
+}

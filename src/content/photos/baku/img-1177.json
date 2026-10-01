@@ -1,0 +1,64 @@
+{
+  "alt": "A gleaming vintage sedan rests under red beams in a hushed exhibition hall.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-05T12:03:37+04:00",
+  "aperture": 1.8,
+  "shutter": 0.0303030303,
+  "iso": 640,
+  "focalLength": 24,
+  "place": {
+    "district": "Narimanov",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1177-640-d18e387d.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 31665,
+        "sha256": "d18e387d60fb4fdaa8018659c0d92fba955161dd6e8be829b483b89f0ee7a775"
+      },
+      {
+        "file": "img-1177-1280-b3b9e1ad.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 86725,
+        "sha256": "b3b9e1ad62831d0e27d5779af621c68569619abccf5d021e74864729ad31ee29"
+      },
+      {
+        "file": "img-1177-1536-7822f2f7.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 112082,
+        "sha256": "7822f2f74b63010f221dc99dfbb9383b34c61479d3d0772603de0d3fc33cf293"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1177-640-9c904137.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 50314,
+        "sha256": "9c904137954f33137814a083bdef0b0eaa2752083f0cbb3a703a5c8776832eda"
+      },
+      {
+        "file": "img-1177-1280-2fcbc762.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 129264,
+        "sha256": "2fcbc7628048b904c96c1ab3281ce937993653b1bdd19c4c298d0512c0234cf8"
+      },
+      {
+        "file": "img-1177-1536-9fb8fdaa.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 161402,
+        "sha256": "9fb8fdaa7dfec572b860036e3bf6d738a43f057d75eb33cf09feebf915c42b26"
+      }
+    ]
+  }
+}

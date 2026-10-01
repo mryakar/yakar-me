@@ -1,0 +1,64 @@
+{
+  "alt": "The sun slips beneath a bank of cloud, setting the sky over the sea on fire.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-11T18:00:30+08:00",
+  "aperture": 2.8,
+  "shutter": 0.0002150075253,
+  "iso": 40,
+  "focalLength": 120,
+  "place": {
+    "district": "Pecatu",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3824-640-922107c6.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 25508,
+        "sha256": "922107c6f9c4c6e837fc0eca91ac7c42dd910f01c75f4d1cfb5e6bb6334e12b9"
+      },
+      {
+        "file": "img-3824-1280-356fc6ae.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 80370,
+        "sha256": "356fc6ae30cedcb1138ad390fc26d6efc981c17ae8484d12a9f49a5ad5f8bd8f"
+      },
+      {
+        "file": "img-3824-1536-93cfae9f.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 107973,
+        "sha256": "93cfae9fbfa54055b89d4efac91e0c8857c81517327eec064de8c212790a7b11"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3824-640-b9d1875e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 31966,
+        "sha256": "b9d1875e9df124b9f02e6b93ec6ba71440ef142d91462a2cbef21adab1eb9a7c"
+      },
+      {
+        "file": "img-3824-1280-a26141e5.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 95028,
+        "sha256": "a26141e536aead24944cdec9a5f2ce0a429c89d9373cd0173f9906daa80f3a43"
+      },
+      {
+        "file": "img-3824-1536-8f3d7256.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 122232,
+        "sha256": "8f3d72563c4ce680a33b9b7300a213ea127b13153fddd29256f449f81460d655"
+      }
+    ]
+  }
+}

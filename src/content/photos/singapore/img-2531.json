@@ -1,0 +1,64 @@
+{
+  "alt": "A rainbow lorikeet perches above as a red lory spreads a yellow-barred wing.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T12:20:31+08:00",
+  "aperture": 2.8,
+  "shutter": 0.01315789474,
+  "iso": 250,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2531-640-540f9ba0.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 44532,
+        "sha256": "540f9ba0e17d3202d6b99c226245e2adfdfa8469968183016b6c4112091ed400"
+      },
+      {
+        "file": "img-2531-1280-9bb90011.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 125565,
+        "sha256": "9bb900116f6b7f3ba5e63391e8c94cdcec80a8eab7b0dbc6e95033061ae3c67f"
+      },
+      {
+        "file": "img-2531-1536-cc9c4f59.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 170973,
+        "sha256": "cc9c4f5918fe677b0b34ceaa8ae0c4af6609d9a5d9acfcd79373de3cc03538da"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2531-640-aceca28e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 61540,
+        "sha256": "aceca28e71079239b5dc06429a107ec1dd4216a70042619a825ad859667501a7"
+      },
+      {
+        "file": "img-2531-1280-fd14e861.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 150770,
+        "sha256": "fd14e8612138177ec1a93056c2868108a11c70f8ebd1b21e1b5f4edbf070a32f"
+      },
+      {
+        "file": "img-2531-1536-5e8a580e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 196868,
+        "sha256": "5e8a580ed3b4714982de1a9b416b95e386d96be35474f721eec36d02823742ab"
+      }
+    ]
+  }
+}

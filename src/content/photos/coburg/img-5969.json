@@ -1,0 +1,78 @@
+{
+  "alt": "Green fields roll away to low wooded hills under a heavy spring sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-17T13:05:54+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0002600104004,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Banz",
+    "city": "Bad Staffelstein",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5969-640-6f1cd446.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 14727,
+        "sha256": "6f1cd4468cdef6209e647b971e6e8e57ba2a9a2c251d3b1b73410e8b59ec0008"
+      },
+      {
+        "file": "img-5969-1280-ec374390.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 54494,
+        "sha256": "ec3743909c6e9ca4cb035950cb1445de47eb1a25fa28002a8e3b4dba31d5badb"
+      },
+      {
+        "file": "img-5969-1920-bbfd5042.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 113004,
+        "sha256": "bbfd504259f6b19f3e8d604bbde2de0393b9c8df590b54ab58f810fe25f2cbbe"
+      },
+      {
+        "file": "img-5969-2048-f4977c84.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 127710,
+        "sha256": "f4977c84f876f1b5431643b12ef690b598aacab0bf4c9d58c43b1aabf250cc73"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5969-640-3671d878.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 18256,
+        "sha256": "3671d878dec6303e4afab19068a2e2d74ee74f4baf1cd5c471d0f62b28f19f46"
+      },
+      {
+        "file": "img-5969-1280-5be78302.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 68172,
+        "sha256": "5be78302c5f2b7cce04eed3b5751f3f48ec6de015b5e1b3ccc114bf781d0b1b0"
+      },
+      {
+        "file": "img-5969-1920-cc16d896.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 133214,
+        "sha256": "cc16d896e4ef090c9831aa10e42bb6f6d54a25f467d0621e903f7dd2e9b5f792"
+      },
+      {
+        "file": "img-5969-2048-9028ef31.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 148138,
+        "sha256": "9028ef3146dd193b5e0fed7391d60dafef4041be8096952eae4bd401f703aea9"
+      }
+    ]
+  }
+}

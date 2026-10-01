@@ -1,0 +1,64 @@
+{
+  "alt": "Initials and a heart carved deep into the bark of a beech, spring green around it.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-16T11:01:33+02:00",
+  "aperture": 1.8,
+  "shutter": 0.008196721311,
+  "iso": 64,
+  "focalLength": 26,
+  "place": {
+    "district": "Roedental",
+    "city": "Coburg",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5552-640-003c7212.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 105458,
+        "sha256": "003c7212063824208854bb217d3c379dd8e813b4515b16d9652f4b7b8f17d21e"
+      },
+      {
+        "file": "img-5552-1280-6538ae6b.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 396802,
+        "sha256": "6538ae6b7c286c07ad24f035a46c5f0b4d739bdc5bcbd273fe5bdebe20879bfc"
+      },
+      {
+        "file": "img-5552-1536-42ae26a4.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 528815,
+        "sha256": "42ae26a44332f8dfb314957f8da7376405d3d72afa2ba86252878fb831cc73bd"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5552-640-d6798bda.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 204860,
+        "sha256": "d6798bdaf8746c7bd0cc4582b679b51301196684df52da1405706efae06fb569"
+      },
+      {
+        "file": "img-5552-1280-2e55e77f.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 764172,
+        "sha256": "2e55e77f91cc34a0631f486a72f2ffeb382857236b7517346d59e47925489b8b"
+      },
+      {
+        "file": "img-5552-1536-672c8fb9.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 1024840,
+        "sha256": "672c8fb95cce68bae296cae023a0c6bd4d4ba65d2eb3efe52cfefae9b4628133"
+      }
+    ]
+  }
+}

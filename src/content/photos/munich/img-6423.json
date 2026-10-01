@@ -1,0 +1,64 @@
+{
+  "alt": "A marble statue stands alone on a pedestal in a wide, empty lawn.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T17:58:25+02:00",
+  "aperture": 2.4,
+  "shutter": 0.002915451895,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Nymphenburg",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6423-640-ee3b932a.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 34152,
+        "sha256": "ee3b932a5144df566a4400f4cecf97da88e71fa7f38f8d87d500616111f41906"
+      },
+      {
+        "file": "img-6423-1280-a8a5bc4b.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 123929,
+        "sha256": "a8a5bc4bfee9ece414d74fa5c32a86f4ecf8a67428f233a431a119a706eae3fe"
+      },
+      {
+        "file": "img-6423-1536-ba01d485.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 167809,
+        "sha256": "ba01d48592abe97ce6c84166c44a248713dc825421a1582bd858408a16651a2e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6423-640-c4d249b5.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 51106,
+        "sha256": "c4d249b5454c21157142a955f5f2ea710546644b1ff1e66ed0c0de2e5f7302f2"
+      },
+      {
+        "file": "img-6423-1280-ec8a5da9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 181818,
+        "sha256": "ec8a5da980c9291795dee48e9bb8b05c1f494377d06197988c42ad3292d93afd"
+      },
+      {
+        "file": "img-6423-1536-ec352d11.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 235816,
+        "sha256": "ec352d11934e21884f52be87b9dbc9fe84f8478b1f40f3f1af3b1439794ad86f"
+      }
+    ]
+  }
+}

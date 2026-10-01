@@ -1,0 +1,64 @@
+{
+  "alt": "Two swimmers stand waist-deep in the surf, facing a sun that sits on the horizon.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-14T18:06:35+08:00",
+  "aperture": 2,
+  "shutter": 0.001168224299,
+  "iso": 20,
+  "focalLength": 93,
+  "place": {
+    "district": "Seminyak",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3957-640-d7a16bfd.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 41134,
+        "sha256": "d7a16bfd553b06d04908d09171302a7a0440d9d58d260b171cf5a61632ae58f7"
+      },
+      {
+        "file": "img-3957-1280-a895e080.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 135980,
+        "sha256": "a895e08051c35edfa06c45ccb49f5a435648dc7beab74eb032caaa42bcc1407a"
+      },
+      {
+        "file": "img-3957-1536-3310a13c.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 181541,
+        "sha256": "3310a13cc997f47f1bb5025d19703cb7cca865819072d8f401bda7c67da5aedf"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3957-640-3db17267.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 64774,
+        "sha256": "3db17267008818cbd5f32f4655712cdebfeb4b99fe77a57b7b7927efee52b451"
+      },
+      {
+        "file": "img-3957-1280-ea363ceb.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 204390,
+        "sha256": "ea363ceb490f5e41da9a5eb88663077b88a34e50c954a2c9997f8b8e37de6491"
+      },
+      {
+        "file": "img-3957-1536-c5f40176.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 260570,
+        "sha256": "c5f4017678617451790190f5f78338051914e7ff6da108731bffe2734ba4c572"
+      }
+    ]
+  }
+}

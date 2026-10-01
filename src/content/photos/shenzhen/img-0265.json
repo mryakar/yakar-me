@@ -1,0 +1,64 @@
+{
+  "alt": "A tower's edge burns electric blue against the night, seen from straight below.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-10-30T20:26:17+08:00",
+  "aperture": 1.8,
+  "shutter": 0.04,
+  "iso": 640,
+  "focalLength": 26,
+  "place": {
+    "district": "Futian",
+    "city": "Shenzhen",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0265-640-93dcd2c7.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 24293,
+        "sha256": "93dcd2c7555776681c719824c3961dbd8286f318020bbfeecacd18960b77b27e"
+      },
+      {
+        "file": "img-0265-1280-9e8dca56.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 80577,
+        "sha256": "9e8dca567fc4b7cae744ffc4304d631115442da7b143abb111e0828b582aa5c5"
+      },
+      {
+        "file": "img-0265-1536-6c430c22.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 117941,
+        "sha256": "6c430c22bb442ee4b30980d8007088fa54f0b86c2742f0c2f36249b930ef7c24"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0265-640-ebcd0c67.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 37728,
+        "sha256": "ebcd0c6716c9be896e9b23e7a10adcf884a1c1cffc8b8f069880cb034c8176e9"
+      },
+      {
+        "file": "img-0265-1280-f6409b9b.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 116768,
+        "sha256": "f6409b9b46bd82639eb9dbe6e04aa792da05dfb4a17be3414faa45ae93fc3eda"
+      },
+      {
+        "file": "img-0265-1536-28fc0332.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 163710,
+        "sha256": "28fc0332c2ebd74bc702e43c23555f348ccb529f96524bc4d4ca67ad436e1b56"
+      }
+    ]
+  }
+}

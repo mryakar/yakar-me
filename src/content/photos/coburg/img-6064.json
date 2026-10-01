@@ -1,0 +1,78 @@
+{
+  "alt": "A formal garden and fountain sit at the heart of a grand, empty courtyard.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-17T13:22:52+02:00",
+  "aperture": 2.4,
+  "shutter": 0.001375515818,
+  "iso": 20,
+  "focalLength": 14,
+  "place": {
+    "district": "Banz",
+    "city": "Bad Staffelstein",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6064-640-4d5dc0d5.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 22100,
+        "sha256": "4d5dc0d50f27bcd9256a53134213f60283d1ff8fdd24cfca9c33565becb46c1e"
+      },
+      {
+        "file": "img-6064-1280-61982bf4.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 79733,
+        "sha256": "61982bf4125a642ff8070471af4fedac1dd50e79bf128084ebeb4f2a8225eacb"
+      },
+      {
+        "file": "img-6064-1920-6285379e.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 162037,
+        "sha256": "6285379e320b22ad37e4223ae654b01291d5126d6d17e1674b1a9af52d678c4d"
+      },
+      {
+        "file": "img-6064-2048-19034f8c.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 182233,
+        "sha256": "19034f8c0c91e8e19a1d0a4a3b3d112bdbfefaaf3a7e05a57272badecca382de"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6064-640-756d629c.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 35476,
+        "sha256": "756d629c57fce0d60a7430cf261ac7d8accd2b69404e6e66253661f904baedec"
+      },
+      {
+        "file": "img-6064-1280-e8e669f2.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 124634,
+        "sha256": "e8e669f2b78a6065124218f918f79f609a10b3ba65bdf3edbe7423b072d8dc8c"
+      },
+      {
+        "file": "img-6064-1920-11c44715.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 234604,
+        "sha256": "11c44715c26b731e8067d92ce6a64ab7be1adb6417c2d6694bffb5b5c09256dc"
+      },
+      {
+        "file": "img-6064-2048-095ecfae.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 268602,
+        "sha256": "095ecfae9675220db4355625c6437c36f80a0753148f19e6230808b4a8ea5690"
+      }
+    ]
+  }
+}

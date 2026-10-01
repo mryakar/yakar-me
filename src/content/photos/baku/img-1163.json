@@ -1,0 +1,64 @@
+{
+  "alt": "A pedestrian street glitters under ornate balconies, strollers drifting through the lamplight.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-03T20:52:13+04:00",
+  "aperture": 1.8,
+  "shutter": 0.02,
+  "iso": 800,
+  "focalLength": 24,
+  "place": {
+    "district": "Nizami Street",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1163-640-fd5af3d8.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 48622,
+        "sha256": "fd5af3d8511a19d8e0db667732dd5e07e829176748d4739a4ae0f1ae1ecd6da2"
+      },
+      {
+        "file": "img-1163-1280-587ec173.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 153242,
+        "sha256": "587ec17362715b788913ae99840c68453c16aa382b5ad29e4c40c43bd70cf3d2"
+      },
+      {
+        "file": "img-1163-1536-4d34a0ee.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 201133,
+        "sha256": "4d34a0eee8e32f92df6f234719ee368b669f68c918db2d72b03e35a600cf7fe1"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1163-640-7b070b43.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 86210,
+        "sha256": "7b070b430dfc447207ef4bd930ed24fda9cb81a2858f1f9f2ca14d174500dbd4"
+      },
+      {
+        "file": "img-1163-1280-090916c0.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 253588,
+        "sha256": "090916c0370f77a5aabc1dbe08e62817f80e260fa3dd606bbb332586a085c327"
+      },
+      {
+        "file": "img-1163-1536-c300f78b.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 323558,
+        "sha256": "c300f78b7981ec83e7153f7d97e30fb03b082f777442d8dd128df3f3d02529d2"
+      }
+    ]
+  }
+}

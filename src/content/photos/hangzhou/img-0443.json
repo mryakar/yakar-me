@@ -1,0 +1,78 @@
+{
+  "alt": "A dim lounge corner glows with lamps and dried grasses, a low table set for tea.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2019-11-02T15:49:48+08:00",
+  "aperture": 1.8,
+  "shutter": 0.125,
+  "iso": 1600,
+  "focalLength": 26,
+  "place": {
+    "district": "Binjiang",
+    "city": "Hangzhou",
+    "country": "China"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-0443-640-4fa14243.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 21863,
+        "sha256": "4fa14243b37f2e32dcfc5e3e1bd8f4f9a6b0b1d9b53ed2dc099de0b37c742baa"
+      },
+      {
+        "file": "img-0443-1280-1f602035.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 71016,
+        "sha256": "1f60203587db1dec1b79756728ddcaad7c18c4046f45f3820b6c8785d15c9f6d"
+      },
+      {
+        "file": "img-0443-1920-ab3ceb05.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 149263,
+        "sha256": "ab3ceb05aa23d4795dbf94a1f024ad1cda5d8d33866fd7925a5498e33032ee9e"
+      },
+      {
+        "file": "img-0443-2048-b0f9fec7.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 171211,
+        "sha256": "b0f9fec71eedf5672df3a46d9a9014cdcdf17506fb2ffd201bfcb87e3675c50b"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-0443-640-e7ec6334.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 33668,
+        "sha256": "e7ec6334206dde4de8316b89a92b2954529f370e01607ac1aa581323e622b254"
+      },
+      {
+        "file": "img-0443-1280-ea8e8fec.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 103380,
+        "sha256": "ea8e8feca7fb53d45dc326ea47ce0d2164a936988bc98026b4d479a163ab474b"
+      },
+      {
+        "file": "img-0443-1920-bccc5823.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 193928,
+        "sha256": "bccc582384c3f19218d5dd1e63fa7401da5303db258ef4a8d67be9fcbb72f130"
+      },
+      {
+        "file": "img-0443-2048-d2c665cf.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 222056,
+        "sha256": "d2c665cf9630908562a34d97703be891987cf9e27352d16bb527d0cd35b8471a"
+      }
+    ]
+  }
+}

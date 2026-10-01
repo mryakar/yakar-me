@@ -1,0 +1,64 @@
+{
+  "alt": "A blue deity sits atop coiled serpents and fanged nagas against a grey sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T10:16:34+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0002339728591,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Rong Suea Ten",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9033-640-8316b60f.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 51085,
+        "sha256": "8316b60fe40b73a45fe3c9db08ac283ec10223d6b34a6c0823da033c6a6a686e"
+      },
+      {
+        "file": "img-9033-1280-e5697c80.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 167763,
+        "sha256": "e5697c801472a610cadb671f6f3475313339c2d33a6180ae15ad303105c1054a"
+      },
+      {
+        "file": "img-9033-1536-a61105dd.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 224302,
+        "sha256": "a61105dd8545a5c1eac6a6e4c643ea82c26b95efa5c16d9e35b053517e012a37"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9033-640-86402c6c.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 85096,
+        "sha256": "86402c6cbcebab160ee9b1c84d2f2778976c1d4268cc55b1cd2ee2dde4c36169"
+      },
+      {
+        "file": "img-9033-1280-6be3c5fd.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 270658,
+        "sha256": "6be3c5fd602b066366f3a861b2360b6c9be110a24a7a21a853cfec96de99b698"
+      },
+      {
+        "file": "img-9033-1536-649e6ed3.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 350668,
+        "sha256": "649e6ed3d61cc92b624fb1c6c15c8869c165bf5281a3148ae3a04b2f4485e3c6"
+      }
+    ]
+  }
+}

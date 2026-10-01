@@ -1,0 +1,78 @@
+{
+  "alt": "A grand corner building with a mansard roof faces a junction laced with tram wires.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T13:46:51+02:00",
+  "aperture": 1.8,
+  "shutter": 0.000303030303,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6799-640-f6a235ea.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 35718,
+        "sha256": "f6a235eaca332156a6be4a01305a353db251fb91fd0442527a2e67d9a9c64f71"
+      },
+      {
+        "file": "img-6799-1280-ad642052.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 117152,
+        "sha256": "ad642052dbe92906fa1afd4d261240340982d6f771036b9d1357fb79692918a0"
+      },
+      {
+        "file": "img-6799-1920-5d2d02eb.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 220038,
+        "sha256": "5d2d02ebd23e99e7e3a4ba344916da7ce83ad04d889ca113ed4b686437639d3d"
+      },
+      {
+        "file": "img-6799-2048-21a4e7c7.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 246618,
+        "sha256": "21a4e7c7d5b2f7d50caf6ddc0ebe875ba0fb893b4a03e72ecb1922f46eb2ffcb"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6799-640-df067fd7.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 62432,
+        "sha256": "df067fd722f97ac1a11292021f8c9210be52fae155e106a1c777ef64d61f0f48"
+      },
+      {
+        "file": "img-6799-1280-664c91fa.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 208544,
+        "sha256": "664c91fadd4fd99329006fe9e8a1600813374b1fcc91eea52e4176aad71ec76d"
+      },
+      {
+        "file": "img-6799-1920-a6d7f9d1.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 385300,
+        "sha256": "a6d7f9d17cd157630e208f51927287b5a0f6bf9f5ee021a0f402a0b20ef7f3d5"
+      },
+      {
+        "file": "img-6799-2048-acf9505d.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 422848,
+        "sha256": "acf9505df6021a39c12f39fa065d315cbf6a0094f88c9464503274757ffc839a"
+      }
+    ]
+  }
+}

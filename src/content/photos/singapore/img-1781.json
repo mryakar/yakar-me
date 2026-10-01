@@ -1,0 +1,64 @@
+{
+  "alt": "Walkers shelter under umbrellas on a tree-shaded path, towers rising beyond the leaves.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T14:51:36+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0003310162198,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Chinatown",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1781-640-2fd8c7f4.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 70834,
+        "sha256": "2fd8c7f425d71167304a0f18a269bed71962064395c08ebb9159f2407d7f6d20"
+      },
+      {
+        "file": "img-1781-1280-11c8c774.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 248084,
+        "sha256": "11c8c77406e78887a165929b7df15dc534dfc6f7163c5fc151f667436bf85497"
+      },
+      {
+        "file": "img-1781-1536-370e3bdd.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 333545,
+        "sha256": "370e3bdd9665431027db73cc49a6252be40adb9f4da80b9566a769c70bc97f26"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1781-640-5ac4dcd8.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 127108,
+        "sha256": "5ac4dcd8046b62b6d9eb3bb47ba63e9eb147a6818bcb84eeb2c63f5648094f2c"
+      },
+      {
+        "file": "img-1781-1280-559f457d.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 431612,
+        "sha256": "559f457d77b4eede84ca805bf0b51a1d8b9f01e5430c6ad008b43a64ff4f1d1f"
+      },
+      {
+        "file": "img-1781-1536-c4a2395c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 569060,
+        "sha256": "c4a2395c68945a4ac65c2035569c6e1f6a62e3227df901027a1a070de3c26bfc"
+      }
+    ]
+  }
+}

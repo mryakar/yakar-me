@@ -1,0 +1,64 @@
+{
+  "alt": "A bronze king sits enthroned on a pedestal of lions before a stone palace.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T14:27:51+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0002339728591,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Altstadt-Lehel",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6272-640-e8f8937e.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 31799,
+        "sha256": "e8f8937ed5257cf1c73823bfa70e6710410fadfcb6cdce3c477ca6ff161e50d5"
+      },
+      {
+        "file": "img-6272-1280-46a972b6.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 100287,
+        "sha256": "46a972b6bad5888c79a595e21d340585c81472d3bd156c8cc8e6f4e15a2f9cff"
+      },
+      {
+        "file": "img-6272-1536-1dea9359.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 132968,
+        "sha256": "1dea9359e8c257a81b023f4beb1b684505245a3a0d8edd6cb63f363a0731374f"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6272-640-f10e794e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 54756,
+        "sha256": "f10e794e17719a3083bc68fd5188fe630b3b9fa0e2b2e8537225ebda4634d13f"
+      },
+      {
+        "file": "img-6272-1280-0f2a3363.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 167502,
+        "sha256": "0f2a336345a78b2807828428584a2e2afc3f501b76fa7dcb8cf7dcfcd8e1be8d"
+      },
+      {
+        "file": "img-6272-1536-c76d308e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 216806,
+        "sha256": "c76d308ed59f95383ed6c5f03c3adce376a9c24e312bfbe542b6c18ebae9625a"
+      }
+    ]
+  }
+}

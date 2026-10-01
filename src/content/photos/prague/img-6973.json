@@ -1,0 +1,64 @@
+{
+  "alt": "A bronze figure rides on the shoulders of an empty suit, bare trees behind.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T19:51:50+02:00",
+  "aperture": 1.8,
+  "shutter": 0.01265822785,
+  "iso": 125,
+  "focalLength": 26,
+  "place": {
+    "district": "Josefov",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6973-640-0fa3e2e1.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 92412,
+        "sha256": "0fa3e2e17c744d8c288fcc2a790e8f37ad8603814090d20dd5548f6023bc6bca"
+      },
+      {
+        "file": "img-6973-1280-2ce766a5.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 339459,
+        "sha256": "2ce766a5afb8501802f08d7d23c4aa7dc2e39d4977c74415ff8cf69caa012b32"
+      },
+      {
+        "file": "img-6973-1536-1175dade.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 454506,
+        "sha256": "1175dade5d16cac1498f2a647e9b0a5037ad854db95b51ed962f69acb74e8653"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6973-640-8b9463d2.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 172066,
+        "sha256": "8b9463d2a83aaf9a3cc4aea2db230436778140b2c9dd03149a6a001cd3106f94"
+      },
+      {
+        "file": "img-6973-1280-02adc1ad.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 614312,
+        "sha256": "02adc1ad3bf76a076b4bf23631060ae39dc6f33c5237df17e584789e480f61b0"
+      },
+      {
+        "file": "img-6973-1536-63fc22e1.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 825156,
+        "sha256": "63fc22e165cb46d3e589159615b451dfe74bf8e2e66191001dfd42ed9deb7006"
+      }
+    ]
+  }
+}

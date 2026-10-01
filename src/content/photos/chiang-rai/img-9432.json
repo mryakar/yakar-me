@@ -1,0 +1,78 @@
+{
+  "alt": "An ornate golden building rises behind clipped hedges and posing visitors.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-04T12:57:21+07:00",
+  "aperture": 1.8,
+  "shutter": 0.0001649892757,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Pa O Don Chai",
+    "city": "Chiang Rai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9432-640-088be1ff.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 30112,
+        "sha256": "088be1ffb22e9135b5176a9f31125170717dd7dce3777caaee2fde7ffbab8153"
+      },
+      {
+        "file": "img-9432-1280-64f3fb34.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 120351,
+        "sha256": "64f3fb34ab326a7128b19b69b0d847786bbbfceabecde333457a8c3dc78775dc"
+      },
+      {
+        "file": "img-9432-1920-5fa97c9d.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 245531,
+        "sha256": "5fa97c9d491596e3235384d46bbb8c4bfc5721325cf171aedd62c977b9fab537"
+      },
+      {
+        "file": "img-9432-2048-a4466f0f.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 277324,
+        "sha256": "a4466f0f52d384c066ba0ef31d7a80f9f233e216c5442f1448009b6ff189efa3"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9432-640-a691ccdb.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 52952,
+        "sha256": "a691ccdb967fbbbc71128b6df8228fb9047320d12d45e1b48b00e0b4c3df2c16"
+      },
+      {
+        "file": "img-9432-1280-5984b972.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 207804,
+        "sha256": "5984b9727ab94a4ea32b606712de16f1812a9158d1486e06c0a6e3570766aa72"
+      },
+      {
+        "file": "img-9432-1920-1d9ad8d9.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 417242,
+        "sha256": "1d9ad8d94a617276fc59c4319bad74a452c054ea67811811467d458cc110bd1b"
+      },
+      {
+        "file": "img-9432-2048-5ed710ff.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 469836,
+        "sha256": "5ed710ffae3dc4574551f45426f71813b9803c4fde8a63a12b9cf75cf8bc1fe3"
+      }
+    ]
+  }
+}

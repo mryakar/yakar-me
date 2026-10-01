@@ -1,0 +1,64 @@
+{
+  "alt": "The steel tree canopies spread like open umbrellas against a cloudy blue sky.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T12:00:40+08:00",
+  "aperture": 1.8,
+  "shutter": 0.00006999860003,
+  "iso": 64,
+  "focalLength": 24,
+  "place": {
+    "district": "Gardens by the Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2162-640-dd7f0d81.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 45393,
+        "sha256": "dd7f0d817f09873af4f0a7584747d8f3f573d62b75af62690d0237903366d0d6"
+      },
+      {
+        "file": "img-2162-1280-f540b14a.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 135093,
+        "sha256": "f540b14a9275ba2e3dc455a69f8f56e97eb5137343b9cef605800aa999d34cec"
+      },
+      {
+        "file": "img-2162-1536-f31174d6.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 175724,
+        "sha256": "f31174d6528fb10838cc02a889d888b01c22c460c6909bfa5b8fe3a2bd936787"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2162-640-8be822c0.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 70230,
+        "sha256": "8be822c0a3f3d39a1eed94d7cc4e6d6e06945f048d3b0bb3ddfeb484f2fac324"
+      },
+      {
+        "file": "img-2162-1280-5fb866ea.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 199126,
+        "sha256": "5fb866ea19d0a85d08d2ae59a6f3b30c22795e6afb32cdbd253ed62b5db0a74d"
+      },
+      {
+        "file": "img-2162-1536-d0a267dc.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 254134,
+        "sha256": "d0a267dcf260e802db99589951bdede7edd9e213c409e0555e89ec472a64b4de"
+      }
+    ]
+  }
+}

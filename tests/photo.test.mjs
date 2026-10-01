@@ -76,6 +76,8 @@ test('Türkçe: yer adında ülke çevrilir, ardışık tekrar yine düşer; bil
   const c = ui.tr.photos.country;
   assert.equal(placeName({ district: 'Bophut', city: 'Koh Samui', country: 'Thailand' }, c), 'Bophut, Koh Samui, Tayland');
   assert.equal(placeName({ district: 'Mong Kok', city: 'Hong Kong', country: 'Hong Kong' }, c), 'Mong Kok, Hong Kong');
+  assert.equal(placeName({ district: 'Chinatown', city: 'Singapore', country: 'Singapore' }, c), 'Chinatown, Singapur');
+  assert.equal(placeName({ district: 'Sonneberg', city: 'Sonneberg', country: 'Germany' }, c), 'Sonneberg, Almanya');
   assert.throws(() => placeName({ district: 'A', city: 'B', country: 'Atlantis' }, c), /No Turkish country name/);
 });
 

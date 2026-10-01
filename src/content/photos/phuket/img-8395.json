@@ -1,0 +1,64 @@
+{
+  "alt": "Arched white balconies rise over a shopfront dripping with ferns.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-06-28T17:04:37+07:00",
+  "aperture": 1.8,
+  "shutter": 0.008196721311,
+  "iso": 50,
+  "focalLength": 26,
+  "place": {
+    "district": "Phuket Town",
+    "city": "Phuket",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-8395-640-1d77c1ff.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 54328,
+        "sha256": "1d77c1ff595ee5372566ace0dad5074b14d94758beb22b5e3d5466c58ffdcc6a"
+      },
+      {
+        "file": "img-8395-1280-da8b5675.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 187206,
+        "sha256": "da8b56754410fc173d521e881fef191fb4a6e1557361b0e659014119c92223c9"
+      },
+      {
+        "file": "img-8395-1536-a9b060cf.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 248970,
+        "sha256": "a9b060cf9448a9a260b4f2ca9eab90374d2b57c22a45e1f68023a213843e90ab"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-8395-640-7e257933.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 100618,
+        "sha256": "7e257933dbeed0801514e63cd46eec00505b871e32cb6c5777e1d58c2f031278"
+      },
+      {
+        "file": "img-8395-1280-2aaf83e9.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 323818,
+        "sha256": "2aaf83e9a4e61c4f0330e5255c4245645a5a1dd7fa249d471acd706477184651"
+      },
+      {
+        "file": "img-8395-1536-276d1e9e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 415588,
+        "sha256": "276d1e9ea2117dffc9a52aeb906a3658d3efc484d55b6036aa85184185ac5cbe"
+      }
+    ]
+  }
+}

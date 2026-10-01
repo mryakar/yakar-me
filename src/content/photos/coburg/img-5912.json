@@ -1,0 +1,64 @@
+{
+  "alt": "Rows of candles flicker beneath two glowing stained-glass windows in the dark.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-17T12:09:56+02:00",
+  "aperture": 2.4,
+  "shutter": 0.03333333333,
+  "iso": 1250,
+  "focalLength": 14,
+  "place": {
+    "district": "Vierzehnheiligen",
+    "city": "Bad Staffelstein",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-5912-640-b8350364.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 25597,
+        "sha256": "b8350364b86b91e744318cdee372c779a326cab8fe7a98f7ae4560ad8bd05736"
+      },
+      {
+        "file": "img-5912-1280-5a91ffd7.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 66831,
+        "sha256": "5a91ffd793e2461ac33832ce4488ceaeceec9aee53581f71609254b38d5814a7"
+      },
+      {
+        "file": "img-5912-1536-2cd24c9d.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 86450,
+        "sha256": "2cd24c9d4c045fa7dc3b9419570c336234b4783e19dc5b2cc665d3756d8e0f27"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-5912-640-5792d75e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 36082,
+        "sha256": "5792d75e66fd8ed91f7241488ea58e0db22d1c9df9fbd0bca4109e702830c790"
+      },
+      {
+        "file": "img-5912-1280-7ef64ef4.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 87050,
+        "sha256": "7ef64ef4af6dfb29c2ff956f950ca6d13e4cedd6fbb19f0ceecf037ff34da0fe"
+      },
+      {
+        "file": "img-5912-1536-e7715b25.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 108232,
+        "sha256": "e7715b25390d1ce24820b536f7c9b7223f2d3a5b88c31a3d024fa06d7a06456a"
+      }
+    ]
+  }
+}

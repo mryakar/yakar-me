@@ -1,0 +1,78 @@
+{
+  "alt": "A mallard dozes in the grass beside the spokes of a parked bicycle.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-18T18:04:55+02:00",
+  "aperture": 2,
+  "shutter": 0.00826446281,
+  "iso": 64,
+  "focalLength": 52,
+  "place": {
+    "district": "Nymphenburg",
+    "city": "Munich",
+    "country": "Germany"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6425-640-313b43d8.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 70188,
+        "sha256": "313b43d896ecb684394b0341f8bd88c3b69a02340d812ecead150176cdb0634c"
+      },
+      {
+        "file": "img-6425-1280-4da57d31.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 246902,
+        "sha256": "4da57d31114cb45c560c157f05cb063eeeeae4e523c5032c6f550360ba2a12b0"
+      },
+      {
+        "file": "img-6425-1920-40ed2847.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 449361,
+        "sha256": "40ed2847d9017e5922c53ab6c9f1c01fc8960617f3eed7608a30929b9ec33ba9"
+      },
+      {
+        "file": "img-6425-2048-1145ca72.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 494886,
+        "sha256": "1145ca7200acc49ae32e4b1906dc7b6b8adb2958bf3aecc9a194b5ab609ccd3e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6425-640-99f5910f.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 130350,
+        "sha256": "99f5910f320e458e5c412279ad802539d60a3ebea6e16ce17dc0e7d4ccdb8760"
+      },
+      {
+        "file": "img-6425-1280-105add1f.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 461564,
+        "sha256": "105add1fef062a3135aaa597cf8c58baad08f5a8e8cc6fc0e4ea2925a7575555"
+      },
+      {
+        "file": "img-6425-1920-5557f79f.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 860148,
+        "sha256": "5557f79f3c270f91b20e6194543aba99bcb4bbb9b7fc64ae838ec28340e67e6c"
+      },
+      {
+        "file": "img-6425-2048-20796170.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 945298,
+        "sha256": "20796170e720b8c41876f94a1e62a208b485522a6af2a3e6ac01174b436a4f01"
+      }
+    ]
+  }
+}

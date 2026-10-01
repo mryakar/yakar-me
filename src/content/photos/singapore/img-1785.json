@@ -1,0 +1,64 @@
+{
+  "alt": "A woman pauses to photograph the canopy on a busy, leafy walkway.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T14:52:04+08:00",
+  "aperture": 1.8,
+  "shutter": 0.0006570302234,
+  "iso": 100,
+  "focalLength": 24,
+  "place": {
+    "district": "Chinatown",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1785-640-bb3930be.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 80972,
+        "sha256": "bb3930bed11815de0586875c12eb078ed97c3ee7b07095b97e9b57a0bf72c67d"
+      },
+      {
+        "file": "img-1785-1280-fc4110e8.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 284503,
+        "sha256": "fc4110e877ed466dd37cd80fcfade0d93e59c13c58edf23e7601eda113644bcf"
+      },
+      {
+        "file": "img-1785-1536-f5627eee.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 379251,
+        "sha256": "f5627eee28a64ba43016a0f9ec8c2d8955bda4459cad33200278ef68961eefa3"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1785-640-92be49af.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 147782,
+        "sha256": "92be49afe492eeb8a3ff0f315f6b1326b29a751debb5f8762c8b9728d1bdca40"
+      },
+      {
+        "file": "img-1785-1280-65883220.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 502976,
+        "sha256": "65883220806bb5d8d7a5927f0d75b4dd1ab369c0ea09b823307bb72b545bafb7"
+      },
+      {
+        "file": "img-1785-1536-1d894141.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 656242,
+        "sha256": "1d8941416837fa1d75fb13f86a2bc47094a5603e1084ab2786c677ec811cee2a"
+      }
+    ]
+  }
+}

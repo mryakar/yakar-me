@@ -1,0 +1,64 @@
+{
+  "alt": "Red buses and parked cars gather below an apartment block crowned with a rooftop sign.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-26T13:35:24+02:00",
+  "aperture": 1.8,
+  "shutter": 0.0004545454545,
+  "iso": 32,
+  "focalLength": 26,
+  "place": {
+    "district": "Terazije",
+    "city": "Belgrade",
+    "country": "Serbia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4242-640-159b383c.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 59851,
+        "sha256": "159b383ccc309aaac68fa6c646a6e5a2cf27aded1172e7b2c7e32a52918dbcf3"
+      },
+      {
+        "file": "img-4242-1280-c569f98c.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 196652,
+        "sha256": "c569f98c66e4e37c85200803660deff4ada49ab46fe8020ec3372961476f07bb"
+      },
+      {
+        "file": "img-4242-1920-dc6d7664.avif",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 359078,
+        "sha256": "dc6d76647ec2475c7242137f489eb8c6723c2ea34da18f1f93c2d50ec016a4bd"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4242-640-c7d1fcdd.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 102166,
+        "sha256": "c7d1fcdddfc1e7e04b8a4bb1dca113b878f995f5165653c287e418557c9fb517"
+      },
+      {
+        "file": "img-4242-1280-240ca059.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 324826,
+        "sha256": "240ca0599090c5084d2becd638d4b2884e9a569511b4b2b701cce695a8c54c9d"
+      },
+      {
+        "file": "img-4242-1920-fe503e11.webp",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 568384,
+        "sha256": "fe503e1179fb977beaf3f1e9624e16b2eb8d708b951988b9af6bda3eb9754908"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alt": "Cobblestones and tram rails curve away down a long street in afternoon light.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T15:50:50+02:00",
+  "aperture": 2,
+  "shutter": 0.0002299908004,
+  "iso": 25,
+  "focalLength": 53,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6852-640-58ba7adc.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 63315,
+        "sha256": "58ba7adcfacf0db202778bd27895e6934534f27cf3baa9bdb89f8e3734008083"
+      },
+      {
+        "file": "img-6852-1280-cd48e785.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 204295,
+        "sha256": "cd48e78529e97b53ef2c3d9cc37a43cb9de6e2c829bffc52f47b8a2ddfca5485"
+      },
+      {
+        "file": "img-6852-1536-08b5b5a9.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 270689,
+        "sha256": "08b5b5a92098dfa460fcc0194a1632785a09455bc8e9e9c291d07e9ac96c820d"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6852-640-b4017ae5.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 111816,
+        "sha256": "b4017ae55d43301981661a02d8df9aa6b9db7dce8ef542904e07d7c1f2295bc9"
+      },
+      {
+        "file": "img-6852-1280-cc58ab24.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 362666,
+        "sha256": "cc58ab2403eed9bf303a9b619ebb1cd77279cf994d23926d524dec11fa5dccdf"
+      },
+      {
+        "file": "img-6852-1536-48dbde68.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 477684,
+        "sha256": "48dbde6836976778669afc4a3e0e8bb8d1805ed023c3e542634f77c37cbedf95"
+      }
+    ]
+  }
+}

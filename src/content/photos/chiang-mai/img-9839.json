@@ -1,0 +1,64 @@
+{
+  "alt": "A pale dog with drawn-on eyebrows looks up from a stone floor with a worried air.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-07-07T13:52:13+07:00",
+  "aperture": 1.8,
+  "shutter": 0.01666666667,
+  "iso": 320,
+  "focalLength": 26,
+  "place": {
+    "district": "Doi Suthep",
+    "city": "Chiang Mai",
+    "country": "Thailand"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-9839-640-099fb745.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 47876,
+        "sha256": "099fb7452ad296dd84dc2aa3457fab4c39b151bda72d314b0907306be70b76c5"
+      },
+      {
+        "file": "img-9839-1280-b3ea1ed4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 131949,
+        "sha256": "b3ea1ed46dc1ec1e8d2848f7bb83d9c30cdebc5c96f4a469cd6a7f2836222c07"
+      },
+      {
+        "file": "img-9839-1536-37d0f666.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 174269,
+        "sha256": "37d0f666a07ab4528968123933d6b3b6e1ca886cd9405f1716746312243e5a96"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-9839-640-afd45899.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 76022,
+        "sha256": "afd45899dc00d26bf57814abe7d513b1ea58eabbc559ab6a0e80923cc363ffe1"
+      },
+      {
+        "file": "img-9839-1280-0f8d48de.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 183412,
+        "sha256": "0f8d48dec787f5941a84cdd9ef4bfa20f69c17a4a7a80ff4c063d8f30f4a5bab"
+      },
+      {
+        "file": "img-9839-1536-ca336096.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 230170,
+        "sha256": "ca336096bce0cc32f472ce09350de763791356807ab7f45c3980128308bff697"
+      }
+    ]
+  }
+}

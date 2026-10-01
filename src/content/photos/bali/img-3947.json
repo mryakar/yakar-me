@@ -1,0 +1,64 @@
+{
+  "alt": "Umbrellas and palms turn to shadow as the last light fades over the beach.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-12T18:14:25+08:00",
+  "aperture": 1.8,
+  "shutter": 0.002141327623,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Legian",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3947-640-481c9646.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 21673,
+        "sha256": "481c9646965029aeee44da21b060c22e7eb9f07ac39ffbf7befb9c541050d200"
+      },
+      {
+        "file": "img-3947-1280-22cfb479.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 62540,
+        "sha256": "22cfb47910367a6c130bd839721cdb86fd808a6960a95abfff3b70672901a5db"
+      },
+      {
+        "file": "img-3947-1536-183950a1.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 80970,
+        "sha256": "183950a151391e4a72ef02952527a7f417f96c05690f67a94b664b07f4fd7b53"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3947-640-71189b3a.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 25582,
+        "sha256": "71189b3a42e8b24c2ac468544c3d4aae997bd077a0095a39ef2e2c2a28771788"
+      },
+      {
+        "file": "img-3947-1280-e4bb7250.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 70950,
+        "sha256": "e4bb7250f7b1518dcfdb73e79d0430d9f2aa88b71e0173d50e395d5ae1771191"
+      },
+      {
+        "file": "img-3947-1536-d2df5b52.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 89930,
+        "sha256": "d2df5b52867096306ff5bfd0246bb8963895951ddc4eade2a62312d2a0d08340"
+      }
+    ]
+  }
+}

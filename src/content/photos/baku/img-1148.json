@@ -1,0 +1,64 @@
+{
+  "alt": "Dusk settles over a wide, quiet avenue, stone facades warming under the first lamps.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-02-03T18:07:41+04:00",
+  "aperture": 1.8,
+  "shutter": 0.01,
+  "iso": 80,
+  "focalLength": 24,
+  "place": {
+    "district": "Nizami Street",
+    "city": "Baku",
+    "country": "Azerbaijan"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1148-640-0b886f53.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 34144,
+        "sha256": "0b886f5346182d362d42c66402c03d4daf56acd309b412cc42684f37a09107bb"
+      },
+      {
+        "file": "img-1148-1280-3dc45ea1.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 137462,
+        "sha256": "3dc45ea19e546e774fcc8bd068696d97a28dbf8643678a60ea6eef9a3c19c50f"
+      },
+      {
+        "file": "img-1148-1920-854a67df.avif",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 293409,
+        "sha256": "854a67df9470e4712ef80d9b83c402ac6abe7acabc662411200a060ef071b532"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1148-640-acd93aac.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 57240,
+        "sha256": "acd93aac1682414cac79ad3fe8503d5b166fe7e3fc13f17146c6ec3011ecc232"
+      },
+      {
+        "file": "img-1148-1280-eaa662be.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 225300,
+        "sha256": "eaa662beb737e177c43d51269aea86ba50a0a1449e403755c78c059581f3d96d"
+      },
+      {
+        "file": "img-1148-1920-2c76c2aa.webp",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 464716,
+        "sha256": "2c76c2aaa84d76c117b30012668226fdc0ccd481c832829938190f485bbb1adf"
+      }
+    ]
+  }
+}

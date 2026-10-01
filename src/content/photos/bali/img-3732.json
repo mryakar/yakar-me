@@ -1,0 +1,64 @@
+{
+  "alt": "Dawn tints the sky pink above a ragged line of palm crowns.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-09T06:20:09+08:00",
+  "aperture": 1.8,
+  "shutter": 0.004366812227,
+  "iso": 64,
+  "focalLength": 48,
+  "place": {
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-3732-640-d1eedecb.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 14389,
+        "sha256": "d1eedecb9031c71d4def1f20f8cea4eeac3f02ae39fd0307cb5034ef0a6e1181"
+      },
+      {
+        "file": "img-3732-1280-42abdef6.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 38117,
+        "sha256": "42abdef69a0a56ea248687bdb3d9bde682993b08b8384a4a5b24a1d5b18dab06"
+      },
+      {
+        "file": "img-3732-1536-f9ca16bb.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 50461,
+        "sha256": "f9ca16bb11552fa59a83e701dd20e09ee32e0b6a49463c16832e992beba3ec85"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-3732-640-491d4424.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 18188,
+        "sha256": "491d44249a6c2e1a387fa83c68de260f1713bd73a3bedff12e8725676ead52cf"
+      },
+      {
+        "file": "img-3732-1280-b9f2e104.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 46904,
+        "sha256": "b9f2e1042969a1eb6dd91a2a5708adebeab0a7196feedf898d4e20c6d1b6af94"
+      },
+      {
+        "file": "img-3732-1536-644d475e.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 58934,
+        "sha256": "644d475ea70f918153f2420f5e261111b277395ab8d530180f3088950805840d"
+      }
+    ]
+  }
+}

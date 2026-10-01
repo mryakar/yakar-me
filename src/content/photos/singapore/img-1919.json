@@ -1,0 +1,64 @@
+{
+  "alt": "A small lit sign hangs by a doorway on a narrow, quiet lane at night.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-05-31T21:35:33+08:00",
+  "aperture": 2.8,
+  "shutter": 0.0303030303,
+  "iso": 1000,
+  "focalLength": 320,
+  "place": {
+    "district": "Clarke Quay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-1919-640-1f4ddbeb.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 31144,
+        "sha256": "1f4ddbeb6d42dcf055dddac66638b2442e6f4449cf8b58412c102efcb4071701"
+      },
+      {
+        "file": "img-1919-1280-bb6ace06.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 107997,
+        "sha256": "bb6ace06ebc79ca8d8ba7c951721bb1c8a3b33f73442f430fdd3f22ed444f1c6"
+      },
+      {
+        "file": "img-1919-1536-dffde523.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 142863,
+        "sha256": "dffde523cd3a23f3de9e888e59adeb6a725ab887e6db74d9195a1ed127baf6cd"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-1919-640-b680dc21.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 39670,
+        "sha256": "b680dc21669c369f7f5874813fe0b6e88cc6a41d4a4164761e8e7ab5bdc2ca07"
+      },
+      {
+        "file": "img-1919-1280-2c8a66fd.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 112796,
+        "sha256": "2c8a66fd32d70d64829b4d688150107760f6e90e928d4f82872cbb7f476f4330"
+      },
+      {
+        "file": "img-1919-1536-441a32e5.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 144394,
+        "sha256": "441a32e525f11ff30b84c601a4c0bf097871ad6fa707aea7940454c4f2ff3598"
+      }
+    ]
+  }
+}

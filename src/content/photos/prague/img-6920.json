@@ -1,0 +1,64 @@
+{
+  "alt": "A mounted saint holds a lance high above four figures on a dark pedestal.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2023-04-22T17:18:27+02:00",
+  "aperture": 2,
+  "shutter": 0.001001001001,
+  "iso": 20,
+  "focalLength": 52,
+  "place": {
+    "district": "Nove Mesto",
+    "city": "Prague",
+    "country": "Czechia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6920-640-d97024d9.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 27715,
+        "sha256": "d97024d96c8caf9b3fa47043bb0bdbfb01ed23becbdbd7477c242c0628457225"
+      },
+      {
+        "file": "img-6920-1280-01e7b9d3.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 87112,
+        "sha256": "01e7b9d3e7302f954ab94573f857ddc27d0b220cfb55e0bfca2c04166ff68d95"
+      },
+      {
+        "file": "img-6920-1536-1ad25ee9.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 116102,
+        "sha256": "1ad25ee9a5cb4bb476a1ea896aed2e1c0083e860c7ff262548683f7bef4b2d9c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6920-640-cc3f7dbf.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 40632,
+        "sha256": "cc3f7dbf0e57c09c73bb0a12698edb1c96e30c7554ee1357704b64e590725fbe"
+      },
+      {
+        "file": "img-6920-1280-62b1b11a.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 124028,
+        "sha256": "62b1b11a802549eed0ffc82d81f97ed1e6ba8460a9077a2a6afd75efd0f2128f"
+      },
+      {
+        "file": "img-6920-1536-5b49ef4a.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 158408,
+        "sha256": "5b49ef4ae6960b74c558f47e6a64a7ec82bb4f1bf345dfdef4c0c67e9e499187"
+      }
+    ]
+  }
+}

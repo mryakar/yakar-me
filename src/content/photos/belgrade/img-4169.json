@@ -1,0 +1,64 @@
+{
+  "alt": "A seated figure of a man in a grey suit reads a book in a wood-panelled alcove.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 11 Pro Max",
+  "taken": "2024-04-25T14:45:35+02:00",
+  "aperture": 1.8,
+  "shutter": 0.04,
+  "iso": 500,
+  "focalLength": 26,
+  "place": {
+    "district": "Vracar",
+    "city": "Belgrade",
+    "country": "Serbia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-4169-640-d4335ab1.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 43172,
+        "sha256": "d4335ab1bc4ffb43c13e543f661ce2b86a61ea60a235c02291b833bdcc070485"
+      },
+      {
+        "file": "img-4169-1280-10968dd4.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 130391,
+        "sha256": "10968dd4094e5189e0076234ea5516109b587186be4e7015e59d192d3cf64242"
+      },
+      {
+        "file": "img-4169-1536-11ba428e.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 177048,
+        "sha256": "11ba428e6aab63a2ccf21d8b62b29e170014c3bd1fc1398bb83e5b3f8afad35b"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-4169-640-a66c563e.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 68138,
+        "sha256": "a66c563ecd8cd8c4e41218e9446ef66312ff853b76b1e6d4ee0cced8c2638a9b"
+      },
+      {
+        "file": "img-4169-1280-e8387bee.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 183740,
+        "sha256": "e8387bee13b05dbf36851f1592650f9f6a23351910f1788d0142c051527024de"
+      },
+      {
+        "file": "img-4169-1536-aeb7e0e1.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 237230,
+        "sha256": "aeb7e0e167f9caaabe31d8709a387d9a2db9be36dfdbc023f7f99532e0590922"
+      }
+    ]
+  }
+}

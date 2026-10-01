@@ -1,0 +1,64 @@
+{
+  "alt": "Deep night over the hills, a scatter of small lights caught among the trees.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-05T23:44:25+08:00",
+  "aperture": 1.8,
+  "shutter": 0.5,
+  "iso": 2500,
+  "focalLength": 24,
+  "place": {
+    "district": "Ubud",
+    "city": "Bali",
+    "country": "Indonesia"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2931-640-cb8c8521.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 10862,
+        "sha256": "cb8c85214e112e759f5a2544f20f4703e8452754d91bd7e5bf5444323cb50235"
+      },
+      {
+        "file": "img-2931-1280-5b1a21ad.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 27624,
+        "sha256": "5b1a21adc356f4e5eecaca0f99453b5823b3ab19658a5d2a61006dd716936123"
+      },
+      {
+        "file": "img-2931-1536-f3cab733.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 35038,
+        "sha256": "f3cab7330cc50b1ed9b92b0dc6c6cf757a34aecd1fe2f1e656465b87bdaaac8c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2931-640-ff191a45.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 12028,
+        "sha256": "ff191a456b75f8c5e2df9316dfeb864aa5af129f9d00665fbee299ed49463e7a"
+      },
+      {
+        "file": "img-2931-1280-15b9977c.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 31804,
+        "sha256": "15b9977c5998a59665d195f6a5a8e1bb6f561d539bac47a15dc400f7eb7ba348"
+      },
+      {
+        "file": "img-2931-1536-f378e44c.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 39440,
+        "sha256": "f378e44cabd1ac63854f7b29c373513d3b1a1fa6713608b5bab7213fb88efd6e"
+      }
+    ]
+  }
+}

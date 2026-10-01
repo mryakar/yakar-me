@@ -1,0 +1,64 @@
+{
+  "alt": "Red lories crowd a feeding dish among the leaves.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-02T12:24:58+08:00",
+  "aperture": 2.8,
+  "shutter": 0.0101010101,
+  "iso": 80,
+  "focalLength": 120,
+  "place": {
+    "district": "Mandai",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2541-640-fb5a432b.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 49178,
+        "sha256": "fb5a432bdaaa3ce098e862527e54c5bf8470b3e206ac32e8a2c75b9af8b72c4c"
+      },
+      {
+        "file": "img-2541-1280-c172d2c1.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 139281,
+        "sha256": "c172d2c1220c1cbd55ab1bb5356847dcd9e637a0bd68c4fadb86aecca7a521cd"
+      },
+      {
+        "file": "img-2541-1536-def51199.avif",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 186133,
+        "sha256": "def51199edd29051a13e220748e3ec6af69fc611cd7e9def1dfd5b22b7dd49a7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2541-640-661b1302.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 72836,
+        "sha256": "661b13025437c8ea6bcae3a63ff26a228d26b9884f730ecec4efeb37d20a60c4"
+      },
+      {
+        "file": "img-2541-1280-923909d8.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 178128,
+        "sha256": "923909d8827fd384587a382855cc17cac4d5eacdb59bfa563d3c96bf6b6edfb4"
+      },
+      {
+        "file": "img-2541-1536-b430bc77.webp",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 225114,
+        "sha256": "b430bc77fef14f25320bd93b9aa9804f5431cd132e6f61e20c364070edb2e5db"
+      }
+    ]
+  }
+}

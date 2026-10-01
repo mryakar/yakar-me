@@ -1,0 +1,78 @@
+{
+  "alt": "Giant steel trees wrapped in climbing plants tower over a garden path.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2025-06-01T11:47:55+08:00",
+  "aperture": 2.2,
+  "shutter": 0.0006038647343,
+  "iso": 50,
+  "focalLength": 14,
+  "place": {
+    "district": "Gardens by the Bay",
+    "city": "Singapore",
+    "country": "Singapore"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-2158-640-4333b196.avif",
+        "width": 640,
+        "height": 480,
+        "bytes": 51750,
+        "sha256": "4333b196669972148e2e94e8faf5fe68cded7101cccbdbe6a7ff8cefe7ab4160"
+      },
+      {
+        "file": "img-2158-1280-c2f5c094.avif",
+        "width": 1280,
+        "height": 960,
+        "bytes": 195119,
+        "sha256": "c2f5c094dbe1f5165e04c8265ff0ce47860e3ec8d6039b5a05ecb370bb42e965"
+      },
+      {
+        "file": "img-2158-1920-bf4f9698.avif",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 367984,
+        "sha256": "bf4f9698c5f058f2f29ca215874e6be445093bf4c3aeedc13a71b022a6a63302"
+      },
+      {
+        "file": "img-2158-2048-589ebc4b.avif",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 409642,
+        "sha256": "589ebc4b1dbf668801a0a11ed1b76a03632880591ec57a088f3ce7693b9e2aac"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-2158-640-4c834172.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 94034,
+        "sha256": "4c8341729c4e73d9aaa03452da6149a8c237e1e955ea05488e8fa675d8d5dd6a"
+      },
+      {
+        "file": "img-2158-1280-3bb57a4d.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 344364,
+        "sha256": "3bb57a4da7c68d560e7d3141e9298d15beb18b4c4a9480403a62c8119b9a8875"
+      },
+      {
+        "file": "img-2158-1920-d6a26346.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 652816,
+        "sha256": "d6a2634641a12b134f1a3ebeb1a653f374fa2771d96b6712a7588b2d960aca7f"
+      },
+      {
+        "file": "img-2158-2048-bb932ae1.webp",
+        "width": 2048,
+        "height": 1536,
+        "bytes": 731522,
+        "sha256": "bb932ae159e99ed780439eb8ffa1acc8b0eca7a3624e32ead40b688277ac2d44"
+      }
+    ]
+  }
+}
