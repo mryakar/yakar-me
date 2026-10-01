@@ -5,6 +5,8 @@ export const site = {
   url: 'https://yakar.me',
 };
 
+export const home = { city: 'Ankara', country: 'Turkey', lat: 39.9334, lon: 32.8597 };
+
 export const nav = [
   { key: 'home', href: '/' },
   { key: 'writing', href: '/writing/' },
