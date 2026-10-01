@@ -508,7 +508,6 @@
       display: block;
       max-width: 100%;
       max-height: 78%;
-      overflow: hidden;
     }
     .spine-month {
       order: 0;
@@ -571,7 +570,6 @@
     flex: 0 1 auto;
     min-height: 0;
     max-width: 100%;
-    overflow: hidden;
   }
   .book-spine-label {
     flex: none;
