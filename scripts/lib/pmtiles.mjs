@@ -265,8 +265,3 @@ export function* readTiles(buf) {
   }
   yield* walk(dir(h.rootOffset, h.rootLength));
 }
-
-export function readMetadata(buf) {
-  const h = readHeader(buf);
-  return JSON.parse(decompress(buf.subarray(h.metadataOffset, h.metadataOffset + h.metadataLength), h.internalCompression).toString('utf8'));
-}

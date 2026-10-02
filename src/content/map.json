@@ -1,11 +1,9 @@
 {
   "file": "map-5911747e.pmtiles",
   "sha256": "5911747e40de200265c0a51275c600706c8c09d09c36de5f2d1957ae53d8050e",
-  "bytes": 114684478,
   "tiles": 7546,
   "source": "20261001.pmtiles",
   "basemap": "4.15.2",
-  "attribution": "© OpenStreetMap contributors · Protomaps",
   "worldMaxZoom": 6,
   "cityZooms": [
     7,

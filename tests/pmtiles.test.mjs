@@ -11,7 +11,6 @@ import {
   latToTileY,
   lonToTileX,
   readHeader,
-  readMetadata,
   readTiles,
   tilesInBounds,
   writeArchive,
@@ -88,7 +87,6 @@ test('writeArchive: aynı içerik bir kez yazılır, ardışık aynı karolar te
   assert.equal(h.maxZoom, 1);
   assert.equal(h.leafLength, 0);
   assert.deepEqual(h.bounds, [-180, -85, 180, 85]);
-  assert.deepEqual(readMetadata(buf), { attribution: '© OpenStreetMap' });
   const read = [...readTiles(buf)].map(({ z, x, y, data }) => [`${z}/${x}/${y}`, data.equals(sample.find((t) => t.id === zxyToId(z, x, y)).data)]);
   assert.deepEqual(read, [['0/0/0', true], ['1/0/0', true], ['1/0/1', true], ['1/1/1', true], ['1/1/0', true]]);
 });

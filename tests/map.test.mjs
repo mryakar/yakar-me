@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { bounds, boundsMiddle, centre, cityKey, contains, padded, placeKey, regionProblems, regions, tileRoot } from '../src/lib/map.ts';
+import { bounds, boundsMiddle, centre, centreLookup, cityKey, contains, padded, placeKey, regionProblems, regions, tileRoot } from '../src/lib/map.ts';
 
 const hk = (district, lat, lon) => ({ district, city: 'Hong Kong', country: 'Hong Kong', lat, lon });
 const causeway = hk('Causeway Bay', 22.28066, 114.18096);
@@ -47,4 +47,10 @@ test('regionProblems: eksik şehir, kutu dışında semt ve fotoğrafsız şehir
 test('centre: küre üstünde ortalama nokta', () => {
   assert.deepEqual(centre([{ lat: 0, lon: 170 }, { lat: 0, lon: -170 }]), { lat: 0, lon: 180 });
   assert.deepEqual(centre([{ lat: 10, lon: 20 }]), { lat: 10, lon: 20 });
+});
+
+test('centreLookup: üçlüyle bulur, tabloda olmayan yer kırar', () => {
+  const lookup = centreLookup([causeway, ubud]);
+  assert.equal(lookup({ district: 'Ubud', city: 'Bali', country: 'Indonesia' }), ubud);
+  assert.throws(() => lookup({ district: 'Ubud', city: 'Bali', country: 'Malaysia' }), /No district centre for "Ubud, Bali, Malaysia"/);
 });

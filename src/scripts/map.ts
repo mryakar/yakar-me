@@ -1,5 +1,7 @@
-import type { Map as MapLibreMap, Marker, StyleSpecification, LayerSpecification, ExpressionSpecification } from 'maplibre-gl';
-import { bounds, boundsMiddle, contains, type Bounds } from '../lib/map';
+import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
+import { bounds, contains, type Bounds } from '../lib/map';
+import { mapStyle, PALETTE_TOKENS, type Palette } from '../lib/map-style';
+import { arrange } from '../lib/map-labels';
 
 type MapLibre = typeof import('maplibre-gl');
 
@@ -8,15 +10,10 @@ const frame = document.querySelector<HTMLElement>('[data-map]');
 const CITY_LEVEL = 8;
 const PLACE_ZOOM = 13;
 const MERGED_ZOOM = 15;
-const MERGE_PX = 28;
 const CARD_GAP = 24;
-const LABEL_OFFSET = 20;
 const SHEET_LIFT = 110;
 const CARD_MARGIN = 12;
 const FIT_PADDING = 64;
-const GLYPHS = '/glyphs/{fontstack}/{range}.pbf';
-const TOKENS = ['bg', 'ocean', 'land', 'coast', 'frontier', 'line', 'line-strong', 'faint'] as const;
-type Palette = Record<(typeof TOKENS)[number], string>;
 
 interface Place {
   id: string;
@@ -41,9 +38,11 @@ interface Pin {
 
 interface City {
   bounds: Bounds;
+  lat: number;
+  lon: number;
   name: string;
   label: string;
-  count: string;
+  count: number;
   places: Place[];
 }
 
@@ -60,7 +59,7 @@ function palette(probe: HTMLElement): Palette {
     probe.style.color = `var(--yk-${token})`;
     return getComputedStyle(probe).color;
   };
-  return Object.fromEntries(TOKENS.map((t) => [t, read(t)])) as Palette;
+  return Object.fromEntries(PALETTE_TOKENS.map((t) => [t, read(t)])) as Palette;
 }
 
 const lngLat = (p: { lat: number; lon: number }): [number, number] => [p.lon, p.lat];
@@ -78,127 +77,19 @@ function readPlaces(): City[] {
       link,
     }));
     const cut = el.dataset.bounds!.split(' ').map(Number) as Bounds;
-    return { bounds: cut, name: el.dataset.name!, label: el.dataset.label!, count: el.dataset.count!, places };
+    return {
+      bounds: cut,
+      lat: Number(el.dataset.lat),
+      lon: Number(el.dataset.lon),
+      name: el.dataset.name!,
+      label: el.dataset.label!,
+      count: Number(el.dataset.count),
+      places,
+    };
   });
 }
 
-function style(c: Palette, lang: string, tiles: string, worldMax: number, cityZooms: number[], regions: City[]): StyleSpecification {
-  const name: ExpressionSpecification =
-    lang === 'tr' ? ['coalesce', ['get', 'name:tr'], ['get', 'name:en']] : ['get', 'name:en'];
-  const cities = regions.map((r, i) => ({ id: `city-${i}`, bounds: r.bounds }));
-  const ours = regions.flatMap((r) => [r.name, ...r.places.map((p) => p.name)]);
-  const base = (source: string, detail: boolean): LayerSpecification[] => [
-    { id: `${source}-earth`, type: 'fill', source, 'source-layer': 'earth', paint: { 'fill-color': c.land } },
-    { id: `${source}-water`, type: 'fill', source, 'source-layer': 'water', paint: { 'fill-color': c.ocean } },
-    {
-      id: `${source}-coast`,
-      type: 'line',
-      source,
-      'source-layer': 'earth',
-      paint: { 'line-color': c.coast, 'line-opacity': 0.55, 'line-width': ['interpolate', ['linear'], ['zoom'], 0, 0.4, 12, 1] },
-    },
-    ...(detail
-      ? ([
-          {
-            id: `${source}-roads`,
-            type: 'line',
-            source,
-            'source-layer': 'roads',
-            minzoom: 10,
-            filter: ['in', ['get', 'kind'], ['literal', ['minor_road', 'other']]],
-            paint: { 'line-color': c.line, 'line-opacity': 0.6, 'line-width': ['interpolate', ['linear'], ['zoom'], 12, 0.5, 16, 3] },
-          },
-          {
-            id: `${source}-roads-major`,
-            type: 'line',
-            source,
-            'source-layer': 'roads',
-            minzoom: 8,
-            filter: ['in', ['get', 'kind'], ['literal', ['highway', 'major_road', 'medium_road']]],
-            paint: { 'line-color': c['line-strong'], 'line-opacity': 0.7, 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.4, 16, 3] },
-          },
-          {
-            id: `${source}-buildings`,
-            type: 'fill',
-            source,
-            'source-layer': 'buildings',
-            minzoom: 14,
-            paint: { 'fill-color': c.line },
-          },
-        ] satisfies LayerSpecification[])
-      : []),
-    {
-      id: `${source}-borders`,
-      type: 'line',
-      source,
-      'source-layer': 'boundaries',
-      filter: ['==', ['get', 'kind'], 'country'],
-      paint: { 'line-color': c.frontier, 'line-width': 1 },
-    },
-  ];
-  return {
-    version: 8,
-    projection: { type: 'globe' },
-    sky: { 'atmosphere-blend': 0 },
-    glyphs: `${location.origin}${GLYPHS}`,
-    sources: {
-      world: { type: 'vector', tiles: [`${location.origin}${tiles}`], minzoom: 0, maxzoom: worldMax },
-      ...Object.fromEntries(
-        cities.map((s) => [
-          s.id,
-          { type: 'vector', tiles: [`${location.origin}${tiles}`], minzoom: cityZooms[0], maxzoom: cityZooms[1], bounds: s.bounds },
-        ]),
-      ),
-    },
-    layers: [
-      { id: 'background', type: 'background', paint: { 'background-color': c.ocean } },
-      ...base('world', false),
-      ...cities.flatMap((s) => base(s.id, true)),
-      {
-        id: 'countries',
-        type: 'symbol',
-        source: 'world',
-        'source-layer': 'places',
-        minzoom: 2,
-        maxzoom: 6,
-        filter: ['==', ['get', 'kind'], 'country'],
-        layout: {
-          'text-field': name,
-          'text-font': ['geist-regular'],
-          'text-size': 11,
-          'text-transform': 'uppercase',
-          'text-letter-spacing': 0.12,
-          'text-max-width': 8,
-        },
-        paint: { 'text-color': c.faint, 'text-halo-color': c.bg, 'text-halo-width': 1.2 },
-      },
-      ...cities.map(
-        (s): LayerSpecification => ({
-          id: `${s.id}-localities`,
-          type: 'symbol',
-          source: s.id,
-          'source-layer': 'places',
-          minzoom: 9,
-          filter: [
-            'all',
-            ['==', ['get', 'kind'], 'locality'],
-            ['<=', ['get', 'min_zoom'], ['-', ['zoom'], 3]],
-            ['!', ['in', ['get', 'name:en'], ['literal', ours]]],
-          ],
-          layout: {
-            'text-field': name,
-            'text-font': ['instrument-serif-italic'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 9, 15, 13, 20],
-            'text-max-width': 8,
-          },
-          paint: { 'text-color': c.faint, 'text-halo-color': c.bg, 'text-halo-width': 1.2 },
-        }),
-      ),
-    ],
-  };
-}
-
-function markerElement(kind: 'city' | 'place', label: string, name: string, weight: number, count?: string) {
+function markerElement(kind: 'city' | 'place', label: string, name: string, weight: number) {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'map-marker';
@@ -211,10 +102,10 @@ function markerElement(kind: 'city' | 'place', label: string, name: string, weig
   text.className = 'map-name';
   text.setAttribute('aria-hidden', 'true');
   text.textContent = name;
-  if (count) {
+  if (kind === 'city') {
     const n = document.createElement('span');
     n.className = 'map-count';
-    n.textContent = count;
+    n.textContent = String(weight);
     text.append(n);
   }
   button.append(dot, text);
@@ -223,8 +114,6 @@ function markerElement(kind: 'city' | 'place', label: string, name: string, weig
 
 async function start(frame: HTMLElement) {
   const { maplibre, tiles, lang } = frame.dataset as Record<string, string>;
-  const worldMax = Number(frame.dataset.worldMaxZoom);
-  const cityZooms = frame.dataset.cityZooms!.split(' ').map(Number);
   const [lon, lat] = frame.dataset.centre!.split(' ').map(Number);
   const canvas = frame.querySelector<HTMLElement>('[data-map-canvas]')!;
   const crumb = frame.querySelector<HTMLElement>('[data-crumb]')!;
@@ -238,7 +127,17 @@ async function start(frame: HTMLElement) {
   const gl: MapLibre = await import(/* @vite-ignore */ new URL(maplibre, location.origin).href);
   const globeZoom = () => Math.log2((0.85 * Math.min(canvas.clientWidth, canvas.clientHeight) * Math.PI) / 512);
   const home = () => ({ center: [lon, lat] as [number, number], zoom: globeZoom() });
-  const paint = () => style(palette(frame), lang, tiles, worldMax, cityZooms, cities);
+  const paint = () =>
+    mapStyle({
+      palette: palette(frame),
+      lang,
+      origin: location.origin,
+      tiles,
+      worldMaxZoom: Number(frame.dataset.worldMaxZoom),
+      cityZooms: frame.dataset.cityZooms!.split(' ').map(Number),
+      regions: cities.map((c) => c.bounds),
+      ours: cities.flatMap((c) => [c.name, ...c.places.map((p) => p.name)]),
+    });
 
   let map: MapLibreMap;
   try {
@@ -323,8 +222,8 @@ async function start(frame: HTMLElement) {
 
   const pins: Pin[] = [];
   for (const city of cities) {
-    const element = markerElement('city', city.label, city.name, Number(city.count), city.count);
-    const pin: Pin = { element, kind: 'city', lngLat: lngLat(boundsMiddle(city.places)), weight: Number(city.count), places: city.places, group: city.places };
+    const element = markerElement('city', city.label, city.name, city.count);
+    const pin: Pin = { element, kind: 'city', lngLat: lngLat(city), weight: city.count, places: city.places, group: city.places };
     element.addEventListener('click', () => fitPlaces(pin.group));
     new gl.Marker({ element, anchor: 'center', opacityWhenCovered: '0' }).setLngLat(pin.lngLat).addTo(map);
     pins.push(pin);
@@ -356,29 +255,26 @@ async function start(frame: HTMLElement) {
   };
   const declutter = () => {
     const kind = frame.dataset.level === 'world' ? 'city' : 'place';
-    const leaders: { pin: Pin; at: { x: number; y: number } }[] = [];
-    for (const pin of pins.filter((p) => p.kind === kind).sort((a, b) => b.weight - a.weight)) {
-      const at = map.project(pin.lngLat);
-      const leader = leaders.find((l) => Math.hypot(l.at.x - at.x, l.at.y - at.y) < MERGE_PX);
-      pin.element.toggleAttribute('data-merged', !!leader);
+    const shown = pins.filter((p) => p.kind === kind);
+    for (const pin of shown) {
+      pin.element.removeAttribute('data-merged');
       pin.group = [...pin.places];
-      if (leader) leader.pin.group.push(...pin.places);
-      else leaders.push({ pin, at });
     }
-    const taken = leaders.map(({ at }) => new DOMRect(at.x - 8, at.y - 8, 16, 16));
-    const width = frame.clientWidth;
-    const clear = (r: DOMRect) =>
-      r.left >= 0 && r.right <= width && !taken.some((t) => t.left < r.right && r.left < t.right && t.top < r.bottom && r.top < t.bottom);
-    for (const { pin, at } of leaders) {
-      const name = pin.element.querySelector<HTMLElement>('.map-name')!;
-      const [w, h] = [name.offsetWidth, name.offsetHeight];
-      const right = new DOMRect(at.x + LABEL_OFFSET, at.y - h / 2, w, h);
-      const left = new DOMRect(at.x - LABEL_OFFSET - w, at.y - h / 2, w, h);
-      const spot = [right, left].find(clear);
-      pin.element.toggleAttribute('data-quiet', !spot);
-      pin.element.toggleAttribute('data-flip', spot === left);
-      if (spot) taken.push(spot);
-    }
+    const layout = arrange(
+      shown.map((pin) => {
+        const { x, y } = map.project(pin.lngLat);
+        const name = pin.element.querySelector<HTMLElement>('.map-name')!;
+        return { x, y, weight: pin.weight, width: name.offsetWidth, height: name.offsetHeight };
+      }),
+      frame.clientWidth,
+    );
+    shown.forEach((pin, i) => {
+      const { leader, side } = layout[i];
+      if (leader !== i) shown[leader].group.push(...pin.places);
+      pin.element.toggleAttribute('data-merged', leader !== i);
+      pin.element.toggleAttribute('data-quiet', leader === i && !side);
+      pin.element.toggleAttribute('data-flip', side === 'left');
+    });
   };
   map.on('zoom', level);
   map.on('moveend', level);

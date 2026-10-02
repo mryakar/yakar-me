@@ -116,12 +116,7 @@ const tiles = [...found].map(([id, c]) => ({ id, data: data.get(c.offset) }));
 const zooms = tiles.map((t) => idToZxy(t.id).z);
 const archive = writeArchive({
   tiles,
-  metadata: {
-    attribution: ATTRIBUTION,
-    source: build.key,
-    basemap: build.version,
-    regions: cities,
-  },
+  metadata: { attribution: ATTRIBUTION, source: build.key, basemap: build.version },
   tileCompression: COMPRESSION.gzip,
   tileType: TILE_TYPE.mvt,
   bounds: [-180, -85.05, 180, 85.05],
@@ -148,11 +143,9 @@ if (!opts['no-upload']) {
 const record = {
   file,
   sha256: hash,
-  bytes: archive.length,
   tiles: tiles.length,
   source: build.key,
   basemap: build.version,
-  attribution: ATTRIBUTION,
   worldMaxZoom: WORLD_MAX_ZOOM,
   cityZooms: CITY_ZOOMS,
   regions: cities,

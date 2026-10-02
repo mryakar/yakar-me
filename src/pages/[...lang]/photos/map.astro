@@ -89,7 +89,7 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       <h2 id="places" class="label text-faint">{t.map.placesHeading} · {places.length}</h2>
       <div class="grid gap-x-12 gap-y-10 tab:grid-cols-2">
         {cities.map((c) => (
-          <div data-city data-bounds={c.bounds.join(' ')} data-name={c.city} data-label={`${c.city}, ${t.photos.count(c.photos)}`} data-count={c.photos} class="flex flex-col">
+          <div data-city data-bounds={c.bounds.join(' ')} data-lat={c.middle.lat} data-lon={c.middle.lon} data-name={c.city} data-label={`${c.city}, ${t.photos.count(c.photos)}`} data-count={c.photos} class="flex flex-col">
             <div class="flex items-baseline justify-between gap-4 border-b border-line pb-3">
               <h3 class="font-display text-d4">{c.city}</h3>
               <span class="label text-right text-faint">{t.photos.country(c.country)} · {plural(t.map.places, c.places.length)}</span>
