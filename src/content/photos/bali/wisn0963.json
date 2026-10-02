@@ -34,6 +34,13 @@
   "variants": {
     "avif": [
       {
+        "file": "wisn0963-320-132838fa.avif",
+        "width": 320,
+        "height": 213,
+        "bytes": 6316,
+        "sha256": "132838faac644fb1d874171c10d8bd142f560933c1b8e56435bee0f1f88c6fa5"
+      },
+      {
         "file": "wisn0963-640-89524b29.avif",
         "width": 640,
         "height": 427,
@@ -63,6 +70,13 @@
       }
     ],
     "webp": [
+      {
+        "file": "wisn0963-320-9992f436.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 9402,
+        "sha256": "9992f436ceec68b24424828c658283710198f09d343ad3b39dc8c874dfec5df6"
+      },
       {
         "file": "wisn0963-640-3e0951d9.webp",
         "width": 640,
