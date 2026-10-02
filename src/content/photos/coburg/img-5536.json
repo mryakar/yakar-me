@@ -16,6 +16,13 @@
   "variants": {
     "avif": [
       {
+        "file": "img-5536-320-4d6efcce.avif",
+        "width": 320,
+        "height": 427,
+        "bytes": 21072,
+        "sha256": "4d6efcced6d3b08af3c79495c64fdc7a9a376e80ab814f3610fa60a1cb5f0888"
+      },
+      {
         "file": "img-5536-640-0924db07.avif",
         "width": 640,
         "height": 853,
@@ -38,6 +45,13 @@
       }
     ],
     "webp": [
+      {
+        "file": "img-5536-320-f9f45d55.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 40020,
+        "sha256": "f9f45d55d40b793f2e66735ce15a46f43f212aecb00540cd5c333cbcc8619472"
+      },
       {
         "file": "img-5536-640-4ca2be5b.webp",
         "width": 640,

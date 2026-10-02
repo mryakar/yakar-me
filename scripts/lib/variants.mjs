@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 import { ARTIST, MAX_SIDE, copyrightText } from './image-meta.mjs';
 
-export const WIDTHS = [640, 1280, 1920, 2560];
+export const WIDTHS = [320, 640, 1280, 1920, 2560];
 export const FORMATS = {
   avif: { quality: 50, effort: 2 },
   webp: { quality: 75 },
