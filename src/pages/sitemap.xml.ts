@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { articles } from '../lib/writing';
 import { articlePath, isoDate } from '../lib/format';
 import { allSeries } from '../lib/photos';
-import { seriesPath } from '../lib/photo';
+import { mapPath, seriesPath } from '../lib/photo';
 import { defaultLang, localize, locales, type Lang } from '../lib/i18n';
 
 type Page = { path: string; langs: readonly Lang[]; lastmod?: Date };
@@ -22,7 +22,7 @@ export const GET: APIRoute = async ({ site: origin }) => {
     { path: '/writing/', langs: locales, lastmod: english[0]?.pubDate },
     { path: '/reading/', langs: locales },
     ...(englishSeries.length
-      ? [{ path: '/photos/', langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
+      ? [{ path: '/photos/', langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
       : []),
     { path: '/about/', langs: locales },
     ...english.map((a) => ({ path: articlePath(a.id), langs: inLangs(written, a.id), lastmod: a.pubDate })),
