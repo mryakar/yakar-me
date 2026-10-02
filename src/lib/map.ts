@@ -20,6 +20,15 @@ export const tileRoot = (sha256: string) => `/tiles/${sha256.slice(0, 8)}/`;
 export const placeKey = (p: Place & { district: string }) => `${p.district}, ${p.city}, ${p.country}`;
 export const cityKey = (p: Place) => `${p.city}, ${p.country}`;
 
+export function centreLookup<T extends District>(table: T[]) {
+  const centres = new Map(table.map((d) => [placeKey(d), d]));
+  return (place: Place & { district: string }) => {
+    const centre = centres.get(placeKey(place));
+    if (!centre) throw new Error(`No district centre for "${placeKey(place)}" — add it to src/content/districts.json`);
+    return centre;
+  };
+}
+
 const round = (v: number) => Math.round(v * 1e5) / 1e5;
 
 export function bounds(points: Point[]): Bounds {
