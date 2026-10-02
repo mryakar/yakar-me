@@ -39,6 +39,7 @@ export interface Shot {
 }
 
 export const seriesPath = (series: string, lang: Lang = 'en') => localize(`/photos/${series}/`, lang);
+export const mapPath = (lang: Lang = 'en', focus?: string) => `${localize('/photos/map/', lang)}${focus ? `#${focus}` : ''}`;
 export const variantPath = (file: string) => `/img/${file}`;
 
 export const signed = (n: number, zero = '0') => (n > 0 ? `+${n}` : n < 0 ? `−${-n}` : zero);

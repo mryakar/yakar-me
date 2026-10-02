@@ -1,0 +1,33 @@
+---
+import { ui } from '../i18n/ui';
+import { localize, type Lang } from '../lib/i18n';
+import { mapPath } from '../lib/photo';
+
+interface Props {
+  lang: Lang;
+  current: 'series' | 'map';
+  series: number;
+  places: number;
+}
+const { lang, current, series, places } = Astro.props;
+const t = ui[lang].photos;
+const views = [
+  { key: 'series', href: localize('/photos/', lang), label: t.seriesView, count: series },
+  { key: 'map', href: mapPath(lang), label: t.mapView, count: places },
+];
+---
+<header class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-line pb-2 tab:pb-5">
+  <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.photos}</h1>
+  <nav aria-label={t.views} class="flex items-center gap-4.5 tab:gap-7">
+    {views.map((v) => (
+      <a
+        href={v.href}
+        aria-current={v.key === current ? 'page' : undefined}
+        class:list={['label flex min-h-11 items-center gap-2.5 transition-colors duration-200 hover:text-accent', v.key === current ? 'text-text' : 'text-muted']}
+      >
+        {v.key === current && <span class="block size-1.5 rounded-full bg-accent" aria-hidden="true"></span>}
+        {v.label} <span class="text-faint">{v.count}</span>
+      </a>
+    ))}
+  </nav>
+</header>

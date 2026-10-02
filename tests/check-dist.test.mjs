@@ -70,3 +70,9 @@ for (const [name, [files, pattern]] of Object.entries(bad)) {
     assert.match(r.out, pattern);
   });
 }
+
+test('harita sayfası karolara bağlanıp karolar eksikse kırılır', () => {
+  const r = run({ ...ok, 'map.html': page('', '<section data-tiles="/tiles/00000000/{z}/{x}/{y}.mvt"></section>') });
+  assert.equal(r.code, 1);
+  assert.match(r.out, /\/tiles\/00000000\/: 0 map tiles in the build/);
+});

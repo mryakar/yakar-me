@@ -1,8 +1,12 @@
 import { createHash, createHmac } from 'node:crypto';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
+import { homedir } from 'node:os';
+import { join } from 'node:path';
 import { BUCKET } from './photo-store.mjs';
 
-const CONTENT_TYPES = { avif: 'image/avif', webp: 'image/webp' };
+export const WRITE_TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
+const CONTENT_TYPES = { avif: 'image/avif', webp: 'image/webp', pmtiles: 'application/octet-stream' };
 const REGION = 'auto';
 const SERVICE = 's3';
 
@@ -34,8 +38,24 @@ export function credentials(env = process.env) {
   return { account, accessKeyId, secretAccessKey };
 }
 
+export function writeCredentials(file = WRITE_TOKEN_FILE) {
+  if (!existsSync(file)) throw new Error(`R2 write token not found: ${file}`);
+  if (statSync(file).mode & 0o077) throw new Error(`${file} must be readable only by you (chmod 600)`);
+  const creds = credentials(
+    Object.fromEntries(
+      readFileSync(file, 'utf8')
+        .split('\n')
+        .map((l) => /^\s*(R2_ACCOUNT_ID|R2_ACCESS_KEY_ID|R2_SECRET_ACCESS_KEY)\s*=\s*(\S+)\s*$/.exec(l))
+        .filter(Boolean)
+        .map((m) => [m[1], m[2]]),
+    ),
+  );
+  if (!creds) throw new Error(`${file} needs R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY`);
+  return creds;
+}
+
 async function request(method, key, creds, body) {
-  if (!/^[a-z0-9-]+\.(avif|webp)$/.test(key)) throw new Error(`refusing unexpected object key ${key}`);
+  if (!/^[a-z0-9-]+\.(avif|webp|pmtiles)$/.test(key)) throw new Error(`refusing unexpected object key ${key}`);
   const host = `${creds.account}.r2.cloudflarestorage.com`;
   const path = `/${BUCKET}/${key}`;
   const headers = body ? { 'content-type': CONTENT_TYPES[key.split('.').pop()], 'content-length': body.length } : {};

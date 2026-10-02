@@ -3,11 +3,13 @@ import { join, relative } from 'node:path';
 import { inspectImage } from './lib/image-meta.mjs';
 import { sha256, variantIndex } from './lib/photo-store.mjs';
 import { ORIGIN, counterpartErrors, pagePath } from './lib/counterparts.mjs';
+import { manifest } from './lib/map-store.mjs';
 import { pending } from '../src/i18n/pending.ts';
 
 const args = process.argv.slice(2);
 const dist = args.find((a) => !a.startsWith('--')) ?? 'dist';
 const complete = args.includes('--complete');
+const FILE_LIMIT = 20000;
 const files = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? files(join(dir, e.name)) : [join(dir, e.name)],
@@ -23,6 +25,7 @@ const resolves = (path) => {
 };
 
 const pages = new Map();
+const tileRoots = new Set();
 for (const file of all.filter((f) => f.endsWith('.html'))) {
   const html = readFileSync(file, 'utf8');
   const page = pagePath(relative(dist, file));
@@ -61,6 +64,8 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
     if (href.startsWith('/') && !href.startsWith('//') && !resolves(href)) fail(file, `broken link: ${href}`);
   }
 
+  for (const [, tiles] of html.matchAll(/\sdata-tiles="([^"{]*)/gi)) tileRoots.add(tiles);
+
   for (const [, image] of html.matchAll(/<meta\s+property="og:image"\s+content="([^"]*)"/gi)) {
     if (!image.startsWith(`${ORIGIN}/`) || !resolves(new URL(image).pathname)) fail(file, `og:image not in the build: ${image}`);
   }
@@ -88,10 +93,18 @@ if (images.length) {
   }
 }
 
+if (all.length > FILE_LIMIT) errors.push(`${all.length} files, the Workers static assets limit is ${FILE_LIMIT}`);
+
+const map = manifest();
+for (const root of tileRoots) {
+  const tiles = all.filter((f) => `/${relative(dist, f)}`.startsWith(root)).length;
+  if (!map || tiles !== map.tiles) errors.push(`${root}: ${tiles} map tiles in the build, the map data lists ${map?.tiles ?? 'none'}`);
+}
+
 if (errors.length) {
   console.error(errors.map((e) => `✗ ${e}`).join('\n'));
   console.error(`\n${errors.length} problem(s) in ${dist}/`);
   process.exit(1);
 }
-console.log(`✓ ${dist}/: ${all.length} files, no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
+console.log(`✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
 console.log(`✓ ${pages.size} pages, every language has its counterpart${pending.length ? ` (${pending.length} translation(s) pending)` : ''}`);

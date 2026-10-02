@@ -1,0 +1,130 @@
+---
+import '../../../styles/map.css';
+import Base from '../../../layouts/Base.astro';
+import PhotoViews from '../../../components/PhotoViews.astro';
+import PhotoPicture from '../../../components/PhotoPicture.astro';
+import PhotoRights from '../../../components/PhotoRights.astro';
+import ArrowRight from '../../../components/ArrowRight.astro';
+import { ui } from '../../../i18n/ui';
+import { langPaths, type Lang } from '../../../lib/i18n';
+import { allSeries, photoSlug } from '../../../lib/photos';
+import { mapPlaces, mapTiles } from '../../../lib/places';
+import { centre, tileRoot } from '../../../lib/map';
+import { seriesPath } from '../../../lib/photo';
+import { MAPLIBRE_DIR, MAPLIBRE_FILES } from '../../../lib/vendor';
+import { documentTitle, plural } from '../../../lib/format';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang];
+const cities = await mapPlaces(lang);
+const series = await allSeries(lang);
+const places = cities.flatMap((c) => c.places);
+const middle = centre(places);
+const [mainFile, sharedFile] = MAPLIBRE_FILES;
+const close = 'M6 6l12 12M18 6L6 18';
+const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
+---
+<Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description}>
+  <link rel="modulepreload" href={`${MAPLIBRE_DIR}${mainFile}`} slot="head" />
+  <link rel="modulepreload" href={`${MAPLIBRE_DIR}${sharedFile}`} slot="head" />
+  <div class="flex flex-col gap-6 pt-9 pb-24 tab:gap-14 tab:px-6 desk:px-24 desk:pt-26">
+    <div class="px-6 tab:px-0">
+      <PhotoViews lang={lang} current="map" series={series.length} places={places.length} />
+    </div>
+
+    <section
+      data-map
+      data-maplibre={`${MAPLIBRE_DIR}${mainFile}`}
+      data-tiles={`${tileRoot(mapTiles.sha256)}{z}/{x}/{y}.mvt`}
+      data-world-max-zoom={mapTiles.worldMaxZoom}
+      data-city-zooms={mapTiles.cityZooms.join(' ')}
+      data-centre={`${middle.lon} ${middle.lat}`}
+      data-lang={lang}
+      aria-label={t.map.label}
+      class="map-frame relative h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border"
+      hidden
+    >
+      <div data-map-canvas class="size-full"></div>
+      <div data-crumb class="absolute top-3 left-3 flex items-center border border-line bg-card pr-3 pl-0.5 tab:top-4 tab:left-4" hidden>
+        <button type="button" data-world class="label h-10 px-2.5 text-muted transition-colors duration-200 hover:text-accent">{t.map.world}</button>
+        <span class="label text-faint" aria-hidden="true">/</span>
+        <span data-crumb-city class="label pl-2 text-text"></span>
+      </div>
+      <div class="absolute top-3 right-3 flex flex-col border border-line bg-card tab:top-4 tab:right-4">
+        <button type="button" data-zoom="in" aria-label={t.map.zoomIn} class={control}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        </button>
+        <span class="h-px bg-line"></span>
+        <button type="button" data-zoom="out" aria-label={t.map.zoomOut} class={control}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+        </button>
+      </div>
+      <p data-hint class="label pointer-events-none absolute bottom-4 left-5 hidden text-faint tab:block">{t.map.hint}</p>
+      <p class="absolute right-3 bottom-2.5 text-[11px] text-faint">
+        <a href="https://protomaps.com" class="transition-colors duration-200 hover:text-accent">Protomaps</a> · <a href="https://www.openstreetmap.org/copyright" class="transition-colors duration-200 hover:text-accent">© OpenStreetMap</a>
+      </p>
+      {places.map((p) => (
+        <article data-card={p.id} class="map-card" hidden>
+          <PhotoPicture photo={p.cover} sizes="(min-width: 48rem) 280px, 88px" class="map-card-image bg-sleeve object-cover" />
+          <div class="map-card-body">
+            <div class="flex items-center justify-between">
+              <span class="label text-faint">{p.city}</span>
+              <button type="button" data-close aria-label={t.photos.close} class="-my-2.5 -mr-2 flex size-11 items-center justify-center text-muted transition-colors duration-200 hover:text-accent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d={close}></path></svg>
+              </button>
+            </div>
+            <h3 class="font-display text-d4">{p.district}</h3>
+            <p class="text-sm text-muted">{t.photos.count(p.photos.length)} · {t.map.inSeries(p.series.map((s) => s.title).join(', '))}</p>
+          </div>
+          <a href={`${seriesPath(p.series[0].id, lang)}#${photoSlug(p.cover)}`} class="map-card-link group">
+            {t.map.seePhotos}<ArrowRight />
+          </a>
+        </article>
+      ))}
+    </section>
+
+    <section aria-labelledby="places" class="flex flex-col gap-5 px-6 tab:px-0">
+      <h2 id="places" class="label text-faint">{t.map.placesHeading} · {places.length}</h2>
+      <div class="grid gap-x-12 gap-y-10 tab:grid-cols-2">
+        {cities.map((c) => (
+          <div data-city data-bounds={c.bounds.join(' ')} data-name={c.city} data-label={`${c.city}, ${t.photos.count(c.photos)}`} data-count={c.photos} class="flex flex-col">
+            <div class="flex items-baseline justify-between gap-4 border-b border-line pb-3">
+              <h3 class="font-display text-d4">{c.city}</h3>
+              <span class="label text-right text-faint">{t.photos.country(c.country)} · {plural(t.map.places, c.places.length)}</span>
+            </div>
+            <ul>
+              {c.places.map((p) => (
+                <li>
+                  <a
+                    href={`${seriesPath(p.series[0].id, lang)}#${photoSlug(p.cover)}`}
+                    data-place={p.id}
+                    data-name={p.district}
+                    data-count={p.photos.length}
+                    data-lon={p.lon}
+                    data-lat={p.lat}
+                    data-series={p.series.map((s) => s.id).join(' ')}
+                    data-label={`${p.district}, ${t.photos.count(p.photos.length)}`}
+                    class="flex min-h-11 items-center justify-between gap-4 border-b border-line text-[15px] transition-colors duration-200 hover:text-accent"
+                  >
+                    <span>{p.district}</span>
+                    <span class="label text-faint">{t.photos.count(p.photos.length)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="px-6 tab:px-0">
+      <PhotoRights lang={lang} />
+    </div>
+  </div>
+
+  <script>
+    import '../../../scripts/map.ts';
+  </script>
+</Base>

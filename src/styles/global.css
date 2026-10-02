@@ -28,6 +28,11 @@
   --yk-cat-science: light-dark(#d0e2d7, #21362f);
   --yk-cat-personal-development: light-dark(#e8d3dc, #3b2833);
   --yk-cat-technical: light-dark(#dcdce0, #2e2f35);
+  --yk-ocean: light-dark(#e9e7e1, #0e1013);
+  --yk-land: light-dark(#d9d5cb, #1d1f24);
+  --yk-coast: light-dark(#676a71, #8a8e96);
+  --yk-frontier: light-dark(rgb(20 20 22 / 0.12), rgb(255 255 255 / 0.09));
+  --yk-halo: light-dark(rgb(133 100 42 / 0.18), rgb(200 164 101 / 0.22));
 }
 :root[data-theme='light'] {
   color-scheme: light;
@@ -59,6 +64,11 @@
   --color-cat-science: var(--yk-cat-science);
   --color-cat-personal-development: var(--yk-cat-personal-development);
   --color-cat-technical: var(--yk-cat-technical);
+  --color-ocean: var(--yk-ocean);
+  --color-land: var(--yk-land);
+  --color-coast: var(--yk-coast);
+  --color-frontier: var(--yk-frontier);
+  --color-halo: var(--yk-halo);
 }
 
 @theme {

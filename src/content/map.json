@@ -1,0 +1,216 @@
+{
+  "file": "map-5911747e.pmtiles",
+  "sha256": "5911747e40de200265c0a51275c600706c8c09d09c36de5f2d1957ae53d8050e",
+  "bytes": 114684478,
+  "tiles": 7546,
+  "source": "20261001.pmtiles",
+  "basemap": "4.15.2",
+  "attribution": "© OpenStreetMap contributors · Protomaps",
+  "worldMaxZoom": 6,
+  "cityZooms": [
+    7,
+    13
+  ],
+  "regions": [
+    {
+      "city": "Baku",
+      "country": "Azerbaijan",
+      "bounds": [
+        49.71785,
+        40.27017,
+        50.00148,
+        40.5065
+      ]
+    },
+    {
+      "city": "Hangzhou",
+      "country": "China",
+      "bounds": [
+        119.99041,
+        30.08231,
+        120.31151,
+        30.30065
+      ]
+    },
+    {
+      "city": "Shanghai",
+      "country": "China",
+      "bounds": [
+        121.36514,
+        31.14107,
+        121.57546,
+        31.32073
+      ]
+    },
+    {
+      "city": "Shenzhen",
+      "country": "China",
+      "bounds": [
+        113.95326,
+        22.43544,
+        114.18433,
+        22.63553
+      ]
+    },
+    {
+      "city": "Prague",
+      "country": "Czechia",
+      "bounds": [
+        14.25694,
+        49.98687,
+        14.56668,
+        50.18011
+      ]
+    },
+    {
+      "city": "Nice",
+      "country": "France",
+      "bounds": [
+        7.12307,
+        43.60128,
+        7.40935,
+        43.78713
+      ]
+    },
+    {
+      "city": "Bad Staffelstein",
+      "country": "Germany",
+      "bounds": [
+        10.86065,
+        50.02584,
+        11.19447,
+        50.2223
+      ]
+    },
+    {
+      "city": "Coburg",
+      "country": "Germany",
+      "bounds": [
+        10.85275,
+        50.19073,
+        11.16847,
+        50.37814
+      ]
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "bounds": [
+        11.3748,
+        48.04627,
+        11.7071,
+        48.24695
+      ]
+    },
+    {
+      "city": "Sonneberg",
+      "country": "Germany",
+      "bounds": [
+        11.02562,
+        50.26017,
+        11.30772,
+        50.43983
+      ]
+    },
+    {
+      "city": "Hong Kong",
+      "country": "Hong Kong",
+      "bounds": [
+        114.04544,
+        22.18564,
+        114.27813,
+        22.41233
+      ]
+    },
+    {
+      "city": "Bali",
+      "country": "Indonesia",
+      "bounds": [
+        114.93473,
+        -8.91233,
+        115.62537,
+        -8.07267
+      ]
+    },
+    {
+      "city": "Belgrade",
+      "country": "Serbia",
+      "bounds": [
+        20.32361,
+        44.70547,
+        20.59465,
+        44.91425
+      ]
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "bounds": [
+        103.72867,
+        1.18239,
+        103.95513,
+        1.5164
+      ]
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "bounds": [
+        100.38387,
+        13.63295,
+        100.63517,
+        13.85427
+      ]
+    },
+    {
+      "city": "Chiang Mai",
+      "country": "Thailand",
+      "bounds": [
+        98.68005,
+        18.52267,
+        98.98801,
+        18.90622
+      ]
+    },
+    {
+      "city": "Chiang Rai",
+      "country": "Thailand",
+      "bounds": [
+        99.67699,
+        19.74063,
+        99.93733,
+        20.0132
+      ]
+    },
+    {
+      "city": "Koh Samui",
+      "country": "Thailand",
+      "bounds": [
+        99.93438,
+        9.37405,
+        100.15092,
+        9.65194
+      ]
+    },
+    {
+      "city": "Phuket",
+      "country": "Thailand",
+      "bounds": [
+        98.20813,
+        7.68651,
+        98.48826,
+        8.20039
+      ]
+    },
+    {
+      "city": "Ankara",
+      "country": "Turkey",
+      "bounds": [
+        32.74058,
+        39.82352,
+        32.97512,
+        40.00318
+      ]
+    }
+  ]
+}

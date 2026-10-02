@@ -1,12 +1,12 @@
 import { parseArgs } from 'node:util';
 import { execFileSync } from 'node:child_process';
 import { createInterface } from 'node:readline';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, resolve } from 'node:path';
 import { homedir, tmpdir } from 'node:os';
 import { inspectImage } from './lib/image-meta.mjs';
 import { decode, encode, targetWidths, FORMATS } from './lib/variants.mjs';
-import { credentials, put } from './lib/r2.mjs';
+import { put, writeCredentials } from './lib/r2.mjs';
 import { CONTENT_DIR, PUBLIC_DIR, records, sha256 } from './lib/photo-store.mjs';
 import {
   EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
@@ -14,7 +14,6 @@ import {
 import { aperture, focalLength, placeName, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
 import { ui } from '../src/i18n/ui.ts';
 
-const TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
 const USAGE = `Usage: npm run photo:add -- --series <slug> <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
 
 const { values: opts, positionals } = parseArgs({
@@ -208,23 +207,12 @@ if ((await ask(`Write ${files.length} files to ${target} and the photo data to $
 }
 
 if (!opts['no-upload']) {
-  if (!existsSync(TOKEN_FILE)) fail(`R2 write token not found: ${TOKEN_FILE}`);
-  if (statSync(TOKEN_FILE).mode & 0o077) fail(`${TOKEN_FILE} must be readable only by you (chmod 600)`);
   let creds;
   try {
-    creds = credentials(
-      Object.fromEntries(
-        readFileSync(TOKEN_FILE, 'utf8')
-          .split('\n')
-          .map((l) => /^\s*(R2_ACCOUNT_ID|R2_ACCESS_KEY_ID|R2_SECRET_ACCESS_KEY)\s*=\s*(\S+)\s*$/.exec(l))
-          .filter(Boolean)
-          .map((m) => [m[1], m[2]]),
-      ),
-    );
+    creds = writeCredentials();
   } catch (e) {
-    fail(`${TOKEN_FILE}: ${e.message}`);
+    fail(e.message);
   }
-  if (!creds) fail(`${TOKEN_FILE} needs R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY`);
   for (const f of files) {
     try {
       await put(f.file, f.path, creds);
