@@ -6,44 +6,136 @@ import ArrowRight from '../../../components/ArrowRight.astro';
 import PhotoViews from '../../../components/PhotoViews.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths, type Lang } from '../../../lib/i18n';
-import { allSeries, type Photo } from '../../../lib/photos';
+import { allSeries, lastTaken, type Series } from '../../../lib/photos';
 import { mapPlaces } from '../../../lib/places';
-import { seriesPath, takenYear } from '../../../lib/photo';
-import { documentTitle } from '../../../lib/format';
+import { countries, seriesPath, takenYear } from '../../../lib/photo';
+import { byYear, documentTitle, yearRange } from '../../../lib/format';
 
 export const getStaticPaths = langPaths;
+
+const LATEST = 3;
 
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].photos;
 const all = await allSeries(lang);
 const places = (await mapPlaces(lang)).reduce((n, c) => n + c.places.length, 0);
-const years = (photos: Photo[]) => {
-  const ys = [...new Set(photos.map((p) => takenYear(p.data.taken)))].sort();
-  return ys.length > 1 ? `${ys[0]}–${ys.at(-1)}` : String(ys[0]);
-};
+const latest = all.slice(0, LATEST);
+const archive = all.slice(LATEST);
+
+const firstYear = (s: Series) => takenYear(s.photos[0].data.taken);
+const lastYear = (s: Series) => takenYear(lastTaken(s.photos));
+const years = (list: Series[], short = false) => yearRange(Math.min(...list.map(firstYear)), Math.max(...list.map(lastYear)), short);
+const photoCount = (list: Series[]) => list.reduce((n, s) => n + s.photos.length, 0);
+const country = (s: Series) => countries(s.photos.map((p) => p.data.place)).map(t.country).join(', ');
+const yearsIfMany = (s: Series) => (firstYear(s) === lastYear(s) ? '' : ` · ${years([s], true)}`);
+const archiveYears = byYear([...archive].sort((a, b) => lastYear(b) - lastYear(a)), lastYear);
+const previewed = archiveYears.flatMap(({ items }) => items);
+
+const sectionHead = 'flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3';
+const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90';
 ---
 <Base lang={lang} title={documentTitle(ui[lang].nav.photos)} description={t.description}>
   <div class="flex flex-col gap-16 px-6 pt-9 pb-24 desk:gap-20 desk:px-24 desk:pt-26">
     <PhotoViews lang={lang} current="series" series={all.length} places={places} />
 
-    <ul class="grid gap-x-8 gap-y-14 desk:grid-cols-2">
-      {all.map((series, i) => (
-        <li>
-          <a href={seriesPath(series.id, lang)} class="group flex flex-col gap-5">
-            <PhotoPicture photo={series.cover} sizes="(min-width: 64rem) 36vw, 100vw" loading={i < 2 ? 'eager' : 'lazy'} class="aspect-4/5 h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
-            <span class="flex flex-col gap-2 border-t border-line pt-4">
-              <span class="label text-faint">{t.count(series.photos.length)} · {years(series.photos)}</span>
-              <span class="flex items-center justify-between gap-4">
-                <span class="font-display text-d3 transition-colors duration-200 group-hover:text-accent">{series.title}</span>
-                <span class="text-accent"><ArrowRight size={18} /></span>
-              </span>
-              <span class="text-[15px] text-muted">{series.description}</span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <section aria-labelledby="latest" class="flex flex-col gap-6">
+      <div class={sectionHead}>
+        <h2 id="latest" class="label text-text">{t.latest}</h2>
+        <span class="label text-faint">{t.series(latest.length)} · {years(latest)}</span>
+      </div>
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-8 tab:gap-x-6 desk:grid-cols-[7fr_5fr] desk:gap-x-8">
+        {latest.map((s, i) => (
+          <li class:list={[i === 0 && 'col-span-2 desk:col-span-1 desk:row-span-2']}>
+            <a href={seriesPath(s.id, lang)} class="group flex flex-col gap-3">
+              {i === 0 ? (
+                <>
+                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 45vw, 100vw" class:list={['aspect-3/2 tab:aspect-video desk:aspect-4/3', cover]} />
+                  <span class="label pt-1 text-faint">{t.count(s.photos.length)} · {years([s], true)} · {country(s)}</span>
+                  <span class="font-display text-d3 transition-colors duration-200 group-hover:text-accent">{s.title}</span>
+                  <span class="max-w-120 text-[15px] text-muted">{s.description}</span>
+                </>
+              ) : (
+                <>
+                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 30vw, 50vw" class:list={['aspect-4/3 tab:aspect-3/2 desk:aspect-16/10', cover]} />
+                  <span class="label pt-1 text-faint">{t.count(s.photos.length)} · {years([s], true)}</span>
+                  <span class="font-display text-d4 transition-colors duration-200 group-hover:text-accent">{s.title}</span>
+                </>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {archive.length > 0 && (
+      <section aria-labelledby="archive" class="flex flex-col gap-6">
+        <div class={sectionHead}>
+          <h2 id="archive" class="label text-text">{t.archive}</h2>
+          <span class="label text-faint">{t.series(archive.length)} · {years(archive)}</span>
+        </div>
+
+        <nav aria-label={t.years} class="flex flex-wrap gap-2">
+          {archiveYears.map(({ year, items }) => (
+            <a href={`#y${year}`} aria-label={`${year}, ${t.series(items.length)}`} class="label inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-4 text-text transition-colors duration-200 hover:border-accent hover:text-accent">
+              {year} <span class="text-faint">{items.length}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="grid gap-12 desk:grid-cols-[minmax(0,1fr)_minmax(0,0.72fr)]" data-previews>
+          <div class="@container flex flex-col gap-12">
+            {archiveYears.map(({ year, items }) => (
+              <section aria-labelledby={`y${year}`} class="flex flex-col">
+                <div class={sectionHead}>
+                  <h3 id={`y${year}`} class="font-display text-d4">{year}</h3>
+                  <span class="label text-faint">{t.series(items.length)} · {t.count(photoCount(items))}</span>
+                </div>
+                <ul>
+                  {items.map((s) => (
+                    <li>
+                      <a
+                        href={seriesPath(s.id, lang)}
+                        data-preview-for={s.id}
+                        data-active={s === previewed[0] ? '' : undefined}
+                        class="group grid grid-cols-[3.75rem_minmax(0,1fr)_auto] items-center gap-x-4 border-b border-line py-3 transition-colors duration-200 @xl:grid-cols-[3rem_minmax(0,1fr)_9rem_10rem_auto] desk:data-active:border-accent"
+                      >
+                        <PhotoPicture photo={s.cover} focus={s.focus} sizes="3.75rem" class="aspect-square h-auto w-full bg-sleeve object-cover" />
+                        <span class="flex min-w-0 flex-col gap-1.5 @xl:contents">
+                          <span class="font-display text-d4 leading-none transition-colors duration-200 group-hover:text-accent desk:group-data-active:text-accent">{s.title}</span>
+                          <span class="label text-faint @xl:hidden">{country(s)} · {t.count(s.photos.length)}{yearsIfMany(s)}</span>
+                          <span class="hidden truncate text-sm text-muted @xl:block">{country(s)}</span>
+                          <span class="label hidden text-right text-faint @xl:block">{t.count(s.photos.length)}{yearsIfMany(s)}</span>
+                        </span>
+                        <span class="text-accent"><ArrowRight size={16} /></span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+
+          <div class="hidden desk:block" aria-hidden="true">
+            <div class="sticky top-12">
+              {previewed.map((s, i) => (
+                <a href={seriesPath(s.id, lang)} tabindex="-1" data-preview={s.id} hidden={i !== 0} class="group flex flex-col gap-3">
+                  <PhotoPicture photo={s.cover} focus={s.focus} sizes="(min-width: 64rem) 28vw, 1px" class:list={['aspect-4/5', cover]} />
+                  <span class="label pt-1 text-faint">{t.count(s.photos.length)} · {years([s], true)} · {country(s)}</span>
+                  <span class="font-display text-d3">{s.title}</span>
+                  <span class="text-[15px] text-muted">{s.description}</span>
+                  <span class="inline-flex items-center gap-2 text-sm text-accent">{t.openSeries}<ArrowRight size={13} /></span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
 
     <PhotoRights lang={lang} />
   </div>
+
+  <script>
+    import '../../../scripts/preview.ts';
+  </script>
 </Base>

@@ -24,6 +24,16 @@ export interface Place {
   country: string;
 }
 
+export interface Focus {
+  x: number;
+  y: number;
+}
+
+export const FOCUS_STEP = 10;
+export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
+
+export const countries = (places: Place[]) => [...new Set(places.map((p) => p.country))];
+
 export interface Shot {
   kind: 'fujifilm' | 'phone';
   make: string;

@@ -24,10 +24,10 @@ for (const { topic, items } of byTopic) {
 ---
 <div class="flex flex-col gap-16">
   {byTopic.map(({ topic, items }) => (
-    <div class="flex flex-col" data-shelf>
+    <div class="flex flex-col" data-previews>
       <div class="shelf">
         {items.map((a, i) => (
-          <a href={articlePath(a.id, lang)} class="sleeve" data-article={a.id} aria-current={i === 0 ? 'true' : undefined}>
+          <a href={articlePath(a.id, lang)} class="sleeve" data-preview-for={a.id} data-active={i === 0 ? '' : undefined}>
             <span class="label text-accent">{formatMonth(a.pubDate, lang)}</span>
             <span class="line-clamp-4 font-body text-base leading-[1.15] hyphens-auto text-text desk:text-[1.25rem]">{a.short ?? a.title}</span>
             <span class="label text-muted">{t.writing.topics[a.topic]}</span>
@@ -38,7 +38,7 @@ for (const { topic, items } of byTopic) {
       <div class="grid gap-5 pt-4 desk:grid-cols-[10rem_minmax(0,1fr)] desk:gap-10">
         <span class="label pt-1 text-faint">{t.writing.topics[topic]} · {items.length}</span>
         {items.map((a, i) => (
-          <article class="flex max-w-180 flex-col gap-2" data-panel={a.id} hidden={i !== 0}>
+          <article class="flex max-w-180 flex-col gap-2" data-preview={a.id} hidden={i !== 0}>
             <h3 class="font-body text-xl leading-snug text-text">
               <a href={articlePath(a.id, lang)} class="transition-colors duration-200 hover:text-accent">{a.title}</a>
             </h3>
@@ -58,5 +58,5 @@ for (const { topic, items } of byTopic) {
 </div>
 
 <script>
-  import '../scripts/shelf.ts';
+  import '../scripts/preview.ts';
 </script>

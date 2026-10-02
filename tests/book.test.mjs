@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   allGenres,
-  byYear,
   categories,
   categoryOf,
   finishedDate,
+  finishedYear,
   genres,
   isIsbn13,
   newestFirst,
@@ -15,6 +15,7 @@ import {
   SPINE_HEIGHTS,
   SPINE_THICKNESSES,
 } from '../src/lib/book.ts';
+import { byYear } from '../src/lib/format.ts';
 import { ui } from '../src/i18n/ui.ts';
 
 const books = JSON.parse(readFileSync(new URL('../src/content/books.json', import.meta.url), 'utf8'));
@@ -42,10 +43,10 @@ test('newestFirst: son biten üstte, aynı ayda dosyadaki sıra', () => {
   assert.deepEqual(list.map((b) => b.id), ['a', 'b', 'c', 'd']);
 });
 
-test('byYear: sırayı bozmadan yıllara böler', () => {
+test('byYear + finishedYear: biten kitaplar sırayı bozmadan yıllara bölünür', () => {
   const list = ['2025-09', '2025-08', '2024-07', '2022-11'].map((m, i) => ({ i, finished: finishedDate(m) }));
   assert.deepEqual(
-    byYear(list).map(({ year, books }) => [year, books.map((b) => b.i)]),
+    byYear(list, finishedYear).map(({ year, items }) => [year, items.map((b) => b.i)]),
     [[2025, [0, 1]], [2024, [2]], [2022, [3]]],
   );
 });

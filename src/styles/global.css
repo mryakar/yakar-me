@@ -384,7 +384,7 @@
   }
   .shelf .sleeve:hover,
   .shelf .sleeve:focus-visible,
-  .sleeve[aria-current] {
+  .sleeve[data-active] {
     opacity: 1;
     transform: translateY(-1.625rem);
     border-color: color-mix(in srgb, var(--yk-accent) 55%, transparent);

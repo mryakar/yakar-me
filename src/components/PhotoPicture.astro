@@ -1,14 +1,18 @@
 ---
-import { variantPath } from '../lib/photo';
+import { variantPath, FOCUS_STEP, FOCUS_STEPS, type Focus } from '../lib/photo';
 import { smallestAtLeast, type Photo } from '../lib/photos';
 
 interface Props {
   photo: Photo;
   sizes: string;
   loading?: 'lazy' | 'eager';
+  focus?: Focus;
   class?: string;
 }
-const { photo, sizes, loading = 'lazy', class: className } = Astro.props;
+const { photo, sizes, loading = 'lazy', focus, class: className } = Astro.props;
+const focusX = ['[--focus-x:0%]', '[--focus-x:10%]', '[--focus-x:20%]', '[--focus-x:30%]', '[--focus-x:40%]', '[--focus-x:50%]', '[--focus-x:60%]', '[--focus-x:70%]', '[--focus-x:80%]', '[--focus-x:90%]', '[--focus-x:100%]'];
+const focusY = ['[--focus-y:0%]', '[--focus-y:10%]', '[--focus-y:20%]', '[--focus-y:30%]', '[--focus-y:40%]', '[--focus-y:50%]', '[--focus-y:60%]', '[--focus-y:70%]', '[--focus-y:80%]', '[--focus-y:90%]', '[--focus-y:100%]'];
+if (focusX.length !== FOCUS_STEPS || focusY.length !== FOCUS_STEPS) throw new Error('PhotoPicture: focus class lists do not match FOCUS_STEP in src/lib/photo.ts');
 const { avif, webp } = photo.data.variants;
 const srcset = (variants: typeof webp) => variants.map((v) => `${variantPath(v.file)} ${v.width}w`).join(', ');
 const fallback = smallestAtLeast(webp, 1280);
@@ -24,6 +28,6 @@ const fallback = smallestAtLeast(webp, 1280);
     alt={photo.alt}
     loading={loading}
     decoding="async"
-    class={className}
+    class:list={[className, focus && ['object-[var(--focus-x)_var(--focus-y)]', focusX[focus.x / FOCUS_STEP], focusY[focus.y / FOCUS_STEP]]]}
   />
 </picture>

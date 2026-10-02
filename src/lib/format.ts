@@ -32,6 +32,20 @@ export function englishOrdinal(n: number) {
 
 export const plural = (forms: { one: string; other: string }, n: number) => (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
 
+export function byYear<T>(items: T[], year: (item: T) => number) {
+  const years: { year: number; items: T[] }[] = [];
+  for (const item of items) {
+    const y = year(item);
+    const last = years.at(-1);
+    if (last?.year === y) last.items.push(item);
+    else years.push({ year: y, items: [item] });
+  }
+  return years;
+}
+
+export const yearRange = (from: number, to: number, short = false) =>
+  from === to ? String(to) : `${from}–${short ? String(to).slice(-2) : to}`;
+
 export const documentTitle = (...parts: string[]) => [...parts, site.title].join(' — ');
 
 export const isoDate = (date: Date) => date.toISOString().slice(0, 10);
