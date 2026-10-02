@@ -152,7 +152,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.home.latestSeries} · {formatMonth(new Date(lastTaken(series.photos).slice(0, 10)), lang)}</span>
             <a href={seriesPath(series.id, lang)} class="group flex flex-col gap-3.5">
-              <PhotoPicture photo={series.cover} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class="aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
+              <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class="aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
               <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>
             </a>
             <a href={photosPage} class={more}>{t.home.allSeries}<ArrowRight /></a>

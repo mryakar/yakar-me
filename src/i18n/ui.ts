@@ -166,6 +166,10 @@ const en = {
     seriesView: 'Series',
     mapView: 'Map',
     viewOnMap: 'View on map',
+    latest: 'Latest',
+    archive: 'Archive',
+    years: 'Years',
+    openSeries: 'Open series',
   },
   map: {
     description: 'Every place in the photo series, on a globe.',
@@ -308,7 +312,7 @@ const tr: Dict = {
   photos: {
     description: 'Yoldan seriler; ışık ne verdiyse, elde hangi kamera varsa onunla.',
     series: (n) => `${n} seri`,
-    count: (n) => `${n} fotoğraf`,
+    count: (n) => `${n} kare`,
     rights: (name) => `Tüm fotoğraflar © ${name}. Tüm hakları saklıdır.`,
     copyright: (year, name) => `© ${year} ${name}. Tüm hakları saklıdır.`,
     breadcrumb: 'Sayfa yolu',
@@ -371,6 +375,10 @@ const tr: Dict = {
     seriesView: 'Seriler',
     mapView: 'Harita',
     viewOnMap: 'Haritada gör',
+    latest: 'Son seriler',
+    archive: 'Arşiv',
+    years: 'Yıllar',
+    openSeries: 'Seriyi aç',
   },
   map: {
     description: 'Fotoğraf serilerindeki bütün yerler, bir küre üstünde.',

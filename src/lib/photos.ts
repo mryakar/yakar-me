@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { pending } from '../i18n/pending';
 import type { Lang } from './i18n';
+import type { Focus } from './photo';
 import { localized } from './translations';
 
 export type Photo = CollectionEntry<'photos'> & { alt: string };
@@ -18,6 +19,7 @@ export interface Series {
   entry: CollectionEntry<'series'> | CollectionEntry<'seriesTranslations'>;
   photos: Photo[];
   cover: Photo;
+  focus?: Focus;
 }
 
 export async function allSeries(lang: Lang): Promise<Series[]> {
@@ -58,6 +60,7 @@ export async function allSeries(lang: Lang): Promise<Series[]> {
         entry: t ?? s,
         photos: own,
         cover,
+        focus: s.data.focus,
       };
     });
 }

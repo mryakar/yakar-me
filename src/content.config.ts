@@ -2,11 +2,13 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { locales } from './lib/i18n';
+import { FOCUS_STEP } from './lib/photo';
 import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
 
 const lang = z.enum(locales);
 const translations = (base: string) => glob({ pattern: `*/{${locales.join(',')}}.md`, base });
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+const focusPercent = z.number().int().min(0).max(100).multipleOf(FOCUS_STEP);
 
 const writing = defineCollection({
   loader: glob({ pattern: '*/index.md', base: './src/content/writing' }),
@@ -40,6 +42,7 @@ const series = defineCollection({
     description: z.string(),
     order: z.number().int(),
     cover: slug.optional(),
+    focus: z.object({ x: focusPercent, y: focusPercent }).strict().optional(),
     lang,
   }),
 });

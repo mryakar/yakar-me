@@ -1,7 +1,7 @@
 ---
 import BookCard from './BookCard.astro';
-import { byYear, spineHeight, spineThickness, SPINE_HEIGHTS, SPINE_THICKNESSES, type Category } from '../lib/book';
-import { shortMonth } from '../lib/format';
+import { finishedYear, spineHeight, spineThickness, SPINE_HEIGHTS, SPINE_THICKNESSES, type Category } from '../lib/book';
+import { byYear, shortMonth } from '../lib/format';
 import type { FinishedBook } from '../lib/books';
 import type { Lang } from '../lib/i18n';
 
@@ -22,7 +22,7 @@ const heights = ['tab:h-59', 'tab:h-62', 'tab:h-65', 'tab:h-68', 'tab:h-71'];
 if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) throw new Error('Bookcase: spine class lists do not match the spine scale in src/lib/book.ts');
 ---
 <div class="bookcase" data-bookcase>
-  {byYear(books).map(({ year, books }) => (
+  {byYear(books, finishedYear).map(({ year, items: books }) => (
     <section class="shelf-year" aria-labelledby={`year-${year}`} data-shelf-year>
       <h2 id={`year-${year}`} class="bookend font-display text-d4 tab:text-accent" data-shelf-item><span>{year}</span></h2>
       {books.map((book) => (

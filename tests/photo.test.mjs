@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aperture, focalLength, imageObject, placeName, jsonLd, recipeRows, seriesPath, shutter, signed, takenYear } from '../src/lib/photo.ts';
+import { aperture, countries, focalLength, imageObject, placeName, jsonLd, recipeRows, seriesPath, shutter, signed, takenYear } from '../src/lib/photo.ts';
 import { ui } from '../src/i18n/ui.ts';
 
 test('shutter: kesir ve saniye', () => {
@@ -98,4 +98,10 @@ test('jsonLd: </script> ve HTML karakterleri kaçırılır, JSON geçerli kalır
   const out = jsonLd(data);
   assert.doesNotMatch(out, /[<>&\u2028]/);
   assert.deepEqual(JSON.parse(out), data);
+});
+
+test('countries: farklı ülkeler, ilk görülme sırasıyla', () => {
+  const at = (city, country) => ({ district: 'x', city, country });
+  assert.deepEqual(countries([at('Ubud', 'Indonesia'), at('Canggu', 'Indonesia')]), ['Indonesia']);
+  assert.deepEqual(countries([at('Nice', 'France'), at('Coburg', 'Germany'), at('Paris', 'France')]), ['France', 'Germany']);
 });
