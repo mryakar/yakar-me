@@ -29,7 +29,7 @@ case "$mode" in
   dist)
     while IFS= read -r -d '' f; do
       file_hits "$f" && { echo "::error::output: $f"; fail=1; }
-    done < <(find dist -type f -print0)
+    done < <(find dist -type f -not -path 'dist/tiles/*' -not -path 'dist/vendor/*' -print0)
     ;;
   *) echo "usage: content-policy.sh repo|dist"; exit 2 ;;
 esac

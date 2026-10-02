@@ -33,6 +33,12 @@ test('ikili dosyada okunabilir iz yakalanır, kısa desen tesadüfü yakalanmaz'
   assert.equal(dist({ 'y.gif': binary('xx Z12 yy') }).code, 0);
 });
 
+test('harita karoları ve MapLibre taranmaz, yanlarındaki dosyalar taranır', () => {
+  assert.equal(dist({ 'tiles/abc/13/1/2.mvt': 'Avenue forbidden-word', 'vendor/lib-1/x.mjs': 'Z1' }).code, 0);
+  assert.equal(dist({ 'tiles.html': 'forbidden-word' }).code, 1);
+  assert.equal(dist({ 'photos/tiles/a.html': 'forbidden-word' }).code, 1);
+});
+
 test('secret yoksa kapalı başarısız', () => {
   const r = dist({ 'index.html': 'hello' }, { DENYLIST: '' });
   assert.equal(r.code, 1);
