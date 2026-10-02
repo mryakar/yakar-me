@@ -8,7 +8,7 @@ import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize, type Lang } from '../../../lib/i18n';
 import { allSeries, largest, photoSlug, type Series } from '../../../lib/photos';
-import { imageObject, jsonLd, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
+import { imageObject, jsonLd, mapPath, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
 import { documentTitle } from '../../../lib/format';
 
 export const getStaticPaths = () => langItemPaths(allSeries, (series) => ({ series: series.id }));
@@ -41,7 +41,13 @@ const structured = jsonLd({
         <nav aria-label={t.breadcrumb} class="label text-faint">
           <a href={localize('/photos/', lang)} class="transition-colors duration-200 hover:text-accent">{ui[lang].nav.photos}</a> / {title}
         </nav>
-        {series.original !== lang && <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />}
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {series.original !== lang && <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />}
+          <a href={mapPath(lang, series.id)} class="label flex min-h-11 items-center gap-2.5 text-accent transition-opacity duration-200 hover:opacity-85">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+            {t.viewOnMap}
+          </a>
+        </div>
       </div>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
       <div class="prose max-w-155 text-muted">

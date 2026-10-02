@@ -16,3 +16,7 @@ npm-debug.log*
 .vscode/
 
 public/img/
+
+public/tiles/
+public/vendor/
+.cache/

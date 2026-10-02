@@ -24,6 +24,7 @@ const switchTo = notFound ? localize('/', other(lang)) : counterpart ? localize(
 <html lang={lang}>
   <head>
     <Head lang={lang} title={title} description={description} article={article} alternates={alternates} notFound={notFound} />
+    <slot name="head" />
   </head>
   <body class="bg-bg text-text">
     <a class="skip-link" href="#main">{ui[lang].skip}</a>

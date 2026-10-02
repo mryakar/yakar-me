@@ -3,9 +3,11 @@ import Base from '../../../layouts/Base.astro';
 import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import ArrowRight from '../../../components/ArrowRight.astro';
+import PhotoViews from '../../../components/PhotoViews.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths, type Lang } from '../../../lib/i18n';
 import { allSeries, type Photo } from '../../../lib/photos';
+import { mapPlaces } from '../../../lib/places';
 import { seriesPath, takenYear } from '../../../lib/photo';
 import { documentTitle } from '../../../lib/format';
 
@@ -14,6 +16,7 @@ export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].photos;
 const all = await allSeries(lang);
+const places = (await mapPlaces(lang)).reduce((n, c) => n + c.places.length, 0);
 const years = (photos: Photo[]) => {
   const ys = [...new Set(photos.map((p) => takenYear(p.data.taken)))].sort();
   return ys.length > 1 ? `${ys[0]}–${ys.at(-1)}` : String(ys[0]);
@@ -21,10 +24,7 @@ const years = (photos: Photo[]) => {
 ---
 <Base lang={lang} title={documentTitle(ui[lang].nav.photos)} description={t.description}>
   <div class="flex flex-col gap-16 px-6 pt-9 pb-24 desk:gap-20 desk:px-24 desk:pt-26">
-    <header class="flex items-baseline justify-between border-b border-line pb-5">
-      <h1 class="font-display text-d2 desk:text-d1">{ui[lang].nav.photos}</h1>
-      <span class="label text-faint">{t.series(all.length)}</span>
-    </header>
+    <PhotoViews lang={lang} current="series" series={all.length} places={places} />
 
     <ul class="grid gap-x-8 gap-y-14 desk:grid-cols-2">
       {all.map((series, i) => (

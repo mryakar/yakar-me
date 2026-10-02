@@ -1,0 +1,23 @@
+---
+import { globe } from '../lib/globe';
+import type { Point } from '../lib/measure';
+
+interface Props {
+  points: Point[];
+  centre: Point;
+}
+const SIZE = 400;
+const { points, centre } = Astro.props;
+const { sphere, land, borders, dots } = globe(points, centre, SIZE);
+---
+<svg class="block size-full" viewBox={`0 0 ${SIZE} ${SIZE}`} aria-hidden="true">
+  <path d={sphere} class="fill-ocean stroke-line-strong" stroke-width="1"></path>
+  <path d={land} class="fill-land"></path>
+  <path d={borders} class="fill-none stroke-frontier" stroke-width="0.8"></path>
+  {dots.map(({ x, y }) => (
+    <>
+      <circle cx={x} cy={y} r="12" class="fill-halo"></circle>
+      <circle cx={x} cy={y} r="5.5" class="fill-accent"></circle>
+    </>
+  ))}
+</svg>
