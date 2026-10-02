@@ -33,6 +33,7 @@
   --yk-coast: light-dark(#676a71, #8a8e96);
   --yk-frontier: light-dark(rgb(20 20 22 / 0.12), rgb(255 255 255 / 0.09));
   --yk-halo: light-dark(rgb(133 100 42 / 0.18), rgb(200 164 101 / 0.22));
+  --yk-bar: 4.25rem;
 }
 :root[data-theme='light'] {
   color-scheme: light;
@@ -115,6 +116,11 @@
   body {
     min-height: 100dvh;
   }
+  @media (width < 64rem) {
+    html {
+      scroll-padding-top: var(--yk-bar);
+    }
+  }
   ::selection {
     background: color-mix(in srgb, var(--yk-accent) 35%, transparent);
   }
@@ -155,7 +161,7 @@
     max-height: none;
     margin: 0;
     border: 0;
-    padding: 1.25rem 1.5rem 2rem;
+    padding: 0 1.5rem 2rem;
     background: var(--yk-bg);
     color: var(--yk-text);
   }
