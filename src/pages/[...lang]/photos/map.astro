@@ -43,7 +43,7 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       data-centre={`${middle.lon} ${middle.lat}`}
       data-lang={lang}
       aria-label={t.map.label}
-      class="map-frame relative h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border"
+      class="map-frame @container relative h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border"
       hidden
     >
       <div data-map-canvas class="size-full"></div>
@@ -61,7 +61,7 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
         </button>
       </div>
-      <p data-hint class="label pointer-events-none absolute bottom-4 left-5 hidden text-faint tab:block">{t.map.hint}</p>
+      <p class="label pointer-events-none absolute bottom-4 left-5 hidden text-faint @3xl:block">{t.map.hint}</p>
       <p class="absolute right-3 bottom-2.5 text-[11px] text-faint">
         <a href="https://protomaps.com" class="transition-colors duration-200 hover:text-accent">Protomaps</a> · <a href="https://www.openstreetmap.org/copyright" class="transition-colors duration-200 hover:text-accent">© OpenStreetMap</a>
       </p>
