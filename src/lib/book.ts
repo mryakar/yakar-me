@@ -35,16 +35,7 @@ export const finishedDate = (month: string) => new Date(`${month}-01T00:00:00Z`)
 export const newestFirst = <T extends { finished: string; position: number }>(books: T[]) =>
   books.toSorted((a, b) => b.finished.localeCompare(a.finished) || a.position - b.position);
 
-export function byYear<T extends { finished: Date }>(books: T[]) {
-  const years: { year: number; books: T[] }[] = [];
-  for (const book of books) {
-    const year = book.finished.getUTCFullYear();
-    const last = years.at(-1);
-    if (last?.year === year) last.books.push(book);
-    else years.push({ year, books: [book] });
-  }
-  return years;
-}
+export const finishedYear = (book: { finished: Date }) => book.finished.getUTCFullYear();
 
 export const SPINE_THICKNESSES = 16;
 export const SPINE_HEIGHTS = 5;

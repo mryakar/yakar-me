@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { articlePath, documentTitle, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import { articlePath, byYear, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -67,4 +67,17 @@ test('formatNumber: binlik ayırıcı dile göre', () => {
   assert.equal(formatNumber(7442, 'tr'), '7.442');
   assert.equal(formatNumber(26201, 'tr'), '26.201');
   assert.equal(formatNumber(19, 'tr'), '19');
+});
+
+test('byYear: ardışık aynı yıllar bir grup, sıra korunur', () => {
+  const groups = byYear([2025, 2025, 2023, 2025], (y) => y);
+  assert.deepEqual(groups.map(({ year, items }) => [year, items.length]), [[2025, 2], [2023, 1], [2025, 1]]);
+  assert.deepEqual(byYear([], (y) => y), []);
+});
+
+test('yearRange: tek yıl, uzun ve kısa aralık', () => {
+  assert.equal(yearRange(2025, 2025), '2025');
+  assert.equal(yearRange(2019, 2025), '2019–2025');
+  assert.equal(yearRange(2024, 2025, true), '2024–25');
+  assert.equal(yearRange(2026, 2026, true), '2026');
 });

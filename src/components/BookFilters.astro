@@ -1,8 +1,8 @@
 ---
 import CategoryTint from './CategoryTint.astro';
 import { ui } from '../i18n/ui';
-import { byYear, categories, genres } from '../lib/book';
-import { plural } from '../lib/format';
+import { categories, finishedYear, genres } from '../lib/book';
+import { byYear, plural } from '../lib/format';
 import type { FinishedBook } from '../lib/books';
 import type { Lang } from '../lib/i18n';
 
@@ -21,7 +21,7 @@ const languageOptions = (values: FinishedBook['readIn'][]) =>
 const selects = [
   { key: 'original', label: t.originalLanguage, options: languageOptions(books.map((b) => b.originalLanguage)) },
   { key: 'read', label: t.readIn, options: languageOptions(books.map((b) => b.readIn)) },
-  { key: 'year', label: t.year, options: byYear(books).map(({ year, books }) => ({ value: String(year), label: `${year} (${books.length})` })) },
+  { key: 'year', label: t.year, options: byYear(books, finishedYear).map(({ year, items }) => ({ value: String(year), label: `${year} (${items.length})` })) },
 ];
 const chip = 'flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line-strong px-3.5 text-sm text-text-body transition-colors duration-200 hover:border-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg tab:min-h-10';
 const count = 'font-mono text-[11px] opacity-70';
