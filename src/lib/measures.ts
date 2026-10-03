@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import { home } from '../site';
 import { books } from './books';
-import { afterSunset, countsAsCity, countsAsCountry, distanceKm, takenAt, wordCount } from './measure';
+import { countsAsCity, countsAsCountry, distanceKm, takenAt, wordCount } from './measure';
 import { seriesOf } from './photos';
 import { districtCentres } from './districts';
 
@@ -22,7 +22,6 @@ export async function measures() {
   const farthest = frames
     .map((f) => ({ city: f.place.city, place: f.centre.id, km: Math.round(distanceKm(home, f.centre)) }))
     .reduce((a, b) => (b.km > a.km ? b : a));
-  const night = frames.map((f) => afterSunset(f.at, f.centre));
   return {
     pages: {
       value: finished.reduce((n, b) => n + b.pages, 0),
@@ -37,8 +36,7 @@ export async function measures() {
       value: new Set(cities.map((f) => `${f.place.city}, ${f.place.country}`)).size,
       latest: cities.at(-1)?.place.city,
     },
-    frames: { value: frames.length, series: new Set(frames.map((f) => f.series)).size, night },
-    afterSunset: night.filter(Boolean).length,
+    frames: { value: frames.length, series: new Set(frames.map((f) => f.series)).size },
     farthest,
     languages: new Set(finished.map((b) => b.originalLanguage)).size,
   };
