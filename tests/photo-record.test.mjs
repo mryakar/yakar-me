@@ -83,11 +83,15 @@ test('location: beş basamak; yoksa undefined', () => {
   assert.throws(() => location({ GPSLatitude: 91, GPSLongitude: 0 }), PhotoError);
 });
 
-test('parsePlace: üç parça, kısa ASCII', () => {
+test('parsePlace: üç parça, Latin harfleriyle kısa ad', () => {
   assert.deepEqual(parsePlace(' Mong Kok , Hong Kong,Hong Kong '), { district: 'Mong Kok', city: 'Hong Kong', country: 'Hong Kong' });
+  assert.deepEqual(parsePlace('Kavaklıdere, Ankara, Turkey'), { district: 'Kavaklıdere', city: 'Ankara', country: 'Turkey' });
+  assert.deepEqual(parsePlace('Nové Město, Prague, Czechia').district, 'Nové Město');
   assert.throws(() => parsePlace('Hong Kong'), PhotoError);
   assert.throws(() => parsePlace('Mong Kok, , Hong Kong'), PhotoError);
   assert.throws(() => parsePlace('Mong Kok, 香港, Hong Kong'), PhotoError);
+  assert.throws(() => parsePlace('Mong Kok\u200b, Hong Kong, Hong Kong'), PhotoError);
+  assert.throws(() => parsePlace('Мост, Belgrade, Serbia'), PhotoError);
 });
 
 test('takenAt: bozuk tarih reddedilir', () => {
