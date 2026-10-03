@@ -386,7 +386,7 @@ const tr: Dict = {
     firstPlayed: 'İlk çalınış',
     listen: 'Dinle',
     numbers: 'Sayılarla',
-    numbersNote: "Sayılar listeden, build'de",
+    numbersNote: 'Her yayında listeden sayılır',
     songs: 'Şarkı',
     artists: 'Sanatçı',
     genres: 'Tür',

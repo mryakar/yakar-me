@@ -34,5 +34,5 @@ export async function songs(lang: Lang) {
   const entries = (await getCollection('songs')).map((e) => e.data).toSorted((a, b) => a.position - b.position);
   if (entries.length === 0) throw new Error('src/content/songs.json has no songs');
   const all = entries.map((e) => song(e, lang));
-  return { all, practicing: all.filter((s) => s.practicing), playing: recentFirst(all.filter((s) => !s.practicing)) };
+  return { all: recentFirst(all), practicing: all.filter((s) => s.practicing) };
 }

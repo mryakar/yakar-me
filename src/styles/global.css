@@ -866,9 +866,6 @@
     background: var(--yk-card);
   }
 
-  .now-song[open] {
-    grid-column: 1 / -1;
-  }
   .now-summary {
     display: flex;
     align-items: center;
@@ -882,11 +879,8 @@
     transition: border-color 0.2s;
   }
   .now-summary:hover,
-  .now-song[open] > .now-summary {
+  .now-summary:focus-visible {
     border-color: color-mix(in srgb, var(--yk-accent) 55%, transparent);
-  }
-  .now-song > .song-card {
-    margin-top: 0.75rem;
   }
   .now-art {
     position: relative;
@@ -904,7 +898,6 @@
     left: 2.5rem;
     width: 5.5rem;
   }
-  .now-summary::-webkit-details-marker,
   .song-summary::-webkit-details-marker {
     display: none;
   }
@@ -1185,7 +1178,7 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .now-song .disc-face,
+    .now-summary .disc-face,
     .song[open] .disc-face,
     .song-card .disc-face {
       animation: spin 5.5s linear infinite;

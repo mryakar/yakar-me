@@ -1,7 +1,7 @@
 import { plural } from '../lib/format';
 import { fragmentId } from '../lib/fragment';
 import { filterQuery, matchesFilters, readFilters, toggleFilter } from '../lib/filter';
-import { cardSlot, closable, openFromHash } from './card-slot';
+import { cardSlot, openFromHash } from './card-slot';
 
 const root = document.querySelector<HTMLElement>('[data-playing]');
 const filters = root?.querySelector<HTMLElement>('[data-filters]');
@@ -12,7 +12,7 @@ if (root && filters && crates) {
 
   const songs = [...crates.querySelectorAll<HTMLDetailsElement>('[data-song]')];
   const sections = [...crates.querySelectorAll<HTMLElement>('[data-crate]')];
-  const practicing = [...root.querySelectorAll<HTMLDetailsElement>('[data-now]')];
+  const nowLinks = [...root.querySelectorAll<HTMLAnchorElement>('[data-now]')];
   const chips = [...filters.querySelectorAll<HTMLButtonElement>('button[data-filter]')];
   const genreGroup = filters.querySelector<HTMLElement>('[data-genres]')!;
   const result = filters.querySelector<HTMLElement>('[data-result]')!;
@@ -24,8 +24,6 @@ if (root && filters && crates) {
   let state = readFilters(new URLSearchParams(location.search), known, parentOf);
 
   const place = cardSlot(songs, (open) => open.closest('[data-crate]')!.querySelector('[data-rail]')!, matchMedia('(width >= 48rem)'));
-  for (const song of practicing) closable(song);
-
   const apply = () => {
     for (const c of chips) {
       const key = c.dataset.filter!;
@@ -63,8 +61,20 @@ if (root && filters && crates) {
     });
   }
 
+  for (const link of nowLinks) {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (songs.find((song) => song.id === link.dataset.now)?.hidden) {
+        state = new Map();
+        apply();
+      }
+      history.replaceState(history.state, '', `${location.pathname}${location.search}#${link.dataset.now}`);
+      openFromHash(songs, link.dataset.now!, place);
+    });
+  }
+
   crates.dataset.enhanced = '';
   filters.hidden = false;
   apply();
-  openFromHash([...practicing, ...songs], fragmentId(location.hash), place);
+  openFromHash(songs, fragmentId(location.hash), place);
 }
