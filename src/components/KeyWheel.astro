@@ -1,0 +1,32 @@
+---
+import { altoKey, circleOfFifths, keyTally } from '../lib/song';
+
+interface Props {
+  keys: string[];
+  line: (minor: string, major: string, n: number, altoMinor: string, altoMajor: string) => string;
+}
+const { keys, line } = Astro.props;
+const { counts, most, top } = keyTally(keys);
+const point = (i: number, r: number) => {
+  const angle = (i / 12) * 2 * Math.PI - Math.PI / 2;
+  return { x: Math.round(170 + r * Math.cos(angle)), y: Math.round(170 + r * Math.sin(angle)) };
+};
+const slices = circleOfFifths.map((k, i) => ({ ...k, count: counts[i], outer: point(i, 156), inner: point(i, 60), dot: point(i, 110) }));
+const lead = circleOfFifths[top];
+const summary = line(lead.minor, lead.major, most, altoKey(lead.minor), altoKey(lead.major));
+---
+<figure class="flex flex-col gap-5">
+  <svg viewBox="0 0 340 340" class="mx-auto block w-full max-w-85" role="img" aria-label={summary}>
+    <circle cx="170" cy="170" r="138" fill="none" class="stroke-line-strong" />
+    <circle cx="170" cy="170" r="76" fill="none" stroke-dasharray="2 4" class="stroke-line-strong" />
+    {slices.map((s) => (
+      <g>
+        <text x={s.outer.x} y={s.outer.y} text-anchor="middle" dominant-baseline="central" class="fill-muted font-mono text-[11px]">{s.major}</text>
+        <text x={s.inner.x} y={s.inner.y} text-anchor="middle" dominant-baseline="central" class="fill-faint font-mono text-[8px]">{s.minor}</text>
+        {s.count > 0 && <circle cx={s.dot.x} cy={s.dot.y} r={4 + Math.round((s.count / most) * 11)} class="fill-accent"><title>{s.minor} / {s.major}: {s.count}</title></circle>}
+      </g>
+    ))}
+    <text x="170" y="170" text-anchor="middle" dominant-baseline="central" class="fill-text font-display text-d4">{lead.minor}</text>
+  </svg>
+  <figcaption class="font-body text-[17px] leading-normal text-muted">{summary}</figcaption>
+</figure>

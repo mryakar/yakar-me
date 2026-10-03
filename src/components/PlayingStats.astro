@@ -1,0 +1,107 @@
+---
+import KeyWheel from './KeyWheel.astro';
+import Staff from './Staff.astro';
+import Portrait from './Portrait.astro';
+import { ui } from '../i18n/ui';
+import { categories, categoryClass, rankArtists } from '../lib/song';
+import { localize, type Lang } from '../lib/i18n';
+import { plural } from '../lib/format';
+import type { Song } from '../lib/songs';
+
+interface Props {
+  songs: Song[];
+  lang: Lang;
+}
+const { songs, lang } = Astro.props;
+const t = ui[lang].playing;
+const artists = rankArtists(songs);
+const [top, ...rest] = artists;
+const runnersUp = rest.slice(0, 3);
+const artistsPage = localize('/playing/artists/', lang);
+const kpis = [
+  { value: songs.length, label: t.songs },
+  { value: artists.length, label: t.artists },
+  { value: new Set(songs.map((s) => s.genre)).size, label: t.genres },
+];
+const strip = categories.flatMap((category) => songs.filter((s) => s.category === category).map((_, i, all) => ({ category, first: i === 0, count: all.length })));
+const dated = songs.flatMap((s) => (s.firstPlayed ? [{ ...s, firstPlayed: s.firstPlayed }] : []));
+const card = 'flex flex-col gap-5 border border-line bg-card p-5 tab:p-7';
+const heading = 'label text-accent';
+---
+<section aria-labelledby="numbers" class="flex flex-col gap-8 border-t border-line pt-6">
+  <div class="flex flex-wrap items-baseline justify-between gap-3">
+    <h2 id="numbers" class="font-display text-d2">{t.numbers}</h2>
+    <span class="label text-faint">{t.numbersNote}</span>
+  </div>
+
+  <dl class="grid grid-cols-3 gap-px border border-line bg-line">
+    {kpis.map((k) => (
+      <div class="flex flex-col-reverse gap-2 bg-bg p-4 tab:p-6">
+        <dt class="label text-faint">{k.label}</dt>
+        <dd class="font-display text-d2 leading-none tab:text-[4rem]">{k.value}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <div class="grid gap-6 desk:grid-cols-2">
+    <div class={card}>
+      <h3 class={heading}>{t.topArtist}</h3>
+      <a href={`${artistsPage}#${top.songs[0].artistId}`} class="group flex items-center gap-5">
+        <Portrait name={top.name} class="size-24 border-accent tab:size-28" large />
+        <span class="flex min-w-0 flex-col gap-1.5">
+          <span class="font-display text-d3 transition-colors duration-200 group-hover:text-accent tab:text-d2" lang={top.songs[0].lang}>{top.name}</span>
+          <span class="font-body text-[17px] leading-snug text-muted">{t.topSongs(plural(t.songCount, top.songs.length), top.songs.map((s) => s.title).join(', '))}</span>
+        </span>
+      </a>
+      {runnersUp.length > 0 && (
+        <ul class="flex flex-col gap-3">
+          {runnersUp.map((a) => (
+            <li>
+              <a href={`${artistsPage}#${a.songs[0].artistId}`} class="group grid grid-cols-[2.25rem_minmax(0,1fr)_5rem_1.5rem] items-center gap-3">
+                <Portrait name={a.name} class="size-9" />
+                <span class="truncate text-[15px] transition-colors duration-200 group-hover:text-accent" lang={a.songs[0].lang}>{a.name}</span>
+                <svg viewBox="0 0 100 4" preserveAspectRatio="none" class="block h-1 w-full" aria-hidden="true">
+                  <rect width="100" height="4" class="fill-line" />
+                  <rect width={Math.round((a.songs.length / top.songs.length) * 100)} height="4" class="fill-accent" />
+                </svg>
+                <span class="text-right font-mono text-[11px] text-faint">{a.songs.length}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div class={card}>
+      <h3 class={heading}>{t.wheel}</h3>
+      <KeyWheel keys={songs.map((s) => s.key)} line={t.wheelLine} />
+    </div>
+  </div>
+
+  <div class={card}>
+    <h3 class={heading}>{t.categoriesLabel}</h3>
+    <div class="grid h-10 auto-cols-fr grid-flow-col" aria-hidden="true">
+      {strip.map((cell) => (
+        <span class:list={['flex items-center bg-(--tint) font-mono text-xs text-text', categoryClass[cell.category], cell.first && 'border-l-2 border-card pl-2.5 first:border-l-0']}>{cell.first && cell.count}</span>
+      ))}
+    </div>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2.5">
+      {categories.filter((c) => strip.some((cell) => cell.category === c)).map((c) => (
+        <li class="flex items-center gap-2 text-sm text-text-body">
+          <span aria-hidden="true" class:list={['block size-3 border border-line-strong bg-(--tint)', categoryClass[c]]}></span>
+          {t.categories[c]} <span class="sr-only">{strip.find((cell) => cell.category === c)!.count}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {dated.length > 0 && (
+    <div class={card}>
+      <h3 class={heading}>{t.staff}</h3>
+      <Staff songs={dated} lang={lang} label={t.staffLine} />
+      <p class="font-body text-[17px] leading-normal text-muted">{t.staffLine}</p>
+    </div>
+  )}
+
+  <p class="label border-t border-line pt-5 normal-case tracking-normal text-faint">{t.sleeves}</p>
+</section>

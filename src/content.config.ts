@@ -4,10 +4,14 @@ import { z } from 'astro/zod';
 import { locales } from './lib/i18n';
 import { FOCUS_STEP, PLACE_NAME } from './lib/photo';
 import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
+import * as song from './lib/song';
 
 const lang = z.enum(locales);
 const translations = (base: string) => glob({ pattern: `*/{${locales.join(',')}}.md`, base });
 const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+const positioned = (path: string) =>
+  file(path, { parser: (text) => (JSON.parse(text) as object[]).map((entry, position) => ({ ...entry, position })) });
+const month = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/);
 const focusPercent = z.number().int().min(0).max(100).multipleOf(FOCUS_STEP);
 
 const writing = defineCollection({
@@ -154,15 +158,51 @@ const book = z
   .strict();
 
 const books = defineCollection({
-  loader: file('./src/content/books.json', {
-    parser: (text) => (JSON.parse(text) as object[]).map((book, position) => ({ ...book, position })),
-  }),
+  loader: positioned('./src/content/books.json'),
   schema: z
     .discriminatedUnion('status', [
       book.extend({ status: z.literal('reading'), nowNote: z.record(lang, bookText).optional() }),
-      book.extend({ status: z.literal('finished'), finished: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/) }),
+      book.extend({ status: z.literal('finished'), finished: month }),
     ])
     .refine((b) => categoryOf(b.genre) === b.category, { message: 'genre does not belong to the category' }),
 });
 
-export const collections = { writing, writingTranslations, series, seriesTranslations, photos, districts, pages, books };
+const songText = z.string().trim().min(1);
+const link = (pattern: RegExp) => z.string().regex(pattern);
+
+const songEntry = z
+  .object({
+    id: slug,
+    title: songText,
+    artist: songText,
+    lang: z.string().regex(/^[a-z]{2,3}$/),
+    album: songText,
+    year: z.number().int().min(1900).max(2100),
+    category: z.enum(song.categories),
+    genre: z.enum(song.allGenres),
+    level: z.number().int().min(1).max(song.LEVELS),
+    key: z.enum(song.keys),
+    keyEstimated: z.literal(true).optional(),
+    firstPlayed: month.optional(),
+    links: z
+      .object({
+        appleMusic: link(/^https:\/\/music\.apple\.com\/[a-z]{2}\/song\/([a-z0-9-]+\/)?\d+$/),
+        spotify: link(/^https:\/\/open\.spotify\.com\/(track|album)\/[A-Za-z0-9]{22}$/),
+        youtube: link(/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/),
+      })
+      .strict(),
+    position: z.number().int().nonnegative(),
+  })
+  .strict();
+
+const songs = defineCollection({
+  loader: positioned('./src/content/songs.json'),
+  schema: z
+    .discriminatedUnion('status', [
+      songEntry.extend({ status: z.literal('practicing'), nowNote: z.record(lang, songText).optional() }),
+      songEntry.extend({ status: z.literal('playing') }),
+    ])
+    .refine((s) => song.categoryOf(s.genre) === s.category, { message: 'genre does not belong to the category' }),
+});
+
+export const collections = { writing, writingTranslations, series, seriesTranslations, photos, districts, pages, books, songs };

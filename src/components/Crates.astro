@@ -1,0 +1,59 @@
+---
+import Sleeve from './Sleeve.astro';
+import Disc from './Disc.astro';
+import Level from './Level.astro';
+import SongCard from './SongCard.astro';
+import { ui } from '../i18n/ui';
+import { categories, categoryClass, roman } from '../lib/song';
+import type { Lang } from '../lib/i18n';
+import type { Song } from '../lib/songs';
+
+interface Props {
+  songs: Song[];
+  lang: Lang;
+}
+const { songs, lang } = Astro.props;
+const t = ui[lang].playing;
+const crates = categories
+  .map((category) => ({ category, songs: songs.filter((s) => s.category === category) }))
+  .filter((c) => c.songs.length > 0);
+const wave = Array.from({ length: 19 }, (_, i) => `S ${45 * i + 75} ${i % 2 ? 0 : 14}, ${45 * i + 90} 7`).join(' ');
+const flourish = Array.from({ length: 20 }, (_, i) => (i % 2 ? `M${45 * i + 22} 10 q4 3 7 0` : `M${45 * i + 22} 4 q4 -3 7 0`)).join(' ');
+---
+<div class="crates" data-crates>
+  {crates.map(({ category, songs }, i) => (
+    <section class:list={['crate', categoryClass[category]]} aria-labelledby={`crate-${category}`} data-crate>
+      <div class="crate-row">
+        <h2 id={`crate-${category}`} class="crate-head">
+          <span class="crate-tab" aria-hidden="true" data-crate-count>{songs.length}</span>
+          <span class="crate-roman" aria-hidden="true">{roman(i + 1)}.</span>
+          <span class="crate-name">{t.categories[category]}</span>
+          <span class="crate-genres" aria-hidden="true">{[...new Set(songs.map((s) => t.genreNames[s.genre]))].join(' · ')}</span>
+        </h2>
+        {songs.map((song) => (
+          <details id={song.id} name="song" class="song scroll-mt-6 desk:scroll-mt-24" data-song data-category={song.category} data-genre={song.genre}>
+            <summary class="song-summary">
+              <span class="song-art">
+                <Disc />
+                <Sleeve song={song} />
+              </span>
+              <span class="song-text">
+                <span class="font-body text-[1.4375rem] leading-tight text-text" lang={song.lang}>{song.title}</span>
+                <span class="text-[15px] text-muted" lang={song.lang}>{song.artist}</span>
+              </span>
+              <Level value={song.level} lang={lang} dots class="song-level" />
+            </summary>
+            <SongCard song={song} lang={lang} />
+          </details>
+        ))}
+      </div>
+      <div class="crate-rail" aria-hidden="true" data-rail>
+        <span>{t.categories[category]}</span>
+        <svg width="900" height="14" viewBox="0 0 900 14" fill="none" stroke-width="0.9">
+          <path d={`M0 7 C 15 0, 30 0, 45 7 ${wave}`}></path>
+          <path d={flourish}></path>
+        </svg>
+      </div>
+    </section>
+  ))}
+</div>

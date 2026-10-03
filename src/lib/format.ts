@@ -17,6 +17,8 @@ export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: L
 
 export const shortMonth = (date: Date, lang: Lang = 'en') => SHORT_MONTHS[lang][date.getUTCMonth()];
 
+export const monthStart = (month: string) => new Date(`${month}-01T00:00:00Z`);
+
 export const formatMonth = (date: Date, lang: Lang = 'en') => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
 
 export const formatNumber = (n: number, lang: Lang = 'en') => n.toLocaleString(dateLocale[lang]);
@@ -29,6 +31,8 @@ export function englishOrdinal(n: number) {
   const suffix = teen ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th';
   return `${n}${suffix}`;
 }
+
+export const endSentence = (text: string) => (/[.!?…]$/.test(text) ? '' : '.');
 
 export const plural = (forms: { one: string; other: string }, n: number) => (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
 

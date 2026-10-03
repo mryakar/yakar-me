@@ -5,7 +5,6 @@ import {
   allGenres,
   categories,
   categoryOf,
-  finishedDate,
   finishedYear,
   genres,
   isIsbn13,
@@ -15,7 +14,7 @@ import {
   SPINE_HEIGHTS,
   SPINE_THICKNESSES,
 } from '../src/lib/book.ts';
-import { byYear } from '../src/lib/format.ts';
+import { byYear, monthStart } from '../src/lib/format.ts';
 import { ui } from '../src/i18n/ui.ts';
 
 const books = JSON.parse(readFileSync(new URL('../src/content/books.json', import.meta.url), 'utf8'));
@@ -44,15 +43,15 @@ test('newestFirst: son biten üstte, aynı ayda dosyadaki sıra', () => {
 });
 
 test('byYear + finishedYear: biten kitaplar sırayı bozmadan yıllara bölünür', () => {
-  const list = ['2025-09', '2025-08', '2024-07', '2022-11'].map((m, i) => ({ i, finished: finishedDate(m) }));
+  const list = ['2025-09', '2025-08', '2024-07', '2022-11'].map((m, i) => ({ i, finished: monthStart(m) }));
   assert.deepEqual(
     byYear(list, finishedYear).map(({ year, items }) => [year, items.map((b) => b.i)]),
     [[2025, [0, 1]], [2024, [2]], [2022, [3]]],
   );
 });
 
-test('finishedDate: ayın ilk günü, UTC', () => {
-  assert.equal(finishedDate('2026-09').toISOString(), '2026-09-01T00:00:00.000Z');
+test('monthStart: ayın ilk günü, UTC', () => {
+  assert.equal(monthStart('2026-09').toISOString(), '2026-09-01T00:00:00.000Z');
 });
 
 test('sırt kalınlığı sayfa sayısıyla artar, ölçeğin içinde kalır', () => {

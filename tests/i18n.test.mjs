@@ -63,6 +63,7 @@ test('navLinks: dile göre adres ve etiket; ana sayfa yalnız kendisinde güncel
     ['/tr/writing/', 'Yazılar', true],
     ['/tr/reading/', 'Kitaplar', false],
     ['/tr/photos/', 'Fotoğraflar', false],
+    ['/tr/playing/', 'Çaldıklarım', false],
     ['/tr/about/', 'Hakkımda', false],
   ]);
   assert.equal(navLinks('/', 'en')[0].current, true);

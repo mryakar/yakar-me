@@ -14,9 +14,10 @@ import { mapPath, seriesPath } from '../../lib/photo';
 import { mapPlaces } from '../../lib/places';
 import { centre } from '../../lib/map';
 import { articles } from '../../lib/writing';
-import { books } from '../../lib/books';
+import { books, type ReadingBook } from '../../lib/books';
+import { songs, type Song } from '../../lib/songs';
 import { measures } from '../../lib/measures';
-import { articlePath, documentTitle, formatDate, formatMonth, formatNumber, plural } from '../../lib/format';
+import { articlePath, documentTitle, endSentence, formatDate, formatMonth, formatNumber, plural } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -29,14 +30,21 @@ const [latest] = await articles(lang);
 const [series] = await recentSeries(lang, 1);
 const { reading } = await books(lang);
 const [current, ...also] = reading;
+const { practicing } = await songs(lang);
 const m = await measures();
 const mapCities = await mapPlaces(lang);
 const placePoints = mapCities.flatMap((c) => c.places);
 const cityPoints = mapCities.map((c) => c.middle);
 const readingPage = localize('/reading/', lang);
+const playingPage = localize('/playing/', lang);
 const photosPage = localize('/photos/', lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
-const now = [...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []), ...t.now];
+type NowItem = { label: string; books: ReadingBook[] } | { label: string; songs: Song[] } | { label: string; text: string };
+const now: NowItem[] = [
+  ...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []),
+  ...t.now,
+  ...(practicing.length > 0 ? [{ label: t.home.nowPlaying, songs: practicing }] : []),
+];
 const preview = 'font-body text-[1.375rem] leading-tight text-text transition-colors duration-200 hover:text-accent tab:text-[1.625rem]';
 const more = 'group inline-flex items-center gap-2 text-[15px] text-accent';
 const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase';
@@ -67,7 +75,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} name={t.home.framesCount(n(m.frames.value))} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small" />
         </div>
       </div>
-      <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(2,minmax(0,1fr))] @2xl:gap-10">
+      <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(3,minmax(0,1fr))] @2xl:gap-10">
         <a href={mapPath(lang)} class="group flex max-w-75 flex-col gap-3 @2xl:max-w-none">
           <span class="block aspect-square overflow-hidden rounded-lg border border-line bg-bg">
             <Globe points={cityPoints} centre={centre(placePoints)} />
@@ -85,6 +93,15 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
             <span class="label text-faint">{t.home.km}</span>
           </span>
           <span class="text-[13px] leading-normal text-muted transition-colors duration-200 group-hover:text-accent">{t.home.farthestRoute(home.city, m.farthest.city)}</span>
+        </a>
+        <a href={playingPage} class="group flex flex-col gap-3">
+          <span class={cellLabel}>{t.home.songsPlayed}</span>
+          <span class="flex items-center gap-2.5">
+            <span class="sr-only">{n(m.songs)}</span>
+            <Odometer value={m.songs} cells={3} />
+            <span class="label text-faint">{t.home.onAlto}</span>
+          </span>
+          <span class="text-[13px] leading-normal text-muted transition-colors duration-200 group-hover:text-accent">{t.home.songsSource}</span>
         </a>
         <div class="flex flex-col gap-3">
           <span class={cellLabel}>{t.home.languages}</span>
@@ -145,7 +162,11 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
               ? item.books.map((book, i) => (
                   <>{i > 0 && ` ${t.home.also} `}<em>{book.title}</em>{book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}</>
                 ))
-              : item.text}
+              : 'songs' in item
+                ? item.songs.map((song, i) => (
+                    <>{i > 0 && ` ${t.home.also} `}<em lang={song.lang}>{song.title}</em> — <span lang={song.lang}>{song.artist}</span>{endSentence(song.artist)}{song.nowNote && ` ${song.nowNote}`}</>
+                  ))
+                : item.text}
           </p>
         ))}
       </div>

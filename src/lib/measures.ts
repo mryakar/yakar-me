@@ -1,16 +1,18 @@
 import { getCollection } from 'astro:content';
 import { home } from '../site';
 import { books } from './books';
+import { songs } from './songs';
 import { countsAsCity, countsAsCountry, distanceKm, takenAt, wordCount } from './measure';
 import { seriesOf } from './photos';
 import { districtCentres } from './districts';
 
 export async function measures() {
-  const [writing, photos, centreOf, { finished }] = await Promise.all([
+  const [writing, photos, centreOf, { finished }, { all: played }] = await Promise.all([
     getCollection('writing'),
     getCollection('photos'),
     districtCentres(),
     books('en'),
+    songs('en'),
   ]);
   const frames = photos
     .map((photo) => {
@@ -39,5 +41,6 @@ export async function measures() {
     frames: { value: frames.length, series: new Set(frames.map((f) => f.series)).size },
     farthest,
     languages: new Set(finished.map((b) => b.originalLanguage)).size,
+    songs: played.length,
   };
 }

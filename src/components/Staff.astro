@@ -1,0 +1,30 @@
+---
+import { staffLayout } from '../lib/song';
+import { formatMonth, monthStart } from '../lib/format';
+import type { Lang } from '../lib/i18n';
+import type { Song } from '../lib/songs';
+
+interface Props {
+  songs: (Song & { firstPlayed: string })[];
+  lang: Lang;
+  label: string;
+}
+const { songs, lang, label } = Astro.props;
+const layout = staffLayout(songs)!;
+const x = (fraction: number) => Math.round(20 + fraction * 960);
+const y = (step: number) => Math.round(136 - step * 99);
+---
+<svg viewBox="0 0 1000 180" class="block h-auto w-full" role="img" aria-label={label}>
+  {[0, 1, 2, 3, 4].map((i) => <line x1="20" x2="980" y1={40 + i * 24} y2={40 + i * 24} class="stroke-line-strong" />)}
+  {layout.years.map((year) => (
+    <g>
+      <line x1={x(year.x)} x2={x(year.x)} y1="30" y2="146" class="stroke-line" />
+      <text x={x(year.x)} y="170" text-anchor="middle" class="fill-faint font-mono text-[11px]">{year.year}</text>
+    </g>
+  ))}
+  {layout.notes.map((note) => (
+    <ellipse cx={x(note.x)} cy={y(note.step)} rx="8" ry="6" transform={`rotate(-20 ${x(note.x)} ${y(note.step)})`} class:list={['stroke-2', note.song.practicing ? 'fill-none stroke-accent' : 'fill-text stroke-card']}>
+      <title>{note.song.title} · {formatMonth(monthStart(note.song.firstPlayed), lang)}</title>
+    </ellipse>
+  ))}
+</svg>

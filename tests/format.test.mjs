@@ -81,3 +81,10 @@ test('yearRange: tek yıl, uzun ve kısa aralık', () => {
   assert.equal(yearRange(2024, 2025, true), '2024–25');
   assert.equal(yearRange(2026, 2026, true), '2026');
 });
+
+test('endSentence: noktalama yoksa nokta', async () => {
+  const { endSentence } = await import('../src/lib/format.ts');
+  assert.equal(endSentence('Sade'), '.');
+  assert.equal(endSentence('Grover Washington, Jr.'), '');
+  assert.equal(endSentence('Who Moved My Cheese?'), '');
+});

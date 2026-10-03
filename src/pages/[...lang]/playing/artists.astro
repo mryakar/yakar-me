@@ -1,0 +1,78 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PlayingViews from '../../../components/PlayingViews.astro';
+import Portrait from '../../../components/Portrait.astro';
+import Sleeve from '../../../components/Sleeve.astro';
+import { ui } from '../../../i18n/ui';
+import { langPaths, localize, type Lang } from '../../../lib/i18n';
+import { songs } from '../../../lib/songs';
+import { altoKey, categoryClass, rankArtists } from '../../../lib/song';
+import { documentTitle, plural } from '../../../lib/format';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang].playing;
+const { all } = await songs(lang);
+const artists = rankArtists(all);
+const songsPage = localize('/playing/', lang);
+const sizes = ['size-26', 'size-37', 'size-49'];
+---
+<Base lang={lang} title={documentTitle(t.artistsView, ui[lang].nav.playing)} description={t.artistsLede}>
+  <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-playing-artists>
+    <PlayingViews lang={lang} current="artists" songs={all.length} artists={artists.length} lede={t.artistsLede} />
+
+    <div class="artists" data-artists>
+      {artists.map((artist) => {
+        const [first] = artist.songs;
+        return (
+          <details id={first.artistId} name="artist" class="artist scroll-mt-6 desk:scroll-mt-24" data-artist>
+            <summary class="group flex w-32 cursor-pointer list-none flex-col items-center gap-3 text-center [&::-webkit-details-marker]:hidden">
+              <Portrait name={artist.name} class={`${sizes[Math.min(artist.songs.length, sizes.length) - 1]} transition-colors duration-200 group-hover:border-accent group-open:border-accent`} large />
+              <span class="text-[15px] leading-snug text-text" lang={first.lang}>{artist.name}</span>
+              <span class="font-mono text-[11px] text-faint">{plural(t.songCount, artist.songs.length)}</span>
+            </summary>
+            <div class="artist-card mt-6 tab:mt-0" data-card>
+              <div class="flex flex-col gap-7 border border-line bg-card p-5 tab:flex-row tab:gap-10 tab:p-8">
+                <Portrait name={artist.name} class="size-40 flex-none border-accent tab:size-65" large />
+                <div class="flex min-w-0 flex-1 flex-col gap-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <h2 class="font-display text-d3 tab:text-d2" lang={first.lang}>{artist.name}</h2>
+                    <button type="button" data-close hidden aria-label={t.close} class="inline-flex size-11 flex-none cursor-pointer items-center justify-center rounded-full border border-line-strong text-muted transition-colors duration-200 hover:text-text">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12"></path></svg>
+                    </button>
+                  </div>
+                  <ul class="flex flex-wrap gap-2">
+                    {[...new Set(artist.songs.map((s) => t.genreNames[s.genre]))].map((genre) => (
+                      <li class="rounded-full border border-line-strong px-3.5 py-1.5 text-[13px] text-muted">{genre}</li>
+                    ))}
+                  </ul>
+                  <ul class="flex flex-col border-t border-line">
+                    {artist.songs.map((song) => (
+                      <li class="border-b border-line">
+                        <a href={`${songsPage}#${song.id}`} class:list={['group grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-5 gap-y-1 py-3.5 tab:grid-cols-[4.5rem_minmax(0,1fr)_auto]', categoryClass[song.category]]}>
+                          <span class="row-span-2 block w-18 tab:row-span-1"><Sleeve song={song} mini /></span>
+                          <span class="flex min-w-0 flex-col gap-1">
+                            <span class="font-body text-[21px] leading-tight text-text transition-colors duration-200 group-hover:text-accent" lang={song.lang}>{song.title}</span>
+                            <span class="text-sm text-muted" lang={song.lang}>{song.album} · {song.year}</span>
+                          </span>
+                          <span class="label text-faint">{t.keyValue(altoKey(song.key), song.key, song.keyEstimated)}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </details>
+        );
+      })}
+    </div>
+
+    <p class="label border-t border-line pt-5 normal-case tracking-normal text-faint">{t.sleeves}</p>
+  </div>
+</Base>
+
+<script>
+  import '../../../scripts/playing-artists.ts';
+</script>

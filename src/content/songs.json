@@ -1,0 +1,208 @@
+[
+  {
+    "id": "winelight",
+    "title": "Winelight",
+    "artist": "Grover Washington, Jr.",
+    "lang": "en",
+    "album": "Winelight",
+    "year": 1980,
+    "category": "smooth-jazz",
+    "genre": "smooth-jazz",
+    "status": "practicing",
+    "level": 3,
+    "key": "Cm",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/winelight/321974945",
+      "spotify": "https://open.spotify.com/album/6nTg7k4gkzh6QcWjmBxKSg",
+      "youtube": "https://www.youtube.com/watch?v=Sgt8xQ-Sxrg"
+    },
+    "nowNote": {
+      "en": "The neighbours have been very understanding.",
+      "tr": "Komşular şimdiye kadar çok anlayışlı."
+    }
+  },
+  {
+    "id": "the-finishing",
+    "title": "The Finishing",
+    "artist": "Stavroz",
+    "lang": "en",
+    "album": "The Ginning EP",
+    "year": 2013,
+    "category": "electronic",
+    "genre": "deep-house",
+    "status": "playing",
+    "level": 5,
+    "key": "D♭m",
+    "keyEstimated": true,
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/the-finishing/1042995339",
+      "spotify": "https://open.spotify.com/track/2RbdIvw1IrzOuWt5tpiHjN",
+      "youtube": "https://www.youtube.com/watch?v=xjJpzSqWyVQ"
+    }
+  },
+  {
+    "id": "no-man-no-cry",
+    "title": "No Man No Cry",
+    "artist": "Jimmy Sax",
+    "lang": "en",
+    "album": "Jimmy",
+    "year": 2021,
+    "category": "electronic",
+    "genre": "electronica",
+    "status": "playing",
+    "level": 5,
+    "key": "F",
+    "keyEstimated": true,
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/1586023885",
+      "spotify": "https://open.spotify.com/track/2b0Aosp8Qa3Gt3AVvp2DJl",
+      "youtube": "https://www.youtube.com/watch?v=L2JKZZw9wdU"
+    }
+  },
+  {
+    "id": "make-me-a-memory",
+    "title": "Make Me a Memory (Sad Samba)",
+    "artist": "Grover Washington, Jr.",
+    "lang": "en",
+    "album": "Winelight",
+    "year": 1980,
+    "category": "smooth-jazz",
+    "genre": "smooth-jazz",
+    "status": "playing",
+    "level": 2,
+    "key": "Gm",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/make-me-a-memory/321975043",
+      "spotify": "https://open.spotify.com/track/2yWJJLc3iAGyYlpEiFogoi",
+      "youtube": "https://www.youtube.com/watch?v=vLv2tua4i-U"
+    }
+  },
+  {
+    "id": "let-it-flow",
+    "title": "Let It Flow (For “Dr. J”)",
+    "artist": "Grover Washington, Jr.",
+    "lang": "en",
+    "album": "Winelight",
+    "year": 1980,
+    "category": "smooth-jazz",
+    "genre": "smooth-jazz",
+    "status": "playing",
+    "level": 3,
+    "key": "Dm",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/let-it-flow-for-dr-j/321974962",
+      "spotify": "https://open.spotify.com/album/6nTg7k4gkzh6QcWjmBxKSg",
+      "youtube": "https://www.youtube.com/watch?v=GF97EeXmahM"
+    }
+  },
+  {
+    "id": "careless-whisper",
+    "title": "Careless Whisper",
+    "artist": "George Michael",
+    "lang": "en",
+    "album": "Make It Big",
+    "year": 1984,
+    "category": "pop-rock",
+    "genre": "pop",
+    "status": "playing",
+    "level": 5,
+    "key": "Dm",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/careless-whisper/193085066",
+      "spotify": "https://open.spotify.com/track/6KsgCYcZKPcBRDNGhiZWRR",
+      "youtube": "https://www.youtube.com/watch?v=izGwDsrQ1eQ"
+    }
+  },
+  {
+    "id": "black-orpheus",
+    "title": "Theme from “Black Orpheus”",
+    "artist": "Paul Desmond",
+    "lang": "en",
+    "album": "Take Ten",
+    "year": 1963,
+    "category": "jazz",
+    "genre": "bossa-nova",
+    "status": "playing",
+    "level": 3,
+    "key": "Gm",
+    "keyEstimated": true,
+    "links": {
+      "appleMusic": "https://music.apple.com/ca/song/the-theme-from-black-orpheus/304783960",
+      "spotify": "https://open.spotify.com/track/0lJgsLVSuqHdWePpXrUpoo",
+      "youtube": "https://www.youtube.com/watch?v=3CuIwB9YrSc"
+    }
+  },
+  {
+    "id": "scarborough-fair",
+    "title": "Scarborough Fair",
+    "artist": "Celtic Woman",
+    "lang": "en",
+    "album": "A New Journey",
+    "year": 2007,
+    "category": "folk",
+    "genre": "celtic-folk",
+    "status": "playing",
+    "level": 5,
+    "key": "Cm",
+    "links": {
+      "appleMusic": "https://music.apple.com/gb/song/scarborough-fair/715561696",
+      "spotify": "https://open.spotify.com/track/1U1NkDoPpCSEX1T6ZMWX04",
+      "youtube": "https://www.youtube.com/watch?v=hBBpnvYEDSA"
+    }
+  },
+  {
+    "id": "cold-duck-time",
+    "title": "Cold Duck Time",
+    "artist": "Les McCann & Eddie Harris",
+    "lang": "en",
+    "album": "Swiss Movement",
+    "year": 1969,
+    "category": "jazz",
+    "genre": "soul-jazz",
+    "status": "playing",
+    "level": 3,
+    "key": "F",
+    "keyEstimated": true,
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/cold-duck-time-live-at-the-montreux-jazz-festival/50234805",
+      "spotify": "https://open.spotify.com/track/681k8Ws07pN7wvJjZ7RTtt",
+      "youtube": "https://www.youtube.com/watch?v=QQP2Fl9r0Bo"
+    }
+  },
+  {
+    "id": "layla",
+    "title": "Layla (Acoustic)",
+    "artist": "Eric Clapton",
+    "lang": "en",
+    "album": "Unplugged",
+    "year": 1992,
+    "category": "pop-rock",
+    "genre": "rock",
+    "status": "playing",
+    "level": 5,
+    "key": "Dm",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/layla-acoustic-live/1647262012",
+      "spotify": "https://open.spotify.com/track/5phbwzg5d2MqNAoc0435Zu",
+      "youtube": "https://www.youtube.com/watch?v=EOs0qeiJyIg"
+    }
+  },
+  {
+    "id": "smooth-operator",
+    "title": "Smooth Operator",
+    "artist": "Sade",
+    "lang": "en",
+    "album": "Diamond Life",
+    "year": 1984,
+    "category": "pop-rock",
+    "genre": "sophisti-pop",
+    "status": "playing",
+    "level": 5,
+    "key": "Am",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/smooth-operator/1524651263",
+      "spotify": "https://open.spotify.com/track/6VjOxsAU1ncYVB1ICrLaZa",
+      "youtube": "https://www.youtube.com/watch?v=4TYv2PhG89A"
+    }
+  }
+]
