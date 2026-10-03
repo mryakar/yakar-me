@@ -1,4 +1,5 @@
 import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
+import { fragmentId } from '../lib/fragment';
 import { bounds, contains, type Bounds } from '../lib/map';
 import { mapStyle, PALETTE_TOKENS, type Palette } from '../lib/map-style';
 import { arrange } from '../lib/map-labels';
@@ -304,7 +305,7 @@ async function start(frame: HTMLElement) {
   new MutationObserver(() => map.setStyle(paint())).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   const focus = (animate: boolean) => {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = fragmentId(location.hash);
     if (!id) return;
     const place = places.find((p) => p.id === id);
     if (place) showPlace(place, animate);

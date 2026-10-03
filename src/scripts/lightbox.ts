@@ -1,3 +1,4 @@
+import { fragmentId } from '../lib/fragment';
 import { SLIDE_MS, swipeAxis, swipeStep, type Axis, type Step } from '../lib/swipe';
 
 const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
@@ -38,11 +39,11 @@ if (dialog) {
     return true;
   };
 
-  const shift = (element: HTMLElement, from: number, to: number, easing: string) => {
+  const shift = async (element: HTMLElement, from: number, to: number, easing: string) => {
     element.style.transform = to ? `translateX(${to}px)` : '';
-    if (reducedMotion.matches || from === to) return Promise.resolve();
+    if (reducedMotion.matches || from === to) return;
     const frames = [{ transform: `translateX(${from}px)` }, { transform: `translateX(${to}px)` }];
-    return element.animate(frames, { duration: SLIDE_MS / 2, easing }).finished.then(() => undefined);
+    await element.animate(frames, { duration: SLIDE_MS / 2, easing }).finished;
   };
 
   const slide = async (step: Step, from: number) => {
@@ -114,5 +115,6 @@ if (dialog) {
     document.querySelector<HTMLElement>(`[data-open="${ids[current]}"]`)?.focus();
   });
 
-  if (location.hash) open(decodeURIComponent(location.hash.slice(1)));
+  const linked = fragmentId(location.hash);
+  if (linked) open(linked);
 }
