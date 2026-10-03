@@ -1,3 +1,5 @@
+import { PLACE_NAME } from '../../src/lib/photo.ts';
+
 export const FILM_SIMULATIONS = {
   0x000: 'Provia',
   0x120: 'Astia',
@@ -48,11 +50,13 @@ const DRANGE_PRIORITY = { 1: 'Weak', 2: 'Strong', 3: 'Plus' };
 export class PhotoError extends Error {}
 
 const TEXT = /^[\x20-\x7e]{1,60}$/;
-const text = (value, name) => {
+const matching = (pattern, expected) => (value, name) => {
   const s = String(value ?? '').trim();
-  if (!TEXT.test(s)) throw new PhotoError(`${name}: expected short printable ASCII, got ${JSON.stringify(value)}`);
+  if (!pattern.test(s)) throw new PhotoError(`${name}: expected ${expected}, got ${JSON.stringify(value)}`);
   return s;
 };
+const text = matching(TEXT, 'short printable ASCII');
+const placeText = matching(PLACE_NAME, 'a short name in Latin letters');
 const number = (value, name, min, max) => {
   if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max) {
     throw new PhotoError(`${name}: expected a number in [${min}, ${max}], got ${JSON.stringify(value)}`);
@@ -100,7 +104,7 @@ export function location(exif) {
 export function parsePlace(answer) {
   const parts = String(answer ?? '').split(',').map((s) => s.trim());
   if (parts.length !== 3) throw new PhotoError(`place: expected "District, City, Country", got ${JSON.stringify(answer)}`);
-  const [district, city, country] = parts.map((p, i) => text(p, ['district', 'city', 'country'][i]));
+  const [district, city, country] = parts.map((p, i) => placeText(p, ['district', 'city', 'country'][i]));
   return { district, city, country };
 }
 

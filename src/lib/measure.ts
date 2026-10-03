@@ -10,9 +10,6 @@ export interface Place {
 
 const RAD = Math.PI / 180;
 const EARTH_RADIUS_KM = 6371;
-const DAY_MS = 86_400_000;
-const J2000_MS = Date.UTC(2000, 0, 1, 12);
-export const SUNSET_ALTITUDE = -0.833;
 
 export function distanceKm(a: Point, b: Point) {
   const h =
@@ -20,22 +17,6 @@ export function distanceKm(a: Point, b: Point) {
     Math.cos(a.lat * RAD) * Math.cos(b.lat * RAD) * Math.sin(((b.lon - a.lon) * RAD) / 2) ** 2;
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
 }
-
-export function sunAltitude(at: Date, { lat, lon }: Point) {
-  const d = (at.getTime() - J2000_MS) / DAY_MS;
-  const anomaly = (357.529 + 0.98560028 * d) * RAD;
-  const longitude = (280.459 + 0.98564736 * d + 1.915 * Math.sin(anomaly) + 0.02 * Math.sin(2 * anomaly)) * RAD;
-  const obliquity = (23.439 - 0.00000036 * d) * RAD;
-  const rightAscension = Math.atan2(Math.cos(obliquity) * Math.sin(longitude), Math.cos(longitude));
-  const declination = Math.asin(Math.sin(obliquity) * Math.sin(longitude));
-  const hourAngle = (280.46061837 + 360.98564736629 * d + lon) * RAD - rightAscension;
-  const altitude = Math.asin(
-    Math.sin(lat * RAD) * Math.sin(declination) + Math.cos(lat * RAD) * Math.cos(declination) * Math.cos(hourAngle),
-  );
-  return altitude / RAD;
-}
-
-export const afterSunset = (at: Date, place: Point) => sunAltitude(at, place) < SUNSET_ALTITUDE;
 
 function offsetMs(at: Date, timeZone: string) {
   const name = new Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'longOffset' })

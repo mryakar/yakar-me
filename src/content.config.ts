@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { locales } from './lib/i18n';
-import { FOCUS_STEP } from './lib/photo';
+import { FOCUS_STEP, PLACE_NAME } from './lib/photo';
 import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
 
 const lang = z.enum(locales);
@@ -64,6 +64,7 @@ const pages = defineCollection({
 });
 
 const text = z.string().regex(/^[\x20-\x7e]{1,60}$/);
+const placeName = z.string().regex(PLACE_NAME);
 const variant = z.object({
   file: z.string().regex(/^[a-z0-9-]+-\d+-[0-9a-f]{8}\.(avif|webp)$/),
   width: z.number().int().positive().max(2560),
@@ -88,7 +89,7 @@ const photos = defineCollection({
       shutter: z.number().positive().max(3600),
       iso: z.number().int().min(1).max(409600),
       focalLength: z.number().int().positive().max(2000),
-      place: z.object({ district: text, city: text, country: text }).strict(),
+      place: z.object({ district: placeName, city: placeName, country: placeName }).strict(),
       recipe: z
         .object({
           filmSimulation: text,
@@ -123,9 +124,9 @@ const districts = defineCollection({
   schema: z
     .object({
       id: z.string().regex(/^Q\d+$/),
-      district: text,
-      city: text,
-      country: text,
+      district: placeName,
+      city: placeName,
+      country: placeName,
       lat: z.number().min(-90).max(90),
       lon: z.number().min(-180).max(180),
       timeZone: z.string().refine((zone) => Intl.supportedValuesOf('timeZone').includes(zone), 'not an IANA time zone'),

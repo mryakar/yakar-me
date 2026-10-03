@@ -20,8 +20,6 @@ import { articlePath, documentTitle, formatDate, formatMonth, formatNumber, plur
 
 export const getStaticPaths = langPaths;
 
-const FRAME_GRID_MAX = 60;
-
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang];
 const n = (value: number) => formatNumber(value, lang);
@@ -35,7 +33,6 @@ const m = await measures();
 const mapCities = await mapPlaces(lang);
 const placePoints = mapCities.flatMap((c) => c.places);
 const cityPoints = mapCities.map((c) => c.middle);
-const daylight = m.frames.value - m.afterSunset;
 const readingPage = localize('/reading/', lang);
 const photosPage = localize('/photos/', lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
@@ -49,12 +46,11 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
     <section class="flex max-w-205 flex-col gap-6 tab:gap-7">
       <Tagline lang={lang} />
       <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
-      <p class="text-lede text-muted">{t.home.measured}</p>
+      <p class="text-lede text-muted">{t.home.lede}</p>
     </section>
 
-    <section class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]" aria-labelledby="odometer">
-      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 border-b border-line px-4 py-4 tab:px-7">
-        <h2 id="odometer" class="font-mono text-[11px] tracking-[0.14em] text-text uppercase">{t.home.odometer}</h2>
+    <section class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]" aria-label={t.home.numbers}>
+      <div class="flex items-center border-b border-line px-4 py-4 tab:px-7">
         <span class="label flex items-center gap-2.5 text-faint">
           <span class="block size-1.5 rounded-full bg-accent"></span>
           {t.home.lastRelease(formatDate(new Date(), 'short', lang))}
@@ -68,26 +64,10 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
         <div class="flex flex-wrap content-start gap-x-10 gap-y-6.5 px-4 py-6.5 tab:px-7 @4xl:grid @4xl:grid-cols-[repeat(2,max-content)] @4xl:gap-x-12 @4xl:gap-y-9 @4xl:py-8">
           <OdometerLink href={photosPage} label={countries(m.countries)} name={`${n(m.countries)} ${countries(m.countries)}`} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
           <OdometerLink href={photosPage} label={cities(m.cities.value)} meta={m.cities.latest && t.home.latestCity(m.cities.latest)} name={`${n(m.cities.value)} ${cities(m.cities.value)}`} value={m.cities.value} shown={n(m.cities.value)} cells={3} size="small" />
-          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} name={t.home.framesCount(n(m.frames.value), n(m.afterSunset))} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small">
-            <span class="flex flex-col gap-2">
-              {m.frames.value <= FRAME_GRID_MAX ? (
-                <span class="flex w-33 flex-wrap gap-0.75" aria-hidden="true">
-                  {m.frames.night.map((night) => <span class:list={['block h-3 w-2.25 border', night ? 'border-accent bg-accent' : 'border-line-strong']}></span>)}
-                </span>
-              ) : (
-                <svg class="block h-3 w-33 border border-line-strong text-accent" width="132" height="12" viewBox={`0 0 ${m.frames.value} 1`} preserveAspectRatio="none" aria-hidden="true">
-                  <rect width={m.afterSunset} height="1" fill="currentColor"></rect>
-                </svg>
-              )}
-              <span class="flex flex-col gap-1 font-mono text-[10px] text-faint">
-                <span class="flex items-center gap-1.5"><span class="block size-2 bg-accent"></span>{t.home.afterSunset} · {n(m.afterSunset)}</span>
-                <span class="flex items-center gap-1.5"><span class="block size-2 border border-line-strong"></span>{t.home.daylight} · {n(daylight)}</span>
-              </span>
-            </span>
-          </OdometerLink>
+          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} name={t.home.framesCount(n(m.frames.value))} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small" />
         </div>
       </div>
-      <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(3,minmax(0,1fr))] @2xl:gap-10">
+      <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(2,minmax(0,1fr))] @2xl:gap-10">
         <a href={mapPath(lang)} class="group flex max-w-75 flex-col gap-3 @2xl:max-w-none">
           <span class="block aspect-square overflow-hidden rounded-lg border border-line bg-bg">
             <Globe points={cityPoints} centre={centre(placePoints)} />
@@ -106,15 +86,6 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           </span>
           <span class="text-[13px] leading-normal text-muted transition-colors duration-200 group-hover:text-accent">{t.home.farthestRoute(home.city, m.farthest.city)}</span>
         </a>
-        <div class="flex flex-col gap-3">
-          <span class={cellLabel}>{t.home.afterSunset}</span>
-          <span class="flex items-center gap-2.5">
-            <span class="sr-only">{n(m.afterSunset)}</span>
-            <Odometer value={m.afterSunset} cells={2} />
-            <span class="label text-faint">{t.home.outOf(n(m.frames.value))}</span>
-          </span>
-          <span class="text-[13px] leading-normal text-muted">{t.home.sunPosition}</span>
-        </div>
         <div class="flex flex-col gap-3">
           <span class={cellLabel}>{t.home.languages}</span>
           <span class="font-display text-d2 leading-none">{n(m.languages)}</span>

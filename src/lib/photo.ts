@@ -29,6 +29,8 @@ export interface Focus {
   y: number;
 }
 
+export const PLACE_NAME = /^(?:[\x20-\x7e]|\p{Script=Latin}){1,60}$/u;
+
 export const FOCUS_STEP = 10;
 export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
 

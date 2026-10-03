@@ -1,7 +1,7 @@
 [
   {
     "id": "Q6379026",
-    "district": "Kavaklidere",
+    "district": "Kavaklıdere",
     "city": "Ankara",
     "country": "Turkey",
     "lat": 39.91335,
@@ -217,7 +217,7 @@
   },
   {
     "id": "Q1006522",
-    "district": "Vracar",
+    "district": "Vračar",
     "city": "Belgrade",
     "country": "Serbia",
     "lat": 44.7953,
@@ -271,7 +271,7 @@
   },
   {
     "id": "Q120307",
-    "district": "Doerfles-Esbach",
+    "district": "Dörfles-Esbach",
     "city": "Coburg",
     "country": "Germany",
     "lat": 50.28056,
@@ -280,7 +280,7 @@
   },
   {
     "id": "Q572701",
-    "district": "Roedental",
+    "district": "Rödental",
     "city": "Coburg",
     "country": "Germany",
     "lat": 50.28831,
@@ -433,7 +433,7 @@
   },
   {
     "id": "Q2970127",
-    "district": "Colline du Chateau",
+    "district": "Colline du Château",
     "city": "Nice",
     "country": "France",
     "lat": 43.696,
@@ -451,7 +451,7 @@
   },
   {
     "id": "Q3389982",
-    "district": "Place Massena",
+    "district": "Place Masséna",
     "city": "Nice",
     "country": "France",
     "lat": 43.6973,
@@ -523,7 +523,7 @@
   },
   {
     "id": "Q744598",
-    "district": "Hradcany",
+    "district": "Hradčany",
     "city": "Prague",
     "country": "Czechia",
     "lat": 50.08944,
@@ -541,7 +541,7 @@
   },
   {
     "id": "Q753289",
-    "district": "Mala Strana",
+    "district": "Malá Strana",
     "city": "Prague",
     "country": "Czechia",
     "lat": 50.08806,
@@ -550,7 +550,7 @@
   },
   {
     "id": "Q753219",
-    "district": "Nove Mesto",
+    "district": "Nové Město",
     "city": "Prague",
     "country": "Czechia",
     "lat": 50.0767,
@@ -559,7 +559,7 @@
   },
   {
     "id": "Q748211",
-    "district": "Stare Mesto",
+    "district": "Staré Město",
     "city": "Prague",
     "country": "Czechia",
     "lat": 50.0847,

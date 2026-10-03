@@ -13,6 +13,8 @@
   --yk-sleeve: light-dark(#eceae4, #15161a);
   --yk-cell: light-dark(#fbfaf8, #121316);
   --yk-ghost: light-dark(#cfccc5, #34373d);
+  --yk-bezel: light-dark(#dcd8cf, #040405);
+  --yk-drum: light-dark(rgb(20 20 22 / 0.16), rgb(0 0 0 / 0.6));
   --yk-line: light-dark(rgb(20 20 22 / 0.08), rgb(255 255 255 / 0.07));
   --yk-line-strong: light-dark(rgb(20 20 22 / 0.18), rgb(255 255 255 / 0.15));
   --yk-text: light-dark(#141416, #ededef);
@@ -212,6 +214,7 @@
   }
 
   .lightbox {
+    --lightbox-gutter: 1rem;
     position: fixed;
     inset: 0;
     width: 100%;
@@ -220,7 +223,7 @@
     max-height: none;
     margin: 0;
     border: 0;
-    padding: 1rem 1rem 2rem;
+    padding: 1rem var(--lightbox-gutter) 2rem;
     overflow-y: auto;
     overscroll-behavior: contain;
     background: var(--yk-dim);
@@ -246,6 +249,9 @@
     justify-content: center;
     gap: 1.25rem;
     min-width: 0;
+    margin-inline: calc(-1 * var(--lightbox-gutter));
+    padding-inline: var(--lightbox-gutter);
+    overflow-x: clip;
     touch-action: pan-y pinch-zoom;
   }
   .lightbox-stage picture {
@@ -261,7 +267,8 @@
   }
   @media (width >= 64rem) {
     .lightbox {
-      padding: 3.5rem 4rem;
+      --lightbox-gutter: 4rem;
+      padding: 3.5rem var(--lightbox-gutter);
       overflow: hidden;
     }
     .lightbox-panel:not([hidden]) {
@@ -564,7 +571,14 @@
   }
   .odo-cells {
     display: flex;
-    gap: 4px;
+    width: fit-content;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--yk-line-strong);
+    border-radius: 7px;
+    background: var(--yk-bezel);
+    box-shadow: inset 0 1px 3px var(--yk-shadow);
+    transition: border-color 0.2s;
   }
   .odo-cell {
     --odo-w: 30px;
@@ -576,13 +590,12 @@
     width: var(--odo-w);
     height: var(--odo-h);
     overflow: hidden;
-    border: 1px solid var(--yk-line-strong);
-    border-radius: 5px;
+    border-radius: 3px;
     background: var(--yk-cell);
     color: var(--yk-text);
     font-family: var(--font-mono);
     font-size: var(--odo-size);
-    transition: border-color 0.2s;
+    font-weight: 500;
   }
   .odo-cell::before {
     content: '0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9';
@@ -591,23 +604,19 @@
     top: 0;
     white-space: pre;
     text-align: center;
-    line-height: calc(var(--odo-h) - 2px);
-    transform: translateY(calc(var(--d) * (2px - var(--odo-h))));
+    line-height: var(--odo-h);
+    transform: translateY(calc(var(--d) * -1 * var(--odo-h)));
   }
   .odo-cell::after {
     content: '';
     position: absolute;
-    inset-inline: 0;
-    top: calc(50% - 1px);
-    height: 1px;
-    background: var(--yk-bg);
-    opacity: 0.7;
+    inset: 0;
+    background: linear-gradient(var(--yk-drum), transparent 32% 68%, var(--yk-drum));
   }
   .odo-cell[data-lead] {
     color: var(--yk-ghost);
   }
   .odo-cell:last-child {
-    border-color: var(--yk-accent);
     background: var(--yk-accent);
     color: var(--yk-bg);
   }
@@ -621,8 +630,8 @@
   .d-7 { --d: 7; }
   .d-8 { --d: 8; }
   .d-9 { --d: 9; }
-  a:hover .odo-cell,
-  a:focus-visible .odo-cell {
+  a:hover .odo-cells,
+  a:focus-visible .odo-cells {
     border-color: var(--yk-accent);
   }
   @container (width >= 20rem) {
@@ -631,13 +640,14 @@
       --odo-w: 38px;
       --odo-h: 56px;
       --odo-size: 30px;
-      border-radius: 6px;
     }
   }
   @container (width >= 32rem) {
     .odo-big,
     .odo-small {
-      gap: 6px;
+      gap: 3px;
+      padding: 4px;
+      border-radius: 9px;
     }
     .odo-big .odo-cell {
       --odo-w: 56px;
