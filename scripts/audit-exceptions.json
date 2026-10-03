@@ -1,0 +1,7 @@
+[
+  {
+    "id": "GHSA-ch52-4w7c-c8xp",
+    "until": "2026-12-31",
+    "reason": "http-cache-semantics <= 4.2.0, no patched release. Pulled in by astro only for caching remote images at build time; this site uses no remote images and serves static files with no server code or shared cache of its own."
+  }
+]
