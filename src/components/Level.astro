@@ -1,0 +1,17 @@
+---
+import { ui } from '../i18n/ui';
+import { LEVELS } from '../lib/song';
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  value: number;
+  lang: Lang;
+  dots?: boolean;
+  class?: string;
+}
+const { value, lang, dots = false, class: className } = Astro.props;
+const t = ui[lang].playing;
+---
+<span role="img" aria-label={t.levelOf(value, LEVELS, t.levels[value - 1])} class:list={['level', dots && 'level-dots', className]}>
+  {Array.from({ length: LEVELS }, (_, i) => <span class:list={['level-key', i < value && 'on']}></span>)}
+</span>

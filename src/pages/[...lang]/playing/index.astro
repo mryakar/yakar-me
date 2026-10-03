@@ -1,0 +1,58 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PlayingViews from '../../../components/PlayingViews.astro';
+import Sleeve from '../../../components/Sleeve.astro';
+import Disc from '../../../components/Disc.astro';
+import SongCard from '../../../components/SongCard.astro';
+import SongFilters from '../../../components/SongFilters.astro';
+import Crates from '../../../components/Crates.astro';
+import PlayingStats from '../../../components/PlayingStats.astro';
+import { ui } from '../../../i18n/ui';
+import { langPaths, type Lang } from '../../../lib/i18n';
+import { songs } from '../../../lib/songs';
+import { categoryClass, rankArtists } from '../../../lib/song';
+import { documentTitle } from '../../../lib/format';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang].playing;
+const { all, practicing, playing } = await songs(lang);
+---
+<Base lang={lang} title={documentTitle(ui[lang].nav.playing)} description={t.description}>
+  <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-playing>
+    <PlayingViews lang={lang} current="songs" songs={all.length} artists={rankArtists(all).length} lede={t.description} />
+
+    {practicing.length > 0 && (
+      <section aria-labelledby="practicing" class="flex flex-col gap-4">
+        <h2 id="practicing" class="label text-accent">{t.now}</h2>
+        <div class="grid gap-3 tab:grid-cols-2 tab:gap-6">
+          {practicing.map((song) => (
+            <details id={song.id} name="song" class:list={['now-song scroll-mt-6 desk:scroll-mt-24', categoryClass[song.category]]} data-now>
+              <summary class="now-summary">
+                <span class="now-art">
+                  <Disc />
+                  <Sleeve song={song} mini />
+                </span>
+                <span class="flex min-w-0 flex-col gap-1.5">
+                  <span class="font-display text-d4" lang={song.lang}>{song.title}</span>
+                  <span class="font-body text-[17px] text-muted" lang={song.lang}>{song.artist}</span>
+                  <span class="label text-faint">{t.nowTag}</span>
+                </span>
+              </summary>
+              <SongCard song={song} lang={lang} />
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <SongFilters songs={playing} lang={lang} />
+    <Crates songs={playing} lang={lang} />
+    <PlayingStats songs={all} lang={lang} />
+  </div>
+</Base>
+
+<script>
+  import '../../../scripts/playing.ts';
+</script>

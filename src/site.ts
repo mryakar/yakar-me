@@ -12,6 +12,7 @@ export const nav = [
   { key: 'writing', href: '/writing/' },
   { key: 'reading', href: '/reading/' },
   { key: 'photos', href: '/photos/' },
+  { key: 'playing', href: '/playing/' },
   { key: 'about', href: '/about/' },
 ] as const;
 

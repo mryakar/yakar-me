@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+  catalog?: string;
+  side?: string;
+}
+const { class: className, catalog, side } = Astro.props;
+---
+<span class:list={['disc', className]} aria-hidden="true">
+  <span class="disc-face">
+    <span class="disc-label">
+      {catalog && <span>{catalog}</span>}
+      {side && <span>{side}</span>}
+    </span>
+  </span>
+</span>

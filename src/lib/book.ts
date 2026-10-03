@@ -1,3 +1,5 @@
+import { taxonomy } from './taxonomy.ts';
+
 export const genres = {
   literature: ['novel', 'novella', 'thriller', 'allegory'],
   philosophy: ['ancient-philosophy', 'strategy', 'spirituality'],
@@ -9,9 +11,7 @@ export const genres = {
 export type Category = keyof typeof genres;
 export type Genre = (typeof genres)[Category][number];
 
-export const categories = Object.keys(genres) as Category[];
-export const allGenres = categories.flatMap((c) => genres[c]) as Genre[];
-export const categoryOf = (genre: Genre) => categories.find((c) => (genres[c] as readonly Genre[]).includes(genre))!;
+export const { categories, allGenres, categoryOf } = taxonomy<Category, Genre>(genres);
 
 export const categoryTint: Record<Category, string> = {
   literature: 'bg-cat-literature',
@@ -29,8 +29,6 @@ export function isIsbn13(isbn: string) {
   const sum = [...isbn].reduce((s, d, i) => s + Number(d) * (i % 2 ? 3 : 1), 0);
   return sum % 10 === 0;
 }
-
-export const finishedDate = (month: string) => new Date(`${month}-01T00:00:00Z`);
 
 export const newestFirst = <T extends { finished: string; position: number }>(books: T[]) =>
   books.toSorted((a, b) => b.finished.localeCompare(a.finished) || a.position - b.position);

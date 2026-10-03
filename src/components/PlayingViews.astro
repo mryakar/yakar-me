@@ -1,0 +1,22 @@
+---
+import Views from './Views.astro';
+import { ui } from '../i18n/ui';
+import { localize, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  current: 'songs' | 'artists';
+  songs: number;
+  artists: number;
+  lede: string;
+}
+const { lang, current, songs, artists, lede } = Astro.props;
+const t = ui[lang].playing;
+const views = [
+  { href: localize('/playing/', lang), label: t.songsView, count: songs, current: current === 'songs' },
+  { href: localize('/playing/artists/', lang), label: t.artistsView, count: artists, current: current === 'artists' },
+];
+---
+<Views title={ui[lang].nav.playing} label={t.views} views={views}>
+  <p class="w-full max-w-150 pt-2 font-body text-[19px] leading-normal text-muted">{lede}</p>
+</Views>

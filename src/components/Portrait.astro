@@ -1,0 +1,11 @@
+---
+import { initials } from '../lib/song';
+
+interface Props {
+  name: string;
+  class: string;
+  large?: boolean;
+}
+const { name, class: className, large = false } = Astro.props;
+---
+<span class:list={['portrait', large && 'portrait-large', className]} aria-hidden="true"><span>{initials(name)}</span></span>

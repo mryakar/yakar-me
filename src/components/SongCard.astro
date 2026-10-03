@@ -1,0 +1,72 @@
+---
+import Sleeve from './Sleeve.astro';
+import Disc from './Disc.astro';
+import Level from './Level.astro';
+import Portrait from './Portrait.astro';
+import { ui } from '../i18n/ui';
+import { altoKey } from '../lib/song';
+import { formatMonth, monthStart } from '../lib/format';
+import { localize, type Lang } from '../lib/i18n';
+import type { Song } from '../lib/songs';
+
+interface Props {
+  song: Song;
+  lang: Lang;
+}
+const { song, lang } = Astro.props;
+const t = ui[lang].playing;
+const facts: { name: string; value: string; lang?: string }[] = [
+  { name: t.album, value: `${song.album}, ${song.year}`, lang: song.lang },
+  { name: t.genre, value: t.genreNames[song.genre] },
+  { name: t.key, value: t.keyValue(altoKey(song.key), song.key, song.keyEstimated) },
+  ...(song.firstPlayed ? [{ name: t.firstPlayed, value: formatMonth(monthStart(song.firstPlayed), lang) }] : []),
+];
+const links = [
+  { href: song.links.appleMusic, label: 'Apple Music' },
+  { href: song.links.spotify, label: 'Spotify' },
+  { href: song.links.youtube, label: 'YouTube' },
+];
+---
+<div class="song-card" data-card>
+  <article class="flex flex-col gap-7 border border-line bg-card p-5 tab:flex-row tab:flex-wrap tab:gap-10 tab:p-8">
+    <div class="card-art">
+      <Disc class="card-disc" catalog={song.catalog} side={t.sideA} />
+      <span class="card-sleeve"><Sleeve song={song} /></span>
+    </div>
+    <div class="flex min-w-0 flex-[1_1_22rem] flex-col gap-4.5">
+      <div class="flex items-start justify-between gap-4">
+        <span class="label pt-1 text-accent">{song.catalog} · {t.linerNotes}</span>
+        <button type="button" data-close hidden aria-label={t.close} class="inline-flex size-11 flex-none cursor-pointer items-center justify-center rounded-full border border-line-strong text-muted transition-colors duration-200 hover:text-text">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12"></path></svg>
+        </button>
+      </div>
+      <h3 class="-mt-2 font-display text-d3 tab:text-d2" lang={song.lang}>{song.title}</h3>
+      <a href={`${localize('/playing/artists/', lang)}#${song.artistId}`} class="group flex items-center gap-3.5 self-start">
+        <Portrait name={song.artist} class="size-14" />
+        <span class="font-body text-[21px] transition-colors duration-200 group-hover:text-accent" lang={song.lang}>{song.artist}</span>
+      </a>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-3.5">
+        <span class="label w-18 text-faint">{t.level}</span>
+        <Level value={song.level} lang={lang} />
+        <span class="text-sm text-muted">{t.levels[song.level - 1]}</span>
+      </div>
+      <dl class="grid grid-cols-2 gap-x-6 gap-y-4">
+        {facts.map((f) => (
+          <div class="flex flex-col gap-1">
+            <dt class="label text-faint">{f.name}</dt>
+            <dd class="text-[15px] text-text" lang={f.lang}>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div role="group" aria-label={t.listen} class="flex flex-wrap items-center gap-2.5">
+        <span class="label mr-1 text-faint">{t.listen}</span>
+        {links.map((l) => (
+          <a href={l.href} rel="noopener noreferrer" class="inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-4.5 text-sm text-text transition-colors duration-200 hover:border-accent hover:text-accent">
+            {l.label}
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"></path></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </article>
+</div>

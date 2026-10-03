@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Lang } from './i18n';
-import { finishedDate, newestFirst, type BookLanguage, type Category, type Genre } from './book';
+import { monthStart } from './format';
+import { newestFirst, type BookLanguage, type Category, type Genre } from './book';
 
 export interface Book {
   id: string;
@@ -44,6 +45,6 @@ export async function books(lang: Lang) {
       .flatMap((b) => (b.status === 'reading' ? [b] : []))
       .toSorted((a, b) => a.position - b.position)
       .map((b): ReadingBook => ({ ...book(b), nowNote: b.nowNote?.[lang] })),
-    finished: finished.map((b): FinishedBook => ({ ...book(b), finished: finishedDate(b.finished) })),
+    finished: finished.map((b): FinishedBook => ({ ...book(b), finished: monthStart(b.finished) })),
   };
 }

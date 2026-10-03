@@ -1,0 +1,41 @@
+---
+import { ui } from '../i18n/ui';
+import { categories, categoryClass, genres } from '../lib/song';
+import { plural } from '../lib/format';
+import type { Lang } from '../lib/i18n';
+import type { Song } from '../lib/songs';
+
+interface Props {
+  songs: Song[];
+  lang: Lang;
+}
+const { songs, lang } = Astro.props;
+const t = ui[lang].playing;
+const count = (pick: (s: Song) => string, value: string) => songs.filter((s) => pick(s) === value).length;
+const shown = categories.filter((c) => count((s) => s.category, c) > 0);
+const chip = 'flex min-h-11 flex-none cursor-pointer items-center gap-2 rounded-full border border-line-strong px-4 text-sm text-muted transition-colors duration-200 hover:border-text hover:text-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg';
+const tally = 'font-mono text-[11px] opacity-70';
+---
+<section aria-label={t.filters} class="flex flex-col gap-3.5" data-filters hidden>
+  <div class="flex flex-col gap-3 tab:flex-row tab:items-center tab:justify-between tab:gap-6">
+    <div role="group" aria-label={t.category} class="-mx-6 flex gap-2 overflow-x-auto px-6 tab:mx-0 tab:flex-wrap tab:px-0">
+      {shown.map((c) => (
+        <button type="button" aria-pressed="false" class={chip} data-filter="category" data-value={c}>
+          <span aria-hidden="true" class:list={['block size-2 rounded-full border border-line-strong bg-(--tint)', categoryClass[c]]}></span>
+          {t.categories[c]} <span class={tally}>{count((s) => s.category, c)}</span>
+        </button>
+      ))}
+    </div>
+    <span class="label flex-none text-faint" aria-live="polite" data-result data-one={t.result.one} data-other={t.result.other}>{plural(t.result, songs.length)}</span>
+  </div>
+  <div role="group" aria-label={t.genre} class="flex flex-wrap gap-2 border-l border-line-strong pl-4" data-genres hidden>
+    {shown.flatMap((c) =>
+      genres[c].filter((g) => count((s) => s.genre, g) > 0).map((g) => (
+        <button type="button" aria-pressed="false" class={chip} data-filter="genre" data-value={g} data-category={c} hidden>
+          {t.genreNames[g]} <span class={tally}>{count((s) => s.genre, g)}</span>
+        </button>
+      )),
+    )}
+  </div>
+  <p class="font-body text-[19px] text-muted" data-empty hidden>{t.none}</p>
+</section>
