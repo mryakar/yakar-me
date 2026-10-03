@@ -212,6 +212,7 @@
   }
 
   .lightbox {
+    --lightbox-gutter: 1rem;
     position: fixed;
     inset: 0;
     width: 100%;
@@ -220,7 +221,7 @@
     max-height: none;
     margin: 0;
     border: 0;
-    padding: 1rem 1rem 2rem;
+    padding: 1rem var(--lightbox-gutter) 2rem;
     overflow-y: auto;
     overscroll-behavior: contain;
     background: var(--yk-dim);
@@ -246,6 +247,9 @@
     justify-content: center;
     gap: 1.25rem;
     min-width: 0;
+    margin-inline: calc(-1 * var(--lightbox-gutter));
+    padding-inline: var(--lightbox-gutter);
+    overflow-x: clip;
     touch-action: pan-y pinch-zoom;
   }
   .lightbox-stage picture {
@@ -261,7 +265,8 @@
   }
   @media (width >= 64rem) {
     .lightbox {
-      padding: 3.5rem 4rem;
+      --lightbox-gutter: 4rem;
+      padding: 3.5rem var(--lightbox-gutter);
       overflow: hidden;
     }
     .lightbox-panel:not([hidden]) {
