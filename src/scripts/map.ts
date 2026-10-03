@@ -15,6 +15,7 @@ const CARD_GAP = 24;
 const SHEET_LIFT = 110;
 const CARD_MARGIN = 12;
 const FIT_PADDING = 64;
+const FLY_MAX_MS = 3000;
 
 interface Place {
   id: string;
@@ -162,6 +163,7 @@ async function start(frame: HTMLElement) {
   map.keyboard.disableRotation();
 
   let selected: Place | null = null;
+  let destination: Place | null = null;
 
   const placeCard = () => {
     if (!selected || !wide.matches) return;
@@ -182,16 +184,21 @@ async function start(frame: HTMLElement) {
     card.style.transform = `translate(${Math.round(left)}px, ${Math.round(top)}px)`;
   };
 
+  const hideCard = () => {
+    destination = null;
+    if (!selected) return;
+    cards.get(selected.id)!.hidden = true;
+    selected.marker?.getElement().setAttribute('aria-pressed', 'false');
+    selected = null;
+  };
+
   const select = (place: Place | null) => {
-    if (selected) {
-      cards.get(selected.id)!.hidden = true;
-      selected.marker?.getElement().setAttribute('aria-pressed', 'false');
-    }
-    selected = place;
+    hideCard();
     if (!place) {
       history.replaceState(null, '', location.pathname + location.search);
       return;
     }
+    selected = place;
     const card = cards.get(place.id)!;
     card.hidden = false;
     place.marker?.getElement().setAttribute('aria-pressed', 'true');
@@ -199,27 +206,35 @@ async function start(frame: HTMLElement) {
     history.replaceState(null, '', `#${place.id}`);
   };
 
-  const fly = (options: Parameters<MapLibreMap['flyTo']>[0]) => map.flyTo({ ...options, essential: false });
+  const fly = (options: Parameters<MapLibreMap['flyTo']>[0], arrival?: { place: string }) =>
+    map.flyTo({ ...options, essential: false, maxDuration: FLY_MAX_MS }, arrival);
+
+  map.on('moveend', (e) => {
+    const { place } = e as { place?: string };
+    if (destination && destination.id === place) select(destination);
+  });
 
   const showPlace = (place: Place, animate = true) => {
-    select(null);
-    map.once('moveend', () => select(place));
+    hideCard();
+    destination = place;
     const lift = wide.matches ? 0 : SHEET_LIFT;
     const zoom = Math.max(map.getZoom(), PLACE_ZOOM - 0.5);
-    if (animate) fly({ center: lngLat(place), zoom, offset: [0, -lift] });
+    if (animate) fly({ center: lngLat(place), zoom, offset: [0, -lift] }, { place: place.id });
     else {
-      map.jumpTo({ center: lngLat(place), zoom });
+      map.jumpTo({ center: lngLat(place), zoom }, { place: place.id });
       map.panBy([0, lift], { animate: false });
     }
   };
 
+  const fitPlaces = (group: Place[], maxZoom = PLACE_ZOOM, animate = true) =>
+    map.fitBounds(bounds(group), { padding: FIT_PADDING, maxZoom, essential: false, maxDuration: FLY_MAX_MS, animate });
+
   const showSeries = (id: string, animate = true) => {
     const own = places.filter((p) => p.series.includes(id));
-    if (own.length) map.fitBounds(bounds(own), { padding: FIT_PADDING, maxZoom: PLACE_ZOOM, essential: false, animate });
+    if (!own.length) return;
+    hideCard();
+    fitPlaces(own, PLACE_ZOOM, animate);
   };
-
-  const fitPlaces = (group: Place[], maxZoom = PLACE_ZOOM) =>
-    map.fitBounds(bounds(group), { padding: FIT_PADDING, maxZoom, essential: false });
 
   const pins: Pin[] = [];
   for (const city of cities) {
