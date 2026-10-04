@@ -4,6 +4,7 @@ import { inspectImage } from './lib/image-meta.mjs';
 import { sha256, variantIndex } from './lib/photo-store.mjs';
 import { ORIGIN, counterpartErrors, pagePath } from './lib/counterparts.mjs';
 import { manifest } from './lib/map-store.mjs';
+import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
 import { securityTxtErrors } from './lib/security-txt.mjs';
 import { xmlErrors } from './lib/xml.mjs';
 import { pending } from '../src/i18n/pending.ts';
@@ -33,32 +34,9 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   const page = pagePath(relative(dist, file));
   if (page) pages.set(page, html);
 
-  for (const [tag, attrs, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-    if (/\ssrc=/i.test(attrs)) continue;
-    if (!/^\s*type="application\/ld\+json"\s*$/i.test(attrs)) {
-      fail(file, `inline script: ${tag.slice(0, 80)}`);
-      continue;
-    }
-    if (/[<>]/.test(body)) fail(file, 'JSON-LD contains an unescaped < or >');
-    try {
-      JSON.parse(body);
-    } catch {
-      fail(file, 'JSON-LD is not valid JSON');
-    }
-  }
-  if (/<style\b/i.test(html)) fail(file, 'inline <style>');
-  if (/<[^>]+\sstyle=/i.test(html)) fail(file, 'style="" attribute');
-
-  const loads = [
-    ...html.matchAll(/<(?:script|img|source|iframe|audio|video|embed)\b[^>]*\ssrc="([^"]*)"/gi),
-    ...[...html.matchAll(/<link\b([^>]*)>/gi)]
-      .filter(([, attrs]) => /\srel="(stylesheet|preload|modulepreload|icon|apple-touch-icon|manifest)"/i.test(attrs))
-      .map(([, attrs]) => /\shref="([^"]*)"/i.exec(attrs) ?? [, '']),
-  ]
-    .map((m) => m[1])
-    .concat([...html.matchAll(/\ssrcset="([^"]*)"/gi)].flatMap((m) => m[1].split(',').map((c) => c.trim().split(/\s+/)[0])));
-  for (const url of loads) {
-    if (/^(https?:)?\/\//i.test(url) || /^data:/i.test(url)) fail(file, `external or data: resource: ${url}`);
+  for (const problem of inlineCodeProblems(html)) fail(file, problem);
+  for (const url of loadedUrls(html)) {
+    if (isExternal(url)) fail(file, `external or data: resource: ${url}`);
     else if (url.startsWith('/') && !resolves(url)) fail(file, `missing resource: ${url}`);
   }
 

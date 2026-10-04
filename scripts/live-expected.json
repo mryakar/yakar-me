@@ -1,0 +1,10 @@
+{
+  "email": {
+    "mx": ["10 mx01.mail.icloud.com", "10 mx02.mail.icloud.com"],
+    "spf": "v=spf1 include:icloud.com ~all",
+    "rootTxt": ["apple-domain=HW3RXWRRSjffyM2p"],
+    "dmarc": "v=DMARC1; p=quarantine; rua=mailto:551d8c7ce2c1477c93f6dca9073e1380@dmarc-reports.cloudflare.net",
+    "dkim": { "sig1": "sig1.dkim.yakar.me.at.icloudmailadmin.com" }
+  },
+  "probes": ["/glyphs/geist-regular/0-255.pbf"]
+}

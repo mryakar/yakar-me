@@ -7,6 +7,7 @@ const PORT = 8788;
 const BASE = `http://localhost:${PORT}`;
 const TABS = 4;
 const QUIET_MS = 1000;
+const STALL_MS = 5000;
 const PAGE_TIMEOUT_MS = 30000;
 const NOT_FOUND = ['/__not-found__/', '/tr/__not-found__/'];
 const VIEWS = {
@@ -65,7 +66,7 @@ process.on('exit', () => {
     tabs.map(async (tab) => {
       for (let job = jobs.shift(); job; job = jobs.shift()) {
         try {
-          const result = await check(tab, job);
+          const result = await check(tab, job).catch(() => check(tab, job));
           weights.push(result.weight);
           scans.push(...result.scans);
           problems.push(...result.problems);
@@ -114,8 +115,7 @@ async function openTab(browser) {
       case 'Network.requestWillBeSent':
         tab.last = Date.now();
         if (p.request.url.startsWith('data:') || p.redirectResponse) break;
-        tab.requests.set(p.requestId, { url: p.request.url, type: p.type, bytes: 0 });
-        tab.inflight++;
+        tab.requests.set(p.requestId, { url: p.request.url, type: p.type, bytes: 0, done: false });
         break;
       case 'Network.responseReceived':
         if (p.type === 'Document' && !tab.status) tab.status = p.response.status;
@@ -127,7 +127,7 @@ async function openTab(browser) {
       case 'Network.loadingFinished':
       case 'Network.loadingFailed':
         tab.last = Date.now();
-        if (tab.requests.has(p.requestId)) tab.inflight--;
+        if (tab.requests.has(p.requestId)) tab.requests.get(p.requestId).done = true;
         break;
     }
   });
@@ -146,12 +146,15 @@ async function check(tab, { path, view }) {
   ];
   await tab.send('Emulation.setDeviceMetricsOverride', VIEWS[view]);
   await tab.send('Emulation.setEmulatedMedia', { features: media(THEMES[0]) });
-  Object.assign(tab, { requests: new Map(), inflight: 0, last: Date.now(), loaded: false, status: 0 });
+  Object.assign(tab, { requests: new Map(), last: Date.now(), loaded: false, status: 0 });
   await tab.send('Page.navigate', { url: `${BASE}${path}` });
-  await waitFor(async () => tab.loaded && tab.inflight === 0 && Date.now() - tab.last >= QUIET_MS, {
-    timeout: PAGE_TIMEOUT_MS,
-    every: 100,
-    what: `${where} to settle`,
+  const pending = () => [...tab.requests.values()].filter((r) => !r.done).map((r) => r.url);
+  const settled = () => {
+    const quiet = Date.now() - tab.last;
+    return tab.loaded && ((pending().length === 0 && quiet >= QUIET_MS) || quiet >= STALL_MS);
+  };
+  await waitFor(async () => settled(), { timeout: PAGE_TIMEOUT_MS, every: 100, what: `${where} to settle` }).catch((e) => {
+    throw new Error(`${e.message}; loaded: ${tab.loaded}; pending: ${pending().join(' ') || 'none'}`);
   });
 
   const problems = [];
