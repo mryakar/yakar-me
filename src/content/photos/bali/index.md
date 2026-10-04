@@ -2,6 +2,7 @@
 title: Bali
 description: "Two visits a year apart: temples and spring water, monkeys, cliffs and a long run of sunsets."
 order: 4
+published: 2026-10-01
 cover: img-3489
 lang: en
 ---

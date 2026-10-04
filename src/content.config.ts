@@ -45,6 +45,7 @@ const series = defineCollection({
     title: z.string(),
     description: z.string(),
     order: z.number().int(),
+    published: z.coerce.date(),
     cover: slug.optional(),
     focus: z.object({ x: focusPercent, y: focusPercent }).strict().optional(),
     lang,

@@ -8,8 +8,9 @@ import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize, type Lang } from '../../../lib/i18n';
 import { allSeries, largest, photoSlug, type Series } from '../../../lib/photos';
-import { imageObject, jsonLd, mapPath, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
+import { imageObject, mapPath, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
 import { documentTitle } from '../../../lib/format';
+import { jsonLd } from '../../../lib/structured';
 
 export const getStaticPaths = () => langItemPaths(allSeries, (series) => ({ series: series.id }));
 

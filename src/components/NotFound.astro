@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import Odometer from './Odometer.astro';
+import ArrowRight from './ArrowRight.astro';
 import { ui } from '../i18n/ui';
+import { nav } from '../site';
 import { localize, type Lang } from '../lib/i18n';
 import { documentTitle } from '../lib/format';
 
@@ -9,11 +12,20 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = ui[lang].notFound;
+const sections = (['writing', 'photos', 'reading', 'playing'] as const).map((key) => nav.find((n) => n.key === key)!);
 ---
 <Base lang={lang} title={documentTitle(t.title)} notFound>
   <section class="flex flex-col gap-8 px-6 pt-9 pb-16 desk:px-24 desk:pt-26">
-    <span class="label text-accent">404</span>
+    <div class="odo">
+      <Odometer value={404} cells={3} size="big" />
+    </div>
     <h1 class="font-display text-d2 desk:text-d1">{t.heading}</h1>
-    <p class="text-lede text-muted"><a href={localize('/', lang)} class="text-accent">{t.back}</a></p>
+    <p class="max-w-180 text-lede text-muted">{t.text}</p>
+    <ul class="flex flex-wrap gap-x-7 gap-y-3">
+      {sections.map((s) => (
+        <li><a href={localize(s.href, lang)} class="group inline-flex items-center gap-2 text-[15px] text-accent">{ui[lang].nav[s.key]}<ArrowRight /></a></li>
+      ))}
+    </ul>
+    <p class="text-muted"><a href={localize('/', lang)} class="transition-colors duration-200 hover:text-accent">{t.back}</a></p>
   </section>
 </Base>

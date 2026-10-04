@@ -241,7 +241,12 @@ const en = {
     onMap: 'On the map',
   },
   about: { description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
-  notFound: { title: 'Not found', heading: 'Page not found', back: 'Back to the home page' },
+  notFound: {
+    title: 'Not found',
+    heading: 'The odometer stopped at 404.',
+    text: 'The writing, photos, books and songs are all still here — just not at this address.',
+    back: 'Back to the home page',
+  },
 };
 
 type Dict = typeof en;
@@ -504,7 +509,12 @@ const tr: Dict = {
     onMap: 'Haritada',
   },
   about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
-  notFound: { title: 'Bulunamadı', heading: 'Sayfa bulunamadı', back: 'Ana sayfaya dön' },
+  notFound: {
+    title: 'Bulunamadı',
+    heading: "Sayaç 404'te durdu.",
+    text: 'Yazılar, fotoğraflar, kitaplar ve şarkılar yerli yerinde — yalnız bu adreste değil.',
+    back: 'Ana sayfaya dön',
+  },
 };
 
 export const ui: Record<Lang, Dict> = { en, tr };

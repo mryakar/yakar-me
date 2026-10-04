@@ -2,6 +2,7 @@
 title: Hong Kong
 description: Neon, rain and the long climb to the Peak. Hong Kong over four days in May.
 order: 1
+published: 2026-09-29
 cover: dscf2202
 lang: en
 ---

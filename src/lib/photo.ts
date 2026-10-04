@@ -122,6 +122,3 @@ export function imageObject(o: {
     copyrightNotice: (o.notice ?? copyrightNotice)(takenYear(o.taken)),
   };
 }
-
-export const jsonLd = (data: unknown) =>
-  JSON.stringify(data).replace(/[<>&\u2028\u2029]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`);
