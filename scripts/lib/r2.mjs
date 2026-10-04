@@ -9,6 +9,8 @@ export const WRITE_TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write
 const CONTENT_TYPES = { avif: 'image/avif', webp: 'image/webp', pmtiles: 'application/octet-stream' };
 const REGION = 'auto';
 const SERVICE = 's3';
+const ATTEMPTS = 4;
+const RETRY_BASE_MS = 1000;
 
 const hash = (data) => createHash('sha256').update(data).digest('hex');
 const hmac = (key, data) => createHmac('sha256', key).update(data).digest();
@@ -54,13 +56,28 @@ export function writeCredentials(file = WRITE_TOKEN_FILE) {
   return creds;
 }
 
+export const retryable = (status) => status === 429 || status >= 500;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export async function withRetry(call, { attempts = ATTEMPTS, wait = sleep } = {}) {
+  for (let attempt = 1; ; attempt++) {
+    const res = await call();
+    if (!retryable(res.status) || attempt === attempts) return res;
+    await res.body?.cancel();
+    await wait(RETRY_BASE_MS * 2 ** (attempt - 1));
+  }
+}
+
 async function request(method, key, creds, body) {
   if (!/^[a-z0-9-]+\.(avif|webp|pmtiles)$/.test(key)) throw new Error(`refusing unexpected object key ${key}`);
   const host = `${creds.account}.r2.cloudflarestorage.com`;
   const path = `/${BUCKET}/${key}`;
   const headers = body ? { 'content-type': CONTENT_TYPES[key.split('.').pop()], 'content-length': body.length } : {};
-  const signed = sign({ method, host, path, headers, payloadHash: hash(body ?? ''), date: new Date(), ...creds });
-  const res = await fetch(`https://${host}${path}`, { method, headers: signed, body });
+  const res = await withRetry(() => {
+    const signed = sign({ method, host, path, headers, payloadHash: hash(body ?? ''), date: new Date(), ...creds });
+    return fetch(`https://${host}${path}`, { method, headers: signed, body });
+  });
   if (!res.ok) throw new Error(`R2 ${method} ${key}: ${res.status} ${(await res.text()).slice(0, 300)}`);
   return res;
 }
