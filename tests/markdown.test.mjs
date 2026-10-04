@@ -45,3 +45,8 @@ test('başlıklı görsel figure olur, başlıksız paragraf içinde kalır', as
   assert.match(html, /<p><img src="\.\/b\.gif" alt="plain"><\/p>/);
   assert.doesNotMatch(html, /title=/);
 });
+
+test('kendi içinde kayan bloklar klavyeyle kaydırılabilir: pre ve table tabindex="0"', async () => {
+  assert.match(await render('```sql\nSELECT 1;\n```'), /<pre tabindex="0"/);
+  assert.match(await render('| a | b |\n| - | - |\n| 1 | 2 |'), /<table tabindex="0"/);
+});

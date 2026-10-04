@@ -1,0 +1,8 @@
+[
+  {
+    "rule": "target-size",
+    "selector": ".map-marker",
+    "until": "2027-04-01",
+    "reason": "Map markers sit at their places' positions, so neighbours can partly cover each other at world zoom on a phone. WCAG 2.5.8 equivalent exception: the place list below the map links to every place with targets of at least 24 px."
+  }
+]

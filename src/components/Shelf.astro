@@ -36,7 +36,7 @@ for (const { topic, items } of byTopic) {
       </div>
       <div class="h-px bg-accent/40" />
       <div class="grid gap-5 pt-4 desk:grid-cols-[10rem_minmax(0,1fr)] desk:gap-10">
-        <span class="label pt-1 text-faint">{t.writing.topics[topic]} · {items.length}</span>
+        <h2 class="label pt-1 text-faint">{t.writing.topics[topic]} · {items.length}</h2>
         {items.map((a, i) => (
           <article class="flex max-w-180 flex-col gap-2" data-preview={a.id} hidden={i !== 0}>
             <h3 class="font-body text-xl leading-snug text-text">

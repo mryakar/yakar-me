@@ -42,6 +42,7 @@ jobs:
         run: npm run map:fetch
       - run: npm run build
       - run: npm run check:dist -- --complete
+      - run: npm run check:pages
       - name: Output policy
         env:
           DENYLIST: ${{ secrets.CONTENT_DENYLIST }}

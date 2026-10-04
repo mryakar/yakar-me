@@ -702,7 +702,7 @@
     text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
-    color: color-mix(in srgb, currentColor 55%, transparent);
+    color: color-mix(in srgb, currentColor 65%, transparent);
   }
   .sleeve-v2::after {
     top: 0;
