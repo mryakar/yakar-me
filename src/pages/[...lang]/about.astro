@@ -5,6 +5,8 @@ import Tagline from '../../components/Tagline.astro';
 import { ui } from '../../i18n/ui';
 import { langPaths, type Lang } from '../../lib/i18n';
 import { documentTitle } from '../../lib/format';
+import { jsonLd, profile } from '../../lib/structured';
+import { links, site } from '../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -13,8 +15,15 @@ const t = ui[lang].about;
 const entry = await getEntry('pages', `about/${lang}`);
 if (!entry) throw new Error(`src/content/pages/about/${lang}.md is missing`);
 const { Content } = await render(entry);
+const structured = jsonLd(
+  profile(
+    { name: site.name, url: site.url },
+    links.map((l) => l.href).filter((href) => href.startsWith('https://')),
+  ),
+);
 ---
 <Base lang={lang} title={documentTitle(t.heading)} description={t.description}>
+  <script type="application/ld+json" set:html={structured} />
   <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-7 border-b border-line pb-8">
       <Tagline lang={lang} />

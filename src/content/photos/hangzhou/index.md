@@ -2,6 +2,7 @@
 title: Hangzhou
 description: Willows, red lanterns and a quiet room. Hangzhou in November.
 order: 17
+published: 2026-10-01
 cover: img-0530
 lang: en
 ---

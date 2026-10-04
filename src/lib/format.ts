@@ -1,10 +1,12 @@
 import { site } from '../site.ts';
-import { dateLocale, localize, type Lang } from './i18n.ts';
+import { dateLocale, defaultLang, localize, type Lang } from './i18n.ts';
 
 const SHORT_MONTHS: Record<Lang, string[]> = {
   en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   tr: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
 };
+
+export const ogImagePath = (lang: Lang) => (lang === defaultLang ? '/og.png' : `/og-${lang}.png`);
 
 export const articlePath = (id: string, lang: Lang = 'en') => localize(`/writing/${id}/`, lang);
 

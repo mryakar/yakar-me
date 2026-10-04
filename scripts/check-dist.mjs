@@ -4,6 +4,8 @@ import { inspectImage } from './lib/image-meta.mjs';
 import { sha256, variantIndex } from './lib/photo-store.mjs';
 import { ORIGIN, counterpartErrors, pagePath } from './lib/counterparts.mjs';
 import { manifest } from './lib/map-store.mjs';
+import { securityTxtErrors } from './lib/security-txt.mjs';
+import { xmlErrors } from './lib/xml.mjs';
 import { pending } from '../src/i18n/pending.ts';
 
 const args = process.argv.slice(2);
@@ -73,6 +75,23 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
 
 for (const e of counterpartErrors(pages, pending, { complete })) errors.push(e);
 
+const securityTxt = join(dist, '.well-known', 'security.txt');
+if (!existsSync(securityTxt)) errors.push('.well-known/security.txt is missing');
+else for (const e of securityTxtErrors(readFileSync(securityTxt, 'utf8'))) fail(securityTxt, e);
+
+const feeds = all.filter((f) => f.endsWith('rss.xml'));
+for (const file of feeds) {
+  const xml = readFileSync(file, 'utf8');
+  for (const e of xmlErrors(xml)) fail(file, `XML: ${e}`);
+  const text = xml.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+  for (const [, attr] of text.matchAll(/\s(?:href|src)="([^"]*)"/g)) {
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(attr)) fail(file, `relative URL in the feed: ${attr}`);
+  }
+  for (const [url] of text.matchAll(new RegExp(`${ORIGIN.replace(/\./g, '\\.')}/[^\\s"<>]*`, 'g'))) {
+    if (!resolves(new URL(url).pathname)) fail(file, `feed links outside the build: ${url}`);
+  }
+}
+
 for (const file of all.filter((f) => f.endsWith('.css'))) {
   for (const [, url] of readFileSync(file, 'utf8').matchAll(/url\(\s*['"]?([^'")]+)/gi)) {
     if (/^(https?:)?\/\//i.test(url) || /^data:/i.test(url)) fail(file, `external or data: url(): ${url.slice(0, 60)}`);
@@ -107,4 +126,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
+console.log(`✓ ${feeds.length} feeds well-formed, security.txt current`);
 console.log(`✓ ${pages.size} pages, every language has its counterpart${pending.length ? ` (${pending.length} translation(s) pending)` : ''}`);

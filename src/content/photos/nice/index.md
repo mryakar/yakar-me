@@ -2,6 +2,7 @@
 title: Nice
 description: Checkerboard squares, turquoise water and ochre lanes. Nice on a clear April morning.
 order: 12
+published: 2026-10-01
 cover: img-7361
 lang: en
 ---

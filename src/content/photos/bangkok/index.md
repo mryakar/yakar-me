@@ -2,6 +2,7 @@
 title: Bangkok
 description: Longtail boats, rain-washed temples and a lizard in the park. Bangkok at the start of July.
 order: 10
+published: 2026-10-01
 cover: img-8771
 lang: en
 ---

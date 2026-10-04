@@ -2,6 +2,7 @@
 title: Singapore
 description: Lotus ponds, steel trees and towers, then a morning among birds. Singapore at the start of June.
 order: 5
+published: 2026-10-01
 cover: img-2162
 lang: en
 ---

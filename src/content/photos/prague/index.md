@@ -2,6 +2,7 @@
 title: Prague
 description: Towers, trams and tulips, from the Old Town to the castle. Prague in late April.
 order: 13
+published: 2026-10-01
 cover: img-6754
 lang: en
 ---

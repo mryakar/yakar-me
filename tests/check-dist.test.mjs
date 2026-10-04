@@ -17,7 +17,13 @@ function run(files, ...flags) {
 const page = (head = '', body = '') => `<!doctype html><html><head>${head}</head><body>${body}</body></html>`;
 const alt = (path) =>
   `<link rel="alternate" hreflang="en" href="https://yakar.me${path}"><link rel="alternate" hreflang="tr" href="https://yakar.me/tr${path}"><link rel="alternate" hreflang="x-default" href="https://yakar.me${path}">`;
+const inDays = (days) => new Date(Date.now() + days * 864e5).toISOString().replace(/\.\d+Z$/, 'Z');
+const securityTxt = (expires) => `Contact: mailto:a@example.com\nExpires: ${expires}\n`;
+const feed = (body = '') =>
+  `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><link>https://yakar.me/</link>${body}</channel></rss>\n`;
 const ok = {
+  '.well-known/security.txt': securityTxt(inDays(30)),
+  'rss.xml': feed('<item><link>https://yakar.me/about/</link><content:encoded>&lt;a href="https://yakar.me/about/#x"&gt;a&lt;/a&gt;</content:encoded></item>'),
   'index.html': page(`<link rel="stylesheet" href="/_astro/a.css"><link rel="canonical" href="https://yakar.me/">${alt('/')}<meta property="og:image" content="https://yakar.me/og.png">`, '<a href="/about/">about</a><a href="https://github.com/x">gh</a><a href="/tr/" hreflang="tr">Türkçe</a>'),
   'about/index.html': page(alt('/about/')),
   'tr/index.html': page(alt('/'), '<a href="/" hreflang="en">English</a>'),
@@ -61,6 +67,12 @@ const bad = {
   'kırık hreflang hedefi': [{ 'about/index.html': page(alt('/about/').replace('/tr/about/', '/tr/abot/')) }, /hreflang tr target does not exist: https:\/\/yakar\.me\/tr\/abot\//],
   'site dışına hreflang': [{ 'about/index.html': page(alt('/about/').replace('https://yakar.me/tr/', 'https://evil.example/tr/')) }, /points outside the site/],
   'eksik og:image': [{ 'x.html': page('<meta property="og:image" content="https://yakar.me/og-tr.png">') }, /og:image not in the build/],
+  'security.txt yok': [{ '.well-known/security.txt': undefined }, /security\.txt is missing/],
+  'süresi dolmuş security.txt': [{ '.well-known/security.txt': securityTxt(inDays(-1)) }, /Expires has passed/],
+  'bir yıldan uzak security.txt': [{ '.well-known/security.txt': securityTxt(inDays(400)) }, /more than a year away/],
+  'bozuk akış XML': [{ 'rss.xml': feed('<item>') }, /rss\.xml: XML: /],
+  'akışta göreli adres': [{ 'rss.xml': feed('<description>&lt;img src="/_astro/a.css"&gt;</description>') }, /relative URL in the feed: \/_astro\/a\.css/],
+  'akışta build dışı adres': [{ 'tr/rss.xml': feed('<link>https://yakar.me/nope/</link>') }, /feed links outside the build: https:\/\/yakar\.me\/nope\//],
   'dış og:image': [{ 'x.html': page('<meta property="og:image" content="https://evil.example/og.png">') }, /og:image not in the build/],
 };
 for (const [name, [files, pattern]] of Object.entries(bad)) {

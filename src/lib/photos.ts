@@ -16,6 +16,7 @@ export interface Series {
   alternate: boolean;
   title: string;
   description: string;
+  published: Date;
   entry: CollectionEntry<'series'> | CollectionEntry<'seriesTranslations'>;
   photos: Photo[];
   cover: Photo;
@@ -57,6 +58,7 @@ export async function allSeries(lang: Lang): Promise<Series[]> {
         alternate,
         title: (t ?? s).data.title,
         description: (t ?? s).data.description,
+        published: s.data.published,
         entry: t ?? s,
         photos: own,
         cover,

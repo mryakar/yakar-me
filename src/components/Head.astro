@@ -1,6 +1,7 @@
 ---
 import { site } from '../site';
 import { defaultLang, localize, ogLocale, other, type Lang } from '../lib/i18n';
+import { ogImagePath } from '../lib/format';
 import displayFont from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
 import uiFont from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 
@@ -14,7 +15,7 @@ interface Props {
 }
 const { lang, title, description, article, alternates, notFound } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL(lang === defaultLang ? '/og.png' : `/og-${lang}.png`, Astro.site);
+const ogImage = new URL(ogImagePath(lang), Astro.site);
 const absolute = (path: string) => new URL(path, Astro.site).toString();
 const xDefault = alternates.find((a) => a.lang === defaultLang);
 ---

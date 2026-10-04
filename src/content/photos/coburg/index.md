@@ -2,6 +2,7 @@
 title: Coburg
 description: Rain, beech woods and two baroque churches on the hills. Around Coburg in April.
 order: 14
+published: 2026-10-01
 cover: img-5878
 lang: en
 ---

@@ -2,6 +2,7 @@
 title: Munich
 description: A cathedral, a palace and its canal, and a duck that refused to move. Munich in April.
 order: 15
+published: 2026-10-01
 cover: img-6379
 lang: en
 ---
