@@ -511,7 +511,7 @@ const tr: Dict = {
   about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
   notFound: {
     title: 'Bulunamadı',
-    heading: "Sayaç 404'te durdu.",
+    heading: 'Sayaç 404’te durdu.',
     text: 'Yazılar, fotoğraflar, kitaplar ve şarkılar yerli yerinde — yalnız bu adreste değil.',
     back: 'Ana sayfaya dön',
   },
