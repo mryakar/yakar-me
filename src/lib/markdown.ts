@@ -18,9 +18,13 @@ export const isSummaryHeading = (text: string) => SUMMARY.includes(text.trim().t
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
   element: {
-    filter: ['p', 'h2', 'h3'],
+    filter: ['p', 'h2', 'h3', 'pre', 'table'],
     visit(node, ctx) {
       const el = node as unknown as Hast;
+      if (el.tagName === 'pre' || el.tagName === 'table') {
+        ctx.setProperty(node, 'tabIndex', 0);
+        return;
+      }
       if (el.tagName === 'p') {
         const kids = (el.children ?? []).filter((c) => !blank(c));
         const img = kids.length === 1 && kids[0].tagName === 'img' ? kids[0] : undefined;
