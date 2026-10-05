@@ -5,8 +5,9 @@ import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, type Lang } from '../../../lib/i18n';
 import { articles, type Article } from '../../../lib/writing';
-import { articlePath, documentTitle, formatDate, isoDate, ogImagePath, readingMinutes } from '../../../lib/format';
+import { articlePath, documentTitle, formatDate, isoDate, readingMinutes } from '../../../lib/format';
 import { blogPosting, jsonLd } from '../../../lib/structured';
+import { articleCard, ogImagePathFor } from '../../../lib/og';
 import { site } from '../../../site';
 import { isSummaryHeading } from '../../../lib/markdown';
 
@@ -24,6 +25,7 @@ for (const h of headings) {
   else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
 }
 const absolute = (path: string) => new URL(path, Astro.site).toString();
+const ogImage = await ogImagePathFor(articleCard(article, lang));
 const structured = jsonLd(
   blogPosting({
     headline: title,
@@ -31,13 +33,13 @@ const structured = jsonLd(
     published: pubDate,
     lang,
     url: absolute(articlePath(article.id, lang)),
-    image: absolute(ogImagePath(lang)),
+    image: absolute(ogImage),
     author: { name: site.name, url: site.url },
     original: article.original === lang ? undefined : { url: absolute(articlePath(article.id, article.original)), lang: article.original },
   }),
 );
 ---
-<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic] }} counterpart={article.alternate}>
+<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic], image: ogImage }} counterpart={article.alternate}>
   <script type="application/ld+json" set:html={structured} />
   <article class="mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="flex max-w-240 flex-col gap-7">
