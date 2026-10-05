@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Head from '../components/Head.astro';
+import Head, { type Article } from '../components/Head.astro';
 import Sidebar from '../components/Sidebar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import LangHint from '../components/LangHint.astro';
@@ -11,7 +11,7 @@ interface Props {
   lang: Lang;
   title: string;
   description?: string;
-  article?: { published: Date; section: string };
+  article?: Article;
   counterpart?: boolean;
   notFound?: boolean;
 }
