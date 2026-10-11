@@ -17,6 +17,7 @@
     "check:live": "node scripts/check-live.mjs",
     "check:links": "node scripts/check-links.mjs",
     "test": "node --test 'tests/*.test.mjs'",
+    "og:render": "node scripts/og-render.mjs",
     "photo:add": "node scripts/photo-add.mjs",
     "photos:fetch": "node scripts/photos-fetch.mjs",
     "map:extract": "node scripts/map-extract.mjs",
