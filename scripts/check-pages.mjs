@@ -18,6 +18,8 @@ const VIEWS = {
 const THEMES = ['dark', 'light'];
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
+const RECORD_VIOLATIONS = `addEventListener('securitypolicyviolation', (e) => (window.__cspViolations ||= []).push(\`\${e.disposition} \${e.violatedDirective}: \${e.sample || e.blockedURI}\`));`;
+
 const axe = readFileSync(new URL('../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
 const exceptions = JSON.parse(readFileSync(new URL('./a11y-exceptions.json', import.meta.url), 'utf8'));
 const today = new Date().toISOString().slice(0, 10);
@@ -135,6 +137,7 @@ async function openTab(browser) {
   await tab.send('Page.enable');
   await network(sessionId);
   await tab.send('Emulation.setFocusEmulationEnabled', { enabled: true });
+  await tab.send('Page.addScriptToEvaluateOnNewDocument', { source: RECORD_VIOLATIONS });
   await tab.send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true });
   return tab;
 }
@@ -164,6 +167,8 @@ async function check(tab, { path, view }) {
   const requests = [...tab.requests.values()];
   const weight = { where, ...weigh(requests), tiles: requests.filter((r) => new URL(r.url).pathname.startsWith('/tiles/')).length };
   problems.push(...budgetProblems(where, weight));
+  const { result: csp } = await tab.send('Runtime.evaluate', { expression: 'window.__cspViolations ?? []', returnByValue: true });
+  for (const v of csp.value) problems.push(`${where}: CSP violation (${v})`);
 
   await tab.send('Runtime.evaluate', { expression: axe });
   const scans = [];

@@ -22,7 +22,7 @@ const cities = await mapPlaces(lang);
 const series = await allSeries(lang);
 const places = cities.flatMap((c) => c.places);
 const middle = centre(places);
-const [mainFile, sharedFile] = MAPLIBRE_FILES;
+const [mainFile, sharedFile, workerFile] = MAPLIBRE_FILES;
 const close = 'M6 6l12 12M18 6L6 18';
 const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
 ---
@@ -37,6 +37,7 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
     <section
       data-map
       data-maplibre={`${MAPLIBRE_DIR}${mainFile}`}
+      data-maplibre-worker={`${MAPLIBRE_DIR}${workerFile}`}
       data-tiles={`${tileRoot(mapTiles.sha256)}{z}/{x}/{y}.mvt`}
       data-world-max-zoom={mapTiles.worldMaxZoom}
       data-city-zooms={mapTiles.cityZooms.join(' ')}
