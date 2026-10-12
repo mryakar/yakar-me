@@ -29,14 +29,11 @@ const groups = sections.map((key) => ({ key, href: localize(nav.find((n) => n.ke
       <h1 class="font-display text-d2 desk:text-d1">{t.title}</h1>
     </header>
 
-    <div data-search-fallback class="flex flex-col gap-5">
-      <p class="max-w-180 text-lede text-muted">{t.noScript}</p>
-      <ul class="flex flex-wrap gap-x-7 gap-y-3">
-        {groups.map((g) => (
-          <li><a href={g.href} class="group inline-flex items-center gap-2 text-[15px] text-accent">{g.label}<ArrowRight /></a></li>
-        ))}
-      </ul>
-    </div>
+    <ul data-search-fallback class="flex flex-wrap gap-x-7 gap-y-3">
+      {groups.map((g) => (
+        <li><a href={g.href} class="group inline-flex items-center gap-2 text-[15px] text-accent">{g.label}<ArrowRight /></a></li>
+      ))}
+    </ul>
 
     <div data-search-box hidden class="flex max-w-180 flex-col gap-3">
       <label for="search-query" class="label text-faint">{t.label}</label>
