@@ -1,5 +1,6 @@
 import type { Lang } from '../lib/i18n.ts';
 import type { BookLanguage, Category, Genre } from '../lib/book.ts';
+import type { Topic } from '../lib/article.ts';
 import type { Category as SongCategory, Genre as SongGenre } from '../lib/song.ts';
 import { englishOrdinal } from '../lib/format.ts';
 
@@ -60,7 +61,7 @@ const en = {
     minRead: (n: number) => `${n} min read`,
     medium: 'Also on Medium ↗',
     contents: 'Contents',
-    topics: { Java: 'Java', Databases: 'Databases' } as Record<string, string>,
+    topics: { Java: 'Java', Databases: 'Databases' } satisfies Record<Topic, string>,
   },
   reading: {
     description: 'The books I am reading and the ones I have finished.',

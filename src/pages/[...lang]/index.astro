@@ -1,4 +1,5 @@
 ---
+import type { InferGetStaticPropsType } from 'astro';
 import Base from '../../layouts/Base.astro';
 import Tagline from '../../components/Tagline.astro';
 import ArrowRight from '../../components/ArrowRight.astro';
@@ -8,7 +9,7 @@ import OdometerLink from '../../components/OdometerLink.astro';
 import Globe from '../../components/Globe.astro';
 import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
-import { langPaths, localize, type Lang } from '../../lib/i18n';
+import { langPaths, localize } from '../../lib/i18n';
 import { lastTaken, recentSeries } from '../../lib/photos';
 import { mapPath, seriesPath } from '../../lib/photo';
 import { mapPlaces } from '../../lib/places';
@@ -21,7 +22,9 @@ import { articlePath, documentTitle, endSentence, formatDate, formatMonth, forma
 
 export const getStaticPaths = langPaths;
 
-const { lang } = Astro.props as { lang: Lang };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang } = Astro.props;
 const t = ui[lang];
 const n = (value: number) => formatNumber(value, lang);
 const countries = (count: number) => plural(t.home.countries, count);

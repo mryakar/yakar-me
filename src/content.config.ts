@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { locales } from './lib/i18n';
+import { topics } from './lib/article';
 import { FOCUS_STEP, PLACE_NAME } from './lib/photo';
 import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
 import * as song from './lib/song';
@@ -20,7 +21,7 @@ const writing = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    topic: z.enum(['Java', 'Databases']),
+    topic: z.enum(topics),
     mediumUrl: z.url(),
     short: z.string().optional(),
     lang,

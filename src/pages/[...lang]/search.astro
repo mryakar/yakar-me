@@ -1,15 +1,18 @@
 ---
+import type { InferGetStaticPropsType } from 'astro';
 import Base from '../../layouts/Base.astro';
 import ArrowRight from '../../components/ArrowRight.astro';
 import { ui } from '../../i18n/ui';
-import { langPaths, localize, type Lang } from '../../lib/i18n';
+import { langPaths, localize } from '../../lib/i18n';
 import { documentTitle } from '../../lib/format';
 import { QUERY_MAX } from '../../lib/search';
 import { sectionLinks } from '../../lib/nav';
 
 export const getStaticPaths = langPaths;
 
-const { lang } = Astro.props as { lang: Lang };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang } = Astro.props;
 const t = ui[lang].search;
 const groups = sectionLinks(lang);
 ---

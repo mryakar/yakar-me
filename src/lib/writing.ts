@@ -2,8 +2,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { pending } from '../i18n/pending';
 import type { Lang } from './i18n';
 import { localized } from './translations';
-
-export const topics = ['Java', 'Databases'] as const;
+import type { Topic } from './article';
 
 export interface Article {
   id: string;
@@ -15,7 +14,7 @@ export interface Article {
   short?: string;
   mediumUrl: string;
   pubDate: Date;
-  topic: (typeof topics)[number];
+  topic: Topic;
   entry: CollectionEntry<'writing'> | CollectionEntry<'writingTranslations'>;
 }
 

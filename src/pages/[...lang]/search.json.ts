@@ -1,6 +1,6 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute, InferGetStaticPropsType } from 'astro';
 import { ui } from '../../i18n/ui';
-import { langPaths, localize, type Lang } from '../../lib/i18n';
+import { langPaths, localize } from '../../lib/i18n';
 import { articles } from '../../lib/writing';
 import { allSeries } from '../../lib/photos';
 import { books } from '../../lib/books';
@@ -13,8 +13,8 @@ import { paths } from '../../site';
 
 export const getStaticPaths = langPaths;
 
-export const GET: APIRoute = async ({ props }) => {
-  const { lang } = props as { lang: Lang };
+export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = async ({ props }) => {
+  const { lang } = props;
   const t = ui[lang];
   const html = await htmlRenderer();
   const [written, series, shelf, played] = await Promise.all([articles(lang), allSeries(lang), books(lang), songs(lang)]);
