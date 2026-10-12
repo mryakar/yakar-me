@@ -1,6 +1,6 @@
 import type { sections } from '../site.ts';
 
-export type SearchKind = (typeof sections)[number];
+type SearchKind = (typeof sections)[number];
 
 export interface SearchEntry {
   kind: SearchKind;
@@ -11,7 +11,7 @@ export interface SearchEntry {
   body: string;
 }
 
-export interface Segment {
+interface Segment {
   text: string;
   mark: boolean;
 }

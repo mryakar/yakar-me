@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aperture, countries, focalLength, imageObject, placeName, recipeRows, seriesPath, shutter, signed, takenYear } from '../src/lib/photo.ts';
+import { aperture, countries, focalLength, imageObject, largest, mapPath, placeName, recipeRows, seriesPath, shutter, signed, smallestAtLeast, takenYear, variantPath } from '../src/lib/photo.ts';
 import { jsonLd } from '../src/lib/structured.ts';
 import { ui } from '../src/i18n/ui.ts';
 
@@ -98,4 +98,19 @@ test('countries: farklı ülkeler, ilk görülme sırasıyla', () => {
   const at = (city, country) => ({ district: 'x', city, country });
   assert.deepEqual(countries([at('Ubud', 'Indonesia'), at('Canggu', 'Indonesia')]), ['Indonesia']);
   assert.deepEqual(countries([at('Nice', 'France'), at('Coburg', 'Germany'), at('Paris', 'France')]), ['France', 'Germany']);
+});
+
+test('mapPath ve variantPath: dil öneki, isteğe bağlı odak', () => {
+  assert.equal(mapPath(), '/photos/map/');
+  assert.equal(mapPath('tr', 'hong-kong'), '/tr/photos/map/#hong-kong');
+  assert.equal(variantPath('a-640-0123abcd.webp'), '/img/a-640-0123abcd.webp');
+});
+
+test('largest ve smallestAtLeast: sırasız listede; yetmezse en büyüğü', () => {
+  const v = [640, 2560, 320, 1280].map((width) => ({ width }));
+  assert.equal(largest(v).width, 2560);
+  assert.equal(smallestAtLeast(v, 1000).width, 1280);
+  assert.equal(smallestAtLeast(v, 640).width, 640);
+  assert.equal(smallestAtLeast(v, 4000).width, 2560);
+  assert.deepEqual(v.map((x) => x.width), [640, 2560, 320, 1280]);
 });

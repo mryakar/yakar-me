@@ -1,6 +1,6 @@
 import { PLACE_NAME } from '../../src/lib/photo.ts';
 
-export const FILM_SIMULATIONS = {
+const FILM_SIMULATIONS = {
   0x000: 'Provia',
   0x120: 'Astia',
   0x200: 'Velvia',
@@ -79,7 +79,7 @@ export const photoId = (file) =>
 
 export const cameraFrame = (file) => /^(DSCF\d{4})$/i.exec(file.replace(/^.*[\\/]/, '').replace(/\.[^.]+$/, ''))?.[1].toUpperCase();
 
-export function kindOf(exif) {
+function kindOf(exif) {
   const make = text(exif.Make, 'Make').toUpperCase();
   if (make === 'FUJIFILM') return 'fujifilm';
   if (make === 'APPLE') return 'phone';

@@ -17,7 +17,7 @@ export const OG_COLORS = {
   line: 'rgb(255 255 255 / 0.07)',
 };
 
-export const OG_FONTS = {
+const OG_FONTS = {
   display: ['@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2', '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-normal.woff2'],
   mono: ['@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2', '@fontsource-variable/geist-mono/files/geist-mono-latin-ext-wght-normal.woff2'],
 };
@@ -25,7 +25,7 @@ export const OG_FONTS = {
 const LATIN = 'U+0000-00FF, U+0131, U+0152-0153, U+2000-206F';
 const LATIN_EXT = 'U+0100-0130, U+0132-0151, U+0154-024F';
 
-export interface OgCard {
+interface OgCard {
   slug: string;
   lang: Lang;
   label: string;

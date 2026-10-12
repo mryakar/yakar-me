@@ -71,7 +71,3 @@ export const lastTaken = (photos: Photo[]) => photos.at(-1)!.data.taken;
 
 export const recentSeries = async (lang: Lang, count: number) =>
   (await allSeries(lang)).sort((a, b) => lastTaken(b.photos).localeCompare(lastTaken(a.photos))).slice(0, count);
-
-export const largest = (variants: Photo['data']['variants']['webp']) => variants.reduce((a, b) => (b.width > a.width ? b : a));
-export const smallestAtLeast = (variants: Photo['data']['variants']['webp'], width: number) =>
-  [...variants].sort((a, b) => a.width - b.width).find((v) => v.width >= width) ?? largest(variants);

@@ -10,8 +10,8 @@ export interface Region extends Place {
   bounds: Bounds;
 }
 
-export const REGION_PADDING_KM = 10;
-export const MAX_MERCATOR_LAT = 85;
+const REGION_PADDING_KM = 10;
+const MAX_MERCATOR_LAT = 85;
 const KM_PER_DEGREE = 111.32;
 
 export const tileRoot = (sha256: string) => `/tiles/${sha256.slice(0, 8)}/`;

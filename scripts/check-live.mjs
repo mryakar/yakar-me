@@ -1,5 +1,6 @@
 import { Resolver } from 'node:dns/promises';
 import { readFileSync } from 'node:fs';
+import { setTimeout as sleep } from 'node:timers/promises';
 import tls from 'node:tls';
 import { site } from '../src/site.ts';
 import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
@@ -25,7 +26,6 @@ const rules = parseHeadersFile(readFileSync(new URL('../public/_headers', import
 const securityTxt = readFileSync(new URL('../public/.well-known/security.txt', import.meta.url), 'utf8');
 const problems = [];
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function once(what, call) {
   try {
     return await call();

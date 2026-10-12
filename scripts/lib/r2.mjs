@@ -3,9 +3,10 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { setTimeout as sleep } from 'node:timers/promises';
 import { BUCKET } from './photo-store.mjs';
 
-export const WRITE_TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
+const WRITE_TOKEN_FILE = join(homedir(), '.config', 'yakar-me', 'r2-write.env');
 const CONTENT_TYPES = { avif: 'image/avif', webp: 'image/webp', pmtiles: 'application/octet-stream' };
 const REGION = 'auto';
 const SERVICE = 's3';
@@ -33,8 +34,11 @@ export function sign({ method, host, path, headers, payloadHash, accessKeyId, se
   };
 }
 
+export const CREDENTIAL_VARS = ['R2_ACCOUNT_ID', 'R2_ACCESS_KEY_ID', 'R2_SECRET_ACCESS_KEY'];
+const CREDENTIAL_LINE = new RegExp(`^\\s*(${CREDENTIAL_VARS.join('|')})\\s*=\\s*(\\S+)\\s*$`);
+
 export function credentials(env = process.env) {
-  const { R2_ACCOUNT_ID: account, R2_ACCESS_KEY_ID: accessKeyId, R2_SECRET_ACCESS_KEY: secretAccessKey } = env;
+  const [account, accessKeyId, secretAccessKey] = CREDENTIAL_VARS.map((name) => env[name]);
   if (!account || !accessKeyId || !secretAccessKey) return null;
   if (!/^[0-9a-f]{32}$/.test(account)) throw new Error('R2_ACCOUNT_ID must be 32 hex characters');
   return { account, accessKeyId, secretAccessKey };
@@ -47,18 +51,16 @@ export function writeCredentials(file = WRITE_TOKEN_FILE) {
     Object.fromEntries(
       readFileSync(file, 'utf8')
         .split('\n')
-        .map((l) => /^\s*(R2_ACCOUNT_ID|R2_ACCESS_KEY_ID|R2_SECRET_ACCESS_KEY)\s*=\s*(\S+)\s*$/.exec(l))
+        .map((l) => CREDENTIAL_LINE.exec(l))
         .filter(Boolean)
         .map((m) => [m[1], m[2]]),
     ),
   );
-  if (!creds) throw new Error(`${file} needs R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY`);
+  if (!creds) throw new Error(`${file} needs ${CREDENTIAL_VARS.join(', ')}`);
   return creds;
 }
 
 export const retryable = (status) => status === 429 || status >= 500;
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function withRetry(call, { attempts = ATTEMPTS, wait = sleep } = {}) {
   for (let attempt = 1; ; attempt++) {
