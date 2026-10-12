@@ -46,6 +46,16 @@ export function emailDnsProblems(resolver, seen, expected) {
   return problems;
 }
 
+export const caaRecord = ({ critical, type, ...tag }) => {
+  const [[name, value]] = Object.entries(tag);
+  return `${critical} ${name} "${value}"`;
+};
+
+export function caaProblems(resolver, seen, expected) {
+  const got = seen.map(caaRecord);
+  return sameSet(got, expected) ? [] : [`${resolver}: CAA is ${JSON.stringify(got.toSorted())}, expected ${JSON.stringify(expected.toSorted())}`];
+}
+
 export function certificateProblems(cert, host, now, minDays) {
   const problems = [];
   const left = (new Date(cert.validTo).valueOf() - now.valueOf()) / DAY_MS;

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import tls from 'node:tls';
 import { site } from '../src/site.ts';
 import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
-import { certificateProblems, emailDnsProblems, headerProblems, matchesPattern, parseHeadersFile } from './lib/live-checks.mjs';
+import { caaProblems, certificateProblems, emailDnsProblems, headerProblems, matchesPattern, parseHeadersFile } from './lib/live-checks.mjs';
 import { securityTxtErrors } from './lib/security-txt.mjs';
 
 const ORIGIN = process.argv[2] ?? site.url;
@@ -79,12 +79,17 @@ async function assets() {
   return `${rules.length} _headers rules match the live responses`;
 }
 
+function resolver(server) {
+  const r = new Resolver({ timeout: 5000, tries: 2 });
+  r.setServers([server]);
+  const query = (what, call) =>
+    once(`${server} ${what}`, () => call().catch((e) => (['ENODATA', 'ENOTFOUND'].includes(e.code) ? [] : Promise.reject(e))));
+  return { r, query };
+}
+
 async function email() {
   for (const server of RESOLVERS) {
-    const r = new Resolver({ timeout: 5000, tries: 2 });
-    r.setServers([server]);
-    const query = (what, call) =>
-      once(`${server} ${what}`, () => call().catch((e) => (['ENODATA', 'ENOTFOUND'].includes(e.code) ? [] : Promise.reject(e))));
+    const { r, query } = resolver(server);
     const dkim = {};
     for (const selector of Object.keys(expected.email.dkim)) {
       dkim[selector] = await query(`${selector} DKIM`, () => r.resolveCname(`${selector}._domainkey.${HOST}`));
@@ -98,6 +103,14 @@ async function email() {
     problems.push(...emailDnsProblems(server, seen, expected.email));
   }
   return `e-mail DNS (MX, SPF, DMARC, DKIM) as expected on ${RESOLVERS.join(' and ')}`;
+}
+
+async function caa() {
+  for (const server of RESOLVERS) {
+    const { r, query } = resolver(server);
+    problems.push(...caaProblems(server, await query('CAA', () => r.resolveCaa(HOST)), expected.caa));
+  }
+  return `CAA (${expected.caa.length} records) as expected on ${RESOLVERS.join(' and ')}`;
 }
 
 async function certificate() {
@@ -128,6 +141,7 @@ for (const [name, check] of [
   ['pages', pages],
   ['assets', assets],
   ['e-mail DNS', email],
+  ['CAA', caa],
   ['certificate', certificate],
   ['security.txt', securityContact],
 ]) {

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { certificateProblems, emailDnsProblems, headerProblems, linkVerdict, matchesPattern, parseHeadersFile } from '../scripts/lib/live-checks.mjs';
+import { caaProblems, caaRecord, certificateProblems, emailDnsProblems, headerProblems, linkVerdict, matchesPattern, parseHeadersFile } from '../scripts/lib/live-checks.mjs';
 import { inlineCodeProblems, isExternal, loadedUrls } from '../scripts/lib/html-rules.mjs';
 
 const headersFile = `/*
@@ -95,4 +95,23 @@ test('html-rules: dış kaynak ve satır içi script; Cloudflare beacon yakalan�
   const html = '<script src="/theme.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js"></script><script>x()</script>';
   assert.deepEqual(loadedUrls(html).filter(isExternal), ['https://static.cloudflareinsights.com/beacon.min.js']);
   assert.match(inlineCodeProblems(html).join(), /inline script/);
+});
+
+test('caaRecord ve caaProblems: küme olarak; silinen, eklenen ve değişen kayıt kırar', () => {
+  assert.equal(caaRecord({ critical: 0, type: 'CAA', issue: 'pki.goog; cansignhttpexchanges=yes' }), '0 issue "pki.goog; cansignhttpexchanges=yes"');
+  assert.equal(caaRecord({ critical: 128, issuewild: 'letsencrypt.org' }), '128 issuewild "letsencrypt.org"');
+  const want = ['0 issue "letsencrypt.org"', '0 issuewild "letsencrypt.org"'];
+  const live = [{ critical: 0, type: 'CAA', issuewild: 'letsencrypt.org' }, { critical: 0, type: 'CAA', issue: 'letsencrypt.org' }];
+  assert.deepEqual(caaProblems('1.1.1.1', live, want), []);
+  assert.match(caaProblems('1.1.1.1', [], want)[0], /^1\.1\.1\.1: CAA is \[\], expected/);
+  assert.equal(caaProblems('8.8.8.8', [...live, { critical: 0, type: 'CAA', issue: 'evil.example' }], want).length, 1);
+  assert.equal(caaProblems('8.8.8.8', [live[0], { critical: 0, type: 'CAA', issue: 'ssl.com' }], want).length, 1);
+});
+
+test('live-expected.json: CAA kayıtları biçimli, Universal SSL kuruluşları issue ve issuewild için var', () => {
+  const { caa } = JSON.parse(readFileSync(new URL('../scripts/live-expected.json', import.meta.url), 'utf8'));
+  for (const r of caa) assert.match(r, /^0 (issue|issuewild) "[^"]+"$/);
+  for (const ca of ['letsencrypt.org', 'pki.goog', 'ssl.com']) {
+    for (const tag of ['issue', 'issuewild']) assert.ok(caa.some((r) => r.startsWith(`0 ${tag} "${ca}`)), `${tag} ${ca}`);
+  }
 });
