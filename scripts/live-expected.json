@@ -6,5 +6,17 @@
     "dmarc": "v=DMARC1; p=quarantine; rua=mailto:551d8c7ce2c1477c93f6dca9073e1380@dmarc-reports.cloudflare.net",
     "dkim": { "sig1": "sig1.dkim.yakar.me.at.icloudmailadmin.com" }
   },
+  "caa": [
+    "0 issue \"comodoca.com\"",
+    "0 issue \"digicert.com; cansignhttpexchanges=yes\"",
+    "0 issue \"letsencrypt.org\"",
+    "0 issue \"pki.goog; cansignhttpexchanges=yes\"",
+    "0 issue \"ssl.com\"",
+    "0 issuewild \"comodoca.com\"",
+    "0 issuewild \"digicert.com; cansignhttpexchanges=yes\"",
+    "0 issuewild \"letsencrypt.org\"",
+    "0 issuewild \"pki.goog; cansignhttpexchanges=yes\"",
+    "0 issuewild \"ssl.com\""
+  ],
   "probes": ["/glyphs/geist-regular/0-255.pbf"]
 }
