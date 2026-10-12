@@ -1,9 +1,9 @@
 export type Axis = 'x' | 'y';
 export type Step = -1 | 0 | 1;
 
-export const AXIS_PX = 10;
-export const STEP_SHARE = 0.2;
-export const STEP_SPEED = 0.4;
+const AXIS_PX = 10;
+const STEP_SHARE = 0.2;
+const STEP_SPEED = 0.4;
 export const SLIDE_MS = 240;
 
 export function swipeAxis(dx: number, dy: number): Axis | null {

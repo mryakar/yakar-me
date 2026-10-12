@@ -2,9 +2,8 @@ import { geoDistance, geoOrthographic, geoPath } from 'd3-geo';
 import { feature, mesh } from 'topojson-client';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import countries from 'world-atlas/countries-110m.json' with { type: 'json' };
-import type { Point } from './measure';
+import { RAD, type Point } from './measure.ts';
 
-const RAD = Math.PI / 180;
 const world = countries as unknown as Topology<{ countries: GeometryCollection; land: GeometryCollection }>;
 
 export function globe(points: Point[], centre: Point, size: number, margin = 4) {

@@ -8,6 +8,7 @@ import { langPaths, localize, type Lang } from '../../../lib/i18n';
 import { songs } from '../../../lib/songs';
 import { altoKey, categoryClass, rankArtists } from '../../../lib/song';
 import { documentTitle, plural } from '../../../lib/format';
+import { paths } from '../../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -15,7 +16,7 @@ const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].playing;
 const { all } = await songs(lang);
 const artists = rankArtists(all);
-const songsPage = localize('/playing/', lang);
+const songsPage = localize(paths.playing, lang);
 const sizes = ['size-26', 'size-37', 'size-49'];
 ---
 <Base lang={lang} title={documentTitle(t.artistsView, ui[lang].nav.playing)} description={t.artistsLede}>

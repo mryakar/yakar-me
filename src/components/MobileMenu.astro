@@ -2,7 +2,7 @@
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
 import SearchLink from './SearchLink.astro';
-import { site, links } from '../site';
+import { site, links, paths } from '../site';
 import { ui } from '../i18n/ui';
 import { navLinks } from '../lib/nav';
 import { localize, type Lang } from '../lib/i18n';
@@ -13,7 +13,7 @@ interface Props {
 }
 const { lang, switchTo } = Astro.props;
 const t = ui[lang];
-const home = localize('/', lang);
+const home = localize(paths.home, lang);
 const items = navLinks(Astro.url.pathname, lang);
 const roundButton = 'inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text';
 ---

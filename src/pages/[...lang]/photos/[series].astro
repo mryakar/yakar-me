@@ -7,10 +7,11 @@ import PhotoRights from '../../../components/PhotoRights.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize, type Lang } from '../../../lib/i18n';
-import { allSeries, largest, photoSlug, type Series } from '../../../lib/photos';
-import { imageObject, mapPath, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
-import { documentTitle } from '../../../lib/format';
+import { allSeries, photoSlug, type Series } from '../../../lib/photos';
+import { imageObject, largest, mapPath, seriesPath, variantPath, PHOTOGRAPHER } from '../../../lib/photo';
+import { absoluteUrl, documentTitle } from '../../../lib/format';
 import { jsonLd } from '../../../lib/structured';
+import { paths } from '../../../site';
 
 export const getStaticPaths = () => langItemPaths(allSeries, (series) => ({ series: series.id }));
 
@@ -18,13 +19,13 @@ const { lang, item: series } = Astro.props as { lang: Lang; item: Series };
 const t = ui[lang].photos;
 const { title, description, photos } = series;
 const { Content } = await render(series.entry);
-const page = new URL(seriesPath(series.id, lang), Astro.site).toString();
+const page = absoluteUrl(seriesPath(series.id, lang));
 const structured = jsonLd({
   '@context': 'https://schema.org',
   '@graph': photos.map((p) => {
     const big = largest(p.data.variants.webp);
     return imageObject({
-      url: new URL(variantPath(big.file), Astro.site).toString(),
+      url: absoluteUrl(variantPath(big.file)),
       page: `${page}#${photoSlug(p)}`,
       caption: p.alt,
       taken: p.data.taken,
@@ -40,7 +41,7 @@ const structured = jsonLd({
     <header class="flex flex-col gap-5">
       <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <nav aria-label={t.breadcrumb} class="label text-faint">
-          <a href={localize('/photos/', lang)} class="transition-colors duration-200 hover:text-accent">{ui[lang].nav.photos}</a> / {title}
+          <a href={localize(paths.photos, lang)} class="transition-colors duration-200 hover:text-accent">{ui[lang].nav.photos}</a> / {title}
         </nav>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
           {series.original !== lang && <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />}

@@ -4,9 +4,9 @@ import type { Bounds } from './map';
 export const PALETTE_TOKENS = ['bg', 'ocean', 'land', 'coast', 'frontier', 'line', 'line-strong', 'faint'] as const;
 export type Palette = Record<(typeof PALETTE_TOKENS)[number], string>;
 
-export const GLYPHS = '/glyphs/{fontstack}/{range}.pbf';
+const GLYPHS = '/glyphs/{fontstack}/{range}.pbf';
 
-export interface StyleInput {
+interface StyleInput {
   palette: Palette;
   lang: string;
   origin: string;

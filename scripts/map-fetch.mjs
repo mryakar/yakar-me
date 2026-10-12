@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
-import { credentials, get } from './lib/r2.mjs';
+import { CREDENTIAL_VARS, credentials, get } from './lib/r2.mjs';
 import { sha256 } from './lib/photo-store.mjs';
 import { COMPRESSION, TILE_TYPE, readHeader, readTiles } from './lib/pmtiles.mjs';
 import { CACHE_DIR, TILES_DIR, manifest, tileDir } from './lib/map-store.mjs';
@@ -30,7 +30,7 @@ const verified = (path) => existsSync(path) && sha256(readFileSync(path)) === m.
 let fetched = false;
 if (!verified(local)) {
   const creds = credentials();
-  if (!creds) fail(`${m.file} missing locally and no R2 read credentials (R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY)`);
+  if (!creds) fail(`${m.file} missing locally and no R2 read credentials (${CREDENTIAL_VARS.join(', ')})`);
   const part = `${local}.part`;
   await get(m.file, part, creds);
   if (sha256(readFileSync(part)) !== m.sha256) {

@@ -2,7 +2,7 @@ import { copyFileSync, mkdirSync, readFileSync, rmSync, existsSync, mkdtempSync 
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { inspectImage } from './lib/image-meta.mjs';
-import { credentials, get } from './lib/r2.mjs';
+import { CREDENTIAL_VARS, credentials, get } from './lib/r2.mjs';
 import { PUBLIC_DIR, records, sha256 } from './lib/photo-store.mjs';
 
 const CONCURRENCY = 6;
@@ -28,7 +28,7 @@ const missing = variants.filter((v) => {
 
 const creds = credentials();
 if (missing.length && !creds) {
-  console.error(`✗ ${missing.length} variant(s) missing locally and no R2 read credentials (R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY)`);
+  console.error(`✗ ${missing.length} variant(s) missing locally and no R2 read credentials (${CREDENTIAL_VARS.join(', ')})`);
   process.exit(1);
 }
 

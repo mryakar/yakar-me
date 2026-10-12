@@ -2,16 +2,16 @@
 import Base from '../../layouts/Base.astro';
 import ArrowRight from '../../components/ArrowRight.astro';
 import { ui } from '../../i18n/ui';
-import { nav, sections } from '../../site';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
 import { documentTitle } from '../../lib/format';
 import { QUERY_MAX } from '../../lib/search';
+import { sectionLinks } from '../../lib/nav';
 
 export const getStaticPaths = langPaths;
 
 const { lang } = Astro.props as { lang: Lang };
 const t = ui[lang].search;
-const groups = sections.map((key) => ({ key, href: localize(nav.find((n) => n.key === key)!.href, lang), label: ui[lang].nav[key] }));
+const groups = sectionLinks(lang);
 ---
 <Base lang={lang} title={documentTitle(t.title)} description={t.description}>
   <meta slot="head" name="robots" content="noindex" />

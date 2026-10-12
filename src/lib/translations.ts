@@ -1,9 +1,9 @@
 import { isLang, other, type Lang } from './i18n.ts';
 
-export type Section = 'writing' | 'photos';
-export type Status = 'original' | 'translated' | 'pending';
+type Section = 'writing' | 'photos';
+type Status = 'original' | 'translated' | 'pending';
 
-export const contentPath = (section: Section, id: string) => `/${section}/${id}/`;
+const contentPath = (section: Section, id: string) => `/${section}/${id}/`;
 
 export function translationStatus(
   section: Section,

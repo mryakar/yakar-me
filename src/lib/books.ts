@@ -3,7 +3,7 @@ import type { Lang } from './i18n';
 import { monthStart } from './format';
 import { newestFirst, type BookLanguage, type Category, type Genre } from './book';
 
-export interface Book {
+interface Book {
   id: string;
   title: string;
   originalTitle: string;

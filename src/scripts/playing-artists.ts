@@ -5,7 +5,7 @@ const container = document.querySelector<HTMLElement>('[data-artists]');
 
 if (container) {
   const artists = [...container.querySelectorAll<HTMLDetailsElement>('[data-artist]')];
-  const place = cardSlot(artists, (open) => rowEnd(open, artists), matchMedia('(width >= 48rem)'));
+  const place = cardSlot(artists, (open) => rowEnd(open, artists));
   container.dataset.enhanced = '';
   openFromHash(artists, fragmentId(location.hash), place);
 }

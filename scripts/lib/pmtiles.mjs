@@ -1,7 +1,7 @@
 import { gunzipSync, gzipSync } from 'node:zlib';
 
-export const HEADER_BYTES = 127;
-export const ROOT_LIMIT = 16384;
+const HEADER_BYTES = 127;
+const ROOT_LIMIT = 16384;
 export const COMPRESSION = { none: 1, gzip: 2 };
 export const TILE_TYPE = { mvt: 1 };
 const MAGIC = 'PMTiles';

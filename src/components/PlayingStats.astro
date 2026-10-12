@@ -5,8 +5,9 @@ import Portrait from './Portrait.astro';
 import { ui } from '../i18n/ui';
 import { categories, categoryClass, rankArtists } from '../lib/song';
 import { localize, type Lang } from '../lib/i18n';
-import { plural } from '../lib/format';
+import { orderedGroups, plural } from '../lib/format';
 import type { Song } from '../lib/songs';
+import { paths } from '../site';
 
 interface Props {
   songs: Song[];
@@ -17,13 +18,13 @@ const t = ui[lang].playing;
 const artists = rankArtists(songs);
 const [top, ...rest] = artists;
 const runnersUp = rest.slice(0, 3);
-const artistsPage = localize('/playing/artists/', lang);
+const artistsPage = localize(paths.artists, lang);
 const kpis = [
   { value: songs.length, label: t.songs },
   { value: artists.length, label: t.artists },
   { value: new Set(songs.map((s) => s.genre)).size, label: t.genres },
 ];
-const strip = categories.flatMap((category) => songs.filter((s) => s.category === category).map((_, i, all) => ({ category, first: i === 0, count: all.length })));
+const byCategory = orderedGroups(categories, songs, (s) => s.category);
 const dated = songs.flatMap((s) => (s.firstPlayed ? [{ ...s, firstPlayed: s.firstPlayed }] : []));
 const card = 'flex flex-col gap-5 border border-line bg-card p-5 tab:p-7';
 const heading = 'label text-accent';
@@ -81,15 +82,15 @@ const heading = 'label text-accent';
   <div class={card}>
     <h3 class={heading}>{t.categoriesLabel}</h3>
     <div class="grid h-10 auto-cols-fr grid-flow-col" aria-hidden="true">
-      {strip.map((cell) => (
-        <span class:list={['flex items-center bg-(--tint) font-mono text-xs text-text', categoryClass[cell.category], cell.first && 'border-l-2 border-card pl-2.5 first:border-l-0']}>{cell.first && cell.count}</span>
-      ))}
+      {byCategory.map(({ key, items }) => items.map((_, i) => (
+        <span class:list={['flex items-center bg-(--tint) font-mono text-xs text-text', categoryClass[key], i === 0 && 'border-l-2 border-card pl-2.5 first:border-l-0']}>{i === 0 && items.length}</span>
+      )))}
     </div>
     <ul class="flex flex-wrap gap-x-6 gap-y-2.5">
-      {categories.filter((c) => strip.some((cell) => cell.category === c)).map((c) => (
+      {byCategory.map(({ key, items }) => (
         <li class="flex items-center gap-2 text-sm text-text-body">
-          <span aria-hidden="true" class:list={['block size-3 border border-line-strong bg-(--tint)', categoryClass[c]]}></span>
-          {t.categories[c]} <span class="sr-only">{strip.find((cell) => cell.category === c)!.count}</span>
+          <span aria-hidden="true" class:list={['block size-3 border border-line-strong bg-(--tint)', categoryClass[key]]}></span>
+          {t.categories[key]} <span class="sr-only">{items.length}</span>
         </li>
       ))}
     </ul>

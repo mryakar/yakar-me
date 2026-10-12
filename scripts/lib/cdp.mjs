@@ -2,8 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import { setTimeout as sleep } from 'node:timers/promises';
 
 export async function waitFor(check, { timeout, every = 250, what }) {
   const until = Date.now() + timeout;

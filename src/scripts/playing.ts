@@ -1,37 +1,19 @@
-import { plural } from '../lib/format';
+import { matchesFilters } from '../lib/filter';
 import { fragmentId } from '../lib/fragment';
-import { filterQuery, matchesFilters, readFilters, toggleFilter } from '../lib/filter';
 import { cardSlot, openFromHash } from './card-slot';
+import { filterPanel } from './filter-panel';
 
 const root = document.querySelector<HTMLElement>('[data-playing]');
 const filters = root?.querySelector<HTMLElement>('[data-filters]');
 const crates = root?.querySelector<HTMLElement>('[data-crates]');
 
 if (root && filters && crates) {
-  const keys = ['category', 'genre'] as const;
-
   const songs = [...crates.querySelectorAll<HTMLDetailsElement>('[data-song]')];
   const sections = [...crates.querySelectorAll<HTMLElement>('[data-crate]')];
   const nowLinks = [...root.querySelectorAll<HTMLAnchorElement>('[data-now]')];
-  const chips = [...filters.querySelectorAll<HTMLButtonElement>('button[data-filter]')];
-  const genreGroup = filters.querySelector<HTMLElement>('[data-genres]')!;
-  const result = filters.querySelector<HTMLElement>('[data-result]')!;
-  const empty = filters.querySelector<HTMLElement>('[data-empty]')!;
+  const place = cardSlot(songs, (open) => open.closest('[data-crate]')!.querySelector('[data-rail]')!);
 
-  const known = new Map<string, Set<string>>(keys.map((k) => [k, new Set()]));
-  for (const c of chips) known.get(c.dataset.filter!)?.add(c.dataset.value!);
-  const parentOf = new Map(chips.filter((c) => c.dataset.filter === 'genre').map((c) => [c.dataset.value!, c.dataset.category!]));
-  let state = readFilters(new URLSearchParams(location.search), known, parentOf);
-
-  const place = cardSlot(songs, (open) => open.closest('[data-crate]')!.querySelector('[data-rail]')!, matchMedia('(width >= 48rem)'));
-  const apply = () => {
-    for (const c of chips) {
-      const key = c.dataset.filter!;
-      c.setAttribute('aria-pressed', String(state.get(key) === c.dataset.value));
-      if (key === 'genre') c.hidden = c.dataset.category !== state.get('category');
-    }
-    genreGroup.hidden = !state.has('category');
-
+  const panel = filterPanel(filters, ['category', 'genre'], (state) => {
     let shown = 0;
     for (const section of sections) {
       let inCrate = 0;
@@ -45,36 +27,20 @@ if (root && filters && crates) {
       section.querySelector('[data-crate-count]')!.textContent = String(inCrate);
       shown += inCrate;
     }
-
-    result.textContent = plural({ one: result.dataset.one!, other: result.dataset.other! }, shown);
-    empty.hidden = shown > 0;
-
-    const query = filterQuery(keys, state);
-    history.replaceState(history.state, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
     place();
-  };
-
-  for (const c of chips) {
-    c.addEventListener('click', () => {
-      state = toggleFilter(state, c.dataset.filter!, c.dataset.value!);
-      apply();
-    });
-  }
+    return shown;
+  });
 
   for (const link of nowLinks) {
     link.addEventListener('click', (event) => {
       event.preventDefault();
-      if (songs.find((song) => song.id === link.dataset.now)?.hidden) {
-        state = new Map();
-        apply();
-      }
+      if (songs.find((song) => song.id === link.dataset.now)?.hidden) panel.set(new Map());
       history.replaceState(history.state, '', `${location.pathname}${location.search}#${link.dataset.now}`);
       openFromHash(songs, link.dataset.now!, place);
     });
   }
 
   crates.dataset.enhanced = '';
-  filters.hidden = false;
-  apply();
+  panel.apply();
   openFromHash(songs, fragmentId(location.hash), place);
 }

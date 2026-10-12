@@ -4,7 +4,7 @@ import { records } from './photo-store.mjs';
 import { centreLookup, tileRoot } from '../../src/lib/map.ts';
 
 export const MANIFEST = 'src/content/map.json';
-export const DISTRICTS = 'src/content/districts.json';
+const DISTRICTS = 'src/content/districts.json';
 export const PUBLIC_DIR = 'public';
 export const TILES_DIR = 'public/tiles';
 export const CACHE_DIR = '.cache/map';

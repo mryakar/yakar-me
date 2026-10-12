@@ -3,6 +3,7 @@ import Views from './Views.astro';
 import { ui } from '../i18n/ui';
 import { localize, type Lang } from '../lib/i18n';
 import { mapPath } from '../lib/photo';
+import { paths } from '../site';
 
 interface Props {
   lang: Lang;
@@ -13,7 +14,7 @@ interface Props {
 const { lang, current, series, places } = Astro.props;
 const t = ui[lang].photos;
 const views = [
-  { href: localize('/photos/', lang), label: t.seriesView, count: series, current: current === 'series' },
+  { href: localize(paths.photos, lang), label: t.seriesView, count: series, current: current === 'series' },
   { href: mapPath(lang), label: t.mapView, count: places, current: current === 'map' },
 ];
 ---

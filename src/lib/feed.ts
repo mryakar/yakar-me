@@ -1,6 +1,6 @@
 import { escapeXml as esc } from './format.ts';
 
-export interface FeedImage {
+interface FeedImage {
   url: string;
   type: string;
   bytes: number;
@@ -16,7 +16,7 @@ export interface FeedItem {
   image?: FeedImage;
 }
 
-export interface FeedChannel {
+interface FeedChannel {
   title: string;
   url: string;
   self: string;

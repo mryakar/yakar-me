@@ -5,7 +5,7 @@ import { boundsMiddle, cityKey, regionProblems, type Bounds, type Region } from 
 import type { Point } from './measure';
 import type { Lang } from './i18n';
 
-export interface MapPlace {
+interface MapPlace {
   id: string;
   district: string;
   city: string;
@@ -17,7 +17,7 @@ export interface MapPlace {
   cover: Photo;
 }
 
-export interface MapCity {
+interface MapCity {
   city: string;
   country: string;
   bounds: Bounds;

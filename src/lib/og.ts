@@ -2,12 +2,13 @@ import { ui } from '../i18n/ui.ts';
 import { site } from '../site.ts';
 import { escapeXml, formatDate } from './format.ts';
 import type { Lang } from './i18n.ts';
+import { PAGE_BACKGROUND } from './theme.ts';
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_DIR = '/og/';
 
 export const OG_COLORS = {
-  bg: '#08090a',
+  bg: PAGE_BACKGROUND.dark,
   glow: '#15161a',
   text: '#ededef',
   muted: '#9a9ea6',
@@ -16,7 +17,7 @@ export const OG_COLORS = {
   line: 'rgb(255 255 255 / 0.07)',
 };
 
-export const OG_FONTS = {
+const OG_FONTS = {
   display: ['@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2', '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-normal.woff2'],
   mono: ['@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2', '@fontsource-variable/geist-mono/files/geist-mono-latin-ext-wght-normal.woff2'],
 };
@@ -24,7 +25,7 @@ export const OG_FONTS = {
 const LATIN = 'U+0000-00FF, U+0131, U+0152-0153, U+2000-206F';
 const LATIN_EXT = 'U+0100-0130, U+0132-0151, U+0154-024F';
 
-export interface OgCard {
+interface OgCard {
   slug: string;
   lang: Lang;
   label: string;

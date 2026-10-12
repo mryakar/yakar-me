@@ -1,4 +1,4 @@
-export interface Spot {
+interface Spot {
   x: number;
   y: number;
   weight: number;
@@ -6,7 +6,7 @@ export interface Spot {
   height: number;
 }
 
-export interface Arrangement {
+interface Arrangement {
   leader: number;
   side: 'right' | 'left' | null;
 }

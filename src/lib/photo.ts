@@ -1,4 +1,5 @@
-import { localize, type Lang } from './i18n.ts';
+import { defaultLang, localize, type Lang } from './i18n.ts';
+import { paths } from '../site.ts';
 
 export const PHOTOGRAPHER = 'Ahmet Yakar';
 
@@ -36,7 +37,7 @@ export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
 
 export const countries = (places: Place[]) => [...new Set(places.map((p) => p.country))];
 
-export interface Shot {
+interface Shot {
   kind: 'fujifilm' | 'phone';
   make: string;
   model: string;
@@ -50,9 +51,13 @@ export interface Shot {
   recipe?: Recipe;
 }
 
-export const seriesPath = (series: string, lang: Lang = 'en') => localize(`/photos/${series}/`, lang);
-export const mapPath = (lang: Lang = 'en', focus?: string) => `${localize('/photos/map/', lang)}${focus ? `#${focus}` : ''}`;
+export const seriesPath = (series: string, lang: Lang = defaultLang) => localize(`${paths.photos}${series}/`, lang);
+export const mapPath = (lang: Lang = defaultLang, focus?: string) => `${localize(paths.map, lang)}${focus ? `#${focus}` : ''}`;
 export const variantPath = (file: string) => `/img/${file}`;
+
+export const largest = <V extends { width: number }>(variants: V[]) => variants.reduce((a, b) => (b.width > a.width ? b : a));
+export const smallestAtLeast = <V extends { width: number }>(variants: V[], width: number) =>
+  [...variants].sort((a, b) => a.width - b.width).find((v) => v.width >= width) ?? largest(variants);
 
 export const signed = (n: number, zero = '0') => (n > 0 ? `+${n}` : n < 0 ? `−${-n}` : zero);
 
@@ -75,7 +80,7 @@ export function placeName({ district, city, country }: Place, countryName = same
   return [...parts.slice(0, -1), countryName(country)].join(', ');
 }
 
-export type RecipeRow = [keyof Omit<Recipe, 'filmSimulation' | 'whiteBalanceShift'>, string];
+type RecipeRow = [keyof Omit<Recipe, 'filmSimulation' | 'whiteBalanceShift'>, string];
 
 export function recipeRows(r: Recipe, value = same) {
   const rows: RecipeRow[] = [];

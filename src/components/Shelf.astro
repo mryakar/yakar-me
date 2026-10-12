@@ -1,6 +1,6 @@
 ---
 import { topics, type Article } from '../lib/writing';
-import { articlePath, formatDate, formatMonth } from '../lib/format';
+import { articlePath, formatDate, formatMonth, orderedGroups } from '../lib/format';
 import ArrowRight from './ArrowRight.astro';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../lib/i18n';
@@ -11,19 +11,17 @@ interface Props {
 }
 const { articles, lang } = Astro.props;
 const t = ui[lang];
-const byTopic = topics
-  .map((topic) => ({ topic, items: articles.filter((a) => a.topic === topic) }))
-  .filter((s) => s.items.length > 0);
+const byTopic = orderedGroups(topics, articles, (a) => a.topic);
 
 export const MAX_SLEEVES = 12;
-for (const { topic, items } of byTopic) {
+for (const { key: topic, items } of byTopic) {
   if (items.length > MAX_SLEEVES) {
     throw new Error(`Shelf "${topic}" has ${items.length} records; stacking is defined for ${MAX_SLEEVES}. Extend .sleeve:nth-child rules in global.css.`);
   }
 }
 ---
 <div class="flex flex-col gap-16">
-  {byTopic.map(({ topic, items }) => (
+  {byTopic.map(({ key: topic, items }) => (
     <div class="flex flex-col" data-previews>
       <div class="shelf">
         {items.map((a, i) => (

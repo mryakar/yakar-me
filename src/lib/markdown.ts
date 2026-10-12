@@ -15,6 +15,28 @@ const blank = (n: Hast | undefined) => n?.type === 'text' && !n.value?.trim();
 const SUMMARY = ['in short', 'kısaca'];
 export const isSummaryHeading = (text: string) => SUMMARY.includes(text.trim().toLowerCase());
 
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface TocEntry {
+  slug: string;
+  text: string;
+  children: { slug: string; text: string }[];
+}
+
+export function tableOfContents(headings: Heading[]) {
+  const toc: TocEntry[] = [];
+  for (const { depth, slug, text } of headings) {
+    if (isSummaryHeading(text)) continue;
+    if (depth === 2) toc.push({ slug, text, children: [] });
+    else if (depth === 3) toc.at(-1)?.children.push({ slug, text });
+  }
+  return toc;
+}
+
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
   element: {

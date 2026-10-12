@@ -4,12 +4,12 @@ import type { Lang } from './i18n.ts';
 export const jsonLd = (data: unknown) =>
   JSON.stringify(data).replace(/[<>&\u2028\u2029]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`);
 
-export interface Author {
+interface Author {
   name: string;
   url: string;
 }
 
-export const person = (author: Author, sameAs: string[] = []) => ({
+const person = (author: Author, sameAs: string[] = []) => ({
   '@type': 'Person',
   name: author.name,
   url: author.url,

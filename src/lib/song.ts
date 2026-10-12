@@ -24,7 +24,7 @@ export const categoryClass: Record<Category, string> = {
 export const LEVELS = 5;
 export const SLEEVE_LAYOUTS = 3;
 
-export const PITCHES = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'] as const;
+const PITCHES = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'] as const;
 export const keys = PITCHES.flatMap((p) => [p, `${p}m`]);
 const ALTO_SHIFT = 9;
 const FIFTHS = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5];

@@ -5,11 +5,11 @@ import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, type Lang } from '../../../lib/i18n';
 import { articles, type Article } from '../../../lib/writing';
-import { articlePath, documentTitle, formatDate, isoDate, readingMinutes } from '../../../lib/format';
+import { absoluteUrl, articlePath, documentTitle, formatDate, isoDate, readingMinutes } from '../../../lib/format';
 import { blogPosting, jsonLd } from '../../../lib/structured';
 import { articleCard, ogImagePathFor } from '../../../lib/og';
 import { site } from '../../../site';
-import { isSummaryHeading } from '../../../lib/markdown';
+import { tableOfContents } from '../../../lib/markdown';
 
 export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
 
@@ -17,14 +17,7 @@ const { lang, item: article } = Astro.props as { lang: Lang; item: Article };
 const t = ui[lang].writing;
 const { title, description, pubDate, topic, mediumUrl } = article;
 const { Content, headings } = await render(article.entry);
-type Entry = { slug: string; text: string; children: { slug: string; text: string }[] };
-const toc: Entry[] = [];
-for (const h of headings) {
-  if (isSummaryHeading(h.text)) continue;
-  if (h.depth === 2) toc.push({ slug: h.slug, text: h.text, children: [] });
-  else if (h.depth === 3 && toc.length) toc[toc.length - 1].children.push({ slug: h.slug, text: h.text });
-}
-const absolute = (path: string) => new URL(path, Astro.site).toString();
+const toc = tableOfContents(headings);
 const ogImage = await ogImagePathFor(articleCard(article, lang));
 const structured = jsonLd(
   blogPosting({
@@ -32,10 +25,10 @@ const structured = jsonLd(
     description,
     published: pubDate,
     lang,
-    url: absolute(articlePath(article.id, lang)),
-    image: absolute(ogImage),
+    url: absoluteUrl(articlePath(article.id, lang)),
+    image: absoluteUrl(ogImage),
     author: { name: site.name, url: site.url },
-    original: article.original === lang ? undefined : { url: absolute(articlePath(article.id, article.original)), lang: article.original },
+    original: article.original === lang ? undefined : { url: absoluteUrl(articlePath(article.id, article.original)), lang: article.original },
   }),
 );
 ---

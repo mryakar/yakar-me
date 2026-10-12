@@ -1,6 +1,6 @@
 ---
 import { ui } from '../i18n/ui';
-import { searchPath } from '../site';
+import { paths } from '../site';
 import { localize, type Lang } from '../lib/i18n';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   class: string;
 }
 const { lang, class: className } = Astro.props;
-const href = localize(searchPath, lang);
+const href = localize(paths.search, lang);
 ---
 <a href={href} aria-label={ui[lang].search.title} aria-current={Astro.url.pathname === href ? 'page' : undefined} class={className}>
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20"></path></svg>

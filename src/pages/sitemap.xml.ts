@@ -1,14 +1,14 @@
 import type { APIRoute } from 'astro';
 import { articles } from '../lib/writing';
-import { articlePath, isoDate } from '../lib/format';
+import { absoluteUrl, articlePath, isoDate } from '../lib/format';
 import { allSeries } from '../lib/photos';
 import { mapPath, seriesPath } from '../lib/photo';
 import { defaultLang, localize, locales, type Lang } from '../lib/i18n';
+import { paths } from '../site';
 
 type Page = { path: string; langs: readonly Lang[]; lastmod?: Date };
 
-export const GET: APIRoute = async ({ site: origin }) => {
-  const base = origin!.toString().replace(/\/$/, '');
+export const GET: APIRoute = async () => {
   const [written, series] = await Promise.all([
     Promise.all(locales.map(async (lang) => ({ lang, items: await articles(lang) }))),
     Promise.all(locales.map(async (lang) => ({ lang, items: await allSeries(lang) }))),
@@ -18,15 +18,15 @@ export const GET: APIRoute = async ({ site: origin }) => {
   const english = written.find((w) => w.lang === defaultLang)!.items;
   const englishSeries = series.find((s) => s.lang === defaultLang)!.items;
   const pages: Page[] = [
-    { path: '/', langs: locales, lastmod: english[0]?.pubDate },
-    { path: '/writing/', langs: locales, lastmod: english[0]?.pubDate },
-    { path: '/reading/', langs: locales },
+    { path: paths.home, langs: locales, lastmod: english[0]?.pubDate },
+    { path: paths.writing, langs: locales, lastmod: english[0]?.pubDate },
+    { path: paths.reading, langs: locales },
     ...(englishSeries.length
-      ? [{ path: '/photos/', langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
+      ? [{ path: paths.photos, langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
       : []),
-    { path: '/playing/', langs: locales },
-    { path: '/playing/artists/', langs: locales },
-    { path: '/about/', langs: locales },
+    { path: paths.playing, langs: locales },
+    { path: paths.artists, langs: locales },
+    { path: paths.about, langs: locales },
     ...english.map((a) => ({ path: articlePath(a.id), langs: inLangs(written, a.id), lastmod: a.pubDate })),
   ];
   const body = pages
@@ -35,11 +35,11 @@ export const GET: APIRoute = async ({ site: origin }) => {
         const links =
           p.langs.length > 1
             ? [...p.langs.map((l) => [l, localize(p.path, l)]), ['x-default', p.path]]
-                .map(([l, href]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${base}${href}"/>`)
+                .map(([l, href]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${absoluteUrl(href)}"/>`)
                 .join('')
             : '';
         const lastmod = p.lastmod ? `<lastmod>${isoDate(p.lastmod)}</lastmod>` : '';
-        return `  <url><loc>${base}${localize(p.path, lang)}</loc>${lastmod}${links}</url>`;
+        return `  <url><loc>${absoluteUrl(localize(p.path, lang))}</loc>${lastmod}${links}</url>`;
       }),
     )
     .join('\n');

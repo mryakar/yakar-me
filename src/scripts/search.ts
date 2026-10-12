@@ -1,5 +1,6 @@
 import { plural } from '../lib/format';
 import { prepare, QUERY_MAX, search, type Prepared, type SearchEntry, type SearchResult } from '../lib/search';
+import { replaceQuery } from './history';
 
 const root = document.querySelector<HTMLElement>('[data-search]');
 
@@ -56,8 +57,7 @@ if (root) {
     const params = new URLSearchParams(location.search);
     if (query) params.set('q', query);
     else params.delete('q');
-    const qs = params.toString();
-    history.replaceState(history.state, '', `${location.pathname}${qs ? `?${qs}` : ''}`);
+    replaceQuery(params.toString());
   };
 
   let latest = 0;

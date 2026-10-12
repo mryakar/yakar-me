@@ -9,6 +9,7 @@ import { placeName, seriesPath } from '../../lib/photo';
 import { articlePath } from '../../lib/format';
 import { htmlRenderer } from '../../lib/rendered';
 import { headings, plainText, type SearchEntry } from '../../lib/search';
+import { paths } from '../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -33,7 +34,7 @@ export const GET: APIRoute = async ({ props }) => {
   const reading = [...shelf.reading, ...shelf.finished].map(
     (b): SearchEntry => ({
       kind: 'reading',
-      url: `${localize('/reading/', lang)}#${b.id}`,
+      url: `${localize(paths.reading, lang)}#${b.id}`,
       title: b.title,
       detail: b.author,
       keywords: b.originalTitle === b.title ? [] : [b.originalTitle],
@@ -43,7 +44,7 @@ export const GET: APIRoute = async ({ props }) => {
   const playing = played.all.map(
     (s): SearchEntry => ({
       kind: 'playing',
-      url: `${localize('/playing/', lang)}#${s.id}`,
+      url: `${localize(paths.playing, lang)}#${s.id}`,
       title: s.title,
       detail: s.artist,
       keywords: [s.album],

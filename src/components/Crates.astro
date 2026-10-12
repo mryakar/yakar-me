@@ -5,6 +5,7 @@ import Level from './Level.astro';
 import SongCard from './SongCard.astro';
 import { ui } from '../i18n/ui';
 import { categories, categoryClass, roman } from '../lib/song';
+import { orderedGroups } from '../lib/format';
 import type { Lang } from '../lib/i18n';
 import type { Song } from '../lib/songs';
 
@@ -14,14 +15,12 @@ interface Props {
 }
 const { songs, lang } = Astro.props;
 const t = ui[lang].playing;
-const crates = categories
-  .map((category) => ({ category, songs: songs.filter((s) => s.category === category) }))
-  .filter((c) => c.songs.length > 0);
+const crates = orderedGroups(categories, songs, (s) => s.category);
 const wave = Array.from({ length: 19 }, (_, i) => `S ${45 * i + 75} ${i % 2 ? 0 : 14}, ${45 * i + 90} 7`).join(' ');
 const flourish = Array.from({ length: 20 }, (_, i) => (i % 2 ? `M${45 * i + 22} 10 q4 3 7 0` : `M${45 * i + 22} 4 q4 -3 7 0`)).join(' ');
 ---
 <div class="crates" data-crates>
-  {crates.map(({ category, songs }, i) => (
+  {crates.map(({ key: category, items: songs }, i) => (
     <section class:list={['crate', categoryClass[category]]} aria-labelledby={`crate-${category}`} data-crate>
       <div class="crate-row">
         <h2 id={`crate-${category}`} class="crate-head">

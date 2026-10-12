@@ -1,4 +1,4 @@
-import { site } from '../site.ts';
+import { paths, site } from '../site.ts';
 import { dateLocale, defaultLang, localize, type Lang } from './i18n.ts';
 
 const SHORT_MONTHS: Record<Lang, string[]> = {
@@ -8,24 +8,24 @@ const SHORT_MONTHS: Record<Lang, string[]> = {
 
 export const ogImagePath = (lang: Lang) => (lang === defaultLang ? '/og.png' : `/og-${lang}.png`);
 
-export const articlePath = (id: string, lang: Lang = 'en') => localize(`/writing/${id}/`, lang);
+export const articlePath = (id: string, lang: Lang = defaultLang) => localize(`${paths.writing}${id}/`, lang);
 
-export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: Lang = 'en') {
+export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: Lang = defaultLang) {
   if (month === 'long') {
     return date.toLocaleDateString(dateLocale[lang], { day: 'numeric', month, year: 'numeric', timeZone: 'UTC' });
   }
   return `${date.getUTCDate()} ${SHORT_MONTHS[lang][date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 }
 
-export const shortMonth = (date: Date, lang: Lang = 'en') => SHORT_MONTHS[lang][date.getUTCMonth()];
+export const shortMonth = (date: Date, lang: Lang = defaultLang) => SHORT_MONTHS[lang][date.getUTCMonth()];
 
 export const monthStart = (month: string) => new Date(`${month}-01T00:00:00Z`);
 
-export const formatMonth = (date: Date, lang: Lang = 'en') => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
+export const formatMonth = (date: Date, lang: Lang = defaultLang) => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
 
-export const formatNumber = (n: number, lang: Lang = 'en') => n.toLocaleString(dateLocale[lang]);
+export const formatNumber = (n: number, lang: Lang = defaultLang) => n.toLocaleString(dateLocale[lang]);
 
-export const monthYear = (date: Date, lang: Lang = 'en') =>
+export const monthYear = (date: Date, lang: Lang = defaultLang) =>
   date.toLocaleDateString(dateLocale[lang], { month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 export function englishOrdinal(n: number) {
@@ -49,8 +49,13 @@ export function byYear<T>(items: T[], year: (item: T) => number) {
   return years;
 }
 
+export const orderedGroups = <K, T>(keys: readonly K[], items: T[], keyOf: (item: T) => K) =>
+  keys.map((key) => ({ key, items: items.filter((item) => keyOf(item) === key) })).filter((group) => group.items.length > 0);
+
 export const yearRange = (from: number, to: number, short = false) =>
   from === to ? String(to) : `${from}–${short ? String(to).slice(-2) : to}`;
+
+export const absoluteUrl = (path: string) => new URL(path, site.url).toString();
 
 export const documentTitle = (...parts: string[]) => [...parts, site.title].join(' — ');
 

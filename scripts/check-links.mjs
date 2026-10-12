@@ -1,3 +1,4 @@
+import { setTimeout as sleep } from 'node:timers/promises';
 import { site } from '../src/site.ts';
 import { linkVerdict } from './lib/live-checks.mjs';
 
@@ -8,7 +9,6 @@ const PAUSE_MS = 500;
 const TIMEOUT_MS = 15000;
 const RETRY_AFTER_MS = 60000;
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const decode = (href) => href.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 
 async function request(url, method) {
