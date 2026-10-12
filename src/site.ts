@@ -22,7 +22,7 @@ export const paths = {
 
 export const nav = ['home', 'photos', 'writing', 'reading', 'playing', 'about'] as const;
 
-export const sections = ['writing', 'photos', 'reading', 'playing'] as const;
+export const sections = ['photos', 'writing', 'reading', 'playing'] as const;
 
 export const links = [
   { href: 'https://github.com/mryakar', label: 'GitHub', short: 'GitHub' },
