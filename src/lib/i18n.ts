@@ -4,7 +4,7 @@ export const defaultLang: Lang = 'en';
 
 export const isLang = (s: unknown): s is Lang => typeof s === 'string' && (locales as readonly string[]).includes(s);
 
-export const other = (lang: Lang): Lang => (lang === 'en' ? 'tr' : 'en');
+export const other = (lang: Lang): Lang => locales.find((l) => l !== lang)!;
 
 export const localize = (path: string, lang: Lang) => (lang === defaultLang ? path : `/${lang}${path}`);
 

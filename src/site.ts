@@ -7,18 +7,22 @@ export const site = {
 
 export const home = { city: 'Ankara', country: 'Turkey', lat: 39.9334, lon: 32.8597 };
 
-export const nav = [
-  { key: 'home', href: '/' },
-  { key: 'writing', href: '/writing/' },
-  { key: 'reading', href: '/reading/' },
-  { key: 'photos', href: '/photos/' },
-  { key: 'playing', href: '/playing/' },
-  { key: 'about', href: '/about/' },
-] as const;
+export const paths = {
+  home: '/',
+  writing: '/writing/',
+  reading: '/reading/',
+  photos: '/photos/',
+  map: '/photos/map/',
+  playing: '/playing/',
+  artists: '/playing/artists/',
+  about: '/about/',
+  search: '/search/',
+  feed: '/rss.xml',
+} as const;
+
+export const nav = ['home', 'writing', 'reading', 'photos', 'playing', 'about'] as const;
 
 export const sections = ['writing', 'photos', 'reading', 'playing'] as const;
-
-export const searchPath = '/search/';
 
 export const links = [
   { href: 'https://github.com/mryakar', label: 'GitHub', short: 'GitHub' },

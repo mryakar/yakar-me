@@ -1,4 +1,4 @@
-import type { Place, Point } from './measure';
+import { RAD, type Place, type Point } from './measure.ts';
 
 export type Bounds = [west: number, south: number, east: number, north: number];
 
@@ -13,7 +13,6 @@ export interface Region extends Place {
 export const REGION_PADDING_KM = 10;
 export const MAX_MERCATOR_LAT = 85;
 const KM_PER_DEGREE = 111.32;
-const RAD = Math.PI / 180;
 
 export const tileRoot = (sha256: string) => `/tiles/${sha256.slice(0, 8)}/`;
 

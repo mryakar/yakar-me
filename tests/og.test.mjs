@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { articleCard, ogCardHtml, ogImagePathFor, OG_COLORS, titleSize } from '../src/lib/og.ts';
+import { PAGE_BACKGROUND } from '../src/lib/theme.ts';
 import { frontmatter } from '../scripts/lib/frontmatter.mjs';
 import { pngChunks } from '../scripts/lib/png.mjs';
 
@@ -34,10 +35,16 @@ test('titleSize: uzun başlık küçülür', () => {
   assert.equal(titleSize('x'.repeat(63)), 66);
 });
 
+const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
+const token = (name) => new RegExp(`--yk-${name}: light-dark\\(([^,]+),\\s*([^)]+\\)?)\\);`).exec(css);
+
 test('OG_COLORS: global.css koyu tema token\'larıyla aynı', () => {
-  const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
-  const dark = (name) => new RegExp(`--yk-${name}: light-dark\\([^,]+,\\s*([^)]+\\)?)\\);`).exec(css)?.[1].trim();
-  for (const name of ['bg', 'text', 'muted', 'faint', 'accent', 'line']) assert.equal(OG_COLORS[name], dark(name), name);
+  for (const name of ['bg', 'text', 'muted', 'faint', 'accent', 'line']) assert.equal(OG_COLORS[name], token(name)?.[2].trim(), name);
+});
+
+test('PAGE_BACKGROUND: global.css --yk-bg, iki tema', () => {
+  const [, light, dark] = token('bg');
+  assert.deepEqual(PAGE_BACKGROUND, { light: light.trim(), dark: dark.trim() });
 });
 
 test('frontmatter: çift ve tek tırnak, düz değer', () => {

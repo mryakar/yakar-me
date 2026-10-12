@@ -1,6 +1,6 @@
 ---
 import { topics, type Article } from '../lib/writing';
-import { articlePath, formatDate, readingMinutes } from '../lib/format';
+import { articlePath, formatDate, orderedGroups, readingMinutes } from '../lib/format';
 import ArrowRight from './ArrowRight.astro';
 import { ui } from '../i18n/ui';
 import type { Lang } from '../lib/i18n';
@@ -11,13 +11,11 @@ interface Props {
 }
 const { articles, lang } = Astro.props;
 const t = ui[lang];
-const byTopic = topics
-  .map((topic) => ({ topic, items: articles.filter((a) => a.topic === topic) }))
-  .filter((s) => s.items.length > 0);
+const byTopic = orderedGroups(topics, articles, (a) => a.topic);
 const columns = '@4xl:grid-cols-[7.5rem_minmax(0,1fr)_6.5rem_1.5rem] @4xl:gap-x-6';
 ---
 <div class="@container hidden flex-col gap-16 tab:flex">
-  {byTopic.map(({ topic, items }) => (
+  {byTopic.map(({ key: topic, items }) => (
     <div class="flex flex-col gap-5">
       <p class="flex items-center gap-4">
         <span class="label text-xs text-accent">{t.writing.topics[topic]}</span>

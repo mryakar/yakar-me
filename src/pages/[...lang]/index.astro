@@ -6,7 +6,7 @@ import PhotoPicture from '../../components/PhotoPicture.astro';
 import Odometer from '../../components/Odometer.astro';
 import OdometerLink from '../../components/OdometerLink.astro';
 import Globe from '../../components/Globe.astro';
-import { home, site, nowUpdated } from '../../site';
+import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
 import { lastTaken, recentSeries } from '../../lib/photos';
@@ -35,9 +35,9 @@ const m = await measures();
 const mapCities = await mapPlaces(lang);
 const placePoints = mapCities.flatMap((c) => c.places);
 const cityPoints = mapCities.map((c) => c.middle);
-const readingPage = localize('/reading/', lang);
-const playingPage = localize('/playing/', lang);
-const photosPage = localize('/photos/', lang);
+const readingPage = localize(paths.reading, lang);
+const playingPage = localize(paths.playing, lang);
+const photosPage = localize(paths.photos, lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
 type NowItem = { label: string; books: ReadingBook[] } | { label: string; songs: Song[] } | { label: string; text: string };
 const now: NowItem[] = [
@@ -67,7 +67,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
       <div class="grid border-b border-line @4xl:grid-cols-[minmax(max-content,1fr)_minmax(0,1fr)]">
         <div class="flex flex-col gap-6.5 border-b border-line px-4 py-7 tab:gap-8 tab:px-7 @4xl:gap-9 @4xl:border-r @4xl:border-b-0 @4xl:py-8">
           <OdometerLink href={readingPage} label={t.home.pagesRead} meta={t.home.since(m.pages.since)} value={m.pages.value} shown={n(m.pages.value)} cells={7} size="big" />
-          <OdometerLink href={localize('/writing/', lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
+          <OdometerLink href={localize(paths.writing, lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
         </div>
         <div class="flex flex-wrap content-start gap-x-10 gap-y-6.5 px-4 py-6.5 tab:px-7 @4xl:grid @4xl:grid-cols-[repeat(2,max-content)] @4xl:gap-x-12 @4xl:gap-y-9 @4xl:py-8">
           <OdometerLink href={photosPage} label={countries(m.countries)} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
@@ -117,7 +117,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.home.latestWriting} · {formatDate(latest.pubDate, 'short', lang)}</span>
             <a href={articlePath(latest.id, lang)} class={preview}>{latest.title}</a>
-            <a href={localize('/writing/', lang)} class={more}>{t.writing.all}<ArrowRight /></a>
+            <a href={localize(paths.writing, lang)} class={more}>{t.writing.all}<ArrowRight /></a>
           </li>
         )}
         {current && (
@@ -174,7 +174,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
 
     <footer class="flex items-center justify-between border-t border-line pt-6">
       <span class="label text-faint">© {new Date().getUTCFullYear()} {site.name}</span>
-      <a href={localize('/rss.xml', lang)} class="label text-faint transition-colors duration-200 hover:text-accent">RSS</a>
+      <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">RSS</a>
     </footer>
   </div>
 </Base>

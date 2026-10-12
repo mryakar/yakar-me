@@ -6,6 +6,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import LangHint from '../components/LangHint.astro';
 import { ui } from '../i18n/ui';
 import { defaultLang, localize, locales, other, splitPath, type Lang } from '../lib/i18n';
+import { paths } from '../site';
 
 interface Props {
   lang: Lang;
@@ -18,7 +19,7 @@ interface Props {
 const { lang, title, description = ui[lang].description, article, counterpart = true, notFound = false } = Astro.props;
 const { path } = splitPath(Astro.url.pathname);
 const alternates = counterpart && !notFound ? locales.map((l) => ({ lang: l, href: localize(path, l) })) : [];
-const switchTo = notFound ? localize('/', other(lang)) : counterpart ? localize(path, other(lang)) : undefined;
+const switchTo = notFound ? localize(paths.home, other(lang)) : counterpart ? localize(path, other(lang)) : undefined;
 ---
 <!doctype html>
 <html lang={lang}>

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { markdownToHtml } from 'satteri';
-import { noRawHtml, articleBlocks, isSummaryHeading } from '../src/lib/markdown.ts';
+import { noRawHtml, articleBlocks, isSummaryHeading, tableOfContents } from '../src/lib/markdown.ts';
 
 const render = async (md) => markdownToHtml(md, { mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] }).html;
 
@@ -49,4 +49,13 @@ test('başlıklı görsel figure olur, başlıksız paragraf içinde kalır', as
 test('kendi içinde kayan bloklar klavyeyle kaydırılabilir: pre ve table tabindex="0"', async () => {
   assert.match(await render('```sql\nSELECT 1;\n```'), /<pre tabindex="0"/);
   assert.match(await render('| a | b |\n| - | - |\n| 1 | 2 |'), /<table tabindex="0"/);
+});
+
+test('tableOfContents: ## ve altındaki ###; "Kısaca" ve ilk ##\'den önceki ### girmez', () => {
+  const h = (depth, slug, text = slug) => ({ depth, slug, text });
+  const toc = tableOfContents([h(3, 'orphan'), h(2, 'in-short', 'In short'), h(2, 'a'), h(3, 'a1'), h(4, 'deep'), h(3, 'a2'), h(2, 'b')]);
+  assert.deepEqual(toc, [
+    { slug: 'a', text: 'a', children: [{ slug: 'a1', text: 'a1' }, { slug: 'a2', text: 'a2' }] },
+    { slug: 'b', text: 'b', children: [] },
+  ]);
 });

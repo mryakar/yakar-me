@@ -8,7 +8,7 @@ export interface Place {
   country: string;
 }
 
-const RAD = Math.PI / 180;
+export const RAD = Math.PI / 180;
 const EARTH_RADIUS_KM = 6371;
 
 export function distanceKm(a: Point, b: Point) {

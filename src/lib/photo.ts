@@ -1,4 +1,5 @@
-import { localize, type Lang } from './i18n.ts';
+import { defaultLang, localize, type Lang } from './i18n.ts';
+import { paths } from '../site.ts';
 
 export const PHOTOGRAPHER = 'Ahmet Yakar';
 
@@ -50,8 +51,8 @@ export interface Shot {
   recipe?: Recipe;
 }
 
-export const seriesPath = (series: string, lang: Lang = 'en') => localize(`/photos/${series}/`, lang);
-export const mapPath = (lang: Lang = 'en', focus?: string) => `${localize('/photos/map/', lang)}${focus ? `#${focus}` : ''}`;
+export const seriesPath = (series: string, lang: Lang = defaultLang) => localize(`${paths.photos}${series}/`, lang);
+export const mapPath = (lang: Lang = defaultLang, focus?: string) => `${localize(paths.map, lang)}${focus ? `#${focus}` : ''}`;
 export const variantPath = (file: string) => `/img/${file}`;
 
 export const signed = (n: number, zero = '0') => (n > 0 ? `+${n}` : n < 0 ? `−${-n}` : zero);

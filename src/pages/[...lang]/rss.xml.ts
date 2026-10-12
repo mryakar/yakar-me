@@ -1,28 +1,27 @@
 import type { APIRoute } from 'astro';
-import { site } from '../../site';
+import { site, paths } from '../../site';
 import { bilingual, ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
 import { articles } from '../../lib/writing';
 import { allSeries, smallestAtLeast } from '../../lib/photos';
 import { seriesPath, variantPath } from '../../lib/photo';
 import { absoluteUrls, rssFeed, type FeedItem } from '../../lib/feed';
-import { articlePath, escapeXml as esc } from '../../lib/format';
+import { absoluteUrl, articlePath, escapeXml as esc } from '../../lib/format';
 import { htmlRenderer } from '../../lib/rendered';
 
 export const getStaticPaths = langPaths;
 
 const FEED_IMAGE_WIDTH = 1280;
 
-export const GET: APIRoute = async ({ props, site: origin }) => {
+export const GET: APIRoute = async ({ props }) => {
   const { lang } = props as { lang: Lang };
   const t = ui[lang];
-  const url = (path: string) => new URL(path, origin).toString();
   const body = await htmlRenderer();
   const translationNote = (original: Lang, path: string) =>
-    original === lang ? '' : `<p><a href="${url(path)}">${esc(bilingual.translated.title(original))}</a></p>\n`;
+    original === lang ? '' : `<p><a href="${absoluteUrl(path)}">${esc(bilingual.translated.title(original))}</a></p>\n`;
 
   const writing = (await articles(lang)).map(async (a): Promise<FeedItem> => {
-    const page = url(articlePath(a.id, lang));
+    const page = absoluteUrl(articlePath(a.id, lang));
     return {
       title: a.title,
       url: page,
@@ -34,9 +33,9 @@ export const GET: APIRoute = async ({ props, site: origin }) => {
   });
 
   const photos = (await allSeries(lang)).map(async (s): Promise<FeedItem> => {
-    const page = url(seriesPath(s.id, lang));
+    const page = absoluteUrl(seriesPath(s.id, lang));
     const cover = smallestAtLeast(s.cover.data.variants.webp, FEED_IMAGE_WIDTH);
-    const image = url(variantPath(cover.file));
+    const image = absoluteUrl(variantPath(cover.file));
     const figure = `<p><img src="${image}" alt="${esc(s.cover.alt)}" width="${cover.width}" height="${cover.height}" /></p>\n`;
     return {
       title: s.title,
@@ -52,8 +51,8 @@ export const GET: APIRoute = async ({ props, site: origin }) => {
   const xml = rssFeed(
     {
       title: site.name,
-      url: url(localize('/', lang)),
-      self: url(localize('/rss.xml', lang)),
+      url: absoluteUrl(localize(paths.home, lang)),
+      self: absoluteUrl(localize(paths.feed, lang)),
       description: t.description,
       language: lang,
     },

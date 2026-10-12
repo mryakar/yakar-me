@@ -2,12 +2,13 @@ import { ui } from '../i18n/ui.ts';
 import { site } from '../site.ts';
 import { escapeXml, formatDate } from './format.ts';
 import type { Lang } from './i18n.ts';
+import { PAGE_BACKGROUND } from './theme.ts';
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_DIR = '/og/';
 
 export const OG_COLORS = {
-  bg: '#08090a',
+  bg: PAGE_BACKGROUND.dark,
   glow: '#15161a',
   text: '#ededef',
   muted: '#9a9ea6',

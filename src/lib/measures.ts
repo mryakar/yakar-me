@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { home } from '../site';
+import { defaultLang } from './i18n';
 import { books } from './books';
 import { songs } from './songs';
 import { countsAsCity, countsAsCountry, distanceKm, takenAt, wordCount } from './measure';
@@ -11,8 +12,8 @@ export async function measures() {
     getCollection('writing'),
     getCollection('photos'),
     districtCentres(),
-    books('en'),
-    songs('en'),
+    books(defaultLang),
+    songs(defaultLang),
   ]);
   const frames = photos
     .map((photo) => {
