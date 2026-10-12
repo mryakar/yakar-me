@@ -20,7 +20,7 @@ export const paths = {
   feed: '/rss.xml',
 } as const;
 
-export const nav = ['home', 'writing', 'reading', 'photos', 'playing', 'about'] as const;
+export const nav = ['home', 'photos', 'writing', 'reading', 'playing', 'about'] as const;
 
 export const sections = ['writing', 'photos', 'reading', 'playing'] as const;
 
