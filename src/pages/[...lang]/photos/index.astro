@@ -1,11 +1,12 @@
 ---
+import type { InferGetStaticPropsType } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import ArrowRight from '../../../components/ArrowRight.astro';
 import PhotoViews from '../../../components/PhotoViews.astro';
 import { ui } from '../../../i18n/ui';
-import { langPaths, type Lang } from '../../../lib/i18n';
+import { langPaths } from '../../../lib/i18n';
 import { allSeries, lastTaken, type Series } from '../../../lib/photos';
 import { mapPlaces } from '../../../lib/places';
 import { countries, seriesPath, takenYear } from '../../../lib/photo';
@@ -15,7 +16,9 @@ export const getStaticPaths = langPaths;
 
 const LATEST = 3;
 
-const { lang } = Astro.props as { lang: Lang };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang } = Astro.props;
 const t = ui[lang].photos;
 const all = await allSeries(lang);
 const places = (await mapPlaces(lang)).reduce((n, c) => n + c.places.length, 0);

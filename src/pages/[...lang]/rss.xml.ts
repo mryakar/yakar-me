@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute, InferGetStaticPropsType } from 'astro';
 import { site, paths } from '../../site';
 import { bilingual, ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
@@ -13,8 +13,8 @@ export const getStaticPaths = langPaths;
 
 const FEED_IMAGE_WIDTH = 1280;
 
-export const GET: APIRoute = async ({ props }) => {
-  const { lang } = props as { lang: Lang };
+export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = async ({ props }) => {
+  const { lang } = props;
   const t = ui[lang];
   const body = await htmlRenderer();
   const translationNote = (original: Lang, path: string) =>

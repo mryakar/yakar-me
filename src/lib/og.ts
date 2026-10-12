@@ -1,5 +1,6 @@
 import { ui } from '../i18n/ui.ts';
 import { site } from '../site.ts';
+import type { Topic } from './article.ts';
 import { escapeXml, formatDate } from './format.ts';
 import type { Lang } from './i18n.ts';
 import { PAGE_BACKGROUND } from './theme.ts';
@@ -32,7 +33,7 @@ interface OgCard {
   title: string;
 }
 
-export function articleCard(a: { id: string; title: string; topic: string; pubDate: Date }, lang: Lang): OgCard {
+export function articleCard(a: { id: string; title: string; topic: Topic; pubDate: Date }, lang: Lang): OgCard {
   const topic = ui[lang].writing.topics[a.topic];
   return { slug: a.id, lang, label: `${topic} · ${formatDate(a.pubDate, 'short', lang)}`.toLocaleLowerCase(lang), title: a.title };
 }

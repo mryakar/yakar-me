@@ -1,10 +1,11 @@
 ---
+import type { InferGetStaticPropsType } from 'astro';
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
-import { langItemPaths, type Lang } from '../../../lib/i18n';
-import { articles, type Article } from '../../../lib/writing';
+import { langItemPaths } from '../../../lib/i18n';
+import { articles } from '../../../lib/writing';
 import { absoluteUrl, articlePath, documentTitle, formatDate, isoDate, readingMinutes } from '../../../lib/format';
 import { blogPosting, jsonLd } from '../../../lib/structured';
 import { articleCard, ogImagePathFor } from '../../../lib/og';
@@ -13,7 +14,9 @@ import { tableOfContents } from '../../../lib/markdown';
 
 export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
 
-const { lang, item: article } = Astro.props as { lang: Lang; item: Article };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang, item: article } = Astro.props;
 const t = ui[lang].writing;
 const { title, description, pubDate, topic, mediumUrl } = article;
 const { Content, headings } = await render(article.entry);

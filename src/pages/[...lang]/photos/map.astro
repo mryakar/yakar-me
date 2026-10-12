@@ -1,4 +1,5 @@
 ---
+import type { InferGetStaticPropsType } from 'astro';
 import '../../../styles/map.css';
 import Base from '../../../layouts/Base.astro';
 import PhotoViews from '../../../components/PhotoViews.astro';
@@ -6,7 +7,7 @@ import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import ArrowRight from '../../../components/ArrowRight.astro';
 import { ui } from '../../../i18n/ui';
-import { langPaths, type Lang } from '../../../lib/i18n';
+import { langPaths } from '../../../lib/i18n';
 import { allSeries, photoSlug } from '../../../lib/photos';
 import { mapPlaces, mapTiles } from '../../../lib/places';
 import { centre, tileRoot } from '../../../lib/map';
@@ -16,7 +17,9 @@ import { documentTitle, plural } from '../../../lib/format';
 
 export const getStaticPaths = langPaths;
 
-const { lang } = Astro.props as { lang: Lang };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { lang } = Astro.props;
 const t = ui[lang];
 const cities = await mapPlaces(lang);
 const series = await allSeries(lang);
