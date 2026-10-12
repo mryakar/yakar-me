@@ -66,13 +66,13 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
       </div>
       <div class="grid border-b border-line @4xl:grid-cols-[minmax(max-content,1fr)_minmax(0,1fr)]">
         <div class="flex flex-col gap-6.5 border-b border-line px-4 py-7 tab:gap-8 tab:px-7 @4xl:gap-9 @4xl:border-r @4xl:border-b-0 @4xl:py-8">
-          <OdometerLink href={readingPage} label={t.home.pagesRead} meta={t.home.since(m.pages.since)} name={t.home.pagesReadCount(n(m.pages.value))} value={m.pages.value} shown={n(m.pages.value)} cells={7} size="big" />
-          <OdometerLink href={localize('/writing/', lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} name={t.home.wordsWrittenCount(n(m.words.value))} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
+          <OdometerLink href={readingPage} label={t.home.pagesRead} meta={t.home.since(m.pages.since)} value={m.pages.value} shown={n(m.pages.value)} cells={7} size="big" />
+          <OdometerLink href={localize('/writing/', lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
         </div>
         <div class="flex flex-wrap content-start gap-x-10 gap-y-6.5 px-4 py-6.5 tab:px-7 @4xl:grid @4xl:grid-cols-[repeat(2,max-content)] @4xl:gap-x-12 @4xl:gap-y-9 @4xl:py-8">
-          <OdometerLink href={photosPage} label={countries(m.countries)} name={`${n(m.countries)} ${countries(m.countries)}`} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
-          <OdometerLink href={photosPage} label={cities(m.cities.value)} meta={m.cities.latest && t.home.latestCity(m.cities.latest)} name={`${n(m.cities.value)} ${cities(m.cities.value)}`} value={m.cities.value} shown={n(m.cities.value)} cells={3} size="small" />
-          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} name={t.home.framesCount(n(m.frames.value))} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small" />
+          <OdometerLink href={photosPage} label={countries(m.countries)} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
+          <OdometerLink href={photosPage} label={cities(m.cities.value)} meta={m.cities.latest && t.home.latestCity(m.cities.latest)} value={m.cities.value} shown={n(m.cities.value)} cells={3} size="small" />
+          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small" />
         </div>
       </div>
       <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(3,minmax(0,1fr))] @2xl:gap-10">

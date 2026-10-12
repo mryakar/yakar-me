@@ -108,7 +108,7 @@ function markerElement(kind: 'city' | 'place', label: string, name: string, weig
     const n = document.createElement('span');
     n.className = 'map-count';
     n.textContent = String(weight);
-    text.append(n);
+    text.append(' ', n);
   }
   button.append(dot, text);
   return button;
