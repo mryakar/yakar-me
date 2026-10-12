@@ -244,6 +244,16 @@ const en = {
     text: 'The writing, photos, books and songs are all still here — just not at this address.',
     back: 'Back to the home page',
   },
+  search: {
+    title: 'Search',
+    description: 'Search the writing, photo series, books and songs on yakar.me.',
+    label: 'Search the site',
+    noScript: 'Search runs in your browser and needs JavaScript. Everything it finds is also on these pages:',
+    results: { one: '1 result', other: '{n} results' },
+    none: 'Nothing found.',
+    loading: 'Loading…',
+    failed: 'The search index could not be loaded.',
+  },
 };
 
 type Dict = typeof en;
@@ -508,6 +518,16 @@ const tr: Dict = {
     heading: 'Sayaç 404’te durdu.',
     text: 'Yazılar, fotoğraflar, kitaplar ve şarkılar yerli yerinde — yalnız bu adreste değil.',
     back: 'Ana sayfaya dön',
+  },
+  search: {
+    title: 'Ara',
+    description: 'yakar.me’deki yazılarda, fotoğraf serilerinde, kitaplarda ve şarkılarda ara.',
+    label: 'Sitede ara',
+    noScript: 'Arama tarayıcıda çalışır ve JavaScript ister. Bulabileceği her şey şu sayfalarda da var:',
+    results: { one: '1 sonuç', other: '{n} sonuç' },
+    none: 'Bir şey bulunamadı.',
+    loading: 'Yükleniyor…',
+    failed: 'Arama indeksi yüklenemedi.',
   },
 };
 

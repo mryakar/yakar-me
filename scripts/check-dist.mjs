@@ -7,6 +7,8 @@ import { manifest } from './lib/map-store.mjs';
 import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
 import { securityTxtErrors } from './lib/security-txt.mjs';
 import { xmlErrors } from './lib/xml.mjs';
+import { searchIndexErrors } from './lib/search-index.mjs';
+import { defaultLang } from '../src/lib/i18n.ts';
 import { pending } from '../src/i18n/pending.ts';
 
 const args = process.argv.slice(2);
@@ -45,6 +47,7 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   }
 
   for (const [, tiles] of html.matchAll(/\sdata-tiles="([^"{]*)/gi)) tileRoots.add(tiles);
+  for (const [, index] of html.matchAll(/\sdata-index="([^"]*)"/gi)) if (!resolves(index)) fail(file, `missing search index: ${index}`);
 
   for (const [, image] of html.matchAll(/<meta\s+property="og:image"\s+content="([^"]*)"/gi)) {
     if (!image.startsWith(`${ORIGIN}/`) || !resolves(new URL(image).pathname)) fail(file, `og:image not in the build: ${image}`);
@@ -68,6 +71,16 @@ for (const file of feeds) {
   for (const [url] of text.matchAll(new RegExp(`${ORIGIN.replace(/\./g, '\\.')}/[^\\s"<>]*`, 'g'))) {
     if (!resolves(new URL(url).pathname)) fail(file, `feed links outside the build: ${url}`);
   }
+}
+
+const searchIndexes = all.filter((f) => /(^|[\\/])search\.json$/.test(relative(dist, f)));
+let searchEntries = 0;
+for (const file of searchIndexes) {
+  const rel = relative(dist, file).split('\\').join('/');
+  const json = readFileSync(file, 'utf8');
+  const problems = searchIndexErrors(json, rel.includes('/') ? rel.split('/')[0] : defaultLang, (p) => pages.get(p));
+  for (const e of problems) fail(file, e);
+  if (problems.length === 0) searchEntries += JSON.parse(json).length;
 }
 
 for (const file of all.filter((f) => f.endsWith('.css'))) {
@@ -104,5 +117,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
-console.log(`✓ ${feeds.length} feeds well-formed, security.txt current`);
+console.log(`✓ ${feeds.length} feeds well-formed, ${searchIndexes.length} search indexes (${searchEntries} entries) point into the build, security.txt current`);
 console.log(`✓ ${pages.size} pages, every language has its counterpart${pending.length ? ` (${pending.length} translation(s) pending)` : ''}`);

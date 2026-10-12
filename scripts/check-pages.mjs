@@ -10,6 +10,7 @@ const QUIET_MS = 1000;
 const STALL_MS = 5000;
 const PAGE_TIMEOUT_MS = 30000;
 const NOT_FOUND = ['/__not-found__/', '/tr/__not-found__/'];
+const SEARCHES = ['/search/?q=postgresql', '/tr/search/?q=postgresql'];
 const VIEWS = {
   phone: { width: 390, height: 844, deviceScaleFactor: 3, mobile: true },
   desktop: { width: 1440, height: 900, deviceScaleFactor: 2, mobile: false },
@@ -55,7 +56,7 @@ process.on('exit', () => {
   const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
   const pages = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
   if (pages.length === 0) throw new Error('sitemap.xml lists no pages');
-  const jobs = [...pages, ...NOT_FOUND].flatMap((path) => Object.keys(VIEWS).map((view) => ({ path, view })));
+  const jobs = [...pages, ...SEARCHES, ...NOT_FOUND].flatMap((path) => Object.keys(VIEWS).map((view) => ({ path, view })));
 
   chrome = await launchChrome();
   const tabs = await Promise.all(Array.from({ length: TABS }, () => openTab(chrome)));

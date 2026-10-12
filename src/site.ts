@@ -16,6 +16,10 @@ export const nav = [
   { key: 'about', href: '/about/' },
 ] as const;
 
+export const sections = ['writing', 'photos', 'reading', 'playing'] as const;
+
+export const searchPath = '/search/';
+
 export const links = [
   { href: 'https://github.com/mryakar', label: 'GitHub', short: 'GitHub' },
   { href: 'https://www.linkedin.com/in/ahmetyakar', label: 'LinkedIn', short: 'LinkedIn' },
