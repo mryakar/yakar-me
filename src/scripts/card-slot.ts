@@ -4,7 +4,7 @@ export function rowEnd(item: HTMLElement, row: HTMLElement[]) {
   return row.filter((el) => el.offsetParent && Math.abs(bottom(el) - line) < 2).at(-1)!;
 }
 
-export function closable(item: HTMLDetailsElement, card = item.querySelector<HTMLElement>('[data-card]')!) {
+function closable(item: HTMLDetailsElement, card = item.querySelector<HTMLElement>('[data-card]')!) {
   const close = card.querySelector<HTMLButtonElement>('[data-close]')!;
   close.hidden = false;
   close.addEventListener('click', () => {
@@ -13,7 +13,8 @@ export function closable(item: HTMLDetailsElement, card = item.querySelector<HTM
   });
 }
 
-export function cardSlot(items: HTMLDetailsElement[], anchor: (open: HTMLDetailsElement) => Element, wide: MediaQueryList) {
+export function cardSlot(items: HTMLDetailsElement[], anchor: (open: HTMLDetailsElement) => Element) {
+  const wide = matchMedia('(width >= 48rem)');
   const cards = new Map(items.map((item) => [item, item.querySelector<HTMLElement>('[data-card]')!]));
   const slot = document.createElement('div');
   slot.className = 'card-slot';
