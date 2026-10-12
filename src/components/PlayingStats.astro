@@ -30,10 +30,7 @@ const card = 'flex flex-col gap-5 border border-line bg-card p-5 tab:p-7';
 const heading = 'label text-accent';
 ---
 <section aria-labelledby="numbers" class="flex flex-col gap-8 border-t border-line pt-6">
-  <div class="flex flex-wrap items-baseline justify-between gap-3">
-    <h2 id="numbers" class="font-display text-d2">{t.numbers}</h2>
-    <span class="label text-faint">{t.numbersNote}</span>
-  </div>
+  <h2 id="numbers" class="font-display text-d2">{t.numbers}</h2>
 
   <dl class="grid grid-cols-3 gap-px border border-line bg-line">
     {kpis.map((k) => (
@@ -103,6 +100,4 @@ const heading = 'label text-accent';
       <p class="font-body text-[17px] leading-normal text-muted">{t.staffLine}</p>
     </div>
   )}
-
-  <p class="label border-t border-line pt-5 normal-case tracking-normal text-faint">{t.sleeves}</p>
 </section>
