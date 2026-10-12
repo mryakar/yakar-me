@@ -3,6 +3,7 @@ import { fragmentId } from '../lib/fragment';
 import { bounds, contains, type Bounds } from '../lib/map';
 import { mapStyle, PALETTE_TOKENS, type Palette } from '../lib/map-style';
 import { arrange } from '../lib/map-labels';
+import { trustedScriptUrl } from '../lib/trusted';
 
 type MapLibre = typeof import('maplibre-gl');
 
@@ -115,7 +116,7 @@ function markerElement(kind: 'city' | 'place', label: string, name: string, weig
 }
 
 async function start(frame: HTMLElement) {
-  const { maplibre, tiles, lang } = frame.dataset as Record<string, string>;
+  const { maplibre, maplibreWorker, tiles, lang } = frame.dataset as Record<string, string>;
   const [lon, lat] = frame.dataset.centre!.split(' ').map(Number);
   const canvas = frame.querySelector<HTMLElement>('[data-map-canvas]')!;
   const crumb = frame.querySelector<HTMLElement>('[data-crumb]')!;
@@ -126,6 +127,10 @@ async function start(frame: HTMLElement) {
   const wide = matchMedia('(min-width: 48rem)');
 
   frame.hidden = false;
+  const policies = globalThis.trustedTypes;
+  if (policies && !policies.defaultPolicy) {
+    policies.createPolicy('default', { createScriptURL: (url) => trustedScriptUrl(url, location.origin, maplibreWorker) });
+  }
   const gl: MapLibre = await import(/* @vite-ignore */ new URL(maplibre, location.origin).href);
   const globeZoom = () => Math.log2((0.85 * Math.min(canvas.clientWidth, canvas.clientHeight) * Math.PI) / 512);
   const home = () => ({ center: [lon, lat] as [number, number], zoom: globeZoom() });
