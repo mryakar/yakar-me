@@ -59,6 +59,7 @@ async function pages() {
       else if (url.startsWith('/')) liveUrls.add(url.split(/[?#]/)[0]);
     }
     for (const [, tiles] of html.matchAll(/\sdata-tiles="([^"{]+)/g)) liveUrls.add(`${tiles}0/0/0.mvt`);
+    for (const [, image] of html.matchAll(/<meta property="og:image" content="([^"]+)"/g)) liveUrls.add(new URL(image).pathname);
   }
   return `${paths.length + 1} pages: status, headers, no inline code or outside resources (browser request)`;
 }
