@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
+import SearchLink from './SearchLink.astro';
 import { site, links } from '../site';
 import { ui } from '../i18n/ui';
 import { navLinks } from '../lib/nav';
@@ -17,9 +18,12 @@ const items = navLinks(Astro.url.pathname, lang);
 ---
 <aside class="hidden w-62 flex-none border-r border-line bg-side desk:block">
   <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
-    <div class="flex flex-col gap-1.5">
-      <a href={home} class="font-display text-d4">{site.name}</a>
-      <span class="label text-faint">{site.domain}</span>
+    <div class="flex items-start justify-between gap-2">
+      <div class="flex flex-col gap-1.5">
+        <a href={home} class="font-display text-d4">{site.name}</a>
+        <span class="label text-faint">{site.domain}</span>
+      </div>
+      <SearchLink lang={lang} class="-mr-2.5 inline-flex size-10 flex-none items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-accent" />
     </div>
     <nav aria-label={t.mainNav} class="flex flex-col gap-0.5">
       {items.map((item) => (

@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArrowRight from '../../components/ArrowRight.astro';
+import { ui } from '../../i18n/ui';
+import { nav, sections } from '../../site';
+import { langPaths, localize, type Lang } from '../../lib/i18n';
+import { documentTitle } from '../../lib/format';
+import { QUERY_MAX } from '../../lib/search';
+
+export const getStaticPaths = langPaths;
+
+const { lang } = Astro.props as { lang: Lang };
+const t = ui[lang].search;
+const groups = sections.map((key) => ({ key, href: localize(nav.find((n) => n.key === key)!.href, lang), label: ui[lang].nav[key] }));
+---
+<Base lang={lang} title={documentTitle(t.title)} description={t.description}>
+  <meta slot="head" name="robots" content="noindex" />
+  <div
+    class="flex flex-col gap-10 px-6 pt-9 pb-24 desk:px-24 desk:pt-26"
+    data-search
+    data-index={localize('/search.json', lang)}
+    data-one={t.results.one}
+    data-other={t.results.other}
+    data-none={t.none}
+    data-loading={t.loading}
+    data-failed={t.failed}
+  >
+    <header class="border-b border-line pb-5">
+      <h1 class="font-display text-d2 desk:text-d1">{t.title}</h1>
+    </header>
+
+    <ul data-search-fallback class="flex flex-wrap gap-x-7 gap-y-3">
+      {groups.map((g) => (
+        <li><a href={g.href} class="group inline-flex items-center gap-2 text-[15px] text-accent">{g.label}<ArrowRight /></a></li>
+      ))}
+    </ul>
+
+    <div data-search-box hidden class="flex max-w-180 flex-col gap-3">
+      <label for="search-query" class="label text-faint">{t.label}</label>
+      <input
+        id="search-query"
+        type="search"
+        maxlength={QUERY_MAX}
+        autocomplete="off"
+        spellcheck="false"
+        enterkeyhint="search"
+        class="h-14 w-full rounded-full border border-line-strong bg-card px-6 text-lg text-text transition-colors duration-200 hover:border-muted focus-visible:border-accent"
+      />
+      <p data-search-status role="status" class="label min-h-5 text-faint"></p>
+    </div>
+
+    <div class="flex flex-col gap-12 [&_mark]:rounded-[2px] [&_mark]:bg-accent/25 [&_mark]:text-text">
+      {groups.map((g) => (
+        <section data-search-group={g.key} hidden aria-labelledby={`search-${g.key}`} class="flex flex-col gap-3">
+          <h2 id={`search-${g.key}`} class="label flex gap-3 text-accent">{g.label}<span data-search-count class="text-faint"></span></h2>
+          <ol data-search-list class="flex flex-col border-t border-line"></ol>
+        </section>
+      ))}
+    </div>
+
+    <template data-search-item>
+      <li class="border-b border-line">
+        <a data-search-link class="group flex flex-col gap-2 py-5">
+          <span data-search-title class="font-display text-d4 transition-colors duration-200 group-hover:text-accent"></span>
+          <span data-search-snippet class="max-w-180 text-muted"></span>
+        </a>
+      </li>
+    </template>
+  </div>
+</Base>
+<script>
+  import '../../scripts/search.ts';
+</script>

@@ -1,6 +1,4 @@
 import type { APIRoute } from 'astro';
-import { render, type CollectionEntry } from 'astro:content';
-import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import { site } from '../../site';
 import { bilingual, ui } from '../../i18n/ui';
 import { langPaths, localize, type Lang } from '../../lib/i18n';
@@ -9,6 +7,7 @@ import { allSeries, smallestAtLeast } from '../../lib/photos';
 import { seriesPath, variantPath } from '../../lib/photo';
 import { absoluteUrls, rssFeed, type FeedItem } from '../../lib/feed';
 import { articlePath, escapeXml as esc } from '../../lib/format';
+import { htmlRenderer } from '../../lib/rendered';
 
 export const getStaticPaths = langPaths;
 
@@ -18,9 +17,7 @@ export const GET: APIRoute = async ({ props, site: origin }) => {
   const { lang } = props as { lang: Lang };
   const t = ui[lang];
   const url = (path: string) => new URL(path, origin).toString();
-  const container = await AstroContainer.create();
-  const body = async (entry: CollectionEntry<'writing' | 'writingTranslations' | 'series' | 'seriesTranslations'>) =>
-    container.renderToString((await render(entry)).Content);
+  const body = await htmlRenderer();
   const translationNote = (original: Lang, path: string) =>
     original === lang ? '' : `<p><a href="${url(path)}">${esc(bilingual.translated.title(original))}</a></p>\n`;
 

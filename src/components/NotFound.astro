@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Odometer from './Odometer.astro';
 import ArrowRight from './ArrowRight.astro';
 import { ui } from '../i18n/ui';
-import { nav } from '../site';
+import { nav, sections as keys } from '../site';
 import { localize, type Lang } from '../lib/i18n';
 import { documentTitle } from '../lib/format';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = ui[lang].notFound;
-const sections = (['writing', 'photos', 'reading', 'playing'] as const).map((key) => nav.find((n) => n.key === key)!);
+const sections = keys.map((key) => nav.find((n) => n.key === key)!);
 ---
 <Base lang={lang} title={documentTitle(t.title)} notFound>
   <section class="flex flex-col gap-8 px-6 pt-9 pb-16 desk:px-24 desk:pt-26">
