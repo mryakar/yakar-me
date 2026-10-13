@@ -16,6 +16,7 @@ export const paths = {
   playing: '/playing/',
   artists: '/playing/artists/',
   about: '/about/',
+  years: '/years/',
   search: '/search/',
   feed: '/rss.xml',
 } as const;

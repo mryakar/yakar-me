@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { countsAsCity, countsAsCountry, distanceKm, odometer, takenAt, wordCount } from '../src/lib/measure.ts';
+import { countsAsCity, countsAsCountry, distanceKm, localYear, odometer, takenAt, wordCount } from '../src/lib/measure.ts';
 
 const ankara = { lat: 39.9334, lon: 32.8597 };
 const home = { city: 'Ankara', country: 'Turkey' };
@@ -59,4 +59,10 @@ test('odometer: sabit hücre, baştaki sıfırlar işaretli, sığmayan sayı b�
     { digit: 0, lead: false },
   ]);
   assert.equal(odometer(1234, 3).length, 4);
+});
+
+test('localYear: yıl karenin yerindeki saate göre', () => {
+  assert.equal(localYear(new Date('2025-12-31T20:00:00Z'), 'Asia/Makassar'), 2026);
+  assert.equal(localYear(new Date('2025-12-31T20:00:00Z'), 'Europe/London'), 2025);
+  assert.equal(localYear(takenAt('2026-01-01T00:30:00+03:00', 'Europe/Istanbul'), 'Europe/Istanbul'), 2026);
 });

@@ -3,11 +3,12 @@ import type { InferGetStaticPropsType } from 'astro';
 import { getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Tagline from '../../components/Tagline.astro';
+import ArrowRight from '../../components/ArrowRight.astro';
 import { ui } from '../../i18n/ui';
-import { langPaths } from '../../lib/i18n';
+import { langPaths, localize } from '../../lib/i18n';
 import { documentTitle } from '../../lib/format';
 import { jsonLd, profile } from '../../lib/structured';
-import { links, site } from '../../site';
+import { links, paths, site } from '../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -15,6 +16,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { lang } = Astro.props;
 const t = ui[lang].about;
+const years = ui[lang].years;
 const entry = await getEntry('pages', `about/${lang}`);
 if (!entry) throw new Error(`src/content/pages/about/${lang}.md is missing`);
 const { Content } = await render(entry);
@@ -36,5 +38,7 @@ const structured = jsonLd(
     <div class="prose max-w-170">
       <Content />
     </div>
+
+    <a href={localize(paths.years, lang)} class="group inline-flex w-fit items-center gap-2 text-[15px] text-accent">{years.all}<ArrowRight /></a>
   </article>
 </Base>

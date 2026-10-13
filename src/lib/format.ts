@@ -19,6 +19,8 @@ export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: L
 
 export const shortMonth = (date: Date, lang: Lang = defaultLang) => SHORT_MONTHS[lang][date.getUTCMonth()];
 
+export const monthInitials = (lang: Lang = defaultLang) => SHORT_MONTHS[lang].map((m) => m[0]);
+
 export const monthStart = (month: string) => new Date(`${month}-01T00:00:00Z`);
 
 export const formatMonth = (date: Date, lang: Lang = defaultLang) => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;

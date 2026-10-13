@@ -27,6 +27,7 @@ export const GET: APIRoute = async () => {
     { path: paths.playing, langs: locales },
     { path: paths.artists, langs: locales },
     { path: paths.about, langs: locales },
+    { path: paths.years, langs: locales },
     ...english.map((a) => ({ path: articlePath(a.id), langs: inLangs(written, a.id), lastmod: a.pubDate })),
   ];
   const body = pages
