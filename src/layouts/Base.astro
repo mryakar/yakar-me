@@ -4,6 +4,7 @@ import Head, { type Article } from '../components/Head.astro';
 import Sidebar from '../components/Sidebar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import LangHint from '../components/LangHint.astro';
+import SearchPalette from '../components/SearchPalette.astro';
 import { ui } from '../i18n/ui';
 import { defaultLang, localize, locales, other, splitPath, type Lang } from '../lib/i18n';
 import { paths, site } from '../site';
@@ -43,8 +44,10 @@ const switchTo = notFound ? localize(paths.home, other(lang)) : counterpart ? lo
         <slot />
       </main>
     </div>
+    <SearchPalette lang={lang} />
     <script>
       import '../scripts/theme-toggle.ts';
+      import '../scripts/palette.ts';
     </script>
   </body>
 </html>

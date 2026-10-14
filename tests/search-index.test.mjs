@@ -8,7 +8,7 @@ const pages = new Map([
   ['/tr/writing/a/', '<h1>A</h1>'],
 ]);
 const page = (p) => pages.get(p);
-const entry = (o) => ({ kind: 'writing', url: '/writing/a/', title: 'A', detail: '', keywords: [], body: '', ...o });
+const entry = (o) => ({ kind: 'writing', url: '/writing/a/', title: 'A', date: '16 Aug 2026', detail: '', keywords: [], body: '', ...o });
 const check = (entries, lang = 'en') => searchIndexErrors(JSON.stringify(entries), lang, page);
 
 test('searchIndexErrors: geçerli indeks', () => {
@@ -22,6 +22,7 @@ test('searchIndexErrors: bozuk JSON, boş liste, biçim', () => {
   assert.match(check([entry({ kind: 'secret' })])[0], /malformed/);
   assert.match(check([entry({ title: '' })])[0], /malformed/);
   assert.match(check([entry({ keywords: [1] })])[0], /malformed/);
+  assert.match(check([entry({ date: undefined })])[0], /malformed/);
 });
 
 test('searchIndexErrors: build dışı sayfa, olmayan kimlik, yanlış dil, tekrar', () => {
