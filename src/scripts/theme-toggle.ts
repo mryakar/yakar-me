@@ -22,7 +22,10 @@ for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-t
   button.addEventListener('click', () => {
     const next = current() === 'dark' ? 'light' : 'dark';
     if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.startViewTransition(() => apply(next)).ready.catch(() => {});
+      root.dataset.themeSwitch = '';
+      const transition = document.startViewTransition(() => apply(next));
+      transition.ready.catch(() => {});
+      transition.finished.finally(() => delete root.dataset.themeSwitch);
     } else {
       apply(next);
     }

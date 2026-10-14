@@ -10,8 +10,8 @@ import Globe from '../../components/Globe.astro';
 import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize } from '../../lib/i18n';
-import { lastTaken, recentSeries } from '../../lib/photos';
-import { mapPath, seriesPath } from '../../lib/photo';
+import { allSeries, coverSources, lastTaken, recentSeries } from '../../lib/photos';
+import { coverTransition, mapPath, seriesPath } from '../../lib/photo';
 import { mapPlaces } from '../../lib/places';
 import { centre } from '../../lib/map';
 import { articles } from '../../lib/writing';
@@ -31,6 +31,7 @@ const countries = (count: number) => plural(t.home.countries, count);
 const cities = (count: number) => plural(t.home.cities, count);
 const [latest] = await articles(lang);
 const [series] = await recentSeries(lang, 1);
+const sources = coverSources(await allSeries(lang));
 const { reading } = await books(lang);
 const [current, ...also] = reading;
 const { practicing } = await songs(lang);
@@ -141,8 +142,8 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
         {series && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.home.latestSeries} · {formatMonth(new Date(lastTaken(series.photos).slice(0, 10)), lang)}</span>
-            <a href={seriesPath(series.id, lang)} class="group flex flex-col gap-3.5">
-              <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class="aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90" />
+            <a href={seriesPath(series.id, lang)} data-cover-pair={seriesPath(series.id, lang)} class="group flex flex-col gap-3.5">
+              <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class:list={['aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90', coverTransition(series.id, sources)]} />
               <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>
             </a>
             <a href={photosPage} class={more}>{t.home.allSeries}<ArrowRight /></a>
@@ -179,4 +180,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
       <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">RSS</a>
     </footer>
   </div>
+  <script>
+    import '../../scripts/cover-transition.ts';
+  </script>
 </Base>
