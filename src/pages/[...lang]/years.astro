@@ -1,13 +1,13 @@
 ---
 import type { InferGetStaticPropsType } from 'astro';
 import Base from '../../layouts/Base.astro';
-import Tagline from '../../components/Tagline.astro';
 import Odometer from '../../components/Odometer.astro';
 import YearBooks from '../../components/YearBooks.astro';
 import { home } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths } from '../../lib/i18n';
 import { years } from '../../lib/years';
+import { categories, categoryTint } from '../../lib/book';
 import { documentTitle, formatNumber, monthInitials, plural } from '../../lib/format';
 
 export const getStaticPaths = langPaths;
@@ -18,91 +18,101 @@ const { lang } = Astro.props;
 const t = ui[lang];
 const n = (value: number) => formatNumber(value, lang);
 const { rows, peaks } = await years(lang);
-const columns = { books: t.nav.reading, frames: t.nav.photos, farthest: t.home.farthest, writing: t.nav.writing };
-const grid = 'grid gap-x-8 @4xl:grid-cols-[5.5rem_minmax(0,2fr)_minmax(0,1.5fr)_11.5rem_minmax(0,1.2fr)]';
-const cell = 'flex flex-col gap-3';
+const letters = monthInitials(lang);
+const columns = { books: t.home.pagesRead, frames: t.home.frames, farthest: t.home.farthest, words: t.home.wordsWritten };
+const grid = 'grid grid-cols-2 gap-x-4 @4xl:grid-cols-[6rem_minmax(0,24rem)_minmax(0,13.75rem)_9.5rem_minmax(7rem,1fr)] @4xl:gap-x-6';
+const wide = 'col-span-2 @4xl:col-span-1';
 const cellLabel = 'label text-faint @4xl:sr-only';
-const summary = 'text-sm leading-normal text-text';
-const peakDot = 'mr-2 inline-block size-1.5 rounded-full bg-accent align-middle';
+const summary = 'flex items-center font-mono text-[13px] tracking-[0.02em] text-text-body';
+const detail = 'text-[13px] leading-normal text-muted';
+const peakDot = 'mr-2 inline-block size-1.5 flex-none rounded-full bg-accent';
+const none = 'hidden text-[13px] text-muted @4xl:block';
 ---
 <Base lang={lang} title={documentTitle(t.years.heading)}>
-  <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
-    <header class="flex flex-col gap-7 border-b border-line pb-8">
-      <Tagline lang={lang} />
-      <h1 class="font-display text-d2 desk:text-d1">{t.years.heading}</h1>
+  <article class="px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
+    <header>
+      <p class="font-mono text-[13px] tracking-[0.04em] text-accent">{rows.at(-1)!.year} — {rows[0].year}</p>
+      <h1 class="mt-3 font-display text-d2 desk:mt-4 desk:text-d1">{t.years.heading}</h1>
+      <p class="mt-6 flex flex-wrap gap-x-4.5 gap-y-2 desk:mt-8 desk:gap-x-5.5 desk:gap-y-2.5" aria-hidden="true">
+        {categories.map((c) => (
+          <span class:list={[detail, 'inline-flex items-center gap-2']}><span class:list={['block h-4 w-2.5 rounded-[1px] border border-line-strong', categoryTint[c]]}></span>{t.reading.categories[c]}</span>
+        ))}
+        <span class:list={[detail, 'inline-flex items-center gap-2']}><span class="block h-4 w-2.5 rounded-[1px] border border-dashed border-muted"></span>{t.reading.now}</span>
+      </p>
     </header>
 
-    <div class="@container">
-      <div class:list={[grid, 'items-end border-b border-line-strong pb-3']} aria-hidden="true">
-        <span class="hidden @4xl:block"></span>
-        <span class="flex flex-col gap-2.5">
-          <span class="label hidden text-faint @4xl:block">{columns.books}</span>
-          <span class="flex">
-            {monthInitials(lang).map((m) => <span class="label flex-1 text-center text-faint">{m}</span>)}
+    <div class="mt-8 @container desk:mt-14">
+      <div class:list={[grid, 'hidden items-end border-b border-line-strong pb-3 @4xl:grid']} aria-hidden="true">
+        <span></span>
+        <span>
+          <span class="label block text-accent">{columns.books}</span>
+          <span class="mt-2.5 flex max-w-96">
+            {letters.map((m) => <span class="flex-1 font-mono text-[10px] text-faint">{m}</span>)}
           </span>
         </span>
-        <span class="label hidden text-faint @4xl:block">{columns.frames}</span>
-        <span class="label hidden text-faint @4xl:block">{columns.farthest}</span>
-        <span class="label hidden text-faint @4xl:block">{columns.writing}</span>
+        <span class="label text-accent">{columns.frames}</span>
+        <span class="label text-accent">{columns.farthest}</span>
+        <span class="label text-accent">{columns.words}</span>
       </div>
       {rows.map((row) => row.empty ? (
-        <section id={String(row.year)} aria-labelledby={`year-${row.year}`} class="border-b border-line py-2">
+        <section id={String(row.year)} aria-labelledby={`year-${row.year}`} class="border-t border-line py-2 @4xl:border-t-0 @4xl:border-b @4xl:py-2.5">
           <h2 id={`year-${row.year}`} class="font-display text-d4 text-faint">{row.year}</h2>
         </section>
       ) : (
-        <section id={String(row.year)} aria-labelledby={`year-${row.year}`} class:list={[grid, 'gap-y-7 border-b border-line py-8']}>
-          <h2 id={`year-${row.year}`} class="font-display text-d3 leading-none">{row.year}</h2>
-          <div class={cell}>
+        <section id={String(row.year)} aria-labelledby={`year-${row.year}`} class:list={[grid, 'items-start gap-y-5.5 border-t border-line-strong py-6 @4xl:border-t-0 @4xl:border-b @4xl:border-line']}>
+          <h2 id={`year-${row.year}`} class:list={[wide, 'font-display text-d3 leading-[1.1]']}>{row.year}</h2>
+          <div class={wide}>
             <h3 class={cellLabel}>{columns.books}</h3>
-            <YearBooks months={row.books.months} reading={row.books.reading} lastMonth={row.books.lastMonth} />
             {row.books.count > 0 && (
-              <p class={summary}>
+              <p class:list={[summary, 'mt-1.5 @4xl:mt-0']}>
                 {peaks.books === row.year && <span class={peakDot} aria-hidden="true"></span>}
                 {plural(t.reading.result, row.books.count)} · {t.reading.pageCount(n(row.books.pages))}
               </p>
             )}
+            <div class="mt-2.5 @4xl:mt-3">
+              <YearBooks months={row.books.months} reading={row.books.reading} lastMonth={row.books.lastMonth} letters={letters} />
+            </div>
           </div>
           {row.frames.count > 0 ? (
-            <div class={cell}>
+            <div class={wide}>
               <h3 class={cellLabel}>{columns.frames}</h3>
-              <span class="flex flex-wrap gap-0.5" aria-hidden="true">
-                {Array.from({ length: row.frames.count }, () => <span class="block h-2 w-3 rounded-[1px] bg-ghost"></span>)}
-              </span>
-              <p class={summary}>
+              <p class:list={[summary, 'mt-1.5 @4xl:mt-0']}>
                 {peaks.frames === row.year && <span class={peakDot} aria-hidden="true"></span>}
-                {t.photos.count(row.frames.count)}{row.frames.countries > 0 && ` · ${n(row.frames.countries)} ${plural(t.home.countries, row.frames.countries)}`}
+                {plural(t.years.frames, row.frames.count)}{row.frames.countries > 0 && ` · ${n(row.frames.countries)} ${plural(t.home.countries, row.frames.countries)}`}
               </p>
-              {row.frames.cities.length > 0 && <p class="text-[13px] leading-normal text-muted">{row.frames.cities.join(', ')}</p>}
+              <span class="mt-2.5 flex flex-wrap gap-0.5 @4xl:mt-3" aria-hidden="true">
+                {Array.from({ length: row.frames.count }, () => <span class="block h-2 w-1.25 rounded-[1px] bg-faint"></span>)}
+              </span>
+              {row.frames.cities.length > 0 && <p class:list={[detail, 'mt-2 @4xl:mt-2.5']}>{row.frames.cities.map(t.years.city).join(' · ')}</p>}
             </div>
-          ) : <span class="hidden @4xl:block"></span>}
+          ) : <p class={none} aria-hidden="true">—</p>}
           {row.farthest ? (
-            <div class={cell}>
+            <div>
               <h3 class={cellLabel}>{columns.farthest}</h3>
-              <span class="flex items-center gap-2.5">
-                <span class="sr-only">{n(row.farthest.km)}</span>
-                <Odometer value={row.farthest.km} cells={5} />
-                <span class="label text-faint">{t.home.km}</span>
+              <span class="mt-2 flex items-end gap-1.5 @4xl:mt-0">
+                <span class="sr-only">{n(row.farthest.km)} {t.home.km}</span>
+                <Odometer shown={n(row.farthest.km)} size="mini" />
+                <span class="label hidden pb-1 text-faint @4xl:inline" aria-hidden="true">{t.home.km}</span>
+                {peaks.farthest === row.year && <span class="mb-3 ml-0.5 inline-block size-1.5 flex-none rounded-full bg-accent" aria-hidden="true"></span>}
               </span>
-              <p class={summary}>
-                {peaks.farthest === row.year && <span class={peakDot} aria-hidden="true"></span>}
-                {t.home.farthestRoute(home.city, row.farthest.city)}
+              <p class:list={[detail, 'mt-1.5 @4xl:mt-2']}>
+                {t.years.route(home.city, t.years.city(row.farthest.city))}<span class="@4xl:hidden" aria-hidden="true"> · {t.home.km}</span>
               </p>
             </div>
-          ) : <span class="hidden @4xl:block"></span>}
+          ) : <p class={none} aria-hidden="true">—</p>}
           {row.writing.count > 0 ? (
-            <div class={cell}>
-              <h3 class={cellLabel}>{columns.writing}</h3>
-              <span class="flex flex-wrap gap-1.5" aria-hidden="true">
-                {Array.from({ length: row.writing.count }, () => (
-                  <span class="relative block size-7 border border-line-strong bg-sleeve"><span class="absolute inset-1.5 rounded-full border border-line-strong"></span></span>
-                ))}
-              </span>
-              <p class={summary}>
+            <div class="col-start-2 @4xl:col-start-auto">
+              <h3 class={cellLabel}>{columns.words}</h3>
+              <p class:list={[summary, 'mt-2 @4xl:mt-0']}>
                 {peaks.words === row.year && <span class={peakDot} aria-hidden="true"></span>}
-                {t.writing.published(row.writing.count)} · {t.years.words(n(row.writing.words))}
+                {n(row.writing.words)}
               </p>
+              <span class="mt-2.5 flex gap-0.75 @4xl:mt-3" aria-hidden="true">
+                {Array.from({ length: row.writing.count }, () => <span class="block size-3.5 rounded-[2px] border border-line-strong bg-sleeve"></span>)}
+              </span>
+              <p class:list={[detail, 'mt-1.5 @4xl:mt-2.5']}>{t.writing.published(row.writing.count)}</p>
             </div>
-          ) : <span class="hidden @4xl:block"></span>}
+          ) : <p class={none} aria-hidden="true">—</p>}
         </section>
       ))}
     </div>

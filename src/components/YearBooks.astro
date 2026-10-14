@@ -1,23 +1,27 @@
 ---
-import { categoryTint, spineHeight, spineThickness, SPINE_HEIGHTS, SPINE_THICKNESSES } from '../lib/book';
+import { categoryTint } from '../lib/book';
+import { spinePx, SPINE_MAX_PX, SPINE_MIN_PX } from '../lib/year';
 import type { FinishedBook, ReadingBook } from '../lib/books';
 
 interface Props {
   months: FinishedBook[][];
   reading: ReadingBook[];
   lastMonth: number;
+  letters: string[];
 }
-const { months, reading, lastMonth } = Astro.props;
-const widths = ['w-0.5', 'w-0.75', 'w-1', 'w-1.25', 'w-1.5', 'w-1.75', 'w-2', 'w-2.25', 'w-2.5', 'w-2.75', 'w-3', 'w-3.25', 'w-3.5', 'w-3.75', 'w-4', 'w-4.25'];
-const heights = ['h-8', 'h-9', 'h-10', 'h-11', 'h-12'];
-if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) throw new Error('YearBooks: spine class lists do not match the spine scale in src/lib/book.ts');
-const spine = (book: { id: string; pages: number }) => [widths[spineThickness(book.pages)], heights[spineHeight(book.id)]];
+const { months, reading, lastMonth, letters } = Astro.props;
+const widths = ['w-0.75', 'w-1', 'w-1.25', 'w-1.5', 'w-1.75', 'w-2', 'w-2.25', 'w-2.5', 'w-2.75', 'w-3', 'w-3.25', 'w-3.5', 'w-3.75', 'w-4'];
+if (widths.length !== SPINE_MAX_PX - SPINE_MIN_PX + 1) throw new Error('YearBooks: spine width classes do not match the scale in src/lib/year.ts');
+const width = (pages: number) => widths[spinePx(pages) - SPINE_MIN_PX];
 ---
-<span class="flex h-12 items-end" aria-hidden="true">
+<span class="flex max-w-96" aria-hidden="true">
   {months.map((books, month) => (
-    <span class:list={['flex h-full flex-1 items-end justify-center gap-px', month <= lastMonth && 'border-b border-line-strong', month > 0 && month <= lastMonth && 'border-l border-l-line']}>
-      {books.map((book) => <span class:list={['block flex-none', categoryTint[book.category], spine(book)]} />)}
-      {month === lastMonth && reading.map((book) => <span class:list={['block flex-none border border-dashed border-faint', spine(book)]} />)}
+    <span class="flex min-w-0 flex-1 flex-col">
+      <span class:list={['flex h-11 items-end gap-0.5 border-b', month <= lastMonth ? 'border-line-strong' : 'border-transparent']}>
+        {books.map((book) => <span class:list={['block h-10 flex-none rounded-[1px] border border-line-strong', categoryTint[book.category], width(book.pages)]} />)}
+        {month === lastMonth && reading.map((book) => <span class:list={['block h-10 flex-none rounded-[1px] border border-dashed border-muted', width(book.pages)]} />)}
+      </span>
+      <span class="mt-1 font-mono text-[10px] text-faint @4xl:hidden">{letters[month]}</span>
     </span>
   ))}
 </span>

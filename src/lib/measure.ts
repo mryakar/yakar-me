@@ -57,3 +57,8 @@ export function odometer(value: number, cells: number) {
   const padded = digits.padStart(cells, '0');
   return [...padded].map((d, i) => ({ digit: Number(d), lead: i < padded.length - digits.length }));
 }
+
+type ReadoutChar = { digit: number } | { separator: string };
+
+export const readout = (shown: string) =>
+  [...shown].map((c): ReadoutChar => (/\d/.test(c) ? { digit: Number(c) } : { separator: c }));
