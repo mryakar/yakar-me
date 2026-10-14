@@ -1,6 +1,5 @@
 @media print {
   :root[data-print-title] {
-    color-scheme: light;
     --print-head: attr(data-print-head);
     --print-title: attr(data-print-title);
     --print-url: attr(data-print-url);

@@ -71,6 +71,11 @@
     color-scheme: light;
   }
 }
+@media print {
+  :root {
+    color-scheme: light;
+  }
+}
 
 @theme inline {
   --color-bg: var(--yk-bg);
