@@ -17,7 +17,7 @@ export function searchIndexErrors(json, lang, page) {
   const seen = new Set();
   for (const e of entries) {
     const shape =
-      e && sections.includes(e.kind) && isText(e.url) && isText(e.title) && e.title && isText(e.detail) && isText(e.body) &&
+      e && sections.includes(e.kind) && isText(e.url) && isText(e.title) && e.title && isText(e.date) && isText(e.detail) && isText(e.body) &&
       Array.isArray(e.keywords) && e.keywords.every(isText);
     if (!shape) {
       errors.push(`malformed entry: ${JSON.stringify(e).slice(0, 80)}`);
