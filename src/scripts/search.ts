@@ -1,6 +1,7 @@
 import { plural } from '../lib/format';
-import { prepare, QUERY_MAX, search, type Prepared, type SearchEntry, type SearchResult } from '../lib/search';
+import { QUERY_MAX, search, type SearchResult } from '../lib/search';
 import { replaceQuery } from './history';
+import { indexLoader } from './search-index';
 
 const root = document.querySelector<HTMLElement>('[data-search]');
 
@@ -16,18 +17,7 @@ if (root) {
     ]),
   );
 
-  let index: Promise<Prepared[]> | undefined;
-  const load = () =>
-    (index ??= fetch(text.index)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json() as Promise<SearchEntry[]>;
-      })
-      .then(prepare)
-      .catch((e) => {
-        index = undefined;
-        throw e;
-      }));
+  const index = indexLoader(text.index);
 
   const row = ({ entry, snippet }: SearchResult) => {
     const li = item.content.firstElementChild!.cloneNode(true) as HTMLElement;
@@ -69,9 +59,9 @@ if (root) {
       status.textContent = '';
       return;
     }
-    if (!index) status.textContent = text.loading;
+    if (!index.loaded()) status.textContent = text.loading;
     try {
-      const results = search(await load(), query);
+      const results = search(await index.load(), query);
       if (ticket !== latest) return;
       show(results);
       status.textContent = results.length ? plural({ one: text.one, other: text.other }, results.length) : text.none;

@@ -6,6 +6,7 @@ export interface SearchEntry {
   kind: SearchKind;
   url: string;
   title: string;
+  date: string;
   detail: string;
   keywords: string[];
   body: string;
