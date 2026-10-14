@@ -34,6 +34,9 @@ export function takenAt(taken: string, timeZone: string) {
   return new Date(wall - offsetMs(new Date(guess), timeZone));
 }
 
+export const localYear = (at: Date, timeZone: string) =>
+  Number(new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric' }).format(at));
+
 export const countsAsCountry = (place: Place, home: Place) => place.country !== home.country;
 
 export const countsAsCity = (place: Place, home: Place) =>

@@ -78,7 +78,7 @@ const en = {
     none: 'No books match these filters.',
     originalTitle: 'Original title',
     pages: 'Pages',
-    pageCount: (n: number) => `${n} pages`,
+    pageCount: (n: string) => `${n} pages`,
     edition: 'Edition',
     editionValue: (n: number) => `${englishOrdinal(n)} Edition`,
     finished: 'Finished',
@@ -235,6 +235,7 @@ const en = {
     onMap: 'On the map',
   },
   about: { description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
+  years: { heading: 'Years', all: 'All years', words: (n: string) => `${n} words` },
   notFound: {
     title: 'Not found',
     heading: 'The odometer stopped at 404.',
@@ -505,6 +506,7 @@ const tr: Dict = {
     onMap: 'Haritada',
   },
   about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
+  years: { heading: 'Yıllar', all: 'Tüm yıllar', words: (n) => `${n} kelime` },
   notFound: {
     title: 'Bulunamadı',
     heading: 'Sayaç 404’te durdu.',

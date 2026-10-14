@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { absoluteUrl, articlePath, ogImagePath, byYear, orderedGroups, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import { absoluteUrl, articlePath, ogImagePath, byYear, orderedGroups, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthInitials, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -102,4 +102,9 @@ test('endSentence: noktalama yoksa nokta', async () => {
   assert.equal(endSentence('Sade'), '.');
   assert.equal(endSentence('Grover Washington, Jr.'), '');
   assert.equal(endSentence('Who Moved My Cheese?'), '');
+});
+
+test('monthInitials: ayların baş harfi, iki dilde', () => {
+  assert.equal(monthInitials().join(''), 'JFMAMJJASOND');
+  assert.equal(monthInitials('tr').join(''), 'OŞMNMHTAEEKA');
 });
