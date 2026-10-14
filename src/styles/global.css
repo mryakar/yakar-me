@@ -342,11 +342,18 @@
   ::view-transition-new(root) {
     animation-duration: 0.18s;
   }
-  ::view-transition-group(*.series-cover),
-  ::view-transition-old(*.series-cover),
-  ::view-transition-new(*.series-cover) {
-    animation-duration: 0.24s;
+  ::view-transition-group(*.series-cover) {
+    animation-duration: 0.4s;
     animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  ::view-transition-old(*.series-cover) {
+    animation: none;
+  }
+  ::view-transition-new(*.series-cover) {
+    animation: cover-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  ::view-transition-image-pair(*.series-cover) {
+    overflow: clip;
   }
   ::view-transition-old(*.series-cover),
   ::view-transition-new(*.series-cover) {
@@ -371,6 +378,12 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes cover-in {
+  from {
+    opacity: 0;
   }
 }
 
