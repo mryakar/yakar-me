@@ -336,6 +336,17 @@
   ::view-transition-new(root) {
     animation-duration: 0.18s;
   }
+  ::view-transition-group(*.series-cover),
+  ::view-transition-old(*.series-cover),
+  ::view-transition-new(*.series-cover) {
+    animation-duration: 0.24s;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  ::view-transition-old(*.series-cover),
+  ::view-transition-new(*.series-cover) {
+    height: 100%;
+    object-fit: cover;
+  }
 
   @supports (animation-timeline: view()) {
     .reveal {
@@ -1338,8 +1349,8 @@
   }
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+:root[data-theme-switch]::view-transition-old(root),
+:root[data-theme-switch]::view-transition-new(root) {
   animation-duration: 0.4s;
   animation-timing-function: ease;
 }

@@ -7,14 +7,12 @@ import ArrowRight from '../../../components/ArrowRight.astro';
 import PhotoViews from '../../../components/PhotoViews.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths } from '../../../lib/i18n';
-import { allSeries, lastTaken, type Series } from '../../../lib/photos';
+import { allSeries, coverSources, lastTaken, LATEST, type Series } from '../../../lib/photos';
 import { mapPlaces } from '../../../lib/places';
-import { countries, seriesPath, takenYear } from '../../../lib/photo';
+import { countries, coverTransition, seriesPath, takenYear } from '../../../lib/photo';
 import { byYear, documentTitle, yearRange } from '../../../lib/format';
 
 export const getStaticPaths = langPaths;
-
-const LATEST = 3;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -24,6 +22,7 @@ const all = await allSeries(lang);
 const places = (await mapPlaces(lang)).reduce((n, c) => n + c.places.length, 0);
 const latest = all.slice(0, LATEST);
 const archive = all.slice(LATEST);
+const sources = coverSources(all);
 
 const firstYear = (s: Series) => takenYear(s.photos[0].data.taken);
 const lastYear = (s: Series) => takenYear(lastTaken(s.photos));
@@ -49,17 +48,17 @@ const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-
       <ul class="grid grid-cols-2 gap-x-4 gap-y-8 tab:gap-x-6 desk:grid-cols-[7fr_5fr] desk:gap-x-8">
         {latest.map((s, i) => (
           <li class:list={[i === 0 && 'col-span-2 desk:col-span-1 desk:row-span-2']}>
-            <a href={seriesPath(s.id, lang)} class="group flex flex-col gap-3">
+            <a href={seriesPath(s.id, lang)} data-cover-pair={seriesPath(s.id, lang)} class="group flex flex-col gap-3">
               {i === 0 ? (
                 <>
-                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 45vw, 100vw" class:list={['aspect-3/2 tab:aspect-video desk:aspect-4/3', cover]} />
+                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 45vw, 100vw" class:list={['aspect-3/2 tab:aspect-video desk:aspect-4/3', cover, coverTransition(s.id, sources)]} />
                   <span class="label pt-1 text-faint">{t.count(s.photos.length)} · {years([s], true)} · {country(s)}</span>
                   <span class="font-display text-d3 transition-colors duration-200 group-hover:text-accent">{s.title}</span>
                   <span class="max-w-120 text-[15px] text-muted">{s.description}</span>
                 </>
               ) : (
                 <>
-                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 30vw, 50vw" class:list={['aspect-4/3 tab:aspect-3/2 desk:aspect-16/10', cover]} />
+                  <PhotoPicture photo={s.cover} focus={s.focus} loading="eager" sizes="(min-width: 64rem) 30vw, 50vw" class:list={['aspect-4/3 tab:aspect-3/2 desk:aspect-16/10', cover, coverTransition(s.id, sources)]} />
                   <span class="label pt-1 text-faint">{t.count(s.photos.length)} · {years([s], true)}</span>
                   <span class="font-display text-d4 transition-colors duration-200 group-hover:text-accent">{s.title}</span>
                 </>
@@ -140,5 +139,6 @@ const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-
 
   <script>
     import '../../../scripts/preview.ts';
+    import '../../../scripts/cover-transition.ts';
   </script>
 </Base>

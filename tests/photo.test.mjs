@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aperture, countries, focalLength, imageObject, largest, mapPath, placeName, recipeRows, seriesPath, shutter, signed, smallestAtLeast, takenYear, variantPath } from '../src/lib/photo.ts';
+import { aperture, countries, coverFirst, coverTransition, COVER_TRANSITIONS, focalLength, imageObject, largest, mapPath, placeName, recipeRows, seriesPath, shutter, signed, smallestAtLeast, takenYear, variantPath } from '../src/lib/photo.ts';
 import { jsonLd } from '../src/lib/structured.ts';
 import { ui } from '../src/i18n/ui.ts';
 
@@ -113,4 +113,16 @@ test('largest ve smallestAtLeast: sırasız listede; yetmezse en büyüğü', ()
   assert.equal(smallestAtLeast(v, 640).width, 640);
   assert.equal(smallestAtLeast(v, 4000).width, 2560);
   assert.deepEqual(v.map((x) => x.width), [640, 2560, 320, 1280]);
+});
+
+test('coverFirst: kapak başa, geri kalan sıra aynı', () => {
+  assert.deepEqual(coverFirst(['a', 'b', 'c', 'd'], 'c'), ['c', 'a', 'b', 'd']);
+  assert.deepEqual(coverFirst(['a', 'b'], 'a'), ['a', 'b']);
+  assert.deepEqual(coverFirst(['a', 'b'], 'b'), ['b', 'a']);
+});
+
+test('coverTransition: sıradaki ad ve sınıf; listede olmayana yok; ad listesi yetmezse build kırılır', () => {
+  assert.deepEqual(coverTransition('ankara', ['hong-kong', 'koh-samui', 'ankara']), ['[view-transition-class:series-cover]', '[view-transition-name:series-cover-3]']);
+  assert.equal(coverTransition('nice', ['hong-kong']), undefined);
+  assert.throws(() => coverTransition('a', Array.from({ length: COVER_TRANSITIONS.length + 1 }, (_, i) => String(i))), /names/);
 });

@@ -35,6 +35,21 @@ export const PLACE_NAME = /^(?:[\x20-\x7e]|\p{Script=Latin}){1,60}$/u;
 export const FOCUS_STEP = 10;
 export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
 
+export const coverFirst = <T>(photos: T[], cover: T) => [cover, ...photos.filter((p) => p !== cover)];
+
+export const COVER_TRANSITIONS = [
+  '[view-transition-name:series-cover-1]',
+  '[view-transition-name:series-cover-2]',
+  '[view-transition-name:series-cover-3]',
+  '[view-transition-name:series-cover-4]',
+] as const;
+
+export function coverTransition(id: string, ids: string[]) {
+  if (ids.length > COVER_TRANSITIONS.length) throw new Error(`coverTransition: ${ids.length} series, ${COVER_TRANSITIONS.length} names`);
+  const i = ids.indexOf(id);
+  return i === -1 ? undefined : ['[view-transition-class:series-cover]', COVER_TRANSITIONS[i]];
+}
+
 export const countries = (places: Place[]) => [...new Set(places.map((p) => p.country))];
 
 interface Shot {

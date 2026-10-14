@@ -69,5 +69,10 @@ export async function allSeries(lang: Lang): Promise<Series[]> {
 
 export const lastTaken = (photos: Photo[]) => photos.at(-1)!.data.taken;
 
-export const recentSeries = async (lang: Lang, count: number) =>
-  (await allSeries(lang)).sort((a, b) => lastTaken(b.photos).localeCompare(lastTaken(a.photos))).slice(0, count);
+export const LATEST = 3;
+
+const byRecent = (series: Series[]) => series.toSorted((a, b) => lastTaken(b.photos).localeCompare(lastTaken(a.photos)));
+
+export const recentSeries = async (lang: Lang, count: number) => byRecent(await allSeries(lang)).slice(0, count);
+
+export const coverSources = (series: Series[]) => [...new Set([...series.slice(0, LATEST), ...byRecent(series).slice(0, 1)].map((s) => s.id))];
