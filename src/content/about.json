@@ -1,0 +1,154 @@
+[
+  {
+    "id": "photography",
+    "kind": "timeline",
+    "from": 2025,
+    "text": {
+      "en": "Took up photography, as an amateur.",
+      "tr": "Amatör olarak fotoğrafa başladım."
+    }
+  },
+  {
+    "id": "saxophone",
+    "kind": "timeline",
+    "from": 2023,
+    "text": {
+      "en": "Started the saxophone. I’m deeply passionate about it; by the time I’m forty, I want to be an excellent saxophonist.",
+      "tr": "Saksafona başladım. Aşırı tutkuluyum; 40 yaşıma geldiğimde mükemmel bir saksafoncu olmayı hedefliyorum."
+    }
+  },
+  {
+    "id": "full-time",
+    "kind": "timeline",
+    "from": 2017,
+    "to": "present",
+    "text": {
+      "en": "Full time in the defence industry since graduating. Ankara throughout, apart from nine months in Antalya for work.",
+      "tr": "Mezun olur olmaz savunma sanayisinde tam zamanlı; o günden beri aynı sektördeyim. İş için Antalya’da geçen dokuz ay dışında hep Ankara."
+    }
+  },
+  {
+    "id": "part-time",
+    "kind": "timeline",
+    "from": 2015,
+    "to": 2017,
+    "text": {
+      "en": "Part time in the defence industry, in my third and fourth years.",
+      "tr": "Üçüncü ve dördüncü sınıfta savunma sanayisinde yarı zamanlı."
+    }
+  },
+  {
+    "id": "lab-assistant",
+    "kind": "timeline",
+    "from": 2013,
+    "to": 2015,
+    "text": {
+      "en": "Part-time lab assistant at the university, in my first and second years.",
+      "tr": "Birinci ve ikinci sınıfta üniversitede yarı zamanlı laboratuvar asistanı."
+    }
+  },
+  {
+    "id": "university",
+    "kind": "timeline",
+    "from": 2012,
+    "to": 2017,
+    "text": {
+      "en": "Mechatronics engineering at the University of Turkish Aeronautical Association, including a year of English prep.",
+      "tr": "Türk Hava Kurumu Üniversitesi’nde mekatronik mühendisliği, İngilizce hazırlık yılı dahil."
+    }
+  },
+  {
+    "id": "black-holes",
+    "kind": "question",
+    "text": {
+      "en": "Could there be other universes inside black holes? Could ours be inside one?",
+      "tr": "Kara deliklerin içinde başka evrenler olabilir mi? Bizim evrenimiz de bir kara deliğin içinde olabilir mi?"
+    }
+  },
+  {
+    "id": "agi",
+    "kind": "question",
+    "text": {
+      "en": "Will AGI ever become real? Or is it real already, and we just don’t know?",
+      "tr": "Bir gün AGI gerçek olacak mı? Ya da hâlihazırda gerçek de bizim mi haberimiz yok?"
+    }
+  },
+  {
+    "id": "languages",
+    "kind": "question",
+    "text": {
+      "en": "Is there a deterministic way to compare two languages by how efficiently they communicate?",
+      "tr": "İki dili, iletişimin verimliliği açısından karşılaştırmanın deterministik bir yolu var mı?"
+    }
+  },
+  {
+    "id": "sleep",
+    "kind": "question",
+    "text": {
+      "en": "Why do we sleep?",
+      "tr": "Neden uyuruz?"
+    }
+  },
+  {
+    "id": "life",
+    "kind": "question",
+    "text": {
+      "en": "Life is so stubborn — so why haven’t we detected it anywhere in space yet? Or have we?",
+      "tr": "Yaşam bu kadar inatçı bir şeyken neden uzayda şu ana kadar yaşam tespit edemedik? Yoksa ettik mi?"
+    }
+  },
+  { "id": "tr", "kind": "language", "level": "native" },
+  { "id": "en", "kind": "language", "level": "C1" },
+  { "id": "de", "kind": "language", "level": "A2" },
+  { "id": "es", "kind": "language", "level": "A1" },
+  {
+    "id": "horn",
+    "kind": "bag",
+    "group": "saxophone",
+    "label": { "en": "Horn", "tr": "Gövde" },
+    "name": "P. Mauriat PMXA-67R-GL-ASX"
+  },
+  {
+    "id": "mouthpiece",
+    "kind": "bag",
+    "group": "saxophone",
+    "label": { "en": "Mouthpiece", "tr": "Ağızlık" },
+    "note": { "en": "The one that came with the horn.", "tr": "Saksafonla birlikte gelen." }
+  },
+  {
+    "id": "reeds",
+    "kind": "bag",
+    "group": "saxophone",
+    "label": { "en": "Reeds", "tr": "Kamış" },
+    "name": "D’Addario Organic Select Jazz · 2M"
+  },
+  {
+    "id": "microphone",
+    "kind": "bag",
+    "group": "recording",
+    "label": { "en": "Microphone", "tr": "Mikrofon" },
+    "name": "NUX B-6"
+  },
+  {
+    "id": "interface",
+    "kind": "bag",
+    "group": "recording",
+    "label": { "en": "Interface", "tr": "Ses kartı" },
+    "name": "M-Audio M-Track Duo"
+  },
+  {
+    "id": "camera-body",
+    "kind": "bag",
+    "group": "camera",
+    "label": { "en": "Body", "tr": "Gövde" },
+    "name": "Fujifilm X-E5"
+  },
+  {
+    "id": "lens",
+    "kind": "bag",
+    "group": "camera",
+    "label": { "en": "Lens", "tr": "Objektif" },
+    "name": "Fujifilm XF23mmF2.8 R WR",
+    "note": { "en": "My only lens.", "tr": "Tek objektifim." }
+  }
+]

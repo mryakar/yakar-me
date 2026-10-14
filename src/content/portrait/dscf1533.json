@@ -1,0 +1,99 @@
+{
+  "alt": "Ahmet playing the alto saxophone in a park, seated on a folding chair; black and white.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-04-26T16:43:53+03:00",
+  "aperture": 5,
+  "shutter": 0.003333333333,
+  "iso": 125,
+  "focalLength": 23,
+  "place": {
+    "district": "Çankaya",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Acros",
+    "dynamicRange": "DR100",
+    "highlight": 0,
+    "shadow": 0,
+    "monochromaticColor": [
+      0,
+      0
+    ],
+    "whiteBalance": "Auto (white priority)",
+    "whiteBalanceShift": [
+      0,
+      0
+    ],
+    "noiseReduction": 0,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf1533-320-acd929ed.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 15194,
+        "sha256": "acd929ed54c148fe47f3369a1add39821e0876e39a52f1a44ccd9333e2cca595"
+      },
+      {
+        "file": "dscf1533-640-d3b70cd1.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 47966,
+        "sha256": "d3b70cd1f79b88fe25df6e9656b49d44340233e3fdc5905fedc9a7bd9b017cff"
+      },
+      {
+        "file": "dscf1533-1280-d151fd19.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 135631,
+        "sha256": "d151fd192dbeaed72379fc911e65d1a00254f78f16a816631c7858addd7710e7"
+      },
+      {
+        "file": "dscf1533-1706-524658d7.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 207842,
+        "sha256": "524658d738b439180ff0c6a48661e17737ff942f4afe4d5b1cd23b8252207726"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf1533-320-d8adbe89.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 26976,
+        "sha256": "d8adbe8947470efb1d6a8457f681111c661d29b50b0ba582fc48410a861c77ff"
+      },
+      {
+        "file": "dscf1533-640-e9ca48a3.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 79590,
+        "sha256": "e9ca48a3e68b682b9ead3fa7132e8db4e93f8b23984fc73e916f298d858bca5d"
+      },
+      {
+        "file": "dscf1533-1280-d78cee61.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 205840,
+        "sha256": "d78cee61af05c22b5be722b982f1bbf45da0c1cec18c8230068b67aaa4d1657a"
+      },
+      {
+        "file": "dscf1533-1706-cd6f39cb.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 302632,
+        "sha256": "cd6f39cb3782c536cedbf5e027147c897a5c862ca8b342e798ddf45ddc84ac62"
+      }
+    ]
+  }
+}

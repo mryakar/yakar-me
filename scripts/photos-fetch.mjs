@@ -3,10 +3,10 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { inspectImage } from './lib/image-meta.mjs';
 import { CREDENTIAL_VARS, credentials, get } from './lib/r2.mjs';
-import { PUBLIC_DIR, records, sha256 } from './lib/photo-store.mjs';
+import { PUBLIC_DIR, allRecords, sha256 } from './lib/photo-store.mjs';
 
 const CONCURRENCY = 6;
-const variants = records().flatMap((r) => [...r.data.variants.avif, ...r.data.variants.webp]);
+const variants = allRecords().flatMap((r) => [...r.data.variants.avif, ...r.data.variants.webp]);
 if (variants.length === 0) {
   console.log('✓ no photos');
   process.exit(0);

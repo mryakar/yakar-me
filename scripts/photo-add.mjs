@@ -7,19 +7,20 @@ import { homedir, tmpdir } from 'node:os';
 import { inspectImage } from './lib/image-meta.mjs';
 import { decode, encode, targetWidths, FORMATS } from './lib/variants.mjs';
 import { put, writeCredentials } from './lib/r2.mjs';
-import { CONTENT_DIR, PUBLIC_DIR, records, sha256 } from './lib/photo-store.mjs';
+import { CONTENT_DIR, PORTRAIT_DIR, PUBLIC_DIR, allRecords, records, sha256 } from './lib/photo-store.mjs';
 import {
   EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
 } from './lib/photo-record.mjs';
 import { aperture, focalLength, placeName, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
 import { ui } from '../src/i18n/ui.ts';
 
-const USAGE = `Usage: npm run photo:add -- --series <slug> <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
+const USAGE = `Usage: npm run photo:add -- (--series <slug> | --portrait) <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
 
 const { values: opts, positionals } = parseArgs({
   allowPositionals: true,
   options: {
     series: { type: 'string' },
+    portrait: { type: 'boolean', default: false },
     'camera-dir': { type: 'string', multiple: true, default: [] },
     alt: { type: 'string' },
     place: { type: 'string' },
@@ -48,18 +49,21 @@ const ask = async (q) => {
   return l.trim();
 };
 
-if (positionals.length !== 1 || !opts.series) fail(USAGE);
+if (positionals.length !== 1 || !opts.series === !opts.portrait) fail(USAGE);
 const series = opts.series;
-if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(series)) fail(`series: expected a slug like hong-kong, got ${series}`);
-if (!existsSync(join(CONTENT_DIR, series, 'index.md'))) fail(`series ${series} does not exist: create ${CONTENT_DIR}/${series}/index.md first`);
+if (series && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(series)) fail(`series: expected a slug like hong-kong, got ${series}`);
+if (series && !existsSync(join(CONTENT_DIR, series, 'index.md'))) fail(`series ${series} does not exist: create ${CONTENT_DIR}/${series}/index.md first`);
+const targetDir = series ? join(CONTENT_DIR, series) : PORTRAIT_DIR;
+const targetName = series ? `${series}/` : 'the portrait ';
 
 const input = resolve(positionals[0]);
 if (!existsSync(input)) fail(`${input} not found`);
 const id = photoId(input);
 if (!id) fail(`cannot derive an id from ${basename(input)}`);
-const clash = records().find((r) => r.id === id && r.series !== series);
-if (clash) fail(`${id} already exists in series ${clash.series}`);
-const replacing = records().some((r) => r.id === id && r.series === series);
+const own = series ? records().filter((r) => r.series === series) : allRecords().filter((r) => !r.series);
+const clash = allRecords().find((r) => r.id === id && !own.includes(r));
+if (clash) fail(`${id} already exists ${clash.series ? `in series ${clash.series}` : 'as the portrait'}`);
+const replacing = own.some((r) => r.id === id);
 
 const exiftool = (file, extra = []) => {
   try {
@@ -166,7 +170,7 @@ if (alt.length < 1 || alt.length > 250 || /[\u0000-\u001f\u007f]/.test(alt)) fai
 const sourceTags = Object.keys(exiftool(input, ['-a', '-G1', '-e'])).filter((k) => !/^(SourceFile|System:|File:|ExifTool:)/.test(k));
 const year = takenYear(shot.taken);
 const line = (label, value) => console.log(`  ${label.padEnd(10)} ${value}`);
-console.log(`\n${basename(input)} → ${series}/${id}${replacing ? '  (replaces the existing photo data)' : ''}`);
+console.log(`\n${basename(input)} → ${targetName}${id}${replacing ? '  (replaces the existing photo data)' : ''}`);
 line('Camera', shot.kind === 'fujifilm' ? `${shot.make} ${shot.model} · ${shot.lens} · ${shot.recipe.filmSimulation}` : `${shot.make} ${shot.model}`);
 line('Exposure', `${aperture(shot.aperture)}  ${shutter(shot.shutter)}  ISO ${shot.iso}  ${focalLength(shot)}`);
 if (shot.recipe) {
@@ -202,7 +206,7 @@ const preview = files.find((f) => f.file.endsWith('.webp') && f.file.includes(`-
 console.log(`\nPreview: ${preview}`);
 
 const target = opts['no-upload'] ? 'public/img only (no upload)' : `R2 and public/img`;
-if ((await ask(`Write ${files.length} files to ${target} and the photo data to ${CONTENT_DIR}/${series}/${id}.json? [y/N] `)).toLowerCase() !== 'y') {
+if ((await ask(`Write ${files.length} files to ${target} and the photo data to ${targetDir}/${id}.json? [y/N] `)).toLowerCase() !== 'y') {
   fail('cancelled — nothing written');
 }
 
@@ -227,6 +231,7 @@ mkdirSync(PUBLIC_DIR, { recursive: true });
 for (const f of files) writeFileSync(join(PUBLIC_DIR, f.file), f.buffer);
 const { kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe } = shot;
 const record = { alt, kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe, variants };
-writeFileSync(join(CONTENT_DIR, series, `${id}.json`), `${JSON.stringify(record, null, 2)}\n`);
-console.log(`✓ ${CONTENT_DIR}/${series}/${id}.json${opts['no-upload'] ? '  (not uploaded: CI will fail until the variants are in R2)' : ''}`);
+mkdirSync(targetDir, { recursive: true });
+writeFileSync(join(targetDir, `${id}.json`), `${JSON.stringify(record, null, 2)}\n`);
+console.log(`✓ ${targetDir}/${id}.json${opts['no-upload'] ? '  (not uploaded: CI will fail until the variants are in R2)' : ''}`);
 rl.close();

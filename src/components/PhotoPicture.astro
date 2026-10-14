@@ -3,7 +3,7 @@ import { smallestAtLeast, variantPath, FOCUS_STEP, FOCUS_STEPS, type Focus } fro
 import type { Photo } from '../lib/photos';
 
 interface Props {
-  photo: Photo;
+  photo: Pick<Photo, 'data' | 'alt'>;
   sizes: string;
   loading?: 'lazy' | 'eager';
   focus?: Focus;
