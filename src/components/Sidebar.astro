@@ -19,15 +19,9 @@ const items = navLinks(Astro.url.pathname, lang);
 ---
 <aside class="hidden w-62 print:hidden flex-none border-r border-line bg-side desk:block">
   <div class="sticky top-0 flex h-dvh flex-col gap-14 px-8 py-12">
-    <div class="flex items-start justify-between gap-2">
-      <div class="flex flex-col gap-1.5">
-        <a href={home} class="font-display text-d4">{site.name}</a>
-        <span class="label text-faint">{site.domain}</span>
-      </div>
-      <div class="relative -mr-2.5 flex-none">
-        <SearchLink lang={lang} palette class="inline-flex size-10 items-center justify-center rounded-full text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-accent" />
-        <Kbd data-palette-hint hidden class="absolute top-full right-2.5 mt-0.5" />
-      </div>
+    <div class="flex flex-col gap-1.5">
+      <a href={home} class="font-display text-d4">{site.name}</a>
+      <span class="label text-faint">{site.domain}</span>
     </div>
     <nav aria-label={t.mainNav} class="flex flex-col gap-0.5">
       {items.map((item) => (
@@ -40,6 +34,11 @@ const items = navLinks(Astro.url.pathname, lang);
           <span>{item.label}</span>
         </a>
       ))}
+      <hr class="my-2 border-line" />
+      <SearchLink lang={lang} palette class="flex min-h-10 items-center gap-3 text-base text-muted transition-colors duration-200 hover:text-text aria-[current=page]:text-text [&>svg]:-mx-[5.5px] [&>svg]:size-4 aria-[current=page]:[&>svg]:text-accent">
+        <span>{t.search.title}</span>
+        <Kbd data-palette-hint hidden class="ml-auto" />
+      </SearchLink>
     </nav>
     <div class="mt-auto flex flex-col gap-7">
       <ul class="flex flex-col gap-3">
