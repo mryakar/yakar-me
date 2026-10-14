@@ -27,6 +27,8 @@ interface TocEntry {
   children: { slug: string; text: string }[];
 }
 
+export const printsHref = (href: string, text: string) => /^https?:\/\//.test(href) && text.trim() !== href;
+
 export function tableOfContents(headings: Heading[]) {
   const toc: TocEntry[] = [];
   for (const { depth, slug, text } of headings) {
@@ -40,9 +42,13 @@ export function tableOfContents(headings: Heading[]) {
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
   element: {
-    filter: ['p', 'h2', 'h3', 'pre', 'table'],
+    filter: ['a', 'p', 'h2', 'h3', 'pre', 'table'],
     visit(node, ctx) {
       const el = node as unknown as Hast;
+      if (el.tagName === 'a') {
+        if (printsHref(String(el.properties?.href ?? ''), ctx.textContent(node))) ctx.setProperty(node, 'dataPrintHref', '');
+        return;
+      }
       if (el.tagName === 'pre' || el.tagName === 'table') {
         ctx.setProperty(node, 'tabIndex', 0);
         return;

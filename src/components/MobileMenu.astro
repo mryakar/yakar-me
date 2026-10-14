@@ -17,7 +17,7 @@ const home = localize(paths.home, lang);
 const items = navLinks(Astro.url.pathname, lang);
 const roundButton = 'inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text';
 ---
-<header class="sticky top-0 z-40 flex h-(--yk-bar) items-center justify-between border-b border-line bg-bg/80 px-6 backdrop-blur-md desk:hidden">
+<header class="sticky top-0 z-40 flex print:hidden h-(--yk-bar) items-center justify-between border-b border-line bg-bg/80 px-6 backdrop-blur-md desk:hidden">
   <a href={home} class="font-display text-d4">{site.name}</a>
   <div class="flex items-center gap-2.5">
     <SearchLink lang={lang} class={`${roundButton} aria-[current=page]:border-accent aria-[current=page]:text-accent`} />

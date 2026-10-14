@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { markdownToHtml } from 'satteri';
-import { noRawHtml, articleBlocks, isSummaryHeading, tableOfContents } from '../src/lib/markdown.ts';
+import { noRawHtml, articleBlocks, isSummaryHeading, printsHref, tableOfContents } from '../src/lib/markdown.ts';
 
 const render = async (md) => markdownToHtml(md, { mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] }).html;
 
@@ -58,4 +58,19 @@ test('tableOfContents: ## ve altındaki ###; "Kısaca" ve ilk ##\'den önceki ##
     { slug: 'a', text: 'a', children: [{ slug: 'a1', text: 'a1' }, { slug: 'a2', text: 'a2' }] },
     { slug: 'b', text: 'b', children: [] },
   ]);
+});
+
+test('printsHref: dış adres, bağlantı metninde görünmüyorsa', () => {
+  assert.ok(printsHref('https://en.wikipedia.org/wiki/MD5', 'MD5:'));
+  assert.ok(printsHref('https://github.com/a/b/tree/master/c', 'https://github.com/a/b'));
+  assert.ok(!printsHref('https://openjdk.org/jeps/491', ' https://openjdk.org/jeps/491 '));
+  assert.ok(!printsHref('#snapshots', 'Snapshots'));
+  assert.ok(!printsHref('/writing/', 'Writing'));
+  assert.ok(!printsHref('mailto:a@b.c', 'mail'));
+});
+
+test('yazdırmada adresi basılacak bağlantı data-print-href taşır, adresi metin olan taşımaz', async () => {
+  const html = await render('[MD5](https://en.wikipedia.org/wiki/MD5) and [https://openjdk.org/jeps/491](https://openjdk.org/jeps/491)');
+  assert.match(html, /<a href="https:\/\/en\.wikipedia\.org\/wiki\/MD5" data-print-href="">MD5<\/a>/);
+  assert.match(html, /<a href="https:\/\/openjdk\.org\/jeps\/491">https/);
 });
