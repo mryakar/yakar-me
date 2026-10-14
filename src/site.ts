@@ -21,7 +21,7 @@ export const paths = {
   feed: '/rss.xml',
 } as const;
 
-export const nav = ['home', 'photos', 'writing', 'reading', 'playing', 'about'] as const;
+export const nav = ['home', 'photos', 'writing', 'reading', 'playing', 'years', 'about'] as const;
 
 export const sections = ['photos', 'writing', 'reading', 'playing'] as const;
 
