@@ -1,6 +1,6 @@
 import { home } from '../site';
 import { books } from './books';
-import { countsAsCountry } from './measure';
+import { countsAsCity, countsAsCountry } from './measure';
 import { frames, written } from './measures';
 import { byMonth, peak, yearsDescending } from './year';
 import type { Lang } from './i18n';
@@ -30,7 +30,7 @@ export async function years(lang: Lang, today = new Date()) {
       },
       frames: {
         count: took.length,
-        cities: [...new Set(away.map((f) => f.place.city))],
+        cities: [...new Set(away.filter((f) => countsAsCity(f.place, home)).map((f) => f.place.city))],
         countries: new Set(away.map((f) => f.place.country)).size,
       },
       farthest: far && { km: far.km, city: far.place.city },
