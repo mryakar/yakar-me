@@ -1263,6 +1263,36 @@
   a:focus-visible .odo-cells {
     border-color: var(--yk-accent);
   }
+  .odo-mini {
+    padding: 3px;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: none;
+  }
+  .odo-mini .odo-cell {
+    --odo-w: 20px;
+    --odo-h: 30px;
+    --odo-size: 18px;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .odo-mini .odo-cell::after {
+    content: none;
+  }
+  .odo-mini .odo-cell:last-child {
+    background: var(--yk-cell);
+    color: var(--yk-text);
+  }
+  .odo-sep {
+    display: flex;
+    width: 6px;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 3px;
+    color: var(--yk-muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
   @container (width >= 20rem) {
     .odo-big .odo-cell,
     .odo-small .odo-cell {

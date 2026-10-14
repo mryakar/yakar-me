@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { byMonth, peak, yearsDescending } from '../src/lib/year.ts';
+import { byMonth, peak, spinePx, SPINE_MAX_PX, SPINE_MIN_PX, yearsDescending } from '../src/lib/year.ts';
 
 test('yearsDescending: ilk yıldan son yıla, yeniden eskiye, boş yıllar dahil', () => {
   assert.deepEqual(yearsDescending(2016, 2019), [2019, 2018, 2017, 2016]);
@@ -20,4 +20,11 @@ test('peak: en büyük değer, eşitlikte ilki, hepsi sıfırsa yok', () => {
   assert.equal(peak(rows, (r) => r.n)?.y, 2023);
   assert.equal(peak([{ y: 2020, n: 0 }], (r) => r.n), undefined);
   assert.equal(peak([], (r) => r.n), undefined);
+});
+
+test('spinePx: sayfa/52, en az 3, en çok 16 piksel', () => {
+  assert.equal(spinePx(46), SPINE_MIN_PX);
+  assert.equal(spinePx(264), 5);
+  assert.equal(spinePx(673), 13);
+  assert.equal(spinePx(5000), SPINE_MAX_PX);
 });

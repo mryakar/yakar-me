@@ -11,6 +11,15 @@ const lookup = (table: Record<string, string>, what: string, verbatim?: RegExp) 
   return hit;
 };
 
+const turkishCities: Record<string, string> = {
+  Prague: 'Prag',
+  Munich: 'Münih',
+  Belgrade: 'Belgrad',
+  Baku: 'Bakü',
+  Shanghai: 'Şanghay',
+  Singapore: 'Singapur',
+};
+
 const en = {
   description: 'Software engineer, writer and traveller. Java, distributed systems, and the mechanisms underneath.',
   tagline: 'engineer · writer · traveller',
@@ -235,7 +244,13 @@ const en = {
     onMap: 'On the map',
   },
   about: { description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
-  years: { heading: 'Years', all: 'All years', words: (n: string) => `${n} words` },
+  years: {
+    heading: 'Years',
+    all: 'All years',
+    frames: { one: '{n} frame', other: '{n} frames' },
+    route: (from: string, to: string) => `${from} → ${to}`,
+    city: (name: string) => name,
+  },
   notFound: {
     title: 'Not found',
     heading: 'The odometer stopped at 404.',
@@ -506,7 +521,13 @@ const tr: Dict = {
     onMap: 'Haritada',
   },
   about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
-  years: { heading: 'Yıllar', all: 'Tüm yıllar', words: (n) => `${n} kelime` },
+  years: {
+    heading: 'Yıllar',
+    all: 'Tüm yıllar',
+    frames: { one: '{n} kare', other: '{n} kare' },
+    route: (from, to) => `${from} → ${to}`,
+    city: (name) => turkishCities[name] ?? name,
+  },
   notFound: {
     title: 'Bulunamadı',
     heading: 'Sayaç 404’te durdu.',
