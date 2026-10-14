@@ -1270,9 +1270,9 @@
     box-shadow: none;
   }
   .odo-mini .odo-cell {
-    --odo-w: 20px;
-    --odo-h: 30px;
-    --odo-size: 18px;
+    --odo-w: 24px;
+    --odo-h: 36px;
+    --odo-size: 21px;
     border-radius: 2px;
     font-weight: 400;
   }
@@ -1285,13 +1285,13 @@
   }
   .odo-sep {
     display: flex;
-    width: 6px;
+    width: 8px;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 3px;
     color: var(--yk-muted);
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
   }
   @container (width >= 20rem) {
     .odo-big .odo-cell,

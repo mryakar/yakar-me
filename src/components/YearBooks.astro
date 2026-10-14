@@ -14,14 +14,14 @@ const widths = ['w-0.75', 'w-1', 'w-1.25', 'w-1.5', 'w-1.75', 'w-2', 'w-2.25', '
 if (widths.length !== SPINE_MAX_PX - SPINE_MIN_PX + 1) throw new Error('YearBooks: spine width classes do not match the scale in src/lib/year.ts');
 const width = (pages: number) => widths[spinePx(pages) - SPINE_MIN_PX];
 ---
-<span class="flex max-w-96" aria-hidden="true">
+<span class="flex" aria-hidden="true">
   {months.map((books, month) => (
     <span class="flex min-w-0 flex-1 flex-col">
-      <span class:list={['flex h-11 items-end gap-0.5 border-b', month <= lastMonth ? 'border-line-strong' : 'border-transparent']}>
-        {books.map((book) => <span class:list={['block h-10 flex-none rounded-[1px] border border-line-strong', categoryTint[book.category], width(book.pages)]} />)}
-        {month === lastMonth && reading.map((book) => <span class:list={['block h-10 flex-none rounded-[1px] border border-dashed border-muted', width(book.pages)]} />)}
+      <span class:list={['flex h-13 items-end gap-0.5 border-b', month <= lastMonth ? 'border-line-strong' : 'border-transparent']}>
+        {books.map((book) => <span class:list={['block h-12 flex-none rounded-[1px] border border-line-strong', categoryTint[book.category], width(book.pages)]} />)}
+        {month === lastMonth && reading.map((book) => <span class:list={['block h-12 flex-none rounded-[1px] border border-dashed border-muted', width(book.pages)]} />)}
       </span>
-      <span class="mt-1 font-mono text-[10px] text-faint @4xl:hidden">{letters[month]}</span>
+      <span class="mt-1 font-mono text-[11px] text-faint @4xl:hidden">{letters[month]}</span>
     </span>
   ))}
 </span>
