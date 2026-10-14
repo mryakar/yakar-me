@@ -21,6 +21,7 @@ const t = ui[lang].writing;
 const { title, description, pubDate, topic, mediumUrl } = article;
 const { Content, headings } = await render(article.entry);
 const toc = tableOfContents(headings);
+const url = absoluteUrl(articlePath(article.id, lang));
 const ogImage = await ogImagePathFor(articleCard(article, lang));
 const structured = jsonLd(
   blogPosting({
@@ -28,27 +29,28 @@ const structured = jsonLd(
     description,
     published: pubDate,
     lang,
-    url: absoluteUrl(articlePath(article.id, lang)),
+    url,
     image: absoluteUrl(ogImage),
     author: { name: site.name, url: site.url },
     original: article.original === lang ? undefined : { url: absoluteUrl(articlePath(article.id, article.original)), lang: article.original },
   }),
 );
 ---
-<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic], image: ogImage }} counterpart={article.alternate}>
+<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic], image: ogImage }} counterpart={article.alternate} runningHead={title}>
   <script type="application/ld+json" set:html={structured} />
-  <article class="mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
-    <header class="flex max-w-240 flex-col gap-7">
+  <article class="print-article mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
+    <header class="article-head flex max-w-240 flex-col gap-7">
       <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
         <span class="label text-accent">{t.topics[topic]}</span>
         {article.original !== lang && <TranslatedBadge original={article.original} href={articlePath(article.id, article.original)} />}
       </div>
       <h1 class="font-display text-d2 desk:text-d1">{title}</h1>
-      <p class="max-w-180 font-body text-2xl leading-snug text-muted italic">{description}</p>
+      <p class="max-w-180 font-body text-2xl leading-snug text-muted italic print:hidden">{description}</p>
+      <p class="article-url hidden">{url}</p>
       <div class="flex flex-wrap items-center gap-x-7 gap-y-2 border-t border-line pt-5 text-sm text-muted">
         <time datetime={isoDate(pubDate)}>{formatDate(pubDate, 'long', lang)}</time>
         <span>{t.minRead(readingMinutes(article.entry.body))}</span>
-        <a href={mediumUrl} class="transition-colors duration-200 hover:text-accent">{t.medium}</a>
+        <a href={mediumUrl} class="transition-colors duration-200 hover:text-accent print:hidden">{t.medium}</a>
       </div>
     </header>
 
@@ -57,7 +59,7 @@ const structured = jsonLd(
         <Content />
       </div>
       {toc.length > 0 && (
-        <nav aria-label={t.contents} class="sticky top-12 hidden max-h-[calc(100dvh-6rem)] flex-col gap-1 overflow-y-auto desk:flex">
+        <nav aria-label={t.contents} class="sticky top-12 hidden print:hidden max-h-[calc(100dvh-6rem)] flex-col gap-1 overflow-y-auto desk:flex">
           <span class="label pb-2.5 text-faint">{t.contents}</span>
           <ul class="flex flex-col">
             {toc.map((h) => (

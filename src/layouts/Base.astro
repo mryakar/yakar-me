@@ -6,7 +6,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import LangHint from '../components/LangHint.astro';
 import { ui } from '../i18n/ui';
 import { defaultLang, localize, locales, other, splitPath, type Lang } from '../lib/i18n';
-import { paths } from '../site';
+import { paths, site } from '../site';
 
 interface Props {
   lang: Lang;
@@ -15,20 +15,26 @@ interface Props {
   article?: Article;
   counterpart?: boolean;
   notFound?: boolean;
+  runningHead?: string;
 }
-const { lang, title, description = ui[lang].description, article, counterpart = true, notFound = false } = Astro.props;
+const { lang, title, description = ui[lang].description, article, counterpart = true, notFound = false, runningHead } = Astro.props;
 const { path } = splitPath(Astro.url.pathname);
 const alternates = counterpart && !notFound ? locales.map((l) => ({ lang: l, href: localize(path, l) })) : [];
+const printHead = runningHead && {
+  'data-print-head': `${site.name} · ${site.domain}`,
+  'data-print-title': runningHead,
+  'data-print-url': `${site.domain}${Astro.url.pathname}`,
+};
 const switchTo = notFound ? localize(paths.home, other(lang)) : counterpart ? localize(path, other(lang)) : undefined;
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} {...printHead}>
   <head>
     <Head lang={lang} title={title} description={description} article={article} alternates={alternates} notFound={notFound} />
     <slot name="head" />
   </head>
   <body class="bg-bg text-text">
-    <a class="skip-link" href="#main">{ui[lang].skip}</a>
+    <a class="skip-link print:hidden" href="#main">{ui[lang].skip}</a>
     <div class="min-h-dvh desk:flex">
       <Sidebar lang={lang} switchTo={switchTo} />
       <MobileMenu lang={lang} switchTo={switchTo} />

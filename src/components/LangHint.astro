@@ -9,7 +9,7 @@ interface Props {
 const { href, target } = Astro.props;
 const t = bilingual.hint;
 ---
-<div data-lang-hint={target} hidden lang="en" class="flex items-center justify-between gap-4 border-b border-line bg-side py-2 pr-3 pl-6 text-sm text-muted desk:pl-24">
+<div data-lang-hint={target} hidden lang="en" class="flex print:hidden items-center justify-between gap-4 border-b border-line bg-side py-2 pr-3 pl-6 text-sm text-muted desk:pl-24">
   <p>
     {t.text(target)}{' '}
     <a href={href} hreflang={target} class="text-accent">{t.link(target)} →</a>
