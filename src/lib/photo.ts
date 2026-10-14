@@ -37,6 +37,8 @@ export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
 
 export const coverFirst = <T>(photos: T[], cover: T) => [cover, ...photos.filter((p) => p !== cover)];
 
+export const FRAME_SIZES = '(min-width: 64rem) 36vw, (min-width: 40rem) 50vw, 100vw';
+
 export const COVER_TRANSITIONS = [
   '[view-transition-name:series-cover-1]',
   '[view-transition-name:series-cover-2]',
@@ -47,7 +49,7 @@ export const COVER_TRANSITIONS = [
 export function coverTransition(id: string, ids: string[]) {
   if (ids.length > COVER_TRANSITIONS.length) throw new Error(`coverTransition: ${ids.length} series, ${COVER_TRANSITIONS.length} names`);
   const i = ids.indexOf(id);
-  return i === -1 ? undefined : ['[view-transition-class:series-cover]', COVER_TRANSITIONS[i]];
+  return i === -1 ? undefined : ['[view-transition-class:series-cover]', '[:root:active-view-transition_&]:bg-transparent', COVER_TRANSITIONS[i]];
 }
 
 export const countries = (places: Place[]) => [...new Set(places.map((p) => p.country))];

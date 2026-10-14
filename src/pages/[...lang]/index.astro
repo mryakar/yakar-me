@@ -11,7 +11,7 @@ import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize } from '../../lib/i18n';
 import { allSeries, coverSources, lastTaken, recentSeries } from '../../lib/photos';
-import { coverTransition, mapPath, seriesPath } from '../../lib/photo';
+import { coverTransition, mapPath, seriesPath, FRAME_SIZES } from '../../lib/photo';
 import { mapPlaces } from '../../lib/places';
 import { centre } from '../../lib/map';
 import { articles } from '../../lib/writing';
@@ -142,7 +142,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
         {series && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.home.latestSeries} · {formatMonth(new Date(lastTaken(series.photos).slice(0, 10)), lang)}</span>
-            <a href={seriesPath(series.id, lang)} data-cover-pair={seriesPath(series.id, lang)} class="group flex flex-col gap-3.5">
+            <a href={seriesPath(series.id, lang)} data-cover-pair={seriesPath(series.id, lang)} data-cover-sizes={FRAME_SIZES} class="group flex flex-col gap-3.5">
               <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class:list={['aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90', coverTransition(series.id, sources)]} />
               <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>
             </a>

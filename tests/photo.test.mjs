@@ -122,7 +122,7 @@ test('coverFirst: kapak başa, geri kalan sıra aynı', () => {
 });
 
 test('coverTransition: sıradaki ad ve sınıf; listede olmayana yok; ad listesi yetmezse build kırılır', () => {
-  assert.deepEqual(coverTransition('ankara', ['hong-kong', 'koh-samui', 'ankara']), ['[view-transition-class:series-cover]', '[view-transition-name:series-cover-3]']);
+  assert.deepEqual(coverTransition('ankara', ['hong-kong', 'koh-samui', 'ankara']), ['[view-transition-class:series-cover]', '[:root:active-view-transition_&]:bg-transparent', '[view-transition-name:series-cover-3]']);
   assert.equal(coverTransition('nice', ['hong-kong']), undefined);
   assert.throws(() => coverTransition('a', Array.from({ length: COVER_TRANSITIONS.length + 1 }, (_, i) => String(i))), /names/);
 });
