@@ -1,3 +1,4 @@
+import { getCollection } from 'astro:content';
 import tiles from '../content/map.json';
 import { allSeries, type Photo } from './photos';
 import { districtCentres } from './districts';
@@ -29,7 +30,10 @@ interface MapCity {
 const cut: Region[] = tiles.regions.map((r) => ({ ...r, bounds: r.bounds as Bounds }));
 
 export async function mapPlaces(lang: Lang): Promise<MapCity[]> {
-  const [series, centreOf] = await Promise.all([allSeries(lang), districtCentres()]);
+  const [series, photos, centreOf] = await Promise.all([allSeries(lang), getCollection('photos'), districtCentres()]);
+  const photographed = new Map(photos.map((p) => centreOf(p.data.place)).map((d) => [d.id, d]));
+  const problems = regionProblems([...photographed.values()], cut);
+  if (problems.length) throw new Error(`Map tiles are out of date (run npm run map:extract):\n${problems.join('\n')}`);
   const places = new Map<string, MapPlace>();
   for (const s of series) {
     for (const photo of s.photos) {
@@ -41,8 +45,6 @@ export async function mapPlaces(lang: Lang): Promise<MapCity[]> {
       places.set(id, place);
     }
   }
-  const problems = regionProblems([...places.values()], cut);
-  if (problems.length) throw new Error(`Map tiles are out of date (run npm run map:extract):\n${problems.join('\n')}`);
   const regions = new Map(cut.map((r) => [cityKey(r), r.bounds]));
   return [...Map.groupBy(places.values(), cityKey).values()]
     .map((ps) => ({

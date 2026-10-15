@@ -58,9 +58,11 @@ test('recipeRows: Türkçe değerler; DR ve Kelvin olduğu gibi; bilinmeyen değ
   assert.equal(rows.colorChromeBlue, 'Kapalı');
   assert.equal(recipeRows({ filmSimulation: 'Provia', whiteBalance: '5600K' }, t)[0][1], '5600K · R+0 B+0');
   assert.throws(() => recipeRows({ filmSimulation: 'Provia', grain: 'Medium' }, t), /No Turkish recipe value for "Medium"/);
+  assert.equal(Object.fromEntries(recipeRows({ filmSimulation: 'Eterna', grain: 'Weak, Small' }, ui.es.photos.recipeValue)).grain, 'Débil, Pequeño');
+  assert.throws(() => recipeRows({ filmSimulation: 'Provia', grain: 'Medium' }, ui.es.photos.recipeValue), /No Spanish recipe value for "Medium"/);
 });
 
-test('recipeRows: foto task\'ının yazabileceği her değerin Türkçesi var', async () => {
+test('recipeRows: foto task\'ının yazabileceği her değerin Türkçesi ve İspanyolcası var', async () => {
   const src = (await import('node:fs')).readFileSync('scripts/lib/photo-record.mjs', 'utf8');
   const tables = ['WHITE_BALANCE', 'EFFECT', 'GRAIN_SIZE', 'DRANGE_PRIORITY'].map((name) => {
     const body = new RegExp(`const ${name} = \\{([\\s\\S]*?)\\};`).exec(src)[1];
@@ -68,9 +70,12 @@ test('recipeRows: foto task\'ının yazabileceği her değerin Türkçesi var', 
   });
   for (const [name, values] of tables) {
     assert.ok(values.length > 0, name);
-    for (const v of values) ui.tr.photos.recipeValue(name === 'DRANGE_PRIORITY' ? `D-Range Priority ${v}` : v);
+    for (const lang of ['tr', 'es']) {
+      for (const v of values) ui[lang].photos.recipeValue(name === 'DRANGE_PRIORITY' ? `D-Range Priority ${v}` : v);
+    }
   }
   ui.tr.photos.recipeValue('DR Auto');
+  ui.es.photos.recipeValue('DR Auto');
 });
 
 test('Türkçe: yer adında ülke çevrilir, ardışık tekrar yine düşer; bilinmeyen ülke kırar', () => {

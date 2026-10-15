@@ -1,4 +1,4 @@
-import { isLang, other, type Lang } from './i18n.ts';
+import { isLang, locales, type Lang } from './i18n.ts';
 
 type Section = 'writing' | 'photos';
 type Status = 'original' | 'translated' | 'pending';
@@ -45,17 +45,17 @@ export function localized<O extends { id: string }, T extends { id: string }>(
   langOf: (original: O) => Lang,
   translations: T[],
   lang: Lang,
-  pending: readonly string[],
+  pending: Record<Lang, readonly string[]>,
 ) {
   const keys = originals.map((o) => ({ id: o.id, lang: langOf(o) }));
   const ids = translations.map((t) => t.id);
-  const here = translationStatus(section, keys, ids, lang, pending);
-  const there = translationStatus(section, keys, ids, other(lang), pending);
+  const status = new Map(locales.map((l) => [l, translationStatus(section, keys, ids, l, pending[l])]));
+  const here = status.get(lang)!;
   return originals
     .filter((o) => here.get(o.id) !== 'pending')
     .map((original) => ({
       original,
       translation: here.get(original.id) === 'translated' ? translations.find((t) => t.id === `${original.id}/${lang}`) : undefined,
-      alternate: there.get(original.id) !== 'pending',
+      langs: locales.filter((l) => status.get(l)!.get(original.id) !== 'pending'),
     }));
 }

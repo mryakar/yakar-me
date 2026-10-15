@@ -5,7 +5,8 @@
     "from": 2025,
     "text": {
       "en": "Took up photography, as an amateur.",
-      "tr": "Amatör olarak fotoğrafa başladım."
+      "tr": "Amatör olarak fotoğrafa başladım.",
+      "es": "Empecé con la fotografía, como aficionado."
     }
   },
   {
@@ -14,7 +15,8 @@
     "from": 2023,
     "text": {
       "en": "Started the saxophone. I’m deeply passionate about it; by the time I’m forty, I want to be an excellent saxophonist.",
-      "tr": "Saksafona başladım. Aşırı tutkuluyum; 40 yaşıma geldiğimde mükemmel bir saksafoncu olmayı hedefliyorum."
+      "tr": "Saksafona başladım. Aşırı tutkuluyum; 40 yaşıma geldiğimde mükemmel bir saksafoncu olmayı hedefliyorum.",
+      "es": "Empecé con el saxofón. Me apasiona profundamente; para cuando cumpla cuarenta, quiero ser un saxofonista excelente."
     }
   },
   {
@@ -24,7 +26,8 @@
     "to": "present",
     "text": {
       "en": "Full time in the defence industry since graduating. Ankara throughout, apart from nine months in Antalya for work.",
-      "tr": "Mezun olur olmaz savunma sanayisinde tam zamanlı; o günden beri aynı sektördeyim. İş için Antalya’da geçen dokuz ay dışında hep Ankara."
+      "tr": "Mezun olur olmaz savunma sanayisinde tam zamanlı; o günden beri aynı sektördeyim. İş için Antalya’da geçen dokuz ay dışında hep Ankara.",
+      "es": "A tiempo completo en la industria de defensa desde que me gradué. Siempre en Ankara, salvo nueve meses en Antalya por trabajo."
     }
   },
   {
@@ -34,7 +37,8 @@
     "to": 2017,
     "text": {
       "en": "Part time in the defence industry, in my third and fourth years.",
-      "tr": "Üçüncü ve dördüncü sınıfta savunma sanayisinde yarı zamanlı."
+      "tr": "Üçüncü ve dördüncü sınıfta savunma sanayisinde yarı zamanlı.",
+      "es": "A tiempo parcial en la industria de defensa, en tercer y cuarto curso."
     }
   },
   {
@@ -44,7 +48,8 @@
     "to": 2015,
     "text": {
       "en": "Part-time lab assistant at the university, in my first and second years.",
-      "tr": "Birinci ve ikinci sınıfta üniversitede yarı zamanlı laboratuvar asistanı."
+      "tr": "Birinci ve ikinci sınıfta üniversitede yarı zamanlı laboratuvar asistanı.",
+      "es": "Asistente de laboratorio a tiempo parcial en la universidad, en primer y segundo curso."
     }
   },
   {
@@ -54,7 +59,8 @@
     "to": 2017,
     "text": {
       "en": "Mechatronics engineering at the University of Turkish Aeronautical Association, including a year of English prep.",
-      "tr": "Türk Hava Kurumu Üniversitesi’nde mekatronik mühendisliği, İngilizce hazırlık yılı dahil."
+      "tr": "Türk Hava Kurumu Üniversitesi’nde mekatronik mühendisliği, İngilizce hazırlık yılı dahil.",
+      "es": "Ingeniería mecatrónica en la Universidad de la Asociación Aeronáutica Turca, con un año preparatorio de inglés."
     }
   },
   {
@@ -62,7 +68,8 @@
     "kind": "question",
     "text": {
       "en": "Could there be other universes inside black holes? Could ours be inside one?",
-      "tr": "Kara deliklerin içinde başka evrenler olabilir mi? Bizim evrenimiz de bir kara deliğin içinde olabilir mi?"
+      "tr": "Kara deliklerin içinde başka evrenler olabilir mi? Bizim evrenimiz de bir kara deliğin içinde olabilir mi?",
+      "es": "¿Podría haber otros universos dentro de los agujeros negros? ¿Podría estar el nuestro dentro de uno?"
     }
   },
   {
@@ -70,7 +77,8 @@
     "kind": "question",
     "text": {
       "en": "Will AGI ever become real? Or is it real already, and we just don’t know?",
-      "tr": "Bir gün AGI gerçek olacak mı? Ya da hâlihazırda gerçek de bizim mi haberimiz yok?"
+      "tr": "Bir gün AGI gerçek olacak mı? Ya da hâlihazırda gerçek de bizim mi haberimiz yok?",
+      "es": "¿Llegará a ser real la AGI? ¿O ya lo es y simplemente no lo sabemos?"
     }
   },
   {
@@ -78,7 +86,8 @@
     "kind": "question",
     "text": {
       "en": "Is there a deterministic way to compare two languages by how efficiently they communicate?",
-      "tr": "İki dili, iletişimin verimliliği açısından karşılaştırmanın deterministik bir yolu var mı?"
+      "tr": "İki dili, iletişimin verimliliği açısından karşılaştırmanın deterministik bir yolu var mı?",
+      "es": "¿Existe una forma determinista de comparar dos idiomas según la eficiencia con la que comunican?"
     }
   },
   {
@@ -86,7 +95,8 @@
     "kind": "question",
     "text": {
       "en": "Why do we sleep?",
-      "tr": "Neden uyuruz?"
+      "tr": "Neden uyuruz?",
+      "es": "¿Por qué dormimos?"
     }
   },
   {
@@ -94,7 +104,8 @@
     "kind": "question",
     "text": {
       "en": "Life is so stubborn — so why haven’t we detected it anywhere in space yet? Or have we?",
-      "tr": "Yaşam bu kadar inatçı bir şeyken neden uzayda şu ana kadar yaşam tespit edemedik? Yoksa ettik mi?"
+      "tr": "Yaşam bu kadar inatçı bir şeyken neden uzayda şu ana kadar yaşam tespit edemedik? Yoksa ettik mi?",
+      "es": "La vida es tan tenaz — ¿por qué, entonces, aún no la hemos detectado en ninguna parte del espacio? ¿O sí?"
     }
   },
   { "id": "tr", "kind": "language", "level": "native" },
@@ -105,50 +116,50 @@
     "id": "horn",
     "kind": "bag",
     "group": "saxophone",
-    "label": { "en": "Horn", "tr": "Gövde" },
+    "label": { "en": "Horn", "tr": "Gövde", "es": "Instrumento" },
     "name": "P. Mauriat PMXA-67R-GL-ASX"
   },
   {
     "id": "mouthpiece",
     "kind": "bag",
     "group": "saxophone",
-    "label": { "en": "Mouthpiece", "tr": "Ağızlık" },
-    "note": { "en": "The one that came with the horn.", "tr": "Saksafonla birlikte gelen." }
+    "label": { "en": "Mouthpiece", "tr": "Ağızlık", "es": "Boquilla" },
+    "note": { "en": "The one that came with the horn.", "tr": "Saksafonla birlikte gelen.", "es": "La que venía con el saxofón." }
   },
   {
     "id": "reeds",
     "kind": "bag",
     "group": "saxophone",
-    "label": { "en": "Reeds", "tr": "Kamış" },
+    "label": { "en": "Reeds", "tr": "Kamış", "es": "Cañas" },
     "name": "D’Addario Organic Select Jazz · 2M"
   },
   {
     "id": "microphone",
     "kind": "bag",
     "group": "recording",
-    "label": { "en": "Microphone", "tr": "Mikrofon" },
+    "label": { "en": "Microphone", "tr": "Mikrofon", "es": "Micrófono" },
     "name": "NUX B-6"
   },
   {
     "id": "interface",
     "kind": "bag",
     "group": "recording",
-    "label": { "en": "Interface", "tr": "Ses kartı" },
+    "label": { "en": "Interface", "tr": "Ses kartı", "es": "Interfaz de audio" },
     "name": "M-Audio M-Track Duo"
   },
   {
     "id": "camera-body",
     "kind": "bag",
     "group": "camera",
-    "label": { "en": "Body", "tr": "Gövde" },
+    "label": { "en": "Body", "tr": "Gövde", "es": "Instrumento" },
     "name": "Fujifilm X-E5"
   },
   {
     "id": "lens",
     "kind": "bag",
     "group": "camera",
-    "label": { "en": "Lens", "tr": "Objektif" },
+    "label": { "en": "Lens", "tr": "Objektif", "es": "Objetivo" },
     "name": "Fujifilm XF23mmF2.8 R WR",
-    "note": { "en": "My only lens.", "tr": "Tek objektifim." }
+    "note": { "en": "My only lens.", "tr": "Tek objektifim.", "es": "Mi único objetivo." }
   }
 ]

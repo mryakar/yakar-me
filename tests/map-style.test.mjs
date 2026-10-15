@@ -38,9 +38,11 @@ test('mapStyle: yazılar en sonda, renkler paletten, bizim adlarımız altlıkta
   assert.ok(!s.layers.some((l) => l.id.startsWith('world-roads')));
 });
 
-test('mapStyle: Türkçe sayfada önce name:tr, sonra name:en; yerel yazıya düşülmez', () => {
+test('mapStyle: Türkçe/İspanyolca sayfada önce sayfanın dili, sonra name:en; yerel yazıya düşülmez', () => {
   const tr = mapStyle(input({ lang: 'tr' })).layers.find((l) => l.id === 'countries').layout['text-field'];
   assert.deepEqual(tr, ['coalesce', ['get', 'name:tr'], ['get', 'name:en']]);
+  const es = mapStyle(input({ lang: 'es' })).layers.find((l) => l.id === 'countries').layout['text-field'];
+  assert.deepEqual(es, ['coalesce', ['get', 'name:es'], ['get', 'name:en']]);
   assert.deepEqual(mapStyle(input()).layers.find((l) => l.id === 'countries').layout['text-field'], ['get', 'name:en']);
 });
 

@@ -20,6 +20,13 @@ test('Türkçe tarih: uzun, kısa, ay', () => {
   assert.equal(formatMonth(new Date('2026-08-01T00:00:00Z'), 'tr'), 'Ağu 2026');
 });
 
+test('İspanyolca tarih: uzun, kısa, ay; ay adı küçük harf', () => {
+  assert.equal(formatDate(new Date('2022-04-15T00:00:00Z'), 'long', 'es'), '15 de abril de 2022');
+  assert.equal(formatDate(d, 'short', 'es'), '16 sept 2026');
+  assert.equal(formatMonth(new Date('2026-08-01T00:00:00Z'), 'es'), 'ago 2026');
+  assert.equal(monthYear(new Date('2018-02-01T00:00:00Z'), 'es'), 'febrero de 2018');
+});
+
 test('ogImagePath: kökte og.png, Türkçede og-tr.png', () => {
   assert.equal(ogImagePath('en'), '/og.png');
   assert.equal(ogImagePath('tr'), '/og-tr.png');
@@ -72,6 +79,8 @@ test('formatNumber: binlik ayırıcı dile göre', () => {
   assert.equal(formatNumber(7442, 'tr'), '7.442');
   assert.equal(formatNumber(26201, 'tr'), '26.201');
   assert.equal(formatNumber(19, 'tr'), '19');
+  assert.equal(formatNumber(7442, 'es'), '7442');
+  assert.equal(formatNumber(26201, 'es'), '26.201');
 });
 
 test('byYear: ardışık aynı yıllar bir grup, sıra korunur', () => {
@@ -104,7 +113,8 @@ test('endSentence: noktalama yoksa nokta', async () => {
   assert.equal(endSentence('Who Moved My Cheese?'), '');
 });
 
-test('monthInitials: ayların baş harfi, iki dilde', () => {
+test('monthInitials: ayların büyük baş harfi, her dilde', () => {
   assert.equal(monthInitials().join(''), 'JFMAMJJASOND');
   assert.equal(monthInitials('tr').join(''), 'OŞMNMHTAEEKA');
+  assert.equal(monthInitials('es').join(''), 'EFMAMJJASOND');
 });

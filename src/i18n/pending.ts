@@ -1,1 +1,34 @@
-export const pending: readonly string[] = [];
+import type { Lang } from '../lib/i18n.ts';
+
+export const pending: Record<Lang, readonly string[]> = {
+  en: [],
+  tr: [],
+  es: [
+    '/writing/database-transactions-and-springs-way-of-managing-them/',
+    '/writing/explicit-locking-in-postgresql/',
+    '/writing/how-to-write-equals-in-java/',
+    '/writing/mvcc-how-postgresql-actually-implements-isolation/',
+    '/writing/synchronized-or-reentrantlock-neither-prevents-deadlock/',
+    '/writing/testing-private-methods/',
+    '/writing/the-best-friend-of-equals-method-hashcode/',
+    '/writing/the-program-that-refused-to-stop/',
+    '/photos/ankara/',
+    '/photos/baku/',
+    '/photos/bali/',
+    '/photos/bangkok/',
+    '/photos/belgrade/',
+    '/photos/chiang-mai/',
+    '/photos/chiang-rai/',
+    '/photos/coburg/',
+    '/photos/hangzhou/',
+    '/photos/hong-kong/',
+    '/photos/koh-samui/',
+    '/photos/munich/',
+    '/photos/nice/',
+    '/photos/phuket/',
+    '/photos/prague/',
+    '/photos/shanghai/',
+    '/photos/shenzhen/',
+    '/photos/singapore/',
+  ],
+};

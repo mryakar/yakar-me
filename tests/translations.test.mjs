@@ -34,16 +34,18 @@ test('listede var olmayan ya da biçimsiz yol kırar', () => {
   assert.doesNotThrow(() => status(['a/tr', 'b/tr', 'c/en'], 'tr', ['/photos/elsewhere/']));
 });
 
-test('bekleme listesi: yinelenen yol yok', () => {
-  assert.equal(new Set(pending).size, pending.length);
+test('bekleme listesi: her dilde, yinelenen yol yok', () => {
+  assert.deepEqual(Object.keys(pending), ['en', 'tr', 'es']);
+  for (const list of Object.values(pending)) assert.equal(new Set(list).size, list.length);
 });
 
-test('localized: bekleyen düşer, çeviri seçilir, öbür dilde karşılık bilgisi', async () => {
+test('localized: bekleyen düşer, çeviri seçilir, öğenin bulunduğu diller', async () => {
   const { localized } = await import('../src/lib/translations.ts');
   const originals = [{ id: 'a', lang: 'en' }, { id: 'b', lang: 'en' }];
-  const translations = [{ id: 'a/tr', text: 'A' }];
-  const tr = localized('writing', originals, (o) => o.lang, translations, 'tr', ['/writing/b/']);
-  assert.deepEqual(tr, [{ original: originals[0], translation: translations[0], alternate: true }]);
-  const en = localized('writing', originals, (o) => o.lang, translations, 'en', ['/writing/b/']);
-  assert.deepEqual(en.map((x) => [x.original.id, x.translation, x.alternate]), [['a', undefined, true], ['b', undefined, false]]);
+  const translations = [{ id: 'a/tr', text: 'A' }, { id: 'b/tr', text: 'B' }, { id: 'a/es', text: 'A' }];
+  const waiting = { en: [], tr: [], es: ['/writing/b/'] };
+  const es = localized('writing', originals, (o) => o.lang, translations, 'es', waiting);
+  assert.deepEqual(es, [{ original: originals[0], translation: translations[2], langs: ['en', 'tr', 'es'] }]);
+  const en = localized('writing', originals, (o) => o.lang, translations, 'en', waiting);
+  assert.deepEqual(en.map((x) => [x.original.id, x.translation, x.langs]), [['a', undefined, ['en', 'tr', 'es']], ['b', undefined, ['en', 'tr']]]);
 });

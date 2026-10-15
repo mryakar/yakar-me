@@ -8,7 +8,7 @@ import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs
 import { securityTxtErrors } from './lib/security-txt.mjs';
 import { xmlErrors } from './lib/xml.mjs';
 import { searchIndexErrors } from './lib/search-index.mjs';
-import { defaultLang } from '../src/lib/i18n.ts';
+import { defaultLang, locales } from '../src/lib/i18n.ts';
 import { pending } from '../src/i18n/pending.ts';
 
 const args = process.argv.slice(2);
@@ -118,4 +118,5 @@ if (errors.length) {
 }
 console.log(`✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
 console.log(`✓ ${feeds.length} feeds well-formed, ${searchIndexes.length} search indexes (${searchEntries} entries) point into the build, security.txt current`);
-console.log(`✓ ${pages.size} pages, every language has its counterpart${pending.length ? ` (${pending.length} translation(s) pending)` : ''}`);
+const waiting = locales.reduce((n, l) => n + pending[l].length, 0);
+console.log(`✓ ${pages.size} pages, every language has its counterpart${waiting ? ` (${waiting} translation(s) pending)` : ''}`);

@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { launchChrome, waitFor } from './lib/cdp.mjs';
 import { a11yProblems, budgetProblems, kb, weigh } from './lib/page-checks.mjs';
+import { localize, locales } from '../src/lib/i18n.ts';
 
 const PORT = 8788;
 const BASE = `http://localhost:${PORT}`;
@@ -9,8 +10,8 @@ const TABS = 4;
 const QUIET_MS = 1000;
 const STALL_MS = 5000;
 const PAGE_TIMEOUT_MS = 30000;
-const NOT_FOUND = ['/__not-found__/', '/tr/__not-found__/'];
-const SEARCHES = ['/search/?q=postgresql', '/tr/search/?q=postgresql'];
+const NOT_FOUND = locales.map((lang) => localize('/__not-found__/', lang));
+const SEARCHES = locales.map((lang) => localize('/search/?q=postgresql', lang));
 const VIEWS = {
   phone: { width: 390, height: 844, deviceScaleFactor: 3, mobile: true },
   desktop: { width: 1440, height: 900, deviceScaleFactor: 2, mobile: false },

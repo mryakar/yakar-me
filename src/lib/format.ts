@@ -4,6 +4,7 @@ import { dateLocale, defaultLang, localize, type Lang } from './i18n.ts';
 const SHORT_MONTHS: Record<Lang, string[]> = {
   en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   tr: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+  es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'],
 };
 
 export const ogImagePath = (lang: Lang) => (lang === defaultLang ? '/og.png' : `/og-${lang}.png`);
@@ -19,7 +20,7 @@ export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: L
 
 export const shortMonth = (date: Date, lang: Lang = defaultLang) => SHORT_MONTHS[lang][date.getUTCMonth()];
 
-export const monthInitials = (lang: Lang = defaultLang) => SHORT_MONTHS[lang].map((m) => m[0]);
+export const monthInitials = (lang: Lang = defaultLang) => SHORT_MONTHS[lang].map((m) => m[0].toLocaleUpperCase(dateLocale[lang]));
 
 export const monthStart = (month: string) => new Date(`${month}-01T00:00:00Z`);
 

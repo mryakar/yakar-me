@@ -1,0 +1,11 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import NotFound from '../../components/NotFound.astro';
+import { defaultLang, locales } from '../../lib/i18n';
+
+export const getStaticPaths = () => locales.filter((lang) => lang !== defaultLang).map((lang) => ({ params: { lang }, props: { lang } }));
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { lang } = Astro.props;
+---
+<NotFound lang={lang} />
