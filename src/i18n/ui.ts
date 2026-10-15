@@ -1,6 +1,7 @@
 import type { Lang } from '../lib/i18n.ts';
 import type { BookLanguage, Category, Genre } from '../lib/book.ts';
 import type { Topic } from '../lib/article.ts';
+import type { BagGroup } from '../lib/about.ts';
 import type { Category as SongCategory, Genre as SongGenre } from '../lib/song.ts';
 import { englishOrdinal } from '../lib/format.ts';
 
@@ -243,7 +244,18 @@ const en = {
     seePhotos: 'See the photos',
     onMap: 'On the map',
   },
-  about: { description: 'Ahmet Yakar: software engineer, writer and traveller.', heading: 'About' },
+  about: {
+    description: 'Ahmet Yakar: software engineer, writer and traveller.',
+    heading: 'About',
+    timeline: 'Timeline',
+    present: 'present',
+    questions: 'Questions I think about',
+    languages: 'Languages',
+    native: 'Native',
+    bag: 'Bag',
+    bagGroups: { saxophone: 'Saxophone', recording: 'Recording and live', camera: 'Camera' } satisfies Record<BagGroup, string>,
+    feeds: 'Feeds',
+  },
   years: {
     heading: 'Years',
     all: 'All years',
@@ -521,7 +533,18 @@ const tr: Dict = {
     seePhotos: 'Fotoğraflara git',
     onMap: 'Haritada',
   },
-  about: { description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.', heading: 'Hakkımda' },
+  about: {
+    description: 'Ahmet Yakar: yazılım mühendisi, yazar ve gezgin.',
+    heading: 'Hakkımda',
+    timeline: 'Zaman çizelgesi',
+    present: 'bugün',
+    questions: 'Düşündüğüm sorular',
+    languages: 'Diller',
+    native: 'Ana dil',
+    bag: 'Çanta',
+    bagGroups: { saxophone: 'Saksafon', recording: 'Kayıt ve sahne', camera: 'Kamera' },
+    feeds: 'Akışlar',
+  },
   years: {
     heading: 'Yıllar',
     all: 'Tüm yıllar',

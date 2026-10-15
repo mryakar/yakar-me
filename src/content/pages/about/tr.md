@@ -1,3 +1,6 @@
+---
+portraitAlt: Ahmet bir parkta, katlanır sandalyede oturmuş alto saksafon çalıyor; siyah beyaz.
+---
 Ben Ahmet. Mekatronik mühendisliği okudum, ama motorlarla kontrol döngüleri arasında bir yerde en çok sevdiğim kısmın kod
 olduğunu fark ettim. Aradan dokuz yıl geçti; bugün savunma sanayisinde büyük ölçekli sistemler geliştiren kıdemli bir
 backend mühendisiyim. Çoğunlukla Java, çoğunlukla dağıtık ve olay güdümlü (event-driven) sistemler.

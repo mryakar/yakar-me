@@ -6,6 +6,7 @@ import { topics } from './lib/article';
 import { FOCUS_STEP, PLACE_NAME } from './lib/photo';
 import { allGenres, bookLanguages, categories, categoryOf, isIsbn13 } from './lib/book';
 import * as song from './lib/song';
+import { bagGroups, levels, PRESENT } from './lib/about';
 
 const lang = z.enum(locales);
 const translations = (base: string) => glob({ pattern: `*/{${locales.join(',')}}.md`, base });
@@ -66,7 +67,7 @@ const seriesTranslations = defineCollection({
 
 const pages = defineCollection({
   loader: translations('./src/content/pages'),
-  schema: z.object({}).strict(),
+  schema: z.object({ portraitAlt: z.string().trim().min(1).max(250).optional() }).strict(),
 });
 
 const text = z.string().regex(/^[\x20-\x7e]{1,60}$/);
@@ -81,48 +82,64 @@ const variant = z.object({
 const signedStep = z.number().min(-5).max(5);
 const effect = z.enum(['Off', 'Weak', 'Strong']);
 
-const photos = defineCollection({
-  loader: glob({ pattern: '*/*.json', base: './src/content/photos' }),
-  schema: z
-    .object({
-      alt: z.string().min(1).max(250),
-      kind: z.enum(['fujifilm', 'phone']),
-      make: z.enum(['Fujifilm', 'Apple']),
-      model: text,
-      lens: text.optional(),
-      taken: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2})?$/),
-      aperture: z.number().min(0.7).max(64),
-      shutter: z.number().positive().max(3600),
-      iso: z.number().int().min(1).max(409600),
-      focalLength: z.number().int().positive().max(2000),
-      place: z.object({ district: placeName, city: placeName, country: placeName }).strict(),
-      recipe: z
-        .object({
-          filmSimulation: text,
-          dynamicRange: text.optional(),
-          highlight: signedStep.optional(),
-          shadow: signedStep.optional(),
-          color: signedStep.optional(),
-          monochromaticColor: z.tuple([z.number().int().min(-18).max(18), z.number().int().min(-18).max(18)]).optional(),
-          whiteBalance: text.optional(),
-          whiteBalanceShift: z.tuple([z.number().int().min(-9).max(9), z.number().int().min(-9).max(9)]).optional(),
-          noiseReduction: signedStep.optional(),
-          clarity: signedStep.optional(),
-          grain: text.optional(),
-          colorChrome: effect.optional(),
-          colorChromeBlue: effect.optional(),
-        })
-        .strict()
-        .optional(),
-      variants: z.object({
-        avif: z.array(variant).min(1),
-        webp: z.array(variant).min(1),
-      }),
-    })
-    .strict()
-    .refine((p) => (p.kind === 'fujifilm') === (p.recipe !== undefined && p.lens !== undefined), {
-      message: 'Fujifilm photos need a lens and a recipe; phone photos have neither',
+const photo = z
+  .object({
+    alt: z.string().min(1).max(250),
+    kind: z.enum(['fujifilm', 'phone']),
+    make: z.enum(['Fujifilm', 'Apple']),
+    model: text,
+    lens: text.optional(),
+    taken: z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2})?$/),
+    aperture: z.number().min(0.7).max(64),
+    shutter: z.number().positive().max(3600),
+    iso: z.number().int().min(1).max(409600),
+    focalLength: z.number().int().positive().max(2000),
+    place: z.object({ district: placeName, city: placeName, country: placeName }).strict(),
+    recipe: z
+      .object({
+        filmSimulation: text,
+        dynamicRange: text.optional(),
+        highlight: signedStep.optional(),
+        shadow: signedStep.optional(),
+        color: signedStep.optional(),
+        monochromaticColor: z.tuple([z.number().int().min(-18).max(18), z.number().int().min(-18).max(18)]).optional(),
+        whiteBalance: text.optional(),
+        whiteBalanceShift: z.tuple([z.number().int().min(-9).max(9), z.number().int().min(-9).max(9)]).optional(),
+        noiseReduction: signedStep.optional(),
+        clarity: signedStep.optional(),
+        grain: text.optional(),
+        colorChrome: effect.optional(),
+        colorChromeBlue: effect.optional(),
+      })
+      .strict()
+      .optional(),
+    variants: z.object({
+      avif: z.array(variant).min(1),
+      webp: z.array(variant).min(1),
     }),
+  })
+  .strict()
+  .refine((p) => (p.kind === 'fujifilm') === (p.recipe !== undefined && p.lens !== undefined), {
+    message: 'Fujifilm photos need a lens and a recipe; phone photos have neither',
+  });
+
+const photos = defineCollection({ loader: glob({ pattern: '*/*.json', base: './src/content/photos' }), schema: photo });
+const portrait = defineCollection({ loader: glob({ pattern: '*.json', base: './src/content/portrait' }), schema: photo });
+
+const aboutText = z.record(lang, z.string().trim().min(1));
+const year = z.number().int().min(1900).max(2100);
+
+const about = defineCollection({
+  loader: positioned('./src/content/about.json'),
+  schema: z.discriminatedUnion('kind', [
+    z.object({ id: slug, kind: z.literal('timeline'), from: year, to: z.union([year, z.literal(PRESENT)]).optional(), text: aboutText, position: z.number() }).strict(),
+    z.object({ id: slug, kind: z.literal('question'), text: aboutText, position: z.number() }).strict(),
+    z.object({ id: z.string().regex(/^[a-z]{2,3}$/), kind: z.literal('language'), level: z.enum(levels), position: z.number() }).strict(),
+    z
+      .object({ id: slug, kind: z.literal('bag'), group: z.enum(bagGroups), label: aboutText, name: z.string().trim().min(1).optional(), note: aboutText.optional(), position: z.number() })
+      .strict()
+      .refine((item) => item.name !== undefined || item.note !== undefined, { message: 'a bag item needs a name or a note' }),
+  ]),
 });
 
 const districts = defineCollection({
@@ -207,4 +224,4 @@ const songs = defineCollection({
     .refine((s) => song.categoryOf(s.genre) === s.category, { message: 'genre does not belong to the category' }),
 });
 
-export const collections = { writing, writingTranslations, series, seriesTranslations, photos, districts, pages, books, songs };
+export const collections = { writing, writingTranslations, series, seriesTranslations, photos, portrait, districts, pages, about, books, songs };
