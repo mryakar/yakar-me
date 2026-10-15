@@ -8,7 +8,7 @@ export interface Article {
   id: string;
   lang: Lang;
   original: Lang;
-  alternate: boolean;
+  langs: Lang[];
   title: string;
   description: string;
   short?: string;
@@ -21,13 +21,13 @@ export interface Article {
 export async function articles(lang: Lang): Promise<Article[]> {
   const [originals, translations] = await Promise.all([getCollection('writing'), getCollection('writingTranslations')]);
   return localized('writing', originals, (o) => o.data.lang, translations, lang, pending)
-    .map(({ original: o, translation: t, alternate }) => {
+    .map(({ original: o, translation: t, langs }) => {
       const text = t?.data ?? o.data;
       return {
         id: o.id,
         lang,
         original: o.data.lang,
-        alternate,
+        langs,
         title: text.title,
         description: text.description,
         short: text.short,

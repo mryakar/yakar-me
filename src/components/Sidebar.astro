@@ -6,13 +6,13 @@ import Kbd from './Kbd.astro';
 import { site, links, paths } from '../site';
 import { ui } from '../i18n/ui';
 import { navLinks } from '../lib/nav';
-import { localize, type Lang } from '../lib/i18n';
+import { localize, type Lang, type LangLink } from '../lib/i18n';
 
 interface Props {
   lang: Lang;
-  switchTo?: string;
+  versions: LangLink[];
 }
-const { lang, switchTo } = Astro.props;
+const { lang, versions } = Astro.props;
 const t = ui[lang];
 const home = localize(paths.home, lang);
 const items = navLinks(Astro.url.pathname, lang);
@@ -48,7 +48,7 @@ const items = navLinks(Astro.url.pathname, lang);
       </ul>
       <div class="flex flex-wrap gap-2.5">
         <ThemeToggle lang={lang} />
-        {switchTo && <LanguageSwitch lang={lang} href={switchTo} />}
+        <LanguageSwitch lang={lang} versions={versions} />
       </div>
     </div>
   </div>

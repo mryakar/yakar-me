@@ -1,10 +1,9 @@
-export const locales = ['en', 'tr'] as const;
+export const locales = ['en', 'tr', 'es'] as const;
 export type Lang = (typeof locales)[number];
 export const defaultLang: Lang = 'en';
+export type LangLink = { lang: Lang; href: string };
 
 export const isLang = (s: unknown): s is Lang => typeof s === 'string' && (locales as readonly string[]).includes(s);
-
-export const other = (lang: Lang): Lang => locales.find((l) => l !== lang)!;
 
 export const localize = (path: string, lang: Lang) => (lang === defaultLang ? path : `/${lang}${path}`);
 
@@ -26,5 +25,5 @@ export async function langItemPaths<T>(load: (lang: Lang) => Promise<T[]>, param
   return perLang.flat();
 }
 
-export const ogLocale: Record<Lang, string> = { en: 'en_GB', tr: 'tr_TR' };
-export const dateLocale: Record<Lang, string> = { en: 'en-GB', tr: 'tr-TR' };
+export const ogLocale: Record<Lang, string> = { en: 'en_GB', tr: 'tr_TR', es: 'es_ES' };
+export const dateLocale: Record<Lang, string> = { en: 'en-GB', tr: 'tr-TR', es: 'es-ES' };

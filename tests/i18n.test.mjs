@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { langPaths, localize, other, splitPath } from '../src/lib/i18n.ts';
+import { langPaths, localize, splitPath } from '../src/lib/i18n.ts';
 import { bilingual, ui } from '../src/i18n/ui.ts';
 
 test('localize: İngilizce kökte, Türkçe /tr/ önekiyle', () => {
@@ -17,23 +17,25 @@ test('splitPath: dil ve dilden bağımsız yol', () => {
   assert.deepEqual(splitPath('/trx/'), { lang: 'en', path: '/trx/' });
 });
 
-test('other ve langPaths', () => {
-  assert.equal(other('en'), 'tr');
-  assert.equal(other('tr'), 'en');
+test('langPaths: her dil, İngilizce kökte', () => {
   assert.deepEqual(langPaths(), [
     { params: { lang: undefined }, props: { lang: 'en' } },
     { params: { lang: 'tr' }, props: { lang: 'tr' } },
+    { params: { lang: 'es' }, props: { lang: 'es' } },
   ]);
 });
 
 const shape = (o) =>
   Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v && typeof v === 'object' && !Array.isArray(v) ? shape(v) : typeof v]));
 
-test('arayüz sözlüğü: iki dilde aynı anahtarlar, boş metin yok', () => {
-  assert.deepEqual(shape(ui.tr), shape(ui.en));
+test('arayüz sözlüğü: her dilde aynı anahtarlar, boş metin yok', () => {
   const strings = (o) => Object.values(o).flatMap((v) => (typeof v === 'string' ? [v] : v && typeof v === 'object' ? strings(v) : []));
-  for (const s of strings(ui.tr)) assert.ok(s.length > 0, JSON.stringify(s));
-  assert.equal(ui.tr.now.length, ui.en.now.length);
+  for (const lang of ['tr', 'es']) {
+    assert.deepEqual(shape(ui[lang]), shape(ui.en));
+    for (const s of strings(ui[lang])) assert.ok(s.length > 0, JSON.stringify(s));
+    assert.equal(ui[lang].now.length, ui.en.now.length);
+    assert.equal(ui[lang].playing.levels.length, ui.en.playing.levels.length);
+  }
 });
 
 test('çeviri etiketi ve öneri şeridi: her iki dilde İngilizce, iki yönde', () => {
@@ -43,6 +45,7 @@ test('çeviri etiketi ve öneri şeridi: her iki dilde İngilizce, iki yönde', 
   assert.equal(bilingual.hint.text('tr'), 'This page is also available in Turkish.');
   assert.equal(bilingual.hint.link('tr'), 'Read in Turkish');
   assert.equal(bilingual.hint.link('en'), 'Read in English');
+  assert.equal(bilingual.hint.text('es'), 'This page is also available in Spanish.');
 });
 
 test('langItemPaths: her dil için öğe yolları, dil öneki parametrede', async () => {
@@ -52,6 +55,7 @@ test('langItemPaths: her dil için öğe yolları, dil öneki parametrede', asyn
     { params: { lang: undefined, slug: 'a' }, props: { lang: 'en', item: 'a' } },
     { params: { lang: undefined, slug: 'b' }, props: { lang: 'en', item: 'b' } },
     { params: { lang: 'tr', slug: 'a' }, props: { lang: 'tr', item: 'a' } },
+    { params: { lang: 'es', slug: 'a' }, props: { lang: 'es', item: 'a' } },
   ]);
 });
 

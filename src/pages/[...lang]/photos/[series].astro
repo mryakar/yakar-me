@@ -42,7 +42,7 @@ const structured = jsonLd({
   }),
 });
 ---
-<Base lang={lang} title={documentTitle(title, ui[lang].nav.photos)} description={description} counterpart={series.alternate}>
+<Base lang={lang} title={documentTitle(title, ui[lang].nav.photos)} description={description} langs={series.langs}>
   <div class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:gap-16 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-5">
       <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">

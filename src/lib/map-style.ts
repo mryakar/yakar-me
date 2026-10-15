@@ -19,7 +19,7 @@ interface StyleInput {
 
 export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZooms, regions, ours }: StyleInput): StyleSpecification {
   const name: ExpressionSpecification =
-    lang === 'tr' ? ['coalesce', ['get', 'name:tr'], ['get', 'name:en']] : ['get', 'name:en'];
+    lang === 'en' ? ['get', 'name:en'] : ['coalesce', ['get', `name:${lang}`], ['get', 'name:en']];
   const cities = regions.map((bounds, i) => ({ id: `city-${i}`, bounds }));
   const source = { type: 'vector' as const, tiles: [`${origin}${tiles}`] };
   const base = (id: string, detail: boolean): LayerSpecification[] => [

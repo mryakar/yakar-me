@@ -13,7 +13,7 @@ export interface Series {
   id: string;
   lang: Lang;
   original: Lang;
-  alternate: boolean;
+  langs: Lang[];
   title: string;
   description: string;
   published: Date;
@@ -40,22 +40,22 @@ export async function allSeries(lang: Lang): Promise<Series[]> {
     }
   }
   return localized('photos', originals.sort((a, b) => a.data.order - b.data.order), (s) => s.data.lang, translations, lang, pending)
-    .map(({ original: s, translation: t, alternate }) => {
+    .map(({ original: s, translation: t, langs }) => {
       const own = photos
         .filter((p) => seriesOf(p) === s.id)
         .sort((a, b) => a.data.taken.localeCompare(b.data.taken))
         .map((p) => ({ ...p, alt: t ? t.data.alt[photoSlug(p)] : p.data.alt }));
-      return { s, t, alternate, own };
+      return { s, t, langs, own };
     })
     .filter(({ own }) => own.length > 0)
-    .map(({ s, t, alternate, own }) => {
+    .map(({ s, t, langs, own }) => {
       const cover = s.data.cover ? own.find((p) => photoSlug(p) === s.data.cover) : own[0];
       if (!cover) throw new Error(`series ${s.id}: cover ${s.data.cover} is not one of its photos`);
       return {
         id: s.id,
         lang,
         original: s.data.lang,
-        alternate,
+        langs,
         title: (t ?? s).data.title,
         description: (t ?? s).data.description,
         published: s.data.published,

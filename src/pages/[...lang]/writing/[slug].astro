@@ -36,7 +36,7 @@ const structured = jsonLd(
   }),
 );
 ---
-<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic], image: ogImage }} counterpart={article.alternate} runningHead={title}>
+<Base lang={lang} title={documentTitle(title)} description={description} article={{ published: pubDate, section: t.topics[topic], image: ogImage }} langs={article.langs} runningHead={title}>
   <script type="application/ld+json" set:html={structured} />
   <article class="print-article mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="article-head flex max-w-240 flex-col gap-7">

@@ -1,19 +1,28 @@
 ---
 import { ui } from '../i18n/ui';
-import { other, type Lang } from '../lib/i18n';
+import type { Lang, LangLink } from '../lib/i18n';
 
 interface Props {
   lang: Lang;
-  href: string;
+  versions: LangLink[];
 }
-const { lang, href } = Astro.props;
-const target = other(lang);
+const { lang, versions } = Astro.props;
 ---
-<a
-  href={href}
-  hreflang={target}
-  lang={target}
-  class="label inline-flex h-11 items-center self-start rounded-full border border-line-strong px-4 text-muted transition-colors duration-200 hover:border-muted hover:text-text"
->
-  {target}<span class="sr-only"> {ui[target].languageName}</span>
-</a>
+{versions.length > 1 && (
+  <div role="group" aria-label={ui[lang].language} class="label inline-flex h-11 items-center self-start rounded-full border border-line-strong px-1.5 text-muted">
+    {versions.map((v, i) => (
+      <Fragment>
+        {i > 0 && <span aria-hidden="true" class="text-faint">·</span>}
+        {v.lang === lang ? (
+          <span aria-current="true" lang={v.lang} class="inline-flex h-full items-center px-2.5 text-text">
+            {v.lang}<span class="sr-only"> {ui[v.lang].languageName}</span>
+          </span>
+        ) : (
+          <a href={v.href} hreflang={v.lang} lang={v.lang} class="inline-flex h-full items-center px-2.5 transition-colors duration-200 hover:text-text">
+            {v.lang}<span class="sr-only"> {ui[v.lang].languageName}</span>
+          </a>
+        )}
+      </Fragment>
+    ))}
+  </div>
+)}

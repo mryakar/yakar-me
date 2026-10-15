@@ -12,7 +12,7 @@ type Hast = { type: string; tagName?: string; value?: string; properties?: Recor
 const copy = <T>(node: T): T => JSON.parse(JSON.stringify(node));
 const blank = (n: Hast | undefined) => n?.type === 'text' && !n.value?.trim();
 
-const SUMMARY = ['in short', 'kısaca'];
+const SUMMARY = ['in short', 'kısaca', 'en resumen'];
 export const isSummaryHeading = (text: string) => SUMMARY.includes(text.trim().toLowerCase());
 
 interface Heading {

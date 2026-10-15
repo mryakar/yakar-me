@@ -16,7 +16,7 @@ function run(files, ...flags) {
 }
 const page = (head = '', body = '') => `<!doctype html><html><head>${head}</head><body>${body}</body></html>`;
 const alt = (path) =>
-  `<link rel="alternate" hreflang="en" href="https://yakar.me${path}"><link rel="alternate" hreflang="tr" href="https://yakar.me/tr${path}"><link rel="alternate" hreflang="x-default" href="https://yakar.me${path}">`;
+  `<link rel="alternate" hreflang="en" href="https://yakar.me${path}"><link rel="alternate" hreflang="tr" href="https://yakar.me/tr${path}"><link rel="alternate" hreflang="es" href="https://yakar.me/es${path}"><link rel="alternate" hreflang="x-default" href="https://yakar.me${path}">`;
 const inDays = (days) => new Date(Date.now() + days * 864e5).toISOString().replace(/\.\d+Z$/, 'Z');
 const securityTxt = (expires) => `Contact: mailto:a@example.com\nExpires: ${expires}\n`;
 const feed = (body = '') =>
@@ -28,8 +28,11 @@ const ok = {
   'about/index.html': page(alt('/about/')),
   'tr/index.html': page(alt('/'), '<a href="/" hreflang="en">English</a>'),
   'tr/about/index.html': page(alt('/about/')),
+  'es/index.html': page(alt('/'), '<a href="/" hreflang="en">English</a>'),
+  'es/about/index.html': page(alt('/about/')),
   '404.html': page(),
   'tr/404.html': page(),
+  'es/404.html': page(),
   'og.png': 'x',
   '_astro/a.css': 'body{color:red}',
 };
@@ -62,7 +65,7 @@ const bad = {
   'meta veri taraması': [{ 'img/stray.webp': 'x' }, /metadata check/],
   'Türkçe karşılığı eksik sayfa': [{ 'x/index.html': page() }, /\/x\/: no counterpart at \/tr\/x\//],
   'İngilizce karşılığı eksik sayfa': [{ 'tr/y/index.html': page() }, /\/tr\/y\/: no counterpart at \/y\//],
-  'karşılık varken hreflang eksik': [{ 'about/index.html': page() }, /\/about\/: hreflang set is \[\], expected \[en, tr, x-default\]/],
+  'karşılık varken hreflang eksik': [{ 'about/index.html': page() }, /\/about\/: hreflang set is \[\], expected \[en, tr, es, x-default\]/],
   'karşılık yokken hreflang': [{ 'x/index.html': page(alt('/x/')), 'tr/x/index.html': undefined }, /\/x\/: no counterpart[\s\S]*hreflang tr target does not exist/],
   'kırık hreflang hedefi': [{ 'about/index.html': page(alt('/about/').replace('/tr/about/', '/tr/abot/')) }, /hreflang tr target does not exist: https:\/\/yakar\.me\/tr\/abot\//],
   'site dışına hreflang': [{ 'about/index.html': page(alt('/about/').replace('https://yakar.me/tr/', 'https://evil.example/tr/')) }, /points outside the site/],

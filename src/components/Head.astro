@@ -1,6 +1,6 @@
 ---
 import { site, paths } from '../site';
-import { defaultLang, localize, ogLocale, other, type Lang } from '../lib/i18n';
+import { defaultLang, localize, ogLocale, type Lang, type LangLink } from '../lib/i18n';
 import { absoluteUrl, ogImagePath } from '../lib/format';
 import { OG_SIZE } from '../lib/og';
 import { PAGE_BACKGROUND } from '../lib/theme';
@@ -18,7 +18,7 @@ interface Props {
   title: string;
   description: string;
   article?: Article;
-  alternates: { lang: Lang; href: string }[];
+  alternates: LangLink[];
   notFound: boolean;
 }
 const { lang, title, description, article, alternates, notFound } = Astro.props;
@@ -37,7 +37,7 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
 <link rel="alternate" type="application/rss+xml" title={site.name} href={localize(paths.feed, lang)} />
 <meta property="og:site_name" content={site.title} />
 <meta property="og:locale" content={ogLocale[lang]} />
-{alternates.length > 0 && <meta property="og:locale:alternate" content={ogLocale[other(lang)]} />}
+{alternates.filter((a) => a.lang !== lang).map((a) => <meta property="og:locale:alternate" content={ogLocale[a.lang]} />)}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {!notFound && <meta property="og:url" content={canonical} />}
