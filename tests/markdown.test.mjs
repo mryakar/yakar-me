@@ -25,8 +25,8 @@ test('TL;DR başlığı ve listesi tek kutu', async () => {
 test('"Kısaca" (Türkçe "In short") başlığı ve listesi aside; İçindekiler\'e girmez', async () => {
   const html = await render('### Kısaca\n\n- a\n- b\n');
   assert.match(html, /<aside class="in-short"><h3[^>]*>Kısaca<\/h3><ul>[\s\S]*<\/ul><\/aside>/);
-  assert.ok(isSummaryHeading(' Kısaca ') && isSummaryHeading('In short'));
-  assert.ok(!isSummaryHeading('TL;DR') && !isSummaryHeading('Kısa'));
+  assert.ok(isSummaryHeading(' Kısaca ') && isSummaryHeading('In short') && isSummaryHeading('En resumen'));
+  assert.ok(!isSummaryHeading('TL;DR') && !isSummaryHeading('Kısa') && !isSummaryHeading('Resumen'));
 });
 
 test('"In short" başlığı ve listesi aside', async () => {
