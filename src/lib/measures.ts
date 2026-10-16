@@ -48,6 +48,7 @@ export async function measures() {
       value: finished.reduce((n, b) => n + b.pages, 0),
       since: Math.min(...finished.map((b) => b.finished.getUTCFullYear())),
     },
+    articles: writing.length,
     words: {
       value: writing.reduce((n, w) => n + w.words, 0),
       since: Math.min(...writing.map((w) => w.year)),
@@ -60,6 +61,7 @@ export async function measures() {
     frames: { value: shot.length, series: new Set(shot.map((f) => f.series)).size },
     farthest,
     languages: new Set(finished.map((b) => b.originalLanguage)).size,
+    books: finished.length,
     songs: played.length,
   };
 }

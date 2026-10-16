@@ -74,3 +74,9 @@ test('navLinks: dile göre adres ve etiket; ana sayfa yalnız kendisinde güncel
   assert.equal(navLinks('/', 'en')[0].current, true);
   assert.equal(navLinks('/about/', 'en')[0].current, false);
 });
+
+test('profileLinks ve emailLink: site.ts bağlantılarından', async () => {
+  const { profileLinks, emailLink } = await import('../src/lib/nav.ts');
+  assert.deepEqual(profileLinks().map((l) => l.label), ['GitHub', 'LinkedIn', 'Medium']);
+  assert.deepEqual(emailLink(), { href: 'mailto:ahmet@yakar.me', address: 'ahmet@yakar.me' });
+});
