@@ -22,6 +22,7 @@ interface FeedChannel {
   self: string;
   description: string;
   language: string;
+  image: { url: string; size: number };
 }
 
 const hasScheme = (url: string) => /^[a-z][a-z0-9+.-]*:/i.test(url);
@@ -62,6 +63,13 @@ export const rssFeed = (channel: FeedChannel, items: FeedItem[]) => `<?xml versi
     <link>${esc(channel.url)}</link>
     <description>${esc(channel.description)}</description>
     <language>${esc(channel.language)}</language>
+    <image>
+      <url>${esc(channel.image.url)}</url>
+      <title>${esc(channel.title)}</title>
+      <link>${esc(channel.url)}</link>
+      <width>${channel.image.size}</width>
+      <height>${channel.image.size}</height>
+    </image>
     <atom:link href="${esc(channel.self)}" rel="self" type="application/rss+xml" />
 ${newestFirst(items).map(rssItem).join('\n')}
   </channel>

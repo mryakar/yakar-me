@@ -1,4 +1,7 @@
 import { defineHastPlugin, defineMdastPlugin } from 'satteri';
+import { ui } from '../i18n/ui.ts';
+import { isLang, type Lang } from './i18n.ts';
+import { MARK, MARK_RATIO, MARK_VIEWBOX, strokes } from './mark.ts';
 
 export const noRawHtml = defineMdastPlugin({
   name: 'no-raw-html',
@@ -27,6 +30,35 @@ interface TocEntry {
   children: { slug: string; text: string }[];
 }
 
+const REFERENCES = ['references', 'kaynaklar', 'referencias'];
+export const isReferencesHeading = (text: string) => REFERENCES.includes(text.trim().toLowerCase());
+
+const ARTICLE_FILE = /\/writing\/[^/]+\/(index|[a-z]{2})\.md$/;
+export function articleLang(path: string | undefined, frontmatterLang: unknown): Lang | undefined {
+  const file = path && ARTICLE_FILE.exec(path)?.[1];
+  if (!file) return undefined;
+  const lang = file === 'index' ? frontmatterLang : file;
+  return isLang(lang) ? lang : undefined;
+}
+
+const endMark = (label: string): Hast => ({
+  type: 'element',
+  tagName: 'svg',
+  properties: {
+    className: ['end-mark'],
+    viewBox: MARK_VIEWBOX,
+    width: 19,
+    height: Math.round(19 * MARK_RATIO),
+    role: 'img',
+    ariaLabel: label,
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+  },
+  children: strokes(MARK, true).map((s) => ({ type: 'element', tagName: 'path', properties: { d: s.d, strokeWidth: s.width }, children: [] })),
+});
+
 export const printsHref = (href: string, text: string) => /^https?:\/\//.test(href) && text.trim() !== href;
 
 export function tableOfContents(headings: Heading[]) {
@@ -41,6 +73,26 @@ export function tableOfContents(headings: Heading[]) {
 
 export const articleBlocks = defineHastPlugin({
   name: 'article-blocks',
+  after(root, ctx) {
+    const astro = ctx.data.astro as { frontmatter?: { lang?: unknown } } | undefined;
+    const lang = articleLang(ctx.fileURL?.pathname, astro?.frontmatter?.lang);
+    if (!lang) return;
+    const blocks = root.children as Hast[];
+    const references = blocks.findIndex((n) => n.tagName === 'h2' && isReferencesHeading(ctx.textContent(n as never)));
+    const last = blocks.slice(0, references < 0 ? undefined : references).findLast((n) => n.tagName === 'p');
+    if (!last) return;
+    const mark = endMark(ui[lang].writing.end);
+    const tail = last.children?.at(-1);
+    const split = tail?.type === 'text' ? /^([\s\S]*\s)(\S+)$/.exec(tail.value ?? '') : null;
+    if (!tail || !split) {
+      ctx.appendChild(last as never, mark as never);
+      return;
+    }
+    ctx.replaceNode(tail as never, [
+      { type: 'text', value: split[1] },
+      { type: 'element', tagName: 'span', properties: { className: ['end-word'] }, children: [{ type: 'text', value: split[2] }, mark] },
+    ] as never);
+  },
   element: {
     filter: ['a', 'p', 'h2', 'h3', 'pre', 'table'],
     visit(node, ctx) {

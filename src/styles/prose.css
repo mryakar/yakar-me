@@ -48,6 +48,17 @@
   .prose a:hover {
     text-decoration-color: var(--yk-accent);
   }
+  .prose .end-word {
+    white-space: nowrap;
+  }
+  .prose .end-mark {
+    display: inline;
+    width: auto;
+    height: 0.9em;
+    margin-inline-start: 0.64em;
+    vertical-align: -0.14em;
+    color: var(--yk-accent);
+  }
   .prose ul,
   .prose ol {
     display: flex;

@@ -13,7 +13,7 @@ const item = (over = {}) => ({
   date: new Date('2026-09-16T00:00:00Z'),
   ...over,
 });
-const channel = { title: 'Ahmet Yakar', url: 'https://yakar.me/', self: 'https://yakar.me/rss.xml', description: 'D', language: 'en' };
+const channel = { title: 'Ahmet Yakar', url: 'https://yakar.me/', self: 'https://yakar.me/rss.xml', description: 'D', language: 'en', image: { url: 'https://yakar.me/feed.png', size: 144 } };
 
 test('absoluteUrls: kök ve parça adresleri mutlak olur, dış adres ve şema dokunulmaz', () => {
   const html = '<a href="/photos/">p</a><a href="#intro">i</a><a href="https://example.com/x">x</a><a href="mailto:a@b.c">m</a><img src="/_astro/a.webp">';
@@ -57,4 +57,9 @@ test('rssFeed: iyi biçimli XML, content ad alanı tanımlı', () => {
   assert.deepEqual(xmlErrors(xml), []);
   assert.match(xml, /xmlns:content="http:\/\/purl.org\/rss\/1.0\/modules\/content\/"/);
   assert.equal(xml.match(/<item>/g).length, 2);
+});
+
+test('rssFeed: kanal görseli kanalın adı ve adresiyle, 144 px sınırında', () => {
+  const xml = rssFeed(channel, []);
+  assert.match(xml, /<image>\s*<url>https:\/\/yakar\.me\/feed\.png<\/url>\s*<title>Ahmet Yakar<\/title>\s*<link>https:\/\/yakar\.me\/<\/link>\s*<width>144<\/width>\s*<height>144<\/height>\s*<\/image>/);
 });

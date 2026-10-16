@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { articleCard, ogCardHtml, ogImagePathFor, OG_COLORS, titleSize } from '../src/lib/og.ts';
+import { articleCard, homeCard, ogCardHtml, ogImagePathFor, OG_COLORS, titleSize } from '../src/lib/og.ts';
 import { PAGE_BACKGROUND } from '../src/lib/theme.ts';
 import { frontmatter } from '../scripts/lib/frontmatter.mjs';
 import { pngChunks } from '../scripts/lib/png.mjs';
@@ -26,7 +26,18 @@ test('ogCardHtml: başlık kaçırılır, varlık adresleri verilen işlevden', 
   const html = ogCardHtml({ ...articleCard(article, 'en'), title: 'A <b> & "c"' }, (p) => `file:///x/${p}`);
   assert.match(html, /<h1>A &lt;b&gt; &amp; &quot;c&quot;<\/h1>/);
   assert.match(html, /url\(file:\/\/\/x\/@fontsource\/instrument-serif/);
-  assert.match(html, /<img src="file:\/\/\/x\/favicon.svg"/);
+  assert.match(html, /<svg [^>]*width="64" height="64" viewBox="0 0 32 32"><rect [^>]*rx="7"/);
+  assert.doesNotMatch(html, /<img/);
+});
+
+test('homeCard: dilin tagline\'ı ve giriş cümlesi, vurgulu kelime italik; ad dile göre', async () => {
+  const tr = ogCardHtml(homeCard('tr'), (p) => p);
+  assert.match(tr, /<html lang="tr">/);
+  assert.match(tr, /mühendis · yazar · gezgin/);
+  assert.match(tr, /<h1>Kod, bir saksafon ve hep uzun yoldan <em>dolaşma<\/em> alışkanlığı\.<\/h1>/);
+  assert.match(tr, /font-style:italic;src:url\(@fontsource\/instrument-serif\/files\/instrument-serif-latin-400-italic/);
+  assert.match(await ogImagePathFor(homeCard('es')), /^\/og\/home-es-[0-9a-f]{8}\.png$/);
+  assert.notEqual(await ogImagePathFor(homeCard('en')), await ogImagePathFor(homeCard('tr')));
 });
 
 test('titleSize: uzun başlık küçülür', () => {

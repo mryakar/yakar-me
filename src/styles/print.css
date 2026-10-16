@@ -42,6 +42,15 @@
       border-top: 1px solid var(--yk-line-strong);
       letter-spacing: 0.04em;
     }
+    @bottom-right {
+      content: counter(page) ' / ' counter(pages);
+      vertical-align: top;
+      text-align: right;
+      margin-top: 6mm;
+      padding-top: 2.5mm;
+      border-top: 1px solid var(--yk-line-strong);
+      letter-spacing: 0.04em;
+    }
   }
 
   .print-article {
@@ -155,6 +164,9 @@
       }
       .in-short {
         font-size: 15px;
+      }
+      .end-mark {
+        color: var(--yk-text);
       }
     }
   }

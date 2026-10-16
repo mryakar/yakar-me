@@ -82,6 +82,7 @@ const en = {
     medium: 'Also on Medium ↗',
     contents: 'Contents',
     topics: { Java: 'Java', Databases: 'Databases' } satisfies Record<Topic, string>,
+    end: 'End',
   },
   reading: {
     description: 'The books I am reading and the ones I have finished.',
@@ -356,6 +357,7 @@ const tr: Dict = {
     medium: "Medium'da da var ↗",
     contents: 'İçindekiler',
     topics: { Java: 'Java', Databases: 'Veritabanları' },
+    end: 'Son',
   },
   reading: {
     description: 'Okumakta olduğum ve bitirdiğim kitaplar.',
@@ -656,6 +658,7 @@ const es: Dict = {
     medium: 'También en Medium ↗',
     contents: 'Índice',
     topics: { Java: 'Java', Databases: 'Bases de datos' },
+    end: 'Fin',
   },
   reading: {
     description: 'Los libros que estoy leyendo y los que he terminado.',
