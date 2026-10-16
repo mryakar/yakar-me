@@ -5,7 +5,7 @@ import { inspectImage } from './lib/image-meta.mjs';
 import { CREDENTIAL_VARS, credentials, get } from './lib/r2.mjs';
 import { PUBLIC_DIR, allRecords, sha256 } from './lib/photo-store.mjs';
 
-const CONCURRENCY = 6;
+const CONCURRENCY = 16;
 const variants = allRecords().flatMap((r) => [...r.data.variants.avif, ...r.data.variants.webp]);
 if (variants.length === 0) {
   console.log('✓ no photos');
