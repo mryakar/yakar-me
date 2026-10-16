@@ -1,5 +1,6 @@
 ---
 import BookCard from './BookCard.astro';
+import Icon from './Icon.astro';
 import { finishedYear, spineHeight, spineThickness, SPINE_HEIGHTS, SPINE_THICKNESSES, type Category } from '../lib/book';
 import { byYear, shortMonth } from '../lib/format';
 import type { FinishedBook } from '../lib/books';
@@ -34,8 +35,8 @@ if (widths.length !== SPINE_THICKNESSES || heights.length !== SPINE_HEIGHTS) thr
             </span>
             <span class="spine-month label text-faint tab:text-inherit">{shortMonth(book.finished, lang)}</span>
             <span class="spine-icon text-muted">
-              <svg class="group-open:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
-              <svg class="hidden group-open:block" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+              <Icon name="plus" size={18} stroke={1.5} class="group-open:hidden" />
+              <Icon name="minus" size={18} stroke={1.5} class="hidden group-open:block" />
             </span>
           </summary>
           <BookCard book={book} lang={lang} />

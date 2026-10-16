@@ -1,0 +1,11 @@
+---
+interface Props {
+  name: 'plus' | 'minus' | 'close' | 'search';
+  size: number;
+  stroke?: number;
+  class?: string;
+}
+const { name, size, stroke = 1.6, class: className } = Astro.props;
+const lines = { plus: 'M12 5v14M5 12h14', minus: 'M5 12h14', close: 'M6 6l12 12M18 6L6 18' };
+---
+<svg class={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width={stroke} stroke-linecap="round" aria-hidden="true">{name === 'search' ? <><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20"></path></> : <path d={lines[name]}></path>}</svg>

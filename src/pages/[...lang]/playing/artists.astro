@@ -5,11 +5,10 @@ import PlayingViews from '../../../components/PlayingViews.astro';
 import Portrait from '../../../components/Portrait.astro';
 import Sleeve from '../../../components/Sleeve.astro';
 import { ui } from '../../../i18n/ui';
-import { langPaths, localize } from '../../../lib/i18n';
+import { langPaths } from '../../../lib/i18n';
 import { songs } from '../../../lib/songs';
-import { altoKey, categoryClass, rankArtists } from '../../../lib/song';
+import { altoKey, categoryClass, rankArtists, songPath } from '../../../lib/song';
 import { documentTitle, plural } from '../../../lib/format';
-import { paths } from '../../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -19,7 +18,6 @@ const { lang } = Astro.props;
 const t = ui[lang].playing;
 const { all } = await songs(lang);
 const artists = rankArtists(all);
-const songsPage = localize(paths.playing, lang);
 const sizes = ['size-26', 'size-37', 'size-49'];
 ---
 <Base lang={lang} title={documentTitle(t.artistsView, ui[lang].nav.playing)} description={t.artistsLede}>
@@ -54,7 +52,7 @@ const sizes = ['size-26', 'size-37', 'size-49'];
                   <ul class="flex flex-col border-t border-line">
                     {artist.songs.map((song) => (
                       <li class="border-b border-line">
-                        <a href={`${songsPage}#${song.id}`} class:list={['group grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-5 gap-y-1 py-3.5 tab:grid-cols-[4.5rem_minmax(0,1fr)_auto]', categoryClass[song.category]]}>
+                        <a href={songPath(song.id, lang)} class:list={['group grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-5 gap-y-1 py-3.5 tab:grid-cols-[4.5rem_minmax(0,1fr)_auto]', categoryClass[song.category]]}>
                           <span class="row-span-2 block w-18 tab:row-span-1"><Sleeve song={song} mini /></span>
                           <span class="flex min-w-0 flex-col gap-1">
                             <span class="font-body text-[21px] leading-tight text-text transition-colors duration-200 group-hover:text-accent" lang={song.lang}>{song.title}</span>

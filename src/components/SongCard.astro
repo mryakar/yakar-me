@@ -4,11 +4,10 @@ import Disc from './Disc.astro';
 import Level from './Level.astro';
 import Portrait from './Portrait.astro';
 import { ui } from '../i18n/ui';
-import { altoKey } from '../lib/song';
+import { altoKey, artistPath } from '../lib/song';
 import { formatMonth, monthStart } from '../lib/format';
-import { localize, type Lang } from '../lib/i18n';
+import type { Lang } from '../lib/i18n';
 import type { Song } from '../lib/songs';
-import { paths } from '../site';
 
 interface Props {
   song: Song;
@@ -42,7 +41,7 @@ const links = [
         </button>
       </div>
       <h3 class="-mt-2 font-display text-d3 tab:text-d2" lang={song.lang}>{song.title}</h3>
-      <a href={`${localize(paths.artists, lang)}#${song.artistId}`} class="group flex items-center gap-3.5 self-start">
+      <a href={artistPath(song.artistId, lang)} class="group flex items-center gap-3.5 self-start">
         <Portrait name={song.artist} class="size-14" />
         <span class="font-body text-[21px] transition-colors duration-200 group-hover:text-accent" lang={song.lang}>{song.artist}</span>
       </a>

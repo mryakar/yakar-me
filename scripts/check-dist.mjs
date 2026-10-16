@@ -9,6 +9,7 @@ import { securityTxtErrors } from './lib/security-txt.mjs';
 import { xmlErrors } from './lib/xml.mjs';
 import { searchIndexErrors } from './lib/search-index.mjs';
 import { defaultLang, locales } from '../src/lib/i18n.ts';
+import { decodeEntities } from '../src/lib/search.ts';
 import { pending } from '../src/i18n/pending.ts';
 
 const args = process.argv.slice(2);
@@ -64,7 +65,7 @@ const feeds = all.filter((f) => f.endsWith('rss.xml'));
 for (const file of feeds) {
   const xml = readFileSync(file, 'utf8');
   for (const e of xmlErrors(xml)) fail(file, `XML: ${e}`);
-  const text = xml.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
+  const text = decodeEntities(xml);
   for (const [, attr] of text.matchAll(/\s(?:href|src)="([^"]*)"/g)) {
     if (!/^[a-z][a-z0-9+.-]*:/i.test(attr)) fail(file, `relative URL in the feed: ${attr}`);
   }

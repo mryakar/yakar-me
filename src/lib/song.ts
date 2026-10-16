@@ -1,3 +1,5 @@
+import { paths } from '../site.ts';
+import { defaultLang, localize, type Lang } from './i18n.ts';
 import { taxonomy } from './taxonomy.ts';
 
 export const genres = {
@@ -20,6 +22,9 @@ export const categoryClass: Record<Category, string> = {
   electronic: 'music-electronic',
   folk: 'music-folk',
 };
+
+export const songPath = (id: string, lang: Lang = defaultLang) => `${localize(paths.playing, lang)}#${id}`;
+export const artistPath = (artistId: string, lang: Lang = defaultLang) => `${localize(paths.artists, lang)}#${artistId}`;
 
 export const LEVELS = 5;
 export const SLEEVE_LAYOUTS = 3;
@@ -89,9 +94,7 @@ export function roman(n: number) {
 }
 
 export function rankArtists<T extends { artist: string }>(songs: T[]) {
-  const byArtist = new Map<string, T[]>();
-  for (const song of songs) byArtist.set(song.artist, [...(byArtist.get(song.artist) ?? []), song]);
-  return [...byArtist]
+  return [...Map.groupBy(songs, (song) => song.artist)]
     .map(([name, list]) => ({ name, songs: list }))
     .sort((a, b) => b.songs.length - a.songs.length || a.name.localeCompare(b.name, 'en'));
 }

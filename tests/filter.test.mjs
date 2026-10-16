@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { filterQuery, matchesFilters, readFilters, toggleFilter } from '../src/lib/filter.ts';
+import { filterQuery, matchesFilters, readFilters, tally, toggleFilter } from '../src/lib/filter.ts';
 
 const known = new Map([
   ['category', new Set(['jazz', 'folk'])],
@@ -31,4 +31,9 @@ test('filterQuery ve matchesFilters', () => {
   assert.equal(matchesFilters({ category: 'jazz', genre: 'bossa-nova' }, state), true);
   assert.equal(matchesFilters({ category: 'jazz', genre: 'soul-jazz' }, state), false);
   assert.equal(matchesFilters({}, new Map()), true);
+});
+
+test('tally: değer başına sayı, ilk görülme sırasıyla', () => {
+  assert.deepEqual([...tally(['jazz', 'pop', 'jazz'])], [['jazz', 2], ['pop', 1]]);
+  assert.equal(tally([]).size, 0);
 });

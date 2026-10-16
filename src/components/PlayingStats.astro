@@ -3,11 +3,10 @@ import KeyWheel from './KeyWheel.astro';
 import Staff from './Staff.astro';
 import Portrait from './Portrait.astro';
 import { ui } from '../i18n/ui';
-import { categories, categoryClass, rankArtists } from '../lib/song';
-import { localize, type Lang } from '../lib/i18n';
+import { artistPath, categories, categoryClass, rankArtists } from '../lib/song';
+import type { Lang } from '../lib/i18n';
 import { orderedGroups, plural } from '../lib/format';
 import type { Song } from '../lib/songs';
-import { paths } from '../site';
 
 interface Props {
   songs: Song[];
@@ -18,7 +17,6 @@ const t = ui[lang].playing;
 const artists = rankArtists(songs);
 const [top, ...rest] = artists;
 const runnersUp = rest.slice(0, 3);
-const artistsPage = localize(paths.artists, lang);
 const kpis = [
   { value: songs.length, label: t.songs },
   { value: artists.length, label: t.artists },
@@ -44,7 +42,7 @@ const heading = 'label text-accent';
   <div class="grid gap-6 desk:grid-cols-2">
     <div class={card}>
       <h3 class={heading}>{t.topArtist}</h3>
-      <a href={`${artistsPage}#${top.songs[0].artistId}`} class="group flex items-center gap-5">
+      <a href={artistPath(top.songs[0].artistId, lang)} class="group flex items-center gap-5">
         <Portrait name={top.name} class="size-24 border-accent tab:size-28" large />
         <span class="flex min-w-0 flex-col gap-1.5">
           <span class="font-display text-d3 transition-colors duration-200 group-hover:text-accent tab:text-d2" lang={top.songs[0].lang}>{top.name}</span>
@@ -55,7 +53,7 @@ const heading = 'label text-accent';
         <ul class="flex flex-col gap-3">
           {runnersUp.map((a) => (
             <li>
-              <a href={`${artistsPage}#${a.songs[0].artistId}`} class="group grid grid-cols-[2.25rem_minmax(0,1fr)_5rem_1.5rem] items-center gap-3">
+              <a href={artistPath(a.songs[0].artistId, lang)} class="group grid grid-cols-[2.25rem_minmax(0,1fr)_5rem_1.5rem] items-center gap-3">
                 <Portrait name={a.name} class="size-9" />
                 <span class="truncate text-[15px] transition-colors duration-200 group-hover:text-accent" lang={a.songs[0].lang}>{a.name}</span>
                 <svg viewBox="0 0 100 4" preserveAspectRatio="none" class="block h-1 w-full" aria-hidden="true">

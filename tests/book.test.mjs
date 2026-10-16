@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   allGenres,
+  bookPath,
   categories,
   categoryOf,
   finishedYear,
@@ -91,4 +92,9 @@ test('şimdi notu yalnız okunan kitapta ve iki dilde', () => {
     assert.equal(b.status, 'reading', b.id);
     for (const lang of ['en', 'tr']) assert.ok(b.nowNote[lang]?.trim(), `${lang} ${b.id}`);
   }
+});
+
+test('bookPath: Reading sayfasında kitabın ISBN çapası, dile göre önek', () => {
+  assert.equal(bookPath('9780262046305'), '/reading/#9780262046305');
+  assert.equal(bookPath('9780262046305', 'tr'), '/tr/reading/#9780262046305');
 });

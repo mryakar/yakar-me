@@ -37,7 +37,3 @@ export async function encode(decoded, width, format, year) {
     .toBuffer();
   return { buffer, width, height };
 }
-
-export async function encodeVariant(input, { width, format, year }) {
-  return encode(await decode(input), width, format, year);
-}

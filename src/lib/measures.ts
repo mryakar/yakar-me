@@ -3,7 +3,8 @@ import { home } from '../site';
 import { defaultLang } from './i18n';
 import { books } from './books';
 import { songs } from './songs';
-import { countsAsCity, countsAsCountry, distanceKm, localYear, takenAt, wordCount } from './measure';
+import { countsAsCity, countsAsCountry, distanceKm, localYear, sum, takenAt, wordCount } from './measure';
+import { cityKey } from './map';
 import { seriesOf } from './photos';
 import { districtCentres } from './districts';
 
@@ -45,17 +46,17 @@ export async function measures() {
     .reduce((a, b) => (b.km > a.km ? b : a));
   return {
     pages: {
-      value: finished.reduce((n, b) => n + b.pages, 0),
+      value: sum(finished, (b) => b.pages),
       since: Math.min(...finished.map((b) => b.finished.getUTCFullYear())),
     },
     articles: writing.length,
     words: {
-      value: writing.reduce((n, w) => n + w.words, 0),
+      value: sum(writing, (w) => w.words),
       since: Math.min(...writing.map((w) => w.year)),
     },
     countries: new Set(shot.filter((f) => countsAsCountry(f.place, home)).map((f) => f.place.country)).size,
     cities: {
-      value: new Set(cities.map((f) => `${f.place.city}, ${f.place.country}`)).size,
+      value: new Set(cities.map((f) => cityKey(f.place))).size,
       latest: cities.at(-1)?.place.city,
     },
     frames: { value: shot.length, series: new Set(shot.map((f) => f.series)).size },

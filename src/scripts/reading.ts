@@ -1,7 +1,6 @@
-import { matchesFilters } from '../lib/filter';
 import { fragmentId } from '../lib/fragment';
 import { cardSlot, openFromHash, rowEnd } from './card-slot';
-import { filterPanel } from './filter-panel';
+import { filterPanel, showMatching } from './filter-panel';
 
 const root = document.querySelector<HTMLElement>('[data-reading]');
 const filters = root?.querySelector<HTMLElement>('[data-filters]');
@@ -17,13 +16,7 @@ if (root && filters && bookcase) {
   const place = cardSlot(books, (open) => rowEnd(open, shelfItems));
 
   const panel = filterPanel(filters, ['category', 'genre', 'original', 'read', 'year'], (state) => {
-    let shown = 0;
-    for (const book of books) {
-      const match = matchesFilters(book.dataset, state);
-      book.hidden = !match;
-      if (!match) book.open = false;
-      else shown++;
-    }
+    const shown = showMatching(books, state);
     for (const y of years) y.hidden = !y.querySelector('[data-book]:not([hidden])');
     clear.hidden = state.size === 0;
     toggleLabel.textContent = state.size ? `${toggle.dataset.label} · ${state.size}` : toggle.dataset.label!;

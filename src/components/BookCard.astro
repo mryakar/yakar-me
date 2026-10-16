@@ -1,5 +1,6 @@
 ---
 import CategoryTint from './CategoryTint.astro';
+import Icon from './Icon.astro';
 import { ui } from '../i18n/ui';
 import { monthYear } from '../lib/format';
 import type { FinishedBook } from '../lib/books';
@@ -33,7 +34,7 @@ const fields: { name: string; value: string; lang?: string }[] = [
         <p class="font-body text-[17px] text-muted tab:text-[19px]">{book.author}</p>
       </div>
       <button type="button" data-close hidden aria-label={t.close} class="inline-flex size-11 flex-none items-center justify-center text-muted transition-colors duration-200 hover:text-text">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        <Icon name="close" size={16} />
       </button>
     </div>
     <dl class="grid gap-3 pr-3 tab:grid-cols-3 tab:gap-x-8 tab:gap-y-4.5 tab:pr-4">

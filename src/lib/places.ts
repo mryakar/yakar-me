@@ -3,7 +3,7 @@ import tiles from '../content/map.json';
 import { allSeries, type Photo } from './photos';
 import { districtCentres } from './districts';
 import { boundsMiddle, cityKey, regionProblems, type Bounds, type Region } from './map';
-import type { Point } from './measure';
+import { sum, type Point } from './measure';
 import type { Lang } from './i18n';
 
 interface MapPlace {
@@ -53,7 +53,7 @@ export async function mapPlaces(lang: Lang): Promise<MapCity[]> {
       bounds: regions.get(cityKey(ps[0]))!,
       middle: boundsMiddle(ps),
       places: ps.sort((a, b) => b.photos.length - a.photos.length || a.district.localeCompare(b.district)),
-      photos: ps.reduce((n, p) => n + p.photos.length, 0),
+      photos: sum(ps, (p) => p.photos.length),
     }))
     .sort((a, b) => a.city.localeCompare(b.city));
 }

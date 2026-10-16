@@ -37,6 +37,8 @@ export function takenAt(taken: string, timeZone: string) {
 export const localYear = (at: Date, timeZone: string) =>
   Number(new Intl.DateTimeFormat('en-US', { timeZone, year: 'numeric' }).format(at));
 
+export const sum = <T>(items: T[], value: (item: T) => number) => items.reduce((n, item) => n + value(item), 0);
+
 export const countsAsCountry = (place: Place, home: Place) => place.country !== home.country;
 
 export const countsAsCity = (place: Place, home: Place) =>

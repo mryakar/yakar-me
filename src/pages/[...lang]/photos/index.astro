@@ -11,6 +11,7 @@ import { allSeries, coverSources, lastTaken, LATEST, type Series } from '../../.
 import { mapPlaces } from '../../../lib/places';
 import { countries, coverTransition, seriesPath, takenYear, FRAME_SIZES } from '../../../lib/photo';
 import { byYear, documentTitle, yearRange } from '../../../lib/format';
+import { sum } from '../../../lib/measure';
 
 export const getStaticPaths = langPaths;
 
@@ -19,7 +20,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { lang } = Astro.props;
 const t = ui[lang].photos;
 const all = await allSeries(lang);
-const places = (await mapPlaces(lang)).reduce((n, c) => n + c.places.length, 0);
+const places = sum(await mapPlaces(lang), (c) => c.places.length);
 const latest = all.slice(0, LATEST);
 const archive = all.slice(LATEST);
 const sources = coverSources(all);
@@ -27,7 +28,7 @@ const sources = coverSources(all);
 const firstYear = (s: Series) => takenYear(s.photos[0].data.taken);
 const lastYear = (s: Series) => takenYear(lastTaken(s.photos));
 const years = (list: Series[], short = false) => yearRange(Math.min(...list.map(firstYear)), Math.max(...list.map(lastYear)), short);
-const photoCount = (list: Series[]) => list.reduce((n, s) => n + s.photos.length, 0);
+const photoCount = (list: Series[]) => sum(list, (s) => s.photos.length);
 const country = (s: Series) => countries(s.photos.map((p) => p.data.place)).map(t.country).join(', ');
 const yearsIfMany = (s: Series) => (firstYear(s) === lastYear(s) ? '' : ` · ${years([s], true)}`);
 const archiveYears = byYear([...archive].sort((a, b) => lastYear(b) - lastYear(a)), lastYear);

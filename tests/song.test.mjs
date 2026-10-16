@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import {
   allGenres,
   altoKey,
+  artistPath,
+  songPath,
   catalogNumber,
   categories,
   categoryClass,
@@ -143,4 +145,10 @@ test('her kategorinin rengi CSS\'te tanımlı', () => {
     assert.match(css, new RegExp(`\\.${categoryClass[c]} \\{`), c);
     for (const token of ['music', 'ink', 'paper']) assert.match(css, new RegExp(`--yk-${token}-${c}:`), `${token} ${c}`);
   }
+});
+
+test('songPath ve artistPath: Playing sayfalarında çapa, dile göre önek', () => {
+  assert.equal(songPath('europa'), '/playing/#europa');
+  assert.equal(songPath('europa', 'es'), '/es/playing/#europa');
+  assert.equal(artistPath('santana', 'tr'), '/tr/playing/artists/#santana');
 });

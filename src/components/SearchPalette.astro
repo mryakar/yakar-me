@@ -1,5 +1,6 @@
 ---
 import Kbd from './Kbd.astro';
+import Icon from './Icon.astro';
 import { ui } from '../i18n/ui';
 import { localize, type Lang } from '../lib/i18n';
 import { sectionLinks } from '../lib/nav';
@@ -15,7 +16,7 @@ const t = ui[lang].search;
 <dialog
   data-palette
   aria-label={t.title}
-  data-index={localize('/search.json', lang)}
+  data-index={localize(paths.searchIndex, lang)}
   data-page={localize(paths.search, lang)}
   data-one={t.results.one}
   data-other={t.results.other}
@@ -25,7 +26,7 @@ const t = ui[lang].search;
   class="mx-auto mt-33 w-[min(40rem,calc(100vw-2rem))] max-w-none max-h-[calc(100dvh-10rem)] flex-col overflow-hidden rounded-xl border border-line-strong bg-card p-0 text-text shadow-[0_24px_64px_var(--yk-shadow)] open:flex backdrop:bg-[color-mix(in_srgb,var(--yk-dim)_78%,transparent)]"
 >
   <div class="flex h-15 flex-none items-center gap-3 border-b border-line pr-4 pl-5">
-    <svg class="flex-none text-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20"></path></svg>
+    <Icon name="search" size={18} class="flex-none text-muted" />
     <input
       type="search"
       role="combobox"

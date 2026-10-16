@@ -9,26 +9,19 @@ import { paths } from '../site';
 type Page = { path: string; langs: readonly Lang[]; lastmod?: Date };
 
 export const GET: APIRoute = async () => {
-  const [written, series] = await Promise.all([
-    Promise.all(locales.map(async (lang) => ({ lang, items: await articles(lang) }))),
-    Promise.all(locales.map(async (lang) => ({ lang, items: await allSeries(lang) }))),
-  ]);
-  const inLangs = <T extends { id: string }>(all: { lang: Lang; items: T[] }[], id: string) =>
-    all.filter((l) => l.items.some((i) => i.id === id)).map((l) => l.lang);
-  const english = written.find((w) => w.lang === defaultLang)!.items;
-  const englishSeries = series.find((s) => s.lang === defaultLang)!.items;
+  const [english, englishSeries] = await Promise.all([articles(defaultLang), allSeries(defaultLang)]);
   const pages: Page[] = [
     { path: paths.home, langs: locales, lastmod: english[0]?.pubDate },
     { path: paths.writing, langs: locales, lastmod: english[0]?.pubDate },
     { path: paths.reading, langs: locales },
     ...(englishSeries.length
-      ? [{ path: paths.photos, langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: inLangs(series, s.id) }))]
+      ? [{ path: paths.photos, langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: s.langs }))]
       : []),
     { path: paths.playing, langs: locales },
     { path: paths.artists, langs: locales },
     { path: paths.about, langs: locales },
     { path: paths.years, langs: locales },
-    ...english.map((a) => ({ path: articlePath(a.id), langs: inLangs(written, a.id), lastmod: a.pubDate })),
+    ...english.map((a) => ({ path: articlePath(a.id), langs: a.langs, lastmod: a.pubDate })),
   ];
   const body = pages
     .flatMap((p) =>

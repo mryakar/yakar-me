@@ -1,7 +1,8 @@
 import { defaultLang, localize, type Lang } from './i18n.ts';
-import { paths } from '../site.ts';
+import { paths, site } from '../site.ts';
+import { monthStart } from './format.ts';
 
-export const PHOTOGRAPHER = 'Ahmet Yakar';
+export const PHOTOGRAPHER = site.name;
 
 export interface Recipe {
   filmSimulation: string;
@@ -69,6 +70,7 @@ interface Shot {
 }
 
 export const seriesPath = (series: string, lang: Lang = defaultLang) => localize(`${paths.photos}${series}/`, lang);
+export const photoPath = (series: string, photo: string, lang: Lang = defaultLang) => `${seriesPath(series, lang)}#${photo}`;
 export const mapPath = (lang: Lang = defaultLang, focus?: string) => `${localize(paths.map, lang)}${focus ? `#${focus}` : ''}`;
 export const variantPath = (file: string) => `/img/${file}`;
 
@@ -89,6 +91,7 @@ export const focalLength = (shot: Pick<Shot, 'kind' | 'focalLength'>, equivalent
   shot.kind === 'phone' ? `${shot.focalLength}mm ${equivalent}` : `${shot.focalLength}mm`;
 
 export const takenYear = (taken: string) => Number(taken.slice(0, 4));
+export const takenMonth = (taken: string) => monthStart(taken.slice(0, 7));
 
 const same = (s: string) => s;
 

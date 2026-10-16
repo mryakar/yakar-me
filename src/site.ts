@@ -18,6 +18,7 @@ export const paths = {
   about: '/about/',
   years: '/years/',
   search: '/search/',
+  searchIndex: '/search.json',
   feed: '/rss.xml',
 } as const;
 
