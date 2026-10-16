@@ -1,0 +1,61 @@
+---
+import ArrowRight from './ArrowRight.astro';
+import { ui } from '../i18n/ui';
+import { localize, type Lang } from '../lib/i18n';
+import { formatNumber, plural } from '../lib/format';
+import { measures } from '../lib/measures';
+import { paths } from '../site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const units = t.about.units;
+const m = await measures();
+const n = (value: number) => formatNumber(value, lang);
+const counted = (forms: { one: string; other: string }, value: number) => `${n(value)} ${plural(forms, value)}`;
+
+const notes = [
+  {
+    label: t.nav.writing,
+    value: m.articles,
+    unit: `${plural(units.articles, m.articles)} · ${counted(units.words, m.words.value)}`,
+    href: paths.writing,
+    go: t.nav.writing,
+  },
+  {
+    label: t.nav.photos,
+    value: m.frames.value,
+    unit: `${plural(units.frames, m.frames.value)} · ${t.photos.series(m.frames.series)}`,
+    href: paths.photos,
+    go: t.nav.photos,
+  },
+  { label: t.nav.playing, value: m.songs, unit: plural(units.songs, m.songs), href: paths.playing, go: t.nav.playing },
+  {
+    label: t.nav.reading,
+    value: m.books,
+    unit: `${plural(units.books, m.books)} · ${t.reading.pageCount(n(m.pages.value))}`,
+    href: paths.reading,
+    go: t.nav.reading,
+  },
+  {
+    label: t.about.travel,
+    value: m.countries,
+    unit: `${plural(t.home.countries, m.countries)} · ${counted(t.home.cities, m.cities.value)}`,
+    href: paths.map,
+    go: t.photos.mapView,
+  },
+];
+---
+<ul class="grid grid-cols-2 gap-x-4 gap-y-6">
+  {notes.map((note) => (
+    <li class="flex flex-col gap-1 border-l border-line-strong pl-3.5">
+      <span class="label text-faint">{note.label}</span>
+      <span class="font-display text-d4 leading-none text-text">{n(note.value)}</span>
+      <span class="text-[13px] leading-[1.35] text-muted">{note.unit}</span>
+      <a href={localize(note.href, lang)} class="group inline-flex w-fit items-center gap-1.5 text-[14px] text-accent">{note.go}<ArrowRight size={12} /></a>
+    </li>
+  ))}
+</ul>

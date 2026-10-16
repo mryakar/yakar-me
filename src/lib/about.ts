@@ -7,6 +7,10 @@ export type BagGroup = (typeof bagGroups)[number];
 export const levels = ['native', 'C2', 'C1', 'B2', 'B1', 'A2', 'A1'] as const;
 export type Level = (typeof levels)[number];
 
+export const SCALE = 6;
+
+export const levelSteps = (level: Level) => Math.min(SCALE, levels.length - levels.indexOf(level));
+
 export const PRESENT = 'present';
 
 export function period(from: number, to: number | typeof PRESENT | undefined, present: string) {

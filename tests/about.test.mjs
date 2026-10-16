@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { languageName, period, PRESENT } from '../src/lib/about.ts';
+import { languageName, levelSteps, period, PRESENT, SCALE } from '../src/lib/about.ts';
 
 test('period: tek yıl, aralık, bugüne dek', () => {
   assert.equal(period(2023, undefined, 'present'), '2023');
@@ -17,4 +17,12 @@ test('languageName: sayfanın dilinde, büyük harfle', () => {
 
 test('languageName: bilinmeyen kod kırar', () => {
   assert.throws(() => languageName('qq', 'en'), /no en name/);
+});
+
+test('levelSteps: A1 bir parça, C2 ve ana dil tam ölçek', () => {
+  assert.equal(levelSteps('A1'), 1);
+  assert.equal(levelSteps('A2'), 2);
+  assert.equal(levelSteps('C1'), 5);
+  assert.equal(levelSteps('C2'), SCALE);
+  assert.equal(levelSteps('native'), SCALE);
 });
