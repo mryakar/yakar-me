@@ -58,11 +58,17 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
 ---
 <Base lang={lang} title={documentTitle()}>
   <div class="flex flex-col gap-16 px-6 pt-9 pb-16 tab:gap-24 desk:gap-26 desk:px-24 desk:pt-26">
-    <section class="flex max-w-205 flex-col gap-6 tab:gap-7">
-      <Tagline lang={lang} />
-      <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
-      <p class="text-lede text-muted">{t.home.lede}</p>
-    </section>
+    <div class="flex items-center justify-between gap-16">
+      <section class="flex max-w-205 flex-col gap-6 tab:gap-7">
+        <div class="flex items-center justify-between gap-4">
+          <Tagline lang={lang} />
+          <Mark class="h-[34px] w-8 flex-none text-accent min-[90rem]:hidden" />
+        </div>
+        <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
+        <p class="text-lede text-muted">{t.home.lede}</p>
+      </section>
+      <Mark class="hidden h-65 w-61 flex-none text-accent min-[90rem]:block" />
+    </div>
 
     <section class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]" aria-label={t.home.numbers}>
       <div class="flex items-center justify-between gap-4 border-b border-line px-4 py-4 tab:px-7">
@@ -175,7 +181,6 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
                 : item.text}
           </p>
         ))}
-        <Mark class="hidden h-3.5 w-[13px] text-accent desk:block" fine />
       </div>
     </section>
 
