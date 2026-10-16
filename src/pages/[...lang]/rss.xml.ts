@@ -12,6 +12,7 @@ import { htmlRenderer } from '../../lib/rendered';
 export const getStaticPaths = langPaths;
 
 const FEED_IMAGE_WIDTH = 1280;
+const FEED_ICON_SIZE = 144;
 
 export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = async ({ props }) => {
   const { lang } = props;
@@ -55,6 +56,7 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
       self: absoluteUrl(localize(paths.feed, lang)),
       description: t.description,
       language: lang,
+      image: { url: absoluteUrl(paths.feedImage), size: FEED_ICON_SIZE },
     },
     await Promise.all([...writing, ...photos]),
   );

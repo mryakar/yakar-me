@@ -7,6 +7,7 @@ import PhotoPicture from '../../components/PhotoPicture.astro';
 import Odometer from '../../components/Odometer.astro';
 import OdometerLink from '../../components/OdometerLink.astro';
 import Globe from '../../components/Globe.astro';
+import Mark from '../../components/Mark.astro';
 import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize } from '../../lib/i18n';
@@ -174,11 +175,15 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
                 : item.text}
           </p>
         ))}
+        <Mark class="hidden h-3.5 w-[13px] text-accent desk:block" fine />
       </div>
     </section>
 
     <footer class="flex items-center justify-between border-t border-line pt-6">
-      <span class="label text-faint">© {new Date().getUTCFullYear()} {site.name}</span>
+      <span class="flex items-center gap-3">
+        <Mark class="h-4 w-[15px] text-accent" fine />
+        <span class="label text-faint">© {new Date().getUTCFullYear()} {site.name}</span>
+      </span>
       <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">RSS</a>
     </footer>
   </div>

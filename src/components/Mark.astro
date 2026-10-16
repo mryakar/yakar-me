@@ -1,0 +1,12 @@
+---
+import { MARK, MARK_VIEWBOX, strokes } from '../lib/mark';
+
+interface Props {
+  class: string;
+  fine?: boolean;
+}
+const { class: className, fine = false } = Astro.props;
+---
+<svg class={className} viewBox={MARK_VIEWBOX} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {strokes(MARK, fine).map((s) => <path d={s.d} stroke-width={s.width} />)}
+</svg>

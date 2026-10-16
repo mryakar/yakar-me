@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { absoluteUrl, articlePath, ogImagePath, byYear, orderedGroups, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthInitials, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import { absoluteUrl, articlePath, byYear, orderedGroups, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthInitials, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -25,11 +25,6 @@ test('İspanyolca tarih: uzun, kısa, ay; ay adı küçük harf', () => {
   assert.equal(formatDate(d, 'short', 'es'), '16 sept 2026');
   assert.equal(formatMonth(new Date('2026-08-01T00:00:00Z'), 'es'), 'ago 2026');
   assert.equal(monthYear(new Date('2018-02-01T00:00:00Z'), 'es'), 'febrero de 2018');
-});
-
-test('ogImagePath: kökte og.png, Türkçede og-tr.png', () => {
-  assert.equal(ogImagePath('en'), '/og.png');
-  assert.equal(ogImagePath('tr'), '/og-tr.png');
 });
 
 test('articlePath: Türkçe önek', () => {

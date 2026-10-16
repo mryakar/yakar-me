@@ -4,14 +4,15 @@ import { pathToFileURL } from 'node:url';
 import { launchChrome } from './lib/cdp.mjs';
 import { frontmatter } from './lib/frontmatter.mjs';
 import { pngChunks } from './lib/png.mjs';
-import { articleCard, ogCardHtml, ogImagePathFor, OG_DIR, OG_SIZE } from '../src/lib/og.ts';
+import { articleCard, homeCard, ogCardHtml, ogImagePathFor, OG_DIR, OG_SIZE } from '../src/lib/og.ts';
+import { locales } from '../src/lib/i18n.ts';
 
 const root = new URL('../', import.meta.url);
 const writing = new URL('src/content/writing/', root);
 const out = new URL(`public${OG_DIR}`, root);
-const asset = (path) => (path === 'favicon.svg' ? new URL('public/favicon.svg', root) : new URL(`node_modules/${path}`, root)).href;
+const asset = (path) => new URL(`node_modules/${path}`, root).href;
 
-const cards = [];
+const cards = locales.map(homeCard);
 for (const slug of readdirSync(writing)) {
   const original = frontmatter(readFileSync(new URL(`${slug}/index.md`, writing), 'utf8'));
   const base = { id: slug, topic: original.topic, pubDate: new Date(original.pubDate) };

@@ -20,6 +20,7 @@ export const paths = {
   search: '/search/',
   searchIndex: '/search.json',
   feed: '/rss.xml',
+  feedImage: '/feed.png',
 } as const;
 
 export const nav = ['home', 'photos', 'writing', 'reading', 'playing', 'years', 'about'] as const;

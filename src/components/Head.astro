@@ -1,8 +1,8 @@
 ---
 import { site, paths } from '../site';
 import { defaultLang, localize, ogLocale, type Lang, type LangLink } from '../lib/i18n';
-import { absoluteUrl, ogImagePath } from '../lib/format';
-import { OG_SIZE } from '../lib/og';
+import { absoluteUrl } from '../lib/format';
+import { homeCard, ogImagePathFor, OG_SIZE } from '../lib/og';
 import { PAGE_BACKGROUND } from '../lib/theme';
 import displayFont from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
 import uiFont from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
@@ -23,7 +23,7 @@ interface Props {
 }
 const { lang, title, description, article, alternates, notFound } = Astro.props;
 const canonical = absoluteUrl(Astro.url.pathname);
-const ogImage = absoluteUrl(article?.image ?? ogImagePath(lang));
+const ogImage = absoluteUrl(article?.image ?? (await ogImagePathFor(homeCard(lang))));
 const xDefault = alternates.find((a) => a.lang === defaultLang);
 ---
 <meta charset="utf-8" />
@@ -51,7 +51,7 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content={PAGE_BACKGROUND.dark} media="(prefers-color-scheme: dark)" />
 <meta name="theme-color" content={PAGE_BACKGROUND.light} media="(prefers-color-scheme: light)" />
-<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <script is:inline src="/theme.js"></script>

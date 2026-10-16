@@ -7,8 +7,6 @@ const SHORT_MONTHS: Record<Lang, string[]> = {
   es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sept', 'oct', 'nov', 'dic'],
 };
 
-export const ogImagePath = (lang: Lang) => (lang === defaultLang ? '/og.png' : `/og-${lang}.png`);
-
 export const articlePath = (id: string, lang: Lang = defaultLang) => localize(`${paths.writing}${id}/`, lang);
 
 export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: Lang = defaultLang) {
