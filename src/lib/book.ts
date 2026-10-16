@@ -1,3 +1,5 @@
+import { paths } from '../site.ts';
+import { defaultLang, localize, type Lang } from './i18n.ts';
 import { taxonomy } from './taxonomy.ts';
 
 export const genres = {
@@ -32,6 +34,8 @@ export function isIsbn13(isbn: string) {
 
 export const newestFirst = <T extends { finished: string; position: number }>(books: T[]) =>
   books.toSorted((a, b) => b.finished.localeCompare(a.finished) || a.position - b.position);
+
+export const bookPath = (isbn: string, lang: Lang = defaultLang) => `${localize(paths.reading, lang)}#${isbn}`;
 
 export const finishedYear = (book: { finished: Date }) => book.finished.getUTCFullYear();
 

@@ -1,6 +1,8 @@
 import { setTimeout as sleep } from 'node:timers/promises';
 import { site } from '../src/site.ts';
-import { linkVerdict } from './lib/live-checks.mjs';
+import { linkVerdict, sitemapUrls } from './lib/live-checks.mjs';
+import { drain } from './lib/pool.mjs';
+import { decodeEntities } from '../src/lib/search.ts';
 
 const ORIGIN = site.url;
 const USER_AGENT = `${site.domain} link check (+${ORIGIN})`;
@@ -8,8 +10,6 @@ const CONCURRENCY = 2;
 const PAUSE_MS = 500;
 const TIMEOUT_MS = 15000;
 const RETRY_AFTER_MS = 60000;
-
-const decode = (href) => href.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 
 async function request(url, method) {
   try {
@@ -34,26 +34,19 @@ async function probe(url) {
 
 async function probeAll(urls) {
   const results = new Map();
-  const queue = [...urls];
-  await Promise.all(
-    Array.from({ length: CONCURRENCY }, async () => {
-      for (let url = queue.shift(); url; url = queue.shift()) {
-        results.set(url, await probe(url));
-        await sleep(PAUSE_MS);
-      }
-    }),
-  );
+  await drain(urls, CONCURRENCY, async (url) => {
+    results.set(url, await probe(url));
+    await sleep(PAUSE_MS);
+  });
   return results;
 }
 
-const sitemap = await (await fetch(`${ORIGIN}/sitemap.xml`)).text();
-const pages = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-if (!pages.length) throw new Error('sitemap.xml lists no pages');
+const pages = sitemapUrls(await (await fetch(`${ORIGIN}/sitemap.xml`)).text());
 const foundOn = new Map();
 for (const page of pages) {
   const html = await (await fetch(page)).text();
   for (const [, href] of html.matchAll(/<a\b[^>]*\shref="(https?:\/\/[^"]+)"/gi)) {
-    const url = decode(href);
+    const url = decodeEntities(href);
     if (url.startsWith(`${ORIGIN}/`)) continue;
     if (!foundOn.has(url)) foundOn.set(url, new URL(page).pathname);
   }

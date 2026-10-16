@@ -1,15 +1,11 @@
 import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
+import { fail } from './lib/cli.mjs';
 import { CREDENTIAL_VARS, credentials, get } from './lib/r2.mjs';
 import { sha256 } from './lib/photo-store.mjs';
 import { COMPRESSION, TILE_TYPE, readHeader, readTiles } from './lib/pmtiles.mjs';
 import { CACHE_DIR, TILES_DIR, manifest, tileDir } from './lib/map-store.mjs';
-
-const fail = (msg) => {
-  console.error(`✗ ${msg}`);
-  process.exit(1);
-};
 
 const m = manifest();
 if (!m) {

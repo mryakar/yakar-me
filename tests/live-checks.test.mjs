@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { caaProblems, caaRecord, certificateProblems, emailDnsProblems, headerProblems, linkVerdict, matchesPattern, parseHeadersFile } from '../scripts/lib/live-checks.mjs';
+import { caaProblems, caaRecord, certificateProblems, emailDnsProblems, headerProblems, linkVerdict, matchesPattern, parseHeadersFile, sitemapUrls } from '../scripts/lib/live-checks.mjs';
 import { inlineCodeProblems, isExternal, loadedUrls } from '../scripts/lib/html-rules.mjs';
 
 const headersFile = `/*
@@ -114,4 +114,10 @@ test('live-expected.json: CAA kayıtları biçimli, Universal SSL kuruluşları 
   for (const ca of ['letsencrypt.org', 'pki.goog', 'ssl.com']) {
     for (const tag of ['issue', 'issuewild']) assert.ok(caa.some((r) => r.startsWith(`0 ${tag} "${ca}`)), `${tag} ${ca}`);
   }
+});
+
+test('sitemapUrls: loc adresleri sırasıyla; boş site haritası kırar', () => {
+  const xml = '<urlset><url><loc>https://yakar.me/</loc></url><url><loc>https://yakar.me/tr/</loc><xhtml:link href="x"/></url></urlset>';
+  assert.deepEqual(sitemapUrls(xml), ['https://yakar.me/', 'https://yakar.me/tr/']);
+  assert.throws(() => sitemapUrls('<urlset></urlset>'), /lists no pages/);
 });

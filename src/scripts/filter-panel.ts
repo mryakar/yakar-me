@@ -1,6 +1,17 @@
 import { plural } from '../lib/format';
-import { filterQuery, readFilters, toggleFilter, type FilterState } from '../lib/filter';
+import { filterQuery, matchesFilters, readFilters, toggleFilter, type FilterState } from '../lib/filter';
 import { replaceQuery } from './history';
+
+export function showMatching(items: Iterable<HTMLDetailsElement>, state: FilterState) {
+  let shown = 0;
+  for (const item of items) {
+    const match = matchesFilters(item.dataset, state);
+    item.hidden = !match;
+    if (!match) item.open = false;
+    else shown++;
+  }
+  return shown;
+}
 
 export function filterPanel(filters: HTMLElement, keys: readonly string[], render: (state: FilterState) => number) {
   const chips = [...filters.querySelectorAll<HTMLButtonElement>('button[data-filter]')];

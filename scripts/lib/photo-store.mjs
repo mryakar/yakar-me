@@ -9,24 +9,22 @@ export const BUCKET = 'yakarme-photos';
 
 export const sha256 = (buf) => createHash('sha256').update(buf).digest('hex');
 
+const jsonRecords = (dir) =>
+  readdirSync(dir)
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => ({ id: f.replace(/\.json$/, ''), data: JSON.parse(readFileSync(join(dir, f), 'utf8')) }));
+
 export function records(root = '.') {
   const dir = join(root, CONTENT_DIR);
   if (!existsSync(dir)) return [];
   return readdirSync(dir, { withFileTypes: true })
     .filter((d) => d.isDirectory())
-    .flatMap((d) =>
-      readdirSync(join(dir, d.name))
-        .filter((f) => f.endsWith('.json'))
-        .map((f) => ({ series: d.name, id: f.replace(/\.json$/, ''), data: JSON.parse(readFileSync(join(dir, d.name, f), 'utf8')) })),
-    );
+    .flatMap((d) => jsonRecords(join(dir, d.name)).map((r) => ({ series: d.name, ...r })));
 }
 
-export function portraits(root = '.') {
+function portraits(root) {
   const dir = join(root, PORTRAIT_DIR);
-  if (!existsSync(dir)) return [];
-  return readdirSync(dir)
-    .filter((f) => f.endsWith('.json'))
-    .map((f) => ({ id: f.replace(/\.json$/, ''), data: JSON.parse(readFileSync(join(dir, f), 'utf8')) }));
+  return existsSync(dir) ? jsonRecords(dir) : [];
 }
 
 export const allRecords = (root = '.') => [...records(root), ...portraits(root)];

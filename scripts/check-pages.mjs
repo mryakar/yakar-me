@@ -2,6 +2,8 @@ import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { launchChrome, waitFor } from './lib/cdp.mjs';
 import { a11yProblems, budgetProblems, kb, weigh } from './lib/page-checks.mjs';
+import { sitemapUrls } from './lib/live-checks.mjs';
+import { drain } from './lib/pool.mjs';
 import { localize, locales } from '../src/lib/i18n.ts';
 
 const PORT = 8788;
@@ -56,9 +58,7 @@ process.on('exit', () => {
 
 {
   await waitFor(async () => (await fetch(`${BASE}/`)).ok, { timeout: 60000, what: `wrangler dev on ${BASE}` });
-  const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
-  const pages = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-  if (pages.length === 0) throw new Error('sitemap.xml lists no pages');
+  const pages = sitemapUrls(await (await fetch(`${BASE}/sitemap.xml`)).text()).map((url) => new URL(url).pathname);
   const jobs = [...pages, ...SEARCHES, ...NOT_FOUND].flatMap((path) => Object.keys(VIEWS).map((view) => ({ path, view })));
 
   chrome = await launchChrome();
@@ -66,20 +66,16 @@ process.on('exit', () => {
   const weights = [];
   const scans = [];
   const problems = [];
-  await Promise.all(
-    tabs.map(async (tab) => {
-      for (let job = jobs.shift(); job; job = jobs.shift()) {
-        try {
-          const result = await check(tab, job).catch(() => check(tab, job));
-          weights.push(result.weight);
-          scans.push(...result.scans);
-          problems.push(...result.problems);
-        } catch (e) {
-          problems.push(`${job.path} (${job.view}): ${e.message}`);
-        }
-      }
-    }),
-  );
+  await drain(jobs, tabs, async (job, tab) => {
+    try {
+      const result = await check(tab, job).catch(() => check(tab, job));
+      weights.push(result.weight);
+      scans.push(...result.scans);
+      problems.push(...result.problems);
+    } catch (e) {
+      problems.push(`${job.path} (${job.view}): ${e.message}`);
+    }
+  });
 
   problems.push(...a11yProblems(scans, exceptions, today));
   const max = (key) => weights.reduce((a, b) => (b[key] > a[key] ? b : a));

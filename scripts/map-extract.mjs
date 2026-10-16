@@ -1,6 +1,8 @@
 import { parseArgs } from 'node:util';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fail } from './lib/cli.mjs';
+import { drain } from './lib/pool.mjs';
 import { put, writeCredentials } from './lib/r2.mjs';
 import { sha256 } from './lib/photo-store.mjs';
 import {
@@ -23,11 +25,6 @@ const { values: opts } = parseArgs({
     'no-upload': { type: 'boolean', default: false },
   },
 });
-
-const fail = (msg) => {
-  console.error(`✗ ${msg}`);
-  process.exit(1);
-};
 
 const cities = regions(photographedDistricts());
 if (cities.length === 0) fail('no photos, nothing to map');
@@ -102,15 +99,10 @@ for (const c of contents) {
 }
 
 const data = new Map();
-const queue = [...batches];
-await Promise.all(
-  Array.from({ length: CONCURRENCY }, async () => {
-    for (let b = queue.shift(); b; b = queue.shift()) {
-      const buf = await range(header.dataOffset + b.start, b.end - b.start);
-      for (const c of b.items) data.set(c.offset, buf.subarray(c.offset - b.start, c.offset - b.start + c.length));
-    }
-  }),
-);
+await drain(batches, CONCURRENCY, async (b) => {
+  const buf = await range(header.dataOffset + b.start, b.end - b.start);
+  for (const c of b.items) data.set(c.offset, buf.subarray(c.offset - b.start, c.offset - b.start + c.length));
+});
 
 const tiles = [...found].map(([id, c]) => ({ id, data: data.get(c.offset) }));
 const zooms = tiles.map((t) => idToZxy(t.id).z);

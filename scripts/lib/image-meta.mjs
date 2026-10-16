@@ -1,7 +1,9 @@
-export const ARTIST = 'Ahmet Yakar';
+import { PHOTOGRAPHER } from '../../src/lib/photo.ts';
+
+export const ARTIST = PHOTOGRAPHER;
 export const MAX_SIDE = 2560;
 export const copyrightText = (year) => `Copyright ${year} ${ARTIST}. All rights reserved.`;
-const COPYRIGHT = /^Copyright (\d{4}) Ahmet Yakar\. All rights reserved\.$/;
+const COPYRIGHT = new RegExp(`^Copyright (\\d{4}) ${RegExp.escape(ARTIST)}\\. All rights reserved\\.$`);
 
 const IFD0_TAGS = new Map([
   [0x0112, 'Orientation'],

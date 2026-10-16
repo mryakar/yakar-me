@@ -1,11 +1,9 @@
 import { home } from '../site';
 import { books } from './books';
-import { countsAsCity, countsAsCountry } from './measure';
+import { countsAsCity, countsAsCountry, sum } from './measure';
 import { frames, written } from './measures';
 import { byMonth, peak, yearsDescending } from './year';
 import type { Lang } from './i18n';
-
-const sum = <T>(items: T[], value: (item: T) => number) => items.reduce((n, item) => n + value(item), 0);
 
 export async function years(lang: Lang, today = new Date()) {
   const [{ reading, finished }, shot, writing] = await Promise.all([books(lang), frames(), written()]);

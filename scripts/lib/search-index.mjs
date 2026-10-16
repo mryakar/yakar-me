@@ -1,4 +1,4 @@
-import { localize } from '../../src/lib/i18n.ts';
+import { defaultLang, localize } from '../../src/lib/i18n.ts';
 import { sections } from '../../src/site.ts';
 
 const isText = (v) => typeof v === 'string';
@@ -13,7 +13,7 @@ export function searchIndexErrors(json, lang, page) {
   if (!Array.isArray(entries) || entries.length === 0) return ['not a non-empty list'];
   const errors = [];
   const prefix = localize('/', lang);
-  const other = lang === 'en' ? /^\/[a-z]{2}\// : null;
+  const other = lang === defaultLang ? /^\/[a-z]{2}\// : null;
   const seen = new Set();
   for (const e of entries) {
     const shape =

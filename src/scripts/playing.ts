@@ -1,7 +1,6 @@
-import { matchesFilters } from '../lib/filter';
 import { fragmentId } from '../lib/fragment';
 import { cardSlot, openFromHash } from './card-slot';
-import { filterPanel } from './filter-panel';
+import { filterPanel, showMatching } from './filter-panel';
 
 const root = document.querySelector<HTMLElement>('[data-playing]');
 const filters = root?.querySelector<HTMLElement>('[data-filters]');
@@ -16,13 +15,7 @@ if (root && filters && crates) {
   const panel = filterPanel(filters, ['category', 'genre'], (state) => {
     let shown = 0;
     for (const section of sections) {
-      let inCrate = 0;
-      for (const song of section.querySelectorAll<HTMLDetailsElement>('[data-song]')) {
-        const match = matchesFilters(song.dataset, state);
-        song.hidden = !match;
-        if (!match) song.open = false;
-        else inCrate++;
-      }
+      const inCrate = showMatching(section.querySelectorAll<HTMLDetailsElement>('[data-song]'), state);
       section.hidden = inCrate === 0;
       section.querySelector('[data-crate-count]')!.textContent = String(inCrate);
       shown += inCrate;

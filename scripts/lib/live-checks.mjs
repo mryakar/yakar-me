@@ -1,4 +1,10 @@
-const DAY_MS = 24 * 60 * 60 * 1000;
+export const DAY_MS = 24 * 60 * 60 * 1000;
+
+export function sitemapUrls(xml) {
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  if (!urls.length) throw new Error('sitemap.xml lists no pages');
+  return urls;
+}
 
 export function parseHeadersFile(text) {
   const rules = [];

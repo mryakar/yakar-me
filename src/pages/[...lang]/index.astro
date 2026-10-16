@@ -10,8 +10,9 @@ import Globe from '../../components/Globe.astro';
 import { home, site, nowUpdated, paths } from '../../site';
 import { ui } from '../../i18n/ui';
 import { langPaths, localize } from '../../lib/i18n';
-import { allSeries, coverSources, lastTaken, recentSeries } from '../../lib/photos';
-import { coverTransition, mapPath, seriesPath, FRAME_SIZES } from '../../lib/photo';
+import { allSeries, byRecent, coverSources, lastTaken } from '../../lib/photos';
+import { coverTransition, mapPath, seriesPath, takenMonth, FRAME_SIZES } from '../../lib/photo';
+import { bookPath } from '../../lib/book';
 import { mapPlaces } from '../../lib/places';
 import { centre } from '../../lib/map';
 import { articles } from '../../lib/writing';
@@ -30,8 +31,9 @@ const n = (value: number) => formatNumber(value, lang);
 const countries = (count: number) => plural(t.home.countries, count);
 const cities = (count: number) => plural(t.home.cities, count);
 const [latest] = await articles(lang);
-const [series] = await recentSeries(lang, 1);
-const sources = coverSources(await allSeries(lang));
+const all = await allSeries(lang);
+const [series] = byRecent(all);
+const sources = coverSources(all);
 const { reading } = await books(lang);
 const [current, ...also] = reading;
 const { practicing } = await songs(lang);
@@ -127,11 +129,11 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.reading.now}</span>
             <span class="flex flex-col gap-2">
-              <a href={`${readingPage}#${current.id}`} class={preview}>{current.title}</a>
+              <a href={bookPath(current.id, lang)} class={preview}>{current.title}</a>
               {also.length > 0 && (
                 <span class="text-sm leading-normal text-muted">
                   {t.home.also} {also.map((book, i) => (
-                    <>{i > 0 && ', '}<a href={`${readingPage}#${book.id}`} class="transition-colors duration-200 hover:text-accent">{book.title}</a></>
+                    <>{i > 0 && ', '}<a href={bookPath(book.id, lang)} class="transition-colors duration-200 hover:text-accent">{book.title}</a></>
                   ))}.
                 </span>
               )}
@@ -141,7 +143,7 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
         )}
         {series && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
-            <span class="label text-faint">{t.home.latestSeries} · {formatMonth(new Date(lastTaken(series.photos).slice(0, 10)), lang)}</span>
+            <span class="label text-faint">{t.home.latestSeries} · {formatMonth(takenMonth(lastTaken(series.photos)), lang)}</span>
             <a href={seriesPath(series.id, lang)} data-cover-pair={seriesPath(series.id, lang)} data-cover-sizes={FRAME_SIZES} class="group flex flex-col gap-3.5">
               <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class:list={['aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90', coverTransition(series.id, sources)]} />
               <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>

@@ -6,12 +6,13 @@ import PhotoViews from '../../../components/PhotoViews.astro';
 import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import ArrowRight from '../../../components/ArrowRight.astro';
+import Icon from '../../../components/Icon.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths } from '../../../lib/i18n';
 import { allSeries, photoSlug } from '../../../lib/photos';
 import { mapPlaces, mapTiles } from '../../../lib/places';
 import { centre, tileRoot } from '../../../lib/map';
-import { seriesPath } from '../../../lib/photo';
+import { photoPath } from '../../../lib/photo';
 import { MAPLIBRE_DIR, MAPLIBRE_FILES } from '../../../lib/vendor';
 import { documentTitle, plural } from '../../../lib/format';
 
@@ -26,7 +27,6 @@ const series = await allSeries(lang);
 const places = cities.flatMap((c) => c.places);
 const middle = centre(places);
 const [mainFile, sharedFile, workerFile] = MAPLIBRE_FILES;
-const close = 'M6 6l12 12M18 6L6 18';
 const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
 ---
 <Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description}>
@@ -58,11 +58,11 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       </div>
       <div class="absolute top-3 right-3 flex flex-col border border-line bg-card tab:top-4 tab:right-4">
         <button type="button" data-zoom="in" aria-label={t.map.zoomIn} class={control}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+          <Icon name="plus" size={16} />
         </button>
         <span class="h-px bg-line"></span>
         <button type="button" data-zoom="out" aria-label={t.map.zoomOut} class={control}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+          <Icon name="minus" size={16} />
         </button>
       </div>
       <p class="label pointer-events-none absolute bottom-4 left-5 hidden text-faint @3xl:block">{t.map.hint}</p>
@@ -76,13 +76,13 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
             <div class="flex items-center justify-between">
               <span class="label text-faint">{p.city}</span>
               <button type="button" data-close aria-label={t.photos.close} class="-my-2.5 -mr-2 flex size-11 items-center justify-center text-muted transition-colors duration-200 hover:text-accent">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d={close}></path></svg>
+                <Icon name="close" size={16} />
               </button>
             </div>
             <h3 class="font-display text-d4">{p.district}</h3>
             <p class="text-sm text-muted">{t.photos.count(p.photos.length)} · {t.map.inSeries(p.series.map((s) => s.title).join(', '))}</p>
           </div>
-          <a href={`${seriesPath(p.series[0].id, lang)}#${photoSlug(p.cover)}`} class="map-card-link group">
+          <a href={photoPath(p.series[0].id, photoSlug(p.cover), lang)} class="map-card-link group">
             {t.map.seePhotos}<ArrowRight />
           </a>
         </article>
@@ -102,7 +102,7 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
               {c.places.map((p) => (
                 <li>
                   <a
-                    href={`${seriesPath(p.series[0].id, lang)}#${photoSlug(p.cover)}`}
+                    href={photoPath(p.series[0].id, photoSlug(p.cover), lang)}
                     data-place={p.id}
                     data-name={p.district}
                     data-count={p.photos.length}

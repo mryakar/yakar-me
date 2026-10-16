@@ -1,16 +1,16 @@
 import type { APIRoute, InferGetStaticPropsType } from 'astro';
 import { ui } from '../../i18n/ui';
-import { langPaths, localize } from '../../lib/i18n';
+import { langPaths } from '../../lib/i18n';
 import { articles } from '../../lib/writing';
-import { allSeries } from '../../lib/photos';
+import { allSeries, lastTaken } from '../../lib/photos';
 import { books } from '../../lib/books';
+import { bookPath } from '../../lib/book';
 import { songs } from '../../lib/songs';
-import { lastTaken } from '../../lib/photos';
-import { placeName, seriesPath } from '../../lib/photo';
+import { songPath } from '../../lib/song';
+import { placeName, seriesPath, takenMonth } from '../../lib/photo';
 import { articlePath, formatDate, formatMonth, monthStart } from '../../lib/format';
 import { htmlRenderer } from '../../lib/rendered';
 import { headings, plainText, type SearchEntry } from '../../lib/search';
-import { paths } from '../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -28,7 +28,7 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
     kind: 'photos',
     url: seriesPath(s.id, lang),
     title: s.title,
-    date: formatMonth(monthStart(lastTaken(s.photos).slice(0, 7)), lang),
+    date: formatMonth(takenMonth(lastTaken(s.photos)), lang),
     detail: s.description,
     keywords: [...new Set(s.photos.map((p) => placeName(p.data.place, t.photos.country)))],
     body: plainText(await html(s.entry)),
@@ -36,7 +36,7 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
   const reading = [...shelf.reading, ...shelf.finished].map(
     (b): SearchEntry => ({
       kind: 'reading',
-      url: `${localize(paths.reading, lang)}#${b.id}`,
+      url: bookPath(b.id, lang),
       title: b.title,
       date: 'finished' in b ? formatMonth(b.finished, lang) : '',
       detail: b.author,
@@ -47,7 +47,7 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
   const playing = played.all.map(
     (s): SearchEntry => ({
       kind: 'playing',
-      url: `${localize(paths.playing, lang)}#${s.id}`,
+      url: songPath(s.id, lang),
       title: s.title,
       date: s.firstPlayed ? formatMonth(monthStart(s.firstPlayed), lang) : '',
       detail: s.artist,

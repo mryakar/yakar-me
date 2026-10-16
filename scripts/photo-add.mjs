@@ -4,6 +4,7 @@ import { createInterface } from 'node:readline';
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, resolve } from 'node:path';
 import { homedir, tmpdir } from 'node:os';
+import { fail } from './lib/cli.mjs';
 import { inspectImage } from './lib/image-meta.mjs';
 import { decode, encode, targetWidths, FORMATS } from './lib/variants.mjs';
 import { put, writeCredentials } from './lib/r2.mjs';
@@ -11,7 +12,7 @@ import { CONTENT_DIR, PORTRAIT_DIR, PUBLIC_DIR, allRecords, records, sha256 } fr
 import {
   EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
 } from './lib/photo-record.mjs';
-import { aperture, focalLength, placeName, recipeRows, shutter, takenYear } from '../src/lib/photo.ts';
+import { aperture, focalLength, placeName, recipeRows, shutter, takenYear, PHOTOGRAPHER } from '../src/lib/photo.ts';
 import { ui } from '../src/i18n/ui.ts';
 
 const USAGE = `Usage: npm run photo:add -- (--series <slug> | --portrait) <photo> [--camera-dir <dir>]... [--alt "<text>"] [--place "<district>, <city>, <country>"] [--no-upload]`;
@@ -37,11 +38,6 @@ rl.on('close', () => {
   ended = true;
   while (waiting.length) waiting.shift()(null);
 });
-const fail = (msg) => {
-  console.error(`✗ ${msg}`);
-  rl.close();
-  process.exit(1);
-};
 const ask = async (q) => {
   process.stdout.write(q);
   const l = lines.length ? lines.shift() : ended ? null : await new Promise((r) => waiting.push(r));
@@ -180,7 +176,7 @@ if (shot.recipe) {
 line('Taken', shot.taken);
 line('Place', `${placeName(shot.place)} — published on the page; coordinates are not`);
 line('Alt', alt);
-line('Rights', `© ${year} Ahmet Yakar — the only metadata in the served files (Artist, Copyright)`);
+line('Rights', `© ${year} ${PHOTOGRAPHER} — the only metadata in the served files (Artist, Copyright)`);
 line('Dropped', `${sourceTags.length} metadata entries of the source (GPS, serial numbers, maker notes, XMP, thumbnails …)`);
 
 console.log('\nEncoding variants …');

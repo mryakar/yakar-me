@@ -4,7 +4,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import tls from 'node:tls';
 import { site } from '../src/site.ts';
 import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
-import { caaProblems, certificateProblems, emailDnsProblems, headerProblems, matchesPattern, parseHeadersFile } from './lib/live-checks.mjs';
+import { DAY_MS, caaProblems, certificateProblems, emailDnsProblems, headerProblems, matchesPattern, parseHeadersFile, sitemapUrls } from './lib/live-checks.mjs';
 import { securityTxtErrors } from './lib/security-txt.mjs';
 
 const ORIGIN = process.argv[2] ?? site.url;
@@ -19,7 +19,6 @@ const CERT_MIN_DAYS = 14;
 const SECURITY_TXT_NOTICE_DAYS = 30;
 const RETRY_MS = 30000;
 const TIMEOUT_MS = 20000;
-const DAY_MS = 24 * 60 * 60 * 1000;
 
 const expected = JSON.parse(readFileSync(new URL('./live-expected.json', import.meta.url), 'utf8'));
 const rules = parseHeadersFile(readFileSync(new URL('../public/_headers', import.meta.url), 'utf8'));
@@ -44,9 +43,7 @@ const get = (path, headers = BROWSER) =>
 const liveUrls = new Set(expected.probes);
 
 async function pages() {
-  const sitemap = await (await get('/sitemap.xml')).text();
-  const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-  if (!paths.length) throw new Error('sitemap.xml lists no pages');
+  const paths = sitemapUrls(await (await get('/sitemap.xml')).text()).map((url) => new URL(url).pathname);
   for (const path of [...paths, NOT_FOUND]) {
     const res = await get(path);
     const want = path === NOT_FOUND ? 404 : 200;

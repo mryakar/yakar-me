@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aperture, countries, coverFirst, coverTransition, COVER_TRANSITIONS, focalLength, imageObject, largest, mapPath, placeName, recipeRows, seriesPath, shutter, signed, smallestAtLeast, takenYear, variantPath } from '../src/lib/photo.ts';
+import { aperture, countries, coverFirst, coverTransition, COVER_TRANSITIONS, focalLength, imageObject, largest, mapPath, photoPath, placeName, recipeRows, seriesPath, shutter, signed, smallestAtLeast, takenMonth, takenYear, variantPath } from '../src/lib/photo.ts';
 import { jsonLd } from '../src/lib/structured.ts';
 import { ui } from '../src/i18n/ui.ts';
 
@@ -130,4 +130,14 @@ test('coverTransition: sıradaki ad ve sınıf; listede olmayana yok; ad listesi
   assert.deepEqual(coverTransition('ankara', ['hong-kong', 'koh-samui', 'ankara']), ['[view-transition-class:series-cover]', '[:root:active-view-transition_&]:bg-transparent', '[view-transition-name:series-cover-3]']);
   assert.equal(coverTransition('nice', ['hong-kong']), undefined);
   assert.throws(() => coverTransition('a', Array.from({ length: COVER_TRANSITIONS.length + 1 }, (_, i) => String(i))), /names/);
+});
+
+test('photoPath: seri sayfasında karenin çapası', () => {
+  assert.equal(photoPath('hong-kong', 'dscf1234'), '/photos/hong-kong/#dscf1234');
+  assert.equal(photoPath('hong-kong', 'dscf1234', 'tr'), '/tr/photos/hong-kong/#dscf1234');
+});
+
+test('takenMonth: çekim anının ayı, ofsetten bağımsız', () => {
+  assert.equal(takenMonth('2024-12-31T23:50:00+08:00').toISOString(), '2024-12-01T00:00:00.000Z');
+  assert.equal(takenMonth('2025-03-04T10:00:00').toISOString(), '2025-03-01T00:00:00.000Z');
 });
