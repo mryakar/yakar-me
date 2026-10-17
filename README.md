@@ -1,7 +1,7 @@
 # yakar.me
 
-Source of [yakar.me](https://yakar.me), the personal site of Ahmet Yakar: writing, photo series, a map of where they
-were taken, reading, playing, years in numbers and an about page — in English, Turkish and Spanish.
+Source of [yakar.me](https://yakar.me), my personal site: writing, photo series, a map of where they were taken,
+reading, playing, years in numbers and an about page — in English, Turkish and Spanish.
 
 Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com), served as static assets on
 Cloudflare Workers. There is no server code.
