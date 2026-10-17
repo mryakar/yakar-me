@@ -10,6 +10,7 @@ const SIZE = 400;
 const { points, centre } = Astro.props;
 const { sphere, land, borders, dots } = globe(points, centre, SIZE);
 ---
+
 <svg class="block size-full" viewBox={`0 0 ${SIZE} ${SIZE}`} aria-hidden="true">
   <path d={sphere} class="fill-ocean stroke-line-strong" stroke-width="1"></path>
   <path d={land} class="fill-land"></path>

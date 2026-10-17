@@ -33,13 +33,23 @@ export async function allSeries(lang: Lang): Promise<Series[]> {
   const orphan = photos.find((p) => !known.has(seriesOf(p)));
   if (orphan) throw new Error(`photo ${orphan.id} belongs to no series`);
   for (const t of translations) {
-    const own = photos.filter((p) => seriesOf(p) === t.id.split('/')[0]).map(photoSlug).sort();
+    const own = photos
+      .filter((p) => seriesOf(p) === t.id.split('/')[0])
+      .map(photoSlug)
+      .sort();
     const given = Object.keys(t.data.alt).sort();
     if (own.join() !== given.join()) {
       throw new Error(`series ${t.id}: alt text for [${given.join(', ')}], photos are [${own.join(', ')}]`);
     }
   }
-  return localized('photos', originals.sort((a, b) => a.data.order - b.data.order), (s) => s.data.lang, translations, lang, pending)
+  return localized(
+    'photos',
+    originals.sort((a, b) => a.data.order - b.data.order),
+    (s) => s.data.lang,
+    translations,
+    lang,
+    pending,
+  )
     .map(({ original: s, translation: t, langs }) => {
       const own = photos
         .filter((p) => seriesOf(p) === s.id)
@@ -71,6 +81,9 @@ export const lastTaken = (photos: Photo[]) => photos.at(-1)!.data.taken;
 
 export const LATEST = 3;
 
-export const byRecent = (series: Series[]) => series.toSorted((a, b) => lastTaken(b.photos).localeCompare(lastTaken(a.photos)));
+export const byRecent = (series: Series[]) =>
+  series.toSorted((a, b) => lastTaken(b.photos).localeCompare(lastTaken(a.photos)));
 
-export const coverSources = (series: Series[]) => [...new Set([...series.slice(0, LATEST), ...byRecent(series).slice(0, 1)].map((s) => s.id))];
+export const coverSources = (series: Series[]) => [
+  ...new Set([...series.slice(0, LATEST), ...byRecent(series).slice(0, 1)].map((s) => s.id)),
+];

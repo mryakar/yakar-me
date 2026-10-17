@@ -52,7 +52,11 @@ function readTiff(buf) {
       if (!size) throw new Problems(`EXIF ${where}: ${name} has bad type`);
       const at = size <= 4 ? e + 8 : u32(e + 8);
       if (at + size > buf.length) throw new Problems(`EXIF ${where}: ${name} out of bounds`);
-      if (type === 2) tags[name] = buf.subarray(at, at + n).toString('latin1').replace(/\0+$/, '');
+      if (type === 2)
+        tags[name] = buf
+          .subarray(at, at + n)
+          .toString('latin1')
+          .replace(/\0+$/, '');
       else if (type === 3) tags[name] = u16(at);
       else if (type === 4) tags[name] = u32(at);
       else tags[name] = buf.subarray(at, at + size);
@@ -73,7 +77,8 @@ function checkExif(tags, width, height) {
   if (!m) throw new Problems('EXIF: Copyright missing or malformed');
   if (tags.Orientation !== undefined && tags.Orientation !== 1) throw new Problems('EXIF: Orientation must be 1');
   if (tags.PixelXDimension !== undefined && tags.PixelXDimension !== width) throw new Problems('EXIF: width mismatch');
-  if (tags.PixelYDimension !== undefined && tags.PixelYDimension !== height) throw new Problems('EXIF: height mismatch');
+  if (tags.PixelYDimension !== undefined && tags.PixelYDimension !== height)
+    throw new Problems('EXIF: height mismatch');
   return Number(m[1]);
 }
 
@@ -130,7 +135,8 @@ function inspectAvif(buf) {
   const types = top.map((b) => b.type);
   if (types.join(',') !== 'ftyp,meta,mdat') throw new Problems(`AVIF: top-level boxes ${types.join(',')}`);
   const [ftyp, meta, mdat] = top;
-  if (buf.subarray(ftyp.start, ftyp.start + 4).toString('latin1') !== 'avif') throw new Problems('AVIF: brand is not avif');
+  if (buf.subarray(ftyp.start, ftyp.start + 4).toString('latin1') !== 'avif')
+    throw new Problems('AVIF: brand is not avif');
 
   const items = new Map();
   const extents = [];
@@ -192,7 +198,8 @@ function inspectAvif(buf) {
             width = d.readUInt32BE(4);
             height = d.readUInt32BE(8);
           } else if (prop.type === 'colr') {
-            if (d.subarray(0, 4).toString('latin1') !== 'nclx') throw new Problems('AVIF: embedded colour profile not allowed');
+            if (d.subarray(0, 4).toString('latin1') !== 'nclx')
+              throw new Problems('AVIF: embedded colour profile not allowed');
           } else if (!['pixi', 'av1C', 'pasp'].includes(prop.type)) {
             throw new Problems(`AVIF: property ${prop.type} not allowed`);
           }
@@ -236,7 +243,11 @@ export function inspectImage(buf) {
   const errors = [];
   let format, width, height, exif, year;
   try {
-    if (buf.length >= 12 && buf.subarray(0, 4).toString('latin1') === 'RIFF' && buf.subarray(8, 12).toString('latin1') === 'WEBP') {
+    if (
+      buf.length >= 12 &&
+      buf.subarray(0, 4).toString('latin1') === 'RIFF' &&
+      buf.subarray(8, 12).toString('latin1') === 'WEBP'
+    ) {
       format = 'webp';
       ({ width, height, exif } = inspectWebp(buf));
     } else if (buf.length >= 12 && buf.subarray(4, 8).toString('latin1') === 'ftyp') {

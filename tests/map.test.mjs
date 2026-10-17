@@ -1,6 +1,18 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { bounds, boundsMiddle, centre, centreLookup, cityKey, contains, padded, placeKey, regionProblems, regions, tileRoot } from '../src/lib/map.ts';
+import {
+  bounds,
+  boundsMiddle,
+  centre,
+  centreLookup,
+  cityKey,
+  contains,
+  padded,
+  placeKey,
+  regionProblems,
+  regions,
+  tileRoot,
+} from '../src/lib/map.ts';
 
 const hk = (district, lat, lon) => ({ district, city: 'Hong Kong', country: 'Hong Kong', lat, lon });
 const causeway = hk('Causeway Bay', 22.28066, 114.18096);
@@ -15,7 +27,10 @@ test('anahtarlar ve karo kökü', () => {
 
 test('bounds ve boundsMiddle: noktaların kutusu ve ortası', () => {
   assert.deepEqual(bounds([causeway, mongKok]), [114.17056, 22.28066, 114.18096, 22.3225]);
-  assert.deepEqual(boundsMiddle([causeway, mongKok]), { lat: (22.28066 + 22.3225) / 2, lon: (114.17056 + 114.18096) / 2 });
+  assert.deepEqual(boundsMiddle([causeway, mongKok]), {
+    lat: (22.28066 + 22.3225) / 2,
+    lon: (114.17056 + 114.18096) / 2,
+  });
   assert.throws(() => bounds([]), /no points/);
 });
 
@@ -45,12 +60,21 @@ test('regionProblems: eksik şehir, kutu dışında semt ve fotoğrafsız şehir
 });
 
 test('centre: küre üstünde ortalama nokta', () => {
-  assert.deepEqual(centre([{ lat: 0, lon: 170 }, { lat: 0, lon: -170 }]), { lat: 0, lon: 180 });
+  assert.deepEqual(
+    centre([
+      { lat: 0, lon: 170 },
+      { lat: 0, lon: -170 },
+    ]),
+    { lat: 0, lon: 180 },
+  );
   assert.deepEqual(centre([{ lat: 10, lon: 20 }]), { lat: 10, lon: 20 });
 });
 
 test('centreLookup: üçlüyle bulur, tabloda olmayan yer kırar', () => {
   const lookup = centreLookup([causeway, ubud]);
   assert.equal(lookup({ district: 'Ubud', city: 'Bali', country: 'Indonesia' }), ubud);
-  assert.throws(() => lookup({ district: 'Ubud', city: 'Bali', country: 'Malaysia' }), /No district centre for "Ubud, Bali, Malaysia"/);
+  assert.throws(
+    () => lookup({ district: 'Ubud', city: 'Bali', country: 'Malaysia' }),
+    /No district centre for "Ubud, Bali, Malaysia"/,
+  );
 });

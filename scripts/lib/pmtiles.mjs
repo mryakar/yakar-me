@@ -127,7 +127,8 @@ const u64 = (buf, at) => {
 };
 
 export function readHeader(buf) {
-  if (buf.length < HEADER_BYTES || buf.subarray(0, 7).toString('latin1') !== MAGIC) throw new Error('not a PMTiles archive');
+  if (buf.length < HEADER_BYTES || buf.subarray(0, 7).toString('latin1') !== MAGIC)
+    throw new Error('not a PMTiles archive');
   if (buf[7] !== VERSION) throw new Error(`PMTiles version ${buf[7]}, expected ${VERSION}`);
   const e7 = (at) => buf.readInt32LE(at) / 1e7;
   return {
@@ -157,7 +158,19 @@ function writeHeader(h) {
   const buf = Buffer.alloc(HEADER_BYTES);
   buf.write(MAGIC, 0, 'latin1');
   buf[7] = VERSION;
-  const fields = ['rootOffset', 'rootLength', 'metadataOffset', 'metadataLength', 'leafOffset', 'leafLength', 'dataOffset', 'dataLength', 'addressedTiles', 'tileEntries', 'tileContents'];
+  const fields = [
+    'rootOffset',
+    'rootLength',
+    'metadataOffset',
+    'metadataLength',
+    'leafOffset',
+    'leafLength',
+    'dataOffset',
+    'dataLength',
+    'addressedTiles',
+    'tileEntries',
+    'tileContents',
+  ];
   fields.forEach((f, i) => buf.writeBigUInt64LE(BigInt(h[f]), 8 + i * 8));
   buf[96] = 1;
   buf[97] = COMPRESSION.gzip;

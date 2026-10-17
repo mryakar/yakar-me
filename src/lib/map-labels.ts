@@ -22,7 +22,12 @@ export const MERGE_PX = 28;
 export const LABEL_OFFSET = 20;
 const DOT = 16;
 
-const box = (x: number, y: number, width: number, height: number): Box => ({ left: x, top: y, right: x + width, bottom: y + height });
+const box = (x: number, y: number, width: number, height: number): Box => ({
+  left: x,
+  top: y,
+  right: x + width,
+  bottom: y + height,
+});
 const overlaps = (a: Box, b: Box) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
 
 export function arrange(spots: Spot[], width: number): Arrangement[] {

@@ -1,6 +1,24 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { absoluteUrl, articlePath, byYear, orderedGroups, documentTitle, yearRange, formatDate, formatMonth, formatNumber, isoDate, readingMinutes, escapeXml, shortMonth, monthInitials, monthYear, englishOrdinal, plural } from '../src/lib/format.ts';
+import {
+  absoluteUrl,
+  articlePath,
+  byYear,
+  orderedGroups,
+  documentTitle,
+  yearRange,
+  formatDate,
+  formatMonth,
+  formatNumber,
+  isoDate,
+  readingMinutes,
+  escapeXml,
+  shortMonth,
+  monthInitials,
+  monthYear,
+  englishOrdinal,
+  plural,
+} from '../src/lib/format.ts';
 
 const d = new Date('2026-09-16T00:00:00Z');
 
@@ -53,7 +71,19 @@ test('shortMonth ve monthYear: iki dilde', () => {
 });
 
 test('englishOrdinal', () => {
-  assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 102, 111].map(englishOrdinal), ['1st', '2nd', '3rd', '4th', '11th', '12th', '13th', '21st', '22nd', '102nd', '111th']);
+  assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 102, 111].map(englishOrdinal), [
+    '1st',
+    '2nd',
+    '3rd',
+    '4th',
+    '11th',
+    '12th',
+    '13th',
+    '21st',
+    '22nd',
+    '102nd',
+    '111th',
+  ]);
 });
 
 test('plural: tekil ve çoğul', () => {
@@ -80,13 +110,26 @@ test('formatNumber: binlik ayırıcı dile göre', () => {
 
 test('byYear: ardışık aynı yıllar bir grup, sıra korunur', () => {
   const groups = byYear([2025, 2025, 2023, 2025], (y) => y);
-  assert.deepEqual(groups.map(({ year, items }) => [year, items.length]), [[2025, 2], [2023, 1], [2025, 1]]);
-  assert.deepEqual(byYear([], (y) => y), []);
+  assert.deepEqual(
+    groups.map(({ year, items }) => [year, items.length]),
+    [
+      [2025, 2],
+      [2023, 1],
+      [2025, 1],
+    ],
+  );
+  assert.deepEqual(
+    byYear([], (y) => y),
+    [],
+  );
 });
 
 test('orderedGroups: anahtar sırasıyla, boş grup düşer', () => {
   const groups = orderedGroups(['a', 'b', 'c'], ['c1', 'a1', 'c2'], (s) => s[0]);
-  assert.deepEqual(groups, [{ key: 'a', items: ['a1'] }, { key: 'c', items: ['c1', 'c2'] }]);
+  assert.deepEqual(groups, [
+    { key: 'a', items: ['a1'] },
+    { key: 'c', items: ['c1', 'c2'] },
+  ]);
 });
 
 test('absoluteUrl: site adresinde mutlak', () => {

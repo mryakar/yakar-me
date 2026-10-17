@@ -8,7 +8,11 @@ import type { Lang } from './i18n';
 export async function years(lang: Lang, today = new Date()) {
   const [{ reading, finished }, shot, writing] = await Promise.all([books(lang), frames(), written()]);
   const current = today.getUTCFullYear();
-  const first = Math.min(...finished.map((b) => b.finished.getUTCFullYear()), ...shot.map((f) => f.year), ...writing.map((w) => w.year));
+  const first = Math.min(
+    ...finished.map((b) => b.finished.getUTCFullYear()),
+    ...shot.map((f) => f.year),
+    ...writing.map((w) => w.year),
+  );
   const rows = yearsDescending(first, current).map((year) => {
     const read = finished.filter((b) => b.finished.getUTCFullYear() === year);
     const unfinished = year === current ? reading : [];

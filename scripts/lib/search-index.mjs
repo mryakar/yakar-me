@@ -17,8 +17,16 @@ export function searchIndexErrors(json, lang, page) {
   const seen = new Set();
   for (const e of entries) {
     const shape =
-      e && sections.includes(e.kind) && isText(e.url) && isText(e.title) && e.title && isText(e.date) && isText(e.detail) && isText(e.body) &&
-      Array.isArray(e.keywords) && e.keywords.every(isText);
+      e &&
+      sections.includes(e.kind) &&
+      isText(e.url) &&
+      isText(e.title) &&
+      e.title &&
+      isText(e.date) &&
+      isText(e.detail) &&
+      isText(e.body) &&
+      Array.isArray(e.keywords) &&
+      e.keywords.every(isText);
     if (!shape) {
       errors.push(`malformed entry: ${JSON.stringify(e).slice(0, 80)}`);
       continue;
@@ -32,7 +40,8 @@ export function searchIndexErrors(json, lang, page) {
     }
     const html = page(path);
     if (html === undefined) errors.push(`${e.url}: no such page in the build`);
-    else if (id !== undefined && !html.includes(` id="${id}"`)) errors.push(`${e.url}: no element with id "${id}" on the page`);
+    else if (id !== undefined && !html.includes(` id="${id}"`))
+      errors.push(`${e.url}: no element with id "${id}" on the page`);
   }
   return errors;
 }

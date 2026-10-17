@@ -19,10 +19,16 @@ test('security.txt: geçmiş, bir yıldan uzak ya da RFC 3339 olmayan tarih kır
 
 test('security.txt: Contact yoksa, Expires iki kezse ya da satır bozuksa kırar', () => {
   assert.match(securityTxtErrors('Expires: 2027-01-01T00:00:00Z\n', now).join(), /no Contact/);
-  assert.match(securityTxtErrors(txt('2027-01-01T00:00:00Z') + 'Expires: 2027-02-01T00:00:00Z\n', now).join(), /2 Expires/);
+  assert.match(
+    securityTxtErrors(txt('2027-01-01T00:00:00Z') + 'Expires: 2027-02-01T00:00:00Z\n', now).join(),
+    /2 Expires/,
+  );
   assert.match(securityTxtErrors(txt('2027-01-01T00:00:00Z') + 'garbage\n', now).join(), /malformed/);
 });
 
 test('public/.well-known/security.txt bugün geçerli', () => {
-  assert.deepEqual(securityTxtErrors(readFileSync(new URL('../public/.well-known/security.txt', import.meta.url), 'utf8')), []);
+  assert.deepEqual(
+    securityTxtErrors(readFileSync(new URL('../public/.well-known/security.txt', import.meta.url), 'utf8')),
+    [],
+  );
 });

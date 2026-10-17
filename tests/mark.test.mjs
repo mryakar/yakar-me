@@ -6,15 +6,21 @@ import { BOX, FINE_ARM, MARK, MARK_SMALL, iconSvg, markSvg, strokes } from '../s
 
 const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
-test('BOX: zemin ve mürekkep koyu temanın --yk-bg ve --yk-accent\'i', () => {
+test("BOX: zemin ve mürekkep koyu temanın --yk-bg ve --yk-accent'i", () => {
   const dark = (name) => new RegExp(`--yk-${name}: light-dark\\([^,]+,\\s*([^)]+)\\);`).exec(css)?.[1].trim();
   assert.equal(BOX.ground, dark('bg'));
   assert.equal(BOX.ink, dark('accent'));
 });
 
 test('strokes: ince kol yalnız sol kolu kalınlaştırır', () => {
-  assert.deepEqual(strokes(MARK).map((s) => s.width), [MARK.arm.width, MARK.stem.width]);
-  assert.deepEqual(strokes(MARK, true).map((s) => s.width), [FINE_ARM, MARK.stem.width]);
+  assert.deepEqual(
+    strokes(MARK).map((s) => s.width),
+    [MARK.arm.width, MARK.stem.width],
+  );
+  assert.deepEqual(
+    strokes(MARK, true).map((s) => s.width),
+    [FINE_ARM, MARK.stem.width],
+  );
 });
 
 test('markSvg: harfe sıkı kutu, yükseklik orana göre', () => {
@@ -28,15 +34,21 @@ test('iconSvg: kutu yuvarlak ya da köşesiz', () => {
   assert.match(iconSvg({ drawing: MARK, rounded: false }), /<rect width="32" height="32" fill="#08090a"\/>/);
 });
 
-test('public/favicon.svg: kutu + küçük boyut çizimi, mark.ts\'ten', () => {
-  assert.equal(readFileSync(new URL('../public/favicon.svg', import.meta.url), 'utf8'), `${iconSvg({ drawing: MARK_SMALL })}\n`);
+test("public/favicon.svg: kutu + küçük boyut çizimi, mark.ts'ten", () => {
+  assert.equal(
+    readFileSync(new URL('../public/favicon.svg', import.meta.url), 'utf8'),
+    `${iconSvg({ drawing: MARK_SMALL })}\n`,
+  );
 });
 
 const pub = (name) => readFileSync(new URL(`../public/${name}`, import.meta.url));
 const size = (png) => [png.readUInt32BE(16), png.readUInt32BE(20)];
 
-test('simge PNG\'leri: boyut, yalnız IHDR/IDAT/IEND; apple-touch-icon saydamlıksız (RGB)', () => {
-  for (const [name, px] of [['apple-touch-icon.png', 180], ['feed.png', 144]]) {
+test("simge PNG'leri: boyut, yalnız IHDR/IDAT/IEND; apple-touch-icon saydamlıksız (RGB)", () => {
+  for (const [name, px] of [
+    ['apple-touch-icon.png', 180],
+    ['feed.png', 144],
+  ]) {
     const png = pub(name);
     assert.deepEqual(size(png), [px, px], name);
     assert.deepEqual([...new Set(pngChunks(png))].sort(), ['IDAT', 'IEND', 'IHDR'], name);

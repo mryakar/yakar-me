@@ -23,7 +23,9 @@ export function filterPanel(filters: HTMLElement, keys: readonly string[], rende
   const known = new Map<string, Set<string>>(keys.map((k) => [k, new Set()]));
   for (const c of chips) if (c.dataset.value) known.get(c.dataset.filter!)?.add(c.dataset.value);
   for (const s of selects) for (const o of s.options) if (o.value) known.get(s.dataset.filter!)?.add(o.value);
-  const parentOf = new Map(chips.filter((c) => c.dataset.filter === 'genre').map((c) => [c.dataset.value!, c.dataset.category!]));
+  const parentOf = new Map(
+    chips.filter((c) => c.dataset.filter === 'genre').map((c) => [c.dataset.value!, c.dataset.category!]),
+  );
   let state = readFilters(new URLSearchParams(location.search), known, parentOf);
 
   const apply = () => {
@@ -45,7 +47,8 @@ export function filterPanel(filters: HTMLElement, keys: readonly string[], rende
     apply();
   };
 
-  for (const c of chips) c.addEventListener('click', () => set(toggleFilter(state, c.dataset.filter!, c.dataset.value!)));
+  for (const c of chips)
+    c.addEventListener('click', () => set(toggleFilter(state, c.dataset.filter!, c.dataset.value!)));
   for (const s of selects) {
     s.addEventListener('change', () => {
       const next = new Map(state);

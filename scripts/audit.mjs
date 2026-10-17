@@ -25,4 +25,6 @@ if (problems.length) {
   for (const p of problems) console.error(`✗ ${p}`);
   process.exit(1);
 }
-console.log(`✓ npm audit: no advisories${exceptions.length ? ` beyond ${exceptions.map((e) => `${e.id} (until ${e.until})`).join(', ')}` : ''}`);
+console.log(
+  `✓ npm audit: no advisories${exceptions.length ? ` beyond ${exceptions.map((e) => `${e.id} (until ${e.until})`).join(', ')}` : ''}`,
+);

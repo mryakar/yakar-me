@@ -16,7 +16,10 @@ export function splitPath(path: string): { lang: Lang; path: string } {
 export const langPaths = () =>
   locales.map((lang) => ({ params: { lang: lang === defaultLang ? undefined : lang }, props: { lang } }));
 
-export async function langItemPaths<T>(load: (lang: Lang) => Promise<T[]>, params: (item: T) => Record<string, string>) {
+export async function langItemPaths<T>(
+  load: (lang: Lang) => Promise<T[]>,
+  params: (item: T) => Record<string, string>,
+) {
   const perLang = await Promise.all(
     langPaths().map(async ({ params: base, props: { lang } }) =>
       (await load(lang)).map((item) => ({ params: { ...base, ...params(item) }, props: { lang, item } })),

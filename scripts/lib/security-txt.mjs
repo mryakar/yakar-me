@@ -16,7 +16,9 @@ export function securityTxtErrors(text, now = new Date()) {
     errors.push(`${expires.length} Expires fields, exactly one is required`);
     return errors;
   }
-  const date = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/.test(expires[0]) ? new Date(expires[0]) : null;
+  const date = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/.test(expires[0])
+    ? new Date(expires[0])
+    : null;
   if (!date || Number.isNaN(date.valueOf())) errors.push(`Expires is not an RFC 3339 date-time: ${expires[0]}`);
   else if (date <= now) errors.push(`Expires has passed: ${expires[0]}`);
   else if (date.valueOf() - now.valueOf() > YEAR_MS) errors.push(`Expires is more than a year away: ${expires[0]}`);

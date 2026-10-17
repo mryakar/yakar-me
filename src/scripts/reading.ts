@@ -25,7 +25,9 @@ if (root && filters && bookcase) {
   });
 
   clear.addEventListener('click', () => panel.set(new Map()));
-  toggle.addEventListener('click', () => toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true')));
+  toggle.addEventListener('click', () =>
+    toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true')),
+  );
 
   bookcase.dataset.enhanced = '';
   panel.apply();

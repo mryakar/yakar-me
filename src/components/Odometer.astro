@@ -7,6 +7,7 @@ const chars = 'shown' in Astro.props ? readout(Astro.props.shown) : odometer(Ast
 const digitClass = ['d-0', 'd-1', 'd-2', 'd-3', 'd-4', 'd-5', 'd-6', 'd-7', 'd-8', 'd-9'];
 const sizeClass = { big: 'odo-big', small: 'odo-small', mini: 'odo-mini' };
 ---
+
 <span class:list={['odo-cells', size && sizeClass[size]]} aria-hidden="true">
   {chars.map((c) =>
     'digit' in c ? (

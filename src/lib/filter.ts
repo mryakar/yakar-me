@@ -25,4 +25,5 @@ export const filterQuery = (keys: readonly string[], state: FilterState) =>
 export const matchesFilters = (data: Record<string, string | undefined>, state: FilterState) =>
   [...state].every(([key, value]) => data[key] === value);
 
-export const tally = <K>(values: K[]) => values.reduce((counts, v) => counts.set(v, (counts.get(v) ?? 0) + 1), new Map<K, number>());
+export const tally = <K>(values: K[]) =>
+  values.reduce((counts, v) => counts.set(v, (counts.get(v) ?? 0) + 1), new Map<K, number>());

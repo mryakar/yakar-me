@@ -42,7 +42,8 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
       title: s.title,
       url: page,
       description: s.description,
-      content: translationNote(s.original, seriesPath(s.id, s.original)) + figure + absoluteUrls(await body(s.entry), page),
+      content:
+        translationNote(s.original, seriesPath(s.id, s.original)) + figure + absoluteUrls(await body(s.entry), page),
       category: t.nav.photos,
       date: s.published,
       image: { url: image, type: 'image/webp', bytes: cover.bytes },

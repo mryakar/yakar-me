@@ -20,9 +20,18 @@ export const OG_COLORS = {
 };
 
 const OG_FONTS = {
-  display: ['@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2', '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-normal.woff2'],
-  italic: ['@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2', '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-italic.woff2'],
-  mono: ['@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2', '@fontsource-variable/geist-mono/files/geist-mono-latin-ext-wght-normal.woff2'],
+  display: [
+    '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2',
+    '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-normal.woff2',
+  ],
+  italic: [
+    '@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2',
+    '@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-italic.woff2',
+  ],
+  mono: [
+    '@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2',
+    '@fontsource-variable/geist-mono/files/geist-mono-latin-ext-wght-normal.woff2',
+  ],
 };
 
 const LATIN = 'U+0000-00FF, U+0131, U+0152-0153, U+2000-206F';
@@ -44,7 +53,12 @@ type OgCard = ArticleCard | HomeCard;
 
 export function articleCard(a: { id: string; title: string; topic: Topic; pubDate: Date }, lang: Lang): ArticleCard {
   const topic = ui[lang].writing.topics[a.topic];
-  return { slug: a.id, lang, label: `${topic} · ${formatDate(a.pubDate, 'short', lang)}`.toLocaleLowerCase(lang), title: a.title };
+  return {
+    slug: a.id,
+    lang,
+    label: `${topic} · ${formatDate(a.pubDate, 'short', lang)}`.toLocaleLowerCase(lang),
+    title: a.title,
+  };
 }
 
 export const homeCard = (lang: Lang): HomeCard => ({ slug: 'home', lang });
@@ -68,7 +82,8 @@ function baseCss(asset: (path: string) => string) {
   );
 }
 
-const page = (lang: Lang, css: string, body: string) => `<!doctype html><html lang="${lang}"><meta charset="utf-8"><style>${css}</style><body>${body}</body></html>`;
+const page = (lang: Lang, css: string, body: string) =>
+  `<!doctype html><html lang="${lang}"><meta charset="utf-8"><style>${css}</style><body>${body}</body></html>`;
 
 function articleHtml(card: ArticleCard, asset: (path: string) => string) {
   const c = OG_COLORS;
@@ -113,7 +128,8 @@ function homeHtml(card: HomeCard, asset: (path: string) => string) {
   );
 }
 
-export const ogCardHtml = (card: OgCard, asset: (path: string) => string) => ('title' in card ? articleHtml(card, asset) : homeHtml(card, asset));
+export const ogCardHtml = (card: OgCard, asset: (path: string) => string) =>
+  'title' in card ? articleHtml(card, asset) : homeHtml(card, asset);
 
 export async function ogImagePathFor(card: OgCard) {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ogCardHtml(card, (path) => path)));

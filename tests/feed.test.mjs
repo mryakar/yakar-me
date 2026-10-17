@@ -13,10 +13,18 @@ const item = (over = {}) => ({
   date: new Date('2026-09-16T00:00:00Z'),
   ...over,
 });
-const channel = { title: 'Ahmet Yakar', url: 'https://yakar.me/', self: 'https://yakar.me/rss.xml', description: 'D', language: 'en', image: { url: 'https://yakar.me/feed.png', size: 144 } };
+const channel = {
+  title: 'Ahmet Yakar',
+  url: 'https://yakar.me/',
+  self: 'https://yakar.me/rss.xml',
+  description: 'D',
+  language: 'en',
+  image: { url: 'https://yakar.me/feed.png', size: 144 },
+};
 
 test('absoluteUrls: kök ve parça adresleri mutlak olur, dış adres ve şema dokunulmaz', () => {
-  const html = '<a href="/photos/">p</a><a href="#intro">i</a><a href="https://example.com/x">x</a><a href="mailto:a@b.c">m</a><img src="/_astro/a.webp">';
+  const html =
+    '<a href="/photos/">p</a><a href="#intro">i</a><a href="https://example.com/x">x</a><a href="mailto:a@b.c">m</a><img src="/_astro/a.webp">';
   assert.equal(
     absoluteUrls(html, page),
     '<a href="https://yakar.me/photos/">p</a><a href="https://yakar.me/writing/locks/#intro">i</a><a href="https://example.com/x">x</a><a href="mailto:a@b.c">m</a><img src="https://yakar.me/_astro/a.webp">',
@@ -49,7 +57,10 @@ test('newestFirst: yeniden eskiye; aynı günde ilk sıra korunur', () => {
   const b = item({ title: 'b', date: new Date('2026-10-01') });
   const c = item({ title: 'c', date: new Date('2026-09-16') });
   const d = item({ title: 'd', date: new Date('2026-10-02') });
-  assert.deepEqual(newestFirst([c, a, b, d]).map((i) => i.title), ['d', 'a', 'b', 'c']);
+  assert.deepEqual(
+    newestFirst([c, a, b, d]).map((i) => i.title),
+    ['d', 'a', 'b', 'c'],
+  );
 });
 
 test('rssFeed: iyi biçimli XML, content ad alanı tanımlı', () => {
@@ -61,5 +72,8 @@ test('rssFeed: iyi biçimli XML, content ad alanı tanımlı', () => {
 
 test('rssFeed: kanal görseli kanalın adı ve adresiyle, 144 px sınırında', () => {
   const xml = rssFeed(channel, []);
-  assert.match(xml, /<image>\s*<url>https:\/\/yakar\.me\/feed\.png<\/url>\s*<title>Ahmet Yakar<\/title>\s*<link>https:\/\/yakar\.me\/<\/link>\s*<width>144<\/width>\s*<height>144<\/height>\s*<\/image>/);
+  assert.match(
+    xml,
+    /<image>\s*<url>https:\/\/yakar\.me\/feed\.png<\/url>\s*<title>Ahmet Yakar<\/title>\s*<link>https:\/\/yakar\.me\/<\/link>\s*<width>144<\/width>\s*<height>144<\/height>\s*<\/image>/,
+  );
 });

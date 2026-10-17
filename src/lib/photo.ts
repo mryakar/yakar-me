@@ -48,9 +48,12 @@ export const COVER_TRANSITIONS = [
 ] as const;
 
 export function coverTransition(id: string, ids: string[]) {
-  if (ids.length > COVER_TRANSITIONS.length) throw new Error(`coverTransition: ${ids.length} series, ${COVER_TRANSITIONS.length} names`);
+  if (ids.length > COVER_TRANSITIONS.length)
+    throw new Error(`coverTransition: ${ids.length} series, ${COVER_TRANSITIONS.length} names`);
   const i = ids.indexOf(id);
-  return i === -1 ? undefined : ['[view-transition-class:series-cover]', '[:root:active-view-transition_&]:bg-transparent', COVER_TRANSITIONS[i]];
+  return i === -1
+    ? undefined
+    : ['[view-transition-class:series-cover]', '[:root:active-view-transition_&]:bg-transparent', COVER_TRANSITIONS[i]];
 }
 
 export const countries = (places: Place[]) => [...new Set(places.map((p) => p.country))];
@@ -70,11 +73,14 @@ interface Shot {
 }
 
 export const seriesPath = (series: string, lang: Lang = defaultLang) => localize(`${paths.photos}${series}/`, lang);
-export const photoPath = (series: string, photo: string, lang: Lang = defaultLang) => `${seriesPath(series, lang)}#${photo}`;
-export const mapPath = (lang: Lang = defaultLang, focus?: string) => `${localize(paths.map, lang)}${focus ? `#${focus}` : ''}`;
+export const photoPath = (series: string, photo: string, lang: Lang = defaultLang) =>
+  `${seriesPath(series, lang)}#${photo}`;
+export const mapPath = (lang: Lang = defaultLang, focus?: string) =>
+  `${localize(paths.map, lang)}${focus ? `#${focus}` : ''}`;
 export const variantPath = (file: string) => `/img/${file}`;
 
-export const largest = <V extends { width: number }>(variants: V[]) => variants.reduce((a, b) => (b.width > a.width ? b : a));
+export const largest = <V extends { width: number }>(variants: V[]) =>
+  variants.reduce((a, b) => (b.width > a.width ? b : a));
 export const smallestAtLeast = <V extends { width: number }>(variants: V[], width: number) =>
   [...variants].sort((a, b) => a.width - b.width).find((v) => v.width >= width) ?? largest(variants);
 
@@ -108,7 +114,11 @@ export function recipeRows(r: Recipe, value = same) {
   if (r.highlight !== undefined) rows.push(['highlight', signed(r.highlight)]);
   if (r.shadow !== undefined) rows.push(['shadow', signed(r.shadow)]);
   if (r.color !== undefined) rows.push(['color', signed(r.color)]);
-  if (r.monochromaticColor) rows.push(['monochromaticColor', `WC${signed(r.monochromaticColor[0], '+0')} MG${signed(r.monochromaticColor[1], '+0')}`]);
+  if (r.monochromaticColor)
+    rows.push([
+      'monochromaticColor',
+      `WC${signed(r.monochromaticColor[0], '+0')} MG${signed(r.monochromaticColor[1], '+0')}`,
+    ]);
   if (r.whiteBalance) {
     const [red, blue] = r.whiteBalanceShift ?? [0, 0];
     rows.push(['whiteBalance', `${value(r.whiteBalance)} · R${signed(red, '+0')} B${signed(blue, '+0')}`]);

@@ -1,6 +1,16 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { countsAsCity, countsAsCountry, distanceKm, localYear, odometer, readout, sum, takenAt, wordCount } from '../src/lib/measure.ts';
+import {
+  countsAsCity,
+  countsAsCountry,
+  distanceKm,
+  localYear,
+  odometer,
+  readout,
+  sum,
+  takenAt,
+  wordCount,
+} from '../src/lib/measure.ts';
 
 const ankara = { lat: 39.9334, lon: 32.8597 };
 const home = { city: 'Ankara', country: 'Turkey' };
@@ -69,11 +79,20 @@ test('localYear: yıl karenin yerindeki saate göre', () => {
 
 test('readout: rakamlar hücre, ayırıcı ayrı, iki dilde', () => {
   assert.deepEqual(readout('7,726'), [{ digit: 7 }, { separator: ',' }, { digit: 7 }, { digit: 2 }, { digit: 6 }]);
-  assert.deepEqual(readout('10.013').map((c) => ('digit' in c ? c.digit : c.separator)), [1, 0, '.', 0, 1, 3]);
+  assert.deepEqual(
+    readout('10.013').map((c) => ('digit' in c ? c.digit : c.separator)),
+    [1, 0, '.', 0, 1, 3],
+  );
   assert.deepEqual(readout('9'), [{ digit: 9 }]);
 });
 
 test('sum: değerlerin toplamı, boş listede 0', () => {
-  assert.equal(sum([{ pages: 120 }, { pages: 300 }], (b) => b.pages), 420);
-  assert.equal(sum([], () => 1), 0);
+  assert.equal(
+    sum([{ pages: 120 }, { pages: 300 }], (b) => b.pages),
+    420,
+  );
+  assert.equal(
+    sum([], () => 1),
+    0,
+  );
 });

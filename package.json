@@ -11,7 +11,9 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "wrangler dev",
+    "format": "prettier --write .",
     "check:audit": "node scripts/audit.mjs",
+    "check:format": "prettier --check .",
     "check:dist": "node scripts/check-dist.mjs",
     "check:pages": "node scripts/check-pages.mjs",
     "check:live": "node scripts/check-live.mjs",
@@ -43,6 +45,8 @@
     "@types/d3-geo": "^3.1.1",
     "@types/topojson-client": "^3.1.5",
     "axe-core": "^4.14.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
     "wrangler": "^4.149.0"

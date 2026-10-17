@@ -4,7 +4,16 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import tls from 'node:tls';
 import { site } from '../src/site.ts';
 import { inlineCodeProblems, isExternal, loadedUrls } from './lib/html-rules.mjs';
-import { DAY_MS, caaProblems, certificateProblems, emailDnsProblems, headerProblems, matchesPattern, parseHeadersFile, sitemapUrls } from './lib/live-checks.mjs';
+import {
+  DAY_MS,
+  caaProblems,
+  certificateProblems,
+  emailDnsProblems,
+  headerProblems,
+  matchesPattern,
+  parseHeadersFile,
+  sitemapUrls,
+} from './lib/live-checks.mjs';
 import { securityTxtErrors } from './lib/security-txt.mjs';
 
 const ORIGIN = process.argv[2] ?? site.url;
@@ -56,7 +65,8 @@ async function pages() {
       else if (url.startsWith('/')) liveUrls.add(url.split(/[?#]/)[0]);
     }
     for (const [, tiles] of html.matchAll(/\sdata-tiles="([^"{]+)/g)) liveUrls.add(`${tiles}0/0/0.mvt`);
-    for (const [, image] of html.matchAll(/<meta property="og:image" content="([^"]+)"/g)) liveUrls.add(new URL(image).pathname);
+    for (const [, image] of html.matchAll(/<meta property="og:image" content="([^"]+)"/g))
+      liveUrls.add(new URL(image).pathname);
   }
   return `${paths.length + 1} pages: status, headers, no inline code or outside resources (browser request)`;
 }
@@ -80,7 +90,9 @@ function resolver(server) {
   const r = new Resolver({ timeout: 5000, tries: 2 });
   r.setServers([server]);
   const query = (what, call) =>
-    once(`${server} ${what}`, () => call().catch((e) => (['ENODATA', 'ENOTFOUND'].includes(e.code) ? [] : Promise.reject(e))));
+    once(`${server} ${what}`, () =>
+      call().catch((e) => (['ENODATA', 'ENOTFOUND'].includes(e.code) ? [] : Promise.reject(e))),
+    );
   return { r, query };
 }
 
@@ -111,16 +123,18 @@ async function caa() {
 }
 
 async function certificate() {
-  const cert = await once('TLS', () =>
-    new Promise((resolve, reject) => {
-      const socket = tls.connect({ host: HOST, port: 443, servername: HOST, timeout: TIMEOUT_MS }, () => {
-        const c = socket.getPeerCertificate();
-        socket.end();
-        resolve({ validTo: c.valid_to, subjectAltName: c.subjectaltname });
-      });
-      socket.on('error', reject);
-      socket.on('timeout', () => socket.destroy(new Error('timeout')));
-    }),
+  const cert = await once(
+    'TLS',
+    () =>
+      new Promise((resolve, reject) => {
+        const socket = tls.connect({ host: HOST, port: 443, servername: HOST, timeout: TIMEOUT_MS }, () => {
+          const c = socket.getPeerCertificate();
+          socket.end();
+          resolve({ validTo: c.valid_to, subjectAltName: c.subjectaltname });
+        });
+        socket.on('error', reject);
+        socket.on('timeout', () => socket.destroy(new Error('timeout')));
+      }),
   );
   problems.push(...certificateProblems(cert, HOST, new Date(), CERT_MIN_DAYS));
   return `certificate valid until ${cert.validTo}`;
@@ -130,7 +144,8 @@ async function securityContact() {
   const live = await (await get('/.well-known/security.txt', { 'user-agent': BROWSER['user-agent'] })).text();
   if (live !== securityTxt) problems.push('/.well-known/security.txt: the live file differs from the repository');
   const notice = new Date(Date.now() + SECURITY_TXT_NOTICE_DAYS * DAY_MS);
-  for (const e of securityTxtErrors(live, notice)) problems.push(`/.well-known/security.txt in ${SECURITY_TXT_NOTICE_DAYS} days: ${e}`);
+  for (const e of securityTxtErrors(live, notice))
+    problems.push(`/.well-known/security.txt in ${SECURITY_TXT_NOTICE_DAYS} days: ${e}`);
   return 'security.txt matches the repository and is not about to expire';
 }
 

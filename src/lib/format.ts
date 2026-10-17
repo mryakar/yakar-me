@@ -18,11 +18,13 @@ export function formatDate(date: Date, month: 'long' | 'short' = 'long', lang: L
 
 export const shortMonth = (date: Date, lang: Lang = defaultLang) => SHORT_MONTHS[lang][date.getUTCMonth()];
 
-export const monthInitials = (lang: Lang = defaultLang) => SHORT_MONTHS[lang].map((m) => m[0].toLocaleUpperCase(dateLocale[lang]));
+export const monthInitials = (lang: Lang = defaultLang) =>
+  SHORT_MONTHS[lang].map((m) => m[0].toLocaleUpperCase(dateLocale[lang]));
 
 export const monthStart = (month: string) => new Date(`${month}-01T00:00:00Z`);
 
-export const formatMonth = (date: Date, lang: Lang = defaultLang) => `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
+export const formatMonth = (date: Date, lang: Lang = defaultLang) =>
+  `${shortMonth(date, lang)} ${date.getUTCFullYear()}`;
 
 export const formatNumber = (n: number, lang: Lang = defaultLang) => n.toLocaleString(dateLocale[lang]);
 
@@ -31,13 +33,14 @@ export const monthYear = (date: Date, lang: Lang = defaultLang) =>
 
 export function englishOrdinal(n: number) {
   const teen = n % 100 >= 11 && n % 100 <= 13;
-  const suffix = teen ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th';
+  const suffix = teen ? 'th' : (({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th');
   return `${n}${suffix}`;
 }
 
 export const endSentence = (text: string) => (/[.!?…]$/.test(text) ? '' : '.');
 
-export const plural = (forms: { one: string; other: string }, n: number) => (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
+export const plural = (forms: { one: string; other: string }, n: number) =>
+  (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
 
 export function byYear<T>(items: T[], year: (item: T) => number) {
   const years: { year: number; items: T[] }[] = [];
@@ -51,7 +54,9 @@ export function byYear<T>(items: T[], year: (item: T) => number) {
 }
 
 export const orderedGroups = <K, T>(keys: readonly K[], items: T[], keyOf: (item: T) => K) =>
-  keys.map((key) => ({ key, items: items.filter((item) => keyOf(item) === key) })).filter((group) => group.items.length > 0);
+  keys
+    .map((key) => ({ key, items: items.filter((item) => keyOf(item) === key) }))
+    .filter((group) => group.items.length > 0);
 
 export const yearRange = (from: number, to: number, short = false) =>
   from === to ? String(to) : `${from}–${short ? String(to).slice(-2) : to}`;

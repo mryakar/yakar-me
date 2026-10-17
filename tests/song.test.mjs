@@ -66,7 +66,10 @@ test('keyTally: dilim sayıları ve en sık dilim', () => {
   const { counts, most, top } = keyTally(['Dm', 'F', 'Dm', 'Cm']);
   assert.equal(most, 3);
   assert.equal(circleOfFifths[top].minor, 'Dm');
-  assert.equal(counts.reduce((a, b) => a + b), 4);
+  assert.equal(
+    counts.reduce((a, b) => a + b),
+    4,
+  );
 });
 
 test('kılıf düzeni ve katalog numarası dosyadaki konumdan, sabit', () => {
@@ -95,7 +98,14 @@ test('roman', () => {
 
 test('rankArtists: şarkı sayısı, eşitlikte ad sırası', () => {
   const ranked = rankArtists([{ artist: 'B' }, { artist: 'A' }, { artist: 'C' }, { artist: 'C' }]);
-  assert.deepEqual(ranked.map((a) => [a.name, a.songs.length]), [['C', 2], ['A', 1], ['B', 1]]);
+  assert.deepEqual(
+    ranked.map((a) => [a.name, a.songs.length]),
+    [
+      ['C', 2],
+      ['A', 1],
+      ['B', 1],
+    ],
+  );
 });
 
 test('recentFirst: ilk çalınış yeniden eskiye, ayı olmayan sonda, sonra dosya sırası', () => {
@@ -105,7 +115,10 @@ test('recentFirst: ilk çalınış yeniden eskiye, ayı olmayan sonda, sonra dos
     { id: 'c', position: 2 },
     { id: 'd', firstPlayed: '2026-01', position: 3 },
   ];
-  assert.deepEqual(recentFirst(list).map((s) => s.id), ['d', 'b', 'a', 'c']);
+  assert.deepEqual(
+    recentFirst(list).map((s) => s.id),
+    ['d', 'b', 'a', 'c'],
+  );
 });
 
 test('staffLayout: yıllar ve notalar 0–1 aralığında', () => {
@@ -114,7 +127,10 @@ test('staffLayout: yıllar ve notalar 0–1 aralığında', () => {
     { firstPlayed: '2024-01', key: 'C' },
     { firstPlayed: '2026-12', key: 'B' },
   ]);
-  assert.deepEqual(layout.years.map((y) => y.year), [2024, 2025, 2026]);
+  assert.deepEqual(
+    layout.years.map((y) => y.year),
+    [2024, 2025, 2026],
+  );
   assert.equal(layout.notes[0].x, 0);
   assert.equal(layout.notes[1].x, 1);
   assert.equal(layout.notes[0].step, 0);
@@ -140,10 +156,11 @@ test('kategori ve tür adları iki dilde tam; seviye adları ölçek kadar', () 
   }
 });
 
-test('her kategorinin rengi CSS\'te tanımlı', () => {
+test("her kategorinin rengi CSS'te tanımlı", () => {
   for (const c of categories) {
     assert.match(css, new RegExp(`\\.${categoryClass[c]} \\{`), c);
-    for (const token of ['music', 'ink', 'paper']) assert.match(css, new RegExp(`--yk-${token}-${c}:`), `${token} ${c}`);
+    for (const token of ['music', 'ink', 'paper'])
+      assert.match(css, new RegExp(`--yk-${token}-${c}:`), `${token} ${c}`);
   }
 });
 

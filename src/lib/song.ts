@@ -24,7 +24,8 @@ export const categoryClass: Record<Category, string> = {
 };
 
 export const songPath = (id: string, lang: Lang = defaultLang) => `${localize(paths.playing, lang)}#${id}`;
-export const artistPath = (artistId: string, lang: Lang = defaultLang) => `${localize(paths.artists, lang)}#${artistId}`;
+export const artistPath = (artistId: string, lang: Lang = defaultLang) =>
+  `${localize(paths.artists, lang)}#${artistId}`;
 
 export const LEVELS = 5;
 export const SLEEVE_LAYOUTS = 3;
@@ -54,7 +55,10 @@ export function fifthsPosition(key: string) {
   return FIFTHS.indexOf(pitchClass(minor ? pitch + 3 : pitch));
 }
 
-export const circleOfFifths = FIFTHS.map((pitch) => ({ major: keyName(pitch, false), minor: keyName(pitch + ALTO_SHIFT, true) }));
+export const circleOfFifths = FIFTHS.map((pitch) => ({
+  major: keyName(pitch, false),
+  minor: keyName(pitch + ALTO_SHIFT, true),
+}));
 
 export function keyTally(concertKeys: string[]) {
   const counts = circleOfFifths.map(() => 0);
@@ -87,7 +91,13 @@ export function slugify(name: string) {
 }
 
 export function roman(n: number) {
-  const table: [number, string][] = [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+  const table: [number, string][] = [
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I'],
+  ];
   let out = '';
   for (const [value, symbol] of table) for (; n >= value; n -= value) out += symbol;
   return out;
@@ -116,6 +126,10 @@ export function staffLayout<T extends { firstPlayed: string; key: string }>(song
   const span = (to - from + 1) * 12 - 1 || 1;
   return {
     years: Array.from({ length: to - from + 1 }, (_, i) => ({ year: from + i, x: (i * 12) / span })),
-    notes: songs.map((song) => ({ song, x: (monthIndex(song.firstPlayed) - start) / span, step: parseKey(song.key).pitch / 11 })),
+    notes: songs.map((song) => ({
+      song,
+      x: (monthIndex(song.firstPlayed) - start) / span,
+      step: parseKey(song.key).pitch / 11,
+    })),
   };
 }

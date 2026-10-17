@@ -18,9 +18,20 @@ interface Props {
   notFound?: boolean;
   runningHead?: string;
 }
-const { lang, title, description = ui[lang].description, article, langs = locales, notFound = false, runningHead } = Astro.props;
+const {
+  lang,
+  title,
+  description = ui[lang].description,
+  article,
+  langs = locales,
+  notFound = false,
+  runningHead,
+} = Astro.props;
 const { path } = splitPath(Astro.url.pathname);
-const versions = (notFound ? locales : langs).map((l) => ({ lang: l, href: localize(notFound ? paths.home : path, l) }));
+const versions = (notFound ? locales : langs).map((l) => ({
+  lang: l,
+  href: localize(notFound ? paths.home : path, l),
+}));
 const alternates = notFound || versions.length < 2 ? [] : versions;
 const printHead = runningHead && {
   'data-print-head': `${site.name} · ${site.domain}`,
@@ -28,19 +39,30 @@ const printHead = runningHead && {
   'data-print-url': `${site.domain}${Astro.url.pathname}`,
 };
 ---
+
 <!doctype html>
 <html lang={lang} {...printHead}>
   <head>
-    <Head lang={lang} title={title} description={description} article={article} alternates={alternates} notFound={notFound} />
+    <Head
+      lang={lang}
+      title={title}
+      description={description}
+      article={article}
+      alternates={alternates}
+      notFound={notFound}
+    />
     <slot name="head" />
   </head>
   <body class="bg-bg text-text">
-    <a class="skip-link print:hidden" href="#main">{ui[lang].skip}</a>
+    <a class="skip-link print:hidden" href="#main">
+      {ui[lang].skip}
+    </a>
     <div class="min-h-dvh desk:flex">
       <Sidebar lang={lang} versions={versions} />
       <MobileMenu lang={lang} versions={versions} />
       <main id="main" class="min-w-0 flex-1">
-        {lang === defaultLang && alternates.filter((v) => v.lang !== lang).map((v) => <LangHint href={v.href} target={v.lang} />)}
+        {lang === defaultLang &&
+          alternates.filter((v) => v.lang !== lang).map((v) => <LangHint href={v.href} target={v.lang} />)}
         <slot />
       </main>
     </div>

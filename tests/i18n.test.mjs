@@ -26,10 +26,13 @@ test('langPaths: her dil, İngilizce kökte', () => {
 });
 
 const shape = (o) =>
-  Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v && typeof v === 'object' && !Array.isArray(v) ? shape(v) : typeof v]));
+  Object.fromEntries(
+    Object.entries(o).map(([k, v]) => [k, v && typeof v === 'object' && !Array.isArray(v) ? shape(v) : typeof v]),
+  );
 
 test('arayüz sözlüğü: her dilde aynı anahtarlar, boş metin yok', () => {
-  const strings = (o) => Object.values(o).flatMap((v) => (typeof v === 'string' ? [v] : v && typeof v === 'object' ? strings(v) : []));
+  const strings = (o) =>
+    Object.values(o).flatMap((v) => (typeof v === 'string' ? [v] : v && typeof v === 'object' ? strings(v) : []));
   for (const lang of ['tr', 'es']) {
     assert.deepEqual(shape(ui[lang]), shape(ui.en));
     for (const s of strings(ui[lang])) assert.ok(s.length > 0, JSON.stringify(s));
@@ -50,7 +53,10 @@ test('çeviri etiketi ve öneri şeridi: her iki dilde İngilizce, iki yönde', 
 
 test('langItemPaths: her dil için öğe yolları, dil öneki parametrede', async () => {
   const { langItemPaths } = await import('../src/lib/i18n.ts');
-  const paths = await langItemPaths(async (lang) => (lang === 'en' ? ['a', 'b'] : ['a']), (id) => ({ slug: id }));
+  const paths = await langItemPaths(
+    async (lang) => (lang === 'en' ? ['a', 'b'] : ['a']),
+    (id) => ({ slug: id }),
+  );
   assert.deepEqual(paths, [
     { params: { lang: undefined, slug: 'a' }, props: { lang: 'en', item: 'a' } },
     { params: { lang: undefined, slug: 'b' }, props: { lang: 'en', item: 'b' } },
@@ -62,21 +68,27 @@ test('langItemPaths: her dil için öğe yolları, dil öneki parametrede', asyn
 test('navLinks: dile göre adres ve etiket; ana sayfa yalnız kendisinde güncel', async () => {
   const { navLinks } = await import('../src/lib/nav.ts');
   const tr = navLinks('/tr/writing/x/', 'tr');
-  assert.deepEqual(tr.map((l) => [l.href, l.label, l.current]), [
-    ['/tr/', 'Ana sayfa', false],
-    ['/tr/photos/', 'Fotoğraflar', false],
-    ['/tr/writing/', 'Yazılar', true],
-    ['/tr/reading/', 'Kitaplar', false],
-    ['/tr/playing/', 'Çaldıklarım', false],
-    ['/tr/years/', 'Yıllar', false],
-    ['/tr/about/', 'Hakkımda', false],
-  ]);
+  assert.deepEqual(
+    tr.map((l) => [l.href, l.label, l.current]),
+    [
+      ['/tr/', 'Ana sayfa', false],
+      ['/tr/photos/', 'Fotoğraflar', false],
+      ['/tr/writing/', 'Yazılar', true],
+      ['/tr/reading/', 'Kitaplar', false],
+      ['/tr/playing/', 'Çaldıklarım', false],
+      ['/tr/years/', 'Yıllar', false],
+      ['/tr/about/', 'Hakkımda', false],
+    ],
+  );
   assert.equal(navLinks('/', 'en')[0].current, true);
   assert.equal(navLinks('/about/', 'en')[0].current, false);
 });
 
 test('profileLinks ve emailLink: site.ts bağlantılarından', async () => {
   const { profileLinks, emailLink } = await import('../src/lib/nav.ts');
-  assert.deepEqual(profileLinks().map((l) => l.label), ['GitHub', 'LinkedIn', 'Medium']);
+  assert.deepEqual(
+    profileLinks().map((l) => l.label),
+    ['GitHub', 'LinkedIn', 'Medium'],
+  );
   assert.deepEqual(emailLink(), { href: 'mailto:ahmet@yakar.me', address: 'ahmet@yakar.me' });
 });

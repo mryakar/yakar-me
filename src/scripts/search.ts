@@ -13,7 +13,11 @@ if (root) {
   const groups = new Map(
     [...root.querySelectorAll<HTMLElement>('[data-search-group]')].map((g) => [
       g.dataset.searchGroup!,
-      { section: g, count: g.querySelector<HTMLElement>('[data-search-count]')!, list: g.querySelector<HTMLElement>('[data-search-list]')! },
+      {
+        section: g,
+        count: g.querySelector<HTMLElement>('[data-search-count]')!,
+        list: g.querySelector<HTMLElement>('[data-search-list]')!,
+      },
     ]),
   );
 

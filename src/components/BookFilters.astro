@@ -18,17 +18,35 @@ const byCategory = tally(books.map((b) => b.category));
 const byGenre = tally(books.map((b) => b.genre));
 const shown = categories.filter((c) => byCategory.has(c));
 const languageOptions = (values: FinishedBook['readIn'][]) =>
-  [...tally(values)].map(([value, n]) => ({ value, label: `${t.languages[value]} (${n})` })).sort((a, b) => a.label.localeCompare(b.label, lang));
+  [...tally(values)]
+    .map(([value, n]) => ({ value, label: `${t.languages[value]} (${n})` }))
+    .sort((a, b) => a.label.localeCompare(b.label, lang));
 const selects = [
   { key: 'original', label: t.originalLanguage, options: languageOptions(books.map((b) => b.originalLanguage)) },
   { key: 'read', label: t.readIn, options: languageOptions(books.map((b) => b.readIn)) },
-  { key: 'year', label: t.year, options: byYear(books, finishedYear).map(({ year, items }) => ({ value: String(year), label: `${year} (${items.length})` })) },
+  {
+    key: 'year',
+    label: t.year,
+    options: byYear(books, finishedYear).map(({ year, items }) => ({
+      value: String(year),
+      label: `${year} (${items.length})`,
+    })),
+  },
 ];
-const chip = 'flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line-strong px-3.5 text-sm text-text-body transition-colors duration-200 hover:border-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg tab:min-h-10';
+const chip =
+  'flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line-strong px-3.5 text-sm text-text-body transition-colors duration-200 hover:border-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg tab:min-h-10';
 const count = 'font-mono text-[11px] opacity-70';
 ---
+
 <section aria-label={t.filters} class="flex flex-col gap-3 tab:gap-5" data-filters hidden>
-  <button type="button" aria-expanded="false" aria-controls="book-filters" class="filter-toggle group flex min-h-12 items-center justify-between border border-line-strong px-4 text-[15px] tab:hidden" data-filter-toggle data-label={t.filters}>
+  <button
+    type="button"
+    aria-expanded="false"
+    aria-controls="book-filters"
+    class="filter-toggle group flex min-h-12 items-center justify-between border border-line-strong px-4 text-[15px] tab:hidden"
+    data-filter-toggle
+    data-label={t.filters}
+  >
     <span data-filter-label>{t.filters}</span>
     <span class="text-muted">
       <Icon name="plus" size={18} stroke={1.5} class="group-aria-expanded:hidden" />
@@ -49,11 +67,21 @@ const count = 'font-mono text-[11px] opacity-70';
     </div>
     <div role="group" aria-label={t.genre} class="flex flex-wrap gap-2 pl-1" data-genres hidden>
       {shown.flatMap((c) =>
-        genres[c].filter((g) => byGenre.has(g)).map((g) => (
-          <button type="button" aria-pressed="false" class="min-h-11 cursor-pointer border-b border-line px-3 text-[13px] text-muted transition-colors duration-200 hover:text-text aria-pressed:border-accent aria-pressed:text-text tab:min-h-9" data-filter="genre" data-value={g} data-category={c} hidden>
-            {t.genres[g]} <span class={count}>{byGenre.get(g)}</span>
-          </button>
-        )),
+        genres[c]
+          .filter((g) => byGenre.has(g))
+          .map((g) => (
+            <button
+              type="button"
+              aria-pressed="false"
+              class="min-h-11 cursor-pointer border-b border-line px-3 text-[13px] text-muted transition-colors duration-200 hover:text-text aria-pressed:border-accent aria-pressed:text-text tab:min-h-9"
+              data-filter="genre"
+              data-value={g}
+              data-category={c}
+              hidden
+            >
+              {t.genres[g]} <span class={count}>{byGenre.get(g)}</span>
+            </button>
+          )),
       )}
     </div>
     <div class="grid gap-4 tab:grid-cols-[repeat(3,minmax(0,13.75rem))]">
@@ -62,15 +90,23 @@ const count = 'font-mono text-[11px] opacity-70';
           <span class="label text-faint">{s.label}</span>
           <select data-filter={s.key} class="h-11 border border-line-strong bg-bg px-3 text-sm text-text">
             <option value="">{t.any}</option>
-            {s.options.map((o) => <option value={o.value}>{o.label}</option>)}
+            {s.options.map((o) => (
+              <option value={o.value}>{o.label}</option>
+            ))}
           </select>
         </label>
       ))}
     </div>
   </div>
   <div class="flex min-h-11 items-center justify-between border-b border-line">
-    <span class="label text-muted" aria-live="polite" data-result data-one={t.result.one} data-other={t.result.other}>{plural(t.result, books.length)}</span>
-    <button type="button" class="min-h-11 cursor-pointer text-sm text-accent" data-clear hidden>{t.clear}</button>
+    <span class="label text-muted" aria-live="polite" data-result data-one={t.result.one} data-other={t.result.other}>
+      {plural(t.result, books.length)}
+    </span>
+    <button type="button" class="min-h-11 cursor-pointer text-sm text-accent" data-clear hidden>
+      {t.clear}
+    </button>
   </div>
-  <p class="font-body text-[19px] text-muted" data-empty hidden>{t.none}</p>
+  <p class="font-body text-[19px] text-muted" data-empty hidden>
+    {t.none}
+  </p>
 </section>

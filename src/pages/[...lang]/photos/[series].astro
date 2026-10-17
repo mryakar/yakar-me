@@ -9,7 +9,18 @@ import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize } from '../../../lib/i18n';
 import { allSeries, coverSources, photoSlug } from '../../../lib/photos';
-import { coverFirst, coverTransition, imageObject, largest, mapPath, photoPath, seriesPath, variantPath, FRAME_SIZES, PHOTOGRAPHER } from '../../../lib/photo';
+import {
+  coverFirst,
+  coverTransition,
+  imageObject,
+  largest,
+  mapPath,
+  photoPath,
+  seriesPath,
+  variantPath,
+  FRAME_SIZES,
+  PHOTOGRAPHER,
+} from '../../../lib/photo';
 import { absoluteUrl, documentTitle } from '../../../lib/format';
 import { jsonLd } from '../../../lib/structured';
 import { paths } from '../../../site';
@@ -41,17 +52,39 @@ const structured = jsonLd({
   }),
 });
 ---
+
 <Base lang={lang} title={documentTitle(title, ui[lang].nav.photos)} description={description} langs={series.langs}>
   <div class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:gap-16 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-5">
       <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <nav aria-label={t.breadcrumb} class="label text-faint">
-          <a href={localize(paths.photos, lang)} class="transition-colors duration-200 hover:text-accent">{ui[lang].nav.photos}</a> / {title}
+          <a href={localize(paths.photos, lang)} class="transition-colors duration-200 hover:text-accent">
+            {ui[lang].nav.photos}
+          </a>{' '}
+          / {title}
         </nav>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
-          {series.original !== lang && <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />}
-          <a href={mapPath(lang, series.id)} class="label flex min-h-11 items-center gap-2.5 text-accent transition-opacity duration-200 hover:opacity-85">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg>
+          {series.original !== lang && (
+            <TranslatedBadge original={series.original} href={seriesPath(series.id, series.original)} />
+          )}
+          <a
+            href={mapPath(lang, series.id)}
+            class="label flex min-h-11 items-center gap-2.5 text-accent transition-opacity duration-200 hover:opacity-85"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"></path>
+              <circle cx="12" cy="10" r="2.2"></circle>
+            </svg>
             {t.viewOnMap}
           </a>
         </div>
@@ -72,8 +105,15 @@ const structured = jsonLd({
             data-astro-prefetch="false"
             class="group photo-tile"
           >
-            <PhotoPicture photo={photo} sizes={FRAME_SIZES} loading={i < 2 ? 'eager' : 'lazy'} class:list={['block h-auto w-full bg-sleeve', i === 0 && transition]} />
-            <span class="photo-tile-hint" aria-hidden="true">{t.details}</span>
+            <PhotoPicture
+              photo={photo}
+              sizes={FRAME_SIZES}
+              loading={i < 2 ? 'eager' : 'lazy'}
+              class:list={['block h-auto w-full bg-sleeve', i === 0 && transition]}
+            />
+            <span class="photo-tile-hint" aria-hidden="true">
+              {t.details}
+            </span>
           </a>
         </li>
       ))}
@@ -83,7 +123,9 @@ const structured = jsonLd({
   </div>
 
   <dialog data-lightbox class="lightbox" aria-label={t.dialog(title)}>
-    {shown.map((photo, i) => <PhotoPanel lang={lang} photo={photo} index={i} total={shown.length} series={title} />)}
+    {shown.map((photo, i) => (
+      <PhotoPanel lang={lang} photo={photo} index={i} total={shown.length} series={title} />
+    ))}
   </dialog>
 
   <script type="application/ld+json" set:html={structured} />

@@ -20,7 +20,15 @@ import { articles } from '../../lib/writing';
 import { books, type ReadingBook } from '../../lib/books';
 import { songs, type Song } from '../../lib/songs';
 import { measures } from '../../lib/measures';
-import { articlePath, documentTitle, endSentence, formatDate, formatMonth, formatNumber, plural } from '../../lib/format';
+import {
+  articlePath,
+  documentTitle,
+  endSentence,
+  formatDate,
+  formatMonth,
+  formatNumber,
+  plural,
+} from '../../lib/format';
 
 export const getStaticPaths = langPaths;
 
@@ -46,16 +54,19 @@ const readingPage = localize(paths.reading, lang);
 const playingPage = localize(paths.playing, lang);
 const photosPage = localize(paths.photos, lang);
 const [heroStart, heroEm, heroEnd] = t.home.hero;
-type NowItem = { label: string; books: ReadingBook[] } | { label: string; songs: Song[] } | { label: string; text: string };
+type NowItem =
+  { label: string; books: ReadingBook[] } | { label: string; songs: Song[] } | { label: string; text: string };
 const now: NowItem[] = [
   ...(reading.length > 0 ? [{ label: t.home.nowReading, books: reading }] : []),
   ...t.now,
   ...(practicing.length > 0 ? [{ label: t.home.nowPlaying, songs: practicing }] : []),
 ];
-const preview = 'font-body text-[1.375rem] leading-tight text-text transition-colors duration-200 hover:text-accent tab:text-[1.625rem]';
+const preview =
+  'font-body text-[1.375rem] leading-tight text-text transition-colors duration-200 hover:text-accent tab:text-[1.625rem]';
 const more = 'group inline-flex items-center gap-2 text-[15px] text-accent';
 const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase';
 ---
+
 <Base lang={lang} title={documentTitle()}>
   <div class="flex flex-col gap-16 px-6 pt-9 pb-16 tab:gap-24 desk:gap-26 desk:px-24 desk:pt-26">
     <div class="flex items-center justify-between gap-16">
@@ -64,29 +75,78 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           <Tagline lang={lang} />
           <Mark class="h-[34px] w-8 flex-none text-accent min-[90rem]:hidden" />
         </div>
-        <h1 class="font-display text-d2 desk:text-d1">{heroStart}<em class="text-accent">{heroEm}</em>{heroEnd}</h1>
+        <h1 class="font-display text-d2 desk:text-d1">
+          {heroStart}
+          <em class="text-accent">{heroEm}</em>
+          {heroEnd}
+        </h1>
         <p class="text-lede text-muted">{t.home.lede}</p>
       </section>
       <Mark class="hidden h-65 w-61 flex-none text-accent min-[90rem]:block" />
     </div>
 
-    <section class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]" aria-label={t.home.numbers}>
+    <section
+      class="odo flex flex-col rounded-xl border border-line-strong bg-side tab:rounded-[14px]"
+      aria-label={t.home.numbers}
+    >
       <div class="flex items-center justify-between gap-4 border-b border-line px-4 py-4 tab:px-7">
         <span class="label flex items-center gap-2.5 text-faint">
           <span class="block size-1.5 rounded-full bg-accent"></span>
           {t.home.lastRelease(formatDate(new Date(), 'short', lang))}
         </span>
-        <a href={localize(paths.years, lang)} class="group inline-flex items-center gap-2 text-sm text-accent">{t.years.all}<ArrowRight /></a>
+        <a href={localize(paths.years, lang)} class="group inline-flex items-center gap-2 text-sm text-accent">
+          {t.years.all}
+          <ArrowRight />
+        </a>
       </div>
       <div class="grid border-b border-line @4xl:grid-cols-[minmax(max-content,1fr)_minmax(0,1fr)]">
         <div class="flex flex-col gap-6.5 border-b border-line px-4 py-7 tab:gap-8 tab:px-7 @4xl:gap-9 @4xl:border-r @4xl:border-b-0 @4xl:py-8">
-          <OdometerLink href={readingPage} label={t.home.pagesRead} meta={t.home.since(m.pages.since)} value={m.pages.value} shown={n(m.pages.value)} cells={7} size="big" />
-          <OdometerLink href={localize(paths.writing, lang)} label={t.home.wordsWritten} meta={t.home.since(m.words.since)} value={m.words.value} shown={n(m.words.value)} cells={7} size="big" />
+          <OdometerLink
+            href={readingPage}
+            label={t.home.pagesRead}
+            meta={t.home.since(m.pages.since)}
+            value={m.pages.value}
+            shown={n(m.pages.value)}
+            cells={7}
+            size="big"
+          />
+          <OdometerLink
+            href={localize(paths.writing, lang)}
+            label={t.home.wordsWritten}
+            meta={t.home.since(m.words.since)}
+            value={m.words.value}
+            shown={n(m.words.value)}
+            cells={7}
+            size="big"
+          />
         </div>
         <div class="flex flex-wrap content-start gap-x-10 gap-y-6.5 px-4 py-6.5 tab:px-7 @4xl:grid @4xl:grid-cols-[repeat(2,max-content)] @4xl:gap-x-12 @4xl:gap-y-9 @4xl:py-8">
-          <OdometerLink href={photosPage} label={countries(m.countries)} value={m.countries} shown={n(m.countries)} cells={3} size="small" />
-          <OdometerLink href={photosPage} label={cities(m.cities.value)} meta={m.cities.latest && t.home.latestCity(m.cities.latest)} value={m.cities.value} shown={n(m.cities.value)} cells={3} size="small" />
-          <OdometerLink href={photosPage} label={t.home.frames} meta={t.photos.series(m.frames.series)} value={m.frames.value} shown={n(m.frames.value)} cells={3} size="small" />
+          <OdometerLink
+            href={photosPage}
+            label={countries(m.countries)}
+            value={m.countries}
+            shown={n(m.countries)}
+            cells={3}
+            size="small"
+          />
+          <OdometerLink
+            href={photosPage}
+            label={cities(m.cities.value)}
+            meta={m.cities.latest && t.home.latestCity(m.cities.latest)}
+            value={m.cities.value}
+            shown={n(m.cities.value)}
+            cells={3}
+            size="small"
+          />
+          <OdometerLink
+            href={photosPage}
+            label={t.home.frames}
+            meta={t.photos.series(m.frames.series)}
+            value={m.frames.value}
+            shown={n(m.frames.value)}
+            cells={3}
+            size="small"
+          />
         </div>
       </div>
       <div class="grid gap-7 px-4 py-6 tab:px-7 tab:py-7 @2xl:grid-cols-[12.5rem_repeat(3,minmax(0,1fr))] @2xl:gap-10">
@@ -95,8 +155,13 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
             <Globe points={cityPoints} centre={centre(placePoints)} />
           </span>
           <span class="flex items-center justify-between gap-2.5">
-            <span class="label text-faint">{n(m.countries)} {countries(m.countries)} · {n(m.cities.value)} {cities(m.cities.value)}</span>
-            <span class="flex items-center gap-2 text-sm text-accent">{t.map.onMap}<ArrowRight /></span>
+            <span class="label text-faint">
+              {n(m.countries)} {countries(m.countries)} · {n(m.cities.value)} {cities(m.cities.value)}
+            </span>
+            <span class="flex items-center gap-2 text-sm text-accent">
+              {t.map.onMap}
+              <ArrowRight />
+            </span>
           </span>
         </a>
         <a href={mapPath(lang, m.farthest.place)} class="group flex flex-col gap-3">
@@ -106,7 +171,9 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
             <Odometer value={m.farthest.km} cells={5} />
             <span class="label text-faint">{t.home.km}</span>
           </span>
-          <span class="text-[13px] leading-normal text-muted transition-colors duration-200 group-hover:text-accent">{t.home.farthestRoute(home.city, m.farthest.city)}</span>
+          <span class="text-[13px] leading-normal text-muted transition-colors duration-200 group-hover:text-accent">
+            {t.home.farthestRoute(home.city, m.farthest.city)}
+          </span>
         </a>
         <a href={playingPage} class="group flex flex-col gap-3">
           <span class={cellLabel}>{t.home.songsPlayed}</span>
@@ -127,43 +194,85 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
       <ul class="grid gap-x-8 gap-y-10 @xl:grid-cols-2 @3xl:grid-cols-3">
         {latest && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
-            <span class="label text-faint">{t.home.latestWriting} · {formatDate(latest.pubDate, 'short', lang)}</span>
-            <a href={articlePath(latest.id, lang)} class={preview}>{latest.title}</a>
-            <a href={localize(paths.writing, lang)} class={more}>{t.writing.all}<ArrowRight /></a>
+            <span class="label text-faint">
+              {t.home.latestWriting} · {formatDate(latest.pubDate, 'short', lang)}
+            </span>
+            <a href={articlePath(latest.id, lang)} class={preview}>
+              {latest.title}
+            </a>
+            <a href={localize(paths.writing, lang)} class={more}>
+              {t.writing.all}
+              <ArrowRight />
+            </a>
           </li>
         )}
         {current && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
             <span class="label text-faint">{t.reading.now}</span>
             <span class="flex flex-col gap-2">
-              <a href={bookPath(current.id, lang)} class={preview}>{current.title}</a>
+              <a href={bookPath(current.id, lang)} class={preview}>
+                {current.title}
+              </a>
               {also.length > 0 && (
                 <span class="text-sm leading-normal text-muted">
-                  {t.home.also} {also.map((book, i) => (
-                    <>{i > 0 && ', '}<a href={bookPath(book.id, lang)} class="transition-colors duration-200 hover:text-accent">{book.title}</a></>
-                  ))}.
+                  {t.home.also}{' '}
+                  {also.map((book, i) => (
+                    <>
+                      {i > 0 && ', '}
+                      <a href={bookPath(book.id, lang)} class="transition-colors duration-200 hover:text-accent">
+                        {book.title}
+                      </a>
+                    </>
+                  ))}
+                  .
                 </span>
               )}
             </span>
-            <a href={readingPage} class={more}>{t.home.allBooks}<ArrowRight /></a>
+            <a href={readingPage} class={more}>
+              {t.home.allBooks}
+              <ArrowRight />
+            </a>
           </li>
         )}
         {series && (
           <li class="flex flex-col gap-3.5 border-t border-line-strong pt-5">
-            <span class="label text-faint">{t.home.latestSeries} · {formatMonth(takenMonth(lastTaken(series.photos)), lang)}</span>
-            <a href={seriesPath(series.id, lang)} data-cover-pair={seriesPath(series.id, lang)} data-cover-sizes={FRAME_SIZES} class="group flex flex-col gap-3.5">
-              <PhotoPicture photo={series.cover} focus={series.focus} sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw" class:list={['aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90', coverTransition(series.id, sources)]} />
+            <span class="label text-faint">
+              {t.home.latestSeries} · {formatMonth(takenMonth(lastTaken(series.photos)), lang)}
+            </span>
+            <a
+              href={seriesPath(series.id, lang)}
+              data-cover-pair={seriesPath(series.id, lang)}
+              data-cover-sizes={FRAME_SIZES}
+              class="group flex flex-col gap-3.5"
+            >
+              <PhotoPicture
+                photo={series.cover}
+                focus={series.focus}
+                sizes="(min-width: 90rem) 20rem, (min-width: 48rem) 45vw, 100vw"
+                class:list={[
+                  'aspect-video h-auto w-full bg-sleeve object-cover transition-opacity duration-300 group-hover:opacity-90',
+                  coverTransition(series.id, sources),
+                ]}
+              />
               <span class:list={[preview, 'group-hover:text-accent']}>{series.title}</span>
             </a>
-            <a href={photosPage} class={more}>{t.home.allSeries}<ArrowRight /></a>
+            <a href={photosPage} class={more}>
+              {t.home.allSeries}
+              <ArrowRight />
+            </a>
           </li>
         )}
       </ul>
     </div>
 
-    <section class="reveal grid gap-6 border-t border-line-strong pt-5.5 desk:grid-cols-[13rem_minmax(0,1fr)] desk:gap-16" aria-labelledby="now">
+    <section
+      class="reveal grid gap-6 border-t border-line-strong pt-5.5 desk:grid-cols-[13rem_minmax(0,1fr)] desk:gap-16"
+      aria-labelledby="now"
+    >
       <div class="flex flex-col gap-2.5">
-        <h2 id="now" class="font-display text-d3">{t.home.now}</h2>
+        <h2 id="now" class="font-display text-d3">
+          {t.home.now}
+        </h2>
         <span class="label text-faint">{t.home.updated(formatMonth(nowUpdated, lang))}</span>
       </div>
       <div class="flex max-w-160 flex-col gap-4.5 text-[17px] leading-relaxed text-text-body">
@@ -172,11 +281,20 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
             <span class="label mr-3 text-faint">{item.label}</span>
             {'books' in item
               ? item.books.map((book, i) => (
-                  <>{i > 0 && ` ${t.home.also} `}<em>{book.title}</em>{book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}</>
+                  <>
+                    {i > 0 && ` ${t.home.also} `}
+                    <em>{book.title}</em>
+                    {book.edition && `, ${t.reading.editionValue(book.edition)}`}.{book.nowNote && ` ${book.nowNote}`}
+                  </>
                 ))
               : 'songs' in item
                 ? item.songs.map((song, i) => (
-                    <>{i > 0 && ` ${t.home.also} `}<em lang={song.lang}>{song.title}</em> — <span lang={song.lang}>{song.artist}</span>{endSentence(song.artist)}{song.nowNote && ` ${song.nowNote}`}</>
+                    <>
+                      {i > 0 && ` ${t.home.also} `}
+                      <em lang={song.lang}>{song.title}</em> — <span lang={song.lang}>{song.artist}</span>
+                      {endSentence(song.artist)}
+                      {song.nowNote && ` ${song.nowNote}`}
+                    </>
                   ))
                 : item.text}
           </p>
@@ -187,9 +305,13 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
     <footer class="flex items-center justify-between border-t border-line pt-6">
       <span class="flex items-center gap-3">
         <Mark class="h-4 w-[15px] text-accent" fine />
-        <span class="label text-faint">© {new Date().getUTCFullYear()} {site.name}</span>
+        <span class="label text-faint">
+          © {new Date().getUTCFullYear()} {site.name}
+        </span>
       </span>
-      <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">RSS</a>
+      <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">
+        RSS
+      </a>
     </footer>
   </div>
   <script>

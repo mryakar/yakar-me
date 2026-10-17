@@ -3,7 +3,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { advisories, auditProblems } from '../scripts/lib/audit.mjs';
 
-const advisory = (id, name = 'pkg') => ({ name, title: `${name} issue`, severity: 'high', url: `https://github.com/advisories/${id}` });
+const advisory = (id, name = 'pkg') => ({
+  name,
+  title: `${name} issue`,
+  severity: 'high',
+  url: `https://github.com/advisories/${id}`,
+});
 const report = (...vias) => ({
   vulnerabilities: {
     parent: { name: 'parent', via: vias.map((v) => v.name) },
@@ -17,7 +22,10 @@ const exception = (id, until = '2026-12-31') => ({ id, until, reason: 'test' });
 test('advisories: GHSA kimlikleri tekil, paket adı dizgileri atlanır', () => {
   const r = report(A, B);
   r.vulnerabilities.c = { name: 'c', via: [A] };
-  assert.deepEqual(advisories(r).map((a) => a.id), ['GHSA-aaaa-bbbb-cccc', 'GHSA-dddd-eeee-ffff']);
+  assert.deepEqual(
+    advisories(r).map((a) => a.id),
+    ['GHSA-aaaa-bbbb-cccc', 'GHSA-dddd-eeee-ffff'],
+  );
 });
 
 test('advisories: rapor yoksa ya da kimliksiz uyarıda kapalı başarısız', () => {
@@ -39,11 +47,17 @@ test('auditProblems: istisnalı uyarı geçer, öbürü kırar', () => {
 
 test('auditProblems: süresi dolan istisna kırar, son gün geçer', () => {
   assert.deepEqual(auditProblems(report(A), [exception('GHSA-aaaa-bbbb-cccc', '2026-10-03')], '2026-10-03'), []);
-  assert.match(auditProblems(report(A), [exception('GHSA-aaaa-bbbb-cccc', '2026-10-02')], '2026-10-03')[0], /expired on 2026-10-02/);
+  assert.match(
+    auditProblems(report(A), [exception('GHSA-aaaa-bbbb-cccc', '2026-10-02')], '2026-10-03')[0],
+    /expired on 2026-10-02/,
+  );
 });
 
 test('auditProblems: gereksiz kalan istisna kırar', () => {
-  assert.match(auditProblems({ vulnerabilities: {} }, [exception('GHSA-aaaa-bbbb-cccc')], '2026-10-03')[0], /no longer needed/);
+  assert.match(
+    auditProblems({ vulnerabilities: {} }, [exception('GHSA-aaaa-bbbb-cccc')], '2026-10-03')[0],
+    /no longer needed/,
+  );
 });
 
 test('audit-exceptions.json: her kayıtta kimlik, tarih ve gerekçe', () => {

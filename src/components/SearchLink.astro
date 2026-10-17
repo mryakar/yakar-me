@@ -13,7 +13,14 @@ const { lang, class: className, palette = false } = Astro.props;
 const href = localize(paths.search, lang);
 const labelled = Astro.slots.has('default');
 ---
-<a href={href} aria-label={labelled ? undefined : ui[lang].search.title} aria-current={Astro.url.pathname === href ? 'page' : undefined} class={className} data-palette-open={palette || undefined}>
+
+<a
+  href={href}
+  aria-label={labelled ? undefined : ui[lang].search.title}
+  aria-current={Astro.url.pathname === href ? 'page' : undefined}
+  class={className}
+  data-palette-open={palette || undefined}
+>
   <Icon name="search" size={18} />
   <slot />
 </a>

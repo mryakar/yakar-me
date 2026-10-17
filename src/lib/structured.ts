@@ -42,4 +42,7 @@ export function blogPosting(o: {
   };
 }
 
-export const profile = (author: Author, sameAs: string[]) => ({ '@context': 'https://schema.org', ...person(author, sameAs) });
+export const profile = (author: Author, sameAs: string[]) => ({
+  '@context': 'https://schema.org',
+  ...person(author, sameAs),
+});

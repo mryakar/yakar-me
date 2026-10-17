@@ -14,7 +14,11 @@ function dist(files, env = {}) {
     mkdirSync(join(dir, 'dist', path, '..'), { recursive: true });
     writeFileSync(join(dir, 'dist', path), body);
   }
-  const r = spawnSync('bash', [SCRIPT, 'dist'], { cwd: dir, encoding: 'utf8', env: { PATH: process.env.PATH, RUNNER_TEMP: dir, DENYLIST: DENY, ...env } });
+  const r = spawnSync('bash', [SCRIPT, 'dist'], {
+    cwd: dir,
+    encoding: 'utf8',
+    env: { PATH: process.env.PATH, RUNNER_TEMP: dir, DENYLIST: DENY, ...env },
+  });
   return { code: r.status, out: r.stdout + r.stderr };
 }
 
@@ -28,7 +32,8 @@ test('metinde desen yakalanır (kısa desen dahil)', () => {
 });
 
 test('ikili dosyada okunabilir iz yakalanır, kısa desen tesadüfü yakalanmaz', () => {
-  const binary = (text) => Buffer.concat([Buffer.from([0, 1, 2, 3, 0, 255]), Buffer.from(text), Buffer.from([0, 0, 7])]);
+  const binary = (text) =>
+    Buffer.concat([Buffer.from([0, 1, 2, 3, 0, 255]), Buffer.from(text), Buffer.from([0, 0, 7])]);
   assert.equal(dist({ 'x.gif': binary('meta: forbidden-word:end') }).code, 1);
   assert.equal(dist({ 'y.gif': binary('xx Z12 yy') }).code, 0);
 });

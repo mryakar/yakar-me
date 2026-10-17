@@ -38,10 +38,16 @@ export const decodeEntities = (s: string) =>
     return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : whole;
   });
 
-const BLOCK = /<\/?(?:address|article|aside|blockquote|br|dd|div|dl|dt|figcaption|figure|footer|h[1-6]|header|hr|li|main|nav|ol|p|pre|section|table|tbody|td|tfoot|th|thead|tr|ul)\b[^>]*>/gi;
+const BLOCK =
+  /<\/?(?:address|article|aside|blockquote|br|dd|div|dl|dt|figcaption|figure|footer|h[1-6]|header|hr|li|main|nav|ol|p|pre|section|table|tbody|td|tfoot|th|thead|tr|ul)\b[^>]*>/gi;
 
 export const plainText = (html: string) =>
-  decodeEntities(html.replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(BLOCK, ' ').replace(/<[^>]*>/g, ''))
+  decodeEntities(
+    html
+      .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ')
+      .replace(BLOCK, ' ')
+      .replace(/<[^>]*>/g, ''),
+  )
     .replace(/\s+/g, ' ')
     .trim();
 
@@ -61,7 +67,13 @@ export function fold(s: string) {
 }
 
 export const queryTerms = (query: string) =>
-  [...new Set(fold(query.slice(0, QUERY_MAX)).split(/[^\p{L}\p{N}]+/u).filter(Boolean))].slice(0, TERMS_MAX);
+  [
+    ...new Set(
+      fold(query.slice(0, QUERY_MAX))
+        .split(/[^\p{L}\p{N}]+/u)
+        .filter(Boolean),
+    ),
+  ].slice(0, TERMS_MAX);
 
 function wordStarts(folded: string, term: string) {
   const at: number[] = [];
@@ -79,11 +91,18 @@ export interface Prepared {
 export const prepare = (entries: SearchEntry[]): Prepared[] =>
   entries.map((entry) => ({
     entry,
-    folded: { title: fold(entry.title), detail: fold(entry.detail), keywords: fold(entry.keywords.join(' · ')), body: fold(entry.body) },
+    folded: {
+      title: fold(entry.title),
+      detail: fold(entry.detail),
+      keywords: fold(entry.keywords.join(' · ')),
+      body: fold(entry.body),
+    },
   }));
 
 export function snippet(text: string, folded: string, terms: string[]): Segment[] {
-  const hits = terms.flatMap((t) => wordStarts(folded, t).map((start) => [start, start + t.length] as const)).sort((a, b) => a[0] - b[0]);
+  const hits = terms
+    .flatMap((t) => wordStarts(folded, t).map((start) => [start, start + t.length] as const))
+    .sort((a, b) => a[0] - b[0]);
   if (hits.length === 0) return [];
   let from = Math.max(0, hits[0][0] - SNIPPET_BEFORE);
   let to = Math.min(text.length, hits[0][0] + SNIPPET_AFTER);
@@ -110,7 +129,9 @@ export function search(index: Prepared[], query: string): SearchResult[] {
     .flatMap(({ entry, folded }, order) => {
       let score = 0;
       for (const term of terms) {
-        const fields = (Object.keys(WEIGHT) as (keyof typeof WEIGHT)[]).filter((f) => wordStarts(folded[f], term).length > 0);
+        const fields = (Object.keys(WEIGHT) as (keyof typeof WEIGHT)[]).filter(
+          (f) => wordStarts(folded[f], term).length > 0,
+        );
         if (fields.length === 0) return [];
         score += fields.reduce((sum, f) => sum + WEIGHT[f], 0);
       }

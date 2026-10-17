@@ -19,7 +19,15 @@ import {
 
 test('zxyToId: PMTiles belgesindeki ilk kimlikler', () => {
   assert.equal(zxyToId(0, 0, 0), 0);
-  assert.deepEqual([[0, 0], [0, 1], [1, 1], [1, 0]].map(([x, y]) => zxyToId(1, x, y)), [1, 2, 3, 4]);
+  assert.deepEqual(
+    [
+      [0, 0],
+      [0, 1],
+      [1, 1],
+      [1, 0],
+    ].map(([x, y]) => zxyToId(1, x, y)),
+    [1, 2, 3, 4],
+  );
   assert.equal(zxyToId(2, 0, 0), 5);
   assert.equal(zxyToId(13, 0, 0), (4 ** 13 - 1) / 3);
 });
@@ -37,7 +45,11 @@ test('zxyToId ve idToZxy: z0–6 her karede ve uç kimliklerde birbirinin tersi'
     }
     assert.equal(seen.size, n * n);
   }
-  for (const [z, x, y] of [[13, 8191, 8191], [13, 6693, 3575], [26, 2 ** 26 - 1, 0]]) {
+  for (const [z, x, y] of [
+    [13, 8191, 8191],
+    [13, 6693, 3575],
+    [26, 2 ** 26 - 1, 0],
+  ]) {
     assert.deepEqual(idToZxy(zxyToId(z, x, y)), { z, x, y });
   }
   assert.throws(() => zxyToId(1, 2, 0), RangeError);
@@ -49,7 +61,13 @@ test('tilesInBounds: Hong Kong z10, kenarlar kırpılır', () => {
   assert.equal(lonToTileX(180, 3), 7);
   assert.equal(latToTileY(-89.9, 3), 7);
   const ids = tilesInBounds([113.82, 22.13, 114.45, 22.57], 10);
-  assert.deepEqual(ids.map(idToZxy).map(({ x, y }) => `${x}/${y}`).sort(), ['835/446', '835/447', '836/446', '836/447', '837/446', '837/447']);
+  assert.deepEqual(
+    ids
+      .map(idToZxy)
+      .map(({ x, y }) => `${x}/${y}`)
+      .sort(),
+    ['835/446', '835/447', '836/446', '836/447', '837/446', '837/447'],
+  );
 });
 
 test('encodeDirectory ve decodeDirectory: ardışık ofset sıfırla yazılır, geri okunur', () => {
@@ -65,7 +83,13 @@ test('encodeDirectory ve decodeDirectory: ardışık ofset sıfırla yazılır, 
 });
 
 const tile = (z, x, y, body) => ({ id: zxyToId(z, x, y), data: gzipSync(Buffer.from(body)) });
-const sample = [tile(0, 0, 0, 'world'), tile(1, 0, 0, 'sea'), tile(1, 0, 1, 'sea'), tile(1, 1, 1, 'land'), tile(1, 1, 0, 'sea')];
+const sample = [
+  tile(0, 0, 0, 'world'),
+  tile(1, 0, 0, 'sea'),
+  tile(1, 0, 1, 'sea'),
+  tile(1, 1, 1, 'land'),
+  tile(1, 1, 0, 'sea'),
+];
 const archive = (tiles, rootLimit) =>
   writeArchive({
     tiles,
@@ -87,13 +111,23 @@ test('writeArchive: aynı içerik bir kez yazılır, ardışık aynı karolar te
   assert.equal(h.maxZoom, 1);
   assert.equal(h.leafLength, 0);
   assert.deepEqual(h.bounds, [-180, -85, 180, 85]);
-  const read = [...readTiles(buf)].map(({ z, x, y, data }) => [`${z}/${x}/${y}`, data.equals(sample.find((t) => t.id === zxyToId(z, x, y)).data)]);
-  assert.deepEqual(read, [['0/0/0', true], ['1/0/0', true], ['1/0/1', true], ['1/1/1', true], ['1/1/0', true]]);
+  const read = [...readTiles(buf)].map(({ z, x, y, data }) => [
+    `${z}/${x}/${y}`,
+    data.equals(sample.find((t) => t.id === zxyToId(z, x, y)).data),
+  ]);
+  assert.deepEqual(read, [
+    ['0/0/0', true],
+    ['1/0/0', true],
+    ['1/0/1', true],
+    ['1/1/1', true],
+    ['1/1/0', true],
+  ]);
 });
 
 test('writeArchive: kök sığmazsa yaprak dizinleri, karolar yine okunur', () => {
   const many = [];
-  for (let x = 0; x < 64; x++) for (let y = 0; y < 64; y++) many.push(tile(6, x, y, randomBytes(1 + ((x * 64 + y) % 997)).toString('hex')));
+  for (let x = 0; x < 64; x++)
+    for (let y = 0; y < 64; y++) many.push(tile(6, x, y, randomBytes(1 + ((x * 64 + y) % 997)).toString('hex')));
   const buf = archive(many, 2000);
   const h = readHeader(buf);
   assert.ok(h.leafLength > 0);

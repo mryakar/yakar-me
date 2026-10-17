@@ -85,7 +85,9 @@
   transform: translateY(-50%);
   font-size: 14px;
   white-space: nowrap;
-  text-shadow: 0 0 6px var(--yk-bg), 0 0 2px var(--yk-bg);
+  text-shadow:
+    0 0 6px var(--yk-bg),
+    0 0 2px var(--yk-bg);
   transition: color 200ms;
 }
 .map-marker[data-flip] .map-name {

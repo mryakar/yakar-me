@@ -16,6 +16,7 @@ const { lang } = Astro.props;
 const t = ui[lang].writing;
 const all = await articles(lang);
 ---
+
 <Base lang={lang} title={documentTitle(ui[lang].nav.writing)} description={t.description}>
   <div class="flex flex-col gap-24 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
     <header class="flex items-baseline justify-between border-b border-line pb-5">
@@ -29,13 +30,22 @@ const all = await articles(lang);
     <Stack articles={all} lang={lang} />
 
     <section class="flex flex-col gap-6 tab:hidden" aria-labelledby="all">
-      <h2 id="all" class="label text-faint">{t.all}</h2>
+      <h2 id="all" class="label text-faint">
+        {t.all}
+      </h2>
       <ol class="flex flex-col">
         {all.map((a) => (
           <li class="border-t border-line">
-            <a href={articlePath(a.id, lang)} class="group grid gap-1 py-5 desk:grid-cols-[9rem_minmax(0,1fr)_7rem] desk:items-baseline desk:gap-8">
-              <time class="label text-faint" datetime={isoDate(a.pubDate)}>{formatDate(a.pubDate, 'short', lang)}</time>
-              <span class="font-body text-xl text-text transition-colors duration-200 group-hover:text-accent">{a.title}</span>
+            <a
+              href={articlePath(a.id, lang)}
+              class="group grid gap-1 py-5 desk:grid-cols-[9rem_minmax(0,1fr)_7rem] desk:items-baseline desk:gap-8"
+            >
+              <time class="label text-faint" datetime={isoDate(a.pubDate)}>
+                {formatDate(a.pubDate, 'short', lang)}
+              </time>
+              <span class="font-body text-xl text-text transition-colors duration-200 group-hover:text-accent">
+                {a.title}
+              </span>
               <span class="label text-muted desk:text-right">{t.topics[a.topic]}</span>
             </a>
           </li>

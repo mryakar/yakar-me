@@ -22,7 +22,12 @@ test('blogPosting: özgün yazıda translationOfWork yok', () => {
 });
 
 test('blogPosting: çeviride translationOfWork özgüne', () => {
-  const o = blogPosting({ ...post, lang: 'tr', url: 'https://yakar.me/tr/writing/locks/', original: { url: post.url, lang: 'en' } });
+  const o = blogPosting({
+    ...post,
+    lang: 'tr',
+    url: 'https://yakar.me/tr/writing/locks/',
+    original: { url: post.url, lang: 'en' },
+  });
   assert.equal(o.inLanguage, 'tr');
   assert.deepEqual(o.translationOfWork, { '@type': 'BlogPosting', url: post.url, inLanguage: 'en' });
 });
@@ -42,4 +47,3 @@ test('jsonLd: </script> ve HTML karakterleri kaçırılır, JSON geçerli kalır
   assert.doesNotMatch(out, /[<>&\u2028]/);
   assert.deepEqual(JSON.parse(out), data);
 });
-

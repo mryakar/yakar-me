@@ -34,6 +34,8 @@ read credentials, so a full build is only possible for the maintainer; the unit 
 | `npm test` | Unit tests (`node --test`, no dependencies) |
 | `npm run build` | Type check and build to `dist/` |
 | `npm run preview` | Serve `dist/` with `wrangler dev`, headers applied (`localhost:8787`) |
+| `npm run format` | Format the code with Prettier |
+| `npm run check:format` | Check that the code is formatted |
 | `npm run check:dist` | Check the build output: inline code, external resources, broken links, structured data, language counterparts, feeds |
 | `npm run check:pages` | Page weight budgets and accessibility in headless Chrome, phone and desktop, dark and light theme |
 | `npm run check:audit` | `npm audit` against a dated list of reviewed advisories |

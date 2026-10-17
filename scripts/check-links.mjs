@@ -56,14 +56,17 @@ const results = await probeAll(foundOn.keys());
 const again = [...results].filter(([, r]) => r.verdict === 'retry').map(([url]) => url);
 if (again.length) {
   await sleep(RETRY_AFTER_MS);
-  for (const [url, r] of await probeAll(again)) results.set(url, r.verdict === 'retry' ? { ...r, verdict: 'broken' } : r);
+  for (const [url, r] of await probeAll(again))
+    results.set(url, r.verdict === 'retry' ? { ...r, verdict: 'broken' } : r);
 }
 
 const by = (verdict) => [...results].filter(([, r]) => r.verdict === verdict);
 const line = ([url, r]) => `${r.status ?? r.error} ${url} (on ${foundOn.get(url)})`;
 const broken = by('broken');
 const blocked = by('blocked');
-console.log(`${broken.length ? '✗' : '✓'} ${results.size} outside links on ${pages.length} pages: ${by('ok').length} reachable, ${blocked.length} could not be checked, ${broken.length} broken`);
+console.log(
+  `${broken.length ? '✗' : '✓'} ${results.size} outside links on ${pages.length} pages: ${by('ok').length} reachable, ${blocked.length} could not be checked, ${broken.length} broken`,
+);
 for (const b of blocked) console.log(`  · could not check: ${line(b)}`);
 if (broken.length) {
   console.error(broken.map((b) => `✗ ${line(b)}`).join('\n'));
