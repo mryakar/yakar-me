@@ -27,7 +27,8 @@ if (dialog) {
   const show = (index: number) => {
     current = wrap(index);
     panels.forEach((p, i) => (p.hidden = i !== current));
-    for (const neighbour of [current - 1, current + 1]) picture(wrap(neighbour)).querySelector('img')!.loading = 'eager';
+    for (const neighbour of [current - 1, current + 1])
+      picture(wrap(neighbour)).querySelector('img')!.loading = 'eager';
     history.replaceState(null, '', `#${ids[current]}`);
   };
 

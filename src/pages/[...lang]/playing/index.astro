@@ -21,13 +21,22 @@ const { lang } = Astro.props;
 const t = ui[lang].playing;
 const { all, practicing } = await songs(lang);
 ---
+
 <Base lang={lang} title={documentTitle(ui[lang].nav.playing)} description={t.description}>
   <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-playing>
-    <PlayingViews lang={lang} current="songs" songs={all.length} artists={rankArtists(all).length} lede={t.description} />
+    <PlayingViews
+      lang={lang}
+      current="songs"
+      songs={all.length}
+      artists={rankArtists(all).length}
+      lede={t.description}
+    />
 
     {practicing.length > 0 && (
       <section aria-labelledby="practicing" class="flex flex-col gap-4">
-        <h2 id="practicing" class="label text-accent">{t.now}</h2>
+        <h2 id="practicing" class="label text-accent">
+          {t.now}
+        </h2>
         <ul class="grid gap-3 tab:grid-cols-2 tab:gap-6">
           {practicing.map((song) => (
             <li>
@@ -37,8 +46,12 @@ const { all, practicing } = await songs(lang);
                   <Sleeve song={song} mini />
                 </span>
                 <span class="flex min-w-0 flex-col gap-1.5">
-                  <span class="font-display text-d4" lang={song.lang}>{song.title}</span>
-                  <span class="font-body text-[17px] text-muted" lang={song.lang}>{song.artist}</span>
+                  <span class="font-display text-d4" lang={song.lang}>
+                    {song.title}
+                  </span>
+                  <span class="font-body text-[17px] text-muted" lang={song.lang}>
+                    {song.artist}
+                  </span>
                   <span class="label text-faint">{t.nowTag}</span>
                 </span>
               </a>

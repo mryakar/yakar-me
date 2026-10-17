@@ -49,13 +49,17 @@ const notes = [
   },
 ];
 ---
+
 <ul class="grid grid-cols-2 gap-x-4 gap-y-6">
   {notes.map((note) => (
     <li class="flex flex-col gap-1 border-l border-line-strong pl-3.5">
       <span class="label text-faint">{note.label}</span>
       <span class="font-display text-d4 leading-none text-text">{n(note.value)}</span>
       <span class="text-[13px] leading-[1.35] text-muted">{note.unit}</span>
-      <a href={localize(note.href, lang)} class="group inline-flex w-fit items-center gap-1.5 text-[14px] text-accent">{note.go}<ArrowRight size={12} /></a>
+      <a href={localize(note.href, lang)} class="group inline-flex w-fit items-center gap-1.5 text-[14px] text-accent">
+        {note.go}
+        <ArrowRight size={12} />
+      </a>
     </li>
   ))}
 </ul>

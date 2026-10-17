@@ -12,6 +12,7 @@ interface Props {
 }
 const { href, label, meta, value, shown, cells, size } = Astro.props;
 ---
+
 <a href={href} class="flex w-fit flex-col gap-3.5 rounded-[10px] text-text focus-visible:outline-offset-4">
   <span class="sr-only">{shown}</span>
   <span class="flex items-baseline justify-between gap-3">

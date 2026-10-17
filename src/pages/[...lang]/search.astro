@@ -17,6 +17,7 @@ const { lang } = Astro.props;
 const t = ui[lang].search;
 const groups = sectionLinks(lang);
 ---
+
 <Base lang={lang} title={documentTitle(t.title)} description={t.description}>
   <meta slot="head" name="robots" content="noindex" />
   <div
@@ -35,12 +36,19 @@ const groups = sectionLinks(lang);
 
     <ul data-search-fallback class="flex flex-wrap gap-x-7 gap-y-3">
       {groups.map((g) => (
-        <li><a href={g.href} class="group inline-flex items-center gap-2 text-[15px] text-accent">{g.label}<ArrowRight /></a></li>
+        <li>
+          <a href={g.href} class="group inline-flex items-center gap-2 text-[15px] text-accent">
+            {g.label}
+            <ArrowRight />
+          </a>
+        </li>
       ))}
     </ul>
 
     <div data-search-box hidden class="flex max-w-180 flex-col gap-3">
-      <label for="search-query" class="label text-faint">{t.label}</label>
+      <label for="search-query" class="label text-faint">
+        {t.label}
+      </label>
       <input
         id="search-query"
         type="search"
@@ -56,7 +64,10 @@ const groups = sectionLinks(lang);
     <div class="flex flex-col gap-12 [&_mark]:rounded-[2px] [&_mark]:bg-accent/25 [&_mark]:text-text">
       {groups.map((g) => (
         <section data-search-group={g.key} hidden aria-labelledby={`search-${g.key}`} class="flex flex-col gap-3">
-          <h2 id={`search-${g.key}`} class="label flex gap-3 text-accent">{g.label}<span data-search-count class="text-faint"></span></h2>
+          <h2 id={`search-${g.key}`} class="label flex gap-3 text-accent">
+            {g.label}
+            <span data-search-count class="text-faint"></span>
+          </h2>
           <ol data-search-list class="flex flex-col border-t border-line"></ol>
         </section>
       ))}
@@ -65,7 +76,10 @@ const groups = sectionLinks(lang);
     <template data-search-item>
       <li class="border-b border-line">
         <a data-search-link class="group flex flex-col gap-2 py-5">
-          <span data-search-title class="font-display text-d4 transition-colors duration-200 group-hover:text-accent"></span>
+          <span
+            data-search-title
+            class="font-display text-d4 transition-colors duration-200 group-hover:text-accent"
+          ></span>
           <span data-search-snippet class="max-w-180 text-muted"></span>
         </a>
       </li>

@@ -56,7 +56,12 @@ const endMark = (label: string): Hast => ({
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
   },
-  children: strokes(MARK, true).map((s) => ({ type: 'element', tagName: 'path', properties: { d: s.d, strokeWidth: s.width }, children: [] })),
+  children: strokes(MARK, true).map((s) => ({
+    type: 'element',
+    tagName: 'path',
+    properties: { d: s.d, strokeWidth: s.width },
+    children: [],
+  })),
 });
 
 export const printsHref = (href: string, text: string) => /^https?:\/\//.test(href) && text.trim() !== href;
@@ -88,17 +93,26 @@ export const articleBlocks = defineHastPlugin({
       ctx.appendChild(last as never, mark as never);
       return;
     }
-    ctx.replaceNode(tail as never, [
-      { type: 'text', value: split[1] },
-      { type: 'element', tagName: 'span', properties: { className: ['end-word'] }, children: [{ type: 'text', value: split[2] }, mark] },
-    ] as never);
+    ctx.replaceNode(
+      tail as never,
+      [
+        { type: 'text', value: split[1] },
+        {
+          type: 'element',
+          tagName: 'span',
+          properties: { className: ['end-word'] },
+          children: [{ type: 'text', value: split[2] }, mark],
+        },
+      ] as never,
+    );
   },
   element: {
     filter: ['a', 'p', 'h2', 'h3', 'pre', 'table'],
     visit(node, ctx) {
       const el = node as unknown as Hast;
       if (el.tagName === 'a') {
-        if (printsHref(String(el.properties?.href ?? ''), ctx.textContent(node))) ctx.setProperty(node, 'dataPrintHref', '');
+        if (printsHref(String(el.properties?.href ?? ''), ctx.textContent(node)))
+          ctx.setProperty(node, 'dataPrintHref', '');
         return;
       }
       if (el.tagName === 'pre' || el.tagName === 'table') {
@@ -116,7 +130,12 @@ export const articleBlocks = defineHastPlugin({
           properties: {},
           children: [
             { type: 'element', tagName: 'img', properties: props, children: [] },
-            { type: 'element', tagName: 'figcaption', properties: {}, children: [{ type: 'text', value: String(title) }] },
+            {
+              type: 'element',
+              tagName: 'figcaption',
+              properties: {},
+              children: [{ type: 'text', value: String(title) }],
+            },
           ],
         } as never);
         return;

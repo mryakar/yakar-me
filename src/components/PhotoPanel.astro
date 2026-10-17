@@ -24,13 +24,31 @@ const numbers: { value: string; label: string }[] = [
 ];
 const recipe = p.recipe ? recipeRows(p.recipe, t.recipeValue) : [];
 ---
+
 <article data-photo={photoSlug(photo)} hidden class="lightbox-panel" aria-label={t.position(series, index + 1, total)}>
   <div class="flex items-center justify-between gap-4 text-[13px] text-muted">
-    <span>{series} · {index + 1} / {total}</span>
+    <span>
+      {series} · {index + 1} / {total}
+    </span>
     <span class="flex items-center gap-5">
       <span class="label hidden text-faint desk:inline">Esc</span>
-      <button type="button" data-close aria-label={t.close} class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"></path></svg>
+      <button
+        type="button"
+        data-close
+        aria-label={t.close}
+        class="inline-flex size-11 items-center justify-center rounded-full border border-line-strong text-text"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M1 1l12 12M13 1L1 13"></path>
+        </svg>
       </button>
     </span>
   </div>
@@ -49,8 +67,12 @@ const recipe = p.recipe ? recipeRows(p.recipe, t.recipeValue) : [];
 
     <aside class="flex flex-col gap-7 desk:justify-center desk:gap-5 desk:border-l desk:border-line desk:pl-10">
       <div class="flex flex-col gap-1.5">
-        <span lang="en" class="label text-[13px] text-faint">{p.kind === 'fujifilm' ? `${p.make} ${p.model}` : p.make}</span>
-        <span class="text-[15px] text-text">{p.kind === 'fujifilm' ? `${p.lens} · ${p.recipe!.filmSimulation}` : p.model}</span>
+        <span lang="en" class="label text-[13px] text-faint">
+          {p.kind === 'fujifilm' ? `${p.make} ${p.model}` : p.make}
+        </span>
+        <span class="text-[15px] text-text">
+          {p.kind === 'fujifilm' ? `${p.lens} · ${p.recipe!.filmSimulation}` : p.model}
+        </span>
       </div>
 
       <dl class="grid grid-cols-2 gap-x-4 gap-y-5">
@@ -77,7 +99,9 @@ const recipe = p.recipe ? recipeRows(p.recipe, t.recipeValue) : [];
       )}
 
       <span class="text-sm text-accent">{placeName(p.place, t.country)}</span>
-      <span class="text-[13px] text-faint">© {takenYear(p.taken)} {PHOTOGRAPHER}</span>
+      <span class="text-[13px] text-faint">
+        © {takenYear(p.taken)} {PHOTOGRAPHER}
+      </span>
     </aside>
   </div>
 </article>

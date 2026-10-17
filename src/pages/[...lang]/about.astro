@@ -35,7 +35,9 @@ const structured = jsonLd(
 const [portrait, ...extra] = await getCollection('portrait');
 if (!portrait || extra.length) throw new Error('src/content/portrait/ needs exactly one photo');
 if ((lang === defaultLang) !== (entry.data.portraitAlt === undefined)) {
-  throw new Error(`src/content/pages/about/${lang}.md: portraitAlt belongs in every translation and not in the original`);
+  throw new Error(
+    `src/content/pages/about/${lang}.md: portraitAlt belongs in every translation and not in the original`,
+  );
 }
 const alt = entry.data.portraitAlt ?? portrait.data.alt;
 const credit = `${placeName(portrait.data.place, ui[lang].photos.country)} · ${takenYear(portrait.data.taken)}`;
@@ -45,7 +47,11 @@ const about = (await getCollection('about')).map((e) => e.data).sort((a, b) => a
 const timeline = about.filter((e) => e.kind === 'timeline');
 const questions = about.filter((e) => e.kind === 'question');
 const spoken = about.filter((e) => e.kind === 'language');
-const bag = orderedGroups(bagGroups, about.filter((e) => e.kind === 'bag'), (item) => item.group);
+const bag = orderedGroups(
+  bagGroups,
+  about.filter((e) => e.kind === 'bag'),
+  (item) => item.group,
+);
 
 const toc = [
   { id: 'timeline', label: t.timeline },
@@ -63,6 +69,7 @@ const row = 'grid gap-1 border-b border-line py-3.5 tab:grid-cols-[10rem_minmax(
 const term = 'label pt-1 text-muted';
 const text = 'font-body text-[17px] leading-relaxed text-text-body';
 ---
+
 <Base lang={lang} title={documentTitle(t.heading)} description={t.description}>
   <script type="application/ld+json" set:html={structured} />
   <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
@@ -75,7 +82,12 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
       <div class="grid gap-y-7 @min-[52.75rem]:grid-cols-[minmax(0,42.5rem)_minmax(16.25rem,21.25rem)] @min-[52.75rem]:grid-rows-[repeat(5,auto)_1fr] @min-[52.75rem]:justify-between @min-[52.75rem]:gap-x-16">
         <div class="mb-7 @min-[52.75rem]:col-start-2 @min-[52.75rem]:row-[1/4] @min-[52.75rem]:mb-0">
           <figure class="flex w-full max-w-80 flex-col gap-3 @min-[52.75rem]:sticky @min-[52.75rem]:top-12 @min-[52.75rem]:max-w-none">
-            <PhotoPicture photo={{ data: portrait.data, alt }} loading="eager" sizes="(min-width: 48rem) 21.25rem, 100vw" class="aspect-2/3 h-auto w-full bg-sleeve object-cover" />
+            <PhotoPicture
+              photo={{ data: portrait.data, alt }}
+              loading="eager"
+              sizes="(min-width: 48rem) 21.25rem, 100vw"
+              class="aspect-2/3 h-auto w-full bg-sleeve object-cover"
+            />
             <figcaption class="label text-faint">{credit}</figcaption>
           </figure>
         </div>
@@ -87,10 +99,16 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
         <aside class="mt-3 flex flex-col gap-12 @min-[52.75rem]:col-start-2 @min-[52.75rem]:row-[4/-1] @min-[52.75rem]:mt-0 @min-[52.75rem]:pt-1.5">
           <AboutNotes lang={lang} />
           <nav aria-labelledby="on-this-page" class="hidden flex-col @min-[52.75rem]:flex">
-            <span id="on-this-page" class="label border-b border-line-strong pb-2.5 text-faint">{t.onThisPage}</span>
+            <span id="on-this-page" class="label border-b border-line-strong pb-2.5 text-faint">
+              {t.onThisPage}
+            </span>
             {toc.map((part, i) => (
-              <a href={`#${part.id}`} class="flex gap-3.5 border-b border-line py-2.75 text-[15px] text-text hover:text-accent">
-                <span class="label pt-0.75 text-faint">{index(i)}</span>{part.label}
+              <a
+                href={`#${part.id}`}
+                class="flex gap-3.5 border-b border-line py-2.75 text-[15px] text-text hover:text-accent"
+              >
+                <span class="label pt-0.75 text-faint">{index(i)}</span>
+                {part.label}
               </a>
             ))}
           </nav>
@@ -99,7 +117,9 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
 
       <div class="grid gap-y-18 @4xl:grid-cols-2 @4xl:gap-x-16 @4xl:gap-y-22">
         <section aria-labelledby="timeline" class="flex flex-col gap-5">
-          <h2 id="timeline" class={heading}>{t.timeline}</h2>
+          <h2 id="timeline" class={heading}>
+            {t.timeline}
+          </h2>
           <dl class={rows}>
             {timeline.map((e) => (
               <div class={row}>
@@ -111,11 +131,15 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
         </section>
 
         <section aria-labelledby="questions" class="flex flex-col gap-5">
-          <h2 id="questions" class={heading}>{t.questions}</h2>
+          <h2 id="questions" class={heading}>
+            {t.questions}
+          </h2>
           <ol class={rows}>
             {questions.map((e, i) => (
               <li class={row}>
-                <span class={term} aria-hidden="true">{index(i)}</span>
+                <span class={term} aria-hidden="true">
+                  {index(i)}
+                </span>
                 <span class={text}>{e.text[lang]}</span>
               </li>
             ))}
@@ -123,7 +147,9 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
         </section>
 
         <section aria-labelledby="languages" class="col-span-full flex flex-col gap-5">
-          <h2 id="languages" class={heading}>{t.languages}</h2>
+          <h2 id="languages" class={heading}>
+            {t.languages}
+          </h2>
           <dl class="grid grid-cols-2 gap-x-6 gap-y-6 @xl:grid-cols-4 @xl:gap-x-10">
             {spoken.map((e) => (
               <div class="flex flex-col gap-1.5 border-t border-line-strong pt-3.5">
@@ -131,7 +157,9 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
                 <dd class="text-[15px] text-text">{e.level === 'native' ? t.native : e.level}</dd>
                 <dd class="mt-2 flex gap-0.75" aria-hidden="true">
                   {Array.from({ length: SCALE }, (_, i) => (
-                    <span class:list={['h-1 w-5.5 rounded-[2px]', i < levelSteps(e.level) ? 'bg-accent' : 'bg-line-strong']} />
+                    <span
+                      class:list={['h-1 w-5.5 rounded-[2px]', i < levelSteps(e.level) ? 'bg-accent' : 'bg-line-strong']}
+                    />
                   ))}
                 </dd>
               </div>
@@ -140,7 +168,9 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
         </section>
 
         <section aria-labelledby="bag" class="col-span-full flex flex-col gap-5">
-          <h2 id="bag" class={heading}>{t.bag}</h2>
+          <h2 id="bag" class={heading}>
+            {t.bag}
+          </h2>
           <div class="grid gap-10 @3xl:grid-cols-3">
             {bag.map((group) => (
               <div class="flex flex-col">
@@ -160,30 +190,55 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
         </section>
 
         <section aria-labelledby="feeds" class="flex flex-col gap-5">
-          <h2 id="feeds" class={heading}>{t.feeds}</h2>
+          <h2 id="feeds" class={heading}>
+            {t.feeds}
+          </h2>
           <dl class={rows}>
             {locales.map((l) => (
               <div class={row}>
                 <dt class={term}>{languageName(l, lang)}</dt>
-                <dd><a href={localize(paths.feed, l)} hreflang={l} class="font-mono text-[14px] text-accent hover:underline">{site.domain}{localize(paths.feed, l)}</a></dd>
+                <dd>
+                  <a
+                    href={localize(paths.feed, l)}
+                    hreflang={l}
+                    class="font-mono text-[14px] text-accent hover:underline"
+                  >
+                    {site.domain}
+                    {localize(paths.feed, l)}
+                  </a>
+                </dd>
               </div>
             ))}
           </dl>
-          <a href={localize(paths.years, lang)} class="group mt-2 inline-flex w-fit items-center gap-2 text-[15px] text-accent">{years.all}<ArrowRight /></a>
+          <a
+            href={localize(paths.years, lang)}
+            class="group mt-2 inline-flex w-fit items-center gap-2 text-[15px] text-accent"
+          >
+            {years.all}
+            <ArrowRight />
+          </a>
         </section>
 
         <section aria-labelledby="contact" class="flex flex-col gap-5">
-          <h2 id="contact" class={heading}>{t.contact}</h2>
+          <h2 id="contact" class={heading}>
+            {t.contact}
+          </h2>
           <dl class={rows}>
             <div class={row}>
               <dt class={term}>{ui[lang].email}</dt>
-              <dd><a href={email.href} class="font-mono text-[14px] text-accent hover:underline">{email.address}</a></dd>
+              <dd>
+                <a href={email.href} class="font-mono text-[14px] text-accent hover:underline">
+                  {email.address}
+                </a>
+              </dd>
             </div>
             <div class={row}>
               <dt class={term}>{t.elsewhere}</dt>
               <dd class="flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
                 {profileLinks().map((l) => (
-                  <a href={l.href} rel="me" class="text-text hover:text-accent">{l.label} <span aria-hidden="true">↗</span></a>
+                  <a href={l.href} rel="me" class="text-text hover:text-accent">
+                    {l.label} <span aria-hidden="true">↗</span>
+                  </a>
                 ))}
               </dd>
             </div>

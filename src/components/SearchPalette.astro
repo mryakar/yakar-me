@@ -13,6 +13,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang].search;
 ---
+
 <dialog
   data-palette
   aria-label={t.title}
@@ -43,24 +44,49 @@ const t = ui[lang].search;
     />
     <Kbd>esc</Kbd>
   </div>
-  <div id="palette-results" role="listbox" aria-label={t.title} hidden class="min-h-0 flex-1 overflow-y-auto px-2 pt-3 pb-2">
+  <div
+    id="palette-results"
+    role="listbox"
+    aria-label={t.title}
+    hidden
+    class="min-h-0 flex-1 overflow-y-auto px-2 pt-3 pb-2"
+  >
     {sectionLinks(lang).map((g) => (
-      <div role="group" data-palette-group={g.key} aria-labelledby={`palette-${g.key}`} hidden class="flex flex-col pb-2">
-        <div id={`palette-${g.key}`} class="label flex gap-2.5 px-3 pt-1 pb-2 text-faint">{g.label}<span data-palette-count class="text-muted"></span></div>
+      <div
+        role="group"
+        data-palette-group={g.key}
+        aria-labelledby={`palette-${g.key}`}
+        hidden
+        class="flex flex-col pb-2"
+      >
+        <div id={`palette-${g.key}`} class="label flex gap-2.5 px-3 pt-1 pb-2 text-faint">
+          {g.label}
+          <span data-palette-count class="text-muted"></span>
+        </div>
         <div data-palette-list class="flex flex-col"></div>
       </div>
     ))}
   </div>
-  <p data-palette-none hidden class="label px-6 py-7 text-faint">{t.none}</p>
+  <p data-palette-none hidden class="label px-6 py-7 text-faint">
+    {t.none}
+  </p>
   <div class="flex h-11 flex-none items-center justify-between gap-4 border-t border-line bg-side pr-4 pl-5">
     <p data-palette-status role="status" class="label text-faint"></p>
     <div class="ml-auto flex items-center gap-1.5">
-      <a data-palette-all hidden class="mr-3.5 text-[13px] text-muted transition-colors duration-200 hover:text-text">{t.all} →</a>
-      <Kbd>↑</Kbd><Kbd>↓</Kbd><Kbd>↵</Kbd>
+      <a data-palette-all hidden class="mr-3.5 text-[13px] text-muted transition-colors duration-200 hover:text-text">
+        {t.all} →
+      </a>
+      <Kbd>↑</Kbd>
+      <Kbd>↓</Kbd>
+      <Kbd>↵</Kbd>
     </div>
   </div>
   <template data-palette-option>
-    <a role="option" aria-selected="false" class="group flex h-11 flex-none items-center gap-4 rounded-md px-3 aria-selected:bg-sleeve">
+    <a
+      role="option"
+      aria-selected="false"
+      class="group flex h-11 flex-none items-center gap-4 rounded-md px-3 aria-selected:bg-sleeve"
+    >
       <span data-palette-title class="min-w-0 flex-1 truncate text-[15px]"></span>
       <span data-palette-date class="label flex-none text-faint"></span>
       <Kbd class="invisible group-aria-selected:visible">↵</Kbd>

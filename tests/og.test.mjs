@@ -6,7 +6,12 @@ import { PAGE_BACKGROUND } from '../src/lib/theme.ts';
 import { frontmatter } from '../scripts/lib/frontmatter.mjs';
 import { pngChunks } from '../scripts/lib/png.mjs';
 
-const article = { id: 'locks', title: 'Explicit Locking in PostgreSQL', topic: 'Databases', pubDate: new Date('2026-09-16T00:00:00Z') };
+const article = {
+  id: 'locks',
+  title: 'Explicit Locking in PostgreSQL',
+  topic: 'Databases',
+  pubDate: new Date('2026-09-16T00:00:00Z'),
+};
 
 test('articleCard: konu ve tarih dilinde, küçük harf (Türkçe kuralıyla)', () => {
   assert.equal(articleCard(article, 'en').label, 'databases · 16 sep 2026');
@@ -30,12 +35,15 @@ test('ogCardHtml: başlık kaçırılır, varlık adresleri verilen işlevden', 
   assert.doesNotMatch(html, /<img/);
 });
 
-test('homeCard: dilin tagline\'ı ve giriş cümlesi, vurgulu kelime italik; ad dile göre', async () => {
+test("homeCard: dilin tagline'ı ve giriş cümlesi, vurgulu kelime italik; ad dile göre", async () => {
   const tr = ogCardHtml(homeCard('tr'), (p) => p);
   assert.match(tr, /<html lang="tr">/);
   assert.match(tr, /mühendis · yazar · gezgin/);
   assert.match(tr, /<h1>Kod, bir saksafon ve hep uzun yoldan <em>dolaşma<\/em> alışkanlığı\.<\/h1>/);
-  assert.match(tr, /font-style:italic;src:url\(@fontsource\/instrument-serif\/files\/instrument-serif-latin-400-italic/);
+  assert.match(
+    tr,
+    /font-style:italic;src:url\(@fontsource\/instrument-serif\/files\/instrument-serif-latin-400-italic/,
+  );
   assert.match(await ogImagePathFor(homeCard('es')), /^\/og\/home-es-[0-9a-f]{8}\.png$/);
   assert.notEqual(await ogImagePathFor(homeCard('en')), await ogImagePathFor(homeCard('tr')));
 });
@@ -49,8 +57,9 @@ test('titleSize: uzun başlık küçülür', () => {
 const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 const token = (name) => new RegExp(`--yk-${name}: light-dark\\(([^,]+),\\s*([^)]+\\)?)\\);`).exec(css);
 
-test('OG_COLORS: global.css koyu tema token\'larıyla aynı', () => {
-  for (const name of ['bg', 'text', 'muted', 'faint', 'accent', 'line']) assert.equal(OG_COLORS[name], token(name)?.[2].trim(), name);
+test("OG_COLORS: global.css koyu tema token'larıyla aynı", () => {
+  for (const name of ['bg', 'text', 'muted', 'faint', 'accent', 'line'])
+    assert.equal(OG_COLORS[name], token(name)?.[2].trim(), name);
 });
 
 test('PAGE_BACKGROUND: global.css --yk-bg, iki tema', () => {
@@ -59,7 +68,9 @@ test('PAGE_BACKGROUND: global.css --yk-bg, iki tema', () => {
 });
 
 test('frontmatter: çift ve tek tırnak, düz değer', () => {
-  const data = frontmatter('---\ntitle: "PostgreSQL\'de \\"Açık\\""\nshort: \'it\'\'s\'\npubDate: 2026-09-16\n---\nbody');
+  const data = frontmatter(
+    "---\ntitle: \"PostgreSQL'de \\\"Açık\\\"\"\nshort: 'it''s'\npubDate: 2026-09-16\n---\nbody",
+  );
   assert.deepEqual(data, { title: 'PostgreSQL\'de "Açık"', short: "it's", pubDate: '2026-09-16' });
 });
 
@@ -67,5 +78,6 @@ test('public/og: her görsel yalnız IHDR, IDAT, IEND', () => {
   const dir = new URL('../public/og/', import.meta.url);
   const files = readdirSync(dir);
   assert.ok(files.length > 0);
-  for (const f of files) assert.deepEqual([...new Set(pngChunks(readFileSync(new URL(f, dir))))].sort(), ['IDAT', 'IEND', 'IHDR'], f);
+  for (const f of files)
+    assert.deepEqual([...new Set(pngChunks(readFileSync(new URL(f, dir))))].sort(), ['IDAT', 'IEND', 'IHDR'], f);
 });

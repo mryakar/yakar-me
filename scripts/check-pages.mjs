@@ -28,7 +28,10 @@ const exceptions = JSON.parse(readFileSync(new URL('./a11y-exceptions.json', imp
 const today = new Date().toISOString().slice(0, 10);
 
 const runAxe = `(${async (tags, ex) => {
-  const result = await globalThis.axe.run(document, { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] });
+  const result = await globalThis.axe.run(document, {
+    runOnly: { type: 'tag', values: tags },
+    resultTypes: ['violations'],
+  });
   return result.violations.map((v) => ({
     id: v.id,
     impact: v.impact,
@@ -59,7 +62,9 @@ process.on('exit', () => {
 {
   await waitFor(async () => (await fetch(`${BASE}/`)).ok, { timeout: 60000, what: `wrangler dev on ${BASE}` });
   const pages = sitemapUrls(await (await fetch(`${BASE}/sitemap.xml`)).text()).map((url) => new URL(url).pathname);
-  const jobs = [...pages, ...SEARCHES, ...NOT_FOUND].flatMap((path) => Object.keys(VIEWS).map((view) => ({ path, view })));
+  const jobs = [...pages, ...SEARCHES, ...NOT_FOUND].flatMap((path) =>
+    Object.keys(VIEWS).map((view) => ({ path, view })),
+  );
 
   chrome = await launchChrome();
   const tabs = await Promise.all(Array.from({ length: TABS }, () => openTab(chrome)));
@@ -85,7 +90,9 @@ process.on('exit', () => {
       `most requests ${max('requests').requests} (${max('requests').where}), site scripts ≤ ${kb(max('script').script)} KB, ` +
       `vendored ≤ ${kb(max('vendor').vendor)} KB${tiles.length ? `, map tiles on first view ≤ ${Math.max(...tiles.map((w) => w.tiles))}` : ''}`,
   );
-  console.log(`${problems.length ? '✗' : '✓'} ${scans.length} accessibility scans (${AXE_TAGS.join(', ')}), ${exceptions.length} exception(s)`);
+  console.log(
+    `${problems.length ? '✗' : '✓'} ${scans.length} accessibility scans (${AXE_TAGS.join(', ')}), ${exceptions.length} exception(s)`,
+  );
   if (problems.length) {
     console.error(problems.map((p) => `✗ ${p}`).join('\n'));
   }
@@ -154,24 +161,37 @@ async function check(tab, { path, view }) {
     const quiet = Date.now() - tab.last;
     return tab.loaded && ((pending().length === 0 && quiet >= QUIET_MS) || quiet >= STALL_MS);
   };
-  await waitFor(async () => settled(), { timeout: PAGE_TIMEOUT_MS, every: 100, what: `${where} to settle` }).catch((e) => {
-    throw new Error(`${e.message}; loaded: ${tab.loaded}; pending: ${pending().join(' ') || 'none'}`);
-  });
+  await waitFor(async () => settled(), { timeout: PAGE_TIMEOUT_MS, every: 100, what: `${where} to settle` }).catch(
+    (e) => {
+      throw new Error(`${e.message}; loaded: ${tab.loaded}; pending: ${pending().join(' ') || 'none'}`);
+    },
+  );
 
   const problems = [];
   const expected = NOT_FOUND.includes(path) ? 404 : 200;
   if (tab.status !== expected) problems.push(`${where}: HTTP ${tab.status}, expected ${expected}`);
   const requests = [...tab.requests.values()];
-  const weight = { where, ...weigh(requests), tiles: requests.filter((r) => new URL(r.url).pathname.startsWith('/tiles/')).length };
+  const weight = {
+    where,
+    ...weigh(requests),
+    tiles: requests.filter((r) => new URL(r.url).pathname.startsWith('/tiles/')).length,
+  };
   problems.push(...budgetProblems(where, weight));
-  const { result: csp } = await tab.send('Runtime.evaluate', { expression: 'window.__cspViolations ?? []', returnByValue: true });
+  const { result: csp } = await tab.send('Runtime.evaluate', {
+    expression: 'window.__cspViolations ?? []',
+    returnByValue: true,
+  });
   for (const v of csp.value) problems.push(`${where}: CSP violation (${v})`);
 
   await tab.send('Runtime.evaluate', { expression: axe });
   const scans = [];
   for (const theme of THEMES) {
     await tab.send('Emulation.setEmulatedMedia', { features: media(theme) });
-    const { result, exceptionDetails } = await tab.send('Runtime.evaluate', { expression: runAxe, awaitPromise: true, returnByValue: true });
+    const { result, exceptionDetails } = await tab.send('Runtime.evaluate', {
+      expression: runAxe,
+      awaitPromise: true,
+      returnByValue: true,
+    });
     if (exceptionDetails) throw new Error(`axe: ${exceptionDetails.exception?.description ?? exceptionDetails.text}`);
     scans.push({ where: `${path} (${view}, ${theme})`, violations: result.value });
   }

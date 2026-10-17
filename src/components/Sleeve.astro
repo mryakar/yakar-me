@@ -8,6 +8,7 @@ interface Props {
 const { song, mini = false } = Astro.props;
 const layout = ['sleeve-v0', 'sleeve-v1', 'sleeve-v2'];
 ---
+
 <span class:list={['sleeve-art', layout[song.sleeve], mini && 'sleeve-mini']} lang={song.lang} aria-hidden="true">
   <span class="sleeve-year">{song.year}</span>
   <span class="sleeve-title">{song.title}</span>

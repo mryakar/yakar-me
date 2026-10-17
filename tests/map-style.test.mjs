@@ -11,7 +11,10 @@ const input = (over = {}) => ({
   tiles: '/tiles/abcd1234/{z}/{x}/{y}.mvt',
   worldMaxZoom: 6,
   cityZooms: [7, 13],
-  regions: [[114, 22, 114.3, 22.4], [115, -9, 115.6, -8]],
+  regions: [
+    [114, 22, 114.3, 22.4],
+    [115, -9, 115.6, -8],
+  ],
   ours: ['Hong Kong', 'Mong Kok'],
   ...over,
 });
@@ -19,7 +22,12 @@ const input = (over = {}) => ({
 test('mapStyle: dünya + şehir başına kaynak, kutu ve yakınlık sınırları, adres şablonu bozulmaz', () => {
   const s = mapStyle(input());
   assert.deepEqual(Object.keys(s.sources), ['world', 'city-0', 'city-1']);
-  assert.deepEqual(s.sources.world, { type: 'vector', tiles: ['https://yakar.me/tiles/abcd1234/{z}/{x}/{y}.mvt'], minzoom: 0, maxzoom: 6 });
+  assert.deepEqual(s.sources.world, {
+    type: 'vector',
+    tiles: ['https://yakar.me/tiles/abcd1234/{z}/{x}/{y}.mvt'],
+    minzoom: 0,
+    maxzoom: 6,
+  });
   assert.deepEqual(s.sources['city-1'].bounds, [115, -9, 115.6, -8]);
   assert.equal(s.sources['city-0'].minzoom, 7);
   assert.equal(s.sources['city-0'].maxzoom, 13);
@@ -50,7 +58,10 @@ const spot = (x, y, weight, width = 60) => ({ x, y, weight, width, height: 16 })
 
 test('arrange: yakın noktalar ağır olana katılır', () => {
   const r = arrange([spot(100, 100, 3), spot(100 + MERGE_PX - 1, 100, 11), spot(300, 100, 1)], 800);
-  assert.deepEqual(r.map((a) => a.leader), [1, 1, 2]);
+  assert.deepEqual(
+    r.map((a) => a.leader),
+    [1, 1, 2],
+  );
   assert.equal(r[0].side, null);
   assert.equal(r[1].side, 'right');
 });
@@ -58,7 +69,10 @@ test('arrange: yakın noktalar ağır olana katılır', () => {
 test('arrange: sağa sığmayan etiket sola; komşu noktayı örten ya da hiçbir yana sığmayan gizlenir', () => {
   assert.equal(arrange([spot(790, 100, 1)], 800)[0].side, 'left');
   const r = arrange([spot(100, 100, 5, 200), spot(100 + MERGE_PX + 1, 100, 1, 200)], 800);
-  assert.deepEqual(r.map((a) => a.side), [null, 'right']);
+  assert.deepEqual(
+    r.map((a) => a.side),
+    [null, 'right'],
+  );
   assert.equal(arrange([spot(100, 100, 1, 2000)], 800)[0].side, null);
   assert.equal(LABEL_OFFSET, 20);
 });

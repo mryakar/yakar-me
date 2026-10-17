@@ -31,7 +31,13 @@ test('retryable: 429 ve 5xx yeniden denenir, 4xx ve başarı denenmez', () => {
 
 const responses = (...statuses) => {
   const calls = [];
-  return { calls, call: () => { calls.push(1); return Promise.resolve(new Response(null, { status: statuses[calls.length - 1] })); } };
+  return {
+    calls,
+    call: () => {
+      calls.push(1);
+      return Promise.resolve(new Response(null, { status: statuses[calls.length - 1] }));
+    },
+  };
 };
 
 test('withRetry: 429 sonrası başarı, bekleme artarak (1, 2 sn)', async () => {

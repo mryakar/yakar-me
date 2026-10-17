@@ -124,7 +124,10 @@ const photo = z
   });
 
 const photos = defineCollection({ loader: glob({ pattern: '*/*.json', base: './src/content/photos' }), schema: photo });
-const portrait = defineCollection({ loader: glob({ pattern: '*.json', base: './src/content/portrait' }), schema: photo });
+const portrait = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/portrait' }),
+  schema: photo,
+});
 
 const aboutText = z.record(lang, z.string().trim().min(1));
 const year = z.number().int().min(1900).max(2100);
@@ -132,13 +135,39 @@ const year = z.number().int().min(1900).max(2100);
 const about = defineCollection({
   loader: positioned('./src/content/about.json'),
   schema: z.discriminatedUnion('kind', [
-    z.object({ id: slug, kind: z.literal('timeline'), from: year, to: z.union([year, z.literal(PRESENT)]).optional(), text: aboutText, position: z.number() }).strict(),
-    z.object({ id: slug, kind: z.literal('question'), text: aboutText, position: z.number() }).strict(),
-    z.object({ id: z.string().regex(/^[a-z]{2,3}$/), kind: z.literal('language'), level: z.enum(levels), position: z.number() }).strict(),
     z
-      .object({ id: slug, kind: z.literal('bag'), group: z.enum(bagGroups), label: aboutText, name: z.string().trim().min(1).optional(), note: aboutText.optional(), position: z.number() })
+      .object({
+        id: slug,
+        kind: z.literal('timeline'),
+        from: year,
+        to: z.union([year, z.literal(PRESENT)]).optional(),
+        text: aboutText,
+        position: z.number(),
+      })
+      .strict(),
+    z.object({ id: slug, kind: z.literal('question'), text: aboutText, position: z.number() }).strict(),
+    z
+      .object({
+        id: z.string().regex(/^[a-z]{2,3}$/),
+        kind: z.literal('language'),
+        level: z.enum(levels),
+        position: z.number(),
+      })
+      .strict(),
+    z
+      .object({
+        id: slug,
+        kind: z.literal('bag'),
+        group: z.enum(bagGroups),
+        label: aboutText,
+        name: z.string().trim().min(1).optional(),
+        note: aboutText.optional(),
+        position: z.number(),
+      })
       .strict()
-      .refine((item) => item.name !== undefined || item.note !== undefined, { message: 'a bag item needs a name or a note' }),
+      .refine((item) => item.name !== undefined || item.note !== undefined, {
+        message: 'a bag item needs a name or a note',
+      }),
   ]),
 });
 
@@ -224,4 +253,16 @@ const songs = defineCollection({
     .refine((s) => song.categoryOf(s.genre) === s.category, { message: 'genre does not belong to the category' }),
 });
 
-export const collections = { writing, writingTranslations, series, seriesTranslations, photos, portrait, districts, pages, about, books, songs };
+export const collections = {
+  writing,
+  writingTranslations,
+  series,
+  seriesTranslations,
+  photos,
+  portrait,
+  districts,
+  pages,
+  about,
+  books,
+  songs,
+};

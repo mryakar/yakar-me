@@ -10,7 +10,16 @@ import { decode, encode, targetWidths, FORMATS } from './lib/variants.mjs';
 import { put, writeCredentials } from './lib/r2.mjs';
 import { CONTENT_DIR, PORTRAIT_DIR, PUBLIC_DIR, allRecords, records, sha256 } from './lib/photo-store.mjs';
 import {
-  EXIFTOOL_TAGS, FILM_SIMULATION_NAMES, PhotoError, cameraFrame, hasRecipe, location, parsePlace, photoId, readRecipe, readShot,
+  EXIFTOOL_TAGS,
+  FILM_SIMULATION_NAMES,
+  PhotoError,
+  cameraFrame,
+  hasRecipe,
+  location,
+  parsePlace,
+  photoId,
+  readRecipe,
+  readShot,
 } from './lib/photo-record.mjs';
 import { aperture, focalLength, placeName, recipeRows, shutter, takenYear, PHOTOGRAPHER } from '../src/lib/photo.ts';
 import { ui } from '../src/i18n/ui.ts';
@@ -48,7 +57,8 @@ const ask = async (q) => {
 if (positionals.length !== 1 || !opts.series === !opts.portrait) fail(USAGE);
 const series = opts.series;
 if (series && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(series)) fail(`series: expected a slug like hong-kong, got ${series}`);
-if (series && !existsSync(join(CONTENT_DIR, series, 'index.md'))) fail(`series ${series} does not exist: create ${CONTENT_DIR}/${series}/index.md first`);
+if (series && !existsSync(join(CONTENT_DIR, series, 'index.md')))
+  fail(`series ${series} does not exist: create ${CONTENT_DIR}/${series}/index.md first`);
 const targetDir = series ? join(CONTENT_DIR, series) : PORTRAIT_DIR;
 const targetName = series ? `${series}/` : 'the portrait ';
 
@@ -96,7 +106,9 @@ try {
 const gps = location(tags);
 console.log(`Coordinates in the file (not published): ${gps ? `${gps.lat}, ${gps.lon}` : 'none'}`);
 try {
-  shot.place = parsePlace(opts.place ?? (await ask('Place — district, city, country (e.g. Mong Kok, Hong Kong, Hong Kong): ')));
+  shot.place = parsePlace(
+    opts.place ?? (await ask('Place — district, city, country (e.g. Mong Kok, Hong Kong, Hong Kong): ')),
+  );
 } catch (e) {
   if (e instanceof PhotoError) fail(e.message);
   throw e;
@@ -143,7 +155,8 @@ if (shot.kind === 'fujifilm') {
       }
       const camera = readTags(path);
       if (!hasRecipe(camera)) console.warn(`! ${path} has no Fujifilm recipe`);
-      else if (camera.DateTimeOriginal !== tags.DateTimeOriginal) console.warn(`! ${path} was taken at ${camera.DateTimeOriginal}, not ${tags.DateTimeOriginal}`);
+      else if (camera.DateTimeOriginal !== tags.DateTimeOriginal)
+        console.warn(`! ${path} was taken at ${camera.DateTimeOriginal}, not ${tags.DateTimeOriginal}`);
       else {
         shot.recipe = readRecipe(camera);
         recipeSource = `from the camera JPEG ${path}`;
@@ -161,13 +174,21 @@ if (shot.kind === 'fujifilm') {
 
 let alt = opts.alt ?? (await ask('Alt text — what the photo shows, for screen readers: '));
 alt = alt.replace(/\s+/g, ' ').trim();
-if (alt.length < 1 || alt.length > 250 || /[\u0000-\u001f\u007f]/.test(alt)) fail('alt text: 1–250 characters, no control characters');
+if (alt.length < 1 || alt.length > 250 || /[\u0000-\u001f\u007f]/.test(alt))
+  fail('alt text: 1–250 characters, no control characters');
 
-const sourceTags = Object.keys(exiftool(input, ['-a', '-G1', '-e'])).filter((k) => !/^(SourceFile|System:|File:|ExifTool:)/.test(k));
+const sourceTags = Object.keys(exiftool(input, ['-a', '-G1', '-e'])).filter(
+  (k) => !/^(SourceFile|System:|File:|ExifTool:)/.test(k),
+);
 const year = takenYear(shot.taken);
 const line = (label, value) => console.log(`  ${label.padEnd(10)} ${value}`);
 console.log(`\n${basename(input)} → ${targetName}${id}${replacing ? '  (replaces the existing photo data)' : ''}`);
-line('Camera', shot.kind === 'fujifilm' ? `${shot.make} ${shot.model} · ${shot.lens} · ${shot.recipe.filmSimulation}` : `${shot.make} ${shot.model}`);
+line(
+  'Camera',
+  shot.kind === 'fujifilm'
+    ? `${shot.make} ${shot.model} · ${shot.lens} · ${shot.recipe.filmSimulation}`
+    : `${shot.make} ${shot.model}`,
+);
 line('Exposure', `${aperture(shot.aperture)}  ${shutter(shot.shutter)}  ISO ${shot.iso}  ${focalLength(shot)}`);
 if (shot.recipe) {
   line('Recipe', recipeSource);
@@ -177,7 +198,10 @@ line('Taken', shot.taken);
 line('Place', `${placeName(shot.place)} — published on the page; coordinates are not`);
 line('Alt', alt);
 line('Rights', `© ${year} ${PHOTOGRAPHER} — the only metadata in the served files (Artist, Copyright)`);
-line('Dropped', `${sourceTags.length} metadata entries of the source (GPS, serial numbers, maker notes, XMP, thumbnails …)`);
+line(
+  'Dropped',
+  `${sourceTags.length} metadata entries of the source (GPS, serial numbers, maker notes, XMP, thumbnails …)`,
+);
 
 console.log('\nEncoding variants …');
 const decoded = await decode(pixels);
@@ -202,7 +226,11 @@ const preview = files.find((f) => f.file.endsWith('.webp') && f.file.includes(`-
 console.log(`\nPreview: ${preview}`);
 
 const target = opts['no-upload'] ? 'public/img only (no upload)' : `R2 and public/img`;
-if ((await ask(`Write ${files.length} files to ${target} and the photo data to ${targetDir}/${id}.json? [y/N] `)).toLowerCase() !== 'y') {
+if (
+  (
+    await ask(`Write ${files.length} files to ${target} and the photo data to ${targetDir}/${id}.json? [y/N] `)
+  ).toLowerCase() !== 'y'
+) {
   fail('cancelled — nothing written');
 }
 
@@ -226,8 +254,24 @@ if (!opts['no-upload']) {
 mkdirSync(PUBLIC_DIR, { recursive: true });
 for (const f of files) writeFileSync(join(PUBLIC_DIR, f.file), f.buffer);
 const { kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe } = shot;
-const record = { alt, kind, make, model, lens, taken, aperture: f, shutter: t, iso, focalLength: mm, place, recipe, variants };
+const record = {
+  alt,
+  kind,
+  make,
+  model,
+  lens,
+  taken,
+  aperture: f,
+  shutter: t,
+  iso,
+  focalLength: mm,
+  place,
+  recipe,
+  variants,
+};
 mkdirSync(targetDir, { recursive: true });
 writeFileSync(join(targetDir, `${id}.json`), `${JSON.stringify(record, null, 2)}\n`);
-console.log(`✓ ${targetDir}/${id}.json${opts['no-upload'] ? '  (not uploaded: CI will fail until the variants are in R2)' : ''}`);
+console.log(
+  `✓ ${targetDir}/${id}.json${opts['no-upload'] ? '  (not uploaded: CI will fail until the variants are in R2)' : ''}`,
+);
 rl.close();

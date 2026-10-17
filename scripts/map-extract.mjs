@@ -6,7 +6,14 @@ import { drain } from './lib/pool.mjs';
 import { put, writeCredentials } from './lib/r2.mjs';
 import { sha256 } from './lib/photo-store.mjs';
 import {
-  COMPRESSION, TILE_TYPE, decodeDirectory, decompress, idToZxy, readHeader, tilesInBounds, writeArchive,
+  COMPRESSION,
+  TILE_TYPE,
+  decodeDirectory,
+  decompress,
+  idToZxy,
+  readHeader,
+  tilesInBounds,
+  writeArchive,
 } from './lib/pmtiles.mjs';
 import { CACHE_DIR, CITY_ZOOMS, MANIFEST, WORLD_MAX_ZOOM, photographedDistricts } from './lib/map-store.mjs';
 import { regions } from '../src/lib/map.ts';
@@ -52,7 +59,8 @@ async function range(offset, length, attempt = 1) {
 
 const header = readHeader(await range(0, 16384));
 if (header.tileType !== TILE_TYPE.mvt) fail(`source tiles are type ${header.tileType}, expected vector (MVT)`);
-if (header.tileCompression !== COMPRESSION.gzip) fail(`source tiles use compression ${header.tileCompression}, expected gzip`);
+if (header.tileCompression !== COMPRESSION.gzip)
+  fail(`source tiles use compression ${header.tileCompression}, expected gzip`);
 
 const wanted = new Set();
 for (let z = 0; z <= WORLD_MAX_ZOOM; z++) tilesInBounds([-180, -85.05, 180, 85.05], z).forEach((id) => wanted.add(id));
@@ -79,7 +87,9 @@ async function walk(entries) {
     const first = lowerBound(e.tileId);
     if (first >= ids.length || ids[first] >= end) continue;
     if (e.runLength === 0) {
-      await walk(decodeDirectory(decompress(await range(header.leafOffset + e.offset, e.length), header.internalCompression)));
+      await walk(
+        decodeDirectory(decompress(await range(header.leafOffset + e.offset, e.length), header.internalCompression)),
+      );
       continue;
     }
     for (let j = first; j < ids.length && ids[j] < end; j++) found.set(ids[j], { offset: e.offset, length: e.length });
@@ -88,7 +98,9 @@ async function walk(entries) {
 await walk(decodeDirectory(decompress(await range(header.rootOffset, header.rootLength), header.internalCompression)));
 console.log(`Tiles: ${ids.length} wanted, ${found.size} found in the source`);
 
-const contents = [...new Map([...found.values()].map((c) => [c.offset, c])).values()].sort((a, b) => a.offset - b.offset);
+const contents = [...new Map([...found.values()].map((c) => [c.offset, c])).values()].sort(
+  (a, b) => a.offset - b.offset,
+);
 const batches = [];
 for (const c of contents) {
   const last = batches.at(-1);
@@ -119,7 +131,9 @@ const file = `map-${hash.slice(0, 8)}.pmtiles`;
 mkdirSync(CACHE_DIR, { recursive: true });
 const local = join(CACHE_DIR, file);
 writeFileSync(local, archive);
-console.log(`Archive: ${local}, ${(archive.length / 1048576).toFixed(1)} MiB, ${tiles.length} tiles (z${Math.min(...zooms)}–${Math.max(...zooms)}), ${requests} requests, ${(fetched / 1048576).toFixed(1)} MiB read`);
+console.log(
+  `Archive: ${local}, ${(archive.length / 1048576).toFixed(1)} MiB, ${tiles.length} tiles (z${Math.min(...zooms)}–${Math.max(...zooms)}), ${requests} requests, ${(fetched / 1048576).toFixed(1)} MiB read`,
+);
 
 if (!opts['no-upload']) {
   let creds;

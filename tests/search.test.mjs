@@ -6,16 +6,26 @@ const entry = (o) => ({ kind: 'writing', url: '/x/', title: '', detail: '', keyw
 const text = (segments) => segments.map((s) => (s.mark ? `[${s.text}]` : s.text)).join('');
 
 test('fold: uzunluk korunur; İ/I/ı → i, işaretler düşer', () => {
-  for (const s of ['İSTANBUL ılık', 'Şişli Göreme Üsküdar Çeşme', 'Nové Město', 'a𝔸b', 'ﬁ ß']) assert.equal(fold(s).length, s.length);
+  for (const s of ['İSTANBUL ılık', 'Şişli Göreme Üsküdar Çeşme', 'Nové Město', 'a𝔸b', 'ﬁ ß'])
+    assert.equal(fold(s).length, s.length);
   assert.equal(fold('İSTANBUL ılık'), 'istanbul ilik');
   assert.equal(fold('Şişli Göreme Üsküdar Çeşme'), 'sisli goreme uskudar cesme');
   assert.equal(fold('Nové Město'), 'nove mesto');
 });
 
 test('decodeEntities ve plainText: etiketler düşer, varlıklar çözülür, geçersiz kod kalır', () => {
-  assert.equal(decodeEntities('a &lt;b&gt; &amp; &#39;c&#x27; &nbsp;d &bogus; &#0; &#x110000;'), "a <b> & 'c'  d &bogus; &#0; &#x110000;");
-  assert.equal(plainText('<p>Hello <code>Map&lt;K, V&gt;</code></p>\n<script>x()</script><style>p{}</style><p>world</p>'), 'Hello Map<K, V> world');
-  assert.equal(plainText('<p>Use <code>tryLock</code>, then <em>wait</em>.</p><ul><li>one</li><li>two</li></ul>'), 'Use tryLock, then wait. one two');
+  assert.equal(
+    decodeEntities('a &lt;b&gt; &amp; &#39;c&#x27; &nbsp;d &bogus; &#0; &#x110000;'),
+    "a <b> & 'c'  d &bogus; &#0; &#x110000;",
+  );
+  assert.equal(
+    plainText('<p>Hello <code>Map&lt;K, V&gt;</code></p>\n<script>x()</script><style>p{}</style><p>world</p>'),
+    'Hello Map<K, V> world',
+  );
+  assert.equal(
+    plainText('<p>Use <code>tryLock</code>, then <em>wait</em>.</p><ul><li>one</li><li>two</li></ul>'),
+    'Use tryLock, then wait. one two',
+  );
   assert.deepEqual(headings('<h2 id="a">One <em>two</em></h2><p>x</p><h3>Three</h3><h4>no</h4>'), ['One two', 'Three']);
 });
 
@@ -34,15 +44,25 @@ test('search: bütün terimler geçmeli, kelime başından; başlık gövdeden �
     entry({ url: '/c/', title: 'Deadlock', body: 'unrelated' }),
     entry({ url: '/d/', title: 'Padlocks', body: 'nothing here' }),
   ]);
-  assert.deepEqual(search(index, 'deadlock').map((r) => r.entry.url), ['/c/', '/a/', '/b/']);
-  assert.deepEqual(search(index, 'dead postgres').map((r) => r.entry.url), ['/b/']);
-  assert.deepEqual(search(index, 'lock').map((r) => r.entry.url), ['/a/']);
+  assert.deepEqual(
+    search(index, 'deadlock').map((r) => r.entry.url),
+    ['/c/', '/a/', '/b/'],
+  );
+  assert.deepEqual(
+    search(index, 'dead postgres').map((r) => r.entry.url),
+    ['/b/'],
+  );
+  assert.deepEqual(
+    search(index, 'lock').map((r) => r.entry.url),
+    ['/a/'],
+  );
   assert.deepEqual(search(index, '   '), []);
 });
 
 test('search: Türkçe büyük/küçük harf ve işaretten bağımsız', () => {
   const index = prepare([entry({ url: '/t/', title: 'İstanbul', detail: 'Şişli, Türkiye', body: 'Işık ve gölge' })]);
-  for (const q of ['istanbul', 'ISTANBUL', 'sisli', 'turkiye', 'isik', 'GÖLGE']) assert.equal(search(index, q).length, 1, q);
+  for (const q of ['istanbul', 'ISTANBUL', 'sisli', 'turkiye', 'isik', 'GÖLGE'])
+    assert.equal(search(index, q).length, 1, q);
 });
 
 test('snippet: eşleşme işaretli, kelimede kesilir, uçlarda …', () => {

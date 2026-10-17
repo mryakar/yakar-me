@@ -12,7 +12,8 @@ export function xmlErrors(xml) {
   for (const [token] of body.matchAll(/<[^>]*>|[^<]+|</g)) {
     if (!token.startsWith('<')) {
       if (!TEXT.test(token)) errors.push(`invalid text: ${token.trim().slice(0, 60)}`);
-      else if (!stack.length && token.trim()) errors.push(`text outside the root element: ${token.trim().slice(0, 60)}`);
+      else if (!stack.length && token.trim())
+        errors.push(`text outside the root element: ${token.trim().slice(0, 60)}`);
       continue;
     }
     const tag = TAG.exec(token);

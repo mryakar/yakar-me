@@ -29,6 +29,7 @@ const middle = centre(places);
 const [mainFile, sharedFile, workerFile] = MAPLIBRE_FILES;
 const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
 ---
+
 <Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description}>
   <link rel="modulepreload" href={`${MAPLIBRE_DIR}${mainFile}`} slot="head" />
   <link rel="modulepreload" href={`${MAPLIBRE_DIR}${sharedFile}`} slot="head" />
@@ -51,9 +52,21 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       hidden
     >
       <div data-map-canvas class="size-full"></div>
-      <div data-crumb class="absolute top-3 left-3 flex items-center border border-line bg-card pr-3 pl-0.5 tab:top-4 tab:left-4" hidden>
-        <button type="button" data-world class="label h-10 px-2.5 text-muted transition-colors duration-200 hover:text-accent">{t.map.world}</button>
-        <span class="label text-faint" aria-hidden="true">/</span>
+      <div
+        data-crumb
+        class="absolute top-3 left-3 flex items-center border border-line bg-card pr-3 pl-0.5 tab:top-4 tab:left-4"
+        hidden
+      >
+        <button
+          type="button"
+          data-world
+          class="label h-10 px-2.5 text-muted transition-colors duration-200 hover:text-accent"
+        >
+          {t.map.world}
+        </button>
+        <span class="label text-faint" aria-hidden="true">
+          /
+        </span>
         <span data-crumb-city class="label pl-2 text-text"></span>
       </div>
       <div class="absolute top-3 right-3 flex flex-col border border-line bg-card tab:top-4 tab:right-4">
@@ -67,36 +80,67 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       </div>
       <p class="label pointer-events-none absolute bottom-4 left-5 hidden text-faint @3xl:block">{t.map.hint}</p>
       <p class="absolute right-3 bottom-2.5 text-[11px] text-faint">
-        <a href="https://protomaps.com" class="transition-colors duration-200 hover:text-accent">Protomaps</a> · <a href="https://www.openstreetmap.org/copyright" class="transition-colors duration-200 hover:text-accent">© OpenStreetMap</a>
+        <a href="https://protomaps.com" class="transition-colors duration-200 hover:text-accent">
+          Protomaps
+        </a>{' '}
+        ·{' '}
+        <a href="https://www.openstreetmap.org/copyright" class="transition-colors duration-200 hover:text-accent">
+          © OpenStreetMap
+        </a>
       </p>
       {places.map((p) => (
         <article data-card={p.id} class="map-card" hidden>
-          <PhotoPicture photo={p.cover} sizes="(min-width: 48rem) 280px, 88px" class="map-card-image bg-sleeve object-cover" />
+          <PhotoPicture
+            photo={p.cover}
+            sizes="(min-width: 48rem) 280px, 88px"
+            class="map-card-image bg-sleeve object-cover"
+          />
           <div class="map-card-body">
             <div class="flex items-center justify-between">
               <span class="label text-faint">{p.city}</span>
-              <button type="button" data-close aria-label={t.photos.close} class="-my-2.5 -mr-2 flex size-11 items-center justify-center text-muted transition-colors duration-200 hover:text-accent">
+              <button
+                type="button"
+                data-close
+                aria-label={t.photos.close}
+                class="-my-2.5 -mr-2 flex size-11 items-center justify-center text-muted transition-colors duration-200 hover:text-accent"
+              >
                 <Icon name="close" size={16} />
               </button>
             </div>
             <h3 class="font-display text-d4">{p.district}</h3>
-            <p class="text-sm text-muted">{t.photos.count(p.photos.length)} · {t.map.inSeries(p.series.map((s) => s.title).join(', '))}</p>
+            <p class="text-sm text-muted">
+              {t.photos.count(p.photos.length)} · {t.map.inSeries(p.series.map((s) => s.title).join(', '))}
+            </p>
           </div>
           <a href={photoPath(p.series[0].id, photoSlug(p.cover), lang)} class="map-card-link group">
-            {t.map.seePhotos}<ArrowRight />
+            {t.map.seePhotos}
+            <ArrowRight />
           </a>
         </article>
       ))}
     </section>
 
     <section aria-labelledby="places" class="flex flex-col gap-5 px-6 tab:px-0">
-      <h2 id="places" class="label text-faint">{t.map.placesHeading} · {places.length}</h2>
+      <h2 id="places" class="label text-faint">
+        {t.map.placesHeading} · {places.length}
+      </h2>
       <div class="grid gap-x-12 gap-y-10 tab:grid-cols-2">
         {cities.map((c) => (
-          <div data-city data-bounds={c.bounds.join(' ')} data-lat={c.middle.lat} data-lon={c.middle.lon} data-name={c.city} data-label={`${c.city}, ${t.photos.count(c.photos)}`} data-count={c.photos} class="flex flex-col">
+          <div
+            data-city
+            data-bounds={c.bounds.join(' ')}
+            data-lat={c.middle.lat}
+            data-lon={c.middle.lon}
+            data-name={c.city}
+            data-label={`${c.city}, ${t.photos.count(c.photos)}`}
+            data-count={c.photos}
+            class="flex flex-col"
+          >
             <div class="flex items-baseline justify-between gap-4 border-b border-line pb-3">
               <h3 class="font-display text-d4">{c.city}</h3>
-              <span class="label text-right text-faint">{t.photos.country(c.country)} · {plural(t.map.places, c.places.length)}</span>
+              <span class="label text-right text-faint">
+                {t.photos.country(c.country)} · {plural(t.map.places, c.places.length)}
+              </span>
             </div>
             <ul>
               {c.places.map((p) => (

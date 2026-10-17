@@ -17,7 +17,12 @@ test('weigh: aynı adres bir kez (worker önbellekten alır); site ve vendor bet
 
 test('budgetProblems: sınırda geçer, aşınca her ölçü ayrı yazılır', () => {
   assert.deepEqual(budgetProblems('/ (phone)', { ...BUDGET }), []);
-  const over = budgetProblems('/ (phone)', { total: BUDGET.total + 1024, requests: 31, script: 51 * 1024, vendor: 1301 * 1024 });
+  const over = budgetProblems('/ (phone)', {
+    total: BUDGET.total + 1024,
+    requests: 31,
+    script: 51 * 1024,
+    vendor: 1301 * 1024,
+  });
   assert.equal(over.length, 4);
   assert.match(over[0], /^\/ \(phone\): 2001 KB in total, budget 2000 KB$/);
   assert.match(over[1], /31 requests, budget 30/);

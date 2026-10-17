@@ -48,10 +48,12 @@ for (const file of all.filter((f) => f.endsWith('.html'))) {
   }
 
   for (const [, tiles] of html.matchAll(/\sdata-tiles="([^"{]*)/gi)) tileRoots.add(tiles);
-  for (const [, index] of html.matchAll(/\sdata-index="([^"]*)"/gi)) if (!resolves(index)) fail(file, `missing search index: ${index}`);
+  for (const [, index] of html.matchAll(/\sdata-index="([^"]*)"/gi))
+    if (!resolves(index)) fail(file, `missing search index: ${index}`);
 
   for (const [, image] of html.matchAll(/<meta\s+property="og:image"\s+content="([^"]*)"/gi)) {
-    if (!image.startsWith(`${ORIGIN}/`) || !resolves(new URL(image).pathname)) fail(file, `og:image not in the build: ${image}`);
+    if (!image.startsWith(`${ORIGIN}/`) || !resolves(new URL(image).pathname))
+      fail(file, `og:image not in the build: ${image}`);
   }
 }
 
@@ -109,7 +111,8 @@ if (all.length > FILE_LIMIT) errors.push(`${all.length} files, the Workers stati
 const map = manifest();
 for (const root of tileRoots) {
   const tiles = all.filter((f) => `/${relative(dist, f)}`.startsWith(root)).length;
-  if (!map || tiles !== map.tiles) errors.push(`${root}: ${tiles} map tiles in the build, the map data lists ${map?.tiles ?? 'none'}`);
+  if (!map || tiles !== map.tiles)
+    errors.push(`${root}: ${tiles} map tiles in the build, the map data lists ${map?.tiles ?? 'none'}`);
 }
 
 if (errors.length) {
@@ -117,7 +120,13 @@ if (errors.length) {
   console.error(`\n${errors.length} problem(s) in ${dist}/`);
   process.exit(1);
 }
-console.log(`✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`);
-console.log(`✓ ${feeds.length} feeds well-formed, ${searchIndexes.length} search indexes (${searchEntries} entries) point into the build, security.txt current`);
+console.log(
+  `✓ ${dist}/: ${all.length} of ${FILE_LIMIT} files, ${tileRoots.size ? `${map.tiles} map tiles, ` : ''}no inline code, no external resources, no broken links, ${images.length} photo variants verified`,
+);
+console.log(
+  `✓ ${feeds.length} feeds well-formed, ${searchIndexes.length} search indexes (${searchEntries} entries) point into the build, security.txt current`,
+);
 const waiting = locales.reduce((n, l) => n + pending[l].length, 0);
-console.log(`✓ ${pages.size} pages, every language has its counterpart${waiting ? ` (${waiting} translation(s) pending)` : ''}`);
+console.log(
+  `✓ ${pages.size} pages, every language has its counterpart${waiting ? ` (${waiting} translation(s) pending)` : ''}`,
+);

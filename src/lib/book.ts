@@ -42,7 +42,8 @@ export const finishedYear = (book: { finished: Date }) => book.finished.getUTCFu
 export const SPINE_THICKNESSES = 16;
 export const SPINE_HEIGHTS = 5;
 
-export const spineThickness = (pages: number) => Math.min(SPINE_THICKNESSES - 1, Math.max(0, Math.round((pages - 40) / 50)));
+export const spineThickness = (pages: number) =>
+  Math.min(SPINE_THICKNESSES - 1, Math.max(0, Math.round((pages - 40) / 50)));
 
 export function spineHeight(isbn: string) {
   let hash = 0;

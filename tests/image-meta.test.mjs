@@ -48,12 +48,22 @@ for (const format of ['avif', 'webp']) {
   });
 
   test(`${format}: yanlış Artist reddedilir`, async () => {
-    const r = inspectImage(await small().withExif({ IFD0: { Artist: 'Someone', Copyright: copyrightText(2026) } })[format]().toBuffer());
+    const r = inspectImage(
+      await small()
+        .withExif({ IFD0: { Artist: 'Someone', Copyright: copyrightText(2026) } })
+        [format]()
+        .toBuffer(),
+    );
     assert.match(r.errors[0], /Artist/);
   });
 
   test(`${format}: izin listesi dışındaki EXIF etiketi reddedilir`, async () => {
-    const r = inspectImage(await small().withExif({ IFD0: { ...exif.IFD0, Make: 'FUJIFILM' } })[format]().toBuffer());
+    const r = inspectImage(
+      await small()
+        .withExif({ IFD0: { ...exif.IFD0, Make: 'FUJIFILM' } })
+        [format]()
+        .toBuffer(),
+    );
     assert.match(r.errors[0], /not allowed/);
   });
 

@@ -124,7 +124,11 @@
     "kind": "bag",
     "group": "saxophone",
     "label": { "en": "Mouthpiece", "tr": "Ağızlık", "es": "Boquilla" },
-    "note": { "en": "The one that came with the horn.", "tr": "Saksafonla birlikte gelen.", "es": "La que venía con el saxofón." }
+    "note": {
+      "en": "The one that came with the horn.",
+      "tr": "Saksafonla birlikte gelen.",
+      "es": "La que venía con el saxofón."
+    }
   },
   {
     "id": "reeds",

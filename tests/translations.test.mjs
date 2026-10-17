@@ -8,14 +8,15 @@ const originals = [
   { id: 'b', lang: 'en' },
   { id: 'c', lang: 'tr' },
 ];
-const status = (translations, lang, list = []) => Object.fromEntries(translationStatus('writing', originals, translations, lang, list));
+const status = (translations, lang, list = []) =>
+  Object.fromEntries(translationStatus('writing', originals, translations, lang, list));
 
 test('özgün, çevrilmiş ve bekleyen', () => {
   assert.deepEqual(status(['a/tr', 'c/en'], 'tr', ['/writing/b/']), { a: 'translated', b: 'pending', c: 'original' });
   assert.deepEqual(status(['a/tr', 'c/en'], 'en', ['/writing/b/']), { a: 'original', b: 'original', c: 'translated' });
 });
 
-test('karşılığı eksik ve listede olmayan içerik build\'i kırar', () => {
+test("karşılığı eksik ve listede olmayan içerik build'i kırar", () => {
   assert.throws(() => status(['a/tr', 'c/en'], 'tr'), /\/writing\/b\/ has no tr translation/);
 });
 
@@ -41,11 +42,24 @@ test('bekleme listesi: her dilde, yinelenen yol yok', () => {
 
 test('localized: bekleyen düşer, çeviri seçilir, öğenin bulunduğu diller', async () => {
   const { localized } = await import('../src/lib/translations.ts');
-  const originals = [{ id: 'a', lang: 'en' }, { id: 'b', lang: 'en' }];
-  const translations = [{ id: 'a/tr', text: 'A' }, { id: 'b/tr', text: 'B' }, { id: 'a/es', text: 'A' }];
+  const originals = [
+    { id: 'a', lang: 'en' },
+    { id: 'b', lang: 'en' },
+  ];
+  const translations = [
+    { id: 'a/tr', text: 'A' },
+    { id: 'b/tr', text: 'B' },
+    { id: 'a/es', text: 'A' },
+  ];
   const waiting = { en: [], tr: [], es: ['/writing/b/'] };
   const es = localized('writing', originals, (o) => o.lang, translations, 'es', waiting);
   assert.deepEqual(es, [{ original: originals[0], translation: translations[2], langs: ['en', 'tr', 'es'] }]);
   const en = localized('writing', originals, (o) => o.lang, translations, 'en', waiting);
-  assert.deepEqual(en.map((x) => [x.original.id, x.translation, x.langs]), [['a', undefined, ['en', 'tr', 'es']], ['b', undefined, ['en', 'tr']]]);
+  assert.deepEqual(
+    en.map((x) => [x.original.id, x.translation, x.langs]),
+    [
+      ['a', undefined, ['en', 'tr', 'es']],
+      ['b', undefined, ['en', 'tr']],
+    ],
+  );
 });

@@ -18,11 +18,24 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
   const { lang } = props;
   const t = ui[lang];
   const html = await htmlRenderer();
-  const [written, series, shelf, played] = await Promise.all([articles(lang), allSeries(lang), books(lang), songs(lang)]);
+  const [written, series, shelf, played] = await Promise.all([
+    articles(lang),
+    allSeries(lang),
+    books(lang),
+    songs(lang),
+  ]);
 
   const writing = written.map(async (a): Promise<SearchEntry> => {
     const body = await html(a.entry);
-    return { kind: 'writing', url: articlePath(a.id, lang), title: a.title, date: formatDate(a.pubDate, 'short', lang), detail: a.description, keywords: headings(body), body: plainText(body) };
+    return {
+      kind: 'writing',
+      url: articlePath(a.id, lang),
+      title: a.title,
+      date: formatDate(a.pubDate, 'short', lang),
+      detail: a.description,
+      keywords: headings(body),
+      body: plainText(body),
+    };
   });
   const photos = series.map(async (s): Promise<SearchEntry> => ({
     kind: 'photos',
@@ -33,28 +46,24 @@ export const GET: APIRoute<InferGetStaticPropsType<typeof getStaticPaths>> = asy
     keywords: [...new Set(s.photos.map((p) => placeName(p.data.place, t.photos.country)))],
     body: plainText(await html(s.entry)),
   }));
-  const reading = [...shelf.reading, ...shelf.finished].map(
-    (b): SearchEntry => ({
-      kind: 'reading',
-      url: bookPath(b.id, lang),
-      title: b.title,
-      date: 'finished' in b ? formatMonth(b.finished, lang) : '',
-      detail: b.author,
-      keywords: b.originalTitle === b.title ? [] : [b.originalTitle],
-      body: '',
-    }),
-  );
-  const playing = played.all.map(
-    (s): SearchEntry => ({
-      kind: 'playing',
-      url: songPath(s.id, lang),
-      title: s.title,
-      date: s.firstPlayed ? formatMonth(monthStart(s.firstPlayed), lang) : '',
-      detail: s.artist,
-      keywords: [s.album],
-      body: '',
-    }),
-  );
+  const reading = [...shelf.reading, ...shelf.finished].map((b): SearchEntry => ({
+    kind: 'reading',
+    url: bookPath(b.id, lang),
+    title: b.title,
+    date: 'finished' in b ? formatMonth(b.finished, lang) : '',
+    detail: b.author,
+    keywords: b.originalTitle === b.title ? [] : [b.originalTitle],
+    body: '',
+  }));
+  const playing = played.all.map((s): SearchEntry => ({
+    kind: 'playing',
+    url: songPath(s.id, lang),
+    title: s.title,
+    date: s.firstPlayed ? formatMonth(monthStart(s.firstPlayed), lang) : '',
+    detail: s.artist,
+    keywords: [s.album],
+    body: '',
+  }));
 
   const index = [...(await Promise.all([...writing, ...photos])), ...reading, ...playing];
   return new Response(JSON.stringify(index), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });

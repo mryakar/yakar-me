@@ -15,7 +15,11 @@ export const GET: APIRoute = async () => {
     { path: paths.writing, langs: locales, lastmod: english[0]?.pubDate },
     { path: paths.reading, langs: locales },
     ...(englishSeries.length
-      ? [{ path: paths.photos, langs: locales }, { path: mapPath(), langs: locales }, ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: s.langs }))]
+      ? [
+          { path: paths.photos, langs: locales },
+          { path: mapPath(), langs: locales },
+          ...englishSeries.map((s) => ({ path: seriesPath(s.id), langs: s.langs })),
+        ]
       : []),
     { path: paths.playing, langs: locales },
     { path: paths.artists, langs: locales },

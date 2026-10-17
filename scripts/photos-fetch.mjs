@@ -29,7 +29,8 @@ const missing = variants.filter((v) => {
 });
 
 const creds = credentials();
-if (missing.length && !creds) fail(`${missing.length} variant(s) missing locally and no R2 read credentials (${CREDENTIAL_VARS.join(', ')})`);
+if (missing.length && !creds)
+  fail(`${missing.length} variant(s) missing locally and no R2 read credentials (${CREDENTIAL_VARS.join(', ')})`);
 
 const tmp = mkdtempSync(join(tmpdir(), 'photos-'));
 const errors = [];

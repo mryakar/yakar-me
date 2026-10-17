@@ -30,13 +30,15 @@ export function counterpartErrors(pages, pending, { complete = false } = {}) {
     for (const l of locales) {
       const isPending = pending[l].includes(path);
       if (!present.includes(l) && !isPending) errors.push(`${page}: no counterpart at ${localize(path, l)}`);
-      if (present.includes(l) && isPending) errors.push(`${page}: listed as pending in ${l} but ${localize(path, l)} exists`);
+      if (present.includes(l) && isPending)
+        errors.push(`${page}: listed as pending in ${l} but ${localize(path, l)} exists`);
     }
 
     const links = hreflangs(html);
     for (const [lang, href] of links) {
       if (!href?.startsWith(`${ORIGIN}/`)) errors.push(`${page}: hreflang ${lang} points outside the site: ${href}`);
-      else if (!pages.has(new URL(href).pathname)) errors.push(`${page}: hreflang ${lang} target does not exist: ${href}`);
+      else if (!pages.has(new URL(href).pathname))
+        errors.push(`${page}: hreflang ${lang} target does not exist: ${href}`);
     }
     const expected =
       present.length < 2
@@ -45,9 +47,15 @@ export function counterpartErrors(pages, pending, { complete = false } = {}) {
             ...present.map((l) => [l, `${ORIGIN}${localize(path, l)}`]),
             ...(present.includes(defaultLang) ? [['x-default', `${ORIGIN}${localize(path, defaultLang)}`]] : []),
           ];
-    const key = (pairs) => pairs.map(([l, h]) => `${l} ${h}`).sort().join('\n');
+    const key = (pairs) =>
+      pairs
+        .map(([l, h]) => `${l} ${h}`)
+        .sort()
+        .join('\n');
     if (key(links) !== key(expected)) {
-      errors.push(`${page}: hreflang set is [${links.map(([l]) => l).join(', ')}], expected [${expected.map(([l]) => l).join(', ')}]`);
+      errors.push(
+        `${page}: hreflang set is [${links.map(([l]) => l).join(', ')}], expected [${expected.map(([l]) => l).join(', ')}]`,
+      );
     }
   }
   return errors;

@@ -5,12 +5,13 @@ import type { BagGroup } from '../lib/about.ts';
 import type { Category as SongCategory, Genre as SongGenre } from '../lib/song.ts';
 import { englishOrdinal } from '../lib/format.ts';
 
-const lookup = (language: string, table: Record<string, string>, what: string, verbatim?: RegExp) => (value: string) => {
-  if (verbatim?.test(value)) return value;
-  const hit = table[value];
-  if (hit === undefined) throw new Error(`No ${language} ${what} for "${value}" — add it to src/i18n/ui.ts`);
-  return hit;
-};
+const lookup =
+  (language: string, table: Record<string, string>, what: string, verbatim?: RegExp) => (value: string) => {
+    if (verbatim?.test(value)) return value;
+    const hit = table[value];
+    if (hit === undefined) throw new Error(`No ${language} ${what} for "${value}" — add it to src/i18n/ui.ts`);
+    return hit;
+  };
 
 const turkishCities: Record<string, string> = {
   Prague: 'Prag',
@@ -36,12 +37,25 @@ const en = {
   description: 'Software engineer, writer and traveller. Java, distributed systems, and the mechanisms underneath.',
   tagline: 'engineer · writer · traveller',
   skip: 'Skip to content',
-  nav: { home: 'Home', writing: 'Writing', reading: 'Reading', photos: 'Photos', playing: 'Playing', years: 'Years', about: 'About' },
+  nav: {
+    home: 'Home',
+    writing: 'Writing',
+    reading: 'Reading',
+    photos: 'Photos',
+    playing: 'Playing',
+    years: 'Years',
+    about: 'About',
+  },
   mainNav: 'Main',
   openMenu: 'Open menu',
   closeMenu: 'Close menu',
   email: 'Email',
-  theme: { dark: 'Dark', light: 'Light', toDark: 'Light theme, switch to dark', toLight: 'Dark theme, switch to light' },
+  theme: {
+    dark: 'Dark',
+    light: 'Light',
+    toDark: 'Light theme, switch to dark',
+    toLight: 'Dark theme, switch to light',
+  },
   languageName: 'English',
   language: 'Language',
   home: {
@@ -146,7 +160,8 @@ const en = {
     } satisfies Record<BookLanguage, string>,
   },
   playing: {
-    description: 'Songs I play on the alto saxophone, from smooth jazz to deep house. In the forest, in the park, or in the studio.',
+    description:
+      'Songs I play on the alto saxophone, from smooth jazz to deep house. In the forest, in the park, or in the studio.',
     views: 'Views',
     songsView: 'Songs',
     artistsView: 'Artists',
@@ -165,7 +180,8 @@ const en = {
     levelOf: (n: number, of: number, name: string) => `Level ${n} of ${of}: ${name}`,
     album: 'Album',
     key: 'Key',
-    keyValue: (alto: string, concert: string, estimated: boolean) => `Alto ${alto} · concert ${concert}${estimated ? ' · estimated' : ''}`,
+    keyValue: (alto: string, concert: string, estimated: boolean) =>
+      `Alto ${alto} · concert ${concert}${estimated ? ' · estimated' : ''}`,
     firstPlayed: 'First played',
     listen: 'Listen',
     numbers: 'By the numbers',
@@ -180,8 +196,10 @@ const en = {
     wheelLine: (minor: string, major: string, n: number, altoMinor: string, altoMajor: string) =>
       `Most often ${minor} / ${major} (${n} songs). On alto that is ${altoMinor} / ${altoMajor}.`,
     staff: 'Staff · first played',
-    staffLine: 'Each note is a song: left to right the month I first played it, height the root of its key. Hollow notes are the ones I am practicing now.',
-    artistsLede: 'The people behind the songs I play. The bigger the circle, the more of their songs are in my repertoire.',
+    staffLine:
+      'Each note is a song: left to right the month I first played it, height the root of its key. Hollow notes are the ones I am practicing now.',
+    artistsLede:
+      'The people behind the songs I play. The bigger the circle, the more of their songs are in my repertoire.',
     categories: {
       'smooth-jazz': 'Smooth Jazz',
       jazz: 'Jazz',
@@ -266,7 +284,10 @@ const en = {
     languages: 'Languages',
     native: 'Native',
     bag: 'Bag',
-    bagGroups: { saxophone: 'Saxophone', recording: 'Recording and live', camera: 'Camera' } satisfies Record<BagGroup, string>,
+    bagGroups: { saxophone: 'Saxophone', recording: 'Recording and live', camera: 'Camera' } satisfies Record<
+      BagGroup,
+      string
+    >,
     feeds: 'Feeds',
     contact: 'Contact',
     elsewhere: 'Elsewhere',
@@ -311,7 +332,15 @@ const tr: Dict = {
   description: 'Yazılım mühendisi, yazar ve gezgin. Java, dağıtık sistemler ve işin altındaki mekanizmalar.',
   tagline: 'mühendis · yazar · gezgin',
   skip: 'İçeriğe geç',
-  nav: { home: 'Ana sayfa', writing: 'Yazılar', reading: 'Kitaplar', photos: 'Fotoğraflar', playing: 'Çaldıklarım', years: 'Yıllar', about: 'Hakkımda' },
+  nav: {
+    home: 'Ana sayfa',
+    writing: 'Yazılar',
+    reading: 'Kitaplar',
+    photos: 'Fotoğraflar',
+    playing: 'Çaldıklarım',
+    years: 'Yıllar',
+    about: 'Hakkımda',
+  },
   mainNav: 'Ana menü',
   openMenu: 'Menüyü aç',
   closeMenu: 'Menüyü kapat',
@@ -348,7 +377,12 @@ const tr: Dict = {
     also: 'Bir de',
     updated: (month) => `Güncelleme: ${month}`,
   },
-  now: [{ label: 'Yazıyorum', text: 'Compare-and-swap üzerine bir yazı. Karşılaştır, takas et, girişi baştan yaz, tekrarla.' }],
+  now: [
+    {
+      label: 'Yazıyorum',
+      text: 'Compare-and-swap üzerine bir yazı. Karşılaştır, takas et, girişi baştan yaz, tekrarla.',
+    },
+  ],
   writing: {
     description: 'Java, veritabanları ve işin altındaki mekanizmalar üzerine uzun yazılar.',
     published: (n) => `${n} yazı`,
@@ -452,10 +486,13 @@ const tr: Dict = {
     topSongs: (count, titles) => `${count}: ${titles}`,
     categoriesLabel: 'Kategoriler',
     wheel: 'Ton çemberi · konser tonu',
-    wheelLine: (minor, major, n, altoMinor, altoMajor) => `En sık ${minor} / ${major} (${n} şarkı). Altoda bu ${altoMinor} / ${altoMajor}.`,
+    wheelLine: (minor, major, n, altoMinor, altoMajor) =>
+      `En sık ${minor} / ${major} (${n} şarkı). Altoda bu ${altoMinor} / ${altoMajor}.`,
     staff: 'Porte · ilk çalınış',
-    staffLine: 'Her nota bir şarkı: soldan sağa ilk çalındığı ay, yükseklik tonun kökü. İçi boş notalar şu an çalışılanlar.',
-    artistsLede: 'Çaldığım şarkıların arkasındaki insanlar. Daire ne kadar büyükse repertuvarımda o kadar çok şarkısı var.',
+    staffLine:
+      'Her nota bir şarkı: soldan sağa ilk çalındığı ay, yükseklik tonun kökü. İçi boş notalar şu an çalışılanlar.',
+    artistsLede:
+      'Çaldığım şarkıların arkasındaki insanlar. Daire ne kadar büyükse repertuvarımda o kadar çok şarkısı var.',
     categories: {
       'smooth-jazz': 'Smooth Caz',
       jazz: 'Caz',
@@ -537,7 +574,23 @@ const tr: Dict = {
       'recipe value',
       /^(DR\d+|\d+K)$/,
     ),
-    country: lookup('Turkish', { Azerbaijan: 'Azerbaycan', China: 'Çin', Czechia: 'Çekya', France: 'Fransa', Germany: 'Almanya', 'Hong Kong': 'Hong Kong', Indonesia: 'Endonezya', Serbia: 'Sırbistan', Singapore: 'Singapur', Thailand: 'Tayland', Turkey: 'Türkiye' }, 'country name'),
+    country: lookup(
+      'Turkish',
+      {
+        Azerbaijan: 'Azerbaycan',
+        China: 'Çin',
+        Czechia: 'Çekya',
+        France: 'Fransa',
+        Germany: 'Almanya',
+        'Hong Kong': 'Hong Kong',
+        Indonesia: 'Endonezya',
+        Serbia: 'Sırbistan',
+        Singapore: 'Singapur',
+        Thailand: 'Tayland',
+        Turkey: 'Türkiye',
+      },
+      'country name',
+    ),
     views: 'Görünümler',
     seriesView: 'Seriler',
     mapView: 'Harita',
@@ -609,15 +662,29 @@ const tr: Dict = {
 };
 
 const es: Dict = {
-  description: 'Ingeniero de software, escritor y viajero. Java, sistemas distribuidos y los mecanismos que hay debajo.',
+  description:
+    'Ingeniero de software, escritor y viajero. Java, sistemas distribuidos y los mecanismos que hay debajo.',
   tagline: 'ingeniero · escritor · viajero',
   skip: 'Saltar al contenido',
-  nav: { home: 'Inicio', writing: 'Escritos', reading: 'Lecturas', photos: 'Fotos', playing: 'Lo que toco', years: 'Años', about: 'Sobre mí' },
+  nav: {
+    home: 'Inicio',
+    writing: 'Escritos',
+    reading: 'Lecturas',
+    photos: 'Fotos',
+    playing: 'Lo que toco',
+    years: 'Años',
+    about: 'Sobre mí',
+  },
   mainNav: 'Menú principal',
   openMenu: 'Abrir menú',
   closeMenu: 'Cerrar menú',
   email: 'Correo',
-  theme: { dark: 'Oscuro', light: 'Claro', toDark: 'Tema claro, cambiar a oscuro', toLight: 'Tema oscuro, cambiar a claro' },
+  theme: {
+    dark: 'Oscuro',
+    light: 'Claro',
+    toDark: 'Tema claro, cambiar a oscuro',
+    toLight: 'Tema oscuro, cambiar a claro',
+  },
   languageName: 'Español',
   language: 'Idioma',
   home: {
@@ -649,7 +716,12 @@ const es: Dict = {
     also: 'También',
     updated: (month) => `Actualizado: ${month}`,
   },
-  now: [{ label: 'Escribiendo', text: 'Un texto sobre compare-and-swap. Comparar, intercambiar, reescribir la introducción, repetir.' }],
+  now: [
+    {
+      label: 'Escribiendo',
+      text: 'Un texto sobre compare-and-swap. Comparar, intercambiar, reescribir la introducción, repetir.',
+    },
+  ],
   writing: {
     description: 'Textos largos sobre Java, bases de datos y los mecanismos que hay debajo.',
     published: (n) => `${n} ${n === 1 ? 'publicado' : 'publicados'}`,
@@ -722,7 +794,8 @@ const es: Dict = {
     },
   },
   playing: {
-    description: 'Canciones que toco con el saxo alto, del smooth jazz al deep house. En el bosque, en el parque o en el estudio.',
+    description:
+      'Canciones que toco con el saxo alto, del smooth jazz al deep house. En el bosque, en el parque o en el estudio.',
     views: 'Vistas',
     songsView: 'Canciones',
     artistsView: 'Artistas',
@@ -758,7 +831,8 @@ const es: Dict = {
     staff: 'Pentagrama · primera vez tocada',
     staffLine:
       'Cada nota es una canción: de izquierda a derecha, el mes en que la toqué por primera vez; la altura, la tónica de su tonalidad. Las notas huecas son las que estoy practicando ahora.',
-    artistsLede: 'Las personas detrás de las canciones que toco. Cuanto más grande el círculo, más canciones suyas hay en mi repertorio.',
+    artistsLede:
+      'Las personas detrás de las canciones que toco. Cuanto más grande el círculo, más canciones suyas hay en mi repertorio.',
     categories: {
       'smooth-jazz': 'Smooth Jazz',
       jazz: 'Jazz',
@@ -840,7 +914,23 @@ const es: Dict = {
       'recipe value',
       /^(DR\d+|\d+K)$/,
     ),
-    country: lookup('Spanish', { Azerbaijan: 'Azerbaiyán', China: 'China', Czechia: 'Chequia', France: 'Francia', Germany: 'Alemania', 'Hong Kong': 'Hong Kong', Indonesia: 'Indonesia', Serbia: 'Serbia', Singapore: 'Singapur', Thailand: 'Tailandia', Turkey: 'Turquía' }, 'country name'),
+    country: lookup(
+      'Spanish',
+      {
+        Azerbaijan: 'Azerbaiyán',
+        China: 'China',
+        Czechia: 'Chequia',
+        France: 'Francia',
+        Germany: 'Alemania',
+        'Hong Kong': 'Hong Kong',
+        Indonesia: 'Indonesia',
+        Serbia: 'Serbia',
+        Singapore: 'Singapur',
+        Thailand: 'Tailandia',
+        Turkey: 'Turquía',
+      },
+      'country name',
+    ),
     views: 'Vistas',
     seriesView: 'Series',
     mapView: 'Mapa',

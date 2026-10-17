@@ -70,7 +70,8 @@ export function regionProblems(districts: District[], cut: Region[]) {
     else if (!contains(region.bounds, d)) problems.push(`${placeKey(d)} lies outside the tiles cut for ${cityKey(d)}`);
   }
   const photographed = new Set(districts.map(cityKey));
-  for (const r of cut) if (!photographed.has(cityKey(r))) problems.push(`tiles are cut for ${cityKey(r)}, which has no photos`);
+  for (const r of cut)
+    if (!photographed.has(cityKey(r))) problems.push(`tiles are cut for ${cityKey(r)}, which has no photos`);
   return problems;
 }
 

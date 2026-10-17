@@ -43,9 +43,15 @@ if (missing.length) {
     for (const [name, card] of missing) {
       writeFileSync(page, ogCardHtml(card, asset));
       await send('Page.navigate', { url: pathToFileURL(page).href });
-      const { result } = await send('Runtime.evaluate', { expression: 'document.fonts.ready.then(() => document.fonts.size)', awaitPromise: true });
+      const { result } = await send('Runtime.evaluate', {
+        expression: 'document.fonts.ready.then(() => document.fonts.size)',
+        awaitPromise: true,
+      });
       if (!result.value) throw new Error(`${name}: fonts did not load`);
-      const { data } = await send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, ...OG_SIZE, scale: 1 } });
+      const { data } = await send('Page.captureScreenshot', {
+        format: 'png',
+        clip: { x: 0, y: 0, ...OG_SIZE, scale: 1 },
+      });
       const png = Buffer.from(data, 'base64');
       const chunks = [...new Set(pngChunks(png))].sort().join(' ');
       if (chunks !== 'IDAT IEND IHDR') throw new Error(`${name}: unexpected PNG chunks ${chunks}`);

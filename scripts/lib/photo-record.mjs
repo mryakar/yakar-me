@@ -27,7 +27,17 @@ const MONOCHROME = {
 };
 export const FILM_SIMULATION_NAMES = [...new Set([...Object.values(FILM_SIMULATIONS), ...Object.values(MONOCHROME)])];
 const COLOR = { 0x000: 0, 0x080: 1, 0x100: 2, 0x0c0: 3, 0x0e0: 4, 0x180: -1, 0x400: -2, 0x4c0: -3, 0x4e0: -4 };
-const NOISE_REDUCTION = { 0x000: 0, 0x180: 1, 0x100: 2, 0x1c0: 3, 0x1e0: 4, 0x280: -1, 0x200: -2, 0x2c0: -3, 0x2e0: -4 };
+const NOISE_REDUCTION = {
+  0x000: 0,
+  0x180: 1,
+  0x100: 2,
+  0x1c0: 3,
+  0x1e0: 4,
+  0x280: -1,
+  0x200: -2,
+  0x2c0: -3,
+  0x2e0: -4,
+};
 const WHITE_BALANCE = {
   0x0: 'Auto',
   0x1: 'Auto (white priority)',
@@ -77,7 +87,8 @@ export const photoId = (file) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-export const cameraFrame = (file) => /^(DSCF\d{4})$/i.exec(file.replace(/^.*[\\/]/, '').replace(/\.[^.]+$/, ''))?.[1].toUpperCase();
+export const cameraFrame = (file) =>
+  /^(DSCF\d{4})$/i.exec(file.replace(/^.*[\\/]/, '').replace(/\.[^.]+$/, ''))?.[1].toUpperCase();
 
 function kindOf(exif) {
   const make = text(exif.Make, 'Make').toUpperCase();
@@ -102,8 +113,11 @@ export function location(exif) {
 }
 
 export function parsePlace(answer) {
-  const parts = String(answer ?? '').split(',').map((s) => s.trim());
-  if (parts.length !== 3) throw new PhotoError(`place: expected "District, City, Country", got ${JSON.stringify(answer)}`);
+  const parts = String(answer ?? '')
+    .split(',')
+    .map((s) => s.trim());
+  if (parts.length !== 3)
+    throw new PhotoError(`place: expected "District, City, Country", got ${JSON.stringify(answer)}`);
   const [district, city, country] = parts.map((p, i) => placeText(p, ['district', 'city', 'country'][i]));
   return { district, city, country };
 }
@@ -134,7 +148,8 @@ export function hasRecipe(exif) {
 
 function dynamicRange(exif) {
   if (exif.DRangePriority !== undefined) {
-    if (exif.DRangePriority === 0) return `D-Range Priority ${lookup(DRANGE_PRIORITY, exif.DRangePriorityAuto, 'DRangePriorityAuto')}`;
+    if (exif.DRangePriority === 0)
+      return `D-Range Priority ${lookup(DRANGE_PRIORITY, exif.DRangePriorityAuto, 'DRangePriorityAuto')}`;
     return `D-Range Priority ${lookup(DRANGE_PRIORITY, exif.DRangePriorityFixed, 'DRangePriorityFixed')}`;
   }
   if (exif.DynamicRangeSetting === 0) return 'DR Auto';
@@ -166,13 +181,31 @@ export function readRecipe(exif) {
     exif.WhiteBalance === 0xff0
       ? `${Math.round(number(exif.ColorTemperature, 'ColorTemperature', 2000, 12000))}K`
       : lookup(WHITE_BALANCE, exif.WhiteBalance ?? 0, 'WhiteBalance');
-  const shift = String(exif.WhiteBalanceFineTune ?? '0 0').split(/\s+/).map(Number);
+  const shift = String(exif.WhiteBalanceFineTune ?? '0 0')
+    .split(/\s+/)
+    .map(Number);
   if (shift.length !== 2 || shift.some((v) => !Number.isInteger(v / 20) || Math.abs(v / 20) > 9)) {
     throw new PhotoError(`WhiteBalanceFineTune: unexpected value ${JSON.stringify(exif.WhiteBalanceFineTune)}`);
   }
   recipe.whiteBalanceShift = shift.map((v) => v / 20 + 0);
   recipe.noiseReduction = lookup(NOISE_REDUCTION, exif.NoiseReduction ?? 0, 'NoiseReduction');
-  recipe.clarity = lookup({ '-5000': -5, '-4000': -4, '-3000': -3, '-2000': -2, '-1000': -1, 0: 0, 1000: 1, 2000: 2, 3000: 3, 4000: 4, 5000: 5 }, exif.Clarity ?? 0, 'Clarity');
+  recipe.clarity = lookup(
+    {
+      '-5000': -5,
+      '-4000': -4,
+      '-3000': -3,
+      '-2000': -2,
+      '-1000': -1,
+      0: 0,
+      1000: 1,
+      2000: 2,
+      3000: 3,
+      4000: 4,
+      5000: 5,
+    },
+    exif.Clarity ?? 0,
+    'Clarity',
+  );
   const roughness = lookup(EFFECT, exif.GrainEffectRoughness ?? 0, 'GrainEffectRoughness');
   const size = lookup(GRAIN_SIZE, exif.GrainEffectSize ?? 0, 'GrainEffectSize');
   recipe.grain = roughness === 'Off' ? 'Off' : size === 'Off' ? roughness : `${roughness}, ${size}`;
@@ -182,10 +215,38 @@ export function readRecipe(exif) {
 }
 
 export const EXIFTOOL_TAGS = [
-  'Make', 'Model', 'LensModel', 'FNumber', 'ExposureTime', 'ISO', 'FocalLength', 'FocalLengthIn35mmFormat',
-  'DateTimeOriginal', 'OffsetTimeOriginal', 'GPSLatitude', 'GPSLongitude', 'ImageWidth', 'ImageHeight',
-  'FilmMode', 'Saturation', 'HighlightTone', 'ShadowTone', 'WhiteBalance', 'WhiteBalanceFineTune', 'ColorTemperature',
-  'NoiseReduction', 'Clarity', 'GrainEffectRoughness', 'GrainEffectSize', 'ColorChromeEffect', 'ColorChromeFXBlue',
-  'DynamicRangeSetting', 'DevelopmentDynamicRange', 'DRangePriority', 'DRangePriorityAuto', 'DRangePriorityFixed',
-  'BWAdjustment', 'BWMagentaGreen',
+  'Make',
+  'Model',
+  'LensModel',
+  'FNumber',
+  'ExposureTime',
+  'ISO',
+  'FocalLength',
+  'FocalLengthIn35mmFormat',
+  'DateTimeOriginal',
+  'OffsetTimeOriginal',
+  'GPSLatitude',
+  'GPSLongitude',
+  'ImageWidth',
+  'ImageHeight',
+  'FilmMode',
+  'Saturation',
+  'HighlightTone',
+  'ShadowTone',
+  'WhiteBalance',
+  'WhiteBalanceFineTune',
+  'ColorTemperature',
+  'NoiseReduction',
+  'Clarity',
+  'GrainEffectRoughness',
+  'GrainEffectSize',
+  'ColorChromeEffect',
+  'ColorChromeFXBlue',
+  'DynamicRangeSetting',
+  'DevelopmentDynamicRange',
+  'DRangePriority',
+  'DRangePriorityAuto',
+  'DRangePriorityFixed',
+  'BWAdjustment',
+  'BWMagentaGreen',
 ];

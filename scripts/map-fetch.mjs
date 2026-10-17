@@ -39,7 +39,8 @@ if (!verified(local)) {
 
 const archive = readFileSync(local);
 const h = readHeader(archive);
-if (h.tileType !== TILE_TYPE.mvt || h.tileCompression !== COMPRESSION.gzip) fail(`${m.file}: expected gzip-compressed vector tiles`);
+if (h.tileType !== TILE_TYPE.mvt || h.tileCompression !== COMPRESSION.gzip)
+  fail(`${m.file}: expected gzip-compressed vector tiles`);
 
 rmSync(TILES_DIR, { recursive: true, force: true });
 const staging = `${target}.part`;
@@ -53,4 +54,6 @@ for (const t of readTiles(archive)) {
 if (count !== m.tiles) fail(`${m.file}: ${count} tiles, the manifest says ${m.tiles}`);
 renameSync(staging, target);
 writeFileSync(done, String(count));
-console.log(`✓ ${count} map tiles in ${target} (${fetched ? 'fetched from R2' : 'from the local copy'}, SHA-256 verified)`);
+console.log(
+  `✓ ${count} map tiles in ${target} (${fetched ? 'fetched from R2' : 'from the local copy'}, SHA-256 verified)`,
+);

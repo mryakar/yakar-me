@@ -10,16 +10,51 @@ interface Props {
   letters: string[];
 }
 const { months, reading, lastMonth, letters } = Astro.props;
-const widths = ['w-0.75', 'w-1', 'w-1.25', 'w-1.5', 'w-1.75', 'w-2', 'w-2.25', 'w-2.5', 'w-2.75', 'w-3', 'w-3.25', 'w-3.5', 'w-3.75', 'w-4'];
-if (widths.length !== SPINE_MAX_PX - SPINE_MIN_PX + 1) throw new Error('YearBooks: spine width classes do not match the scale in src/lib/year.ts');
+const widths = [
+  'w-0.75',
+  'w-1',
+  'w-1.25',
+  'w-1.5',
+  'w-1.75',
+  'w-2',
+  'w-2.25',
+  'w-2.5',
+  'w-2.75',
+  'w-3',
+  'w-3.25',
+  'w-3.5',
+  'w-3.75',
+  'w-4',
+];
+if (widths.length !== SPINE_MAX_PX - SPINE_MIN_PX + 1)
+  throw new Error('YearBooks: spine width classes do not match the scale in src/lib/year.ts');
 const width = (pages: number) => widths[spinePx(pages) - SPINE_MIN_PX];
 ---
+
 <span class="flex" aria-hidden="true">
   {months.map((books, month) => (
     <span class="flex min-w-0 flex-1 flex-col">
-      <span class:list={['flex h-13 items-end gap-0.5 border-b', month <= lastMonth ? 'border-line-strong' : 'border-transparent']}>
-        {books.map((book) => <span class:list={['block h-12 flex-none rounded-[1px] border border-line-strong', categoryTint[book.category], width(book.pages)]} />)}
-        {month === lastMonth && reading.map((book) => <span class:list={['block h-12 flex-none rounded-[1px] border border-dashed border-muted', width(book.pages)]} />)}
+      <span
+        class:list={[
+          'flex h-13 items-end gap-0.5 border-b',
+          month <= lastMonth ? 'border-line-strong' : 'border-transparent',
+        ]}
+      >
+        {books.map((book) => (
+          <span
+            class:list={[
+              'block h-12 flex-none rounded-[1px] border border-line-strong',
+              categoryTint[book.category],
+              width(book.pages),
+            ]}
+          />
+        ))}
+        {month === lastMonth &&
+          reading.map((book) => (
+            <span
+              class:list={['block h-12 flex-none rounded-[1px] border border-dashed border-muted', width(book.pages)]}
+            />
+          ))}
       </span>
       <span class="mt-1 font-mono text-[11px] text-faint @4xl:hidden">{letters[month]}</span>
     </span>

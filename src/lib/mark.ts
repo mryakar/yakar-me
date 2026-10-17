@@ -17,7 +17,10 @@ export const MARK: Drawing = {
 
 export const MARK_SMALL: Drawing = {
   arm: { d: 'M8.3 10.6 C11.8 9.4 13.8 12.4 16 19.6', width: 2.2 },
-  stem: { d: 'M23.8 9.4 C19.8 13.8 17.3 18.4 16 21.8 C14.7 25.2 15 27.8 16.5 27.8 C18 27.8 18 24.8 16 21.8', width: 2.9 },
+  stem: {
+    d: 'M23.8 9.4 C19.8 13.8 17.3 18.4 16 21.8 C14.7 25.2 15 27.8 16.5 27.8 C18 27.8 18 24.8 16 21.8',
+    width: 2.9,
+  },
 };
 
 export const FINE_ARM = 1.6;
@@ -35,7 +38,11 @@ export const strokes = (drawing: Drawing, fine = false) => [
 const STROKE_ATTRS = 'fill="none" stroke-linecap="round" stroke-linejoin="round"';
 
 const paths = (drawing: Drawing, ink: string) =>
-  `<g ${STROKE_ATTRS} stroke="${ink}">` + strokes(drawing).map((s) => `<path d="${s.d}" stroke-width="${s.width}"/>`).join('') + '</g>';
+  `<g ${STROKE_ATTRS} stroke="${ink}">` +
+  strokes(drawing)
+    .map((s) => `<path d="${s.d}" stroke-width="${s.width}"/>`)
+    .join('') +
+  '</g>';
 
 export const markSvg = (opts: { width: number; ink: string }) =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${opts.width}" height="${Math.round(opts.width * MARK_RATIO)}" viewBox="${MARK_VIEWBOX}" aria-hidden="true">` +

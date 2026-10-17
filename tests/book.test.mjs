@@ -39,15 +39,25 @@ test('newestFirst: son biten üstte, aynı ayda dosyadaki sıra', () => {
     { id: 'c', finished: '2025-08', position: 1 },
     { id: 'd', finished: '2026-09', position: 2 },
   ];
-  assert.deepEqual(newestFirst(list).map((b) => b.id), ['d', 'c', 'b', 'a']);
-  assert.deepEqual(list.map((b) => b.id), ['a', 'b', 'c', 'd']);
+  assert.deepEqual(
+    newestFirst(list).map((b) => b.id),
+    ['d', 'c', 'b', 'a'],
+  );
+  assert.deepEqual(
+    list.map((b) => b.id),
+    ['a', 'b', 'c', 'd'],
+  );
 });
 
 test('byYear + finishedYear: biten kitaplar sırayı bozmadan yıllara bölünür', () => {
   const list = ['2025-09', '2025-08', '2024-07', '2022-11'].map((m, i) => ({ i, finished: monthStart(m) }));
   assert.deepEqual(
     byYear(list, finishedYear).map(({ year, items }) => [year, items.map((b) => b.i)]),
-    [[2025, [0, 1]], [2024, [2]], [2022, [3]]],
+    [
+      [2025, [0, 1]],
+      [2024, [2]],
+      [2022, [3]],
+    ],
   );
 });
 
@@ -64,7 +74,7 @@ test('sırt kalınlığı sayfa sayısıyla artar, ölçeğin içinde kalır', (
   assert.ok(spineThickness(120) < spineThickness(240));
 });
 
-test('sırt yüksekliği ISBN\'den, sabit ve ölçeğin içinde', () => {
+test("sırt yüksekliği ISBN'den, sabit ve ölçeğin içinde", () => {
   assert.equal(spineHeight('9781098119058'), spineHeight('9781098119058'));
   for (const b of books) assert.ok(spineHeight(b.id) >= 0 && spineHeight(b.id) < SPINE_HEIGHTS);
 });

@@ -17,7 +17,16 @@ interface StyleInput {
   ours: string[];
 }
 
-export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZooms, regions, ours }: StyleInput): StyleSpecification {
+export function mapStyle({
+  palette: c,
+  lang,
+  origin,
+  tiles,
+  worldMaxZoom,
+  cityZooms,
+  regions,
+  ours,
+}: StyleInput): StyleSpecification {
   const name: ExpressionSpecification =
     lang === 'en' ? ['get', 'name:en'] : ['coalesce', ['get', `name:${lang}`], ['get', 'name:en']];
   const cities = regions.map((bounds, i) => ({ id: `city-${i}`, bounds }));
@@ -30,7 +39,11 @@ export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZo
       type: 'line',
       source: id,
       'source-layer': 'earth',
-      paint: { 'line-color': c.coast, 'line-opacity': 0.55, 'line-width': ['interpolate', ['linear'], ['zoom'], 0, 0.4, 12, 1] },
+      paint: {
+        'line-color': c.coast,
+        'line-opacity': 0.55,
+        'line-width': ['interpolate', ['linear'], ['zoom'], 0, 0.4, 12, 1],
+      },
     },
     ...(detail
       ? ([
@@ -41,7 +54,11 @@ export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZo
             'source-layer': 'roads',
             minzoom: 10,
             filter: ['in', ['get', 'kind'], ['literal', ['minor_road', 'other']]],
-            paint: { 'line-color': c.line, 'line-opacity': 0.6, 'line-width': ['interpolate', ['linear'], ['zoom'], 12, 0.5, 16, 3] },
+            paint: {
+              'line-color': c.line,
+              'line-opacity': 0.6,
+              'line-width': ['interpolate', ['linear'], ['zoom'], 12, 0.5, 16, 3],
+            },
           },
           {
             id: `${id}-roads-major`,
@@ -50,7 +67,11 @@ export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZo
             'source-layer': 'roads',
             minzoom: 8,
             filter: ['in', ['get', 'kind'], ['literal', ['highway', 'major_road', 'medium_road']]],
-            paint: { 'line-color': c['line-strong'], 'line-opacity': 0.7, 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.4, 16, 3] },
+            paint: {
+              'line-color': c['line-strong'],
+              'line-opacity': 0.7,
+              'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.4, 16, 3],
+            },
           },
           {
             id: `${id}-buildings`,
@@ -104,28 +125,26 @@ export function mapStyle({ palette: c, lang, origin, tiles, worldMaxZoom, cityZo
         },
         paint: { 'text-color': c.faint, 'text-halo-color': c.bg, 'text-halo-width': 1.2 },
       },
-      ...cities.map(
-        (s): LayerSpecification => ({
-          id: `${s.id}-localities`,
-          type: 'symbol',
-          source: s.id,
-          'source-layer': 'places',
-          minzoom: 9,
-          filter: [
-            'all',
-            ['==', ['get', 'kind'], 'locality'],
-            ['<=', ['get', 'min_zoom'], ['-', ['zoom'], 3]],
-            ['!', ['in', ['get', 'name:en'], ['literal', ours]]],
-          ],
-          layout: {
-            'text-field': name,
-            'text-font': ['instrument-serif-italic'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 9, 15, 13, 20],
-            'text-max-width': 8,
-          },
-          paint: { 'text-color': c.faint, 'text-halo-color': c.bg, 'text-halo-width': 1.2 },
-        }),
-      ),
+      ...cities.map((s): LayerSpecification => ({
+        id: `${s.id}-localities`,
+        type: 'symbol',
+        source: s.id,
+        'source-layer': 'places',
+        minzoom: 9,
+        filter: [
+          'all',
+          ['==', ['get', 'kind'], 'locality'],
+          ['<=', ['get', 'min_zoom'], ['-', ['zoom'], 3]],
+          ['!', ['in', ['get', 'name:en'], ['literal', ours]]],
+        ],
+        layout: {
+          'text-field': name,
+          'text-font': ['instrument-serif-italic'],
+          'text-size': ['interpolate', ['linear'], ['zoom'], 9, 15, 13, 20],
+          'text-max-width': 8,
+        },
+        paint: { 'text-color': c.faint, 'text-halo-color': c.bg, 'text-halo-width': 1.2 },
+      })),
     ],
   };
 }

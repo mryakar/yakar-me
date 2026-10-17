@@ -18,7 +18,11 @@ if (dialog) {
   }));
   let engine: ReturnType<typeof load> | undefined;
   const load = async () => {
-    const [{ search }, { plural }, { indexLoader }] = await Promise.all([import('../lib/search'), import('../lib/format'), import('./search-index')]);
+    const [{ search }, { plural }, { indexLoader }] = await Promise.all([
+      import('../lib/search'),
+      import('../lib/format'),
+      import('./search-index'),
+    ]);
     return { search, plural, index: indexLoader(text.index) };
   };
   const mac = /Mac|iPhone|iPad/.test(navigator.userAgent);
@@ -85,7 +89,10 @@ if (dialog) {
       if (ticket !== latest) return;
       show(results, query);
       none.hidden = options.length > 0;
-      report(options.length ? plural({ one: text.one, other: text.other }, options.length) : text.none, options.length > 0);
+      report(
+        options.length ? plural({ one: text.one, other: text.other }, options.length) : text.none,
+        options.length > 0,
+      );
     } catch {
       if (ticket === latest) report(text.failed);
     }

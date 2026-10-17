@@ -26,18 +26,25 @@ const canonical = absoluteUrl(Astro.url.pathname);
 const ogImage = absoluteUrl(article?.image ?? (await ogImagePathFor(homeCard(lang))));
 const xDefault = alternates.find((a) => a.lang === defaultLang);
 ---
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />
 <title>{title}</title>
 <meta name="description" content={description} />
 {!notFound && <link rel="canonical" href={canonical} />}
-{alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={absoluteUrl(a.href)} />)}
+{alternates.map((a) => (
+  <link rel="alternate" hreflang={a.lang} href={absoluteUrl(a.href)} />
+))}
 {xDefault && <link rel="alternate" hreflang="x-default" href={absoluteUrl(xDefault.href)} />}
 <link rel="alternate" type="application/rss+xml" title={site.name} href={localize(paths.feed, lang)} />
 <meta property="og:site_name" content={site.title} />
 <meta property="og:locale" content={ogLocale[lang]} />
-{alternates.filter((a) => a.lang !== lang).map((a) => <meta property="og:locale:alternate" content={ogLocale[a.lang]} />)}
+{alternates
+  .filter((a) => a.lang !== lang)
+  .map((a) => (
+    <meta property="og:locale:alternate" content={ogLocale[a.lang]} />
+  ))}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {!notFound && <meta property="og:url" content={canonical} />}

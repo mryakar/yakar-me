@@ -28,4 +28,6 @@ export const loadedUrls = (html) =>
       .map(([, attrs]) => /\shref="([^"]*)"/i.exec(attrs) ?? [, '']),
   ]
     .map((m) => m[1])
-    .concat([...html.matchAll(/\ssrcset="([^"]*)"/gi)].flatMap((m) => m[1].split(',').map((c) => c.trim().split(/\s+/)[0])));
+    .concat(
+      [...html.matchAll(/\ssrcset="([^"]*)"/gi)].flatMap((m) => m[1].split(',').map((c) => c.trim().split(/\s+/)[0])),
+    );

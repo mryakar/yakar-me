@@ -129,7 +129,9 @@ async function start(frame: HTMLElement) {
   frame.hidden = false;
   const policies = globalThis.trustedTypes;
   if (policies && !policies.defaultPolicy) {
-    policies.createPolicy('default', { createScriptURL: (url) => trustedScriptUrl(url, location.origin, maplibreWorker) });
+    policies.createPolicy('default', {
+      createScriptURL: (url) => trustedScriptUrl(url, location.origin, maplibreWorker),
+    });
   }
   const gl: MapLibre = await import(/* @vite-ignore */ new URL(maplibre, location.origin).href);
   const globeZoom = () => Math.log2((0.85 * Math.min(canvas.clientWidth, canvas.clientHeight) * Math.PI) / 512);
@@ -244,24 +246,43 @@ async function start(frame: HTMLElement) {
   const pins: Pin[] = [];
   for (const city of cities) {
     const element = markerElement('city', city.label, city.name, city.count);
-    const pin: Pin = { element, kind: 'city', lngLat: lngLat(city), weight: city.count, places: city.places, group: city.places };
+    const pin: Pin = {
+      element,
+      kind: 'city',
+      lngLat: lngLat(city),
+      weight: city.count,
+      places: city.places,
+      group: city.places,
+    };
     element.addEventListener('click', () => fitPlaces(pin.group));
     new gl.Marker({ element, anchor: 'center', opacityWhenCovered: '0' }).setLngLat(pin.lngLat).addTo(map);
     pins.push(pin);
     for (const place of city.places) {
       const marker = markerElement('place', place.label, place.name, place.count);
       marker.setAttribute('aria-pressed', 'false');
-      const own: Pin = { element: marker, kind: 'place', lngLat: lngLat(place), weight: place.count, places: [place], group: [place] };
+      const own: Pin = {
+        element: marker,
+        kind: 'place',
+        lngLat: lngLat(place),
+        weight: place.count,
+        places: [place],
+        group: [place],
+      };
       marker.addEventListener('click', () => {
         if (own.group.length > 1) fitPlaces(own.group, MERGED_ZOOM);
         else select(selected === place ? null : place);
       });
-      place.marker = new gl.Marker({ element: marker, anchor: 'center', opacityWhenCovered: '0' }).setLngLat(lngLat(place)).addTo(map);
+      place.marker = new gl.Marker({ element: marker, anchor: 'center', opacityWhenCovered: '0' })
+        .setLngLat(lngLat(place))
+        .addTo(map);
       pins.push(own);
       place.link.addEventListener('click', (e) => {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
         e.preventDefault();
-        frame.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        frame.scrollIntoView({
+          block: 'nearest',
+          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        });
         showPlace(place);
       });
     }
@@ -270,7 +291,10 @@ async function start(frame: HTMLElement) {
   const level = () => {
     const zoom = map.getZoom();
     frame.dataset.level = zoom < CITY_LEVEL ? 'world' : 'city';
-    const here = zoom >= CITY_LEVEL - 1 ? cities.find((c) => contains(c.bounds, { lat: map.getCenter().lat, lon: map.getCenter().lng })) : undefined;
+    const here =
+      zoom >= CITY_LEVEL - 1
+        ? cities.find((c) => contains(c.bounds, { lat: map.getCenter().lat, lon: map.getCenter().lng }))
+        : undefined;
     crumb.hidden = !here;
     crumbCity.textContent = here?.name ?? '';
   };
@@ -322,7 +346,10 @@ async function start(frame: HTMLElement) {
   });
   wide.addEventListener('change', placeCard);
 
-  new MutationObserver(() => map.setStyle(paint())).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  new MutationObserver(() => map.setStyle(paint())).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
 
   const focus = (animate: boolean) => {
     const id = fragmentId(location.hash);

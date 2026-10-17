@@ -29,20 +29,24 @@ export function headerProblems(rules, path, got) {
     .filter((r) => matchesPattern(r.pattern, path))
     .flatMap((r) => r.headers)
     .filter(([name, value]) => got.get(name) !== value)
-    .map(([name, value]) => `${path}: ${name} is ${JSON.stringify(got.get(name))}, _headers says ${JSON.stringify(value)}`);
+    .map(
+      ([name, value]) => `${path}: ${name} is ${JSON.stringify(got.get(name))}, _headers says ${JSON.stringify(value)}`,
+    );
 }
 
 const sameSet = (a, b) => a.length === b.length && [...a].sort().join('\n') === [...b].sort().join('\n');
 
 export function emailDnsProblems(resolver, seen, expected) {
   const problems = [];
-  const at = (what, got, want) => problems.push(`${resolver}: ${what} is ${JSON.stringify(got)}, expected ${JSON.stringify(want)}`);
+  const at = (what, got, want) =>
+    problems.push(`${resolver}: ${what} is ${JSON.stringify(got)}, expected ${JSON.stringify(want)}`);
   const mx = seen.mx.map((m) => `${m.priority} ${m.exchange}`);
   if (!sameSet(mx, expected.mx)) at('MX', mx, expected.mx);
   const root = seen.rootTxt.map((t) => t.join(''));
   const spf = root.filter((t) => t.startsWith('v=spf1'));
   if (spf.length !== 1 || spf[0] !== expected.spf) at('SPF', spf, expected.spf);
-  for (const txt of expected.rootTxt) if (!root.includes(txt)) problems.push(`${resolver}: root TXT has no ${JSON.stringify(txt)}`);
+  for (const txt of expected.rootTxt)
+    if (!root.includes(txt)) problems.push(`${resolver}: root TXT has no ${JSON.stringify(txt)}`);
   const dmarc = seen.dmarc.map((t) => t.join('')).filter((t) => t.startsWith('v=DMARC1'));
   if (dmarc.length !== 1 || dmarc[0] !== expected.dmarc) at('DMARC', dmarc, expected.dmarc);
   for (const [selector, target] of Object.entries(expected.dkim)) {
@@ -59,20 +63,31 @@ export const caaRecord = ({ critical, type, ...tag }) => {
 
 export function caaProblems(resolver, seen, expected) {
   const got = seen.map(caaRecord);
-  return sameSet(got, expected) ? [] : [`${resolver}: CAA is ${JSON.stringify(got.toSorted())}, expected ${JSON.stringify(expected.toSorted())}`];
+  return sameSet(got, expected)
+    ? []
+    : [`${resolver}: CAA is ${JSON.stringify(got.toSorted())}, expected ${JSON.stringify(expected.toSorted())}`];
 }
 
 export function certificateProblems(cert, host, now, minDays) {
   const problems = [];
   const left = (new Date(cert.validTo).valueOf() - now.valueOf()) / DAY_MS;
-  if (!(left >= minDays)) problems.push(`certificate expires ${cert.validTo} (${Math.floor(left)} days left, at least ${minDays} expected)`);
+  if (!(left >= minDays))
+    problems.push(`certificate expires ${cert.validTo} (${Math.floor(left)} days left, at least ${minDays} expected)`);
   const names = (cert.subjectAltName ?? '').split(',').map((s) => s.trim().replace(/^DNS:/, ''));
   if (!names.includes(host)) problems.push(`certificate does not name ${host}: ${cert.subjectAltName}`);
   return problems;
 }
 
 const BLOCKED = new Set([401, 403, 429, 999]);
-const TRANSIENT_ERRORS = new Set(['TimeoutError', 'AbortError', 'ECONNRESET', 'ECONNREFUSED', 'EAI_AGAIN', 'ETIMEDOUT', 'UND_ERR_SOCKET']);
+const TRANSIENT_ERRORS = new Set([
+  'TimeoutError',
+  'AbortError',
+  'ECONNRESET',
+  'ECONNREFUSED',
+  'EAI_AGAIN',
+  'ETIMEDOUT',
+  'UND_ERR_SOCKET',
+]);
 
 export function linkVerdict({ status, error }) {
   if (error) return TRANSIENT_ERRORS.has(error) ? 'retry' : 'broken';

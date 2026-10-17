@@ -1,11 +1,19 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { markdownToHtml } from 'satteri';
-import { noRawHtml, articleBlocks, articleLang, isReferencesHeading, isSummaryHeading, printsHref, tableOfContents } from '../src/lib/markdown.ts';
+import {
+  noRawHtml,
+  articleBlocks,
+  articleLang,
+  isReferencesHeading,
+  isSummaryHeading,
+  printsHref,
+  tableOfContents,
+} from '../src/lib/markdown.ts';
 
 const render = async (md) => markdownToHtml(md, { mdastPlugins: [noRawHtml], hastPlugins: [articleBlocks] }).html;
 
-test('ham HTML build\'i kırar', async () => {
+test("ham HTML build'i kırar", async () => {
   await assert.rejects(render('Hello <script>alert(1)</script>'), /Raw HTML is not allowed/);
   await assert.rejects(render('Pid <pid> here'), /Raw HTML is not allowed/);
 });
@@ -53,9 +61,24 @@ test('kendi içinde kayan bloklar klavyeyle kaydırılabilir: pre ve table tabin
 
 test('tableOfContents: ## ve altındaki ###; "Kısaca" ve ilk ##\'den önceki ### girmez', () => {
   const h = (depth, slug, text = slug) => ({ depth, slug, text });
-  const toc = tableOfContents([h(3, 'orphan'), h(2, 'in-short', 'In short'), h(2, 'a'), h(3, 'a1'), h(4, 'deep'), h(3, 'a2'), h(2, 'b')]);
+  const toc = tableOfContents([
+    h(3, 'orphan'),
+    h(2, 'in-short', 'In short'),
+    h(2, 'a'),
+    h(3, 'a1'),
+    h(4, 'deep'),
+    h(3, 'a2'),
+    h(2, 'b'),
+  ]);
   assert.deepEqual(toc, [
-    { slug: 'a', text: 'a', children: [{ slug: 'a1', text: 'a1' }, { slug: 'a2', text: 'a2' }] },
+    {
+      slug: 'a',
+      text: 'a',
+      children: [
+        { slug: 'a1', text: 'a1' },
+        { slug: 'a2', text: 'a2' },
+      ],
+    },
     { slug: 'b', text: 'b', children: [] },
   ]);
 });
@@ -70,18 +93,24 @@ test('printsHref: dış adres, bağlantı metninde görünmüyorsa', () => {
 });
 
 test('yazdırmada adresi basılacak bağlantı data-print-href taşır, adresi metin olan taşımaz', async () => {
-  const html = await render('[MD5](https://en.wikipedia.org/wiki/MD5) and [https://openjdk.org/jeps/491](https://openjdk.org/jeps/491)');
+  const html = await render(
+    '[MD5](https://en.wikipedia.org/wiki/MD5) and [https://openjdk.org/jeps/491](https://openjdk.org/jeps/491)',
+  );
   assert.match(html, /<a href="https:\/\/en\.wikipedia\.org\/wiki\/MD5" data-print-href="">MD5<\/a>/);
   assert.match(html, /<a href="https:\/\/openjdk\.org\/jeps\/491">https/);
 });
 
-const article = (file, frontmatter = {}) => async (md) =>
-  (await markdownToHtml(md, {
-    mdastPlugins: [noRawHtml],
-    hastPlugins: [articleBlocks],
-    fileURL: new URL(`file:///site/src/content/writing/locks/${file}`),
-    data: { astro: { frontmatter } },
-  })).html;
+const article =
+  (file, frontmatter = {}) =>
+  async (md) =>
+    (
+      await markdownToHtml(md, {
+        mdastPlugins: [noRawHtml],
+        hastPlugins: [articleBlocks],
+        fileURL: new URL(`file:///site/src/content/writing/locks/${file}`),
+        data: { astro: { frontmatter } },
+      })
+    ).html;
 
 test('articleLang: yalnız yazı dosyası; özgünde frontmatter, çeviride dosya adı', () => {
   assert.equal(articleLang('/s/src/content/writing/locks/index.md', 'en'), 'en');
@@ -94,19 +123,24 @@ test('articleLang: yalnız yazı dosyası; özgünde frontmatter, çeviride dosy
 });
 
 test('isReferencesHeading: üç dilde', () => {
-  assert.ok(isReferencesHeading('References') && isReferencesHeading(' Kaynaklar ') && isReferencesHeading('Referencias'));
+  assert.ok(
+    isReferencesHeading('References') && isReferencesHeading(' Kaynaklar ') && isReferencesHeading('Referencias'),
+  );
   assert.ok(!isReferencesHeading('Further reading'));
 });
 
-test('bitiş işareti: Kaynaklar\'dan önceki son paragrafın sonunda, dile göre etiket', async () => {
+test("bitiş işareti: Kaynaklar'dan önceki son paragrafın sonunda, dile göre etiket", async () => {
   const md = 'Intro.\n\nLast one.\n\n### In short\n\n- a\n\n> quote\n\n## References\n\nRef para.\n';
   const html = await article('tr.md')(md);
   assert.equal(html.match(/class="end-mark"/g)?.length, 1);
-  assert.match(html, /<p>Last <span class="end-word">one\.<svg class="end-mark"[^>]* role="img" aria-label="Son"[^>]*>(<path [^>]*stroke-width="[\d.]+"[^>]*><\/path>){2}<\/svg><\/span><\/p>/);
+  assert.match(
+    html,
+    /<p>Last <span class="end-word">one\.<svg class="end-mark"[^>]* role="img" aria-label="Son"[^>]*>(<path [^>]*stroke-width="[\d.]+"[^>]*><\/path>){2}<\/svg><\/span><\/p>/,
+  );
   assert.match(html, /<p>Ref para\.<\/p>/);
 });
 
-test('bitiş işareti: Kaynaklar yoksa son paragraf; özgünün dili frontmatter\'dan', async () => {
+test("bitiş işareti: Kaynaklar yoksa son paragraf; özgünün dili frontmatter'dan", async () => {
   const html = await article('index.md', { lang: 'en' })('One.\n\n## Conclusion\n\nTwo.\n\n```\ncode\n```\n');
   assert.match(html, /<p>Two\.<svg class="end-mark"[^>]*aria-label="End"/);
   assert.doesNotMatch(html, /One\.<svg/);
@@ -118,6 +152,6 @@ test('bitiş işareti son kelimeye bağlı; paragraf öğeyle bitiyorsa ardına'
   assert.match(await article('es.md')('A  b.\n'), /<p>A  <span class="end-word">b\.<svg/);
 });
 
-test('bitiş işareti: yazı dışındaki Markdown\'da yok', async () => {
+test("bitiş işareti: yazı dışındaki Markdown'da yok", async () => {
   assert.doesNotMatch(await render('Para.\n'), /end-mark/);
 });

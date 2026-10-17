@@ -23,8 +23,10 @@ export function budgetProblems(where, weight, budget = BUDGET) {
   const over = [];
   if (weight.total > budget.total) over.push(`${kb(weight.total)} KB in total, budget ${kb(budget.total)} KB`);
   if (weight.requests > budget.requests) over.push(`${weight.requests} requests, budget ${budget.requests}`);
-  if (weight.script > budget.script) over.push(`${kb(weight.script)} KB of site scripts, budget ${kb(budget.script)} KB`);
-  if (weight.vendor > budget.vendor) over.push(`${kb(weight.vendor)} KB of vendored scripts, budget ${kb(budget.vendor)} KB`);
+  if (weight.script > budget.script)
+    over.push(`${kb(weight.script)} KB of site scripts, budget ${kb(budget.script)} KB`);
+  if (weight.vendor > budget.vendor)
+    over.push(`${kb(weight.vendor)} KB of vendored scripts, budget ${kb(budget.vendor)} KB`);
   return over.map((o) => `${where}: ${o}`);
 }
 
@@ -41,9 +43,11 @@ export function a11yProblems(scans, exceptions, today) {
   }
   for (const e of exceptions) {
     if (!e.reason) problems.push(`exception ${e.rule} ${e.selector} has no reason`);
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(e.until ?? '')) problems.push(`exception ${e.rule} ${e.selector} has no until date`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(e.until ?? ''))
+      problems.push(`exception ${e.rule} ${e.selector} has no until date`);
     else if (e.until < today) problems.push(`exception ${e.rule} ${e.selector} expired on ${e.until}`);
-    if (!used.has(`${e.rule} ${e.selector}`)) problems.push(`exception ${e.rule} ${e.selector} no longer matches anything — remove it`);
+    if (!used.has(`${e.rule} ${e.selector}`))
+      problems.push(`exception ${e.rule} ${e.selector} no longer matches anything — remove it`);
   }
   return problems;
 }

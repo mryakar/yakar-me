@@ -16,14 +16,31 @@ const RETRY_BASE_MS = 1000;
 const hash = (data) => createHash('sha256').update(data).digest('hex');
 const hmac = (key, data) => createHmac('sha256', key).update(data).digest();
 
-export function sign({ method, host, path, headers, payloadHash, accessKeyId, secretAccessKey, date, region = REGION }) {
-  const amzDate = date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+export function sign({
+  method,
+  host,
+  path,
+  headers,
+  payloadHash,
+  accessKeyId,
+  secretAccessKey,
+  date,
+  region = REGION,
+}) {
+  const amzDate = date
+    .toISOString()
+    .replace(/[-:]/g, '')
+    .replace(/\.\d{3}/, '');
   const day = amzDate.slice(0, 8);
   const all = { ...headers, host, 'x-amz-content-sha256': payloadHash, 'x-amz-date': amzDate };
-  const names = Object.keys(all).map((k) => k.toLowerCase()).sort();
+  const names = Object.keys(all)
+    .map((k) => k.toLowerCase())
+    .sort();
   const lower = Object.fromEntries(Object.entries(all).map(([k, v]) => [k.toLowerCase(), String(v).trim()]));
   const signedHeaders = names.join(';');
-  const canonical = [method, path, '', ...names.map((n) => `${n}:${lower[n]}`), '', signedHeaders, payloadHash].join('\n');
+  const canonical = [method, path, '', ...names.map((n) => `${n}:${lower[n]}`), '', signedHeaders, payloadHash].join(
+    '\n',
+  );
   const scope = `${day}/${region}/${SERVICE}/aws4_request`;
   const toSign = ['AWS4-HMAC-SHA256', amzDate, scope, hash(canonical)].join('\n');
   const key = hmac(hmac(hmac(hmac(`AWS4${secretAccessKey}`, day), region), SERVICE), 'aws4_request');

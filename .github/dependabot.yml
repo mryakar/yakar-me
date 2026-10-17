@@ -6,16 +6,16 @@ updates:
       interval: weekly
     groups:
       npm:
-        patterns: ["*"]
+        patterns: ['*']
     ignore:
       - dependency-name: typescript
-        update-types: ["version-update:semver-major"]
+        update-types: ['version-update:semver-major']
       - dependency-name: maplibre-gl
-        versions: [">=6.13.0"]
+        versions: ['>=6.13.0']
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
     groups:
       actions:
-        patterns: ["*"]
+        patterns: ['*']
