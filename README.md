@@ -71,20 +71,26 @@ Please report vulnerabilities to the contact in
 
 The code is copyright © 2026 Ahmet Yakar and licensed under the [GNU General Public License v3.0](LICENSE).
 
-My writing and photographs are not covered by the GPL. They are copyright © 2019–2026 Ahmet Yakar, all rights reserved:
+My writing, my photographs and my γ mark are not covered by the GPL. They are copyright © 2019–2026 Ahmet Yakar, all
+rights reserved:
 
 - the articles and their images (`src/content/writing/`)
 - the photo series texts (`src/content/photos/`)
 - the about page (`src/content/pages/`, `src/content/about.json`)
 - the share images (`public/og/`)
 - the photographs published on yakar.me (not in this repository)
+- the γ mark: its drawing (`src/lib/mark-drawing.ts`), the icons made from it (`public/favicon.svg`,
+  `public/favicon.ico`, `public/apple-touch-icon.png`, `public/feed.png`) and every rendering of it on the site
 
-To reuse any of them, ask me first at ahmet@yakar.me.
+To reuse any of them, ask me first at ahmet@yakar.me. A fork of the code has to replace the mark with its own.
 
 Third-party material:
 
 - Map data © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, under the Open Database License,
   via [Protomaps](https://protomaps.com)
+- Map rendering: [MapLibre GL JS](https://maplibre.org) © MapLibre contributors, under the BSD 3-Clause License; the
+  full text, including the notices for the code it contains, is in
+  [`public/licenses/maplibre-gl.txt`](public/licenses/maplibre-gl.txt), served at `/licenses/maplibre-gl.txt`
 - Home page globe: [Natural Earth](https://www.naturalearthdata.com) (public domain), via `world-atlas`
 - Fonts, under the SIL Open Font License 1.1: Geist and Geist Mono © The Geist Project Authors, Newsreader © The
   Newsreader Project Authors, Instrument Serif © The Instrument Serif Project Authors. The map glyphs in

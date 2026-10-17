@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pngChunks } from '../scripts/lib/png.mjs';
-import { BOX, FINE_ARM, MARK, MARK_SMALL, iconSvg, markSvg, strokes } from '../src/lib/mark.ts';
+import { FINE_ARM, MARK, MARK_SMALL } from '../src/lib/mark-drawing.ts';
+import { BOX, iconSvg, markSvg, strokes } from '../src/lib/mark.ts';
 
 const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 

@@ -1,7 +1,8 @@
 import { defineHastPlugin, defineMdastPlugin } from 'satteri';
 import { ui } from '../i18n/ui.ts';
 import { isLang, type Lang } from './i18n.ts';
-import { MARK, MARK_RATIO, MARK_VIEWBOX, strokes } from './mark.ts';
+import { MARK, MARK_RATIO, MARK_VIEWBOX } from './mark-drawing.ts';
+import { strokes } from './mark.ts';
 
 export const noRawHtml = defineMdastPlugin({
   name: 'no-raw-html',

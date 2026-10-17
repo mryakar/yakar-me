@@ -3,7 +3,8 @@ import { site } from '../site.ts';
 import type { Topic } from './article.ts';
 import { escapeXml, formatDate } from './format.ts';
 import type { Lang } from './i18n.ts';
-import { MARK, iconSvg, markSvg } from './mark.ts';
+import { MARK } from './mark-drawing.ts';
+import { iconSvg, markSvg } from './mark.ts';
 import { PAGE_BACKGROUND } from './theme.ts';
 
 export const OG_SIZE = { width: 1200, height: 630 };
