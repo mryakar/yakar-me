@@ -28,6 +28,7 @@ jobs:
           package-manager-cache: false
       - run: npm ci
       - run: npm run check:audit
+      - run: npm run check:format
       - run: npm test
       - name: Photos from R2
         env:
