@@ -9,6 +9,24 @@
     "timeZone": "Europe/Istanbul"
   },
   {
+    "id": "Q2493895",
+    "district": "Konyaaltı",
+    "city": "Antalya",
+    "country": "Turkey",
+    "lat": 36.865,
+    "lon": 30.64444,
+    "timeZone": "Europe/Istanbul"
+  },
+  {
+    "id": "Q152405",
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey",
+    "lat": 36.76667,
+    "lon": 31.38861,
+    "timeZone": "Europe/Istanbul"
+  },
+  {
     "id": "Q175500",
     "district": "Banz",
     "city": "Bad Staffelstein",

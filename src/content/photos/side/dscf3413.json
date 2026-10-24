@@ -1,0 +1,110 @@
+{
+  "alt": "Fan palms rise into a violet dusk.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-07T19:01:44+03:00",
+  "aperture": 2.8,
+  "shutter": 0.5,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3413-320-2988cdd9.avif",
+        "width": 320,
+        "height": 213,
+        "bytes": 7789,
+        "sha256": "2988cdd95cb4cb9f92cca90618aea572f54588349d31a399106c46d31141306c"
+      },
+      {
+        "file": "dscf3413-640-36b817e2.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 24989,
+        "sha256": "36b817e25228d2fec9c724888789cdc9e9064f47776e3b07975fb0d8dfe09e83"
+      },
+      {
+        "file": "dscf3413-1280-a87ef912.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 82315,
+        "sha256": "a87ef912698a2c860c083b4e5e8f7587a44b91c546e8738ff0fa75e9c1e34d08"
+      },
+      {
+        "file": "dscf3413-1920-1e71ef55.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 162445,
+        "sha256": "1e71ef558c4bb85332aca9fafd3e17f2ac9006ee0e704e5fa34825c000e06d10"
+      },
+      {
+        "file": "dscf3413-2560-33b161f1.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 263602,
+        "sha256": "33b161f1e6a369bdca055128da76c4fcf342834abce27ddd8cb9dfdb05fc8298"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3413-320-ba074c87.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 11290,
+        "sha256": "ba074c8792420b24616da646ae69b9e275332b5510319567a2ac558bd76ddafb"
+      },
+      {
+        "file": "dscf3413-640-330f12f7.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 36432,
+        "sha256": "330f12f7f4fe52a783a61d505a8e7997ffc4dde89f1ac87e9b11c7629f260d7c"
+      },
+      {
+        "file": "dscf3413-1280-01bd4ea5.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 118214,
+        "sha256": "01bd4ea5f5d5a2f0aaaf6a8e57967be9095ce73db70696aa95eec15b1eec17cb"
+      },
+      {
+        "file": "dscf3413-1920-48c9ed20.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 228058,
+        "sha256": "48c9ed2014f74effa9cb7e3ede265ae2d49fe8027f15bd21a9d064a865e07d6b"
+      },
+      {
+        "file": "dscf3413-2560-1f258b13.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 359268,
+        "sha256": "1f258b13276267ae3e6f0c2023ebc2a711044d17b2484e7704660faa2ee97246"
+      }
+    ]
+  }
+}

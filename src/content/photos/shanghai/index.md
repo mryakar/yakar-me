@@ -1,7 +1,7 @@
 ---
 title: Shanghai
 description: Leafy avenues, a round museum and a sky full of cloud. Shanghai in November.
-order: 16
+order: 17
 published: 2026-10-01
 cover: img-0555
 lang: en

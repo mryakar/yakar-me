@@ -1,7 +1,7 @@
 ---
 title: Baku
 description: Old stone, new glass and a sky that turns orange behind the Flame Towers. Baku in February.
-order: 6
+order: 7
 published: 2026-10-01
 cover: img-1168
 lang: en

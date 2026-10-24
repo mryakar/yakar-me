@@ -1,7 +1,7 @@
 ---
 title: Koh Samui
 description: Palms at blue hour, still water and a sea that keeps its own time. Koh Samui in late May.
-order: 2
+order: 3
 published: 2026-09-29
 cover: dscf2371
 focus: { x: 50, y: 80 }

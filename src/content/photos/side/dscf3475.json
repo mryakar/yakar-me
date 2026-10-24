@@ -1,0 +1,110 @@
+{
+  "alt": "Two white horse statues stride across a lawn washed in red light.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-09T22:24:19+03:00",
+  "aperture": 2.8,
+  "shutter": 0.1,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3475-320-82920c83.avif",
+        "width": 320,
+        "height": 213,
+        "bytes": 4074,
+        "sha256": "82920c831bd29abdcd4962a3816cb53cbc5f4fb094d642df7b3f60dc71cb9caf"
+      },
+      {
+        "file": "dscf3475-640-faf29f08.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 12105,
+        "sha256": "faf29f08a71dcfcc0b07765b733ed7ea9d2f53152f6fa8055505f86c39a044a0"
+      },
+      {
+        "file": "dscf3475-1280-3c48fe89.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 41240,
+        "sha256": "3c48fe8991eb1745e0cea478731aef6b76b3fa351a8de52190d65fc2d064abdf"
+      },
+      {
+        "file": "dscf3475-1920-b6fe95a3.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 87535,
+        "sha256": "b6fe95a3cdba715cb95872f176b409b399f47d924341f342a9f26705a8e68846"
+      },
+      {
+        "file": "dscf3475-2560-414565ac.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 149044,
+        "sha256": "414565acee76ae2895b0ac319eb19b6d14a971f124e8cb99b8209dac5d5e510e"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3475-320-ed0b1dec.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 5174,
+        "sha256": "ed0b1dec20f001d4260d4189094aa19b6562ef8afde98d2aa2c38ac5526e9b64"
+      },
+      {
+        "file": "dscf3475-640-fd580efe.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 16068,
+        "sha256": "fd580efe93547cb9db49c9d5e6940be5998d07918e3d23024cb95cff1ad52aea"
+      },
+      {
+        "file": "dscf3475-1280-088b2871.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 57018,
+        "sha256": "088b287181b56d84dc34db3f6d37815c30b3759080a2f258eef9a39abd36f720"
+      },
+      {
+        "file": "dscf3475-1920-232396d5.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 120276,
+        "sha256": "232396d53f22a96c7b54cc90d90099feaa0f3ead643556241579a481d92be630"
+      },
+      {
+        "file": "dscf3475-2560-a7f06a17.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 199756,
+        "sha256": "a7f06a1719ffbae7214f00fc1f97835ae6f6ad66b388a2e6ab790fd61df4c51d"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "alt": "Twin lamps glow warm as the sky fades from orange to indigo.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-09T18:38:13+03:00",
+  "aperture": 2.8,
+  "shutter": 0.001333333333,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3458-320-eb840a8f.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 4271,
+        "sha256": "eb840a8ff6c8d78875a97631798b93739977461836007c347508dd3525090088"
+      },
+      {
+        "file": "dscf3458-640-3b3fa7d9.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 9126,
+        "sha256": "3b3fa7d94062046d9f2e01da71e47759bd891ad03c127b3188148464a0b81eca"
+      },
+      {
+        "file": "dscf3458-1280-e3032e12.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 21238,
+        "sha256": "e3032e12b9d38da65d232d3152f3d67b2bb523a1d47c8f6627e1822b5a0c86dc"
+      },
+      {
+        "file": "dscf3458-1706-1e256d3a.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 32963,
+        "sha256": "1e256d3a205d18faf5f68a8dc7342fef5ad7f32e5409ce74215e60f9084cd877"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3458-320-3ca4efbb.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 4450,
+        "sha256": "3ca4efbbf98ff9b4e35d18dad10983f1dfbe015295f9b6d6fcea784c89bac129"
+      },
+      {
+        "file": "dscf3458-640-624b980c.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 10196,
+        "sha256": "624b980cfa0bbb4858ac4b0c75427000e7b576e0fa39fb3c6c7a8756d4ae4cb9"
+      },
+      {
+        "file": "dscf3458-1280-8630a3cb.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 25254,
+        "sha256": "8630a3cbb48a1cb7ef11218ba6cdccaa4bc10eb182363ca62c76bcc0af75017e"
+      },
+      {
+        "file": "dscf3458-1706-562832df.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 37568,
+        "sha256": "562832df711230d67fb765c490363c1f7fbd6df4f13615c283af11b08b0e4f16"
+      }
+    ]
+  }
+}

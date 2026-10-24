@@ -1,0 +1,96 @@
+{
+  "alt": "A pale blue tricycle by the railing above a long pebble beach.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-08T11:45:16+03:00",
+  "aperture": 5.6,
+  "shutter": 0.001333333333,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Konyaaltı",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3419-320-8a6847ff.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 14442,
+        "sha256": "8a6847ffb7544d81d23af765b399e5733e6c6ade876e13ef914be52f4a653619"
+      },
+      {
+        "file": "dscf3419-640-3f5cae35.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 52152,
+        "sha256": "3f5cae35a24e4c32b4d5c7f6f441fd660d847c6611dc17219c389941d4c7635d"
+      },
+      {
+        "file": "dscf3419-1280-325e147b.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 193349,
+        "sha256": "325e147bd402a03ac9d2aa951a17c37a85a2b1f2e34b80b4a4f929d542977f35"
+      },
+      {
+        "file": "dscf3419-1706-72c7b4a2.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 335085,
+        "sha256": "72c7b4a2f834617f93346be48c629f6cf0672d91177b2a56a04e5eb0659f071d"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3419-320-41100e04.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 24916,
+        "sha256": "41100e048dc1240b2e4e1d42a6c5c54cde1bd3a7e0211d8614d0f128fc1a8198"
+      },
+      {
+        "file": "dscf3419-640-eb6d4579.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 90854,
+        "sha256": "eb6d45790b210b0fabae1c1cb305f9c49aec0534c5e65e5de332cfda35de7c39"
+      },
+      {
+        "file": "dscf3419-1280-12dd9169.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 335440,
+        "sha256": "12dd9169cfa9b1b4b52b5ff527cab6132c4b3bc5c04cb1292dea470dcfed3545"
+      },
+      {
+        "file": "dscf3419-1706-15265a7e.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 576938,
+        "sha256": "15265a7e75b65360b34855685276551aaa1fb1084b29cf9fc66ab8a5f681cf0c"
+      }
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: Chiang Rai
 description: One temple in blue, one in white, and a day of grey July sky. Chiang Rai.
-order: 9
+order: 10
 published: 2026-10-01
 cover: img-9065
 lang: en

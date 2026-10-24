@@ -1,0 +1,99 @@
+{
+  "alt": "An ice cream kiosk glows under two palms on an empty harbour front.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-06T21:34:46+03:00",
+  "aperture": 2.8,
+  "shutter": 0.07142857143,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Acros",
+    "dynamicRange": "DR400",
+    "highlight": -1,
+    "shadow": 1,
+    "monochromaticColor": [
+      0,
+      0
+    ],
+    "whiteBalance": "Daylight",
+    "whiteBalanceShift": [
+      0,
+      0
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3397-320-1de76849.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 9579,
+        "sha256": "1de76849fbbe4e9fcd298b77fad9129b69546e1d3e93e2637d06faed8dc6699a"
+      },
+      {
+        "file": "dscf3397-640-e2814dda.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 32984,
+        "sha256": "e2814dda95e95192c4734da5743f2c92bbef390746fb033569f28a573de2e70c"
+      },
+      {
+        "file": "dscf3397-1280-baf66525.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 122562,
+        "sha256": "baf665258e9ebf2e7875e850d98bde66868d72f63fa1d249126e3c24f60ba44d"
+      },
+      {
+        "file": "dscf3397-1706-fc807fb9.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 214168,
+        "sha256": "fc807fb9ce9b04005f5b92d24a8fd253e46484c5287279c22a4442b70290c1e7"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3397-320-1863d8d6.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 14078,
+        "sha256": "1863d8d605d032db3b4cf54b5b6edc251cf42262b0bdefecc5093d6af38bf469"
+      },
+      {
+        "file": "dscf3397-640-ab144ce8.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 51850,
+        "sha256": "ab144ce828570a5f997e2335ef7ad04fe6bbe4a0cd655ebfc1a9f69009df4136"
+      },
+      {
+        "file": "dscf3397-1280-b121c204.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 191966,
+        "sha256": "b121c2047453a64811a109390c1647cb594ffcb3e2f1ebe8c3dc6ca912ce544f"
+      },
+      {
+        "file": "dscf3397-1706-95382238.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 333578,
+        "sha256": "95382238fca704182c214c6a9cfff7a6a1009e6f8dcad5b864763eaa3a412153"
+      }
+    ]
+  }
+}

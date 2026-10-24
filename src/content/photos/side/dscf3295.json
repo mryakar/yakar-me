@@ -1,0 +1,110 @@
+{
+  "alt": "A wooden pier runs back to the beach in the late sun.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-04T17:52:29+03:00",
+  "aperture": 5.6,
+  "shutter": 0.002857142857,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3295-320-036f0e6b.avif",
+        "width": 320,
+        "height": 213,
+        "bytes": 7264,
+        "sha256": "036f0e6b04070bb542c86da10c7300dffe69e3b33ba52197475674b06df1e12e"
+      },
+      {
+        "file": "dscf3295-640-afbb3cad.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 23038,
+        "sha256": "afbb3cad51543fa6705d4716d2ca27f1db06b2d2687efc7f0c203405e6a21ee0"
+      },
+      {
+        "file": "dscf3295-1280-84cf01b4.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 82497,
+        "sha256": "84cf01b47a96d6c797756de19157c80fea32f64bb0c762dc2b6df2e82961b506"
+      },
+      {
+        "file": "dscf3295-1920-b2158e06.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 176398,
+        "sha256": "b2158e068a6da3d9820efd30d91b2c3464244676941a0fbdb320825656f6a9ed"
+      },
+      {
+        "file": "dscf3295-2560-2578b677.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 312791,
+        "sha256": "2578b677610ed42c4e9e3ed77f05f79cc1ce3946ecec9dc5715c752c044fd5b5"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3295-320-625c3d20.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 10954,
+        "sha256": "625c3d205390db101aadfa31467ae06cc9af5171e3cf8b49bd1542ae3a2db6b5"
+      },
+      {
+        "file": "dscf3295-640-9b6e4c36.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 36442,
+        "sha256": "9b6e4c360f36b94584f3bf81172a1023404c8b0dfd57f5d7328ac418108e9fe4"
+      },
+      {
+        "file": "dscf3295-1280-91a3b79c.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 128850,
+        "sha256": "91a3b79cd8ef25f1153dcd388c263c048d4688ab96f2477db03e19e9bca83f27"
+      },
+      {
+        "file": "dscf3295-1920-8b37c635.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 282124,
+        "sha256": "8b37c63582fdd6e32498e0584a2ab48921fb6f5d44bef5db513f108d9bd70301"
+      },
+      {
+        "file": "dscf3295-2560-7d08d1d9.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 501492,
+        "sha256": "7d08d1d9a931ff94ace9070661cacf9b288af5823f1351373040efb576c972e9"
+      }
+    ]
+  }
+}

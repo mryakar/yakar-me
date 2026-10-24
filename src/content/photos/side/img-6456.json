@@ -1,0 +1,78 @@
+{
+  "alt": "A contrail crosses a pale evening sky between dark palm fronds.",
+  "kind": "phone",
+  "make": "Apple",
+  "model": "iPhone 16 Pro Max",
+  "taken": "2026-10-09T18:20:14+03:00",
+  "aperture": 1.8,
+  "shutter": 0.004273504274,
+  "iso": 64,
+  "focalLength": 48,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "img-6456-320-bb3ed93d.avif",
+        "width": 320,
+        "height": 427,
+        "bytes": 8748,
+        "sha256": "bb3ed93d09f184d9faf1c82aaba32e58fa206ba671c36d50a21dcbaff19d2c64"
+      },
+      {
+        "file": "img-6456-640-fb122bf7.avif",
+        "width": 640,
+        "height": 853,
+        "bytes": 25470,
+        "sha256": "fb122bf73b90d7f96cb3afe8139960164a0bd9c6c2388744c044b1c63be71a5e"
+      },
+      {
+        "file": "img-6456-1280-8d5e195f.avif",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 70206,
+        "sha256": "8d5e195f13ce242565ff27c59ea8b85077d4c94d13699fd65fd94df90a37a752"
+      },
+      {
+        "file": "img-6456-1920-65c1fedc.avif",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 121816,
+        "sha256": "65c1fedcad7f51372ece3dc154aaf79042fdde4adb27caa8d06189681bac88d5"
+      }
+    ],
+    "webp": [
+      {
+        "file": "img-6456-320-f2f9c6e8.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 12258,
+        "sha256": "f2f9c6e81b5c0cc54734dd989ee00ad494c33a19b7d4961f8a2cc0043038b266"
+      },
+      {
+        "file": "img-6456-640-c4a6eeb5.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 38854,
+        "sha256": "c4a6eeb5beb6ee4df3c23098c71447aeaf0332e7df404475a4006357412918a9"
+      },
+      {
+        "file": "img-6456-1280-544b5dbd.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 107232,
+        "sha256": "544b5dbd51c8834168ca142807bf667dcfe709efa391b2e761b9a229a69d884b"
+      },
+      {
+        "file": "img-6456-1920-071172b9.webp",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 179408,
+        "sha256": "071172b90e51f75f51dae25d4cc9e287f3f1b0d870dc20880998f0012b1ae638"
+      }
+    ]
+  }
+}
