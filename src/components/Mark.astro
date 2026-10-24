@@ -1,24 +1,26 @@
 ---
 import { MARK, MARK_VIEWBOX } from '../lib/mark-drawing';
-import { strokes } from '../lib/mark';
+import { inkBox, strokes, viewBox } from '../lib/mark';
 
 interface Props {
   class: string;
   fine?: boolean;
+  tight?: boolean;
 }
-const { class: className, fine = false } = Astro.props;
+const { class: className, fine = false, tight = false } = Astro.props;
+const marks = strokes(MARK, fine);
 ---
 
 <svg
   class={className}
-  viewBox={MARK_VIEWBOX}
+  viewBox={tight ? viewBox(inkBox(marks)) : MARK_VIEWBOX}
   fill="none"
   stroke="currentColor"
   stroke-linecap="round"
   stroke-linejoin="round"
   aria-hidden="true"
 >
-  {strokes(MARK, fine).map((s) => (
+  {marks.map((s) => (
     <path d={s.d} stroke-width={s.width} />
   ))}
 </svg>

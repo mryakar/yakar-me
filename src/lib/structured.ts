@@ -9,10 +9,15 @@ interface Author {
   url: string;
 }
 
-const person = (author: Author, sameAs: string[] = []) => ({
+interface Named {
+  name: string;
+  url?: string;
+}
+
+const person = ({ name, url }: Named, sameAs: string[] = []) => ({
   '@type': 'Person',
-  name: author.name,
-  url: author.url,
+  name,
+  ...(url ? { url } : {}),
   ...(sameAs.length ? { sameAs } : {}),
 });
 
@@ -42,7 +47,7 @@ export function blogPosting(o: {
   };
 }
 
-export const profile = (author: Author, sameAs: string[]) => ({
+export const profile = (who: Named, sameAs: string[]) => ({
   '@context': 'https://schema.org',
-  ...person(author, sameAs),
+  ...person(who, sameAs),
 });

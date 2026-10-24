@@ -91,6 +91,8 @@ Third-party material:
 - Map rendering: [MapLibre GL JS](https://maplibre.org) © MapLibre contributors, under the BSD 3-Clause License; the
   full text, including the notices for the code it contains, is in
   [`public/licenses/maplibre-gl.txt`](public/licenses/maplibre-gl.txt), served at `/licenses/maplibre-gl.txt`
+- The photograph of my saxophone teacher on the Playing page (`src/assets/cihan-gulmez.jpg`) © Cihan Gülmez, used with
+  permission
 - Home page globe: [Natural Earth](https://www.naturalearthdata.com) (public domain), via `world-atlas`
 - Fonts, under the SIL Open Font License 1.1: Geist and Geist Mono © The Geist Project Authors, Newsreader © The
   Newsreader Project Authors, Instrument Serif © The Instrument Serif Project Authors. The map glyphs in

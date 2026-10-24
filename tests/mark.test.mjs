@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pngChunks } from '../scripts/lib/png.mjs';
 import { FINE_ARM, MARK, MARK_SMALL } from '../src/lib/mark-drawing.ts';
-import { BOX, iconSvg, markSvg, strokes } from '../src/lib/mark.ts';
+import { BOX, iconSvg, inkBox, markSvg, strokes, viewBox } from '../src/lib/mark.ts';
 
 const css = readFileSync(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
@@ -67,4 +67,22 @@ test('favicon.ico: 16 ve 32 px PNG', () => {
     return size(png)[0];
   });
   assert.deepEqual(sizes, [16, 32]);
+});
+
+test('inkBox: düz çizgide uçlar + yarım kalınlık', () => {
+  assert.deepEqual(inkBox([{ d: 'M0 0 C1 0 2 0 3 0', width: 2 }]), { x: -1, y: -1, width: 5, height: 2 });
+});
+
+test('inkBox: eğrinin tepesi kontrol noktasında değil, eğrinin üstünde', () => {
+  const b = inkBox([{ d: 'M0 0 C0 4 4 4 4 0', width: 0 }]);
+  assert.equal(b.height, 3);
+  assert.equal(b.width, 4);
+});
+
+test('inkBox: asıl çizimin kutusu viewBox içinde, sıkı', () => {
+  assert.equal(viewBox(inkBox(strokes(MARK))), '7.85 8.1 17.25 20.4');
+});
+
+test('inkBox: desteklenmeyen yol komutu hata', () => {
+  assert.throws(() => inkBox([{ d: 'M0 0 L1 1', width: 1 }]), /Unsupported path command "L"/);
 });

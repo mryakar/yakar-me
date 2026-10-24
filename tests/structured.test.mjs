@@ -41,6 +41,15 @@ test('profile: Person, sameAs yalnız verilen adresler', () => {
     sameAs: ['https://github.com/mryakar'],
   });
 });
+test('profile: adresi olmayan kişide url yok', () => {
+  assert.deepEqual(profile({ name: 'Cihan Gülmez' }, ['https://www.instagram.com/doktorbenway/']), {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Cihan Gülmez',
+    sameAs: ['https://www.instagram.com/doktorbenway/'],
+  });
+});
+
 test('jsonLd: </script> ve HTML karakterleri kaçırılır, JSON geçerli kalır', () => {
   const data = { caption: '</script><script>alert(1)</script> & \u2028' };
   const out = jsonLd(data);
