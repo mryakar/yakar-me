@@ -1,0 +1,96 @@
+{
+  "alt": "A young palm stands alone in dry grass, caught in warm light.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-10T22:00:28+03:00",
+  "aperture": 2.8,
+  "shutter": 1.6,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3587-320-053c9ce5.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 20291,
+        "sha256": "053c9ce5b12e57071f3bd668bf60be538d9257b7add567408f4482d10bdce3f2"
+      },
+      {
+        "file": "dscf3587-640-d9f8f82f.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 69240,
+        "sha256": "d9f8f82fee89be22d3009a011327c83d56e9892ecff48e01330f91dd9875a162"
+      },
+      {
+        "file": "dscf3587-1280-70f092ca.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 226595,
+        "sha256": "70f092ca56781b09eeaaf631b676351dc41008048bcf2ef2d21bd4866948c146"
+      },
+      {
+        "file": "dscf3587-1706-0f3ae5d6.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 364485,
+        "sha256": "0f3ae5d6ec6704bb2e4684c86e42dd357e523449ad86fac660ae486d985d2430"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3587-320-8818ce2c.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 33940,
+        "sha256": "8818ce2cb51dcb4e5b5938d80b569b1d4b06c8e0679b297ae99d95c446e21cce"
+      },
+      {
+        "file": "dscf3587-640-c42a3769.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 114244,
+        "sha256": "c42a37697287eea831c70984ee0c48a34eb4971075030a317f7bf30e01e908c1"
+      },
+      {
+        "file": "dscf3587-1280-d3e68e72.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 340714,
+        "sha256": "d3e68e728fb06f64d41e723179172be872d9c9116941999852fdcf40b48cc918"
+      },
+      {
+        "file": "dscf3587-1706-c73552be.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 543580,
+        "sha256": "c73552be1eb1f2d1dcb75b3ebd19e2bf24e537ca2726efe8b3a1d73554b67665"
+      }
+    ]
+  }
+}

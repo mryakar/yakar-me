@@ -1,7 +1,7 @@
 ---
 title: Belgrade
 description: Cobblestones, domes and the view where two rivers meet. Belgrade in late April.
-order: 7
+order: 8
 published: 2026-10-01
 cover: img-4237
 lang: en

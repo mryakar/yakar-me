@@ -1,0 +1,96 @@
+{
+  "alt": "A white temple replica glows blue in the night.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-10T19:04:23+03:00",
+  "aperture": 2.8,
+  "shutter": 0.4761904762,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3570-320-5e7971f3.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 6901,
+        "sha256": "5e7971f3555f90e7616f18371883cb09ff6cdfbf66aab9083fd7ef1379cd94c7"
+      },
+      {
+        "file": "dscf3570-640-a87a2ba0.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 18995,
+        "sha256": "a87a2ba0d54ff1b6e1cdfde253c1a0f2ec7807513f9c58934eeae9899a0b6d18"
+      },
+      {
+        "file": "dscf3570-1280-03a75b86.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 57554,
+        "sha256": "03a75b8683ca2101240f2cc03410503ab9e83c2d3fbdbea0ff279839bd522f2e"
+      },
+      {
+        "file": "dscf3570-1706-8deea4b7.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 99297,
+        "sha256": "8deea4b7f6a6d328b86c14de9f63baadd13c993c3914f0e2c96e91bbf984a78c"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3570-320-0d744e3a.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 7220,
+        "sha256": "0d744e3af7ff9f785a40e710af215112d7a511ae6c4cb6aa8634cdcb5074f6ba"
+      },
+      {
+        "file": "dscf3570-640-0f5a9012.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 19410,
+        "sha256": "0f5a90120172fb4e13fa4628689353c670018c0fcb027a75fc5ed83d12fe3bd0"
+      },
+      {
+        "file": "dscf3570-1280-0088e59a.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 55582,
+        "sha256": "0088e59ab91c2262c444924229477d8dbaed9e1e5632cdfe89173a86834a2f22"
+      },
+      {
+        "file": "dscf3570-1706-7c4bfbf2.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 91760,
+        "sha256": "7c4bfbf2d178c75b70e87a537854efa38ec1a258461d371b26df6aad7c6afc86"
+      }
+    ]
+  }
+}

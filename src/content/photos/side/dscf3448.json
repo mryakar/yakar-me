@@ -1,0 +1,96 @@
+{
+  "alt": "Two wooden chairs and a table face the sea after sunset.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-09T18:30:08+03:00",
+  "aperture": 3.6,
+  "shutter": 0.008333333333,
+  "iso": 250,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3448-320-b24770a2.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 8754,
+        "sha256": "b24770a26d7043da17cbf4d4e067a93ffd85944004f48eb4ff4fcbc4e0162319"
+      },
+      {
+        "file": "dscf3448-640-ee724c7f.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 28394,
+        "sha256": "ee724c7f92365db88a0aecbcb49e5ab31a0e2c7caa4634ac9f7245cf6a7a7256"
+      },
+      {
+        "file": "dscf3448-1280-678d8e38.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 93273,
+        "sha256": "678d8e38410bb3fc9a0d3ea5e30bd4b20540eca2dc672ccdee79c165247d4a40"
+      },
+      {
+        "file": "dscf3448-1706-df6a4617.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 149026,
+        "sha256": "df6a46174a32e28140826be6f215e8ef2190613dec235d9cd96d642bf5264a0a"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3448-320-b2682817.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 12162,
+        "sha256": "b2682817f67c52f9252fc0b5f0a418dcbf3e346524fb35e10b5eacf41eca9fc3"
+      },
+      {
+        "file": "dscf3448-640-0cdfa5a8.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 41472,
+        "sha256": "0cdfa5a81c87df7c5f911e222ead903106a676c81985b3c4eb7af77861949dba"
+      },
+      {
+        "file": "dscf3448-1280-5d0a0ee9.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 131932,
+        "sha256": "5d0a0ee9bd61633b4850a43e0472732309281176c96bb3309ed508b6d4f5c320"
+      },
+      {
+        "file": "dscf3448-1706-9b745202.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 206500,
+        "sha256": "9b74520290f262f68a5a769bcdfc6a9e8a179108c65397454be3df7c4ef5cf27"
+      }
+    ]
+  }
+}

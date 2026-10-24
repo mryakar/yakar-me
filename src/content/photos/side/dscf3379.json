@@ -1,0 +1,96 @@
+{
+  "alt": "A Roman arch, lit gold, against a deep blue night.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-06T20:32:55+03:00",
+  "aperture": 2.8,
+  "shutter": 1.8,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3379-320-7636c216.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 14417,
+        "sha256": "7636c21635beef80a50fa3fe73e36c9e23aaf2646f685e79aa00d7f6eb5abb7e"
+      },
+      {
+        "file": "dscf3379-640-3b850ab8.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 45475,
+        "sha256": "3b850ab8ed121e47fabc54ff48996136ab30ace20e5d8f12079e86b9a79e3193"
+      },
+      {
+        "file": "dscf3379-1280-9c648aa7.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 150283,
+        "sha256": "9c648aa708f87c1d87115fc6fd8c8035426a7d402657c073aebfc76b6eb0ab9d"
+      },
+      {
+        "file": "dscf3379-1706-a13abdd9.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 249355,
+        "sha256": "a13abdd9110ec28f8c05f3a9b25ba92c99935b26b210b389abae146603ba6a85"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3379-320-7b5a637f.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 20376,
+        "sha256": "7b5a637f713bd7a1ccaa84706d91789d8cd790a3c5d1f8f60eb0abcd0491b052"
+      },
+      {
+        "file": "dscf3379-640-37a93617.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 60540,
+        "sha256": "37a93617409e62c346fecce4ad8552235f40cf6864ca5192b0301e638448289b"
+      },
+      {
+        "file": "dscf3379-1280-36e56a63.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 184994,
+        "sha256": "36e56a6377c0ad16374286dc9759c71b8adc2082f0196590e4910dd3c8ab9e8c"
+      },
+      {
+        "file": "dscf3379-1706-44cac312.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 295120,
+        "sha256": "44cac312f5a958b9b31e6e7577f2d8d2cf7e08c08a779e45ae82977c7ff58147"
+      }
+    ]
+  }
+}

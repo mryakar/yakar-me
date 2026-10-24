@@ -1,0 +1,96 @@
+{
+  "alt": "Two palms, lit green from below, reach into a starry black sky.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-09T22:38:04+03:00",
+  "aperture": 2.8,
+  "shutter": 1.2,
+  "iso": 2000,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3500-320-76b263a7.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 3846,
+        "sha256": "76b263a7b2335dfe1756572c1f2ff8e65ecea57622a5ddd90dbb92ae3756dea2"
+      },
+      {
+        "file": "dscf3500-640-47d86402.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 10800,
+        "sha256": "47d8640252831d336061423b6b042de0785db2fe7f9b6a5dd3acf49ce275d0a6"
+      },
+      {
+        "file": "dscf3500-1280-7bad00a6.avif",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 35875,
+        "sha256": "7bad00a67df2dc5ca72f081ad4c2c9683b2d8f71afe4611c85392de02b443d70"
+      },
+      {
+        "file": "dscf3500-1706-9ec74cea.avif",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 67168,
+        "sha256": "9ec74cea50c851f330aed6312a76e4e0c0be201cd046e763e37c7899e7670e63"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3500-320-3593336c.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 3876,
+        "sha256": "3593336cd3344a4ebca962f6588863e965403a38061fe4c03008ef77aaf54417"
+      },
+      {
+        "file": "dscf3500-640-dfaf415b.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 11764,
+        "sha256": "dfaf415bd83f05c2792c3f2c5ebb0fc5fced089f4b670032950862b067c5952b"
+      },
+      {
+        "file": "dscf3500-1280-266d2b04.webp",
+        "width": 1280,
+        "height": 1920,
+        "bytes": 36982,
+        "sha256": "266d2b0458e8859a3bb26250648665183f47f0d3ff21a2c42403eab4cd72db72"
+      },
+      {
+        "file": "dscf3500-1706-3c3a3e5a.webp",
+        "width": 1706,
+        "height": 2559,
+        "bytes": 65918,
+        "sha256": "3c3a3e5adacaab716787e6fa90b7c2907f38cbaf91e21412f30ee149039cce55"
+      }
+    ]
+  }
+}

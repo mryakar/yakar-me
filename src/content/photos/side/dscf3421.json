@@ -1,0 +1,110 @@
+{
+  "alt": "The sky burns violet and coral over a still sea.",
+  "kind": "fujifilm",
+  "make": "Fujifilm",
+  "model": "X-E5",
+  "lens": "XF23mmF2.8 R WR",
+  "taken": "2026-10-08T18:49:40+03:00",
+  "aperture": 2.8,
+  "shutter": 0.01923076923,
+  "iso": 800,
+  "focalLength": 23,
+  "place": {
+    "district": "Side",
+    "city": "Antalya",
+    "country": "Turkey"
+  },
+  "recipe": {
+    "filmSimulation": "Velvia",
+    "dynamicRange": "DR200",
+    "highlight": -1,
+    "shadow": -1,
+    "color": 2,
+    "whiteBalance": "Auto",
+    "whiteBalanceShift": [
+      0,
+      -2
+    ],
+    "noiseReduction": -2,
+    "clarity": 0,
+    "grain": "Off",
+    "colorChrome": "Off",
+    "colorChromeBlue": "Off"
+  },
+  "variants": {
+    "avif": [
+      {
+        "file": "dscf3421-320-3e293730.avif",
+        "width": 320,
+        "height": 213,
+        "bytes": 4320,
+        "sha256": "3e2937301b639632ab1bb2d57254f3e8adad9b8e518e2a178a98eae681e56ed9"
+      },
+      {
+        "file": "dscf3421-640-55061f64.avif",
+        "width": 640,
+        "height": 427,
+        "bytes": 10975,
+        "sha256": "55061f64a07e1fefe33e7cdc0404352bf49ed2cd0d409298da1bd4c6d04e2b33"
+      },
+      {
+        "file": "dscf3421-1280-7e7fb8a5.avif",
+        "width": 1280,
+        "height": 853,
+        "bytes": 30654,
+        "sha256": "7e7fb8a5765a6c6648c2e3a279f1eb50934caea14f2c56395a5ee088cbe67b18"
+      },
+      {
+        "file": "dscf3421-1920-14f6e96c.avif",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 59149,
+        "sha256": "14f6e96c4db1e496a1e4c957c86e1158d2a7dea547faec5956916b4a56fe3859"
+      },
+      {
+        "file": "dscf3421-2560-4305fd32.avif",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 97478,
+        "sha256": "4305fd32350fb6e8206d2075136308dee4ea75ea7ac4f89abace0a1faa4ee8d8"
+      }
+    ],
+    "webp": [
+      {
+        "file": "dscf3421-320-1ff9001e.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 4666,
+        "sha256": "1ff9001ee556418a8ee1bc485fd4c1c5124286c953ae7294d73ad406653265df"
+      },
+      {
+        "file": "dscf3421-640-31e024ad.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 12012,
+        "sha256": "31e024ad7ce4b5378db6ba9d9c4f3ac4cb8b2fbb2f29afba45b443b587288a57"
+      },
+      {
+        "file": "dscf3421-1280-68b8a897.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 32698,
+        "sha256": "68b8a8974d739bff2f66bdd87b1c00553a3bf5bed3ffb3b007e8940557270b6f"
+      },
+      {
+        "file": "dscf3421-1920-2ce3eea2.webp",
+        "width": 1920,
+        "height": 1280,
+        "bytes": 59280,
+        "sha256": "2ce3eea265eec97e6a8b35322d460e340d0ae6c34f7fabc5baca78d36b9014d9"
+      },
+      {
+        "file": "dscf3421-2560-25f74917.webp",
+        "width": 2560,
+        "height": 1707,
+        "bytes": 93806,
+        "sha256": "25f749176d2de36061b46b629496393022c725b43e8325f3cb6259addbffcbb3"
+      }
+    ]
+  }
+}

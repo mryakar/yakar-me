@@ -1,7 +1,7 @@
 ---
 title: Ankara
 description: Cats, café dogs, graffiti and long spring light between the apartment blocks of Kavaklıdere.
-order: 3
+order: 4
 published: 2026-10-01
 cover: dscf1181
 lang: en

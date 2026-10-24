@@ -1,8 +1,8 @@
 {
-  "file": "map-5911747e.pmtiles",
-  "sha256": "5911747e40de200265c0a51275c600706c8c09d09c36de5f2d1957ae53d8050e",
-  "tiles": 7546,
-  "source": "20261001.pmtiles",
+  "file": "map-36d0bf6d.pmtiles",
+  "sha256": "36d0bf6d345bf80754896b09f1557d87c5716c9912e3df541134e15642bfa362",
+  "tiles": 7848,
+  "source": "20261024.pmtiles",
   "basemap": "4.15.2",
   "worldMaxZoom": 6,
   "cityZooms": [
@@ -208,6 +208,16 @@
         39.82352,
         32.97512,
         40.00318
+      ]
+    },
+    {
+      "city": "Antalya",
+      "country": "Turkey",
+      "bounds": [
+        30.53203,
+        36.67684,
+        31.50102,
+        36.95483
       ]
     }
   ]

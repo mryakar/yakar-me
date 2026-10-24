@@ -1,7 +1,7 @@
 ---
 title: Shenzhen
 description: Glass, neon and running figures. Shenzhen at the end of October.
-order: 18
+order: 19
 published: 2026-10-01
 cover: img-0295
 lang: en
