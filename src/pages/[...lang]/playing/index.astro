@@ -7,11 +7,14 @@ import Disc from '../../../components/Disc.astro';
 import SongFilters from '../../../components/SongFilters.astro';
 import Crates from '../../../components/Crates.astro';
 import PlayingStats from '../../../components/PlayingStats.astro';
+import Teacher from '../../../components/Teacher.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths } from '../../../lib/i18n';
 import { songs } from '../../../lib/songs';
 import { categoryClass, rankArtists } from '../../../lib/song';
 import { documentTitle } from '../../../lib/format';
+import { jsonLd, profile } from '../../../lib/structured';
+import { teacher } from '../../../site';
 
 export const getStaticPaths = langPaths;
 
@@ -20,9 +23,16 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { lang } = Astro.props;
 const t = ui[lang].playing;
 const { all, practicing } = await songs(lang);
+const structured = jsonLd(
+  profile(
+    { name: teacher.name },
+    teacher.links.map((l) => l.href),
+  ),
+);
 ---
 
 <Base lang={lang} title={documentTitle(ui[lang].nav.playing)} description={t.description}>
+  <script type="application/ld+json" set:html={structured} />
   <div class="flex flex-col gap-12 px-6 pt-9 pb-24 desk:px-24 desk:pt-26" data-playing>
     <PlayingViews
       lang={lang}
@@ -64,6 +74,7 @@ const { all, practicing } = await songs(lang);
     <SongFilters songs={all} lang={lang} />
     <Crates songs={all} lang={lang} />
     <PlayingStats songs={all} lang={lang} />
+    <Teacher lang={lang} />
   </div>
 </Base>
 

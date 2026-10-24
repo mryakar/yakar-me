@@ -200,6 +200,17 @@ const en = {
       'Each note is a song: left to right the month I first played it, height the root of its key. Hollow notes are the ones I am practicing now.',
     artistsLede:
       'The people behind the songs I play. The bigger the circle, the more of their songs are in my repertoire.',
+    teacher: {
+      heading: 'Learnt from the master',
+      master: 'Master',
+      role: 'Saxophonist',
+      links: (name: string) => `Find ${name}`,
+      alt: (name: string) => `${name} playing saxophone on stage`,
+      since: 'Since July 2024',
+      apprentice: 'Apprentice',
+      instrument: 'Alto saxophone',
+      line: 'Every song on this page went through his lessons first.',
+    },
     categories: {
       'smooth-jazz': 'Smooth Jazz',
       jazz: 'Jazz',
@@ -494,6 +505,17 @@ const tr: Dict = {
       'Her nota bir şarkı: soldan sağa ilk çalındığı ay, yükseklik tonun kökü. İçi boş notalar şu an çalışılanlar.',
     artistsLede:
       'Çaldığım şarkıların arkasındaki insanlar. Daire ne kadar büyükse repertuvarımda o kadar çok şarkısı var.',
+    teacher: {
+      heading: 'Ustamdan öğrendim',
+      master: 'Usta',
+      role: 'Saksafoncu',
+      links: (name: string) => `${name} bağlantıları`,
+      alt: (name: string) => `${name} sahnede saksafon çalarken`,
+      since: "Temmuz 2024'ten beri",
+      apprentice: 'Çırak',
+      instrument: 'Alto saksafon',
+      line: 'Bu sayfadaki her şarkı önce onun derslerinden geçti.',
+    },
     categories: {
       'smooth-jazz': 'Smooth Caz',
       jazz: 'Caz',
@@ -835,6 +857,17 @@ const es: Dict = {
       'Cada nota es una canción: de izquierda a derecha, el mes en que la toqué por primera vez; la altura, la tónica de su tonalidad. Las notas huecas son las que estoy practicando ahora.',
     artistsLede:
       'Las personas detrás de las canciones que toco. Cuanto más grande el círculo, más canciones suyas hay en mi repertorio.',
+    teacher: {
+      heading: 'Aprendí del maestro',
+      master: 'Maestro',
+      role: 'Saxofonista',
+      links: (name: string) => `Enlaces de ${name}`,
+      alt: (name: string) => `${name} tocando el saxofón en el escenario`,
+      since: 'Desde julio de 2024',
+      apprentice: 'Aprendiz',
+      instrument: 'Saxofón alto',
+      line: 'Cada canción de esta página pasó primero por sus clases.',
+    },
     categories: {
       'smooth-jazz': 'Smooth Jazz',
       jazz: 'Jazz',

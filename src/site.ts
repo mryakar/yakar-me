@@ -35,3 +35,12 @@ export const links = [
 ];
 
 export const nowUpdated = new Date('2026-09-29');
+
+export const teacher = {
+  name: 'Cihan Gülmez',
+  links: [
+    { href: 'https://www.instagram.com/doktorbenway/', label: 'Instagram' },
+    { href: 'https://open.spotify.com/artist/198YWoUEq2X8DGSEhWh841', label: 'Spotify' },
+    { href: 'https://music.apple.com/tr/artist/cihan-g%C3%BClmez/1242334263', label: 'Apple Music' },
+  ],
+};
