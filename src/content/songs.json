@@ -8,18 +8,14 @@
     "year": 1980,
     "category": "smooth-jazz",
     "genre": "smooth-jazz",
-    "status": "practicing",
-    "level": 3,
+    "status": "playing",
+    "level": 4,
     "key": "Cm",
+    "firstPlayed": "2026-10",
     "links": {
       "appleMusic": "https://music.apple.com/us/song/winelight/321974945",
       "spotify": "https://open.spotify.com/album/6nTg7k4gkzh6QcWjmBxKSg",
-      "youtube": "https://www.youtube.com/watch?v=Sgt8xQ-Sxrg"
-    },
-    "nowNote": {
-      "en": "The neighbours have been very understanding.",
-      "tr": "Komşular şimdiye kadar çok anlayışlı.",
-      "es": "Los vecinos han sido muy comprensivos."
+      "youtube": "https://www.youtube.com/watch?v=wPH1IuMtFGc"
     }
   },
   {
@@ -204,6 +200,49 @@
       "appleMusic": "https://music.apple.com/us/song/smooth-operator/1524651263",
       "spotify": "https://open.spotify.com/track/6VjOxsAU1ncYVB1ICrLaZa",
       "youtube": "https://www.youtube.com/watch?v=4TYv2PhG89A"
+    }
+  },
+  {
+    "id": "cantaloupe-island",
+    "title": "Cantaloupe Island",
+    "artist": "Herbie Hancock",
+    "lang": "en",
+    "album": "Empyrean Isles",
+    "year": 1964,
+    "category": "jazz",
+    "genre": "modal-jazz",
+    "status": "playing",
+    "level": 4,
+    "key": "Fm",
+    "firstPlayed": "2026-10",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/cantaloupe-island/1443829786",
+      "spotify": "https://open.spotify.com/track/0sCeNwt8xRCMR4NhKpMyBe",
+      "youtube": "https://www.youtube.com/watch?v=otFVFLtRF_s"
+    }
+  },
+  {
+    "id": "sugar",
+    "title": "Sugar",
+    "artist": "Stanley Turrentine",
+    "lang": "en",
+    "album": "Sugar",
+    "year": 1970,
+    "category": "jazz",
+    "genre": "soul-jazz",
+    "status": "practicing",
+    "level": 2,
+    "key": "Cm",
+    "firstPlayed": "2026-10",
+    "links": {
+      "appleMusic": "https://music.apple.com/us/song/sugar/394275540",
+      "spotify": "https://open.spotify.com/track/73UXONNvcyKDlw27FC0E2B",
+      "youtube": "https://www.youtube.com/watch?v=5xchG8epvVQ"
+    },
+    "nowNote": {
+      "en": "The neighbours have been very understanding.",
+      "tr": "Komşular şimdiye kadar çok anlayışlı.",
+      "es": "Los vecinos han sido muy comprensivos."
     }
   }
 ]

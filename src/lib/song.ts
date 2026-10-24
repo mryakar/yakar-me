@@ -4,7 +4,7 @@ import { taxonomy } from './taxonomy.ts';
 
 export const genres = {
   'smooth-jazz': ['smooth-jazz'],
-  jazz: ['bossa-nova', 'soul-jazz'],
+  jazz: ['bossa-nova', 'modal-jazz', 'soul-jazz'],
   'pop-rock': ['pop', 'sophisti-pop', 'rock'],
   electronic: ['deep-house', 'electronica'],
   folk: ['celtic-folk'],

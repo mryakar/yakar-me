@@ -210,6 +210,7 @@ const en = {
     genreNames: {
       'smooth-jazz': 'Smooth jazz',
       'bossa-nova': 'Bossa nova',
+      'modal-jazz': 'Modal jazz',
       'soul-jazz': 'Soul jazz',
       pop: 'Pop',
       'sophisti-pop': 'Sophisti-pop',
@@ -503,6 +504,7 @@ const tr: Dict = {
     genreNames: {
       'smooth-jazz': 'Smooth caz',
       'bossa-nova': 'Bossa nova',
+      'modal-jazz': 'Modal caz',
       'soul-jazz': 'Soul caz',
       pop: 'Pop',
       'sophisti-pop': 'Sophisti-pop',
@@ -843,6 +845,7 @@ const es: Dict = {
     genreNames: {
       'smooth-jazz': 'Smooth jazz',
       'bossa-nova': 'Bossa nova',
+      'modal-jazz': 'Jazz modal',
       'soul-jazz': 'Soul jazz',
       pop: 'Pop',
       'sophisti-pop': 'Sophisti-pop',
