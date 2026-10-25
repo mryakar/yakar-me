@@ -17,7 +17,7 @@ araya girer.
 Öğrenmeyi şansa bırakmam. Çalıştığım şeylerin çoğu bir plana bağlı ve öyle biri olmakla çoktan barıştım. İş dışında saksafon
 çalıyor, fotoğraf çekiyorum. Bir fizik denklemini baştan türeten bir videoya bütün bir akşamımı verebilirim; bence evrendeki
 en ilginç nesneler kara delikler. En mutlu olduğum yer doğa, kalabalıklarda biraz daha az. Dil öğrenmeyi ve gezmeyi
-seviyorum; şimdiye kadar Asya'nın epey bir kısmını ve Avrupa'nın çoğunu gördüm. Futbol ise, itiraf etmeliyim, benim için
+seviyorum; şimdiye kadar Asya'nın epey bir kısmını ve Avrupa'nın bir kısmını gördüm. Futbol ise, itiraf etmeliyim, benim için
 hâlâ tam bir muamma.
 
 Son zamanlarda en çok ödeme ve finans sistemleri ilgimi çekiyor; orada doğruluk kuruşla ölçülüyor. Backend sistemleri ya da

@@ -128,7 +128,7 @@
   --text-prose--line-height: 1.7;
   --text-lede: 1.125rem;
   --text-lede--line-height: 1.65;
-  --text-label: 0.6875rem;
+  --text-label: 0.75rem;
   --text-label--letter-spacing: 0.08em;
 
   --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);

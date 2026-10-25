@@ -15,7 +15,7 @@ usually find their way in.
 I learn on purpose. Most of what I study runs on a plan, and I’ve made peace with being that person. Outside work I play
 the saxophone and take photographs. I can lose an entire evening to a video deriving some physics equation, and I think
 black holes are the most interesting objects in the universe. I’m happiest in nature and a little less so in crowds. I
-love learning languages and travelling — so far a good part of Asia and most of Europe. Football, I have to admit,
+love learning languages and travelling — so far a good part of Asia and some of Europe. Football, I have to admit,
 remains a complete mystery to me.
 
 Lately I’m most interested in payments and financial systems, where correctness is measured in cents. If you’d like to
