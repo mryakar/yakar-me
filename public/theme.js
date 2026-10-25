@@ -7,4 +7,5 @@
     t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   }
   document.documentElement.dataset.theme = t;
+  if ('WebGL2RenderingContext' in window) document.documentElement.classList.add('has-webgl2');
 })();
