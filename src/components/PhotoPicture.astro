@@ -6,10 +6,11 @@ interface Props {
   photo: Pick<Photo, 'data' | 'alt'>;
   sizes: string;
   loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high';
   focus?: Focus;
   class?: string;
 }
-const { photo, sizes, loading = 'lazy', focus, class: className } = Astro.props;
+const { photo, sizes, loading = 'lazy', fetchpriority, focus, class: className } = Astro.props;
 const focusX = [
   '[--focus-x:0%]',
   '[--focus-x:10%]',
@@ -53,6 +54,7 @@ const fallback = smallestAtLeast(webp, 1280);
     height={fallback.height}
     alt={photo.alt}
     loading={loading}
+    fetchpriority={fetchpriority}
     decoding="async"
     class:list={[
       className,
