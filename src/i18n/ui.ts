@@ -508,7 +508,7 @@ const tr: Dict = {
     teacher: {
       heading: 'Ustamdan öğrendim',
       master: 'Usta',
-      role: 'Saksafoncu',
+      role: 'Saksofonist',
       links: (name: string) => `${name} bağlantıları`,
       alt: (name: string) => `${name} sahnede saksafon çalarken`,
       since: "Temmuz 2024'ten beri",
