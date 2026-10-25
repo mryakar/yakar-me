@@ -48,10 +48,16 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       data-centre={`${middle.lon} ${middle.lat}`}
       data-lang={lang}
       aria-label={t.map.label}
-      class="map-frame @container relative h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border"
-      hidden
+      class="map-frame @container relative hidden h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border [:root.has-webgl2_&]:block"
+      aria-busy="true"
     >
       <div data-map-canvas class="size-full"></div>
+      <p
+        data-map-loading
+        class="label pointer-events-none absolute inset-0 flex items-center justify-center text-faint"
+      >
+        {t.map.loading}
+      </p>
       <div
         data-crumb
         class="absolute top-3 left-3 flex items-center border border-line bg-card pr-3 pl-0.5 tab:top-4 tab:left-4"

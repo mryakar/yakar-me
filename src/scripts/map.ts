@@ -121,12 +121,12 @@ async function start(frame: HTMLElement) {
   const canvas = frame.querySelector<HTMLElement>('[data-map-canvas]')!;
   const crumb = frame.querySelector<HTMLElement>('[data-crumb]')!;
   const crumbCity = frame.querySelector<HTMLElement>('[data-crumb-city]')!;
+  const loading = frame.querySelector<HTMLElement>('[data-map-loading]')!;
   const cards = new Map([...frame.querySelectorAll<HTMLElement>('[data-card]')].map((c) => [c.dataset.card!, c]));
   const cities = readPlaces();
   const places = cities.flatMap((c) => c.places);
   const wide = matchMedia('(min-width: 48rem)');
 
-  frame.hidden = false;
   const policies = globalThis.trustedTypes;
   if (policies && !policies.defaultPolicy) {
     policies.createPolicy('default', {
@@ -168,6 +168,10 @@ async function start(frame: HTMLElement) {
   }
   map.touchZoomRotate.disableRotation();
   map.keyboard.disableRotation();
+  map.once('load', () => {
+    loading.hidden = true;
+    frame.removeAttribute('aria-busy');
+  });
 
   let selected: Place | null = null;
   let destination: Place | null = null;
@@ -362,4 +366,7 @@ async function start(frame: HTMLElement) {
   focus(false);
 }
 
-if (frame && hasWebGL()) start(frame);
+if (frame) {
+  if (hasWebGL()) start(frame);
+  else frame.hidden = true;
+}
