@@ -1,0 +1,74 @@
+---
+import ArrowRight from './ArrowRight.astro';
+
+interface Link {
+  href: string;
+  title: string;
+  meta: string;
+}
+
+interface Props {
+  heading: string;
+  previous?: { label: string; link: Link };
+  next?: { label: string; link: Link };
+  more?: { label: string; links: Link[] };
+  follow?: { label: string; links: { href: string; label: string }[] };
+}
+const { heading, previous, next, more, follow } = Astro.props;
+const steps = [previous, next].filter((s) => s !== undefined);
+const card =
+  'group flex flex-col gap-2.5 border-t border-line-strong pt-4 text-text transition-colors duration-200 hover:text-accent';
+---
+
+<nav aria-label={heading} class="flex flex-col gap-10 print:hidden">
+  <h2 class="label text-faint">{heading}</h2>
+  {steps.length > 0 && (
+    <div class="grid gap-x-10 gap-y-8 tab:grid-cols-2">
+      {steps.map((step) => (
+        <a
+          href={step.link.href}
+          class:list={[card, step === next && 'tab:col-start-2 tab:text-right']}
+          data-astro-prefetch={step === next ? 'viewport' : undefined}
+        >
+          <span class:list={['label flex items-center gap-2 text-accent', step === next && 'tab:justify-end']}>
+            {step.label}
+            {step === next && <ArrowRight />}
+          </span>
+          <span class="font-display text-d4 leading-tight">{step.link.title}</span>
+          <span class="text-[13px] text-muted">{step.link.meta}</span>
+        </a>
+      ))}
+    </div>
+  )}
+  {more && more.links.length > 0 && (
+    <div class="flex flex-col gap-3">
+      <h3 class="label text-faint">{more.label}</h3>
+      <ul class="flex flex-col">
+        {more.links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="group flex items-baseline justify-between gap-4 border-b border-line py-3 text-[15px] text-text transition-colors duration-200 hover:text-accent"
+            >
+              <span>{link.title}</span>
+              <span class="label flex-none text-faint">{link.meta}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+  {follow && (
+    <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
+      <span>{follow.label}</span>
+      {follow.links.map((link, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">·</span>}
+          <a href={link.href} class="text-accent transition-opacity duration-200 hover:opacity-85">
+            {link.label}
+          </a>
+        </>
+      ))}
+    </p>
+  )}
+</nav>

@@ -62,6 +62,10 @@ const toc = [
   { id: 'contact', label: t.contact },
 ];
 const index = (i: number) => String(i + 1).padStart(2, '0');
+const feeds = [
+  { path: paths.feed, label: t.feedAll },
+  { path: paths.writingFeed, label: t.feedWriting },
+];
 
 const heading = 'font-display text-d3';
 const rows = 'border-t border-line-strong';
@@ -198,15 +202,20 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
             {locales.map((l) => (
               <div class={row}>
                 <dt class={term}>{languageName(l, lang)}</dt>
-                <dd>
-                  <a
-                    href={localize(paths.feed, l)}
-                    hreflang={l}
-                    class="font-mono text-[14px] text-accent hover:underline"
-                  >
-                    {site.domain}
-                    {localize(paths.feed, l)}
-                  </a>
+                <dd class="flex flex-col gap-1.5">
+                  {feeds.map((feed) => (
+                    <span class="flex flex-wrap items-baseline gap-x-3">
+                      <a
+                        href={localize(feed.path, l)}
+                        hreflang={l}
+                        class="font-mono text-[14px] text-accent hover:underline"
+                      >
+                        {site.domain}
+                        {localize(feed.path, l)}
+                      </a>
+                      <span class="label text-faint">{feed.label}</span>
+                    </span>
+                  ))}
                 </dd>
               </div>
             ))}
