@@ -9,7 +9,16 @@ import { ui } from '../../../i18n/ui';
 import { langPaths } from '../../../lib/i18n';
 import { allSeries, coverSources, lastTaken, LATEST, type Series } from '../../../lib/photos';
 import { mapPlaces } from '../../../lib/places';
-import { countries, coverTransition, seriesPath, takenYear, FRAME_SIZES } from '../../../lib/photo';
+import {
+  countries,
+  coverTransition,
+  seriesPath,
+  takenYear,
+  ARCHIVE_PREVIEW_SIZES,
+  FRAME_SIZES,
+  LATEST_COVER_SIZES,
+  LATEST_SMALL_SIZES,
+} from '../../../lib/photo';
 import { byYear, documentTitle, yearRange } from '../../../lib/format';
 import { sum } from '../../../lib/measure';
 
@@ -73,7 +82,8 @@ const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-
                     photo={s.cover}
                     focus={s.focus}
                     loading="eager"
-                    sizes="(min-width: 64rem) 45vw, 100vw"
+                    fetchpriority="high"
+                    sizes={LATEST_COVER_SIZES}
                     class:list={['aspect-3/2 tab:aspect-video desk:aspect-4/3', cover, coverTransition(s.id, sources)]}
                   />
                   <span class="label pt-1 text-faint">
@@ -90,7 +100,7 @@ const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-
                     photo={s.cover}
                     focus={s.focus}
                     loading="eager"
-                    sizes="(min-width: 64rem) 30vw, 50vw"
+                    sizes={LATEST_SMALL_SIZES}
                     class:list={['aspect-4/3 tab:aspect-3/2 desk:aspect-16/10', cover, coverTransition(s.id, sources)]}
                   />
                   <span class="label pt-1 text-faint">
@@ -195,7 +205,7 @@ const cover = 'h-auto w-full bg-sleeve object-cover transition-opacity duration-
                   <PhotoPicture
                     photo={s.cover}
                     focus={s.focus}
-                    sizes="(min-width: 64rem) 28vw, 1px"
+                    sizes={ARCHIVE_PREVIEW_SIZES}
                     class:list={['aspect-4/5', cover]}
                   />
                   <span class="label pt-1 text-faint">

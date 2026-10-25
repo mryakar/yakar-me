@@ -38,7 +38,16 @@ export const FOCUS_STEPS = 100 / FOCUS_STEP + 1;
 
 export const coverFirst = <T>(photos: T[], cover: T) => [cover, ...photos.filter((p) => p !== cover)];
 
-export const FRAME_SIZES = '(min-width: 64rem) 36vw, (min-width: 40rem) 50vw, 100vw';
+export const FRAME_SIZES =
+  '(min-width: 64rem) calc((100vw - 29.5rem) / 2), (min-width: 40rem) calc((100vw - 5rem) / 2), calc(100vw - 3rem)';
+export const LATEST_COVER_SIZES = '(min-width: 64rem) calc((100vw - 29.5rem) * 7 / 12), calc(100vw - 3rem)';
+export const LATEST_SMALL_SIZES =
+  '(min-width: 64rem) calc((100vw - 29.5rem) * 5 / 12), (min-width: 48rem) calc((100vw - 4.5rem) / 2), calc((100vw - 4rem) / 2)';
+export const ARCHIVE_PREVIEW_SIZES = '(min-width: 64rem) calc((100vw - 30.5rem) * 18 / 43), 1px';
+export const HOME_COVER_SIZES =
+  '(min-width: 75.5rem) calc((100vw - 31.5rem) / 3), (min-width: 64rem) calc((100vw - 29.5rem) / 2), (min-width: 51rem) calc((100vw - 7rem) / 3), (min-width: 39rem) calc((100vw - 5rem) / 2), calc(100vw - 3rem)';
+export const PORTRAIT_SIZES =
+  '(min-width: 80.25rem) 21.25rem, (min-width: 64rem) 20rem, (min-width: 55.75rem) 21.25rem, min(20rem, calc(100vw - 3rem))';
 
 export const COVER_TRANSITIONS = [
   '[view-transition-name:series-cover-1]',

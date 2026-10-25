@@ -11,7 +11,7 @@ import { defaultLang, langPaths, localize, locales } from '../../lib/i18n';
 import { documentTitle, orderedGroups } from '../../lib/format';
 import { bagGroups, languageName, levelSteps, period, SCALE } from '../../lib/about';
 import { emailLink, profileLinks } from '../../lib/nav';
-import { placeName, takenYear } from '../../lib/photo';
+import { placeName, takenYear, PORTRAIT_SIZES } from '../../lib/photo';
 import { jsonLd, profile } from '../../lib/structured';
 import { paths, site } from '../../site';
 
@@ -85,7 +85,8 @@ const text = 'font-body text-[17px] leading-relaxed text-text-body';
             <PhotoPicture
               photo={{ data: portrait.data, alt }}
               loading="eager"
-              sizes="(min-width: 48rem) 21.25rem, 100vw"
+              fetchpriority="high"
+              sizes={PORTRAIT_SIZES}
               class="aspect-2/3 h-auto w-full bg-sleeve object-cover"
             />
             <figcaption class="label text-faint">{credit}</figcaption>
