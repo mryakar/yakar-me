@@ -3,13 +3,16 @@ import type { InferGetStaticPropsType } from 'astro';
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
+import Continue from '../../../components/Continue.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths } from '../../../lib/i18n';
 import { articles } from '../../../lib/writing';
 import { absoluteUrl, articlePath, documentTitle, formatDate, isoDate, readingMinutes } from '../../../lib/format';
 import { blogPosting, jsonLd } from '../../../lib/structured';
 import { articleCard, ogImagePathFor } from '../../../lib/og';
-import { site } from '../../../site';
+import { links, paths, site } from '../../../site';
+import { localize } from '../../../lib/i18n';
+import { neighbours, others } from '../../../lib/sequence';
 import { tableOfContents } from '../../../lib/markdown';
 
 export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
@@ -21,6 +24,16 @@ const t = ui[lang].writing;
 const { title, description, pubDate, topic, mediumUrl } = article;
 const { Content, headings } = await render(article.entry);
 const toc = tableOfContents(headings);
+const sameTopic = (await articles(lang)).filter((a) => a.topic === topic);
+const { previous, next } = neighbours(sameTopic, (a) => a.id === article.id);
+const shownIds = [article, previous, next].flatMap((a) => (a ? [a.id] : []));
+const more = others(sameTopic, (a) => shownIds.includes(a.id), 2);
+const link = (a: (typeof sameTopic)[number]) => ({
+  href: articlePath(a.id, lang),
+  title: a.title,
+  meta: formatDate(a.pubDate, 'long', lang),
+});
+const medium = links.find((l) => l.label === 'Medium')!;
 const url = absoluteUrl(articlePath(article.id, lang));
 const ogImage = await ogImagePathFor(articleCard(article, lang));
 const structured = jsonLd(
@@ -108,6 +121,21 @@ const structured = jsonLd(
           </ul>
         </nav>
       )}
+    </div>
+    <div class="mt-24 max-w-180">
+      <Continue
+        heading={t.keepReading}
+        previous={previous && { label: t.previous, link: link(previous) }}
+        next={next && { label: t.next, link: link(next) }}
+        more={{ label: t.moreOn(t.topics[topic]), links: more.map(link) }}
+        follow={{
+          label: t.follow,
+          links: [
+            { href: localize(paths.writingFeed, lang), label: 'RSS' },
+            { href: medium.href, label: medium.label },
+          ],
+        }}
+      />
     </div>
   </article>
 </Base>

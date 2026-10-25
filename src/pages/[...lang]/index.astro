@@ -309,9 +309,17 @@ const cellLabel = 'font-mono text-[11px] tracking-[0.12em] text-faint uppercase'
           © {new Date().getUTCFullYear()} {site.name}
         </span>
       </span>
-      <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">
-        RSS
-      </a>
+      <span class="flex items-center gap-5">
+        <a href={localize(paths.feed, lang)} class="label text-faint transition-colors duration-200 hover:text-accent">
+          RSS
+        </a>
+        <a
+          href={localize(paths.writingFeed, lang)}
+          class="label text-faint transition-colors duration-200 hover:text-accent"
+        >
+          RSS · {t.nav.writing}
+        </a>
+      </span>
     </footer>
   </div>
   <script>

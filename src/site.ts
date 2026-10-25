@@ -20,6 +20,7 @@ export const paths = {
   search: '/search/',
   searchIndex: '/search.json',
   feed: '/rss.xml',
+  writingFeed: '/writing/rss.xml',
   feedImage: '/feed.png',
 } as const;
 

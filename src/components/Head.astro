@@ -4,6 +4,7 @@ import { defaultLang, localize, ogLocale, type Lang, type LangLink } from '../li
 import { absoluteUrl } from '../lib/format';
 import { homeCard, ogImagePathFor, OG_SIZE } from '../lib/og';
 import { PAGE_BACKGROUND } from '../lib/theme';
+import { writingFeedTitle } from '../lib/feeds';
 import displayFont from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
 import uiFont from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 
@@ -38,6 +39,12 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
 ))}
 {xDefault && <link rel="alternate" hreflang="x-default" href={absoluteUrl(xDefault.href)} />}
 <link rel="alternate" type="application/rss+xml" title={site.name} href={localize(paths.feed, lang)} />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={writingFeedTitle(lang)}
+  href={localize(paths.writingFeed, lang)}
+/>
 <meta property="og:site_name" content={site.title} />
 <meta property="og:locale" content={ogLocale[lang]} />
 {alternates

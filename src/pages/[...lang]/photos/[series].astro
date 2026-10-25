@@ -5,10 +5,12 @@ import Base from '../../../layouts/Base.astro';
 import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoPanel from '../../../components/PhotoPanel.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
+import Continue from '../../../components/Continue.astro';
 import TranslatedBadge from '../../../components/TranslatedBadge.astro';
 import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize } from '../../../lib/i18n';
 import { allSeries, coverSources, photoSlug } from '../../../lib/photos';
+import { neighbours } from '../../../lib/sequence';
 import {
   coverFirst,
   coverTransition,
@@ -33,7 +35,14 @@ const { lang, item: series } = Astro.props;
 const t = ui[lang].photos;
 const { title, description, photos } = series;
 const shown = coverFirst(photos, series.cover);
-const transition = coverTransition(series.id, coverSources(await allSeries(lang)));
+const all = await allSeries(lang);
+const transition = coverTransition(series.id, coverSources(all));
+const { previous, next } = neighbours(all, (s) => s.id === series.id);
+const link = (s: (typeof all)[number]) => ({
+  href: seriesPath(s.id, lang),
+  title: s.title,
+  meta: t.count(s.photos.length),
+});
 const returns = transition && `${localize(paths.photos, lang)} ${localize(paths.home, lang)}`;
 const { Content } = await render(series.entry);
 const structured = jsonLd({
@@ -119,6 +128,12 @@ const structured = jsonLd({
         </li>
       ))}
     </ul>
+
+    <Continue
+      heading={t.moreSeries}
+      previous={previous && { label: t.previousSeries, link: link(previous) }}
+      next={next && { label: t.nextSeries, link: link(next) }}
+    />
 
     <PhotoRights lang={lang} />
   </div>
