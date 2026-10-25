@@ -17,7 +17,7 @@ const byGenre = tally(songs.map((s) => s.genre));
 const shown = categories.filter((c) => byCategory.has(c));
 const chip =
   'group flex min-h-11 flex-none cursor-pointer items-center gap-2 rounded-full border border-line-strong px-4 text-sm text-muted transition-colors duration-200 hover:border-text hover:text-text aria-pressed:border-text aria-pressed:bg-text aria-pressed:text-bg';
-const count = 'font-mono text-[11px] text-faint group-aria-pressed:text-bg';
+const count = 'font-mono text-[12px] text-faint group-aria-pressed:text-bg';
 ---
 
 <section aria-label={t.filters} class="flex flex-col gap-3.5" data-filters hidden>

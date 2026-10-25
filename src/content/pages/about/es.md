@@ -17,7 +17,7 @@ filosofía, la ciencia, los libros y la música suelen colarse.
 Aprendo a propósito. Casi todo lo que estudio sigue un plan, y he hecho las paces con ser esa persona. Fuera del
 trabajo toco el saxofón y hago fotos. Puedo perder una tarde entera con un vídeo que deduce alguna ecuación de física, y
 creo que los agujeros negros son los objetos más interesantes del universo. Donde más feliz soy es en la naturaleza, y
-algo menos entre multitudes. Me encanta aprender idiomas y viajar: hasta ahora, buena parte de Asia y casi toda Europa.
+algo menos entre multitudes. Me encanta aprender idiomas y viajar: hasta ahora, buena parte de Asia y una parte de Europa.
 El fútbol, tengo que admitirlo, sigue siendo un completo misterio para mí.
 
 Últimamente lo que más me interesa son los pagos y los sistemas financieros, donde la corrección se mide en céntimos. Si

@@ -22,7 +22,7 @@ const y = (step: number) => Math.round(136 - step * 99);
   {layout.years.map((year) => (
     <g>
       <line x1={x(year.x)} x2={x(year.x)} y1="30" y2="146" class="stroke-line" />
-      <text x={x(year.x)} y="170" text-anchor="middle" class="fill-faint font-mono text-[11px]">
+      <text x={x(year.x)} y="170" text-anchor="middle" class="fill-faint font-mono text-[12px]">
         {year.year}
       </text>
     </g>
