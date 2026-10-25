@@ -155,7 +155,7 @@
     "id": "camera-body",
     "kind": "bag",
     "group": "camera",
-    "label": { "en": "Body", "tr": "Gövde", "es": "Instrumento" },
+    "label": { "en": "Body", "tr": "Gövde", "es": "Cuerpo" },
     "name": "Fujifilm X-E5"
   },
   {

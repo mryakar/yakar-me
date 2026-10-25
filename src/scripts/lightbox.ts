@@ -14,6 +14,7 @@ interface Drag {
 
 if (dialog) {
   const panels = [...dialog.querySelectorAll<HTMLElement>('[data-photo]')];
+  const announce = dialog.querySelector<HTMLElement>('[data-announce]')!;
   const ids = panels.map((p) => p.dataset.photo!);
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let current = -1;
@@ -27,6 +28,7 @@ if (dialog) {
   const show = (index: number) => {
     current = wrap(index);
     panels.forEach((p, i) => (p.hidden = i !== current));
+    announce.textContent = `${panels[current].getAttribute('aria-label')} — ${picture(current).querySelector('img')!.alt}`;
     for (const neighbour of [current - 1, current + 1])
       picture(wrap(neighbour)).querySelector('img')!.loading = 'eager';
     history.replaceState(null, '', `#${ids[current]}`);
