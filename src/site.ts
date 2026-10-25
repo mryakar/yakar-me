@@ -34,7 +34,7 @@ export const links = [
   { href: 'mailto:ahmet@yakar.me', label: 'ahmet@yakar.me', short: null },
 ];
 
-export const nowUpdated = new Date('2026-09-29');
+export const nowUpdated = new Date('2026-10-24');
 
 export const teacher = {
   name: 'Cihan Gülmez',

@@ -124,6 +124,7 @@ const structured = jsonLd({
   </div>
 
   <dialog data-lightbox class="lightbox" aria-label={t.dialog(title)}>
+    <p data-announce role="status" class="sr-only"></p>
     {shown.map((photo, i) => (
       <PhotoPanel lang={lang} photo={photo} index={i} total={shown.length} series={title} />
     ))}
