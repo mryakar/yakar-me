@@ -121,3 +121,56 @@
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
     U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
+@font-face {
+  font-family: 'Instrument Serif Fallback';
+  font-style: normal;
+  src: local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 83.3%;
+  ascent-override: 118.8%;
+  descent-override: 37.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Instrument Serif Fallback';
+  font-style: italic;
+  src: local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 88.3%;
+  ascent-override: 112.1%;
+  descent-override: 35.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Newsreader Fallback';
+  font-style: normal;
+  src: local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 104.2%;
+  ascent-override: 71%;
+  descent-override: 25.9%;
+  line-gap-override: 15.7%;
+}
+@font-face {
+  font-family: 'Newsreader Fallback';
+  font-style: italic;
+  src: local('Times New Roman'), local('Liberation Serif');
+  size-adjust: 98.6%;
+  ascent-override: 75.1%;
+  descent-override: 27.4%;
+  line-gap-override: 16.8%;
+}
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local('Arial'), local('Liberation Sans');
+  size-adjust: 102%;
+  ascent-override: 98%;
+  descent-override: 29.4%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Geist Mono Fallback';
+  src: local('Courier New'), local('Liberation Mono');
+  size-adjust: 100%;
+  ascent-override: 100%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
