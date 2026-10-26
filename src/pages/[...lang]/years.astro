@@ -9,6 +9,7 @@ import { langPaths } from '../../lib/i18n';
 import { years } from '../../lib/years';
 import { categories, categoryTint } from '../../lib/book';
 import { documentTitle, formatNumber, monthInitials, plural } from '../../lib/format';
+import { ogImagePathFor, sectionCard } from '../../lib/og';
 
 export const getStaticPaths = langPaths;
 
@@ -34,9 +35,10 @@ const summary = 'flex items-center font-mono text-[15px] tracking-[0.02em] text-
 const detail = 'text-[15px] leading-normal text-muted';
 const peakDot = 'mr-2 inline-block size-1.5 flex-none rounded-full bg-accent';
 const none = 'hidden text-[15px] text-muted @4xl:block';
+const ogImage = await ogImagePathFor(sectionCard('years', lang));
 ---
 
-<Base lang={lang} title={documentTitle(t.years.heading)}>
+<Base lang={lang} title={documentTitle(t.years.heading)} image={ogImage}>
   <article class="px-6 pt-9 pb-24 desk:px-16 desk:pt-26">
     <header>
       <p class="font-mono text-sm tracking-[0.04em] text-accent">

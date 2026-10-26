@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { blogPosting, jsonLd, profile } from '../src/lib/structured.ts';
+import { blogPosting, jsonLd, profile, homeGraph } from '../src/lib/structured.ts';
 
 const author = { name: 'Ahmet Yakar', url: 'https://yakar.me' };
 const post = {
@@ -55,4 +55,28 @@ test('jsonLd: </script> ve HTML karakterleri kaçırılır, JSON geçerli kalır
   const out = jsonLd(data);
   assert.doesNotMatch(out, /[<>&\u2028]/);
   assert.deepEqual(JSON.parse(out), data);
+});
+
+test('homeGraph: WebSite (site adı, kişi adı alternateName) + Person, sameAs ile', () => {
+  const g = homeGraph({
+    siteName: 'Yakar',
+    personName: 'Ahmet Yakar',
+    url: 'https://yakar.me',
+    lang: 'tr',
+    sameAs: ['https://github.com/x'],
+  });
+  assert.equal(g['@context'], 'https://schema.org');
+  assert.deepEqual(g['@graph'][0], {
+    '@type': 'WebSite',
+    name: 'Yakar',
+    alternateName: 'Ahmet Yakar',
+    url: 'https://yakar.me',
+    inLanguage: 'tr',
+  });
+  assert.deepEqual(g['@graph'][1], {
+    '@type': 'Person',
+    name: 'Ahmet Yakar',
+    url: 'https://yakar.me',
+    sameAs: ['https://github.com/x'],
+  });
 });

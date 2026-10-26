@@ -11,6 +11,7 @@ import { ui } from '../../../i18n/ui';
 import { langItemPaths, localize } from '../../../lib/i18n';
 import { allSeries, coverSources, photoSlug } from '../../../lib/photos';
 import { neighbours } from '../../../lib/sequence';
+import { ogImagePathFor, seriesCard, OG_COVER_WIDTH } from '../../../lib/og';
 import {
   coverFirst,
   coverTransition,
@@ -22,6 +23,7 @@ import {
   variantPath,
   FRAME_SIZES,
   PHOTOGRAPHER,
+  smallestAtLeast,
 } from '../../../lib/photo';
 import { absoluteUrl, documentTitle } from '../../../lib/format';
 import { jsonLd } from '../../../lib/structured';
@@ -45,6 +47,19 @@ const link = (s: (typeof all)[number]) => ({
 });
 const returns = transition && `${localize(paths.photos, lang)} ${localize(paths.home, lang)}`;
 const { Content } = await render(series.entry);
+const ogImage = await ogImagePathFor(
+  seriesCard(
+    {
+      id: series.id,
+      title,
+      count: photos.length,
+      country: series.cover.data.place.country,
+      coverFile: smallestAtLeast(series.cover.data.variants.webp, OG_COVER_WIDTH).file,
+      focus: series.focus,
+    },
+    lang,
+  ),
+);
 const structured = jsonLd({
   '@context': 'https://schema.org',
   '@graph': photos.map((p) => {
@@ -62,7 +77,13 @@ const structured = jsonLd({
 });
 ---
 
-<Base lang={lang} title={documentTitle(title, ui[lang].nav.photos)} description={description} langs={series.langs}>
+<Base
+  lang={lang}
+  title={documentTitle(title, ui[lang].nav.photos)}
+  description={description}
+  langs={series.langs}
+  image={ogImage}
+>
   <div class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:gap-16 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-5">
       <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">

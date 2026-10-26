@@ -14,6 +14,7 @@ import { emailLink, profileLinks } from '../../lib/nav';
 import { placeName, takenYear, PORTRAIT_SIZES } from '../../lib/photo';
 import { jsonLd, profile } from '../../lib/structured';
 import { paths, site } from '../../site';
+import { ogImagePathFor, sectionCard } from '../../lib/og';
 
 export const getStaticPaths = langPaths;
 
@@ -72,9 +73,10 @@ const rows = 'border-t border-line-strong';
 const row = 'grid gap-1 border-b border-line py-3.5 tab:grid-cols-[10rem_minmax(0,1fr)] tab:gap-x-6';
 const term = 'label pt-1 text-muted';
 const text = 'font-body text-[17px] leading-relaxed text-text-body';
+const ogImage = await ogImagePathFor(sectionCard('about', lang));
 ---
 
-<Base lang={lang} title={documentTitle(t.heading)} description={t.description}>
+<Base lang={lang} title={documentTitle(t.heading)} description={t.description} image={ogImage}>
   <script type="application/ld+json" set:html={structured} />
   <article class="flex flex-col gap-14 px-6 pt-9 pb-24 desk:px-24 desk:pt-26">
     <header class="flex flex-col gap-7 border-b border-line pb-8">

@@ -14,6 +14,7 @@ interface Props {
   title: string;
   description?: string;
   article?: Article;
+  image?: string;
   langs?: readonly Lang[];
   notFound?: boolean;
   runningHead?: string;
@@ -23,6 +24,7 @@ const {
   title,
   description = ui[lang].description,
   article,
+  image,
   langs = locales,
   notFound = false,
   runningHead,
@@ -48,6 +50,7 @@ const printHead = runningHead && {
       title={title}
       description={description}
       article={article}
+      image={image}
       alternates={alternates}
       notFound={notFound}
     />
