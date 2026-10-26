@@ -16,6 +16,7 @@ import { centre, tileRoot } from '../../../lib/map';
 import { photoPath } from '../../../lib/photo';
 import { MAPLIBRE_DIR, MAPLIBRE_FILES } from '../../../lib/vendor';
 import { documentTitle, plural } from '../../../lib/format';
+import { ogImagePathFor, sectionCard } from '../../../lib/og';
 
 export const getStaticPaths = langPaths;
 
@@ -30,9 +31,10 @@ const middle = centre(places);
 const cityPoints = cities.map((c) => c.middle);
 const [mainFile, , workerFile] = MAPLIBRE_FILES;
 const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
+const ogImage = await ogImagePathFor(sectionCard('map', lang));
 ---
 
-<Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description}>
+<Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description} image={ogImage}>
   <div class="flex flex-col gap-6 pt-9 pb-24 tab:gap-14 tab:px-6 desk:px-24 desk:pt-26">
     <div class="px-6 tab:px-0">
       <PhotoViews lang={lang} current="map" series={series.length} places={places.length} />

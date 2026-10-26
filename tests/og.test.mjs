@@ -1,8 +1,18 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { articleCard, homeCard, ogCardHtml, ogImagePathFor, OG_COLORS, titleSize } from '../src/lib/og.ts';
+import {
+  articleCard,
+  homeCard,
+  ogCardHtml,
+  ogImagePathFor,
+  sectionCard,
+  seriesCard,
+  OG_COLORS,
+  titleSize,
+} from '../src/lib/og.ts';
 import { PAGE_BACKGROUND } from '../src/lib/theme.ts';
+import { ui } from '../src/i18n/ui.ts';
 import { frontmatter } from '../scripts/lib/frontmatter.mjs';
 import { pngChunks } from '../scripts/lib/png.mjs';
 
@@ -80,4 +90,51 @@ test('public/og: her görsel yalnız IHDR, IDAT, IEND', () => {
   assert.ok(files.length > 0);
   for (const f of files)
     assert.deepEqual([...new Set(pngChunks(readFileSync(new URL(f, dir))))].sort(), ['IDAT', 'IEND', 'IHDR'], f);
+});
+
+test('seriesCard: kare sayısı ve ülke dilinde, kapak /img/ altında, odak yoksa orta', () => {
+  const input = { id: 'side', title: 'Side', count: 13, country: 'Turkey', coverFile: 'dscf3397-1280-b121c204.webp' };
+  const en = seriesCard(input, 'en');
+  assert.deepEqual(en, {
+    slug: 'series-side',
+    lang: 'en',
+    label: '13 photos · Turkey',
+    title: 'Side',
+    image: '/img/dscf3397-1280-b121c204.webp',
+    focus: { x: 50, y: 50 },
+  });
+  assert.equal(seriesCard(input, 'tr').label, '13 kare · Türkiye');
+  assert.deepEqual(seriesCard({ ...input, focus: { x: 50, y: 80 } }, 'en').focus, { x: 50, y: 80 });
+});
+
+test('sectionCard: etiket menü adı (harita: Photos · Map), başlık bölümün açıklaması; Yıllar site açıklamasını alır', () => {
+  assert.equal(sectionCard('photos', 'en').label, 'Photos');
+  assert.equal(sectionCard('map', 'tr').label, 'Fotoğraflar · Harita');
+  assert.equal(sectionCard('reading', 'es').title, ui.es.reading.description);
+  assert.equal(sectionCard('years', 'en').title, ui.en.description);
+  assert.equal(sectionCard('about', 'en').slug, 'section-about');
+});
+
+test('ogCardHtml: seri kartı kapağı verilen işlevden alır ve odağı yazar; bölüm kartında γ var', async () => {
+  const series = seriesCard(
+    {
+      id: 'side',
+      title: 'Side & <Antalya>',
+      count: 13,
+      country: 'Turkey',
+      coverFile: 'c.webp',
+      focus: { x: 50, y: 80 },
+    },
+    'en',
+  );
+  const html = ogCardHtml(series, (p) => `file:///x${p}`);
+  assert.match(html, /<img src="file:\/\/\/x\/img\/c\.webp" alt="">/);
+  assert.match(html, /object-position:50% 80%/);
+  assert.match(html, /Side &amp; &lt;Antalya&gt;/);
+  assert.match(
+    ogCardHtml(sectionCard('playing', 'tr'), (p) => p),
+    /<svg/,
+  );
+  assert.match(await ogImagePathFor(series), /^\/og\/series-side-en-[0-9a-f]{8}\.png$/);
+  assert.match(await ogImagePathFor(sectionCard('years', 'es')), /^\/og\/section-years-es-[0-9a-f]{8}\.png$/);
 });

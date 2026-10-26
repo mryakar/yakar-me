@@ -51,3 +51,11 @@ export const profile = (who: Named, sameAs: string[]) => ({
   '@context': 'https://schema.org',
   ...person(who, sameAs),
 });
+
+export const homeGraph = (o: { siteName: string; personName: string; url: string; lang: Lang; sameAs: string[] }) => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', name: o.siteName, alternateName: o.personName, url: o.url, inLanguage: o.lang },
+    person({ name: o.personName, url: o.url }, o.sameAs),
+  ],
+});
