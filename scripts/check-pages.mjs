@@ -199,13 +199,11 @@ async function check(tab, { path, view }) {
     returnByValue: true,
   });
   for (const v of csp.value) problems.push(`${where}: CSP violation (${v})`);
-  const { result: timing } = await tab.send('Runtime.evaluate', {
-    expression: '({ shifts: window.__layoutShifts ?? [], longTasks: window.__longTasks ?? [] })',
+  const { result: longTasks } = await tab.send('Runtime.evaluate', {
+    expression: 'window.__longTasks ?? []',
     returnByValue: true,
   });
-  weight.shift = shiftTotal(timing.value.shifts);
-  weight.longTask = Math.max(0, ...timing.value.longTasks);
-  problems.push(...shiftProblems(where, timing.value.shifts));
+  weight.longTask = Math.max(0, ...longTasks.value);
 
   await tab.send('Runtime.evaluate', { expression: axe });
   const scans = [];
@@ -219,5 +217,21 @@ async function check(tab, { path, view }) {
     if (exceptionDetails) throw new Error(`axe: ${exceptionDetails.exception?.description ?? exceptionDetails.text}`);
     scans.push({ where: `${path} (${view}, ${theme})`, violations: result.value });
   }
+
+  await tab.send('Network.setCacheDisabled', { cacheDisabled: false });
+  Object.assign(tab, { last: Date.now(), loaded: false });
+  await tab.send('Page.navigate', { url: `${BASE}${path}` });
+  await waitFor(async () => tab.loaded && Date.now() - tab.last >= QUIET_MS, {
+    timeout: PAGE_TIMEOUT_MS,
+    every: 100,
+    what: `${where} to settle from cache`,
+  });
+  const { result: shifts } = await tab.send('Runtime.evaluate', {
+    expression: 'window.__layoutShifts ?? []',
+    returnByValue: true,
+  });
+  await tab.send('Network.setCacheDisabled', { cacheDisabled: true });
+  weight.shift = shiftTotal(shifts.value);
+  problems.push(...shiftProblems(where, shifts.value));
   return { weight, scans, problems };
 }
