@@ -14,10 +14,10 @@ import { links, paths, site } from '../../../site';
 import { localize } from '../../../lib/i18n';
 import { neighbours, others } from '../../../lib/sequence';
 import { tableOfContents } from '../../../lib/markdown';
-import bodyLatin from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
-import bodyLatinItalic from '@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2?url';
-import bodyLatinExt from '@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-normal.woff2?url';
-import bodyLatinExtItalic from '@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-italic.woff2?url';
+import bodyLatin from '../../../fonts/newsreader-latin-normal.woff2?url';
+import bodyLatinItalic from '../../../fonts/newsreader-latin-italic.woff2?url';
+import bodyLatinExt from '../../../fonts/newsreader-latin-ext-normal.woff2?url';
+import bodyLatinExtItalic from '../../../fonts/newsreader-latin-ext-italic.woff2?url';
 
 export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
 
