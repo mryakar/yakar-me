@@ -106,10 +106,10 @@
 }
 
 @theme {
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Newsreader', Georgia, serif;
-  --font-ui: 'Geist', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-display: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, serif;
+  --font-body: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
+  --font-ui: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
 
   --text-d1: 5rem;
   --text-d1--line-height: 1.02;
