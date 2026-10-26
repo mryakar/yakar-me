@@ -5,12 +5,13 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { noRawHtml, articleBlocks } from './src/lib/markdown.ts';
 import { localeNotFound } from './scripts/lib/locale-not-found.mjs';
 import { vendor } from './scripts/lib/vendor.mjs';
+import { themeScript } from './scripts/lib/theme-script.mjs';
 import { site } from './src/site.ts';
 import { defaultLang, locales } from './src/lib/i18n.ts';
 
 export default defineConfig({
   site: site.url,
-  integrations: [vendor(), localeNotFound(locales.filter((l) => l !== defaultLang))],
+  integrations: [vendor(), themeScript(), localeNotFound(locales.filter((l) => l !== defaultLang))],
   i18n: {
     locales: [...locales],
     defaultLocale: defaultLang,

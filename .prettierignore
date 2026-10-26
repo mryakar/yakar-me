@@ -1,7 +1,6 @@
 *.md
 package-lock.json
 public/
-!public/theme.js
 src/content/photos/**/*.json
 src/content/portrait/
 src/content/map.json

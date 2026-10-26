@@ -14,6 +14,10 @@ import { links, paths, site } from '../../../site';
 import { localize } from '../../../lib/i18n';
 import { neighbours, others } from '../../../lib/sequence';
 import { tableOfContents } from '../../../lib/markdown';
+import bodyLatin from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
+import bodyLatinItalic from '@fontsource-variable/newsreader/files/newsreader-latin-wght-italic.woff2?url';
+import bodyLatinExt from '@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-normal.woff2?url';
+import bodyLatinExtItalic from '@fontsource-variable/newsreader/files/newsreader-latin-ext-wght-italic.woff2?url';
 
 export const getStaticPaths = () => langItemPaths(articles, (article) => ({ slug: article.id }));
 
@@ -34,6 +38,8 @@ const link = (a: (typeof sameTopic)[number]) => ({
   meta: formatDate(a.pubDate, 'long', lang),
 });
 const medium = links.find((l) => l.label === 'Medium')!;
+const bodyFonts =
+  lang === 'tr' ? [bodyLatin, bodyLatinItalic, bodyLatinExt, bodyLatinExtItalic] : [bodyLatin, bodyLatinItalic];
 const url = absoluteUrl(articlePath(article.id, lang));
 const ogImage = await ogImagePathFor(articleCard(article, lang));
 const structured = jsonLd(
@@ -61,6 +67,9 @@ const structured = jsonLd(
   langs={article.langs}
   runningHead={title}
 >
+  {bodyFonts.map((href) => (
+    <link rel="preload" href={href} as="font" type="font/woff2" crossorigin slot="head" />
+  ))}
   <script type="application/ld+json" set:html={structured} />
   <article class="print-article mx-auto max-w-[86.5rem] px-6 pt-9 pb-24 desk:px-24 desk:pt-24">
     <header class="article-head flex max-w-240 flex-col gap-7">
