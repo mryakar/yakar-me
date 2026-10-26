@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { launchChrome, waitFor } from './lib/cdp.mjs';
-import { a11yProblems, budgetProblems, kb, weigh } from './lib/page-checks.mjs';
+import { a11yProblems, budgetProblems, kb, shiftProblems, shiftTotal, weigh } from './lib/page-checks.mjs';
 import { sitemapUrls } from './lib/live-checks.mjs';
 import { drain } from './lib/pool.mjs';
 import { localize, locales } from '../src/lib/i18n.ts';
@@ -22,6 +22,18 @@ const THEMES = ['dark', 'light'];
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
 const RECORD_VIOLATIONS = `addEventListener('securitypolicyviolation', (e) => (window.__cspViolations ||= []).push(\`\${e.disposition} \${e.violatedDirective}: \${e.sample || e.blockedURI}\`));`;
+const RECORD_SHIFTS = `window.__layoutShifts = [];
+new PerformanceObserver((list) => {
+  for (const e of list.getEntries()) {
+    if (e.hadRecentInput) continue;
+    const name = (n) => (n?.tagName ? n.tagName.toLowerCase() + (n.id ? '#' + n.id : '') + (n.className && typeof n.className === 'string' ? '.' + n.className.split(' ').slice(0, 2).join('.') : '') : '?');
+    window.__layoutShifts.push({ value: e.value, time: Math.round(e.startTime), sources: (e.sources ?? []).map((s) => name(s.node)) });
+  }
+}).observe({ type: 'layout-shift', buffered: true });
+window.__longTasks = [];
+new PerformanceObserver((list) => {
+  for (const e of list.getEntries()) window.__longTasks.push(Math.round(e.duration));
+}).observe({ type: 'longtask', buffered: true });`;
 
 const axe = readFileSync(new URL('../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
 const exceptions = JSON.parse(readFileSync(new URL('./a11y-exceptions.json', import.meta.url), 'utf8'));
@@ -91,6 +103,10 @@ process.on('exit', () => {
       `vendored ≤ ${kb(max('vendor').vendor)} KB${tiles.length ? `, map tiles on first view ≤ ${Math.max(...tiles.map((w) => w.tiles))}` : ''}`,
   );
   console.log(
+    `${problems.length ? '✗' : '✓'} layout shift ≤ ${max('shift').shift.toFixed(3)} (${max('shift').where}), ` +
+      `longest task ${max('longTask').longTask} ms (${max('longTask').where})`,
+  );
+  console.log(
     `${problems.length ? '✗' : '✓'} ${scans.length} accessibility scans (${AXE_TAGS.join(', ')}), ${exceptions.length} exception(s)`,
   );
   if (problems.length) {
@@ -142,6 +158,7 @@ async function openTab(browser) {
   await network(sessionId);
   await tab.send('Emulation.setFocusEmulationEnabled', { enabled: true });
   await tab.send('Page.addScriptToEvaluateOnNewDocument', { source: RECORD_VIOLATIONS });
+  await tab.send('Page.addScriptToEvaluateOnNewDocument', { source: RECORD_SHIFTS });
   await tab.send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true });
   return tab;
 }
@@ -182,6 +199,13 @@ async function check(tab, { path, view }) {
     returnByValue: true,
   });
   for (const v of csp.value) problems.push(`${where}: CSP violation (${v})`);
+  const { result: timing } = await tab.send('Runtime.evaluate', {
+    expression: '({ shifts: window.__layoutShifts ?? [], longTasks: window.__longTasks ?? [] })',
+    returnByValue: true,
+  });
+  weight.shift = shiftTotal(timing.value.shifts);
+  weight.longTask = Math.max(0, ...timing.value.longTasks);
+  problems.push(...shiftProblems(where, timing.value.shifts));
 
   await tab.send('Runtime.evaluate', { expression: axe });
   const scans = [];

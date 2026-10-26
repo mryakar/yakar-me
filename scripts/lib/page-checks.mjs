@@ -1,6 +1,6 @@
 const KB = 1024;
 
-export const BUDGET = { total: 2000 * KB, requests: 30, script: 50 * KB, vendor: 1300 * KB };
+export const BUDGET = { total: 2000 * KB, requests: 30, script: 50 * KB, vendor: 1300 * KB, shift: 0.1 };
 
 export const kb = (bytes) => Math.round(bytes / KB);
 
@@ -28,6 +28,18 @@ export function budgetProblems(where, weight, budget = BUDGET) {
   if (weight.vendor > budget.vendor)
     over.push(`${kb(weight.vendor)} KB of vendored scripts, budget ${kb(budget.vendor)} KB`);
   return over.map((o) => `${where}: ${o}`);
+}
+
+export const shiftTotal = (shifts) => shifts.reduce((sum, s) => sum + s.value, 0);
+
+export function shiftProblems(where, shifts, budget = BUDGET) {
+  const total = shiftTotal(shifts);
+  if (total <= budget.shift) return [];
+  const worst = [...shifts]
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 3)
+    .map((s) => `${s.value.toFixed(3)} at ${s.time} ms (${s.sources.join(', ') || 'no source'})`);
+  return [`${where}: layout shift ${total.toFixed(3)}, budget ${budget.shift} — ${worst.join('; ')}`];
 }
 
 export function a11yProblems(scans, exceptions, today) {

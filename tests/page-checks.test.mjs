@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BUDGET, a11yProblems, budgetProblems, weigh } from '../scripts/lib/page-checks.mjs';
+import { BUDGET, a11yProblems, budgetProblems, shiftProblems, shiftTotal, weigh } from '../scripts/lib/page-checks.mjs';
 
 const r = (path, type, bytes) => ({ url: `http://localhost:8788${path}`, type, bytes });
 
@@ -48,4 +48,25 @@ test('a11yProblems: süresi dolan, gerekçesiz ya da artık eşleşmeyen istisna
   assert.match(a11yProblems([scan(['.map-marker'])], [ex], '2027-04-02').join(), /expired on 2027-04-01/);
   assert.match(a11yProblems([scan(['.map-marker'])], [{ ...ex, reason: '' }], '2026-10-04').join(), /has no reason/);
   assert.match(a11yProblems([], [ex], '2026-10-04').join(), /no longer matches anything/);
+});
+
+const shift = (value, time, sources = ['section.map-frame']) => ({ value, time, sources });
+
+test('shiftTotal: kaymalar toplanır, boş liste 0', () => {
+  assert.equal(shiftTotal([]), 0);
+  assert.equal(shiftTotal([shift(0.05, 100), shift(0.02, 200)]), 0.07);
+});
+
+test('shiftProblems: bütçede geçer, aşınca toplam ve en büyük üç kayma kaynağıyla yazılır', () => {
+  assert.deepEqual(shiftProblems('/ (phone)', [shift(0.06, 100), shift(0.04, 200)]), []);
+  const over = shiftProblems('/photos/map/ (desktop)', [
+    shift(0.001, 50, []),
+    shift(0.232, 547),
+    shift(0.01, 900, ['nav', 'p.x']),
+  ]);
+  assert.equal(over.length, 1);
+  assert.match(
+    over[0],
+    /^\/photos\/map\/ \(desktop\): layout shift 0\.243, budget 0\.1 — 0\.232 at 547 ms \(section\.map-frame\); 0\.010 at 900 ms \(nav, p\.x\); 0\.001 at 50 ms \(no source\)$/,
+  );
 });
