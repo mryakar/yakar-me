@@ -7,6 +7,7 @@ import PhotoPicture from '../../../components/PhotoPicture.astro';
 import PhotoRights from '../../../components/PhotoRights.astro';
 import ArrowRight from '../../../components/ArrowRight.astro';
 import Icon from '../../../components/Icon.astro';
+import Globe from '../../../components/Globe.astro';
 import { ui } from '../../../i18n/ui';
 import { langPaths } from '../../../lib/i18n';
 import { allSeries, photoSlug } from '../../../lib/photos';
@@ -26,13 +27,12 @@ const cities = await mapPlaces(lang);
 const series = await allSeries(lang);
 const places = cities.flatMap((c) => c.places);
 const middle = centre(places);
-const [mainFile, sharedFile, workerFile] = MAPLIBRE_FILES;
+const cityPoints = cities.map((c) => c.middle);
+const [mainFile, , workerFile] = MAPLIBRE_FILES;
 const control = 'flex size-11 items-center justify-center text-text transition-colors duration-200 hover:text-accent';
 ---
 
 <Base lang={lang} title={documentTitle(t.photos.mapView, t.nav.photos)} description={t.map.description}>
-  <link rel="modulepreload" href={`${MAPLIBRE_DIR}${mainFile}`} slot="head" />
-  <link rel="modulepreload" href={`${MAPLIBRE_DIR}${sharedFile}`} slot="head" />
   <div class="flex flex-col gap-6 pt-9 pb-24 tab:gap-14 tab:px-6 desk:px-24 desk:pt-26">
     <div class="px-6 tab:px-0">
       <PhotoViews lang={lang} current="map" series={series.length} places={places.length} />
@@ -49,12 +49,17 @@ const control = 'flex size-11 items-center justify-center text-text transition-c
       data-lang={lang}
       aria-label={t.map.label}
       class="map-frame @container relative hidden h-125 overflow-hidden border-line bg-bg tab:h-155 tab:border [:root.has-webgl2_&]:block"
-      aria-busy="true"
     >
       <div data-map-canvas class="size-full"></div>
+      <div data-map-facade class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <div class="aspect-square h-[min(76%,76vw)]">
+          <Globe points={cityPoints} centre={middle} />
+        </div>
+      </div>
       <p
         data-map-loading
         class="label pointer-events-none absolute inset-0 flex items-center justify-center text-faint"
+        hidden
       >
         {t.map.loading}
       </p>

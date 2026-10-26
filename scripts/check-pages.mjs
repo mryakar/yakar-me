@@ -184,6 +184,18 @@ async function check(tab, { path, view }) {
     },
   );
 
+  const { result: hasMap } = await tab.send('Runtime.evaluate', {
+    expression: "!!document.querySelector('[data-map]')",
+    returnByValue: true,
+  });
+  if (hasMap.value) {
+    await tab.send('Runtime.evaluate', {
+      expression: "document.querySelector('[data-map]').dispatchEvent(new Event('pointerenter'))",
+    });
+    tab.last = Date.now();
+    await waitFor(async () => settled(), { timeout: PAGE_TIMEOUT_MS, every: 100, what: `${where} map to settle` });
+  }
+
   const problems = [];
   const expected = NOT_FOUND.includes(path) ? 404 : 200;
   if (tab.status !== expected) problems.push(`${where}: HTTP ${tab.status}, expected ${expected}`);

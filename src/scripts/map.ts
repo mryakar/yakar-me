@@ -122,11 +122,14 @@ async function start(frame: HTMLElement) {
   const crumb = frame.querySelector<HTMLElement>('[data-crumb]')!;
   const crumbCity = frame.querySelector<HTMLElement>('[data-crumb-city]')!;
   const loading = frame.querySelector<HTMLElement>('[data-map-loading]')!;
+  const facade = frame.querySelector<HTMLElement>('[data-map-facade]')!;
   const cards = new Map([...frame.querySelectorAll<HTMLElement>('[data-card]')].map((c) => [c.dataset.card!, c]));
   const cities = readPlaces();
   const places = cities.flatMap((c) => c.places);
   const wide = matchMedia('(min-width: 48rem)');
 
+  frame.setAttribute('aria-busy', 'true');
+  loading.hidden = false;
   const policies = globalThis.trustedTypes;
   if (policies && !policies.defaultPolicy) {
     policies.createPolicy('default', {
@@ -170,6 +173,7 @@ async function start(frame: HTMLElement) {
   map.keyboard.disableRotation();
   map.once('load', () => {
     loading.hidden = true;
+    facade.hidden = true;
     frame.removeAttribute('aria-busy');
   });
 
@@ -366,7 +370,28 @@ async function start(frame: HTMLElement) {
   focus(false);
 }
 
+function arm(frame: HTMLElement) {
+  let started = false;
+  const go = () => {
+    if (started) return;
+    started = true;
+    start(frame);
+  };
+  for (const type of ['pointerenter', 'pointerdown', 'focusin', 'keydown', 'wheel'])
+    frame.addEventListener(type, go, { once: true, passive: true });
+  for (const link of document.querySelectorAll<HTMLAnchorElement>('[data-place]'))
+    link.addEventListener('click', (e) => {
+      if (started || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      history.replaceState(null, '', `#${link.dataset.place}`);
+      frame.scrollIntoView({ block: 'nearest' });
+      go();
+    });
+  addEventListener('hashchange', go);
+  if (fragmentId(location.hash)) go();
+}
+
 if (frame) {
-  if (hasWebGL()) start(frame);
+  if (hasWebGL()) arm(frame);
   else frame.hidden = true;
 }
