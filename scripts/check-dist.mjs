@@ -11,6 +11,7 @@ import { searchIndexErrors } from './lib/search-index.mjs';
 import { defaultLang, locales } from '../src/lib/i18n.ts';
 import { decodeEntities } from '../src/lib/search.ts';
 import { pending } from '../src/i18n/pending.ts';
+import { describe, expand, missingChars } from './lib/charset.mjs';
 
 const args = process.argv.slice(2);
 const dist = args.find((a) => !a.startsWith('--')) ?? 'dist';
@@ -29,6 +30,13 @@ const resolves = (path) => {
   const base = join(dist, p);
   return [base, join(base, 'index.html'), `${base}.html`].some((f) => existsSync(f) && statSync(f).isFile());
 };
+
+const charset = expand(JSON.parse(readFileSync(new URL('../src/fonts/charset.json', import.meta.url), 'utf8')).ranges);
+for (const file of all.filter((f) => f.endsWith('.html') || f.endsWith('search.json'))) {
+  const missing = missingChars(decodeEntities(readFileSync(file, 'utf8')), charset);
+  if (missing.length)
+    fail(file, `characters outside the font subset: ${missing.map(describe).join(', ')} — run npm run fonts:subset`);
+}
 
 const pages = new Map();
 const tileRoots = new Set();
@@ -128,5 +136,5 @@ console.log(
 );
 const waiting = locales.reduce((n, l) => n + pending[l].length, 0);
 console.log(
-  `✓ ${pages.size} pages, every language has its counterpart${waiting ? ` (${waiting} translation(s) pending)` : ''}`,
+  `✓ ${pages.size} pages, every language has its counterpart${waiting ? ` (${waiting} translation(s) pending)` : ''}, every character in the ${charset.size}-character font subset`,
 );

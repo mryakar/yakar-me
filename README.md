@@ -20,6 +20,7 @@ Cloudflare Workers. There is no server code.
 
 - Node 24 (see `.nvmrc`) and npm
 - Chrome or Chromium for the browser checks (`check:pages`) and share images (`og:render`)
+- Python with fontTools and brotli, in a scratch virtual environment, for the font subsets (`fonts:subset`)
 
 Photo variants and map tiles live in a private bucket and are not in the repository. `photos:fetch` and `map:fetch` need
 read credentials, so only I can run a full build; the unit tests run without them.
@@ -42,6 +43,7 @@ read credentials, so only I can run a full build; the unit tests run without the
 | `npm run check:live` | Compare the live site with the repository: headers, status codes, email DNS, certificate, `security.txt` |
 | `npm run check:links` | Check outbound links on the live site |
 | `npm run og:render` | Render share images to `public/og/` |
+| `npm run fonts:subset` | Subset the fonts to the characters the built site uses, into `src/fonts/` |
 
 These need access to the bucket, so only I can run them: `photo:add` (add a photo to a series), `photos:fetch`,
 `map:extract`, `map:fetch`.
@@ -95,6 +97,7 @@ Third-party material:
   permission
 - Home page globe: [Natural Earth](https://www.naturalearthdata.com) (public domain), via `world-atlas`
 - Fonts, under the SIL Open Font License 1.1: Geist and Geist Mono © The Geist Project Authors, Newsreader © The
-  Newsreader Project Authors, Instrument Serif © The Instrument Serif Project Authors. The map glyphs in
+  Newsreader Project Authors, Instrument Serif © The Instrument Serif Project Authors. The woff2 files in `src/fonts/`
+  are subsets of the fontsource builds, limited to the characters the site uses; the map glyphs in
   `public/glyphs/` are generated from Geist and Instrument Serif. The license is in
   [`public/licenses/OFL.txt`](public/licenses/OFL.txt), served at `/licenses/OFL.txt`.
