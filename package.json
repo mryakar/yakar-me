@@ -27,13 +27,13 @@
     "map:fetch": "node scripts/map-fetch.mjs"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "^0.4.4",
+    "@astrojs/markdown-satteri": "^0.4.5",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@fontsource-variable/newsreader": "^5.3.0",
     "@fontsource/instrument-serif": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.0",
+    "astro": "^7.4.2",
     "d3-geo": "^3.1.1",
     "maplibre-gl": "6.12.0",
     "satteri": "^0.10.5",
@@ -42,15 +42,15 @@
     "world-atlas": "^2.0.2"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@types/d3-geo": "^3.1.1",
     "@types/topojson-client": "^3.1.5",
     "axe-core": "^4.14.0",
     "prettier": "^3.9.10",
-    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-astro": "^1.1.2",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
-    "wrangler": "^4.151.1"
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "miniflare": {
